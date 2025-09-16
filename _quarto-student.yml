@@ -1,0 +1,14 @@
+project:
+  output-dir: _student
+
+filters:
+  - filters/strip-solution.lua
+
+format:
+  ipynb: default
+
+execute:
+  echo: true                   # show starter code
+  warning: false
+  error: false
+  eval: false

@@ -1,0 +1,11 @@
+project:
+  type: default
+  output-dir: _site
+
+format:
+  ipynb: default
+
+execute:
+  echo: true
+  warning: false
+  error: false

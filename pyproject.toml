@@ -1,0 +1,25 @@
+[project]
+name = "fysisk-biokemi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Mads-Peter", email = "machri@phys.au.dk" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "jupyter>=1.1.1",
+    "numpy>=2.3.3",
+]
+
+[project.scripts]
+fysisk-biokemi = "fysisk_biokemi:main"
+
+[build-system]
+requires = ["uv_build>=0.8.10,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "nbformat>=5.10.4",
+]

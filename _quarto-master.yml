@@ -1,0 +1,6 @@
+project:
+  output-dir: _master
+
+filters:
+  - filters/strip-exercise.lua
+  - quarto
