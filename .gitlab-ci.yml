@@ -10,7 +10,7 @@ variables:
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
   PIP_NO_PYTHON_VERSION_WARNING: "1"
 .default_uv:
-  image: ghcr.io/astral-sh/uv:python${PYTHON_VERSION}-${BASE_LAYER}
+  image: ghcr.io/astral-sh/uv:debian
   before_script:
     - apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
     - apt-get install -y make
