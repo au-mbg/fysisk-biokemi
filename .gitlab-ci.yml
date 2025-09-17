@@ -25,7 +25,8 @@ pages:
   extends: .default_uv
   stage: pages
   script:
-    - uv sync 
+    - uv sync
+    - uv pip install quarto
     - source .venv/bin/activate
     - make website
   publish: _combined_site/
