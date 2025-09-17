@@ -15,8 +15,9 @@ variables:
   before_script:
     - apt-get update && apt-get install -y --no-install-recommends curl ca-certificates make
     # Install Quarto (standalone)
-    - curl -L https://github.com/quarto-dev/quarto-cli/releases/latest/download/quarto-linux-amd64.tar.gz -o /tmp/quarto.tgz
-    - mkdir -p /opt && tar -xzf /tmp/quarto.tgz -C /opt
+    - wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.24/quarto-1.8.24-linux-amd64.tar.gz
+    - mkdir ~/opt
+    - tar -C ~/opt -xvzf quarto-1.8.24-linux-amd64.tar.gz
     - export PATH="/opt/quarto/bin:$PATH"
     - quarto --version  
   cache:
