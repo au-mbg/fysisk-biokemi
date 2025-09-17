@@ -4,6 +4,7 @@ project:
   render:
     - index.qmd
     - lessons/*.qmd   # only build the exercises, not other misc files
+    - quizzes/*.qmd   # build quizzes too
 
 filters:
   - filters/strip-solution.lua
@@ -23,7 +24,8 @@ website:
     contents:
       - section: "Exercises"
         contents: lessons/*.qmd
-
+      - section: "Quizzes"
+        contents: quizzes/*.qmd
 format:
   html:
     toc: true
