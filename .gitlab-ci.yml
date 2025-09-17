@@ -9,14 +9,19 @@ variables:
   UV_CACHE_DIR: ".uv-cache"
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
   PIP_NO_PYTHON_VERSION_WARNING: "1"
+
 .default_uv:
   image: ghcr.io/astral-sh/uv:debian
   before_script:
-    - apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
-    - apt-get install -y make
-  cache:
-    - key:
-        files: [pyproject.toml, uv.lock]
+    - apt-get update && apt-get install -y --no-install-recommends curl ca-certificates make
+    # Install Quarto (standalone)
+    - curl -L https://github.com/quarto-dev/quarto-cli/releases/latest/download/quarto-linux-amd64.tar.gz -o /tmp/quarto.tgz
+    - mkdir -p /opt && tar -xzf /tmp/quarto.tgz -C /opt
+    - export PATH="/opt/quarto/bin:$PATH"
+    - quarto --version  
+    - cache:
+      - key:
+          files: [pyproject.toml, uv.lock]
       paths: [$UV_CACHE_DIR]
   after_script:
     - uv cache prune --ci
@@ -26,7 +31,6 @@ pages:
   stage: pages
   script:
     - uv sync
-    - uv pip install quarto
     - source .venv/bin/activate
     - make website
   publish: _combined_site/
