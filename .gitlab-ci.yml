@@ -32,10 +32,10 @@ pages:
     - uv sync
     - source .venv/bin/activate
     - make website
-  publish: _combined_site/
+  publish: _site-combined
   artifacts:
     paths:
-      - _combined_site
+      - _site-combined
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: always
