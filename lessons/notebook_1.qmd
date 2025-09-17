@@ -1,7 +1,6 @@
 ---
 title: "Jupyter Notebooks som lommeregner"
 jupyter: python3
-author: Mads-Peter V. Christiansen
 categories: ["variables", "functions", "arithemtic"]
 ---
 

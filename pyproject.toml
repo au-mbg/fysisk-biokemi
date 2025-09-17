@@ -9,6 +9,7 @@ authors = [
 requires-python = ">=3.11"
 dependencies = [
     "jupyter>=1.1.1",
+    "jupyter-cache>=1.0.1",
     "jupyterquiz>=2.9.6.2",
     "matplotlib>=3.10.6",
     "numpy>=2.3.3",

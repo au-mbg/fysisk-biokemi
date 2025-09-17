@@ -29,8 +29,8 @@ website:
 format:
   html:
     toc: true
-    toc-depth: 3
-    number-sections: false
+    toc-depth: 6
+    number-sections: false    
     code-tools: true
     theme: cosmo
 
@@ -42,3 +42,4 @@ execute:
   echo: true
   warning: false
   error: false
+  cache: true

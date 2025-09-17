@@ -11,4 +11,5 @@ execute:
   echo: true                   # show starter code
   warning: false
   error: false
-  eval: false
+  cache: true
+
