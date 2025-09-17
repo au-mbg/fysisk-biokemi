@@ -1,0 +1,9 @@
+---
+title: "Exercises"
+listing:
+  contents: lessons
+  sort: false
+  type: table
+  fields: [title, categories]
+  page-size: 50
+---

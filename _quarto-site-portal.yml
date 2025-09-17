@@ -1,0 +1,13 @@
+project:
+  type: website
+  output-dir: _site-combined
+  render: []
+  resources:
+    - redirect/index.html         # include the static redirect page
+
+website:
+  title: "Fysisk Biokemi - Python Øvelser"
+
+format:
+  html:
+    theme: cosmo

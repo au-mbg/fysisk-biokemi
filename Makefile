@@ -13,7 +13,16 @@ master:
 student:
 	quarto render --profile student $(TO_FLAG)
 
+site-master:
+	quarto render --profile site-master
+
+site-student:
+	quarto render --profile site-student --no-clean
+	cp redirect/index.html _site-combined/index.html
+
+website: site-master site-student
+
 all: master student
 
 clean:
-	rm -rf _master _student
+	rm -rf _master _student _site _site-combined

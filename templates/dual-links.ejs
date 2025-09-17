@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Categories</th>
+      <th>Master (HTML)</th>
+      <th>Student (HTML)</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for (const item of items) {
+       const src = (item.path || item.file || "").toString();
+       if (!src) continue;
+       const base = src.replace(/^\/+/, "").replace(/\.qmd$/i, "");
+
+       const mHtml = "master/" + base + ".html";
+       const sHtml = "student/" + base + ".html";
+       const cats = (item.categories || []).join(", ");
+  %>
+    <tr>
+      <td class="listing-title"><%= item.title || base %></td>
+      <td><%= cats %></td>
+      <td><a href="<%- mHtml %>">Open</a></td>
+      <td><a href="<%- sHtml %>">Open</a></td>
+    </tr>
+  <% } %>
+  </tbody>
+</table>

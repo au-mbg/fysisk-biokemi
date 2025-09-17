@@ -1,0 +1,41 @@
+project:
+  type: website
+  output-dir: _site-combined/master/
+  render:
+    - index.qmd
+    - lessons/*.qmd   # only build the exercises, not other misc files
+
+filters:
+  - filters/strip-exercise.lua
+
+website:
+  title: "Fysisk Biokemi - Python Øvelser"
+  search: true
+  navbar:
+    left:
+      - text: Exercises
+        href: index.qmd
+    right:
+      - icon: gitlab
+        href: https://gitlab.com/au_mbg/fysisk_biokemi#
+  sidebar:
+    style: floating
+    contents:
+      - section: "Exercises"
+        contents: lessons/*.qmd
+
+format:
+  html:
+    toc: true
+    number-sections: false
+    code-tools: true
+    theme: cosmo
+
+# keep ipynb too if you want downloadable notebooks per page
+# (optional; remove if you want HTML-only)
+  ipynb: default
+
+execute:
+  echo: true
+  warning: false
+  error: false

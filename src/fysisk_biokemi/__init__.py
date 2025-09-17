@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from fysisk-biokemi!")
+from .datasets import load_dataset

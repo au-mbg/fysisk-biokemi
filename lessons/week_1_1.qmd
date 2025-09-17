@@ -1,8 +1,8 @@
 ---
-title: "Jupyter Notebooks som lommeregner."
+title: "Jupyter Notebooks som lommeregner"
 jupyter: python3
 author: Mads-Peter V. Christiansen
-
+categories: ["variables", "functions", "arithemtic"]
 ---
 
 ## Simple beregninger
@@ -169,21 +169,26 @@ print(brain_pct, liver_pct, skin_pct)
 
 Vi har nu set at vi kan bruge Jupyter notebooks som lommeregner til at lave 
 beregninger med de basale aritmetiske operationer. Vi har dog ofte behov 
-for f.eks. at regne kvadratrødder, exponential funktioner eller logaritmer. 
+for f.eks. at regne potensfunktioner, kvadratrødder, exponential funktioner eller logaritmer. 
 
 Heldigvis er dette også nemt med Python, vi kan nemlig bruge en pakke der 
 implementere disse operationer som funktioner - specifikt `numpy`. 
 
-I NumPy er disse tre funktioner defineret som 
+Potensfunktioner, altså $x^k$ kan regnes som 
+
+- x**k
+
+De tre andre kan regnes med NumPy som 
 
 - `np.sqrt`
 - `np.exp`
-- `np.log` 
+- `np.log`
 
 ### Opgave 5
 
 Brug disse til at beregne følgende
 
+- $6.4807^2$
 - $\sqrt{1764}$
 - $e^{3.737669}$
 - $\log{(66.6863)}$
