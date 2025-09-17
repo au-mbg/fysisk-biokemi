@@ -19,9 +19,9 @@ variables:
     - mkdir -p /opt && tar -xzf /tmp/quarto.tgz -C /opt
     - export PATH="/opt/quarto/bin:$PATH"
     - quarto --version  
-    - cache:
-      - key:
-          files: [pyproject.toml, uv.lock]
+  cache:
+    - key:
+        files: [pyproject.toml, uv.lock]
       paths: [$UV_CACHE_DIR]
   after_script:
     - uv cache prune --ci
