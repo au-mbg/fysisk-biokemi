@@ -4,7 +4,7 @@ stages:
 
 variables:
   PYTHON_VERSION: "3.11"
-  BASE_LAYER: "bookworm-slim"
+  BASE_LAYER: "debian"
   UV_LINK_MODE: "copy"
   UV_CACHE_DIR: ".uv-cache"
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
