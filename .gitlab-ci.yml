@@ -1,0 +1,38 @@
+
+stages:
+  - pages
+
+variables:
+  PYTHON_VERSION: "3.11"
+  BASE_LAYER: "bookworm-slim"
+  UV_LINK_MODE: "copy"
+  UV_CACHE_DIR: ".uv-cache"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PIP_NO_PYTHON_VERSION_WARNING: "1"
+.default_uv:
+  image: ghcr.io/astral-sh/uv:python${PYTHON_VERSION}-${BASE_LAYER}
+  before_script:
+    - apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+  cache:
+    - key:
+        files: [pyproject.toml, uv.lock]
+      paths: [$UV_CACHE_DIR]
+  after_script:
+    - uv cache prune --ci
+
+pages:
+  extends: .default_uv
+  stage: pages
+  script:
+    - uv sync 
+    - source .venv/bin/activate
+    - make website
+  publish: _combined_site/
+  artifacts:
+    paths:
+      - _combined_site
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+      when: never
