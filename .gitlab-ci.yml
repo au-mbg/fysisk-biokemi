@@ -13,6 +13,7 @@ variables:
   image: ghcr.io/astral-sh/uv:python${PYTHON_VERSION}-${BASE_LAYER}
   before_script:
     - apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+    - apt-get install -y make
   cache:
     - key:
         files: [pyproject.toml, uv.lock]
