@@ -1,0 +1,134 @@
+---
+title: At arbejde med datasæt
+categories: ['arrays', 'datasets', 'plotting']
+engine: jupyter
+---
+
+```{python}
+import numpy as np
+import pandas as pd
+from fysisk_biokemi import load_dataset
+import matplotlib.pyplot as plt
+```
+
+Vi har tidligere kigget på et datasæt omkring adsorption spektrummet af chlorophyll, 
+men vi var ikke fokuserede på hvordan vi håndterede dette datasæt. 
+
+Det vi nåede frem til var at plotte datasættet, som set herunder
+
+```{python}
+chloro_df = load_dataset("chlorophyll")
+bølgelængder = chloro_df['Wavelength(nm)'] # Et array med 501 indgange
+adsorption = chloro_df['AdsorptionCoefficient'] # Et array med 501 indgange
+
+fig, ax = plt.subplots()
+ax.plot(bølgelængder, adsorption)
+ax.set_xlabel('Bølgelængde [nm]')
+ax.set_ylabel('Adsorptions koefficient')
+```
+
+Vi vil denne gang undersøge lidt mere hvordan vi kan arbejde med et datasæt.
+
+## NumPy arrays som datasæt.
+
+Det er vigtigt at vi holder godt styr på vores data, det er ofte smart at bruge 
+en data-type som hjælper os med dette. Vi har tidligere sæt på arrays, som er en mulighed - f.eks. 
+
+```{python}
+a = np.array([1, 2, 3, 4])
+b = np.array([1, 4, 9, 16])
+```
+Men hvis vi har mange størrelser kan det hurtigt blive overskueligt - en anden mulighed 
+er at gemme alle vores størrelser i det samme array
+
+```{python}
+samlet_array = np.array([[1, 2, 3, 4], [1, 4, 9, 16]])
+print(samlet_array[0, :]) # Svarer til a
+print(samlet_array[1, :]) # Svarer til b
+```
+
+::: {.callout-note}
+NumPy arrays kan have flere dimensioner, `samlet_array` har her to dimension (som en matrice).
+I dette tilfælde beskriver hver række en af vores størrelser. Her er der brugt at `:` betyder "alle" 
+ved indexing så `[0, :]` kan læses som første række alle kolonner. 
+::: 
+
+Men det kræver så at vi holde styr hvilken akse der indeholder hvilken størrelse. 
+Nogle gange kan det være fint at holde vores data som `np.array` men andre gange 
+er det bedre på andre måder. 
+
+## Pandas `DataFrame`
+
+En sådan anden måde at håndtere et datasæt er ved brug af ny type, nemlig en 
+pandas `DataFrame`. 
+
+Vi kan lave en `DataFrame` fra vores to arrays sådan her; 
+
+```{python}
+df = pd.DataFrame({"a": a, "b": b})
+print(df)
+```
+Her har vi så tre kolonner, den første er `index`, den anden er `a` og den tredje er `b`. 
+
+::: {.callout-note}
+Chlorophyll datasættet var faktisk også en `DataFrame`. 
+::: 
+
+Med en `DataFrame` har vi flere muligheder for indeksering, vi kan f.eks. bruge navnet
+
+```{python}
+print(df['a'])
+```
+
+### Opgave 1
+
+Beregn formlen $2 \times a$ hvor $a$ kommer fra datasættet ovenfor
+
+```{python}
+#| exercise: true
+#| eval: false
+resultat = ... # Erstat ... med dine kode.
+print(resultat)
+```
+```{python}
+#| solution: true
+resultat = 2 * df['a']
+print(resultat)
+```
+
+### Opgave 2
+
+Lav et plot af $a$ mod $b$ hvor de to størrelser kommer fra `DataFrame`'en `df`.
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+... # Skriv din kode for at plotte.
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+ax.plot(df['a'], df['b'])
+```
+
+## Datasæt fra filer
+
+Ofte vil vi ikke skrive vores datasæt direkte ind i kode, men opbevare dem som seperate filer
+der f.eks. kunne komme fra eksperimentielt udstyr. 
+
+Vi kan hente data fra en csv-fil (en fil hvor dataet er komma-separeret), sådan her
+
+```{python}    
+#| eval: false
+dataset_path = "/sti/til/den/fil/der/har/vores/data.csv"
+df = pd.read_csv(dataset_path, sep='\s+', comment='#')
+```
+
+::: {.callout-warning}
+Cellen ovenfor giver en fejl når den bliver kørt fordi den fil vi forsøger at åbne ikke 
+eksistere.
+::: 
+
+# Note to self: Konverter datasæt til excel.
