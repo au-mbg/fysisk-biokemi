@@ -1,141 +1,124 @@
 ---
-title: "Grafer og at plotte"
-jupyter: python3
-categories: ["arrays", "functions", "plotting"]
+title: Mere om funktioner
+engine: jupyter
+categories: ["functions", "parentheses"]
 ---
 
-```{python}
-import numpy as np
-import matplotlib.pyplot as plt
-```
-
-Vi så sidste gang på funktioner og på arrays. Begge dele er meget relevante 
-i forhold til dagens emne: at lave grafer også kaldt at **plotte**. 
-
-### Opgave 1
-
-Sidst gang regnede vi volumen af celler givet radius, vi gjorde dette ved at 
-skrive en funktion til at lave beregningen. Nu vil vi gøre det omvendte, regne 
-radius givet en volume - der er formlen
+Vi vil senere i kurset se ligninger som f.eks. den kvadratiske bindings ligning
 
 $$
-r(V) = \sqrt[3]{\frac{3}{4\pi} V}
+\theta = \frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} - \sqrt{\left(\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]}\right)^2 - \frac{[L_{tot}]}{[P_{tot}]}},
 $$
+som kan bruges til at beskrive titreringsdata, der rapporterer proteinets mætning som funktion af den samlede ligandkoncentration.
 
-Implementer en funktion der kan beregne denne formel, husk at potens-funktioner $x^k$ kan 
-regnes med `x**k` og kubiske rod er en potens funktion med $k=1/3$.
+At regne denne funktion kræver at vi er forsigtige med parenteser! Hvilket vi alle har 
+lært, men eftersom det er meget vigtigt i denne sammenhæng er det værd at genopfriske. 
 
-```{python}
-#| exercise: true
-#| eval: false
-def radius(volume):
-    return ... # Din kode her
-```
+### Opgave 1 
 
-```{python}
-#| solution: true
-def radius(volume):
-    return (3/4 * volume / np.pi)**(1/3)
-```
+For følgende par af udtryk beregne begge (i hånden eller i hovedet alt efter præference.)
 
-
-Brug din funktion til at regne radius af dette array 
-
-```{python}
-volumner = np.array([30, 45, 60, 100, 98784 * np.pi])
-```
-
-Lav beregningen i cellen herunder,
-
-```{python}
-#| exercise: true
-#| eval: false
-radii = ... # Erstat ... med din kode.
-print(radii)
-```
-
-```{python}
-#| solution: true
-radii = radius(volumner)
-print(radii)
-```
-
-## Plotte med `matplotlib`
-
-Der er mange måder at plotte på, her vil vi bruge `matplotlib`.
-
-Vi lave et plot af en lige linje mellem to punkter $(x_1, y_1)$ og $(x_2, y_2)$,
-sådam her
-
-```{python}
-x = np.array([1, 2])
-y = np.array([0, 1])
-fig, ax = plt.subplots()
-ax.plot(x, y)
-```
-
-::: {.callout-note}
-
-`ax` er en speciel type, her kan du tænke på den som den boks der indeholder plottet. 
-
-::: 
-
-Hvis vi så vil forbinde det andet punkt med et tredje punkt $(x_3, y_3)$ skal vi istedet 
-
-```{python}
-x = np.array([1, 2, 2.5])
-y = np.array([0, 1, 2])
-fig, ax = plt.subplots()
-ax.plot(x, y)
-```
+- $2 + 3 \times 4$ vs. $(2 + 3) \times 4$
+- $10 - 2^2$ vs. $(10 - 2)^2$
+- $100 / 10 * 2$ vs. $100 / (10 * 2)$ 
+- $\frac{12 + 8}{4}$ vs. $12 + 8 / 4$
 
 ### Opgave 2
 
-Lav en figur med et linje plot mellem disse fem punkter
-
-- $P_1 = (0, 0)$
-- $P_2 = (1, 0)$
-- $P_3 = (1, 1)$
-- $P_4 = (0, 1)$
-- $P_5 = (0, 0)$
-
-Start med at definere et array for både `x` og `y`
+For de tre beregninger nedenfor overvej hvad resultat er **inden** du kører cellen. 
 
 ```{python}
 #| exercise: true
 #| eval: false
-x = np.array([...]) # Erstat ... med din kode
-# Lav et tilsvarende array for y.
+a = 1 + 2 * 3 ** 2
+```
+```{python}
+#| exercise: true
+#| eval: false
+b = (1 + 2) * 3 ** 2
+```
+```{python}
+#| exercise: true
+#| eval: false
+c = 1 + 2 * (3 ** 2)
 ```
 
 ```{python}
 #| solution: true
-x = np.array([0, 1, 1, 0, 0])
-y = np.array([0, 0, 1, 1, 0])
+a = 1 + 2 * 3 ** 2
 ```
-Brug nu `plt.plot` til at plotte figuren. 
+```{python}
+#| solution: true
+b = (1 + 2) * 3 ** 2
+```
+```{python}
+#| solution: true
+c = 1 + 2 * (3 ** 2)
+```
+
+Cellen herunder printer resultat for hver beregning
+
+```{python}
+#| eval: false
+print(f"{a = }")
+print(f"{b = }")
+print(f"{c = }")
+```
+
+### Opgave 3
+
+Vi vil gerne beregne udtrykket
+
+$$
+\frac{a + b}{c + d}
+$$
+
+Nogen har implementeret funktionen herunder, men den er forkert - din opgave er at fikse den.
 
 ```{python}
 #| exercise: true
 #| eval: false
-fig, ax = plt.subplots()
-... # Erstat ... med din kode.
-ax.axis('equal')
-ax.set_xlim([-0.5, 1.5]) # Fortæller matplotlib at vi vil se imellem -0.5 og 1.5 på x-aksen
-ax.set_ylim([-0.5, 1.5])
+def funktion(a, b, c, d):
+    return a + b / c + d
+
+resultat_1 = funktion(152, 16, 2, 2)
+print(resultat_1)
 ```
 
 ```{python}
 #| solution: true
-fig, ax = plt.subplots()
-ax.plot(x, y)
-ax.axis('equal')
-ax.set_xlim([-0.5, 1.5])
-ax.set_ylim([-0.5, 1.5])
+def funktion(a, b, c, d):
+    return (a + b) / (c + d)
+
+resultat_1 = funktion(152, 16, 2, 2)
+print(resultat_1)
 ```
 
+### Opgave 4
 
+Det første led af den kvadratiske bindings ligning er 
 
+$$
+\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} = \frac{a + b + c}{2 b}
+$$
 
+Færdiggør funktionen nendenfor så den beregner dette udtryk 
 
+```{python}
+#| exercise: true
+#| eval: false
+def første_led(a, b, c):
+    return ... # Erstat ... med din kode.
 
+resultat = første_led(100, 2, 66)
+print(resultat)
+```
+
+```{python}
+#| solution: true
+def første_led(a, b, c):
+    return (a + b + c) / (2 * b)
+
+resultat = første_led(100, 2, 66)
+print(resultat)
+```

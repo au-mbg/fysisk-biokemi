@@ -1,0 +1,253 @@
+---
+title: "Grafer og at plotte"
+jupyter: python3
+categories: ["arrays", "functions", "plotting"]
+---
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+Vi så sidste gang på funktioner og på arrays. Begge dele er meget relevante 
+i forhold til dagens emne: at lave grafer også kaldt at **plotte**. 
+
+### Opgave 1
+
+Sidst gang regnede vi volumen af celler givet radius, vi gjorde dette ved at 
+skrive en funktion til at lave beregningen. Nu vil vi gøre det omvendte, regne 
+radius givet en volume - der er formlen
+
+$$
+r(V) = \sqrt[3]{\frac{3}{4\pi} V}
+$$
+
+Implementer en funktion der kan beregne denne formel, husk at potens-funktioner $x^k$ kan 
+regnes med `x**k` og kubiske rod er en potens funktion med $k=1/3$.
+
+```{python}
+#| exercise: true
+#| eval: false
+def radius(volume):
+    return ... # Din kode her
+```
+
+```{python}
+#| solution: true
+def radius(volume):
+    return (3/4 * volume / np.pi)**(1/3)
+```
+
+
+Brug din funktion til at regne radius af dette array 
+
+```{python}
+volumner = np.array([30, 45, 60, 100, 98784 * np.pi])
+```
+
+Lav beregningen i cellen herunder,
+
+```{python}
+#| exercise: true
+#| eval: false
+radii = ... # Erstat ... med din kode.
+print(radii)
+```
+
+```{python}
+#| solution: true
+radii = radius(volumner)
+print(radii)
+```
+
+## Plotte med `matplotlib`
+
+Der er mange måder at plotte på, her vil vi bruge `matplotlib`.
+
+Vi kan lave et plot af en lige linje mellem to punkter $(x_1, y_1)$ og $(x_2, y_2)$,
+sådam her
+
+```{python}
+x = np.array([1, 2])
+y = np.array([0, 1])
+fig, ax = plt.subplots()
+ax.plot(x, y)
+```
+
+::: {.callout-note}
+
+`ax` er en speciel type, her kan du tænke på den som den boks der indeholder plottet. 
+
+::: 
+
+Hvis vi så vil forbinde det andet punkt med et tredje punkt $(x_3, y_3)$ skal vi istedet 
+
+```{python}
+x = np.array([1, 2, 2.5])
+y = np.array([0, 1, 2])
+fig, ax = plt.subplots()
+ax.plot(x, y)
+```
+
+### Opgave 2
+
+Lav en figur med et linje plot mellem disse fem punkter
+
+- $P_1 = (0, 0)$
+- $P_2 = (1, 0)$
+- $P_3 = (1, 1)$
+- $P_4 = (0, 1)$
+- $P_5 = (0, 0)$
+
+Start med at definere et array for både `x` og `y`
+
+```{python}
+#| exercise: true
+#| eval: false
+x = np.array([...]) # Erstat ... med din kode
+# Lav et tilsvarende array for y.
+```
+
+```{python}
+#| solution: true
+x = np.array([0, 1, 1, 0, 0])
+y = np.array([0, 0, 1, 1, 0])
+```
+Brug nu `plt.plot` til at plotte figuren. 
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+... # Erstat ... med din kode.
+ax.axis('equal')
+ax.set_xlim([-0.5, 1.5]) # Fortæller matplotlib at vi vil se imellem -0.5 og 1.5 på x-aksen
+ax.set_ylim([-0.5, 1.5])
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+ax.plot(x, y)
+ax.axis('equal')
+ax.set_xlim([-0.5, 1.5])
+ax.set_ylim([-0.5, 1.5])
+```
+### Opgave 3
+
+Når vi har en funktion er det ofte en god ide at plotte den, så vi kan opbygge intuition om 
+hvordan forskellige funktioner opfører sig. 
+
+Udover de ting vi har set indtil videre kan NumPy også bruges til at lave arrays 
+på forskellige måder, f.eks. et array med tal mellem to endepunkter; 
+
+```{python}
+volumner = np.linspace(0, 50, 100) # (start, slut, antal punkter)
+```
+Brug dette array til at lave et plot af funktionen `radius`. Start 
+med at beregne radius for alle værdier i `volumener`
+
+```{python}
+#| exercise: true
+#| eval: false
+radii = ... # Erstat ... med din kode.
+```
+
+```{python}
+#| solution: true
+radii = radius(volumner)
+```
+Lav derefter et plot med `volumner` som x-akse og `radii` som y-akse
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+... # Skriv din kode til at plotte
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+ax.plot(volumner, radii)
+ax.set_xlabel('Radius')
+ax.set_ylabel('Volumen')
+```
+
+### Opgave 4
+
+Vi har tidligere set på adsorptions spektrummet af chlorophyll, det vender vi tilbage til nu. 
+
+```{python}
+from fysisk_biokemi import load_dataset
+
+df = load_dataset("chlorophyll")
+print(df)
+
+bølgelængder = df['Wavelength(nm)'] # Et array med 501 indgange
+adsorption = df['AdsorptionCoefficient'] # Et array med 501 indgange
+```
+
+Lav et plot med `bølgelængder` som x-akse og `adsorption` som y-akse. 
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+... # Erstat med din kode.
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+ax.plot(bølgelængder, adsorption)
+ax.set_xlabel('Bølgelængde [nm]')
+ax.set_ylabel('Adsorptions koefficient')
+```
+
+Nogle gange er vi ikke interesseret i hele et datasæt og vil hellere se detaljerne 
+i en region af datasættet. Heldigvis har vi tidligere lært om indexing, husk 
+f.eks. at vi kan trække det femte tal af et array ud sådan her; 
+
+```{python}
+mit_array = [0, 2, 4, 6, 8, 10, 12, 14]
+print(mit_array[4])
+```
+
+::: {.callout-note}
+Husk at i Python tæller vi fra 0, så det første tal er i indgang 0 og det femte tal er i indgang 4. 
+::: 
+
+Der er flere måder at indexere på, f.eks. kan vi trække alle tal mellem indgang 0 (inklusiv) og indgang 4 (eksklusiv) ud sådan her
+```{python}
+print(mit_array[0:4])
+```
+
+Brug dette til at lave et plot af vores chlorophyll datasæt, men kun imellem indgang 0 og indgang 200
+på hver akse. 
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+... # Erstat ... med din kode
+ax.set_xlabel('Bølgelængder')
+ax.set_ylabel('Adsorption')
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+ax.plot(bølgelængder[0:200], adsorption[0:200])
+ax.set_xlabel('Bølgelængder')
+ax.set_ylabel('Adsorption')
+```
+
+
+
+
+
+
+
+
+

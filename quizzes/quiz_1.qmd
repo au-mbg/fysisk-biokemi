@@ -1,6 +1,9 @@
 ---
 title: Python quiz 1
 jupyter: python3
+format:
+  html:
+    code-fold: true
 ---
 
 ```{python}
