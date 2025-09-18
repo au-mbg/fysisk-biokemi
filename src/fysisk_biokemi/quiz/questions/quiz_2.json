@@ -1,0 +1,159 @@
+[
+    {
+    "question": "Hvad er resultatet af denne beregning i Python?",
+    "code": "(1 + 2) * 3 ** 2",
+    "type": "multiple_choice",
+    "answers": [
+        {
+            "answer": "27", 
+            "correct": true,
+            "feedback": "Korrekt!."
+        },
+        {
+            "answer": "19",
+            "correct": false,
+            "feedback": "Forkert, prøv igen."
+        },
+        {
+            "answer": "15",
+            "correct": false,
+            "feedback": "Forkert, prøv igen."
+        },
+        {
+            "answer": "36",
+            "correct": false,
+            "feedback": "Forkert, prøv igen."
+        },
+        {
+            "answer": "12",
+            "correct": false,
+            "feedback": "Forkert, prøv igen."
+        }
+    ]
+    },
+    {
+    "question": "Hvad er resultatet af denne beregning i Python?",
+    "code": "12 + 5 * 6",
+    "type": "multiple_choice",
+    "answers": [
+        {
+            "answer": "30",
+            "correct": false,
+            "feedback": "Forkert, prøv igen."
+        },
+        {
+            "answer": "102",
+            "correct": false,
+            "feedback": "Forkert, prøv igen."
+        },
+        {
+            "answer": "23",
+            "correct": false,
+            "feedback": "Forkert, prøv igen."
+        },
+        {
+            "answer": "42",
+            "correct": true,
+            "feedback": "Korrekt!."
+        }
+    ]
+    },
+    {
+    "question": "Hvad skal man sikre når man skriver en Python funktion for at udregne en matematisk formel?",
+    "type": "multiple_choice",
+    "answers": [
+        {
+            "answer": "At der er et return statement",
+            "correct": true,
+            "feedback": "Korrekt!."
+        },
+        {
+            "answer": "At der er et print statement",
+            "correct": false,
+            "feedback": "Forkert, det er ikke nødvendigt."
+        },
+        {
+            "answer": "At funktionsnavnet er 'calculate'",
+            "correct": false,
+            "feedback": "Forkert, navnet kan være hvad som helst."
+        },
+        {
+            "answer": "At parenteser er brugt korrekt",
+            "correct": true,
+            "feedback": "Korrekt!."
+        },
+        {
+            "answer": "At koden har et lige antal linjer",
+            "correct": false,
+            "feedback": "Forkert, det er ikke nødvendigt (Eller et godt mål)."
+        },
+        {
+            "answer": "At funktionen regner rigtigt",
+            "correct": true,
+            "feedback": "Korrekt!."
+        }
+    ]
+    },
+    {
+        "question": "Hvilke udsagn gælder om et numpy array?",
+        "type": "multiple_choice",
+        "answers":[
+            {
+                "answer": "Det kan indeholde flere elementer",
+                "correct": true,
+                "feedback": "Korrekt!."
+            },
+            {
+                "answer": "Det kan bruges til at lave matematiske operationer",
+                "correct": true,
+                "feedback": "Korrekt!."
+            },
+            {
+                "answer": "Det skal gemmes i en variable hvor array indgår i navnet",
+                "correct": false,
+                "feedback": "Forkert, det er ikke nødvendigt."                
+            },
+            {
+                "answer": "Hvis man vil have det første element i arrayet skal man skrive array[1]",
+                "correct": false,
+                "feedback": "Forkert, der bruges 0-indexing."
+            },
+            {
+                "answer": "Hvis man vil have det første element i arrayet skal man skrive array[0]",
+                "correct": true,
+                "feedback": "Korrekt!."
+            },
+            {
+                "answer": "Arrays kan bruges til at plotte data",
+                "correct": true,
+                "feedback": "Korrekt!."
+            }
+        ]
+    },
+    {
+    "question": "Hvad er den rigtige syntax for at lave et plot i Python hvor `x` er den uafhængige variabel og `y` er den afhængige variabel?",
+    "type": "multiple_choice",
+    "answers": [
+        {
+            "answer": "ax.plot(y, x)",
+            "correct": false,
+            "feedback": "Forkert, tænk over rækkefølgen af variablerne."
+        },
+        {
+            "answer": "plot_for_helvede(x, y)",
+            "correct": false,
+            "feedback": "Forkert, det er ikke en gyldig funktion."
+        },
+        {
+            "answer": "ax.plot(x, y)",
+            "correct": true,
+            "feedback": "Korrekt!."
+        },
+        {
+            "answer": "plot(x, y)",
+            "correct": false,
+            "feedback": "Forkert, med mindre du har lavet en funktion der hedder plot."
+        }    
+    ]
+}
+]

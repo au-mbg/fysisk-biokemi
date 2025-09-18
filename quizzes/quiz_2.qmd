@@ -1,0 +1,12 @@
+---
+title: Python quiz 2
+jupyter: python3
+format:
+  html:
+    code-fold: true
+---
+
+```{python}
+from fysisk_biokemi import get_quiz
+get_quiz(2)
+```

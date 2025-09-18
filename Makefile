@@ -26,5 +26,5 @@ all: master student
 
 clean:
 	rm -rf _master _student _site _site-combined
-	rm -rf lessons/*html lessons/*.ipynb lessons/*_files
-	rm -rf quizzes/*.html quizzes/*.ipynb quizzes/*_files
+	rm -rf lessons/*html lessons/*.ipynb lessons/*_files lessons/.ipynb_checkpoints
+	rm -rf quizzes/*.html quizzes/*.ipynb quizzes/*_files quizzes/.ipynb_checkpoints
