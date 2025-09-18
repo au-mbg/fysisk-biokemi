@@ -2,7 +2,8 @@ import pandas as pd
 from importlib.resources import files
 
 available_datasets = {
-    'chlorophyll': 'chlorophyll_adsorption.txt'
+    'chlorophyll': 'chlorophyll_adsorption.txt',
+    'reversible_reaction': 'reversible_reaction_dataset.csv',
 }
 
 def load_dataset(name: str):
@@ -16,5 +17,5 @@ def load_dataset(name: str):
 
 if __name__ == "__main__":
 
-    data = load_dataset('chlorophyll')
+    data = load_dataset('reversible_reaction')
     print(data)
