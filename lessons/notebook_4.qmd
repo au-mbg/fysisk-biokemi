@@ -4,7 +4,7 @@ jupyter: python3
 categories: ["arrays", "functions", "plotting"]
 format-links:
     - text: "Open in Google Colab"
-      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/main/built_notebooks/student/notebook_4.ipynb"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built_notebooks/built_notebooks/student/notebook_4.ipynb"
       icon: box-arrow-up-right
 ---
 
