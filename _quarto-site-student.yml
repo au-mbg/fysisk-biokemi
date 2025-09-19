@@ -7,7 +7,8 @@ project:
     - quizzes/*.qmd   # build quizzes too
 
 filters:
-  - filters/strip-solution.lua
+  - at: post-ast
+    path: filters/strip-solution.lua
 
 website:
   title: "Fysisk Biokemi - Python Øvelser"

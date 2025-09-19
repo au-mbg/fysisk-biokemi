@@ -17,7 +17,7 @@ site-master:
 	quarto render --profile site-master --quiet
 
 site-student:
-	quarto render --profile site-student --no-clean --quiet
+	quarto render --profile site-student --no-clean
 	cp redirect/index.html _site-combined/index.html
 
 website: site-master site-student

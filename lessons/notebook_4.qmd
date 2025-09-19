@@ -8,6 +8,16 @@ format-links:
       icon: box-arrow-up-right
 ---
 
+``` {python}
+#| eval: false
+#| code-fold: true
+try:
+    import fysisk_biokemi
+    print("Already installed")
+except ImportError:
+    %pip install "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
+```
+
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
