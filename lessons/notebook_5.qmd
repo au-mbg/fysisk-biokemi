@@ -4,7 +4,7 @@ categories: ['arrays', 'datasets', 'plotting']
 engine: jupyter
 format-links:
     - text: "Open in Google Colab"
-      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built_notebooks/built_notebooks/student/notebook_5.ipynb"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/notebook_5.ipynb"
       icon: box-arrow-up-right
 ---
 
