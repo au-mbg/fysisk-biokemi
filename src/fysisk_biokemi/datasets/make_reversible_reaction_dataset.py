@@ -14,13 +14,18 @@ def make_dataset(
     t = np.linspace(t0, t1, n_samples)
     A_t = A0 / (k_forward + k_backward) * (k_backward + k_forward * np.exp(-(k_forward + k_backward) * t))
     B_t = (A0 - A_t) + B0
+
+    # Only keep up to 3 decimal places
+    A_t = np.round(A_t, 3)
+    B_t = np.round(B_t, 3)
+
     return t, A_t, B_t
 
 def make_dataframe(dataset):
     import pandas as pd
 
     t, A, B = dataset
-    df = pd.DataFrame({"time": t, "A": A, "B": B})
+    df = pd.DataFrame({"time": t, "concentration_A": A, "concentration_B": B})
     return df
 
 
@@ -30,7 +35,7 @@ if __name__ == "__main__":
 
     dataset = make_dataset(k_forward, k_backward)
     df = make_dataframe(dataset)
-    df.to_csv("reversible_reaction_dataset.csv", index=False, sep=' ')
+    df.to_excel("files/reversible_reaction_dataset.xlsx", index=False)
 
 
 

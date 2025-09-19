@@ -1,1 +1,1 @@
-from .load_dataset import load_dataset
+from .load_dataset import load_dataset, get_dataset_path

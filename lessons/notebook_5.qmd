@@ -7,7 +7,7 @@ engine: jupyter
 ```{python}
 import numpy as np
 import pandas as pd
-from fysisk_biokemi import load_dataset
+from fysisk_biokemi import load_dataset, get_dataset_path
 import matplotlib.pyplot as plt
 ```
 
@@ -96,6 +96,22 @@ resultat = 2 * df['a']
 print(resultat)
 ```
 
+Vi kan også lægge to arrays sammen, brug dette til at beregne $c = a + b$.
+
+```{python}
+#| exercise: true
+#| eval: false
+c = ... # Erstat ... med din kode
+print(c)
+```
+
+```{python}
+#| solution: true
+c = df['a'] + df['b']
+print(c)
+```
+
+
 ### Opgave 2
 
 Lav et plot af $a$ mod $b$ hvor de to størrelser kommer fra `DataFrame`'en `df`.
@@ -118,17 +134,122 @@ ax.plot(df['a'], df['b'])
 Ofte vil vi ikke skrive vores datasæt direkte ind i kode, men opbevare dem som seperate filer
 der f.eks. kunne komme fra eksperimentielt udstyr. 
 
-Vi kan hente data fra en csv-fil (en fil hvor dataet er komma-separeret), sådan her
+Vi kan hente data fra en excel-fil, sådan her
 
 ```{python}    
 #| eval: false
-dataset_path = "/sti/til/den/fil/der/har/vores/data.csv"
-df = pd.read_csv(dataset_path, sep='\s+', comment='#')
+dataset_path = "/sti/til/den/fil/der/har/vores/data.xlsx"
+df = pd.read_excel(dataset_path)
 ```
 
 ::: {.callout-warning}
 Cellen ovenfor giver en fejl når den bliver kørt fordi den fil vi forsøger at åbne ikke 
-eksistere.
+eksistere. 
 ::: 
 
-# Note to self: Konverter datasæt til excel.
+### Opgave 3: Hent datasæt
+
+Cellen nedenfor giver stien (`path`) til et datasæt der er installeret sammen med `fysisk_biokemi`-pakken. 
+
+```{python}
+path = get_dataset_path('reversible_reaction')
+```
+
+```{python}
+#| eval: false
+print(path)
+```
+
+Brug `pandas` til at læse filen ind som en dataframe
+
+
+```{python}
+#| exercise: true
+#| eval: false
+df = ... # Erstat ... med din kode.
+print(df)
+```
+
+```{python}
+#| solution: true
+df = pd.read_excel(path)
+print(df)
+```
+
+Udfra det information der er blevet skrevet ud hvad tror du datasættet indeholder? 
+Tænk over følgende
+- Hvor mange kolonner er der? 
+- Hvad er titlen på hver kolonne? 
+- Hvor mange rækker er der? 
+
+### Opgave 4: Plot datasæt
+
+Nu hvor vi har fået hentet datasættet vil vi gerne undersøge det nemmere ved at 
+plotte det. 
+
+Færdiggør koden nedenfor
+
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+ax.plot(df['time'], ..., label='[A]') # Erstat ... med din kode
+... # Erstat ... med din kode som plotter tid mod concentration_B 
+ax.set_ylabel('Concentration') # Sætter navn på y-aksen
+ax.set_xlabel('Time') # Sætter navn på x-aksen
+ax.legend()# Viser hvad 'label' hver plottet kurve har.
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+ax.plot(df['time'], df['concentration_A'], label='[A]')
+ax.plot(df['time'], df['concentration_B'], label='[B]')
+ax.set_ylabel('Concentration') # Sætter navn på y-aksen
+ax.set_xlabel('Time') # Sætter navn på x-aksen
+ax.legend() # Viser hvad 'label' hver plottet kurve har.
+```
+
+Hvad tror du datasættet viser? 
+
+### Opgave 5: Beregninger med datasæt
+
+Som sagt kan vi også lave beregninger med et datasæt. Udregn 
+$$
+[T] = [A] + [B]
+$$
+Og færdiggør plottet i cellen nedenfor
+
+```{python}
+#| exercise: true
+#| eval: false
+concentration_T = ... # Erstat ... med din kode
+
+fig, ax = plt.subplots()
+ax.plot(..., ..., label='[T]', color='C2') # Erstat begge ... med din kode.
+
+# Fra før
+ax.plot(df['time'], df['concentration_A'], label='[A]')
+ax.plot(df['time'], df['concentration_B'], label='[B]')
+ax.set_ylabel('Concentration') # Sætter navn på y-aksen
+ax.set_xlabel('Time') # Sætter navn på x-aksen
+ax.legend() # Viser hvad 'label' hver plottet kurve har.
+```
+
+```{python}
+#| solution: true
+concentration_T = df['concentration_A'] + df['concentration_B']
+
+fig, ax = plt.subplots()
+ax.plot(df['time'], concentration_T, label='[T]', color='C2')
+
+# Fra før
+ax.plot(df['time'], df['concentration_A'], label='[A]')
+ax.plot(df['time'], df['concentration_B'], label='[B]')
+ax.set_ylabel('Concentration') # Sætter navn på y-aksen
+ax.set_xlabel('Time') # Sætter navn på x-aksen
+ax.legend() # Viser hvad 'label' hver plottet kurve har.
+```
+
+Hvorfor tror du det ser ud som det gør? 
