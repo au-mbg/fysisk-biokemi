@@ -34,12 +34,19 @@ jobs:
         run: |
           source .venv/bin/activate
           make website
+          
+      # Upload the built site folder
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site-combined
+
+      - uses: actions/checkout@v5
+        with:
+          ref: built-notebooks
 
       - name: gather notebooks
         shell: bash
         run: |
-          git checkout built_notebooks || git checkout -b built_notebooks
-          git pull
           mkdir -p built_notebooks
           mkdir -p built_notebooks/student
           mkdir -p built_notebooks/master
@@ -51,12 +58,6 @@ jobs:
           add: 'built_notebooks/*'
           default_author: github_actor
           message: 'Update notebooks'
-          new_branch: 'built-notebooks'
-          
-      # Upload the built site folder
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site-combined
 
   deploy:
     needs: build
