@@ -16,10 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.18"
+
       # Quarto CLI (no manual apt/wget needed)
       - uses: quarto-dev/quarto-actions/setup@v2
 
       # Build your site (adjust if your Makefile target differs)
+      - run: uv sync
       - run: make website
 
       # Upload the built site folder
