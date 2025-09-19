@@ -34,7 +34,6 @@ jobs:
         run: |
           source .venv/bin/activate
           make website
-          cp -rf _site-combined _site
           
       # Upload the built site folder
       - uses: actions/upload-pages-artifact@v3
@@ -44,6 +43,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: built-notebooks
+          clean: false
 
       - name: gather notebooks
         shell: bash
@@ -51,8 +51,8 @@ jobs:
           mkdir -p built_notebooks
           mkdir -p built_notebooks/student
           mkdir -p built_notebooks/master
-          cp _site/student/lessons/*.ipynb built_notebooks/student/.
-          cp _site/master/lessons/*.ipynb built_notebooks/master/.
+          cp _site-combined/student/lessons/*.ipynb built_notebooks/student/.
+          cp _site-combined/master/lessons/*.ipynb built_notebooks/master/.
 
       - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
