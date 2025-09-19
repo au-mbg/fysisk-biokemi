@@ -533,7 +533,18 @@ wheels = [
 name = "fysisk-biokemi"
 version = "0.1.0"
 source = { editable = "." }
-dependencies = [
+
+[package.optional-dependencies]
+colab = [
+    { name = "jupyter" },
+    { name = "jupyter-cache" },
+    { name = "jupyterquiz" },
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "openpyxl" },
+    { name = "pandas" },
+]
+standard = [
     { name = "jupyter" },
     { name = "jupyter-cache" },
     { name = "jupyterquiz" },
@@ -550,14 +561,22 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "jupyter", specifier = ">=1.1.1" },
-    { name = "jupyter-cache", specifier = ">=1.0.1" },
-    { name = "jupyterquiz", specifier = ">=2.9.6.2" },
-    { name = "matplotlib", specifier = ">=3.10.6" },
-    { name = "numpy", specifier = ">=2.3.3" },
-    { name = "openpyxl", specifier = ">=3.1.5" },
-    { name = "pandas", specifier = ">=2.3.2" },
+    { name = "jupyter", marker = "extra == 'colab'" },
+    { name = "jupyter", marker = "extra == 'standard'", specifier = ">=1.1.1" },
+    { name = "jupyter-cache", marker = "extra == 'colab'" },
+    { name = "jupyter-cache", marker = "extra == 'standard'", specifier = ">=1.0.1" },
+    { name = "jupyterquiz", marker = "extra == 'colab'" },
+    { name = "jupyterquiz", marker = "extra == 'standard'", specifier = ">=2.9.6.2" },
+    { name = "matplotlib", marker = "extra == 'colab'" },
+    { name = "matplotlib", marker = "extra == 'standard'", specifier = ">=3.10.6" },
+    { name = "numpy", marker = "extra == 'colab'" },
+    { name = "numpy", marker = "extra == 'standard'", specifier = ">=2.3.3" },
+    { name = "openpyxl", marker = "extra == 'colab'" },
+    { name = "openpyxl", marker = "extra == 'standard'", specifier = ">=3.1.5" },
+    { name = "pandas", marker = "extra == 'colab'" },
+    { name = "pandas", marker = "extra == 'standard'", specifier = ">=2.3.2" },
 ]
+provides-extras = ["standard", "colab"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "nbformat", specifier = ">=5.10.4" }]
