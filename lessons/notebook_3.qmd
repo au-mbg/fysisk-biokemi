@@ -2,6 +2,10 @@
 title: Mere om funktioner
 engine: jupyter
 categories: ["functions", "parentheses"]
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/main/built_notebooks/student/notebook_3.ipynb"
+      icon: box-arrow-up-right
 ---
 
 Vi vil senere i kurset se ligninger som f.eks. den kvadratiske bindings ligning

@@ -24,11 +24,14 @@ jobs:
       # Quarto CLI (no manual apt/wget needed)
       - uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: uv sync
+        shell: bash
+        run: uv sync
+
       # Build your site (adjust if your Makefile target differs)
       - name: Build site
         shell: bash
         run: |
-          uv sync
           source .venv/bin/activate
           make website
 

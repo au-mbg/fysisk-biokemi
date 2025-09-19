@@ -2,6 +2,10 @@
 title: At arbejde med datasæt
 categories: ['arrays', 'datasets', 'plotting']
 engine: jupyter
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/main/built_notebooks/student/notebook_5.ipynb"
+      icon: box-arrow-up-right
 ---
 
 ```{python}

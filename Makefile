@@ -14,10 +14,10 @@ student:
 	quarto render --profile student $(TO_FLAG)
 
 site-master:
-	quarto render --profile site-master
+	quarto render --profile site-master --quiet
 
 site-student:
-	quarto render --profile site-student --no-clean
+	quarto render --profile site-student --no-clean --quiet
 	cp redirect/index.html _site-combined/index.html
 
 website: site-master site-student

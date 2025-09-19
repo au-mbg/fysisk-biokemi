@@ -2,6 +2,10 @@
 title: "Jupyter Notebooks som lommeregner"
 jupyter: python3
 categories: ["variables", "functions", "arithemtic"]
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/main/built_notebooks/student/notebook_1.ipynb"
+      icon: box-arrow-up-right
 ---
 
 ## Simple beregninger
