@@ -49,6 +49,7 @@ jobs:
           add: 'built_notebooks/*'
           default_author: github_actor
           message: 'Update notebooks'
+          new_branch: 'built-notebooks'
           
       # Upload the built site folder
       - uses: actions/upload-pages-artifact@v3

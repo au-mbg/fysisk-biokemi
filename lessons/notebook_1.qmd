@@ -35,7 +35,7 @@ vant til fra en almindelig lommeregner.
 Brug Jupyter notebook til at beregne følgende: 
 
 1. $21 + 21$
-2. $56 - 12$
+2. $53 - 11$
 3. $6 \times 7$
 4. $\frac{546}{13}$
 
@@ -47,7 +47,7 @@ Brug Jupyter notebook til at beregne følgende:
 ```{python}
 #| solution: true
 21 + 21
-56 - 14
+53 - 11
 6 * 7
 546 / 13
 ```
@@ -77,7 +77,7 @@ b = ... # Erstat ... med din kode
 ```{python}
 #| solution: true
 a = 21 + 21 
-b = 56 - 14
+b = 53 - 11
 c = 6 * 7
 d = 546 / 13
 ```
