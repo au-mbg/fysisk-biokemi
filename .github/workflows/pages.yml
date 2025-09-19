@@ -38,9 +38,11 @@ jobs:
       - name: gather notebooks
         shell: bash
         run: |
-          mkdir -p built_notebooks/
-          mkdir -p built_notebooks/student/
-          mkdir -p built_notebooks/master/
+          git checkout built_notebooks || git checkout -b built_notebooks
+          git pull
+          mkdir -p built_notebooks
+          mkdir -p built_notebooks/student
+          mkdir -p built_notebooks/master
           cp _site-combined/student/lessons/*.ipynb built_notebooks/student/.
           cp _site-combined/master/lessons/*.ipynb built_notebooks/master/.
 
