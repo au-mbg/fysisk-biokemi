@@ -56,7 +56,6 @@ jobs:
       - name: gather notebooks
         shell: bash
         run: |
-          rm -rf built_notebooks/
           mkdir -p built_notebooks/
           mkdir -p built_notebooks/student/
           mkdir -p built_notebooks/instructor/
