@@ -46,3 +46,26 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  commit-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: gather
+      - shell: bash
+      - run: |
+          rm -rf built_notebooks/
+          mkdir -p built_notebooks/
+          mkdir -p built_notebooks/student/
+          mkdir -p built_notebooks/instructor/
+          cp _site_combined/student/lessons/*.ipynb built_notebooks/student/.
+          cp _site_combined/instructor/lessons/*.ipynb built_notebooks/instructor/.
+
+      - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
+        with:
+          # The arguments for the `git add` command (see the paragraph below for more info)
+          # Default: '.'
+          add: 'built_notebooks/*'
+          default_author: github_actor
+          message: 'Update notebooks'
