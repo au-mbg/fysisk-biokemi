@@ -1,0 +1,26 @@
+---
+title: At arbejde med datasæt 2
+engine: jupyter
+categories: ['arrays', 'datasets', 'plotting', 'functions']
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/notebook_6.ipynb"
+      icon: box-arrow-up-right
+---
+
+``` {python}
+#| eval: false
+#| code-fold: true
+try:
+    import fysisk_biokemi
+    print("Already installed")
+except ImportError:
+    %pip install "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
+```
+
+```{python}
+import numpy as np
+import pandas as pd
+from fysisk_biokemi import load_dataset, get_dataset_path
+import matplotlib.pyplot as plt
+```
