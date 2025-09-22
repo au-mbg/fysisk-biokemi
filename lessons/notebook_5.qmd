@@ -192,6 +192,7 @@ print(df)
 
 Udfra det information der er blevet skrevet ud hvad tror du datasættet indeholder? 
 Tænk over følgende
+
 - Hvor mange kolonner er der? 
 - Hvad er titlen på hver kolonne? 
 - Hvor mange rækker er der? 

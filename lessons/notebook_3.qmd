@@ -34,7 +34,7 @@ For følgende par af udtryk beregne begge (i hånden eller i hovedet alt efter p
 
 - $2 + 3 \times 4$ vs. $(2 + 3) \times 4$
 - $10 - 2^2$ vs. $(10 - 2)^2$
-- $100 / 10 * 2$ vs. $100 / (10 * 2)$ 
+- $100 / 10 \times 2$ vs. $100 / (10 \times 2)$ 
 - $\frac{12 + 8}{4}$ vs. $12 + 8 / 4$
 
 ### Opgave 2
