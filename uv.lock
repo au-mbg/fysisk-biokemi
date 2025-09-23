@@ -536,6 +536,7 @@ source = { editable = "." }
 
 [package.optional-dependencies]
 colab = [
+    { name = "ipywidgets" },
     { name = "jupyter" },
     { name = "jupyter-cache" },
     { name = "jupyterquiz" },
@@ -545,6 +546,7 @@ colab = [
     { name = "pandas" },
 ]
 standard = [
+    { name = "ipywidgets" },
     { name = "jupyter" },
     { name = "jupyter-cache" },
     { name = "jupyterquiz" },
@@ -561,6 +563,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "ipywidgets", marker = "extra == 'colab'", specifier = ">=8.0.0" },
+    { name = "ipywidgets", marker = "extra == 'standard'", specifier = ">=8.0.0" },
     { name = "jupyter", marker = "extra == 'colab'" },
     { name = "jupyter", marker = "extra == 'standard'", specifier = ">=1.1.1" },
     { name = "jupyter-cache", marker = "extra == 'colab'" },

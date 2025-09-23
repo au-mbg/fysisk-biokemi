@@ -1,4 +1,3 @@
-
 ATOMIC_WEIGHTS = dict(
     H=1.0080,
     He=4.002602,

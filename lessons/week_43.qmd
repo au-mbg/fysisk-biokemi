@@ -50,7 +50,36 @@ fsb_widgets.molecular_weight()
 fsb_widgets.reaction_equation()
 ```
 
+## Reaktions data analyse
+
+Denne widget kan læse en `.csv`-fil hvilket er en **c**omma **s**eperated **v**alues, det 
+vil sige at forskellige data er splittet om i kolonner, se f.eks. eksemplet her
+
+```{csv}
+time (s),A (mM),B (µM),X (nM),Y (µM)
+0,1.00,500.0,100.0,50.0
+10,0.95,480.0,150.0,70.0
+20,0.92,460.0,200.0,90.0
+30,0.90,445.0,240.0,110.0
+40,0.88,430.0,270.0,130.0
+50,0.87,420.0,300.0,150.0
+60,0.86,410.0,330.0,170.0
+70,0.85,400.0,360.0,190.0
+80,0.84,390.0,390.0,210.0
+90,0.83,380.0,420.0,230.0
+100,0.82,370.0,450.0,250.0
+```
+Her er der 5 søjler, som beskriver 5 forskellige størrelser. 
+
+At bruge widgten kræver fire trin
+
+- Kilk på "Upload CSV" og vælg en fil. 
+- Sikre at reaktions ligning er den du er interesseret i. 
+- Sikre at hvert led af reaktionsligningen er tilknyttet den rigtige kolonne i datasættet og enheden er korrekt.
+- Klik "Beregn og plot" for at beregne ligevægtskonstanten.
+
 ```{python}
 #| eval: false
 fsb_widgets.reaction_data_analysis()
 ```
+

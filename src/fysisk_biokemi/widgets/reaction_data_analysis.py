@@ -9,10 +9,12 @@ import ipywidgets as widgets
 from IPython.display import display, Math
 import matplotlib.pyplot as plt
 
+from fysisk_biokemi.widgets.utils import Reaction
+
 
 class ReactionKeqWidget:
     """Interactive tool for K_eq time-series from CSV data.
-    
+
     Expected CSV: one time column + any number of species columns.
     Column headers may include units in parentheses, e.g. 'A (nM)'.
     Reaction syntax: '2 A + B = X + 3 Y'
@@ -30,9 +32,7 @@ class ReactionKeqWidget:
     TIME_MAP = {"s": 1.0, "min": 60.0, "h": 3600.0}
     UNIT_OPTIONS = ["fM", "pM", "nM", "µM", "uM", "mM", "M"]
 
-    HEADER_UNIT_REGEX = re.compile(
-        r"^(.*?)[\(\[\{]\s*([fpnµu]M|mM|M)\s*[\)\]\}]\s*$"
-    )
+    HEADER_UNIT_REGEX = re.compile(r"^(.*?)[\(\[\{]\s*([fpnµu]M|mM|M)\s*[\)\]\}]\s*$")
 
     # -------------------- Construction --------------------
     def __init__(self, default_reaction="A + B = X + Y"):
@@ -44,14 +44,10 @@ class ReactionKeqWidget:
         self.header_html = widgets.HTML("<h3>Data & reaktion</h3>")
         self.uploader = widgets.FileUpload(accept=".csv", multiple=False, description="Upload CSV")
         self.reaction_text = widgets.Text(
-            value=default_reaction,
-            description="Reaktion:",
-            placeholder="fx '2 A + B = X'"
+            value=default_reaction, description="Reaktion:", placeholder="fx '2 A + B = X'"
         )
         self.time_col_dd = widgets.Dropdown(description="Tid kolonne:")
-        self.time_unit_dd = widgets.Dropdown(
-            description="Tid enhed:", options=list(self.TIME_MAP.keys()), value="s"
-        )
+        self.time_unit_dd = widgets.Dropdown(description="Tid enhed:", options=list(self.TIME_MAP.keys()), value="s")
 
         # widgets (right pane)
         self.species_map_box = widgets.VBox([])
@@ -62,24 +58,28 @@ class ReactionKeqWidget:
         self.table_out = widgets.Output()
 
         # layout
-        self.left = widgets.VBox([
-            self.header_html,
-            self.uploader,
-            self.reaction_text,
-            self.time_col_dd, 
-            self.time_unit_dd,
-            self.process_btn,
+        self.left = widgets.VBox(
+            [
+                self.header_html,
+                widgets.HBox([self.uploader, self.process_btn]),
+                self.reaction_text,
+                self.time_col_dd,
+                self.time_unit_dd,
+            ]
+        )
+        self.right = widgets.VBox(
+            [
+                self.species_map_box,
+                self.status_out,
+            ]
+        )
 
-        ])
-        self.right = widgets.VBox([
-            self.species_map_box,
-            self.status_out,
-        ])
-
-        self.bottom = widgets.HBox([
-            self.plot_out,
-            self.latex_out,
-        ])
+        self.bottom = widgets.HBox(
+            [
+                self.plot_out,
+                widgets.VBox([widgets.HTML("<h3>Reaktionsligning</h3>"), self.latex_out]),
+            ]
+        )
 
         # events
         self.uploader.observe(self._on_upload_change, names="value")
@@ -89,12 +89,13 @@ class ReactionKeqWidget:
     # -------------------- Public API --------------------
     def display(self):
         """Render the full UI."""
-        full_widget = widgets.VBox([
-            widgets.HBox([self.left, self.right]),
-            self.bottom,
-        ])
+        full_widget = widgets.VBox(
+            [
+                widgets.HBox([self.left, self.right]),
+                self.bottom,
+            ]
+        )
         display(full_widget)
-
 
     # -------------------- Parsing helpers --------------------
     @staticmethod
@@ -118,24 +119,8 @@ class ReactionKeqWidget:
         Parse '2 A + B = X + 3 Y' -> (reactants dict, products dict)
         e.g. ({'A': 2, 'B': 1}, {'X': 1, 'Y': 3})
         """
-        def parse_side(side):
-            parts = [p.strip() for p in side.split("+") if p.strip()]
-            species = {}
-            for p in parts:
-                m = re.match(r"^\s*(\d+)?\s*([^\s].*?)\s*$", p)
-                if not m:
-                    raise ValueError(f"Kunne ikke parse led: '{p}'")
-                coef = int(m.group(1)) if m.group(1) else 1
-                name = m.group(2).strip()
-                species[name] = species.get(name, 0) + coef
-            return species
-
-        if "=" not in text:
-            raise ValueError("Reaktionen skal indeholde '=' mellem venstre og højre side.")
-        lhs, rhs = text.split("=", 1)
-        reactants = parse_side(lhs)
-        products = parse_side(rhs)
-        return reactants, products
+        reaction = Reaction(text)
+        return reaction
 
     # -------------------- UI building --------------------
     def _build_species_mapping_ui(self, species_names, df_columns):
@@ -144,7 +129,7 @@ class ReactionKeqWidget:
           - Dropdown to choose which CSV column maps to the species
           - Unit dropdown (prefilled from header if present)
         """
-        rows = [widgets.HTML("<b>Kolonnetilknytning (vælg kolonne og enhed for hver art)</b>")]
+        rows = [widgets.HTML("<h3>Kolonnetilknytning (vælg kolonne og enhed for hver art)</h3>")]
         self._species_rows = []
 
         for s in species_names:
@@ -161,7 +146,7 @@ class ReactionKeqWidget:
             col_dd = widgets.Dropdown(
                 options=list(df_columns),
                 value=default_col if default_col in df_columns else None,
-                description=f"{s} kol.:"
+                description=f"{s} kol.:",
             )
 
             # Guess unit from header of chosen column
@@ -170,9 +155,7 @@ class ReactionKeqWidget:
                 _, u = self._unit_from_header(col_dd.value)
                 unit_guess = "µM" if u == "uM" else u
             unit_dd = widgets.Dropdown(
-                options=self.UNIT_OPTIONS,
-                value=unit_guess or default_unit,
-                description="Enhed:"
+                options=self.UNIT_OPTIONS, value=unit_guess or default_unit, description="Enhed:"
             )
 
             row = widgets.HBox([col_dd, unit_dd])
@@ -181,7 +164,6 @@ class ReactionKeqWidget:
 
         self.species_map_box.children = rows
 
-    # -------------------- Events --------------------
     def _on_upload_change(self, _):
         self._clear_outputs()
         if not self.uploader.value:
@@ -205,8 +187,8 @@ class ReactionKeqWidget:
 
         # Build species mapping from current reaction
         try:
-            reactants, products = self._parse_reaction(self.reaction_text.value)
-            species_order = list(reactants.keys()) + list(products.keys())
+            reaction = self._parse_reaction(self.reaction_text.value)
+            species_order = reaction.get_terms()
             self._build_species_mapping_ui(species_order, cols)
             with self.status_out:
                 print(f"Indlæst data: {df.shape[0]} rækker, {df.shape[1]} kolonner.")
@@ -220,13 +202,12 @@ class ReactionKeqWidget:
             return
         cols = list(self._df.columns)
         try:
-            reactants, products = self._parse_reaction(self.reaction_text.value)
-            species_order = list(reactants.keys()) + list(products.keys())
+            reaction = self._parse_reaction(self.reaction_text.value)
+            species_order = reaction.get_terms()
             self._build_species_mapping_ui(species_order, cols)
         except Exception as e:
             self.species_map_box.children = [widgets.HTML(f"<b style='color:red'>Fejl: {e}</b>")]
 
-    # -------------------- Processing --------------------
     def _collect_mapping(self):
         """Return (time_col, time_unit, mapping dict {species: (col, unit)})."""
         mapping = {}
@@ -236,7 +217,7 @@ class ReactionKeqWidget:
 
     @staticmethod
     def _keq_series(reactants, products, df_M):
-        """Compute Keq = Π products [S]^ν / Π reactants [S]^ν for each row."""
+        """Compute Keq = Π products [S]^v / Π reactants [S]^v for each row."""
         num = pd.Series(1.0, index=df_M.index, dtype=float)
         den = pd.Series(1.0, index=df_M.index, dtype=float)
         for s, nu in products.items():
@@ -255,7 +236,7 @@ class ReactionKeqWidget:
 
         # Parse reaction
         try:
-            reactants, products = self._parse_reaction(self.reaction_text.value)
+            reaction = self._parse_reaction(self.reaction_text.value)
         except Exception as e:
             with self.status_out:
                 print(f"Fejl i reaktionsligning: {e}")
@@ -263,7 +244,7 @@ class ReactionKeqWidget:
 
         # Collect mapping
         time_col, time_unit, mapping = self._collect_mapping()
-        needed = list(reactants.keys()) + list(products.keys())
+        needed = reaction.get_terms()
         missing = [s for s in needed if mapping.get(s, (None, None))[0] is None]
         if missing:
             with self.status_out:
@@ -299,30 +280,23 @@ class ReactionKeqWidget:
             conc_M[s] = values * factor
 
         df_M = pd.DataFrame(conc_M)
+        reactants, products = reaction.get_reaction_dicts()
         keq = self._keq_series(reactants, products, df_M)
 
         # LaTeX expression
         with self.latex_out:
-            def term(species_dict):
-                pieces = []
-                for name, nu in species_dict.items():
-                    if nu == 1:
-                        latex_str = rf"[{name}]"
-                    else:
-                        latex_str = rf"[{name}]^{{{nu}}}"
-                    pieces.append(latex_str)
-
-                return r"\cdot ".join(pieces) if pieces else "1"
-            expr = rf"K_{{eq}} = \frac{{{term(products)}}}{{{term(reactants)}}}"
+            eq = reaction.get_equation_latex()
+            expr = reaction.get_equilibrium_equation(with_values=False)
+            display(Math(eq))
             display(Math(expr))
 
         # Plot Keq vs time
         with self.plot_out:
-            plt.figure()
-            plt.plot(t_s, keq)
-            plt.xlabel("Tid (s)")
-            plt.ylabel(r"$K_{eq}$")
-            plt.title("Ligevægtskonstant som funktion af tid")
+            fig, ax = plt.subplots(figsize=(6, 4))
+            ax.plot(t_s, keq, color="mediumpurple")
+            ax.set_xlabel("Tid (s)")
+            ax.set_ylabel(r"$K_{eq}$")
+            ax.grid(True, which="both", ls="--", lw=0.5)
             plt.tight_layout()
             plt.show()
 
@@ -332,9 +306,10 @@ class ReactionKeqWidget:
             display(preview)
 
         with self.status_out:
-            print("Færdig: koncentrationer konverteret til M, Keq beregnet og plottet.\n" \
-                    f"Antal søjler i data: {self._df.shape[1]}")
-
+            print(
+                "Færdig: koncentrationer konverteret til M, Keq beregnet og plottet.\n"
+                f"Antal søjler i data: {self._df.shape[1]}"
+            )
 
     # -------------------- Utilities --------------------
     def _clear_outputs(self):
@@ -342,6 +317,7 @@ class ReactionKeqWidget:
         self.latex_out.clear_output()
         self.plot_out.clear_output()
         self.table_out.clear_output()
+
 
 def reaction_data_analysis(default_reaction="A + B = X + Y"):
     """Helper to quickly create and display the ReactionKeqWidget."""
