@@ -5,8 +5,7 @@ prefix_to_factor = {
     "fM": 1e-15,
     "pM": 1e-12,
     "nM": 1e-9,
-    "µM": 1e-6,  # Unicode micro symbol
-    "uM": 1e-6,  # ASCII fallback
+    "µM": 1e-6,
     "mM": 1e-3,
     "M": 1.0,
 }

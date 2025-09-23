@@ -5,7 +5,7 @@ from IPython.display import display, Math
 MASS_FACTORS = {
     "g": 1.0,
     "mg": 1e-3,
-    "µg": 1e-6,  # unicode micro
+    "µg": 1e-6,
     "ng": 1e-9,
 }
 

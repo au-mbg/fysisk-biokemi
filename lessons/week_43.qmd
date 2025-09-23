@@ -50,3 +50,7 @@ fsb_widgets.molecular_weight()
 fsb_widgets.reaction_equation()
 ```
 
+```{python}
+#| eval: false
+fsb_widgets.reaction_data_analysis()
+```
