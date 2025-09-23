@@ -2,7 +2,21 @@
 title: Week 46
 engine: jupyter
 categories: ['UVis']
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/week_46.ipynb"
+      icon: box-arrow-up-right
 ---
+
+``` {python}
+#| eval: false
+#| code-fold: true
+try:
+    import fysisk_biokemi
+    print("Already installed")
+except ImportError:
+    %pip install "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
+```
 
 ## Extinction coefficient of human myoglobin
 
