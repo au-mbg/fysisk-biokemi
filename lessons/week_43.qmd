@@ -1,0 +1,52 @@
+---
+title: Week 43
+engine: jupyter
+categories: ['Units']
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/week_43.ipynb"
+      icon: box-arrow-up-right
+---
+
+``` {python}
+#| eval: false
+#| code-fold: true
+try:
+    import fysisk_biokemi
+    print("Already installed")
+except ImportError:
+    %pip install "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
+```
+
+```{python}
+import fysisk_biokemi.widgets as fsb_widgets
+```
+
+## Koncentrations enheder
+
+```{python}
+#| eval: false
+fsb_widgets.concentration_unit()
+```
+
+## Koncentration fra masse og volumen
+
+```{python}
+#| eval: false
+fsb_widgets.concentration_mass_volume()
+```
+
+## Molekylær vægt
+
+```{python}
+#| eval: false
+fsb_widgets.molecular_weight()
+```
+
+## Ligevægts reaktions
+
+```{python}
+#| eval: false
+fsb_widgets.reaction_equation()
+```
+

@@ -87,6 +87,13 @@ C = 125
 ```
 
 ```{python}
+#| exercise: true
+#| eval: false
+epsilon = ... # Erstat ... med din kode.
+print(epsilon)
+```
+
+```{python}
 #| solution: true
 epsilon = A * N_trp + B * N_tyr + C*N_cys
 print(epsilon)
