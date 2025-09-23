@@ -170,7 +170,7 @@ class ReactionKeqWidget:
             return
 
         # Read CSV
-        content = self.uploader.value[0].content
+        content = self.uploader.value[list(self.uploader.value.keys())[0]]['content']
         try:
             df = pd.read_csv(io.BytesIO(content))
         except Exception as e:
