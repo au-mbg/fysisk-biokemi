@@ -149,6 +149,14 @@ class BufferVisualization:
         ax.legend()
         ax.grid()
         return FigureAttrs(fig, ax, acid_line, base_line, pka_line)
+    
+    def update_plot(self, ph, acid, base, pka_value):
+        self.plot_attrs.acid_line.set_data(ph, acid)
+        self.plot_attrs.base_line.set_data(ph, base)
+        self.plot_attrs.pka_line.set_xdata([pka_value, pka_value])
+        self.plot_attrs.ax.relim()
+        self.plot_attrs.ax.autoscale_view()
+        self.plot_attrs.fig.canvas.draw_idle()
 
 
     def _on_change(self, change):
@@ -169,15 +177,10 @@ class BufferVisualization:
 
         # Update the plot data
         with self.plot_output:
-            acid_line = self.plot_attrs.acid_line
-            acid_line.set_data(ph, acid)
-            base_line = self.plot_attrs.base_line
-            base_line.set_data(ph, base)
-            pka_line = self.plot_attrs.pka_line
-            pka_line.set_xdata([pka_value, pka_value])
-            self.plot_attrs.ax.relim()
-            self.plot_attrs.ax.autoscale_view()
-            self.plot_attrs.fig.canvas.draw_idle()
+            self.plot_output.clear_output()
+            self.update_plot(ph, acid, base, pka_value)
+            display(self.plot_attrs.fig)
+
 
 
 
