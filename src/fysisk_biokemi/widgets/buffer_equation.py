@@ -4,11 +4,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 from dataclasses import dataclass
 
+import plotly.graph_objects as go
+
+
 def calculate_acid_base_concentrations(pH, pKa, total_conc):
     ratio = 10 ** (pH - pKa)
     base_conc = (total_conc * ratio) / (1 + ratio)
     acid_conc = total_conc - base_conc
     return acid_conc, base_conc, ratio
+
 
 class BufferEquation:
     def __init__(self):
@@ -89,19 +93,21 @@ class BufferEquation:
                 for line in derivation:
                     display(Math(line))
 
+
 @dataclass
 class FigureAttrs:
-    fig: plt.Figure
-    ax: plt.Axes
-    acid_line: plt.Line2D
-    base_line: plt.Line2D
-    pka_line: plt.Line2D
-
+    fig: go.FigureWidget
+    acid_idx: int
+    base_idx: int
+    pka_shape_idx: int  # index in fig.layout.shapes
 
 class BufferVisualization:
-    def __init__(self):
+    def __init__(self, continuous_update: bool = True):
+        self.continuous_update = continuous_update
+
         self.pka_input = widgets.FloatSlider(
-            value=7.0, min=0.0, max=14.0, step=0.1, description="pKa:", style={"description_width": "initial"}
+            value=7.0, min=0.0, max=14.0, step=0.1, description="pKa:", style={"description_width": "initial"},
+            continuous_update=continuous_update,
         )
         self.total_conc_input = widgets.FloatSlider(
             value=0.1,
@@ -110,6 +116,7 @@ class BufferVisualization:
             step=0.01,
             description="Total koncentration (M):",
             style={"description_width": "initial"},
+            continuous_update=continuous_update,
         )
 
         self.ph_range_input = widgets.FloatRangeSlider(
@@ -119,6 +126,7 @@ class BufferVisualization:
             step=0.1,
             description="pH-område:",
             style={"description_width": "initial"},
+            continuous_update=continuous_update,
         )
 
         self.plot_output = widgets.Output()
@@ -138,26 +146,53 @@ class BufferVisualization:
         widget = widgets.HBox([controls, self.plot_output])
         display(widget)
 
-    def make_plot(self, ph, acid, base, pka_value):
-        fig, ax = plt.subplots(figsize=(6, 4))
-        acid_line, = ax.plot(ph, acid, label="Syre [M]", color="blue")
-        base_line, = ax.plot(ph, base, label="Base [M]", color="orange")
-        pka_line = ax.axvline(pka_value, color="green", linestyle="--", label="pKa")
-        ax.set_title("Buffer Sammensætning vs pH")
-        ax.set_xlabel("pH")
-        ax.set_ylabel("Koncentration [M]")
-        ax.legend()
-        ax.grid()
-        return FigureAttrs(fig, ax, acid_line, base_line, pka_line)
-    
-    def update_plot(self, ph, acid, base, pka_value):
-        self.plot_attrs.acid_line.set_data(ph, acid)
-        self.plot_attrs.base_line.set_data(ph, base)
-        self.plot_attrs.pka_line.set_xdata([pka_value, pka_value])
-        self.plot_attrs.ax.relim()
-        self.plot_attrs.ax.autoscale_view()
-        self.plot_attrs.fig.canvas.draw_idle()
+    def make_plot(self, ph, acid, base, pka_value) -> FigureAttrs:
+        fig = go.FigureWidget(layout=go.Layout(width=600, height=400))
 
+        acid_trace = go.Scatter(x=ph, y=acid, mode="lines", name="Syre [M]", line=dict(width=4))
+        base_trace = go.Scatter(x=ph, y=base, mode="lines", name="Base [M]", line=dict(width=4))
+
+        fig.add_traces([acid_trace, base_trace])
+
+        # Vertical pKa line as a shape (dragging-safe and efficient)
+        fig.update_layout(
+            title="Buffer Sammensætning vs pH",
+            xaxis_title="pH",
+            yaxis_title="Koncentration [M]",
+            template="plotly_white",
+            legend=dict(orientation="v", yanchor="bottom", y=0.9, xanchor="right", x=0.95),
+            margin=dict(l=60, r=20, t=50, b=40),
+        )
+        fig.add_vline(x=pka_value, line_dash="dash", line_color="green", annotation_text="pKa", annotation_position="top")
+
+        with self.plot_output:
+            self.plot_output.clear_output(wait=True)
+            display(fig)
+
+        # Store indices for fast updates
+        acid_idx = 0
+        base_idx = 1
+        pka_shape_idx = len(fig.layout.shapes) - 1 if fig.layout.shapes else 0
+
+        return FigureAttrs(fig=fig, acid_idx=acid_idx, base_idx=base_idx, pka_shape_idx=pka_shape_idx)
+
+    def update_plot(self, ph, acid, base, pka_value):
+        fa = self.plot_attrs
+        # Update data
+        fa.fig.data[fa.acid_idx].x = ph
+        fa.fig.data[fa.acid_idx].y = acid
+        fa.fig.data[fa.base_idx].x = ph
+        fa.fig.data[fa.base_idx].y = base
+
+        # Update vertical pKa line (shape)
+        shp = fa.fig.layout.shapes[fa.pka_shape_idx]
+        shp.update(x0=pka_value, x1=pka_value)
+
+        # Optionally tighten y-range around current data
+        # (Plotly autoscale is automatic on first draw; for dynamic:
+        y_min = float(np.nanmin([acid.min(), base.min(), 0]))
+        y_max = float(np.nanmax([acid.max(), base.max()])) * 1.05 if np.isfinite([acid.max(), base.max()]).all() else 1
+        fa.fig.update_yaxes(range=[y_min, y_max])
 
     def _on_change(self, change):
         pka_value = self.pka_input.value
@@ -167,26 +202,13 @@ class BufferVisualization:
         ph = np.linspace(pH_range[0], pH_range[1], 400)
         acid, base, ratio = calculate_acid_base_concentrations(ph, pka_value, total_conc_value)
 
-
         # Initialize the plot if it hasn't been created yet
-        if not hasattr(self, 'plot_attrs'):
-            with self.plot_output:
-                self.plot_output.clear_output()
-                self.plot_attrs = self.make_plot(ph, acid, base, pka_value)
-                plt.show()
+        if not hasattr(self, "plot_attrs"):
+            self.plot_attrs = self.make_plot(ph, acid, base, pka_value)
+            return
 
-        # Update the plot data
-        with self.plot_output:
-            self.plot_output.clear_output()
-            self.update_plot(ph, acid, base, pka_value)
-            display(self.plot_attrs.fig)
-
-
-
-
-
-
-
+        # Update
+        self.update_plot(ph, acid, base, pka_value)
 
 
 def buffer_equation():
@@ -194,7 +216,11 @@ def buffer_equation():
     be._on_change({"type": "change", "name": "value", "new": None})
     be.display()
 
-def buffer_visualization():
-    bv = BufferVisualization()
+
+def buffer_visualization(continuous_update: bool = True):
+    bv = BufferVisualization(continuous_update=continuous_update)
     bv._on_change({"type": "change", "name": "value", "new": None})
     bv.display()
+
+if __name__ == "__main__":
+    buffer_visualization()

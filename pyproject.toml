@@ -7,7 +7,10 @@ authors = [
     { name = "Mads-Peter", email = "machri@phys.au.dk" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "anywidget>=0.9.18",
+    "plotly>=6.3.0",
+]
 
 [project.optional-dependencies]
 standard = [
@@ -19,6 +22,8 @@ standard = [
     "openpyxl>=3.1.5",
     "pandas>=2.3.2",
     "ipywidgets==7.7.1",
+    "anywidget>=0.9.18",
+    "plotly>=6.3.0",
 
 ]
 colab = [
@@ -30,6 +35,9 @@ colab = [
     "openpyxl",
     "pandas",
     "ipywidgets==7.7.1",
+    "anywidget",
+    "plotly",
+
 ]
 
 [project.scripts]

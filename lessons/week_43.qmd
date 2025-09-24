@@ -19,6 +19,11 @@ except ImportError:
 ```
 
 ```{python}
+try: # For bedre brug af widgets i Google Colab.
+    from google.colab import output
+    output.enable_custom_widget_manager()
+except ImportError:
+    pass
 import fysisk_biokemi.widgets as fsb_widgets
 ```
 
