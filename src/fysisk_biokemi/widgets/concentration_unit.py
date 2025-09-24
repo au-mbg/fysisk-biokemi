@@ -1,16 +1,11 @@
 import ipywidgets as widgets
 from IPython.display import display
 
+from fysisk_biokemi.widgets.utils import molar_prefix_to_factor
+
 def concentration_unit():
     # Map SI prefix to power of ten
-    prefix_to_factor = {
-        "fM": 1e-15,
-        "pM": 1e-12,
-        "nM": 1e-9,
-        "µM": 1e-6,   # Unicode micro symbol
-        "mM": 1e-3,
-        "M": 1.0
-    }
+    prefix_to_factor = molar_prefix_to_factor
 
     def convert_to_M(value, unit):
         factor = prefix_to_factor[unit]

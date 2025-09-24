@@ -15,7 +15,7 @@ try:
     import fysisk_biokemi
     print("Already installed")
 except ImportError:
-    %pip install "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
+    %pip install -q "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
 ```
 
 ```{python}
@@ -24,6 +24,20 @@ import fysisk_biokemi.widgets as fsb_widgets
 
 ## Koncentrations enheder
 
+Widgetten nedenfor kan konvertere mellem enheder med forskellige prefix, som værdien 
+af er givet i tabellen
+ 
+| Enhed    | Navn    |  Faktor    |
+| -------- | ------- | ---------- |
+| M        |         | 1          | 
+| mM       | Milli   | $10^{-3}$} |
+| µM       | Micro   | $10^{-6}$} |
+| nM       | Nano    | $10^{-9}$} |
+| pM       | Pico    | $10^{-12}$} |
+| fM       | Femto   | $10^{-15}$} |
+
+: Metric prefixes commonly used for molar concentrations
+
 ```{python}
 #| eval: false
 fsb_widgets.concentration_unit()
@@ -31,12 +45,34 @@ fsb_widgets.concentration_unit()
 
 ## Koncentration fra masse og volumen
 
+Ofte er det nødvendigt at regne koncentrationen baseret på massen af stoffet og volumen 
+af opløsningen, f.eks. hvis vi forbedrer et eksperiment vil vi tit starte fra den vinkel. 
+
+For at regne molar koncentrationen skal vi så regne 
+
+$$
+c = \frac{m}{M_W \cdot V} \xrightarrow[]{\text{Enheder}} \frac{\text{g}}{\frac{\text{g}}{\text{mol}} \cdot \text{L}} = \frac{\text{g}\cdot \text{mol}}{\text{g}\cdot L} = \frac{\text{mol}}{\text{L}}
+$$
+Hvor $m$ er massen i **gram**, $M_W$ er molekyle vægten i $\frac{g}{mol}$ og V er volumen i liter
+Her er det vigtigt at konveretere til de rigtige enheder, altså ikke f.eks. at bruge $m$ i at $\text{mg}$.
+Widgtten nedenfor tager en masse, et volumen og en molekylærvægt og konveretere til molar koncentration, 
+du kan vælge hvad enheden af masse og volumen er. 
+
 ```{python}
 #| eval: false
 fsb_widgets.concentration_mass_volume()
 ```
 
-## Molekylær vægt
+## Molekylærvægt
+
+Molekylærvægten er en sum af atomarvægte 
+
+$$
+M_W = \sum_i^Z n_i m_Z
+$$
+Hvor $n_i$ er antaller af atomer af type $i$ og $m_Z$ er vægten pr. mol af det atom. 
+Widgetten nedenfor kan regne molekylærvægten af stoffer med de første 83 elementer fra 
+den periodiske table.
 
 ```{python}
 #| eval: false
@@ -44,6 +80,28 @@ fsb_widgets.molecular_weight()
 ```
 
 ## Ligevægts reaktions
+
+Denne widget kan regne ligevægts koefficient af reaktioner, f.eks. 
+
+$$
+aA + bB ... = xX + yY ... 
+$$
+Hvor ligevægtskoefficienten er givet ved 
+
+$$
+K_{eq} = \frac{[X]^x \times [Y]^y \times ...}{[A]^a \times [B]^b \times ...}
+$$
+
+Her er det igen vigtigt at koncentrationerne er givet i $mol/L$ for at der regnes rigtigt, 
+men heldigvis kan widgetten konvertere dem for dig. 
+
+For at bruge widgetten skal du skrive en reaktions ligningen på formen
+
+```
+a A + b B = c C 
+```
+Hvor der er mellemrum mellem ordren og stoffet, du kan så angive koncentrationen og 
+ligevægtskoefficienten bliver regnet. 
 
 ```{python}
 #| eval: false
@@ -74,9 +132,9 @@ Her er der 5 søjler, som beskriver 5 forskellige størrelser.
 At bruge widgten kræver fire trin
 
 - Kilk på "Upload CSV" og vælg en fil. 
-- Sikre at reaktions ligning er den du er interesseret i. 
+- Sikre at reaktionsligning er den du er interesseret i. 
 - Sikre at hvert led af reaktionsligningen er tilknyttet den rigtige kolonne i datasættet og enheden er korrekt.
-- Klik "Beregn og plot" for at beregne ligevægtskonstanten.
+- Klik "Beregn og plot" for at beregne ligevægtskoefficienten.
 
 ```{python}
 #| eval: false

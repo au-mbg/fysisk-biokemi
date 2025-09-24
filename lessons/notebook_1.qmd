@@ -15,7 +15,7 @@ try:
     import fysisk_biokemi
     print("Already installed")
 except ImportError:
-    %pip install "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
+    %pip install -q "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
 ```
 
 ## Simple beregninger
