@@ -1,10 +1,10 @@
 import ipywidgets as widgets
 from IPython.display import display, Math
-import matplotlib.pyplot as plt
 import numpy as np
 from dataclasses import dataclass
-
 import plotly.graph_objects as go
+
+from fysisk_biokemi.widgets.utils import molar_prefix_to_factor, number_to_scientific_latex
 
 
 def calculate_acid_base_concentrations(pH, pKa, total_conc):
@@ -23,17 +23,10 @@ class BufferEquation:
             description="Total koncentration (M):", value=0.1, style={"description_width": "initial"}
         )
 
-        self.acid_conc_input = widgets.FloatText(
-            description="Syre konc. (M):",
-            value=0.05,
-            disabled=True,
-            style={"description_width": "initial", "text_align": "right"},
-        )
-        self.base_conc_input = widgets.FloatText(
-            description="Base konc. (M):",
-            value=0.05,
-            disabled=True,
-            style={"description_width": "initial", "text_align": "right"},
+        self.concentration_unit = widgets.Dropdown(
+            options=list(molar_prefix_to_factor.keys()),
+            value="M",
+            description="Konc. enhed:",
         )
 
         self.output_field = widgets.Output()
@@ -41,6 +34,7 @@ class BufferEquation:
         self.pH_input.observe(self._on_change)
         self.pKa_input.observe(self._on_change)
         self.total_conc_input.observe(self._on_change)
+        self.concentration_unit.observe(self._on_change)
 
     def display(self):
         widget = widgets.HBox(
@@ -49,9 +43,8 @@ class BufferEquation:
                     [
                         self.pH_input,
                         self.pKa_input,
-                        self.total_conc_input,
-                        self.acid_conc_input,
-                        self.base_conc_input,
+                        self.total_conc_input, 
+                        self.concentration_unit,
                     ]
                 ),
                 self.output_field,
@@ -63,31 +56,27 @@ class BufferEquation:
         if change["type"] == "change" and change["name"] == "value":
             pH = self.pH_input.value
             pKa = self.pKa_input.value
-            total_conc = self.total_conc_input.value
+            total_conc = self.total_conc_input.value * molar_prefix_to_factor[self.concentration_unit.value]
 
             acid_conc, base_conc, ratio = calculate_acid_base_concentrations(pH, pKa, total_conc)
-
-            # Update the acid and base concentration fields
-            self.acid_conc_input.value = round(acid_conc, 6)
-            self.base_conc_input.value = round(base_conc, 6)
 
             with self.output_field:
                 self.output_field.clear_output()
 
                 derivation = []
 
-                derivation += [r"\frac{[\text{base}]}{[\text{acid}]} = 10^{\text{pH} - \text{pKa}} = " + f"{ratio:.3f}"]
+                derivation += [r"\frac{[\text{base}]}{[\text{acid}]} = 10^{\text{pH} - \text{pKa}} = " + f"{number_to_scientific_latex(ratio)}"]
                 derivation += [
-                    r"[\text{base}] + [\text{acid}] = C_{\text{total}} = " + rf"{total_conc:.3f} \, \text{{M}}" + r"\\"
+                    r"[\text{base}] + [\text{acid}] = C_{\text{total}} = " + rf"{number_to_scientific_latex(total_conc)} \, \text{{M}}" + r"\\"
                 ]
                 derivation += [
                     r"[\text{base}] = \frac{C_{\text{total}} \cdot 10^{\text{pH} - \text{pKa}}}{1 + 10^{\text{pH} - \text{pKa}}} = "
-                    + rf"\underline{{{base_conc:.3f}}} \, \text{{M}}"
+                    + rf"\underline{{{number_to_scientific_latex(base_conc)}}} \, \text{{M}}"
                     + r"\\"
                 ]
                 derivation += [
                     r"[\text{acid}] = C_{\text{total}} - [\text{base}] = "
-                    + rf"\underline{{{acid_conc:.3f}}} \, \text{{M}}"
+                    + rf"\underline{{{number_to_scientific_latex(acid_conc)}}} \, \text{{M}}"
                 ]
 
                 for line in derivation:
