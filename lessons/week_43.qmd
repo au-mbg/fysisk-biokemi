@@ -19,6 +19,7 @@ except ImportError:
 ```
 
 ```{python}
+%matplotlib widget
 import fysisk_biokemi.widgets as fsb_widgets
 ```
 
@@ -30,11 +31,11 @@ af er givet i tabellen
 | Enhed    | Navn    |  Faktor    |
 | -------- | ------- | ---------- |
 | M        |         | 1          | 
-| mM       | Milli   | $10^{-3}$} |
-| µM       | Micro   | $10^{-6}$} |
-| nM       | Nano    | $10^{-9}$} |
-| pM       | Pico    | $10^{-12}$} |
-| fM       | Femto   | $10^{-15}$} |
+| mM       | Milli   | $10^{-3}$  |
+| µM       | Micro   | $10^{-6}$  |
+| nM       | Nano    | $10^{-9}$  |
+| pM       | Pico    | $10^{-12}$ |
+| fM       | Femto   | $10^{-15}$ |
 
 : Metric prefixes commonly used for molar concentrations
 
@@ -141,3 +142,20 @@ At bruge widgten kræver fire trin
 fsb_widgets.reaction_data_analysis()
 ```
 
+### Bufferligningen
+
+Denne widget beregener koncentrationen af syre og base givet $pH$, $pKa$ samt total koncentrationen.
+
+```{python}
+fsb_widgets.buffer_equation()
+```
+
+### Bufferligning visualisering
+
+Denne widget visualisere bufferligningen (Henderson–Hasselbalch). Du kan styre
+$pKa$, total koncentratioenn og området for $pH$. Plottet viser koncentrationen 
+af syre og base som funktionen af pH. 
+
+```{python}
+fsb_widgets.buffer_equation()
+```

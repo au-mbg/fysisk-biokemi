@@ -3,11 +3,14 @@ from .concentration_mass_volume import concentration_mass_volume
 from .molecular_weight import molecular_weight
 from .reaction_equation import reaction_equation
 from .reaction_data_analysis import reaction_data_analysis
+from .buffer_equation import buffer_equation, buffer_visualization
 
 widgets = {
     "concentration_mass_volume": concentration_mass_volume,
     "concentration_unit": concentration_unit,
     "molecular_weight": molecular_weight,
+    "buffer_equation": buffer_equation,
+    "buffer_visualization": buffer_visualization,
     "reaction_equation": reaction_equation,
     "reaction_data_analysis": reaction_data_analysis,
 }
