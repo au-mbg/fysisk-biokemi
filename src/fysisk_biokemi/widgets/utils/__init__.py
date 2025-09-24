@@ -7,3 +7,7 @@ from .atomic_weigets import ATOMIC_WEIGHTS
 
 from .equilibrium_reaction import Reaction, ReactionTerm
 
+from .colab import colab_context, enable_custom_widget_colab, disable_custom_widget_colab
+
+
+

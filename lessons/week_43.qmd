@@ -19,13 +19,8 @@ except ImportError:
 ```
 
 ```{python}
-#| code-fold: true
-try: # For bedre brug af widgets i Google Colab.
-    from google.colab import output
-    output.enable_custom_widget_manager()
-except ImportError:
-    pass
 import fysisk_biokemi.widgets as fsb_widgets
+from fysisk_biokemi.widgets.utils import disable_custom_widget_colab, enable_custom_widget_colab
 ```
 
 ## Koncentrations enheder
@@ -147,7 +142,7 @@ At bruge widgten kræver fire trin
 fsb_widgets.reaction_data_analysis()
 ```
 
-### Bufferligningen
+## Bufferligningen
 
 Henderson-Hasselbalch ligningen ('bufferligningen') er givet ved 
 
@@ -162,7 +157,7 @@ Denne widget beregener forholdet mellem og koncentrationen af syre og base givet
 fsb_widgets.buffer_equation()
 ```
 
-### Bufferligning visualisering
+## Bufferligning visualisering
 
 Denne widget visualisere bufferligningen (Henderson–Hasselbalch). Du kan styre
 $pKa$, total koncentratioenn og området for $pH$. Plottet viser koncentrationen 
@@ -170,5 +165,6 @@ af syre og base som funktionen af pH.
 
 ```{python}
 #| eval: true
+enable_custom_widget_colab() # Gør ingenting udenfor Google Colab, men nødvendigt i Colab.
 fsb_widgets.buffer_visualization()
 ```
