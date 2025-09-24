@@ -19,7 +19,6 @@ except ImportError:
 ```
 
 ```{python}
-%matplotlib widget
 import fysisk_biokemi.widgets as fsb_widgets
 ```
 
