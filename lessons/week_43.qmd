@@ -147,6 +147,7 @@ fsb_widgets.reaction_data_analysis()
 Denne widget beregener koncentrationen af syre og base givet $pH$, $pKa$ samt total koncentrationen.
 
 ```{python}
+#| eval: false
 fsb_widgets.buffer_equation()
 ```
 
@@ -157,5 +158,6 @@ $pKa$, total koncentratioenn og området for $pH$. Plottet viser koncentrationen
 af syre og base som funktionen af pH. 
 
 ```{python}
-fsb_widgets.buffer_equation()
+#| eval: false
+fsb_widgets.buffer_visualization()
 ```
