@@ -19,6 +19,7 @@ except ImportError:
 ```
 
 ```{python}
+#| code-fold: true
 try: # For bedre brug af widgets i Google Colab.
     from google.colab import output
     output.enable_custom_widget_manager()
@@ -148,7 +149,13 @@ fsb_widgets.reaction_data_analysis()
 
 ### Bufferligningen
 
-Denne widget beregener koncentrationen af syre og base givet $pH$, $pKa$ samt total koncentrationen.
+Henderson-Hasselbalch ligningen ('bufferligningen') er givet ved 
+
+$$
+pH = pK_a + \log_{10}\left( \frac{[\text{base}]}{[\text{acid}]}\right)
+$$
+
+Denne widget beregener forholdet mellem og koncentrationen af syre og base givet $pH$, $pKa$ samt total koncentrationen.
 
 ```{python}
 #| eval: false
@@ -162,6 +169,6 @@ $pKa$, total koncentratioenn og området for $pH$. Plottet viser koncentrationen
 af syre og base som funktionen af pH. 
 
 ```{python}
-#| eval: false
+#| eval: true
 fsb_widgets.buffer_visualization()
 ```
