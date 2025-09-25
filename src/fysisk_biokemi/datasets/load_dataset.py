@@ -4,6 +4,7 @@ from importlib.resources import files
 available_datasets = {
     'chlorophyll': 'chlorophyll_adsorption.xlsx',
     'reversible_reaction': 'reversible_reaction_dataset.xlsx',
+    'AA_frequency': 'AA_frequency.xlsx',
 }
 
 def get_dataset_path(name: str) -> str:

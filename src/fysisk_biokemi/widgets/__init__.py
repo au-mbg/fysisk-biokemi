@@ -4,6 +4,7 @@ from .molecular_weight import molecular_weight
 from .reaction_equation import reaction_equation
 from .reaction_data_analysis import reaction_data_analysis
 from .buffer_equation import buffer_equation, buffer_visualization
+from .data_uploader import DataUploader
 
 widgets = {
     "concentration_mass_volume": concentration_mass_volume,
@@ -12,6 +13,7 @@ widgets = {
     "buffer_equation": buffer_equation,
     "buffer_visualization": buffer_visualization,
     "reaction_equation": reaction_equation,
+    "data_uploader": DataUploader,
     "reaction_data_analysis": reaction_data_analysis,
 }
 
