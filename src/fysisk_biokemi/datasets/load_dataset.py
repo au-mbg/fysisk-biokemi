@@ -6,6 +6,7 @@ available_datasets = {
     'reversible_reaction': 'reversible_reaction_dataset.xlsx',
     'AA_frequency': 'AA_frequency.xlsx',
     'mCherry': 'mcherry_fpbase_spectra.csv',
+    'protein_blood_plasma': 'protein_blood_plasma.xlsx'
 }
 
 def get_dataset_path(name: str) -> str:
