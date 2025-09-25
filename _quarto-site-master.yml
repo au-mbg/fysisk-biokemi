@@ -8,6 +8,9 @@ project:
 filters:
   - filters/strip-exercise.lua
 
+resource-path:
+  - lessons/figures/
+
 website:
   title: "Fysisk Biokemi - Python Øvelser"
   search: true

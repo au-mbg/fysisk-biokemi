@@ -38,13 +38,11 @@ $$ {#eq-extinction}
 Where $N_{Trp}$ is the number of Tryptophan in the protein (and likewise for the other two terms), and the three constants $A$, $B$ and $C$ are given as 
 
 $$
-A = 5500 \ \mathrm{M^{−1} cm^{−1}}
-$$
-$$
-B = 1490 \ \mathrm{M^{−1} cm^{−1}}
-$$
-$$
-C = 125 \ \mathrm{M^{−1} cm^{−1}}
+\begin{align}
+A &= 5500 \ \mathrm{M^{−1} cm^{−1}} \\
+B &= 1490 \ \mathrm{M^{−1} cm^{−1}} \\
+C &= 125 \ \mathrm{M^{−1} cm^{−1}}
+\end{align}
 $$
 
 In order to calculate the formula we need to know the count of the relevant residues, 
@@ -105,13 +103,13 @@ What are the units of this value?
 ProtParam is an online tool that calculates various physical and chemical
 parameters from a given protein sequence and is used worldwide in research laboratories.
 
-![Protpram tool input page.](figures/week_46/protpram_input.png){.lightbox}
+![Protpram tool input page.](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_46/protpram_input.png){.lightbox}
 
 Go to ProtPram at this link: [https://web.expasy.org/protparam/](https://web.expasy.org/protparam/) and paste the 
 sequence and click **Compute Parameters**. You should then see the calculated parameters, similar 
 to in the image below 
 
-![Protpram tool calculated properties.](figures/week_46/protpram_output.png){.lightbox}
+![Protpram tool calculated properties.](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_46/protpram_output.png){.lightbox}
 
 On the output page you will see the number of residues, does that match your calculation? 
 

@@ -6,6 +6,9 @@ project:
     - lessons/*.qmd   # only build the exercises, not other misc files
     - quizzes/*.qmd   # build quizzes too
 
+resource-path:
+  - lessons/figures/
+
 filters:
   - at: post-ast
     path: filters/strip-solution.lua
