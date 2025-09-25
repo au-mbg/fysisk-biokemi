@@ -16,13 +16,14 @@ filters:
 website:
   title: "Fysisk Biokemi - Python Øvelser"
   search: true
+  favicon: other/favicon.svg
   navbar:
     left:
       - text: Exercises
         href: index.qmd
     right:
-      - icon: gitlab
-        href: https://gitlab.com/au_mbg/fysisk_biokemi#
+      - icon: github
+        href: https://github.com/au-mbg/fysisk-biokemi
   sidebar:
     style: floating
     contents:

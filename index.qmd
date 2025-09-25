@@ -7,3 +7,5 @@ listing:
   fields: [title, categories]
   page-size: 50
 ---
+
+![](other/icon2.svg)
