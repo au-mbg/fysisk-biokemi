@@ -177,6 +177,7 @@ Use the widget below to load the `AA_frequency.xlsx` file.
 
 ```{python}
 #| eval: true
+from IPython.display import display 
 from fysisk_biokemi.widgets import DataUploader
 uploader = DataUploader()
 uploader.display()
@@ -184,14 +185,15 @@ uploader.display()
 ```{python}
 #| eval: false
 df = uploader.get_dataframe()
-print(df)
+display(df)
 ```
 
 ```{python}
 #| solution: true
+from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('AA_frequency')
-print(df)
+display(df)
 ```
 
 #### (b)	Average molecular weight 
