@@ -5,6 +5,7 @@ available_datasets = {
     'chlorophyll': 'chlorophyll_adsorption.xlsx',
     'reversible_reaction': 'reversible_reaction_dataset.xlsx',
     'AA_frequency': 'AA_frequency.xlsx',
+    'mCherry': 'mcherry_fpbase_spectra.csv',
 }
 
 def get_dataset_path(name: str) -> str:
@@ -18,7 +19,11 @@ def load_dataset(name: str):
 
     dataset_path = get_dataset_path(name)
 
-    df = pd.read_excel(dataset_path)
+    if dataset_path.endswith('.csv'):
+        df = pd.read_csv(dataset_path)
+    elif dataset_path.endswith('.xlsx'):    
+        df = pd.read_excel(dataset_path)
+
     return df
 
 if __name__ == "__main__":
