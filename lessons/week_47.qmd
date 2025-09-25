@@ -576,6 +576,31 @@ to provide a good (or good enough) guess for `p0`.
 Finish the code to perform the fitting in the cell below.
 
 ```{python}
+#| exercise: true
+#| eval: false
+from scipy.optimize import curve_fit
+
+# Choose the variables from the dataframe
+x = df['Free Ligand [L](M)']
+y = df['n-bar']
+
+# Initial guess
+K_D_guess = ... # Your initial guess for K_D 
+nu_max_guess = ... # Your initial guess for nu_max
+p0 = [K_D_guess, nu_max_guess]
+
+# Curve fit
+# Replace the four ... with the correct arguments in the correct order.
+popt, pcov = curve_fit(..., ..., ..., ...) 
+
+# Print the parameters
+nu_max_fit, K_D_fit = popt
+print(f"{nu_max_fit = :1.3f} ")
+print(f"{K_D_fit = :e}")
+```
+
+```{python}
+#| solution: true
 from scipy.optimize import curve_fit
 
 # Choose the variables from the dataframe
