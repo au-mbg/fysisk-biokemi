@@ -862,3 +862,6 @@ ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
 ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 ax.set_ylim([0, n.max()*1.1])
 ```
+
+### Exercise is unfinished.
+
