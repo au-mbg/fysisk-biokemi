@@ -7,7 +7,8 @@ available_datasets = {
     'AA_frequency': 'AA_frequency.xlsx',
     'mCherry': 'mcherry_fpbase_spectra.csv',
     'protein_blood_plasma': 'protein_blood_plasma.xlsx',
-    'dialysis_experiment': 'dialysis_experiment.xlsx'
+    'dialysis_experiment': 'dialysis_experiment.xlsx',
+    'adp_pyruvate': 'adp_pyruvate.csv',
 }
 
 def get_dataset_path(name: str) -> str:

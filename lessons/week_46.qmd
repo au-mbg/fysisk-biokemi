@@ -219,7 +219,7 @@ average_mw = np.sum(df['MW of AA residue'] * df['Frequency in proteins'])
 print(f"{average_mw = :3.3f}")
 ```
 
-### (c)	Weight of 300-residue protein 
+#### (c)	Weight of 300-residue protein 
 
 What would the molecular weight of a 300-residue protein most likely be, if you did not know its sequence?
 
@@ -243,7 +243,7 @@ In many proteins, you will be working with a mixture of proteins. This could for
 
 ---
 
-### (d)	Average concentration of residues 
+#### (d)	Average concentration of residues 
 
 Calculate the average concentration of amino acid residues in a protein mixture at 1 mg/mL.
 
@@ -260,7 +260,7 @@ c_residue_avg = 1 / average_mw
 print(f"{c_residue_avg = :3.3f} M")
 ```
 
-### (e)	Absorbance 
+#### (e)	Absorbance 
 
 Calculate the absorbance from such a mixture under the assumption that only Trp and Tyr contribute.
 
@@ -302,7 +302,7 @@ A280 = L * (5500 * c_trp + 1490 * c_tyr)
 print(f"{A280 = :3.3f}")
 ```
 
-### (f)	Adsorbance $\rightarrow$ concentration 
+#### (f)	Adsorbance $\rightarrow$ concentration 
 
 For a cell lysate, you measure and absorbance of 0.78 at a path length of 0.5 cm. What is the protein concentration?
 
