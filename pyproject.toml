@@ -9,6 +9,8 @@ authors = [
 requires-python = ">=3.11"
 dependencies = [
     "anywidget>=0.9.18",
+    "biopython>=1.85",
+    "dtale>=3.17.0",
     "plotly>=6.3.0",
     "scipy>=1.16.2",
 ]

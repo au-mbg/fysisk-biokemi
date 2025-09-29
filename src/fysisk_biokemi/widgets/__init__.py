@@ -5,6 +5,7 @@ from .reaction_equation import reaction_equation
 from .reaction_data_analysis import reaction_data_analysis
 from .buffer_equation import buffer_equation, buffer_visualization
 from .data_uploader import DataUploader
+from .sequence_properties import sequence_properties, sequence_dataframe
 
 widgets = {
     "concentration_mass_volume": concentration_mass_volume,
@@ -15,5 +16,7 @@ widgets = {
     "reaction_equation": reaction_equation,
     "data_uploader": DataUploader,
     "reaction_data_analysis": reaction_data_analysis,
+    "sequence_properties": sequence_properties,
+    "sequence_dataframe": sequence_dataframe,
 }
 
