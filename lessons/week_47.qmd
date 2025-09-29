@@ -20,6 +20,39 @@ except ImportError:
 
 ---
 
+## Estimation of binding affinity 
+
+(Replaces TØ47-9-2024)
+
+#### (a) Train estimation skills
+
+Train your estimation skills using the widget below. 
+
+```{python}
+#| eval: false
+#| 
+from fysisk_biokemi.widgets.utils.colab import enable_custom_widget_colab
+from fysisk_biokemi.widgets import estimate_kd
+
+enable_custom_widget_colab()
+estimate_kd()
+```
+
+#### (b) Compare to quadratic
+
+The widget below shows the curves for $\theta$ using both the simple expression 
+and the quadratic binding expression. Use it to determine how large [P] has to be 
+for them to be notably different. 
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets.utils.colab import enable_custom_widget_colab
+from fysisk_biokemi.widgets import visualize_simple_vs_quadratic
+
+enable_custom_widget_colab()
+visualize_simple_vs_quadratic()
+```
+
 ## The fluorescent protein "mCherry".
 
 The spectra of many fluorescent proteins can be found at the website: [www.fpbase.org](https://www.fpbase.org/). Go to FPbase and search for “mCherry”. 
@@ -781,15 +814,25 @@ $$
 #| eval: false
 def n_bound(L, n_max, K_D, n_exp):
     return ...
+
+print(f"{n_bound(1, 1, 1, 1) = }") # Should give 1/2
+print(f"{n_bound(21, 47, 2.5, 1) = }") # Should give 42
+print(f"{n_bound(21, 47, 2.5, 2) = }") # Should give 46.73..
 ```
 
 ```{python}
 #| solution: true
 def n_bound(L, n_max, K_D, n_exp):
     return n_max * L**n_exp / (K_D + L**n_exp)
+
+print(f"{n_bound(1, 1, 1, 1) = }") # Should give 1/2
+print(f"{n_bound(21, 47, 2.5, 1) = }") # Should give 42
+print(f"{n_bound(21, 47, 2.5, 2) = }") # Should give 46.73..
 ```
 
 #### (e) Fitting
+
+Finish the code below to create a fit.
 
 ```{python}
 #| exercise: true
@@ -846,8 +889,12 @@ print(f"{K_D_fit = :e}")
 print(f"{n_exp_fit = :1.3f} ")
 ```
 
-```{python}
+Once we've obtained the fitted parameters we can plot the fit together with 
+the data. 
 
+```{python}
+#| exercise: true
+#| eval: false
 L = np.linspace(0, 1.2 * x.max(), 50)
 n = n_bound(L, n_max_fit, K_D_fit, 1)
 
@@ -863,5 +910,58 @@ ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 ax.set_ylim([0, n.max()*1.1])
 ```
 
-### Exercise is unfinished.
+```{python}
+#| solution: true
+L = np.linspace(0, 1.2 * x.max(), 50)
+n = n_bound(L, n_max_fit, K_D_fit, 1)
 
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(df['[ADPfree](M)'], df['nbar'], 'o', label='Observations')
+ax.plot(L, n)
+ax.axvline(K_D_fit, color='k', linewidth=0.5, linestyle='--')
+ax.axhline(n_max_fit, color='k', linewidth=0.5, linestyle='--')
+
+
+ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+ax.set_ylim([0, n.max()*1.1])
+```
+
+
+### Free energy
+
+Calculate the free energy for the association of the ADP-pyruvate kinase complex assuming $R = 8.314472 \times 10^{-3} \ \frac{\text{kJ}}{\text{mol} \cdot \text{K}}$  and $T = 310 \ \text{K}$. 
+
+::: {.callout-tip}
+Consider the difference between association and dissociation
+:::
+
+Start by defining the two given constants as variables
+
+```{python}
+#| exercise: true
+#| eval: false
+R = ...
+T = ...
+```
+
+```{python}
+#| solution: true
+R = 8.314472 * 10**(-3)
+T = 310
+```
+
+And do the calculation
+
+```{python}
+#| exercise:
+#| eval: false
+delta_G = ...
+print(f"{delta_G = :.3f} kJ/mol")
+```
+
+```{python}
+#| solution: true
+delta_G = R * T * np.log(K_D_fit)
+print(f"{delta_G = :.3f} kJ/mol")
+```
