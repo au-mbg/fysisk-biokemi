@@ -9,6 +9,8 @@ available_datasets = {
     'protein_blood_plasma': 'protein_blood_plasma.xlsx',
     'dialysis_experiment': 'dialysis_experiment.xlsx',
     'adp_pyruvate': 'adp_pyruvate.csv',
+    'interpret_week48': 'interpret_week48.xlsx',
+    'determination_coop_week48': 'determination_coop_week48.xlsx',
 }
 
 def get_dataset_path(name: str) -> str:
