@@ -32,7 +32,15 @@ fsb_widgets.sequence_properties()
 ## Fasta til `DataFrame`
 
 ```{python}
+#| eval: false
 from fysisk_biokemi.widgets.sequence_properties import sequence_dataframe
 
 widget = sequence_dataframe()
+```
+
+`DataFrame`'en ved den valgte pH kan trækkes ud
+
+```{python}
+#| eval: false
+df = widget.get_dataframe()
 ```

@@ -152,16 +152,12 @@ class FastaToDataFrame:
         self._on_change(None)
 
     def _on_change(self, change):
-        import dtale 
         if not hasattr(self, 'sequences'):
-            return
-        
+            return        
         df = self.get_dataframe()
-
         with self.output_area:
             self.output_area.clear_output()
-            d = dtale.show(df, ignore_duplicate=True)
-            display(d)
+            display(df)
 
     def get_dataframe(self):
         if hasattr(self, 'sequences'):
