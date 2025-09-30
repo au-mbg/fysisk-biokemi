@@ -1,0 +1,158 @@
+## Analysis of a reversible reaction 
+
+Consider the following reaction 
+
+$$
+A \underset{k_{2}}{\stackrel{k_1}{\rightleftharpoons}} B
+$$
+
+The magnitudes of the rate constants are $k_1 = 10 \ \mathrm{s}^{-1}$ and $k_2 = 1 \ \mathrm{s}^{-1}$.
+
+#### (a) Reaction order
+
+What is the reaction order in each direction?
+
+#### (b) Derive equilibrium constant 
+
+Show mathematically how the equilibrium constant $K_{\mathrm{eq}}$ is given by the ratio between the two rate constants.
+
+#### (c) Calculate $K_{\mathrm{eq}}$
+
+```{python}
+#| exercise: true
+#| eval: false
+k1 = ...
+k2 = ...
+K_eq = ...
+print(f"{K_eq = }")
+```
+
+```{python}
+#| solution: true
+k1 = 10 
+k2 = 1
+K_eq = k1 / k2
+print(f"{K_eq = }")
+```
+
+#### (d) Equilibrium concentrations 
+
+Calculate the concentrations of A and B at equilibrium, $[\mathrm{A}]_{\mathrm{eq}}$ and $[\mathrm{B}]_\mathrm{eq}$, if $[\mathrm{A}]_0 = 10^{-3} \text{M}$
+
+```{python}
+#| exercise: true
+#| eval: false
+A0 = ...
+A_eq = ...
+B_eq = ...
+print(f"{A_eq = }")
+print(f"{B_eq = }")
+```
+
+```{python}
+#| solution: true
+A0 = 10**(-3)
+A_eq = (k2 * A0) / (k1 + k2)
+B_eq = (k1 * A0) / (k1 + k2)
+print(f"{A_eq = }")
+print(f"{B_eq = }")
+```
+
+#### (e) Rates at equilibrium
+
+Calculate the forward and reverse rates at equilibrium at this concentration.
+
+```{python}
+#| exercise: true
+#| eval: false
+r_fwd = A_eq * k1
+r_bwd = B_eq * k2
+print(f"{r_fwd = :.5f}")
+print(f"{r_bwd = :.5f}")
+```
+
+```{python}
+#| solution: true
+r_fwd = A_eq * k1
+r_bwd = B_eq * k2 # Sanity check
+print(f"{r_fwd = :.5f}")
+print(f"{r_bwd = :.5f}")
+```
+
+#### (f) Initial rate of formation 
+
+If $[\mathrm{A}]_0 = 10^{-3} \text{M}$ and $[\mathrm{B}]_0 = 0 \text{M}$, calculate the initial rate of formation of B.
+
+```{python}
+#| exercise: true
+#| eval: true
+r_fwd = A0 * k1
+print(f"{r_fwd = :.5f}")
+```
+
+```{python}
+#| solution: true
+r_fwd = A0 * k1
+print(f"{r_fwd = :.5f}")
+```
+
+#### (g) Time-dependence
+
+![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_48/reversible_reaction.png){.lightbox}
+
+We now want to calculate and plot the time-dependent concentrations using the above equations. 
+
+In the cell below finish the implementation of the function `A_time` that calculates 
+the concentration [A] as a function of time.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+def A_time(t, A0, k_f, k_b):
+    return ...
+```
+
+```{python}
+#| solution: true
+
+def A_time(t, A0, k_f, k_b):
+    return (k_b + k_f * np.exp(-(k_f+k_b)*t)) / (k_f + k_b) * A0
+```
+
+And then we can use that function to calculate and plot the concentrations as a function of time. 
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+
+t_max = ... # Set the time in seconds
+t = np.linspace(0, t_max, 100)
+
+At = ... # Use your function to calculate [A](t)
+Bt = ... # Calculate [B](t)
+
+ax.plot(t, At, label='[A](t)')
+ax.plot(t, Bt, label='[B](t)')
+ax.set_ylabel('Concentrations (M)')
+ax.set_xlabel('Time (s)')
+ax.legend()
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+
+t_max = 0.08 * 60 # Time in seconds
+t = np.linspace(0, t_max, 100)
+
+At = A_time(t, A0, k1, k2)
+Bt = A0 - At
+
+ax.plot(t, At, label='[A](t)')
+ax.plot(t, Bt, label='[B](t)')
+ax.set_ylabel('Concentrations (M)', fontsize=14)
+ax.set_xlabel('Time (s)', fontsize=14)
+ax.legend()
+```
