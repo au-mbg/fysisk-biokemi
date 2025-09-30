@@ -8,15 +8,7 @@ format-links:
       icon: box-arrow-up-right
 ---
 
-``` {python}
-#| eval: false
-#| code-fold: true
-try:
-    import fysisk_biokemi
-    print("Already installed")
-except ImportError:
-    %pip install -q "fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"
-```
+{{< include tidbits/_install_import.qmd >}}
 
 ```{python}
 import fysisk_biokemi.widgets as fsb_widgets

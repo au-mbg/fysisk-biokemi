@@ -262,4 +262,3 @@ ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 ax.legend()
 plt.show()
 ```
----

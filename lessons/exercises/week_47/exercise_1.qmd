@@ -1,0 +1,30 @@
+## Estimation of binding affinity 
+
+#### (a) Train estimation skills
+
+Train your estimation skills using the widget below. 
+
+```{python}
+#| eval: false
+#| 
+from fysisk_biokemi.widgets.utils.colab import enable_custom_widget_colab
+from fysisk_biokemi.widgets import estimate_kd
+
+enable_custom_widget_colab()
+estimate_kd()
+```
+
+#### (b) Compare to quadratic
+
+The widget below shows the curves for $\theta$ using both the simple expression 
+and the quadratic binding expression. Use it to determine how large [P] has to be 
+for them to be notably different. 
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets.utils.colab import enable_custom_widget_colab
+from fysisk_biokemi.widgets import visualize_simple_vs_quadratic
+
+enable_custom_widget_colab()
+visualize_simple_vs_quadratic()
+```

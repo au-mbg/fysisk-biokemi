@@ -1,0 +1,231 @@
+## The fluorescent protein "mCherry".
+
+The spectra of many fluorescent proteins can be found at the website: [www.fpbase.org](https://www.fpbase.org/). Go to FPbase and search for “mCherry”. 
+
+#### (a) Find parameters. 
+
+Find the following parameters for the protein
+
+- Extinction coefficient at absorbance maximum 
+- Quantum yield 
+- The organism from which it was originally isolated
+- Molecular weight
+
+Save them to seperate variables in the cell below.
+
+```{python}
+#| solution: true
+QY = 0.22
+EC = 72000 # [1/(M cm)]
+organism = "Discosoma sp."
+m_w = 26.7 * 10**3 # From fpbase
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+... # Your answers here. 
+```
+
+#### (b)	Adorbance
+
+What is the absorbance of a 1 µM solution of mCherry at its absorption maximum?
+
+```{python}
+#| exercise: true
+#| eval: false
+c = ... # Put the concentration in Molar
+l = ... # Path length in cm
+A_max = ... # Calculate the adsorbance.
+print(f"{A_max = :3.3f}")
+```
+
+```{python}
+#| solution: true
+c = 1 * 10**(-6) # [M]
+l = 1 # [cm]
+A_max = EC * c * l
+print(f"{A_max = :3.3f}")
+```
+
+#### (c)	Extinction coefficient from sequence. 
+
+The sequence of the protein is also given. From this determine the extinction coefficient at 280 nm.
+
+Start by taking the sequence from the website and assigning it to the variable `sequence` in the cell below. 
+
+```{python}
+#| exercise: true
+#| eval: false
+sequence = ... # Your code here
+```
+```{python}
+#| solution: true
+sequence="""MVSKGEEDNM AIIKEFMRFK VHMEGSVNGH EFEIEGEGEG RPYEGTQTAK LKVTKGGPLP FAWDILSPQF MYGSKAYVKH PADIPDYLKL SFPEGFKWER VMNFEDGGVV TVTQDSSLQD GEFIYKVKLR GTNFPSDGPV MQKKTMGWEA SSERMYPEDG ALKGEIKQRL KLKDGGHYDA EVKTTYKAKK PVQLPGAYNV NIKLDITSHN EDYTIVEQYE RAEGRHSTGG MDELYK"""
+```
+
+Now use the sequence to calculate the extinction coefficient
+
+```{python}
+#| exercise: true
+
+# This is "dictionary" with the extinction coefficients of the relevant 
+# amino acid residues. Dictionaries are indexed with 'keys', so you can retrieve
+# the value for W as: ext_residue["W"].
+ext_residue = {"W": 5500, "Y": 1490, "C": 125}
+
+# Write code to calculate the extinction coefficent
+...
+```
+
+```{python}
+#| solution: true
+
+# This is 'dictionary' with the extinction coefficients of the relevant 
+# amino acid residues. Dictionaries are indexed with 'keys', so you can retrieve
+# the value for W as: ext_residue["W"].
+ext_residue = {"W": 5500, "Y": 1490, "C": 125}
+
+# Count the number of active residues
+N_trp = sequence.count("W")
+N_tyr = sequence.count("Y")
+N_cys = sequence.count("C")
+
+# Calculate the extinction coefficient: 
+ext_coeff = N_trp * ext_residue["W"] + N_tyr * ext_residue["Y"] + N_cys * ext_residue["C"]
+
+print(f"{ext_coeff = :3.3f}")
+```
+
+#### (d)	What is the concentration of a 1 µM solution of mCherry in mg/mL?
+
+```{python}
+#| exercise: true
+#| eval: false
+conc_molar = ... # Put the concentration in units of M. 
+conc_mg_mL = ... # Calculate the concentration in uts of mg/mL.
+print(f"{conc_mg_mL = }")
+```
+
+```{python}
+#| solution: true
+conc_molar = 1 * 10**(-6) # From 1 [uM].
+conc_mg_mL = conc_molar * m_w 
+print(f"{conc_mg_mL = }")
+```
+
+---
+
+The excitation and emission spectra can be downloaded as a csv-file by clicking the download icon as highlighted below
+
+![Download spectra](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/download_spectra.png){.lightbox}
+
+---
+
+#### (e)    Load the dataset
+
+Use the widget below to load the dataset as a `DataFrame`
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('mCherry') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (f)	Plot spectra
+
+Make your own plot showing the excitation and emission spectra of “mCherry” using the above data.
+
+::: {.callout-tip}
+
+You don't have to worry about the `NaN` values in the dataset when plotting, matplotlib just skips 
+plotting that line segment.
+
+::::
+
+```{python}
+#| exercise: true
+#| eval: false
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(figsize=(9, 4))
+ax.plot(..., ..., label='Excitation') # Replace ... with your code
+... # Replace ... with your code plotting the emission spectrum.
+ax.legend()
+ax.set_xlabel('Wavelength')
+ax.set_ylabel('Extinction & Emission')
+plt.show()
+```
+
+```{python}
+#| solution: true
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(figsize=(9, 4))
+ax.plot(df['wavelength'], df['mCherry ex'], label='Excitation')
+ax.plot(df['wavelength'], df['mCherry em'], label='Emission')
+ax.legend()
+ax.set_xlabel('Wavelength')
+ax.set_ylabel('Extinction & Emission')
+plt.show()
+```
+
+#### (g)	Stokes shift
+
+What is the Stokes shift of mCherry?
+
+::: {.callout-tip}
+
+If you have two arrays `A` and `B` you can find the entry in `A` corresponding to the largest 
+value in `B` like this 
+
+```python
+A_at_B_max = A[np.argmax(B)]
+```
+
+::: 
+
+```{python}
+#| exercise: true
+#| eval: false
+import numpy as np
+lambda_ex = df['wavelength'][np.argmax(df['mCherry ex'])]
+lambda_em = df['wavelength'][np.argmax(df['mCherry em'])]
+stokes_shift = lambda_em - lambda_ex
+
+print(f"{lambda_ex = :d}")
+print(f"{lambda_em = :d}")
+print(f"{stokes_shift = :d}")
+```
+
+```{python}
+#| solution: true
+import numpy as np
+lambda_ex = df['wavelength'][np.argmax(df['mCherry ex'])]
+lambda_em = df['wavelength'][np.argmax(df['mCherry em'])]
+stokes_shift = lambda_em - lambda_ex
+
+print(f"{lambda_ex = :d}")
+print(f"{lambda_em = :d}")
+print(f"{stokes_shift = :d}")
+```
+
+#### (h)	Colors 
+
+What colors are the light that correspond to the excitation and emission maxima respectively?
