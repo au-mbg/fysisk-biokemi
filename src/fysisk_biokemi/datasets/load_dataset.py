@@ -11,6 +11,7 @@ available_datasets = {
     'adp_pyruvate': 'adp_pyruvate.csv',
     'interpret_week48': 'interpret_week48.xlsx',
     'determination_coop_week48': 'determination_coop_week48.xlsx',
+    'reaction_order_week48': 'reaction_order_week48.xlsx',
 }
 
 def get_dataset_path(name: str) -> str:
