@@ -1,158 +1,317 @@
-## Analysis of a reversible reaction 
+## Determination of reaction orders.
 
-Consider the following reaction 
+#### (a) Load the dataset
+
+Load the dataset using the widget below
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('reaction_order_week48') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (b) SI units. 
+
+Add two new columns with the concentrations given in M. 
+
+```{python}
+#| exercise: true
+#| eval: false
+# Make the new columns in this cell. 
+
+
+display(df)
+```
+
+```{python}
+#| solution: true
+df['[A1]_(M)'] = df['[A1]_(uM)'] * 10**(-6)
+df['[A2]_(M)'] = df['[A2]_(uM)'] * 10**(-6)
+display(df)
+```
+
+#### (c) Plotting 
+
+For each reactant make a plot of 
+
+- $t$ vs. $[\text{A}]$
+
+::: {.callout-note}
+
+We will be adding more elements to the plot in the following parts of the exercise, therefore 
+we will wrap the code for plotting in a function such that it can be easily reused. 
+
+:::
+
+The cell below defines the function for plotting, add the missing code in places 
+with `...`. 
+
+```{python}
+#| exercise: 
+#| eval: false
+def plot_dataframe(ax, df):
+    # Extract from dataframe
+    t = df['Time_(s)']
+    A1 = df['[A1]_(M)']
+    A2 = df['[A2]_(M)']
+
+    ax.plot(t, A1, 'o', label='[A1]')
+    ... # Your code here to plot A2
+
+    for ax in axes:
+        ax.set_xlabel('t [s]')
+        ax.legend()
+```
+
+```{python}
+#| solution: true
+def plot_dataframe(ax, df):
+    # Extract from dataframe
+    t = df['Time_(s)']
+    A1 = df['[A1]_(M)']
+    A2 = df['[A2]_(M)']
+
+    # First subfigure: t vs [A]
+    ax.plot(t, A1, 'o', label='[A1]')
+    ax.plot(t, A2, 'o', label='[A2]')
+    ax.set_xlabel('t [s]')
+    ax.legend()
+```
+
+Once we've written the plotting function we can make the plot as done in the cell 
+below. 
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots(1, 1, figsize=(6, 4))
+
+plot_dataframe(ax, df)
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots(1, 1, figsize=(6, 4))
+
+plot_dataframe(ax, df)
+```
+
+#### (d) Determining reaction orders
+
+Now we want to determine the reaction orders by making fits to the data under 
+the assumption of different integrated rate laws. 
+
+In the cell below finish the code to define functions for the integrated rate laws of 
+zeroth, first and second order.
+
+```{python}
+#| exercise: true
+#| eval: false
+def zeroth_order(t, k, A0):
+    result = ...
+    return result
+
+def first_order(t, k, A0):
+    result = ...
+    return result
+
+def second_order(t, k, A0):
+    result = ...
+    return result
+
+rate_laws = {0: zeroth_order, 1: first_order, 2:second_order}
+```
+
+```{python}
+#| solution: true
+def zeroth_order(t, k, A0):
+    return A0 - k*t
+
+def first_order(t, k, A0):
+    return A0 * np.exp(-k*t)
+
+def second_order(t, k, A0):
+    return A0 / (1 + 2*k*t*A0)
+
+rate_laws = {0: zeroth_order, 1: first_order, 2:second_order}
+```
+
+We can then use these to make fits, here it is helpful to define a small function to help us with that. 
+
+```{python}
+from scipy.optimize import curve_fit
+
+def make_fit(x_data, y_data, x_eval, A0, order):
+    func = lambda t, k: rate_laws[order](t, k, A0)
+    popt, pcov = curve_fit(func, x_data, y_data)
+
+    # Evaluate fit
+    k = popt[0]
+    y_fit = func(x_eval, k)
+    return k, y_fit
+```
+
+Next we will define the known constants and extract a few things from the `DataFrame`.
+In the cell below put the initial concentrations in M.
+
+```{python}
+#| exercise: true
+#| eval: false
+A1_0 = ... # Set the initial concentration [A1]_0
+A2_0 = ... # Set the initial concentration [A2]_0
+
+# Extract data
+t = df['Time_(s)']
+A1 = df['[A1]_(M)']
+A2 = df['[A2]_(M)']
+orders = [0, 1, 2]
+t_eval = np.linspace(0, t.max()*1.1)
+```
+
+
+```{python}
+#| solution: true
+# Set the initial concentrations:
+A1_0 = 2 * 10**(-6)
+A2_0 = 4.5 * 10**(-6)
+
+# Extract data
+t = df['Time_(s)']
+A1 = df['[A1]_(M)']
+A2 = df['[A2]_(M)']
+orders = [0, 1, 2]
+t_eval = np.linspace(0, t.max()*1.1)
+```
+
+Now we can make and plot the fits
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, axes = plt.subplots(1, 3, figsize=(8, 4), sharey=True, layout='constrained')
+
+axes[0].set_ylabel('Concentration (M)')
+
+for ax in axes:
+    plot_dataframe(ax, df)
+
+for ax, order in zip(axes, orders):
+    k1, y_fit = make_fit(t, A1, t_eval, A1_0, order)
+    ax.plot(t_eval, y_fit, color='C2', label=rf'k = {k1:.2e}')
+
+    k2, y_fit = make_fit(t, A2, t_eval, A2_0, order)
+    ax.plot(t_eval, y_fit, color='C3', label=rf'k = {k2:.2e}')
+    ax.legend()
+    ax.set_title(f'Reaction order: {order}')
+```
+
+```{python}
+#| solution: true
+fig, axes = plt.subplots(1, 3, figsize=(8, 4), sharey=True, layout='constrained')
+
+axes[0].set_ylabel('Concentration (M)')
+
+for ax in axes:
+    plot_dataframe(ax, df)
+
+for ax, order in zip(axes, orders):
+    k1, y_fit = make_fit(t, A1, t_eval, A1_0, order)
+    ax.plot(t_eval, y_fit, color='C2', label=rf'k = {k1:.2e}')
+
+    k2, y_fit = make_fit(t, A2, t_eval, A2_0, order)
+    ax.plot(t_eval, y_fit, color='C3', label=rf'k = {k2:.2e}')
+    ax.legend()
+    ax.set_title(f'Reaction order: {order}')
+```
+
+Based on this plot; 
+
+- What do you believe is the reaction order for [A1]?
+- What is the unit of the rate constant for [A1]? 
+- What do you believe is the reaction order for [A2]?
+- What is the unit of the rate constant for [A2]? 
+
+#### (e) Residuals 
+
+By inspecting the plot we can make a qualitative judgement of the reaction orders. 
+To get a more quantitative results we can look at the residuals, recall they are defined as 
 
 $$
-A \underset{k_{2}}{\stackrel{k_1}{\rightleftharpoons}} B
+r_i = y_i - f(x_i | \theta)
 $$
 
-The magnitudes of the rate constants are $k_1 = 10 \ \mathrm{s}^{-1}$ and $k_2 = 1 \ \mathrm{s}^{-1}$.
+We can calculate these in much the same way we calculate the fits, except we don't 
+evaluate the fit at a new set of points but at the observations $x_i$.
 
-#### (a) Reaction order
+```{python}
+#| solution: true
+def calculate_residuals(x_data, y_data, A0, order):
+    func = lambda t, k: rate_laws[order](t, k, A0)
+    popt, pcov = curve_fit(func, x_data, y_data)
 
-What is the reaction order in each direction?
+    # Evaluate fit
+    k = popt[0]
+    y_fit = func(x_data, k)
+    residuals = y_data - y_fit
+    return residuals
+```
 
-#### (b) Derive equilibrium constant 
-
-Show mathematically how the equilibrium constant $K_{\mathrm{eq}}$ is given by the ratio between the two rate constants.
-
-#### (c) Calculate $K_{\mathrm{eq}}$
+We can then plot the residuals, here using a histogram where the x-axis is the value of the 
+residual and the bars indicate the number of residuals within that range of values.
 
 ```{python}
 #| exercise: true
 #| eval: false
-k1 = ...
-k2 = ...
-K_eq = ...
-print(f"{K_eq = }")
+fig, axes = plt.subplots(2, 3, figsize=(8, 4), sharey=True, layout='constrained', sharex=True)
+
+axes[0, 0].set_ylabel('Count')
+axes[1, 0].set_ylabel('Count')
+
+for ax_col, order in zip(axes.T, orders):
+
+    residuals = calculate_residuals(t, A1, A1_0, order)
+    ax_col[0].hist(residuals, alpha=0.75, color='C0')
+
+    residuals = calculate_residuals(t, A2, A2_0, order)
+    ax_col[1].hist(residuals, alpha=0.75, color='C1')
+
+    ax_col[1].set_xlabel('Residual')
 ```
 
 ```{python}
 #| solution: true
-k1 = 10 
-k2 = 1
-K_eq = k1 / k2
-print(f"{K_eq = }")
+fig, axes = plt.subplots(2, 3, figsize=(8, 4), sharey=True, layout='constrained', sharex=True)
+
+axes[0, 0].set_ylabel('Count')
+axes[1, 0].set_ylabel('Count')
+
+for ax_col, order in zip(axes.T, orders):
+
+    residuals = calculate_residuals(t, A1, A1_0, order)
+    ax_col[0].hist(residuals, alpha=0.75, color='C0')
+
+    residuals = calculate_residuals(t, A2, A2_0, order)
+    ax_col[1].hist(residuals, alpha=0.75, color='C1')
+
+    ax_col[1].set_xlabel('Residual')
 ```
 
-#### (d) Equilibrium concentrations 
-
-Calculate the concentrations of A and B at equilibrium, $[\mathrm{A}]_{\mathrm{eq}}$ and $[\mathrm{B}]_\mathrm{eq}$, if $[\mathrm{A}]_0 = 10^{-3} \text{M}$
-
-```{python}
-#| exercise: true
-#| eval: false
-A0 = ...
-A_eq = ...
-B_eq = ...
-print(f"{A_eq = }")
-print(f"{B_eq = }")
-```
-
-```{python}
-#| solution: true
-A0 = 10**(-3)
-A_eq = (k2 * A0) / (k1 + k2)
-B_eq = (k1 * A0) / (k1 + k2)
-print(f"{A_eq = }")
-print(f"{B_eq = }")
-```
-
-#### (e) Rates at equilibrium
-
-Calculate the forward and reverse rates at equilibrium at this concentration.
-
-```{python}
-#| exercise: true
-#| eval: false
-r_fwd = A_eq * k1
-r_bwd = B_eq * k2
-print(f"{r_fwd = :.5f}")
-print(f"{r_bwd = :.5f}")
-```
-
-```{python}
-#| solution: true
-r_fwd = A_eq * k1
-r_bwd = B_eq * k2 # Sanity check
-print(f"{r_fwd = :.5f}")
-print(f"{r_bwd = :.5f}")
-```
-
-#### (f) Initial rate of formation 
-
-If $[\mathrm{A}]_0 = 10^{-3} \text{M}$ and $[\mathrm{B}]_0 = 0 \text{M}$, calculate the initial rate of formation of B.
-
-```{python}
-#| exercise: true
-#| eval: true
-r_fwd = A0 * k1
-print(f"{r_fwd = :.5f}")
-```
-
-```{python}
-#| solution: true
-r_fwd = A0 * k1
-print(f"{r_fwd = :.5f}")
-```
-
-#### (g) Time-dependence
-
-![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_48/reversible_reaction.png){.lightbox}
-
-We now want to calculate and plot the time-dependent concentrations using the above equations. 
-
-In the cell below finish the implementation of the function `A_time` that calculates 
-the concentration [A] as a function of time.
-
-```{python}
-#| exercise: true
-#| eval: false
-
-def A_time(t, A0, k_f, k_b):
-    return ...
-```
-
-```{python}
-#| solution: true
-
-def A_time(t, A0, k_f, k_b):
-    return (k_b + k_f * np.exp(-(k_f+k_b)*t)) / (k_f + k_b) * A0
-```
-
-And then we can use that function to calculate and plot the concentrations as a function of time. 
-
-```{python}
-#| exercise: true
-#| eval: false
-fig, ax = plt.subplots()
-
-t_max = ... # Set the time in seconds
-t = np.linspace(0, t_max, 100)
-
-At = ... # Use your function to calculate [A](t)
-Bt = ... # Calculate [B](t)
-
-ax.plot(t, At, label='[A](t)')
-ax.plot(t, Bt, label='[B](t)')
-ax.set_ylabel('Concentrations (M)')
-ax.set_xlabel('Time (s)')
-ax.legend()
-```
-
-```{python}
-#| solution: true
-fig, ax = plt.subplots()
-
-t_max = 0.08 * 60 # Time in seconds
-t = np.linspace(0, t_max, 100)
-
-At = A_time(t, A0, k1, k2)
-Bt = A0 - At
-
-ax.plot(t, At, label='[A](t)')
-ax.plot(t, Bt, label='[B](t)')
-ax.set_ylabel('Concentrations (M)', fontsize=14)
-ax.set_xlabel('Time (s)', fontsize=14)
-ax.legend()
-```
+Does this support your conclusions about the reaction order from (d)?

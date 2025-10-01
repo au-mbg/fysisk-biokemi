@@ -26,8 +26,12 @@ import numpy as np
 
 ---
 
-{{< include exercises/week_48/week_48_3.qmd >}}
+{{< include exercises/week_48/week_48_4.qmd >}}
 
 ---
 
-{{< include exercises/week_48/week_48_4.qmd >}}
+{{< include exercises/week_48/week_48_6.qmd >}}
+
+---
+
+{{< include exercises/week_48/week_48_7.qmd >}}
