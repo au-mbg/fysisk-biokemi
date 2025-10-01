@@ -9,6 +9,8 @@ wheels/
 # Stuff
 *.DS_Store*
 .vscode/
+testing_ideas/
+*.jupyter_cache/
 
 # Virtual environments
 .venv
@@ -16,3 +18,5 @@ wheels/
 /.quarto/
 **/*.quarto_ipynb
 _site-combined/
+
+

@@ -1,0 +1,143 @@
+## Analysis of a data set obeying Michaelis-Menten kinetics (Unfinished)
+
+```{python}
+#| code-fold: true
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+pd.set_option('display.max_rows', 6)
+```
+
+The kinetics for an enzyme were investigated using the absorbance of the product 
+to calculate the initial velocities for a range of different initial concentrations
+of the substrate. The data given in the dataset `week49_2.xlsx` was obtained. 
+Use these data to answer the following questions.
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('week49_2') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (a) SI Units
+Convert the concentrations of substrate and the velocities to the SI units 
+$\text{M}$ and $\text{M}\cdot\text{s}^{-1}$, respectively.
+
+```{python}
+#| exercise: true
+#| eval: false
+...
+...
+display(df)
+```
+
+```{python}
+#| solution: true
+df['[S]_(M)'] = df['[S]_(mM)'] * 10**(-3)
+df['V0_(M/s)'] = df['V0_(uM/s)'] * 10**(-6)
+display(df)
+```
+
+#### (b) Plot & estimate
+Plot the initial velocities, $V_0$, as a function of substrate concentrations, $[S]$. 
+Estimate $K_M$ and $V_\mathrm{max}$ from this plot. 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+fig, ax = plt.subplots()
+
+... # Your code here. 
+
+# Some settings to make the plot nicer..
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)')
+ax.grid('on')
+ax.set_ylim(0, df['V0_(M/s)'].max()*1.2)
+
+```
+
+```{python}
+#| solution: true
+
+fig, ax = plt.subplots()
+ax.plot(df['[S]_(M)'], df['V0_(M/s)'], 'o')
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)')
+ax.grid('on')
+ax.set_ylim(0, df['V0_(M/s)'].max()*1.2)
+```
+
+#### (c) Fit
+
+Now we want to fit using the Michaelis-Menten equation, as per usual when the
+task is fitting we have to define the function we are fitting with
+
+```{python}
+#| exercise: true
+#| eval: false
+def michaelis_menten(S, Vmax, Km):
+    return ... # Replace ...
+```
+
+```{python}
+#| solution: true
+def michaelis_menten(S, Vmax, Km):
+    return (Vmax * S) / (Km + S)
+```
+
+And then we can follow our usual procedure to make the fit
+
+```{python}
+#| exercise: true
+#| eval: false
+
+x_data = ...
+y_data = ...
+
+popt, pcov = ...
+Vmax, Km = popt
+
+print(f"{Vmax = :03f}")
+print(f"{Km = :03f}")
+```
+
+```{python}
+#| solution: true
+
+x_data = df['[S]_(M)']
+y_data = df['V0_(M/s)']
+
+popt, pcov = curve_fit(michaelis_menten, x_data, y_data)
+Vmax, Km = popt
+
+print(f"{Vmax = :03f}")
+print(f"{Km = :03f}")
+```
+
+How do these values compare to your estimate? 
+
+#### (d)
+
+The kcat of the enzyme was determined to be $20000 \ \text{s}^{-1}$. 
+Calculate the concentration of the enzyme used in the assay.
