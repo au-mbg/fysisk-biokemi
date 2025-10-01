@@ -39,6 +39,7 @@ format:
     toc: true
     toc-depth: 2
     margin: {left: 2cm, right: 2cm, top: 2.5cm, bottom: 2.5cm}
+  ipynb: default
 
 format-links:
   - format: typst
@@ -47,11 +48,6 @@ format-links:
   - format: ipynb
     text: Notebook
     icon: journal-code        
-
-
-# keep ipynb too if you want downloadable notebooks per page
-# (optional; remove if you want HTML-only)
-  ipynb: default
 
 execute:
   echo: true
