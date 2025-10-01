@@ -70,10 +70,19 @@ told to consider. The syntax of a `for`-loop is like so:
 
 ```python
 total = 0
-for a in [1, 2, 3]:
-    total = a + total    
-print(total) # Gives 1 + 2 + 3 = 6
+for count in [1, 2, 3, 4, 5]:
+    print(f"I have {count} apples.")
 ```
+Which will print 
+```
+I have 1 apples
+I have 2 apples
+I have 3 apples
+I have 4 apples
+I have 5 apples
+```
+So the `for`-loop did the operation of printing a string for each value of `count`. 
+
 When working with a `DataFrame` like in this exercise, we may for example want to do something `for` 
 each column, one way of doing that is to loop over the column names, say we want we have a `DataFrame` `df` with 
 columns named `"col1", "col2", "col3"` we can loop over that as 

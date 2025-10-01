@@ -35,7 +35,7 @@ format:
     code-tools: true
     theme: cosmo
   typst: 
-    number-sections: true
+    number-sections: false
     toc: true
     toc-depth: 2
     margin: {left: 2cm, right: 2cm, top: 2.5cm, bottom: 2.5cm}

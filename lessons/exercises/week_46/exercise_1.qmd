@@ -1,4 +1,4 @@
-## Extinction coefficient of human myoglobin
+## Extinction coefficient of human myoglobin (WIP)
 
 The protein of human myoglobin is given below
 
@@ -12,16 +12,16 @@ We want to calculate the *extinction coefficient* of this protein, we have seen 
 this can be calculated using the formula
 
 $$
-\epsilon(280 \mathrm{nm}) = N_{Trp} A + N_{Tyr} B + N_{Cys} C 
+\epsilon(280 \mathrm{nm}) = N_{Trp} \epsilon_{Trp} + N_{Tyr} \epsilon_{Tyr} + N_{Cys} \epsilon_{Cys} 
 $$ {#eq-extinction}
 
 Where $N_{Trp}$ is the number of Tryptophan in the protein (and likewise for the other two terms), and the three constants $A$, $B$ and $C$ are given as 
 
 $$
 \begin{align}
-A &= 5500 \ \mathrm{M^{−1} cm^{−1}} \\
-B &= 1490 \ \mathrm{M^{−1} cm^{−1}} \\
-C &= 125 \ \mathrm{M^{−1} cm^{−1}}
+\epsilon_{Trp} &= 5500 \ \mathrm{M^{−1} cm^{−1}} \\
+\epsilon_{Tyr} &= 1490 \ \mathrm{M^{−1} cm^{−1}} \\
+\epsilon_{Cys} &= 125 \ \mathrm{M^{−1} cm^{−1}}
 \end{align}
 $$
 
@@ -48,9 +48,11 @@ N_tyr = ... # Your code here
 ... # Your code here for the N_cys.
 ```
 
+You can check what Python has stored each variable by using `print`
+
 ```{python}
-print(f"{N_trp = }")
-print(f"{N_tyr = }")
+print(N_trp)
+print(f"{N_tyr = }") # This is just a way of make a string that looks nice.
 print(f"{N_cys = }")
 ```
 
@@ -59,9 +61,9 @@ print(f"{N_cys = }")
 Use equation (@eq-extinction) to calculate the extinction coefficient of human myoglobin.
 
 ```{python}
-A = 5500
-B = 1490
-C = 125
+eps_trp = 5500
+eps_tyr = 1490
+eps_cys = 125
 ```
 
 ```{python}
@@ -73,7 +75,7 @@ print(epsilon)
 
 ```{python}
 #| solution: true
-epsilon = A * N_trp + B * N_tyr + C*N_cys
+epsilon = eps_trp * N_trp + eps_tyr * N_tyr + eps_cys*N_cys
 print(epsilon)
 ```
 What are the units of this value? 
@@ -93,17 +95,7 @@ to in the image below
 
 On the output page you will see the number of residues, does that match your calculation? 
 
-#### (d) ProtPram extinction coefficient
-
-Scrolling further down you will find that ProtParam also gives the extinction coefficient for the protein. As the absorbance of Cys residues varies slightly dependent on whether disulfide bridges (cystines) are present or not, ProtParam list the extinction coefficient in both reduced and oxidized states of the Cys residues.
-
-Consider the following questions
-
-- Why are the extinction coefficients of myoglobin the same whether cystines are formed or not?
-
-- Does the extinction coefficient computed in ProtParam match the value you have calculated?
-
-#### (e) Calculate the absorbance
+#### (d) Calculate the absorbance
 
 Using the extinction coefficient and the molecular weight given by ProtParam, calculate the absorbance at 280 nm of a myoglobin solution at a concentration of 1 mg/mL in a cuvette with a light path of 1 cm.
 
@@ -139,6 +131,6 @@ print(A280)
 
 This value is what is known as the A280(0.1%) of a protein, i.e. the absorbance of a given protein at a concentration of 0.1% weight/volume (= 1 g/L = 1 mg/mL). 
 
-#### (f) Compare the absorbance to Protpram
+#### (e) Tintin 
 
-Does the number reported by ProtParam correspond to the number you just calculated in (e)?
+New exercise. WIP
