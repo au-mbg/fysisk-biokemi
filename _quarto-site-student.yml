@@ -34,14 +34,23 @@ website:
 format:
   html:
     toc: true
-    toc-depth: 6
+    toc-depth: 3
     number-sections: false    
     code-tools: true
     theme: cosmo
-
-# keep ipynb too if you want downloadable notebooks per page
-# (optional; remove if you want HTML-only)
   ipynb: default
+  typst: 
+    number-sections: true
+    toc: true
+    toc-depth: 2
+
+format-links:
+  - format: typst
+    text: PDF
+    icon: file-pdf
+  - format: ipynb
+    text: Notebook
+    icon: journal-code        
 
 execute:
   echo: true
