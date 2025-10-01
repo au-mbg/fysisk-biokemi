@@ -1,0 +1,152 @@
+## Design of an enzyme kinetics experiment (Unfinished)
+
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+```
+
+In the Excel document tø12_week49_data you will find a data set in which an enzyme
+catalyzed formation of product P, with varying start concentration of substrates, 
+[S], was followed over time. The product absorbs light at a specific wavelength 
+with an extinction coefficient of 0.068 $\mu\text{M}^{-1}\cdot \text{cm}^{-1}$, and the absorbance was measured 
+in a light path of 1 cm throughout the time course.
+
+You can load the dataset using the cells below; 
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('week49_1') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+The headers, like `Abs_S1` refer to the substrate concentration so `S1` means a substrate concentration of 1 $\mu\text{M}$.
+
+#### (a) 
+Convert the extinction coefficient to units given in $\text{M}^{-1}\cdot \text{cm}^{-1}$ and 
+assign it to a variable. Also assign the light path length to a variable.
+
+```{python}
+#| exercise: true
+#| eval: false
+...
+...
+```
+
+```{python}
+#| solution: true
+ext_coeff = 0.068 / 10**(-6) # 1/(M cm)
+l = 1 # cm
+```
+
+#### (b) Calculate concentrations
+
+Using Lambert-Beers law, calculate the concentration of product, [P], in M for each time series.
+
+::: {.callout-note title="Loops"}
+Loops are one of the most useful parts of programming, loops allows us to repeat an operation 
+on many different elements. This allows us to not have to repeat code many times, making it 
+simpler to understand and less prone to error - and at the same time more flexible. 
+
+A common type of loop in Python is the `for` loop, which does something `for` every item it is 
+told to consider. The syntax of a `for`-loop is like so: 
+
+```python
+total = 0
+for a in [1, 2, 3]:
+    total = a + total    
+print(total) # Gives 1 + 2 + 3 = 6
+```
+When working with a `DataFrame` like in this exercise, we may for example want to do something `for` 
+each column, one way of doing that is to loop over the column names, say we want we have a `DataFrame` `df` with 
+columns named `"col1", "col2", "col3"` we can loop over that as 
+```python
+for name in ['col1', 'col2', 'col3']
+    df[name] = ... # Some operation
+```
+::: 
+
+The cell below setups a loop calculate the concentrations for each of these current columns in the dataframe.
+
+```{python}
+#| exercise: true
+#| eval: false
+substrate_concentrations = [1, 3, 5, 7, 9, 11, 13, 15]
+for s in substrate_concentrations:
+    abs_col_name = f'Abs_S{s}' # This creates a string where the value of 's' is put instead of "{s}"".
+    conc_col_name = f'C_S{s}' # Same type string creation 
+    df[conc_col_name] = ... # Your code here
+
+    # We can print in each iteration of the loop to see what's going on.
+    print(s, abs_col_name, conc_col_name) 
+```
+
+```{python}
+#| solution: true
+substrate_concentrations = [1, 3, 5, 7, 9, 11, 13, 15]
+for s in substrate_concentrations:
+    abs_col_name = f'Abs_S{s}' # This creates a string where the value of 's' is put instead of "{s}"".
+    conc_col_name = f'C_S{s}' # Same type string creation 
+    df[conc_col_name] = df[abs_col_name] / (ext_coeff * l)
+    print(s, abs_col_name, conc_col_name)
+```
+
+And we can check that the columns we expect have been added to the `DataFrame`.
+
+```{python}
+#| exercise: true
+#| eval: false
+display(df)
+```
+```{python}
+#| solution: true
+display(df)
+```
+
+#### (c) Plot 
+
+Plot [P] as a function of time for all experiments in one single graph. 
+
+Here it is again very useful to use a `for`-loop
+
+```{python}
+fig, ax = plt.subplots(figsize=(7, 4))
+
+x_axis = df['time_(s)']
+substrate_concentrations = [1, 3, 5, 7, 9, 11, 13, 15]
+for s in substrate_concentrations:
+    conc_col_name = f'C_S{s}'
+    y_axis = df[conc_col_name]
+
+    ax.plot(x_axis, y_axis, label=conc_col_name)
+
+ax.legend()    
+```
+
+#### (d) 
+How could you use Excel to determine $V_0$ for each concentration of $S$? Create a table of $V_0$ vs $[S]$
+
+#### (e)
+Why is it important to use $V_0$ rather than $V$ at a later time point when creating the Michaelis-Menten plot?
+
+#### (f) 
+
+Plot $V_0$ against substrate concentration and estimate $k_{cat}$ and $K_M$ visually (remember units) 
+

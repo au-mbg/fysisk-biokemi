@@ -1,0 +1,16 @@
+---
+title: Week 49
+engine: jupyter
+categories: []
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/week_49.ipynb"
+      icon: box-arrow-up-right
+---
+
+{{< include tidbits/_install_import.qmd >}}
+
+---
+
+{{< include exercises/week_49/week_49_1.qmd >}}
+

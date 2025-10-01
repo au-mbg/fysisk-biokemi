@@ -12,7 +12,8 @@ available_datasets = {
     'interpret_week48': 'interpret_week48.xlsx',
     'determination_coop_week48': 'determination_coop_week48.xlsx',
     'reaction_order_week48': 'reaction_order_week48.xlsx',
-    'reaction_order_activation_week48': 'reaction_order_activation_week48.csv'
+    'reaction_order_activation_week48': 'reaction_order_activation_week48.csv',
+    'week49_1': 'week49_1.xlsx'
 }
 
 def get_dataset_path(name: str) -> str:
