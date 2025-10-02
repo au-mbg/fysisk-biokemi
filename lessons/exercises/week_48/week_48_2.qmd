@@ -1,7 +1,7 @@
 ## Determination of type and strength of cooperativity
 
 The binding of NAD+ to the protein yeast glyceraldehyde 3-phosphate dehydrogenase (GAPDH) was studied using
-equilibrium dialysis. The enzyme concentration was 71 μM. The concentration of $[\text{NAD}^{+}_\text{free}]$ and the corresponding values of $\bar{n}$ were determined with the resulting data found in the dataset `determination_coop_week48.xlsx`.
+equilibrium dialysis. The enzyme concentration was 71 μM. The concentration of $[\text{NAD}^{+}_\text{free}]$ and the corresponding values of $\bar{n}$ were determined with the resulting data found in the dataset `week48_2_determination_coop.xlsx`.
 
 #### (a) Load the dataset
 

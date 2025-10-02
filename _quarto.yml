@@ -1,8 +1,11 @@
 project:
   type: default
 
+resources:
+  - src/fysisk_biokemi/datasets/files/**
+
 format:
-  ipynb: default
+  ipynb: default  
 
 execute:
   echo: true

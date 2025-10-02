@@ -10,7 +10,7 @@ The irreversible isomerization of compound A to compound B results in a decreasi
 absorbance. The isomerization was followed in a time course at two different temperatures
 (T1 = 25 °C and T2 = 40 °C). The absorbance ($\epsilon$ = 16700 $\mathrm{cm}^{-1} \mathrm{M}^{-1}$) was used to 
 calculate the concentration of compound A in a spectrophotometer with a pathlength 
-of 1 cm. The obtained dataset is given in the file `reaction_order_activation_week48.csv`.
+of 1 cm. The obtained dataset is given in the file `week48_7_reaction_order_activation.csv`.
 
 #### (a) Temperatures 
 

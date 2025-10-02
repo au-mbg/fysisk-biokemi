@@ -4,17 +4,25 @@ from importlib.resources import files
 available_datasets = {
     'chlorophyll': 'chlorophyll_adsorption.xlsx',
     'reversible_reaction': 'reversible_reaction_dataset.xlsx',
-    'AA_frequency': 'AA_frequency.xlsx',
-    'mCherry': 'mcherry_fpbase_spectra.csv',
-    'protein_blood_plasma': 'protein_blood_plasma.xlsx',
-    'dialysis_experiment': 'dialysis_experiment.xlsx',
-    'adp_pyruvate': 'adp_pyruvate.csv',
-    'interpret_week48': 'interpret_week48.xlsx',
-    'determination_coop_week48': 'determination_coop_week48.xlsx',
-    'reaction_order_week48': 'reaction_order_week48.xlsx',
-    'reaction_order_activation_week48': 'reaction_order_activation_week48.csv',
+    # Week 46:
+    'AA_frequency': 'week46_1_AA_frequency.xlsx',
+    # Week 47:
+    'mCherry': 'week47_2_mcherry_fpbase_spectra.csv',
+    'protein_blood_plasma': 'week47_3_protein_blood_plasma.xlsx',
+    'dialysis_experiment': 'week47_4_dialysis_experiment.xlsx',
+    'adp_pyruvate': 'week47_5_adp_pyruvate.csv',
+
+    # Week 48:
+    'interpret_week48': 'week48_1_interpret.xlsx',
+    'determination_coop_week48': 'week48_2_determination_coop.xlsx',
+    'reaction_order_week48': 'week48_4_reaction_order.xlsx',
+    'reaction_order_activation_week48': 'week48_7_reaction_order_activation.csv',
+
+    # Week 49:
     'week49_1': 'week49_1.xlsx',
     'week49_2': 'week49_2.xlsx',
+
+    # Other
     'titin': 'titin.txt',
 }
 

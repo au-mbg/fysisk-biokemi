@@ -3,11 +3,15 @@ project:
   output-dir: _site-combined/student/
   render:
     - index.qmd
+    - datasets.qmd
     - lessons/*.qmd   # only build the exercises, not other misc files
     - quizzes/*.qmd   # build quizzes too
 
 resource-path:
   - lessons/figures/
+
+resources:
+  - src/fysisk_biokemi/datasets/files/**
 
 filters:
   - at: post-ast
@@ -21,6 +25,8 @@ website:
     left:
       - text: Exercises
         href: index.qmd
+      - text: Datasets
+        href: datasets.qmd
     right:
       - icon: github
         href: https://github.com/au-mbg/fysisk-biokemi
