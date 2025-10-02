@@ -119,7 +119,13 @@ print(f"{conc_mg_mL = }")
 
 The excitation and emission spectra can be downloaded as a csv-file by clicking the download icon as highlighted below
 
-![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/download_spectra.png){.lightbox}
+::: {#fig-download-csv}
+
+<img width=300 src="https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/download_spectra.png">
+
+Screenshot of the download button on fpbase
+
+:::
 
 ---
 
@@ -223,8 +229,13 @@ A_at_B_max = A[np.argmax(B)]
 The `np.argmax` stands for **arg**ument **max**imum meaning that it finds the index of 
 the maximum value in a given array. The figure below illustrates this 
 
-![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/np_argmax.png){.lightbox}
+::: {#fig-npargmax}
 
+<img width=300 src="https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/np_argmax.png">
+
+Illustration of argmax
+
+:::
 ::: 
 
 ```{python}
