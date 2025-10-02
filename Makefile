@@ -14,7 +14,7 @@ student:
 	quarto render --profile student $(TO_FLAG)
 
 site-master:
-	quarto render --profile site-master --quiet
+	quarto render --profile site-master
 
 site-student:
 	quarto render --profile site-student --no-clean
