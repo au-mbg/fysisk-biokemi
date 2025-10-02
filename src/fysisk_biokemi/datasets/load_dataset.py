@@ -49,5 +49,10 @@ def load_dataset(name: str):
 
 if __name__ == "__main__":
 
-    data = load_dataset('chlorophyll')
-    print(data)
+    for dataset_name in available_datasets.keys():
+        print(f"Loading dataset: {dataset_name}")
+        try:
+            data = load_dataset(dataset_name)
+        except: 
+            print(f"Failed to load dataset: {dataset_name}")
+            continue
