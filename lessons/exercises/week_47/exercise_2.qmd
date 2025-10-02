@@ -64,7 +64,8 @@ sequence = ... # Your code here
 sequence="""MVSKGEEDNM AIIKEFMRFK VHMEGSVNGH EFEIEGEGEG RPYEGTQTAK LKVTKGGPLP FAWDILSPQF MYGSKAYVKH PADIPDYLKL SFPEGFKWER VMNFEDGGVV TVTQDSSLQD GEFIYKVKLR GTNFPSDGPV MQKKTMGWEA SSERMYPEDG ALKGEIKQRL KLKDGGHYDA EVKTTYKAKK PVQLPGAYNV NIKLDITSHN EDYTIVEQYE RAEGRHSTGG MDELYK"""
 ```
 
-Now use the sequence to calculate the extinction coefficient
+Now use the sequence to calculate the extinction coefficient, finish the code below 
+(or take the function you implemented in a previous exercise!)
 
 ```{python}
 #| exercise: true
@@ -156,6 +157,27 @@ Make your own plot showing the excitation and emission spectra of “mCherry” 
 
 ::: {.callout-tip}
 
+To plot we use the `matplotlib` package. Plots are generally just straight lines 
+connecting points, with enough points we get a smooth looking figure. 
+
+For example, to plot a line connecting three datapoints
+
+```python
+fig, ax = plt.subplots() # <1>
+
+x = np.array([1, 2, 3]) # <2>
+y = np.array([1, 4, 9])
+ax.plot(x, y) # <3> 
+plt.show() # <4>
+```
+1. This creates a `fig` and an `ax`, the `ax`-object is the box where our plot is created. 
+2. Define the data to put on the x-axis.
+3. Does the actual plotting
+4. Shows the figure
+
+There are *many* ways of customizing plots, you will see different ones in the exercises, but 
+by no means all of them - if you are interested you can find more information on the [matplotlib documentation](https://matplotlib.org/stable/users/index).
+
 You don't have to worry about the `NaN` values in the dataset when plotting, matplotlib just skips 
 plotting that line segment.
 
@@ -198,6 +220,10 @@ value in `B` like this
 ```python
 A_at_B_max = A[np.argmax(B)]
 ```
+The `np.argmax` stands for **arg**ument **max**imum meaning that it finds the index of 
+the maximum value in a given array. The figure below illustrates this 
+
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/0*PWjpyfxRHHiGRP9O.png){height=300 fig-align="center"}
 
 ::: 
 
@@ -205,9 +231,18 @@ A_at_B_max = A[np.argmax(B)]
 #| exercise: true
 #| eval: false
 import numpy as np
-lambda_ex = df['wavelength'][np.argmax(df['mCherry ex'])]
-lambda_em = df['wavelength'][np.argmax(df['mCherry em'])]
-stokes_shift = lambda_em - lambda_ex
+# Start by extracting the wavelengths from the DataFrame
+wavelengths = ...
+
+# Find the indices
+ex_max_idx = np.argmax(...)
+em_max_idx = ...
+
+# Use the index to find the corresponding wavelengths
+lambda_ex = wavelengths[...]
+lambda_em = ...
+
+stokes_shift = ...
 
 print(f"{lambda_ex = :d}")
 print(f"{lambda_em = :d}")
@@ -217,8 +252,17 @@ print(f"{stokes_shift = :d}")
 ```{python}
 #| solution: true
 import numpy as np
-lambda_ex = df['wavelength'][np.argmax(df['mCherry ex'])]
-lambda_em = df['wavelength'][np.argmax(df['mCherry em'])]
+# Start by extracting the wavelengths from the DataFrame
+wavelengths = df['wavelength']
+
+# Find the indices
+ex_max_idx = np.argmax(df['mCherry ex'])
+em_max_idx = np.argmax(df['mCherry em'])
+
+# Use the index to find the corresponding wavelengths
+lambda_ex = wavelengths[ex_max_idx]
+lambda_em = wavelengths[em_max_idx]
+
 stokes_shift = lambda_em - lambda_ex
 
 print(f"{lambda_ex = :d}")

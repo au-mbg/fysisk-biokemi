@@ -131,7 +131,10 @@ over the **rows** as:
 df[names].mean(axis=0)
 ```
 
-Here `axis=0` means that we apply the operation over the first axis which by convention are the rows. 
+Here `axis=0` means that we apply the operation over the first axis which by convention are the rows. The 
+figure below visualizes this
+
+![](https://numpy.org/doc/stable/_images/np_matrix_aggregation_row.png)
 
 ::: 
 

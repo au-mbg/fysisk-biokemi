@@ -53,6 +53,11 @@ You can index in the dataframe by using the column name, for example to get the 
 ```python
 col = df["MW of AA residue"]
 ```
+Arrays also allows us to operate on every element in the array at the same time, so 
+arrays can be added, subtracted, multiplied, divided, etc, see for example this figure 
+
+![](https://numpy.org/doc/stable/_images/np_array_dataones.png)
+![](https://numpy.org/doc/stable/_images/np_sub_mult_divide.png)
 
 :::
 
