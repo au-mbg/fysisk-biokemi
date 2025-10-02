@@ -265,6 +265,38 @@ titin_eps = extinction_coefficient(titin_sequence)
 print(titin_eps)
 ```
 
+---
 
+::: {.callout-tip}
 
+You don't need to understand the code below, it's just ment to illustrate that knowing 
+some Python will allow you to explore the topics that interest you in more detail.
 
+:::
+
+In general Python is very powerful at letting us explore properties of sequences, 
+for example the cell below calculates number of residues between each Tryptophan in 
+the Titin sequence and plot the distribution.
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def get_distance(sequence, letter):
+    W_index = np.argwhere(np.array([l for l in sequence]) == letter)
+    count = len(W_index)
+    distance = (W_index - np.roll(W_index, 1))[1:]
+    return distance, count
+
+letters = ['W', 'Y', 'C']
+
+fig, axes = plt.subplots(1, 3, figsize=(3*3, 3), sharey=True)
+axes = axes.flatten()
+
+for ax, letter in zip(axes, letters):
+    distance, count = get_distance(titin_sequence, letter)
+    ax.hist(distance, bins=np.arange(0, 500, 25), 
+        edgecolor='black', alpha=0.75, density=True)
+    ax.set_xlabel('Distance [Number of residues]')
+    info = f'Residue: {letter} \nCount: {count} \nMean distance: {np.mean(distance):.1f}'
+    ax.text(0.975, 0.975, info, transform=ax.transAxes, ha='right', va='top')
+```
