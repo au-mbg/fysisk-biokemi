@@ -1,4 +1,4 @@
-## Extinction coefficient of human myoglobin (WIP)
+## Extinction coefficient of human myoglobin
 
 The protein of human myoglobin is given below
 
