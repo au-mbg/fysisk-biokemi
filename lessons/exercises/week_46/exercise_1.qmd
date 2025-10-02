@@ -133,4 +133,138 @@ This value is what is known as the A280(0.1%) of a protein, i.e. the absorbance 
 
 #### (e) Tintin 
 
-New exercise. WIP
+We have now calculated the extinction coefficient of a protein, now we will make our 
+code more reusable so that it can be applied to other proteins easily. 
+
+::: {.callout-note}
+
+A function in Python is a set of instructions, like a recipe, that can be defined 
+and reused multiple times. The syntax is like this
+
+```python
+def my_function(input_1, input_2): # <1>
+    # Some operation 
+    some_internal_variable = input_1 + input_2 # <2>
+    ... 
+    return something_weve_calculated # <3>
+```
+
+1. The `def` command is used to define the functions name, here `my_function`, and state its inputs, e.g. the name and ingredients of a recipe.
+2. The body of the function defines what it does, the body can have any number of lines of code. Similar to the instructions of a recipe. 
+3. Finally, the function can `return` something, like the final product of a recipe. 
+
+Note that the function is not executed by doing this, like how a cake isn't baked by writing down the recipe, in order actually use the function it needs to be *called*
+
+```python
+output = my_function(1, 2)
+```
+
+This is also how we have already used other functions like `print`.
+
+::: 
+
+The way of doing so is by defining a function that does the necessary operations for a given sequence. 
+In this way the code can be reused for any sequence. 
+
+Finish implementing the body of the function below, note that you have already written all the required 
+code - you just need to copy it into the function.
+
+```{python}
+#| exercise: true
+#| eval: false
+def extinction_coefficient(sequence):
+
+    # Start by counting
+    ...
+
+    # Define the residue extinction coeffiecients
+    eps_trp = 5500
+    eps_tyr = 1490
+    eps_cys = 125
+
+    # Calculate 
+    epsilon = ...
+
+    return epsilon
+```
+
+```{python}
+#| solution: true
+def extinction_coefficient(sequence):
+
+    # Start by counting: 
+    N_trp = sequence.count("W")
+    N_tyr = sequence.count("Y")
+    N_cys = sequence.count("C")
+
+    # Define the residue extinction coeffiecients
+    eps_trp = 5500
+    eps_tyr = 1490
+    eps_cys = 125
+
+    # Calculate 
+    epsilon = eps_trp * N_trp + eps_tyr * N_tyr + eps_cys*N_cys
+
+    return epsilon
+```
+
+It's always a good idea to check that functions do what we expect, so we can confirm that 
+it gives the same result for human myoglobin as we calculated before 
+
+```{python}
+#| exercise: true
+#| eval: false
+epsilon_func = extinction_coefficient(sequence)
+print(f"Epsilon: {epsilon}")
+print(f"Epsilon from function: {epsilon_func}")
+```
+
+```{python}
+#| solution: true
+epsilon_func = extinction_coefficient(sequence)
+print(f"Epsilon: {epsilon}")
+print(f"Epsilon from function: {epsilon_func}")
+```
+
+The largest known protein is Titin, the cell below loads the sequence of titin 
+and prints a few bits of information about it.
+
+```{python}
+#| exercise: true
+#| eval: false
+from fysisk_biokemi.datasets import load_dataset
+titin_sequence = load_dataset('titin')
+
+print(f'Titin number of residues: {len(titin_sequence)}')
+print('First 100 residues')
+print(titin_sequence[0:100])
+```
+
+```{python}
+#| solution: true
+from fysisk_biokemi.datasets import load_dataset
+titin_sequence = load_dataset('titin')
+
+print(f'Titin number of residues: {len(titin_sequence)}')
+print('First 100 residues')
+print(titin_sequence[0:100])
+```
+
+Use your function to calculate the extinction coefficient of titin.
+
+```{python}
+#| exercise: true
+#| eval: false
+titin_eps = ... # Your code here. 
+print(titin_eps)
+```
+
+```{python}
+#| solution: true
+titin_eps = extinction_coefficient(titin_sequence)
+print(titin_eps)
+```
+
+
+
+

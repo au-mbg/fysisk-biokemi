@@ -15,6 +15,7 @@ available_datasets = {
     'reaction_order_activation_week48': 'reaction_order_activation_week48.csv',
     'week49_1': 'week49_1.xlsx',
     'week49_2': 'week49_2.xlsx',
+    'titin': 'titin.txt',
 }
 
 def get_dataset_path(name: str) -> str:
@@ -29,11 +30,14 @@ def load_dataset(name: str):
     dataset_path = get_dataset_path(name)
 
     if dataset_path.endswith('.csv'):
-        df = pd.read_csv(dataset_path)
+        data = pd.read_csv(dataset_path)
     elif dataset_path.endswith('.xlsx'):    
-        df = pd.read_excel(dataset_path)
+        data = pd.read_excel(dataset_path)
+    elif dataset_path.endswith('.txt'):
+        with open(dataset_path, 'r') as file:
+            data = file.read().strip()
 
-    return df
+    return data
 
 if __name__ == "__main__":
 
