@@ -61,6 +61,18 @@ display(df)
 Calculate the concentration of A at each timepoint in SI units, by adding new columns to the `DataFrame`.
 
 ```{python}
+#| exercise: true
+#| eval: false
+extinction_coeff = ...
+L = 1 # Path length
+
+df['[A]_(M)_25C'] = ... # For 25 C
+... # For 40 C
+display(df)
+```
+
+```{python}
+#| solution: true
 extinction_coeff = 16700 
 L = 1 # Path length
 
@@ -70,6 +82,25 @@ display(df)
 ```
 
 #### (d) Plot the data
+
+We will be resuing the plot, so we will put the code for it in a function.
+
+```{python}
+#| exercise: true
+#| eval: false
+def plot_dataframe(ax, df):
+    # Extract from dataframe
+    t = ...
+    A_25 = ...
+    A_40 = ...
+
+    # First subfigure: t vs [A]
+    ax.plot(..., ..., 'o', label='[A]_25C')
+    ... # Add the code to plot the 40C data.
+    ax.set_xlabel('t (s)')
+    ax.set_ylabel('[A] (M)')
+    ax.legend()
+```
 
 ```{python}
 #| solution: true
@@ -87,9 +118,10 @@ def plot_dataframe(ax, df):
     ax.legend()
 ```
 
+You can run this next cell to see your plot and adjust as neccesarry. 
+
 ```{python}
 fig, ax = plt.subplots()
-
 plot_dataframe(ax, df)
 ```
 
@@ -112,7 +144,6 @@ def second_order(t, k, A0):
 
 rate_laws = {0: zeroth_order, 1: first_order, 2:second_order}
 ```
-
 
 
 ```{python}

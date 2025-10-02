@@ -135,9 +135,11 @@ trying new values for the parameters in an intelligent way.
 The found parameters will generally depend on `p0` and it is therefore necessary 
 to provide a good (or good enough) guess for `p0`.
 
+Generally, the best way to learn more about a function is to read it's documentation
+and then play around with it. The documentation is in this case on the [SciPy website](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html). You don't need to read it, unless 
+you want more details. 
+
 :::
-
-
 
 Finish the code to perform the fitting in the cell below.
 

@@ -1,5 +1,11 @@
 ## Determination of reaction orders.
 
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
 #### (a) Load the dataset
 
 Load the dataset `week48_4_reaction_order.xlsx` using the widget below
@@ -160,7 +166,11 @@ We can then use these to make fits, here it is helpful to define a small functio
 from scipy.optimize import curve_fit
 
 def make_fit(x_data, y_data, x_eval, A0, order):
+    # Don't worry about this line for now. 
+    # It just picks the correct function for the given order and sets A0.
     func = lambda t, k: rate_laws[order](t, k, A0)
+
+    # Make fit
     popt, pcov = curve_fit(func, x_data, y_data)
 
     # Evaluate fit
@@ -249,6 +259,13 @@ Based on this plot;
 - What do you believe is the reaction order for [A2]?
 - What is the unit of the rate constant for [A2]? 
 
+::: {.callout-note}
+
+The cell above used a `for`-loop. These are a powerful way of performing the same 
+operation with different inputs, you will learn more about them later on.
+
+::: 
+
 #### (e) Residuals 
 
 By inspecting the plot we can make a qualitative judgement of the reaction orders. 
@@ -262,9 +279,32 @@ We can calculate these in much the same way we calculate the fits, except we don
 evaluate the fit at a new set of points but at the observations $x_i$.
 
 ```{python}
+#| exercise: true
+#| eval: false
+def calculate_residuals(x_data, y_data, A0, order):
+    # Don't worry about this line for now. 
+    # It just picks the correct function for the given order and sets A0.
+    func = lambda t, k: rate_laws[order](t, k, A0)
+
+    # Make fit
+    popt, pcov = curve_fit(func, x_data, y_data)
+
+
+    # Evaluate fit
+    k = popt[0]
+    y_fit = ... # Calculate the fit at the x_data using `func`
+    residuals = ... # Calculate the residuals.
+    return residuals
+```
+
+```{python}
 #| solution: true
 def calculate_residuals(x_data, y_data, A0, order):
+    # Don't worry about this line for now. 
+    # It just picks the correct function for the given order and sets A0.
     func = lambda t, k: rate_laws[order](t, k, A0)
+
+    # Make fit
     popt, pcov = curve_fit(func, x_data, y_data)
 
     # Evaluate fit

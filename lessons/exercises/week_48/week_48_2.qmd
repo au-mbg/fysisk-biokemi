@@ -1,5 +1,11 @@
 ## Determination of type and strength of cooperativity
 
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
 The binding of NAD+ to the protein yeast glyceraldehyde 3-phosphate dehydrogenase (GAPDH) was studied using
 equilibrium dialysis. The enzyme concentration was 71 μM. The concentration of $[\text{NAD}^{+}_\text{free}]$ and the corresponding values of $\bar{n}$ were determined with the resulting data found in the dataset `week48_2_determination_coop.xlsx`.
 
@@ -225,6 +231,19 @@ print(f"{N_fit = :.3f}")
 print(f"{k_d_fit = :e}")
 print(f"{h_fit = :.3f}")
 ```
+
+::: {.callout-note}
+
+The function `np.concatenate` takes a number of arrays and makes a new array that 
+consisting of the originals one after each other. For example, 
+
+```{python}
+A = np.array([1, 2, 3])
+B = np.array([4, 5, 6])
+C = np.concatenate([A, B])
+print(C)
+```
+::: 
 
 #### (h) Plot with fit
 

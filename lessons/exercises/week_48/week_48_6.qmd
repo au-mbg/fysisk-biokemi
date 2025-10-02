@@ -1,5 +1,11 @@
 ## Analysis of a reversible reaction 
 
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
 Consider the following reaction 
 
 $$
@@ -119,6 +125,12 @@ def A_time(t, A0, k_f, k_b):
 def A_time(t, A0, k_f, k_b):
     return (k_b + k_f * np.exp(-(k_f+k_b)*t)) / (k_f + k_b) * A0
 ```
+
+::: {.callout-caution}
+
+Be careful to correctly set parantheses when implementing this function!
+
+::: 
 
 And then we can use that function to calculate and plot the concentrations as a function of time. 
 

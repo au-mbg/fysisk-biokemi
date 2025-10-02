@@ -4,7 +4,7 @@
 import numpy as np
 ```
 
-The `week48_1_interpret.xlsx` contains protein binding dataset. 
+The `week48_1_interpret.xlsx` contains a protein binding dataset. 
 
 #### (a) Load the dataset
 
@@ -56,7 +56,7 @@ display(df)
 
 Make plots of the binding data directly with a linear and logarithmic x-axis. 
 
-Estimate Kd by visual inspection of these plots! 
+Estimate $K_D$ by visual inspection of these plots! 
 
 ```{python}
 #| exercise: true
@@ -74,7 +74,7 @@ ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 
 ax = axes[1]
 ... # Put some code here - perhaps you can copy it from somewhere?
-ax.set_xscale('log')
+ax.set_xscale('log') # This make the x-axis logarithmic.
 ```
 
 ```{python}
@@ -97,7 +97,7 @@ ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 ax.set_xscale('log')
 ```
 
-::: {.callout-tip}
+::: {.callout-note}
 
 Ths command `ax.set_xscale('log')` tells `matplotlib` that we want the x-axis to use a log-scale.
 
