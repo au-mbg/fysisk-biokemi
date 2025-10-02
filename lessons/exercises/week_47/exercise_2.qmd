@@ -223,7 +223,7 @@ A_at_B_max = A[np.argmax(B)]
 The `np.argmax` stands for **arg**ument **max**imum meaning that it finds the index of 
 the maximum value in a given array. The figure below illustrates this 
 
-![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/np_argmax.png){.lightbox width=400 fig-align="center"}
+![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/np_argmax.png){.lightbox}
 
 ::: 
 
