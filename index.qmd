@@ -1,11 +1,33 @@
 ---
 title: "Exercises"
 listing:
-  contents: lessons
-  sort: false
-  type: table
-  fields: [title, categories]
-  page-size: 50
+  - id: weeks
+    contents: lessons
+    sort: false
+    type: table
+    fields: [title, categories]
+    page-size: 50
+    include:
+      title: "Week*"
+  - id: other
+    contents: lessons
+    sort: false
+    type: table
+    fields: [title, categories]
+    page-size: 50
+    exclude:
+      title: "Week*"
+
 ---
 
 ![](other/icon2.svg)
+
+## Weeks
+
+:::{#weeks}
+:::
+
+## Other
+
+:::{#other}
+:::
