@@ -106,6 +106,12 @@ def michaelis_menten(S, Vmax, Km):
     return (Vmax * S) / (Km + S)
 ```
 
+::: {.callout-caution}
+
+This is one of those places were parentheses are crucial.
+
+::: 
+
 And then we can follow our usual procedure to make the fit
 
 ```{python}
@@ -131,13 +137,28 @@ y_data = df['V0_(M/s)']
 popt, pcov = curve_fit(michaelis_menten, x_data, y_data)
 Vmax, Km = popt
 
-print(f"{Vmax = :03f}")
-print(f"{Km = :03f}")
+print(f"{Vmax = :.4f}")
+print(f"{Km = :.4f}")
 ```
 
 How do these values compare to your estimate? 
 
-#### (d)
+#### (d) Enzyme concentration
 
-The kcat of the enzyme was determined to be $20000 \ \text{s}^{-1}$. 
-Calculate the concentration of the enzyme used in the assay.
+The $k_{cat}$ of the enzyme was determined to be $20000 \ \text{s}^{-1}$. 
+Calculate, in the cell below, the concentration of the enzyme used in the assay.
+
+```{python}
+#| exercise: true
+#| eval: false
+kcat = ...
+... # Calculate the enzyme_concentration
+print(...) # Print the concentration.
+```
+
+```{python}
+#| solution: true
+kcat = 20000
+enzyme_concentration = Vmax / kcat 
+print(f'Enzyme concentration: {enzyme_concentration:.3e} M')
+```

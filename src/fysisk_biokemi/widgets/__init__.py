@@ -7,6 +7,7 @@ from .buffer_equation import buffer_equation, buffer_visualization
 from .data_uploader import DataUploader
 from .sequence_properties import sequence_properties, sequence_dataframe
 from .uvis_eyeballing import estimate_kd, visualize_simple_vs_quadratic
+from .michaelis_menten import michaelis_menten_demo
 
 widgets = {
     "concentration_mass_volume": concentration_mass_volume,
@@ -21,5 +22,6 @@ widgets = {
     "sequence_dataframe": sequence_dataframe,
     "estimate_kd": estimate_kd,
     "visualize_simple_vs_quadratic": visualize_simple_vs_quadratic,
+    "michaelis_menten_demo": michaelis_menten_demo,
 }
 
