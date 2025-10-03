@@ -68,28 +68,23 @@ class MichaelisMenten:
         fig.add_trace(go.Scatter(x=s_values, y=v_values, mode="lines+markers", name="Data"))
 
         # Km line
-        fig.add_trace(
-            go.Scatter(
-                x=[self.km_input.value, self.km_input.value],
-                y=[0, self.vmax_input.value / 2],
-                mode="lines",
-                line=dict(dash="dash", color="red"),
-                name="Km",
-                visible=self.show_km.value,
-            )
+        self._km_shape_idx = len(fig.layout.shapes)
+        fig.add_vline(
+            x=self.km_input.value,
+            line=dict(dash="dash", color="red"),
+            name="Km",
+            visible=self.show_km.value,
+        )
+       
+        # Vmax line
+        self._vm_shape_idx = len(fig.layout.shapes)
+        fig.add_hline(
+            y=self.vmax_input.value,
+            line=dict(dash="dash", color="green"),
+            name="Vmax",
+            visible=self.show_vmax.value,
         )
 
-        # Vmax line
-        fig.add_trace(
-            go.Scatter(
-                x=[0, self.substrate_range.value[1]],
-                y=[self.vmax_input.value, self.vmax_input.value],
-                mode="lines",
-                line=dict(dash="dash", color="green"),
-                name="Vmax",
-                visible=self.show_vmax.value,
-            )
-        )
 
         fig.add_annotation(
             x=0.60, y=0.02, xref="paper", yref="paper",  # relative to the plotting area
@@ -123,40 +118,42 @@ class MichaelisMenten:
     def _update_plot(self):
         s, v = self.calculate()
         with self.fig.batch_update():
-            self.fig.data[0].x = s
-            self.fig.data[0].y = v
+            self.fig.data[0].x = s.tolist()
+            self.fig.data[0].y = v.tolist()
 
             if self.plot_lines.value:
                 self.fig.data[0].mode = "lines+markers"
             else:
                 self.fig.data[0].mode = "markers"
 
-            # Km line
-            self.fig.data[1].x = [self.km_input.value, self.km_input.value]
-            self.fig.data[1].y = [0, self.vmax_input.value / 2]
-            self.fig.data[1].visible = self.show_km.value
+            # # Km line
+            km = self.km_input.value
+            show = self.show_km.value
+            sh = self.fig.layout.shapes[self._km_shape_idx]
+            sh.update(x0=km, x1=km, visible=show, yref="paper", y0=0, y1=1)
 
-            # Vmax line
-            self.fig.data[2].x = [0, self.substrate_range.value[1]]
-            self.fig.data[2].y = [self.vmax_input.value, self.vmax_input.value]
-            self.fig.data[2].visible = self.show_vmax.value
+            # # Vmax line
+            vmax = self.vmax_input.value
+            show = self.show_vmax.value
+            sh = self.fig.layout.shapes[self._vm_shape_idx]
+            sh.update(y0=vmax, y1=vmax, visible=show, xref="paper", x0=0, x1=1)
+
+
+            # Update kcat and kcat/Km
+            km = self.km_input.value
+            vmax = self.vmax_input.value
+            etot = self.enzyme_conc.value
+            kcat = vmax / etot
+            kcat_km = kcat / km 
+
+            k_cat_str = r"$k_{{cat}} = \frac{{V_{{max}}}}{{[E]_{{tot}}}} = {:.2f}$".format(kcat)
+            k_cat_km_str = r"$\frac{{k_{{cat}}}}{{K_m}} = {:.2f}$".format(kcat_km)
+            self.fig.layout.annotations[1].text = k_cat_str
+            self.fig.layout.annotations[0].text = k_cat_km_str
 
     def _on_change(self, change):
         try:
             self._update_plot()
-
-            with self.text_output:
-                self.text_output.clear_output(wait=True)
-                km = self.km_input.value
-                vmax = self.vmax_input.value
-                etot = self.enzyme_conc.value
-                kcat = vmax / etot
-                kcat_km = kcat / km 
-
-                k_cat_str = r"$k_{{cat}} = \frac{{V_{{max}}}}{{[E]_{{tot}}}} = {:.2f}$".format(kcat)
-                k_cat_km_str = r"$\frac{{k_{{cat}}}}{{K_m}} = {:.2f}$".format(kcat_km)
-                self.fig.layout.annotations[0].text = k_cat_str
-                self.fig.layout.annotations[1].text = k_cat_km_str
         except Exception as e:
             pass
 
@@ -197,4 +194,3 @@ class MichaelisMenten:
 def michaelis_menten_demo():
     widget = MichaelisMenten()
     widget.display()
-    widget.km_input.value = 0.5 # This seems to stop the widget from throwing useless errors.
