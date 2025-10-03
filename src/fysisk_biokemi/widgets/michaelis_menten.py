@@ -146,8 +146,8 @@ class MichaelisMenten:
             kcat = vmax / etot
             kcat_km = kcat / km 
 
-            k_cat_str = r"$k_{{cat}} = \frac{{V_{{max}}}}{{[E]_{{tot}}}} = {:.2f}$".format(kcat)
-            k_cat_km_str = r"$\frac{{k_{{cat}}}}{{K_m}} = {:.2f}$".format(kcat_km)
+            k_cat_str = "k_cat: {:.1f}".format(kcat)
+            k_cat_km_str = "k_cat/Km: {:.1f}".format(kcat_km)
             self.fig.layout.annotations[1].text = k_cat_str
             self.fig.layout.annotations[0].text = k_cat_km_str
 
