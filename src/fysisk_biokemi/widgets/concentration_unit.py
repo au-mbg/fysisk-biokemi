@@ -2,6 +2,8 @@ import ipywidgets as widgets
 from IPython.display import display
 
 from fysisk_biokemi.widgets.utils import molar_prefix_to_factor
+from fysisk_biokemi.widgets.utils import StrictFloatText
+
 
 def concentration_unit():
     # Map SI prefix to power of ten
@@ -12,7 +14,7 @@ def concentration_unit():
         return value * factor
 
     # Input widgets
-    value_box = widgets.FloatText(description="Værdi:", value=1.0)
+    value_box = StrictFloatText(description="Værdi:", value="1.0")
     unit_box = widgets.Dropdown(
         description="Enhed:",
         options=list(prefix_to_factor.keys()),

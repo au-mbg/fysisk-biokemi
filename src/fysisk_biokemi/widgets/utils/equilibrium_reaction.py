@@ -1,3 +1,4 @@
+import numpy as np
 from fysisk_biokemi.widgets.utils.misc import (
     molar_prefix_to_factor,
     chemical_formula_to_latex,
@@ -102,38 +103,41 @@ class Reaction:
         return f"{reactants_latex} \\rightleftharpoons {products_latex}"
 
     def get_equilibrium_equation(self, with_values=True):
-        numerator = ""
-        denominator = ""
+        try:
+            numerator = ""
+            denominator = ""
 
 
-        def term_to_latex(term):
-            coeff = term.coefficient
-            formula = chemical_formula_to_latex(term.formula)
-            if coeff == 1:
-                return f"[{formula}]"
-            else:
-                return f"[{formula}]^{{{coeff}}}"
+            def term_to_latex(term):
+                coeff = term.coefficient
+                formula = chemical_formula_to_latex(term.formula)
+                if coeff == 1:
+                    return f"[{formula}]"
+                else:
+                    return f"[{formula}]^{{{coeff}}}"
 
-        # Equation string
-        numerator = " \\cdot ".join(term_to_latex(t) for t in self.products)
-        denominator = " \\cdot ".join(term_to_latex(t) for t in self.reactants)
-        eq = f"K_{{eq}} = \\frac{{{numerator}}}{{{denominator}}}"
+            # Equation string
+            numerator = " \\cdot ".join(term_to_latex(t) for t in self.products)
+            denominator = " \\cdot ".join(term_to_latex(t) for t in self.reactants)
+            eq = f"K_{{eq}} = \\frac{{{numerator}}}{{{denominator}}}"
 
-        # Equation with concentrations
-        if with_values:
-            if all(t.concentration is not None for t in self.products + self.reactants):
-                num_conc = " \\cdot ".join(
-                    f"({number_to_scientific_latex(t.concentration)})^{{{t.coefficient}}}" if t.coefficient > 1 else f"{number_to_scientific_latex(t.concentration)}" for t in self.products
-                )
-                denom_conc = " \\cdot ".join(
-                    f"({number_to_scientific_latex(t.concentration)})^{{{t.coefficient}}}" if t.coefficient > 1 else f"{number_to_scientific_latex(t.concentration)}" for t in self.reactants
-                )
-                eq += f" = \\frac{{{num_conc}}}{{{denom_conc}}}"
+            # Equation with concentrations
+            if with_values:
+                if all(t.concentration is not None for t in self.products + self.reactants):
+                    num_conc = " \\cdot ".join(
+                        f"({number_to_scientific_latex(t.concentration)})^{{{t.coefficient}}}" if t.coefficient > 1 else f"{number_to_scientific_latex(t.concentration)}" for t in self.products
+                    )
+                    denom_conc = " \\cdot ".join(
+                        f"({number_to_scientific_latex(t.concentration)})^{{{t.coefficient}}}" if t.coefficient > 1 else f"{number_to_scientific_latex(t.concentration)}" for t in self.reactants
+                    )
+                    eq += f" = \\frac{{{num_conc}}}{{{denom_conc}}}"
 
-            # Result value
-            value = self.calculate_equilibrium_constant()
-            if value is not None:
-                eq += f" = {number_to_scientific_latex(value)}"
+                # Result value
+                value = self.calculate_equilibrium_constant()
+                if value is not None or value is not np.nan:
+                    eq += f" = {number_to_scientific_latex(value)}"
+        except:
+            eq = "\mathrm{Fejl}"
 
         return eq
     

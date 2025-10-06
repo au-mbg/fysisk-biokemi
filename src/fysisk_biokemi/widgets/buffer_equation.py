@@ -4,7 +4,7 @@ import numpy as np
 from dataclasses import dataclass
 import plotly.graph_objects as go
 
-from fysisk_biokemi.widgets.utils import molar_prefix_to_factor, number_to_scientific_latex
+from fysisk_biokemi.widgets.utils import molar_prefix_to_factor, number_to_scientific_latex, StrictFloatText
 
 
 def calculate_acid_base_concentrations(pH, pKa, total_conc):
@@ -16,11 +16,10 @@ def calculate_acid_base_concentrations(pH, pKa, total_conc):
 
 class BufferEquation:
     def __init__(self):
-        self.pH_input = widgets.FloatText(description="pH:", value=7.0, style={"description_width": "initial"})
-        self.pKa_input = widgets.FloatText(description="pKa:", value=7.0, style={"description_width": "initial"})
-
-        self.total_conc_input = widgets.FloatText(
-            description="Total koncentration (M):", value=0.1, style={"description_width": "initial"}
+        self.pH_input = StrictFloatText(description="pH:", value="7.0", style={"description_width": "initial"})
+        self.pKa_input = StrictFloatText(description="pKa:", value="7.0", style={"description_width": "initial"})
+        self.total_conc_input = StrictFloatText(
+            description="Total koncentration (M):", value="0.1", style={"description_width": "initial"}
         )
 
         self.concentration_unit = widgets.Dropdown(
@@ -53,7 +52,22 @@ class BufferEquation:
         display(widget)
 
     def _on_change(self, change):
+
+        # Check that there are no None:
+        if None in (self.pH_input.value, self.pKa_input.value, self.total_conc_input.value):
+            valid = False
+        else:
+            valid = True
+
+         # Only update on value changes (not focus, etc)
         if change["type"] == "change" and change["name"] == "value":
+
+            if not valid:
+                with self.output_field:
+                    self.output_field.clear_output()
+                    display("Indtast gyldige numeriske værdier for alle parametre.")
+                return
+
             pH = self.pH_input.value
             pKa = self.pKa_input.value
             total_conc = self.total_conc_input.value * molar_prefix_to_factor[self.concentration_unit.value]
@@ -62,22 +76,24 @@ class BufferEquation:
 
             with self.output_field:
                 self.output_field.clear_output()
+                try: 
+                    derivation = []
 
-                derivation = []
-
-                derivation += [r"\frac{[\text{base}]}{[\text{acid}]} = 10^{\text{pH} - \text{pKa}} = " + f"{number_to_scientific_latex(ratio)}"]
-                derivation += [
-                    r"[\text{base}] + [\text{acid}] = C_{\text{total}} = " + rf"{number_to_scientific_latex(total_conc)} \, \text{{M}}" + r"\\"
-                ]
-                derivation += [
-                    r"[\text{base}] = \frac{C_{\text{total}} \cdot 10^{\text{pH} - \text{pKa}}}{1 + 10^{\text{pH} - \text{pKa}}} = "
-                    + rf"\underline{{{number_to_scientific_latex(base_conc)}}} \, \text{{M}}"
-                    + r"\\"
-                ]
-                derivation += [
-                    r"[\text{acid}] = C_{\text{total}} - [\text{base}] = "
-                    + rf"\underline{{{number_to_scientific_latex(acid_conc)}}} \, \text{{M}}"
-                ]
+                    derivation += [r"\frac{[\text{base}]}{[\text{acid}]} = 10^{\text{pH} - \text{pKa}} = " + f"{number_to_scientific_latex(ratio)}"]
+                    derivation += [
+                        r"[\text{base}] + [\text{acid}] = C_{\text{total}} = " + rf"{number_to_scientific_latex(total_conc)} \, \text{{M}}" + r"\\"
+                    ]
+                    derivation += [
+                        r"[\text{base}] = \frac{C_{\text{total}} \cdot 10^{\text{pH} - \text{pKa}}}{1 + 10^{\text{pH} - \text{pKa}}} = "
+                        + rf"\underline{{{number_to_scientific_latex(base_conc)}}} \, \text{{M}}"
+                        + r"\\"
+                    ]
+                    derivation += [
+                        r"[\text{acid}] = C_{\text{total}} - [\text{base}] = "
+                        + rf"\underline{{{number_to_scientific_latex(acid_conc)}}} \, \text{{M}}"
+                    ]
+                except Exception as e:
+                    derivation = ["\mathrm{Fejl}"]
 
                 for line in derivation:
                     display(Math(line))

@@ -2,12 +2,14 @@ import ipywidgets as widgets
 from IPython.display import display, Math
 from fysisk_biokemi.widgets.utils.equilibrium_reaction import Reaction, ReactionTerm
 from fysisk_biokemi.widgets.utils.misc import molar_prefix_to_factor
+from fysisk_biokemi.widgets.utils import StrictFloatText
+
 
 
 
 def add_term_input(term: ReactionTerm):
-    conc_input = widgets.FloatText(
-        description=f"[{term.formula}]:", value=term.concentration, style={"description_width": "initial"}
+    conc_input = StrictFloatText(
+        description=f"[{term.formula}]:", value=f"{term.concentration}", style={"description_width": "initial"}
     )
     unit_input = widgets.Dropdown(
         options=molar_prefix_to_factor.keys(), value=term.unit, description="Enhed:", style={"description_width": "initial"}
