@@ -15,6 +15,25 @@ import fysisk_biokemi.widgets as fsb_widgets
 from fysisk_biokemi.widgets.utils import disable_custom_widget_colab, enable_custom_widget_colab
 ```
 
+## Kommaer, punktumer, commas og dots. 
+
+På dansk skriver vi et decimaltal som "3,14", derfor også navnet et kommatal, men på engelsk bruges
+der punktum til at decimal seperator så "3.14". Forskellige programmer udnytter kommaer på forskellige måder, f.eks: 
+
+- I Python bruges komma til at seperare elementer, så `3,14` vil Python forstå som en `tuple` (som er en slags beholder) med to elementer `3` og `14`. 
+- I en `csv`-fil bruges kommaer på en lignende facon til at separere indgange, så i en `csv`-fil med `3,14` på en række vil give to søjler. 
+
+Prøv følgende i celle nednefor
+
+- `3,14 + 6`
+- `3.14 + 6`
+
+```
+# Prøv beregningerne her! 
+```
+
+Vi vil bruge "." (punktum) som decimalseperator fremover.
+
 ## Koncentrations enheder
 
 Widgetten nedenfor kan konvertere mellem enheder med forskellige prefix, som værdien 
