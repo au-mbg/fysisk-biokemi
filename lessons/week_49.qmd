@@ -21,3 +21,11 @@ format-links:
 ---
 
 {{< include exercises/week_49/week_49_3.qmd >}}
+
+---
+
+{{< include exercises/week_49/week_49_6.qmd >}}
+
+---
+
+{{< include exercises/week_49/week_49_7.qmd >}}

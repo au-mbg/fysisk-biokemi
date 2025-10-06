@@ -22,6 +22,7 @@ available_datasets = {
     'week49_1': 'week49_1.xlsx',
     'week49_2': 'week49_2.xlsx',
     'week49_6': 'week49_6_inhib.xlsx',
+    'week49_7': 'week49_7_inhib_II.xlsx',
 
     # Other
     'titin': 'titin.txt',
