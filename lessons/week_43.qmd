@@ -28,7 +28,7 @@ Prøv følgende i celle nednefor
 - `3,14 + 6`
 - `3.14 + 6`
 
-```
+```{python}
 # Prøv beregningerne her! 
 ```
 
