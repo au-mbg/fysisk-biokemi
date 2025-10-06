@@ -1,6 +1,6 @@
 ## ADP binding to pyruvate kinase. 
 
-The binding of ADP to the enzyme pyruvate kinase was measured by fluorescence. The enzyme concentration was 4 μM throughout the titration, and each measurement was done in triplicate. The binding results were obtained at 310 K and are given in the `.csv`-file `week47_5_adp_pyruvate.csv`. 
+The binding of ADP to the enzyme pyruvate kinase was measured by fluorescence. The enzyme concentration was 4 μM throughout the titration, and each measurement was done in triplicate. The binding results were obtained at 310 K and are given in the `.csv`-file `week47_8_adp_pyruvate.csv`. 
 
 #### (a) Load the dataset
 

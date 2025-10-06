@@ -9,8 +9,8 @@ available_datasets = {
     # Week 47:
     'mCherry': 'week47_2_mcherry_fpbase_spectra.csv',
     'protein_blood_plasma': 'week47_3_protein_blood_plasma.xlsx',
-    'dialysis_experiment': 'week47_4_dialysis_experiment.xlsx',
-    'adp_pyruvate': 'week47_5_adp_pyruvate.csv',
+    'dialysis_experiment': 'week47_7_dialysis_experiment.xlsx',
+    'adp_pyruvate': 'week47_8_adp_pyruvate.csv',
 
     # Week 48:
     'interpret_week48': 'week48_1_interpret.xlsx',
