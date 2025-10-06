@@ -20,6 +20,10 @@ format-links:
 
 ---
 
+{{< include exercises/week_47/exercise_1.qmd >}}
+
+---
+
 {{< include exercises/week_47/exercise_3.qmd >}}
 
 ---

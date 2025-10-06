@@ -7,6 +7,10 @@ available_datasets = {
     # Week 46:
     'AA_frequency': 'week46_1_AA_frequency.xlsx',
     # Week 47:
+    'week47_1_emi': 'week47_1_tryp_emi.xlsx',
+    'week47_1_ext': 'week47_1_tryp_ext.xlsx',
+    'week47_1_ph2': 'week47_1_tryp_ph2.xlsx',
+    'week47_1_ph7': 'week47_1_tryp_ph7.xlsx',
     'mCherry': 'week47_2_mcherry_fpbase_spectra.csv',
     'protein_blood_plasma': 'week47_3_protein_blood_plasma.xlsx',
     'dialysis_experiment': 'week47_7_dialysis_experiment.xlsx',
