@@ -29,10 +29,14 @@ Prøv følgende i celle nednefor
 - `3.14 + 6`
 
 ```{python}
+#| eval: false
 # Prøv beregningerne her! 
+...
 ```
 
 Vi vil bruge "." (punktum) som decimalseperator fremover.
+
+---
 
 ## Koncentrations enheder
 
@@ -75,6 +79,15 @@ du kan vælge hvad enheden af masse og volumen er.
 fsb_widgets.concentration_mass_volume()
 ```
 
+## Masse fra koncentration og volumen
+
+Denne widget regne massen der skal til for at lave en opløsning med en given koncentration og volumen.
+
+```{python}
+#| eval: false
+fsb_widgets.mass_concentration_volume()
+```
+
 ## Molekylærvægt
 
 Molekylærvægten er en sum af atomarvægte 
@@ -89,6 +102,16 @@ den periodiske table.
 ```{python}
 #| eval: false
 fsb_widgets.molecular_weight()
+```
+
+## Fortynding
+
+Denne widget kan regne hvordan en stock opløsning skal fortyndens for at opnå en 
+ønsket koncentration. 
+
+```{python}
+#| eval: false
+fsb_widgets.dilution_helper()
 ```
 
 ## Ligevægts reaktions

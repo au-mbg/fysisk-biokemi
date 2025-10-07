@@ -1,5 +1,5 @@
 from .concentration_unit import concentration_unit
-from .concentration_mass_volume import concentration_mass_volume
+# from .concentration_mass_volume import concentration_mass_volume
 from .molecular_weight import molecular_weight
 from .reaction_equation import reaction_equation
 from .reaction_data_analysis import reaction_data_analysis
@@ -8,6 +8,8 @@ from .data_uploader import DataUploader
 from .sequence_properties import sequence_properties, sequence_dataframe
 from .uvis_eyeballing import estimate_kd, visualize_simple_vs_quadratic
 from .michaelis_menten import michaelis_menten_demo
+from .solution_helper import SolutionHelper, solution_helper, concentration_mass_volume, mass_concentration_volume
+from .dilution_helper import DilutionHelper, dilution_helper
 
 widgets = {
     "concentration_mass_volume": concentration_mass_volume,
@@ -23,5 +25,7 @@ widgets = {
     "estimate_kd": estimate_kd,
     "visualize_simple_vs_quadratic": visualize_simple_vs_quadratic,
     "michaelis_menten_demo": michaelis_menten_demo,
+    "solution_helper": solution_helper,
+    "dilution_helper": dilution_helper,
 }
 
