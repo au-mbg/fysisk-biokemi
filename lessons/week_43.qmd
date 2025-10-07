@@ -116,12 +116,12 @@ fsb_widgets.dilution_helper()
 
 ## Ligevægts reaktions
 
-Denne widget kan regne ligevægts koefficient af reaktioner, f.eks. 
+Denne widget kan regne ligevægtskonstanten af reaktioner, f.eks. 
 
 $$
 aA + bB ... = xX + yY ... 
 $$
-Hvor ligevægtskoefficienten er givet ved 
+Hvor ligevægtskonstanten er givet ved 
 
 $$
 K_{eq} = \frac{[X]^x \times [Y]^y \times ...}{[A]^a \times [B]^b \times ...}
@@ -136,7 +136,7 @@ For at bruge widgetten skal du skrive en reaktions ligningen på formen
 a A + b B = c C 
 ```
 Hvor der er mellemrum mellem ordren og stoffet, du kan så angive koncentrationen og 
-ligevægtskoefficienten bliver regnet. 
+ligevægtskonstanten bliver regnet. 
 
 ```{python}
 #| eval: false
@@ -169,7 +169,7 @@ At bruge widgten kræver fire trin
 - Kilk på "Upload CSV" og vælg en fil. 
 - Sikre at reaktionsligning er den du er interesseret i. 
 - Sikre at hvert led af reaktionsligningen er tilknyttet den rigtige kolonne i datasættet og enheden er korrekt.
-- Klik "Beregn og plot" for at beregne ligevægtskoefficienten.
+- Klik "Beregn og plot" for at beregne ligevægtskonstanten.
 
 ```{python}
 #| eval: false
