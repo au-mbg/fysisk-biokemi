@@ -78,6 +78,7 @@ class EyeBallingWidget:
 
     def __init__(self):
         self.plot_output = widgets.Output()
+        self.error_output = widgets.Output()
 
         self.generate_button = widgets.Button(
             description="Generate New Data", button_style="primary"
@@ -102,29 +103,14 @@ class EyeBallingWidget:
             description="Correct Attempts:", value=0, disabled=True, style={'description_width': 'initial'})
 
         self.params = SingleBindingParameters.get_random()
-        self._make_plot()
-        self._update_plot()
 
     def display(self):
-
+        self._make_plot()
         controls = widgets.VBox([self.generate_button, self.guess_kd_input, self.guess_kd_error, self.total_guesses, self.correct_guesses])
-        plot = widgets.VBox([self.plot_output])
-        widget = widgets.HBox([controls, plot])    
+        widget = widgets.HBox([controls, self.plot_output, self.error_output])    
         display(widget)
 
-    def _make_plot(self):
-        self.fig = go.FigureWidget(layout=go.Layout(width=600, height=400))
-
-        trace = go.Scatter(
-            x=[], y=[], mode="markers", name=r"$\theta$", line=dict(width=4)
-        )
-        self.fig.add_trace(trace)
-
-        with self.plot_output:
-            self.plot_output.clear_output()
-            display(self.fig)
-
-    def _update_plot(self):
+    def _get_data(self):
         if self.params.log:
             L = np.geomspace(1e-3, self.params.L_max, 25)
         else:
@@ -132,23 +118,42 @@ class EyeBallingWidget:
 
         theta = calculate_fraction_bound(self.params, L_total=L) + np.random.normal(0, 0.01, size=L.shape)
         theta = np.clip(theta, 0, 1)
+        return L, theta
+
+    def _make_plot(self):
+        self.fig = go.FigureWidget(layout=go.Layout(width=600, height=400))
+
+        x, y = self._get_data()
+
+        trace = go.Scatter(
+            x=x, y=y, mode="markers", name=r"$\theta$", line=dict(width=4)
+        )
+        self.fig.add_trace(trace)
+        self.fig.update_layout(
+            title="Estimate K_D",
+            template="plotly_white",
+            xaxis_title="[L]",
+            yaxis_title=r"Fraction bound",
+
+        )
+
+        with self.plot_output:
+            self.plot_output.clear_output()
+            display(self.fig)
+
+    def _update_plot(self):
+
+        L, theta = self._get_data()
 
         self.fig.data[0].x = L
         self.fig.data[0].y = theta
-
-        self.fig.update_layout(
-            xaxis_title="Ligand Concentration [µM]",
-            yaxis_title="Fraction Bound (θ)",
-            yaxis_range=[-0.05, 1.05],
-            title="Fraction Bound vs Ligand Concentration",
-        )
 
         if self.params.log:
             self.fig.update_xaxes(type="log")
         else:
             self.fig.update_xaxes(type="linear")
 
-        self.fig.update_traces()
+        #self.fig.update_traces()
 
     def _on_generate_button_clicked(self, b):
         self.params = SingleBindingParameters.get_random()
