@@ -186,7 +186,7 @@ class EyeBallingWidget:
         if error < 5:
             self.correct_guesses.value += 1
             self.guess_kd_input.disabled = True
-
+            
 class CompareSimpleVSQuadraticWidget:
 
     def __init__(self):
@@ -211,14 +211,31 @@ class CompareSimpleVSQuadraticWidget:
         self.k_d_input.observe(self._update_plot, names='value')
         self.p_total_input.observe(self._update_plot, names='value')
 
+    def _calculate(self):
+        L = np.linspace(0, 10 * self.k_d_input.value, 100)
+
+        K_D = self.k_d_input.value
+        P_total = self.p_total_input.value
+
+        simple = SingleBindingParameters(K_D=K_D, L_max=None, L_min=None, log=False)
+        quad = QuadraticBindingParameters(K_D=K_D, P_total=P_total, L_total=None)
+
+        theta_simple = calculate_fraction_bound(simple, L_total=L)
+        theta_quad = calculate_fraction_bound(quad, L_total=L)
+
+        return L, theta_simple, theta_quad
+
+
     def _make_plot(self):
         self.fig = go.FigureWidget(layout=go.Layout(width=700, height=500))
 
+        L, theta_simple, theta_quad = self._calculate()
+
         trace1 = go.Scatter(
-            x=[], y=[], mode="lines", name="Simple Binding", line=dict(width=4)
+            x=L, y=theta_simple, mode="lines", name="Simple Binding", line=dict(width=4)
         )
         trace2 = go.Scatter(
-            x=[], y=[], mode="lines", name="Quadratic Binding", line=dict(width=4)
+            x=L, y=theta_quad, mode="lines", name="Quadratic Binding", line=dict(width=4)
         )
         self.fig.add_trace(trace1)
         self.fig.add_trace(trace2)
@@ -236,17 +253,8 @@ class CompareSimpleVSQuadraticWidget:
             display(self.fig)
 
     def _update_plot(self, change=None):
-        L = np.linspace(0, 10 * self.k_d_input.value, 100)
-
-        K_D = self.k_d_input.value
-        P_total = self.p_total_input.value
-
-        simple = SingleBindingParameters(K_D=K_D, L_max=None, L_min=None, log=False)
-        quad = QuadraticBindingParameters(K_D=K_D, P_total=P_total, L_total=None)
-
-        theta_simple = calculate_fraction_bound(simple, L_total=L)
-        theta_quad = calculate_fraction_bound(quad, L_total=L)
-
+        L, theta_simple, theta_quad = self._calculate()
+     
         self.fig.data[0].x = L
         self.fig.data[0].y = theta_simple
         self.fig.data[1].x = L
@@ -254,13 +262,10 @@ class CompareSimpleVSQuadraticWidget:
 
     def display(self):
         self._make_plot()
-        self._update_plot()
-
         controls = widgets.VBox([self.k_d_input, self.p_total_input])
         plot = widgets.VBox([self.plot_output])
         widget = widgets.HBox([controls, plot])    
         display(widget)
-
 
 def estimate_kd():
     widget = EyeBallingWidget()
