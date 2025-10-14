@@ -12,24 +12,24 @@ format-links:
 
 ---
 
-{{< include exercises/data-plotting-regression_deter-reacti-orders.qmd >}}
+{{< include exercises/deter-reacti-orders.qmd >}}
 
 ---
 
-{{< include exercises/calculation-plotting_analys-rever-reacti.qmd >}}
+{{< include exercises/analys-rever-reacti.qmd >}}
 
 ---
 
-{{< include exercises/data-plotting-regression_deter-reacti-order-activ.qmd >}}
+{{< include exercises/deter-reacti-order-activ.qmd >}}
 
 ---
 
-{{< include exercises/calculaton-plotting_the-ph-effect-active.qmd >}}
+{{< include exercises/the-ph-effect-active.qmd >}}
 
 ---
 
-{{< include exercises/calculaton-data-plotting_design-enzyme-kineti-exper.qmd >}}
+{{< include exercises/design-enzyme-kineti-exper.qmd >}}
 
 ---
 
-{{< include exercises/calculaton-plotting_analys-data-set-obeyin.qmd >}}
+{{< include exercises/analys-data-set-obeyin.qmd >}}

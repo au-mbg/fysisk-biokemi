@@ -1,0 +1,59 @@
+#### The Michaelis Menten equation
+
+Consider a reaction catalyzed by an enzyme obeying the Michaelis-Menten kinetics model.
+
+$$
+E + S \underset{k_{-1}}{\stackrel{k_1}{\rightleftharpoons}} ES \stackrel{k_2}{\rightarrow} E + P
+$$
+
+$$
+V_0 = V_{\mathrm{max}} \frac{[S]}{[S] + K_M}
+$$
+
+#### (a) Enzyme saturation
+
+Explain what is meant by enzyme saturation.
+
+#### (b) 
+
+Calculate the level of enzyme saturation, $f_{ES}$, at substrate concentrations of 
+
+- $[S] = 0.1 \cdot K_M$
+- $[S] = 0.5 \cdot K_M$
+- $[S] = 1 \cdot K_M$
+- $[S] = 10 \cdot K_M$
+- $[S] = 100 \cdot K_M$
+
+---
+
+The Michaelis-Menten constant KM is defined as:
+
+$$
+K_M = \frac{k_{-1}+ k_2}{k_1}
+$$
+
+#### (c) Calulate $K_m$
+
+In a specific reaction, the following rate constants were determined:
+
+- $k_1 = 7 \cdot 10^7 \cdot \mathrm{M}^{-1}\cdot \mathrm{s}^{-1}$, 
+- $k^{-1} = 8 \cdot 10^5 \ \mathrm{s}^{-1}$ 
+- $k_2 = 10^3 \ \mathrm{s}^{-1}$
+
+Calculate the value of $K_M$. Does $K_M$ approximate the dissociation constant for the $ES$ complex in
+this case?
+
+#### (d) Calculate $k_2$
+
+Assume that a solution of an enzyme at a concentration of $1 \cdot 10^{-7} \ \mathrm{M}$  with a substrate concentration of 
+$[S]=100\cdot K_M$ has $V_0=10^{-4} \ \mathrm{M} \cdot \mathrm{min}^{-1}$
+
+Given this information and with your answers to (b) and (c) in mind, calculate the constant $k_2$. What is
+this constant also called?
+
+#### (e) Lineweaver-Burk plot
+
+The values of $V_\mathrm{max}$ and $K_M$ have historically been determined from a Lineweaver-Burk plot.
+
+How does the x- and y-intercepts in a Lineweaver-Burk plot relate to $V_\mathrm{max}$ and $K_M$?
+

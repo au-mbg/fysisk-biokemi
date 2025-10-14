@@ -1,0 +1,121 @@
+## A snake dependent enzyme 
+
+When (or *if* depending on your outlook in life) you are bit by a cobra, the snake protein CVF interacts with the human protein FB to form a
+proteolytically active enzyme in the blood called CVF:FB. CVF:FB enzyme is able to cleave another human
+protein known as C5 into C5b and C5a (C5a is the protein you visually inspected in your first PyMOL session).
+With C5 as a substrate, CVF:FB obeys the Michaelis-Menten kinetics model, whereas CVF alone does not show
+any catalytic activity towards C5.
+
+Now consider two different CVF proteins, CVF1 and CVF2 from two different cobra species. Upon
+characterization it was found that CVF1:FB has a $K_M = 0.036 \ \mu\text{M}$ and a $k_{cat} = 0.43 \ \mathrm{min}^{-1}$, whereas CVF2:FB has a $K_M = 14 \mu\mathrm{M}$ and a $k_{cat} = 0.73 \ \mathrm{min}^{-1}$. The concentration of C5 in blood is $0.37 \ \mu\mathrm{M}$.
+
+#### (a)
+
+Convert the given $K_M$ values and the C5 concentration to SI-units given in $\mathrm{M}$
+
+```{python}
+#| exercise: true
+#| eval: false
+
+# CVF1
+K_m_cvf1 = ...
+k_cat_cvf1 = ...
+
+# CVF2
+...
+...
+
+# Concentration
+C_c5 = ...
+```
+
+```{python}
+#| solution: true
+
+# CVF1
+K_m_cvf1 = 0.036 * 10**(-6)
+k_cat_cvf1 = 0.43 / 60
+
+# CVF2
+K_m_cvf2 = 14 * 10**(-6)
+k_cat_cvf2 = 0.73 / 60
+
+# Concentration
+C_c5 = 0.37 * 10**(-6)
+```
+
+
+#### (b)
+
+Assuming that [CVF1:FB] $=$ [CVF2:FB] $= 0.1\cdot 10^{-6} \ \mathrm{M}$, calculate $V_\mathrm{max}$ of both enzymes.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+V_max_cfv1 = ...
+...
+
+print(f"{V_max_cfv1 = :.3e}")
+print(f"{V_max_cfv2 = :.3e}")
+```
+
+```{python}
+#| solution: true
+
+V_max_cfv1 = k_cat_cvf1 * 0.1 * 10**(-6)
+V_max_cfv2 = k_cat_cvf2 * 0.1 * 10**(-6)
+
+print(f"{V_max_cfv1 = :.3e}")
+print(f"{V_max_cfv2 = :.3e}")
+```
+
+#### (c)
+
+Calculate the fraction of enzyme:substrate complexes (CVFx:FB:C5) in blood.
+
+```{python}
+#| exercise: true
+#| eval: false
+theta_cfv1 = ...
+theta_cfv2 = ...
+
+print(f"{theta_cfv1 = :.3f}")
+print(f"{theta_cfv2 = :.3f}")
+```
+
+```{python}
+#| solution: true
+theta_cfv1 = C_c5 / (K_m_cvf1 + C_c5)
+theta_cfv2 = C_c5 / (K_m_cvf2 + C_c5)
+
+print(f"{theta_cfv1 = :.3f}")
+print(f"{theta_cfv2 = :.3f}")
+```
+
+#### (d)
+ 
+Calculate the initial velocities of C5 cleavage in blood by the two enzymes.
+
+```{python}
+#| exercise: true
+#| eval: false
+v0_cfv1 = ...
+v0_cfv2 = ...
+
+print(f"{v0_cfv1 = :.3e}")
+print(f"{v0_cfv2 = :.3e}")
+```
+
+```{python}
+#| solution: true
+v0_cfv1 = (V_max_cfv1 * C_c5) / (K_m_cvf1 + C_c5)
+v0_cfv2 = (V_max_cfv2 * C_c5) / (K_m_cvf2 + C_c5)
+
+print(f"{v0_cfv1 = :.3e}")
+print(f"{v0_cfv2 = :.3e}")
+```
+
+#### (f)
+
+Which of the two enzymes, CVF1:FB or CVF2:FB, cleaves the most C5 molecules in blood?

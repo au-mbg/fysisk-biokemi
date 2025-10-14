@@ -12,27 +12,27 @@ format-links:
 
 ---
 
-{{< include exercises/widget_estim-bindin-affini.qmd >}}
+{{< include exercises/estim-bindin-affini.qmd >}}
 
 ---
 
-{{< include exercises/data-plot-regression_dialys-exper.qmd >}}
+{{< include exercises/dialys-exper.qmd >}}
 
 ---
 
-{{< include exercises/data-plot-regression_adp-bindin-pyruva-kinase.qmd >}}
+{{< include exercises/adp-bindin-pyruva-kinase.qmd >}}
 
 ---
 
-{{< include exercises/data-plotting-regression_inter-bindin-data.qmd >}}
+{{< include exercises/inter-bindin-data.qmd >}}
 
 ---
 
-{{< include exercises/data-plotting-regression_deter-type-streng-coope.qmd >}}
+{{< include exercises/deter-type-streng-coope.qmd >}}
 
 ---
 
-{{< include exercises/calculation_compe-ligand-bind.qmd >}}
+{{< include exercises/compe-ligand-bind.qmd >}}
 
 
 

@@ -12,25 +12,25 @@ format-links:
 
 ---
 
-{{< include exercises/calculation-data_averag-prope-amino-acids.qmd >}}
+{{< include exercises/averag-prope-amino-acids.qmd >}}
 
 ---
 
-{{< include exercises/calculation-plotting_uv-spec-apo-holo-myo.qmd >}}
+{{< include exercises/uv-spec-apo-holo-myo.qmd >}}
 
 ---
 
-{{< include exercises/calculation-data_protei-blood-plasma.qmd >}}
+{{< include exercises/protei-blood-plasma.qmd >}}
 
 ---
 
-{{< include exercises/calculation-data-plotting_the-fluor-protei-mcherr.qmd >}}
+{{< include exercises/the-fluor-protei-mcherr.qmd >}}
 
 ---
 
-{{< include exercises/calculation-data-plotting_trypt-absor-fluor.qmd >}}
+{{< include exercises/trypt-absor-fluor.qmd >}}
 
 ---
 
-{{< include exercises/calculation-functions_extin-coeff-human-myogl.qmd >}}
+{{< include exercises/extin-coeff-human-myogl.qmd >}}
 

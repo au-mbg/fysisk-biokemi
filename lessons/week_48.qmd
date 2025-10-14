@@ -12,12 +12,20 @@ format-links:
 
 ---
 
-{{< include exercises/widget_quali-descr-michae-kineti.qmd >}}
+{{< include exercises/quali-descr-michae-kineti.qmd >}}
 
 ---
 
-{{< include exercises/data-plotting-regression_enzyme-inhib-i.qmd >}}
+{{< include exercises/michaelis-menten.qmd >}}
 
 ---
 
-{{< include exercises/data-plotting-regression_enzyme-inhib-ii.qmd >}}
+{{< include exercises/enzyme-inhib-i.qmd >}}
+
+---
+
+{{< include exercises/enzyme-inhib-ii.qmd >}}
+
+---
+
+{{< include exercises/snake-dependent-enzyme.qmd >}}
