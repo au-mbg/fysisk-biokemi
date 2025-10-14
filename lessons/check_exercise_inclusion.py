@@ -46,3 +46,9 @@ if __name__ == "__main__":
     for exercise, weeks in exercise_count.items():
         if len(weeks) > 1:
             print(f" - {exercise} included in weeks: {weeks}")
+
+    # Check that no exercises are included that don't exist
+    print("\nExercises included that do not exist:")
+    for exercise in included_set:
+        if exercise not in all_set:
+            print(f" - {exercise} does not exist")

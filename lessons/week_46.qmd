@@ -30,6 +30,9 @@ format-links:
 
 {{< include exercises/data-plotting-regression_deter-type-streng-coope.qmd >}}
 
+---
+
+{{< include exercises/calculation_compe-ligand-bind.qmd >}}
 
 
 

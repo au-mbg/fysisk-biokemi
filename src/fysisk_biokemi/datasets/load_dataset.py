@@ -5,6 +5,7 @@ available_datasets = {
     'chlorophyll': 'chlorophyll_adsorption.xlsx',
     'reversible_reaction': 'reversible_reaction_dataset.xlsx',
     # Week 46:
+    'apo_holo': 'uv_spectra_apo_holo_myo.csv',
     'AA_frequency': 'week46_1_AA_frequency.xlsx',
     # Week 47:
     'week47_1_emi': 'week47_1_tryp_emi.xlsx',

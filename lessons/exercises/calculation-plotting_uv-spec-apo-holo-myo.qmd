@@ -1,0 +1,129 @@
+## UV spectrum of apo- and holo-myoglobin
+
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+```
+
+In this exercise we will analyze the spectra of apo- and holo-myoglobin. 
+The dataset is given in `uv_spectra_apo_holo_myo.csv`. 
+
+#### (a) Load the dataset
+
+Use the widget to load the dataset.
+
+```{python}
+#| eval: false
+from IPython.display import display 
+from fysisk_biokemi.widgets import DataUploader
+uploader = DataUploader()
+uploader.display()
+```
+Run this cell **after** having uploaded the file in the cell above.
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from fysisk_biokemi.datasets import load_dataset
+from IPython.display import display 
+df = load_dataset('apo_holo') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (b) Plot the spectra
+
+Using `matplotlib` plot each spectrum in the same figure as line plots. 
+
+```{python}
+#| fig-align: center
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots() 
+
+# This selects the 'holo_absorbance'-column and plots it
+ax.plot(df['wavelength'], df['holo_absorbance'], label='Holo')
+
+# Copy the line above and edit it to also plot the Apo absorbance
+... # Your code here
+
+ax.set_ylabel('Absorbance (AU)')
+ax.set_xlabel('Wavelength (nm)')
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+fig, ax = plt.subplots() 
+
+ax.plot(df['wavelength'], df['holo_absorbance'], label='Holo')
+ax.plot(df['wavelength'], df['apo_absorbance'], label='Apo')
+
+ax.set_ylabel('Absorbance (AU)')
+ax.set_xlabel('Wavelength (nm)')
+```
+
+Based on the spectra explain what ApoMb and HoloMb represent? 
+
+---
+
+You have learned that pure proteins without any UV/Vis-absorbing prosthetic groups bound, have basically no
+absorbance at wavelengths above λ>320 nm. Nevertheless ApoMb still show some absorbance above 320 nm.
+In this case, it can explained by the fact that ApoMb was generated from HoloMb by a procedure that will not
+be explained here.
+
+---
+
+#### (d) Adsorption above 320 nm.
+
+Explain why ApoMb in the spectrum above absorbs light at λ>320 nm.
+
+#### (e) Efficiency estimate.
+
+Give a rough estimate of the efficiency of the chosen procedure of heme-group removal.
+
+#### (f) Isobestic points
+
+Are there any isobestic points between the two spectra?
+
+---
+
+To get a better understanding of the causes for the different spectra, you can compare to litterature. 
+The figure below shows the absorbance spectra of three states of myoglobin.
+
+$$
+\begin{aligned}
+\mathrm{MbFe(II)O_2} &\Rightarrow \mathrm{oxyMb} \\
+\\
+\mathrm{MbFe(III)} &\Rightarrow \mathrm{metMb} \\
+\\
+\mathrm{MbFe(II)} &\Rightarrow \mathrm{deoxyMb}
+\end{aligned}
+$$
+
+![Absorbance spectra of different states of myoglobin. $\mathrm{MbFe(II)O}_2$ is "oxyMb", $\mathrm{MbFe(III)}$ is "metMb" and $\mathrm{MbFe(II)}$ is "deoxyMb". Taken from Barham et al (2010); ChemRev; 110 (4); pp2313-2365](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/apo-holo-figure.jpg){.lightbox}
+
+
+#### (g) Aged myoglobin
+
+metMb $(\mathrm{MbFe(III)})$ is normally described as ‘aged’ myoglobin. What does this mean in terms of the
+bound iron?
+
+#### (h) Change in absorbance
+
+Give a qualitative explanation to the observed change in absorbance of metMb compared to fresh oxy-/deoxyMb?
+
+#### (I) Type of shift
+
+Is the spectral difference from deoxyMb to metMb a redshift or a blueshift?
+
+#### (J) Experiment design
+
+You would like to set up an experiment where the absorbance of myoglobin at defined
+wavelength(s) should be used to measure the level of $\mathrm{O}_2$ binding. Sketch how the
+absorbance spectra would look like when going from deoxyMb and continuously increasing
+the concentration of $\mathrm{O}_2$ (draw this for five different $\mathrm{O}_2$ concentrations going from pure
+deoxyMb to pure oxyMb)

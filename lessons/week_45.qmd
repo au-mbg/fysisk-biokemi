@@ -16,6 +16,10 @@ format-links:
 
 ---
 
+{{< include exercises/calculation-plotting_uv-spec-apo-holo-myo.qmd >}}
+
+---
+
 {{< include exercises/calculation-data_protei-blood-plasma.qmd >}}
 
 ---
