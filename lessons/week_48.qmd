@@ -32,4 +32,4 @@ format-links:
 
 ---
 
-{{< include exercises/enzyme-behav-at-case.qmd >}}
+{{< include exercises/enzyme-behav-atcase.qmd >}}
