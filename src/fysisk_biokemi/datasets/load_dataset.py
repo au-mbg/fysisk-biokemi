@@ -1,7 +1,7 @@
 import pandas as pd
 from importlib.resources import files
 
-available_datasets = {
+available_datasets = {    
     'chlorophyll': 'chlorophyll_adsorption.xlsx',
     'reversible_reaction': 'reversible_reaction_dataset.xlsx',
     # Week 46:
@@ -22,6 +22,8 @@ available_datasets = {
     'determination_coop_week48': 'week48_2_determination_coop.xlsx',
     'reaction_order_week48': 'week48_4_reaction_order.xlsx',
     'reaction_order_activation_week48': 'week48_7_reaction_order_activation.csv',
+
+    'atcase': 'atcase_enzyme.csv',
 
     # Week 49:
     'week49_1': 'week49_1.xlsx',

@@ -1,0 +1,92 @@
+## Enzymatic behaviour of the enzyme ATCase
+
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+```
+
+The enzyme aspartate transcarbamoylase (ATCase) catalyzes the first reaction in the biosynthesis of pyrimidines
+such as CTP as shown in the reaction below:
+
+![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/atcase.png){.lightbox}
+
+ATCase does not obey the Michaelis-Menten kinetics model but instead shows the behaviour recorded in the 
+`atcase_enzyme.csv` dataset.
+
+The dataset consists of three columns; the aspartate concentration in mM and the rate of formation of N-carbamyolaspartate
+with and without the presence of CTP. 
+
+Load the dataset with the widget below
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('atcase') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (a) Plot the dataset
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+
+... # Put some code here
+... # And here
+
+ax.set_xlabel('[Aspartate] (mM)')
+ax.set_ylabel('Rate of formation')
+ax.set_yticklabels([]);
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+
+ax.plot(df['aspartate'], df['without_ctp'], label='No CTP')
+ax.plot(df['aspartate'], df['with_ctp'], label='With CTP')
+
+ax.set_xlabel('[Aspartate] (mM)')
+ax.set_ylabel('Rate of formation')
+ax.set_yticklabels([]);
+```
+
+#### (b) Kinetic profile
+
+Describe the kinetic profile of ATCase and explain what it tells us about the way ATCase works. (You may find inspiration in the material previously covered on protein-ligand interactions)
+
+#### (c) Quarternary structure
+
+What does the figure tell us about the quaternary structure of ATCase?
+
+#### (d) DNA synthesis
+
+Which other pyrimidine based trinucleotide besides CTP is used to synthesize DNA?
+
+#### (e) Effect of CTP
+
+Qualitatively describe the effect of CTP on the rate of N-carbamyolaspartate formation
+
+#### (f) Physiological advantage
+
+In fact many enzymes are regulated by certain end products in a fashion similar to the CTP effect on ATCase. Can you explain why this might be a physiological advantage?
+
+

@@ -29,3 +29,7 @@ format-links:
 ---
 
 {{< include exercises/snake-dependent-enzyme.qmd >}}
+
+---
+
+{{< include exercises/enzyme-behav-at-case.qmd >}}
