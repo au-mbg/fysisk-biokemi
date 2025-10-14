@@ -1,0 +1,291 @@
+---
+title: "Determination of type and strength of cooperativity"
+categories: ['data', 'plotting', 'regression']
+topics: []
+datasets: ['determination_coop_week48']
+---
+
+
+## Determination of type and strength of cooperativity
+
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+The binding of NAD+ to the protein yeast glyceraldehyde 3-phosphate dehydrogenase (GAPDH) was studied using
+equilibrium dialysis. The enzyme concentration was 71 μM. The concentration of $[\text{NAD}^{+}_\text{free}]$ and the corresponding values of $\bar{n}$ were determined with the resulting data found in the dataset `week48_2_determination_coop.xlsx`.
+
+#### (a) Load the dataset
+
+Load the dataset using the widget below
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('determination_coop_week48') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (b) Averaging and units. 
+
+Start by adding a new column to the `DataFrame` with the average value of $\bar{n}$ across the three series
+
+::: {.callout-tip}
+Remember that you can set a new column based on a computation using one or more other columns, e.g. 
+
+```python
+df['new_col'] = df['col1'] + df['col2']
+```
+::: 
+
+```{python}
+#| exercise: true
+#| eval: false
+df['nbar_avg'] = ...
+```
+
+```{python}
+#| solution: true
+df['nbar_avg'] = (df['nbar1'] + df['nbar2'] + df['nbar3']) / 3
+```
+
+Now also add a column with the ligand concentration in SI units with the column-name `[NAD+free]_(M)`.
+
+```{python}
+#| exercise: true
+#| eval: false
+... # Your code here. 
+display(df)
+```
+
+```{python}
+#| solution: true
+df['[NAD+free]_(M)'] = df['[NAD+free]_(uM)'] * 10**(-6)
+display(df)
+```
+
+Finally, set the concentration of the GADPH in SI units
+
+```{python}
+ c_gadph = 71 * 10**(-6)
+```
+
+#### (c) Plot
+
+Make a plot of the average $\bar{n}$ as a function of $[\text{NAD}^{+}_\text{free}]$.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+fig, ax = plt.subplots(figsize=(8, 4))
+
+# Your code to plot here.
+... 
+
+# This sets the labels.
+ax.set_xlabel(r'$[\text{NAD}^{+}_\text{free}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+plt.show()
+```
+
+```{python}
+#| solution: true
+
+fig, ax = plt.subplots(figsize=(8, 4))
+
+ax.plot(df['[NAD+free]_(M)'], df['nbar_avg'], 'o')
+ax.set_xlabel(r'$[\text{NAD}^{+}_\text{free}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+plt.show()
+```
+
+#### (d) Scatchard plot
+
+Make a Scatchard plot based on the average $\bar{n}$.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+# Calculate nbar / L 
+nbar_over_L = ...
+
+fig, ax = plt.subplots(figsize=(6, 4)) 
+
+ax.plot(..., ... 'o') # Plot the right thins. 
+
+ax.set_xlabel(r'$\bar{n}$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}/L$', fontsize=14)
+ax.set_xlim([0, df['nbar_avg'].max()*1.2])
+ax.set_ylim([0, nbar_over_L.max() * 1.2])
+```
+
+```{python}
+#| solution: true
+
+# Calculate nbar / L 
+nbar_over_L = df['nbar_avg'] / df['[NAD+free]_(M)']
+
+fig, ax = plt.subplots(figsize=(6, 4)) 
+ax.plot(df['nbar_avg'], nbar_over_L, 'o')
+ax.set_xlabel(r'$\bar{n}$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}/L$', fontsize=14)
+ax.set_xlim([0, df['nbar_avg'].max()*1.2])
+ax.set_ylim([0, nbar_over_L.max() * 1.2])
+```
+
+#### (e) Binding sites
+
+How many binding sites does GAPDH contain for $\text{NAD}^{+}$?
+
+#### (f) Cooperativity 
+
+What type of cooperativity do the plots indicate?
+
+#### (g) Fit
+
+Make a fit using the functional form 
+
+$$
+\bar{n} = N \frac{[L]^h}{K_D + [L]^h}
+$$
+
+As usual, start by defining the function in Python 
+
+```{python}
+#| solution: true
+def n_bar(L, N, k_d, h):
+    return N * L**h / (k_d + L**h)
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+def n_bar(L, N, k_d, h):
+    # Replace ... with your code.
+    # Be careful with parentheses.
+    result = ...
+    return result 
+```
+
+Now we can fit
+
+```{python}
+#| exercise: true
+#| eval: false
+from scipy.optimize import curve_fit
+
+# This selects the '[NAD+free]_(m)'-column three times and stitches it together.
+x = np.concatenate([df['[NAD+free]_(M)'], df['[NAD+free]_(M)'], df['[NAD+free]_(M)']])
+# Do the same to stitch together the nbar1, nbar2 and nbar3 columns.
+y = ...
+
+# Initial guess
+p0 = [..., ..., ...]
+
+# Bounds
+bounds = (0, np.inf) # We limit the parameters to be positve.
+
+# Curve fit
+popt, pcov = curve_fit(n_bar, x, y, p0=p0, bounds=bounds)
+
+# Print the parameters
+N_fit, k_d_fit, h_fit = popt
+print(f"{N_fit = :.3f}")
+print(f"{k_d_fit = :e}")
+print(f"{h_fit = :.3f}")
+```
+
+```{python}
+#| solution: true
+from scipy.optimize import curve_fit
+
+# Choose the variables from the dataframe
+x = np.concatenate([df['[NAD+free]_(M)'], df['[NAD+free]_(M)'], df['[NAD+free]_(M)']])
+y = np.concatenate([df['nbar1'], df['nbar2'], df['nbar3']])
+
+# Initial guess
+p0 = [4, 1*10**(-4), 1]
+
+# Bounds
+bounds = (0, np.inf) # We limit the parameters to be positve.
+
+# Curve fit
+popt, pcov = curve_fit(n_bar, x, y, p0=p0, bounds=bounds)
+
+# Print the parameters
+N_fit, k_d_fit, h_fit = popt
+print(f"{N_fit = :.3f}")
+print(f"{k_d_fit = :e}")
+print(f"{h_fit = :.3f}")
+```
+
+::: {.callout-note}
+
+The function `np.concatenate` takes a number of arrays and makes a new array that 
+consisting of the originals one after each other. For example, 
+
+```{python}
+A = np.array([1, 2, 3])
+B = np.array([4, 5, 6])
+C = np.concatenate([A, B])
+print(C)
+```
+::: 
+
+#### (h) Plot with fit
+
+```{python}
+#| exercise: true
+#| eval: false
+
+L = np.linspace(0, df['[NAD+free]_(M)'].max()*1.5)
+n_bar_fit = n_bar(L, N_fit, k_d_fit, h_fit)
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(x, y, 'o', label='Data')
+ax.plot(L, n_bar_fit, '-', label='Fit')
+ax.axhline(N_fit, color='C2', label='N from fit')
+ax.axvline(k_d_fit, color='C3', label=r'$K_D$ from fit')
+ax.set_xlabel(r'$[\text{NAD}^{+}_\text{free}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+ax.legend()
+plt.show()
+```
+
+```{python}
+#| solution: true
+L = np.linspace(0, df['[NAD+free]_(M)'].max()*1.5)
+n_bar_fit = n_bar(L, N_fit, k_d_fit, h_fit)
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(x, y, 'o', label='Data')
+ax.plot(L, n_bar_fit, '-', label='Fit')
+ax.axhline(N_fit, color='C2', label='N from fit')
+ax.axvline(k_d_fit, color='C3', label=r'$K_D$ from fit')
+ax.set_xscale('log')
+ax.set_xlabel(r'$[\text{NAD}^{+}_\text{free}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+ax.legend()
+plt.show()
+```

@@ -19,7 +19,7 @@ How many tryptophan residues does the protein contain?
 
 You would like to conduct a protein stability experiment at an absorbance of 0,8 (path length 1cm). What concentration should you use?
 
-#### c	Spectra & Stokes Shift
+#### (c) Spectra & Stokes Shift
 
 The cell below loads extinction and emission spectra for tryptophan in aqueous buffer. (The data files are 
 `week47_1_tryp_emi.xlsx` and `week47_1_tryp_ext.xlsx`)
@@ -113,7 +113,7 @@ print(f"{emission_wavelength_max = :.1f} nm")
 print(f"{extinction_wavelength_max = :.1f} nm")
 ```
 
-#### (c) pH and how it changes pHroperties.
+#### (d) pH and how it changes pHroperties.
 
 Next, you compare the fluorescence emission spectra for your protein at pH 7 and at pH 2. You can find the data in the files `week47_1_tryp_ph2.xlsx` and `week47_1_tryp_ph7.xlsx` - the cell below also loads these datasets 
 

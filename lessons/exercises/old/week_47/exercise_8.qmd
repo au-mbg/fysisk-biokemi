@@ -1,0 +1,268 @@
+---
+title: "ADP binding to pyruvate kinase"
+categories: ['data', 'plot', 'regression']
+topics: []
+datasets: ['adp_pyruvate']
+---
+
+## ADP binding to pyruvate kinase. 
+
+The binding of ADP to the enzyme pyruvate kinase was measured by fluorescence. The enzyme concentration was 4 μM throughout the titration, and each measurement was done in triplicate. The binding results were obtained at 310 K and are given in the `.csv`-file `week47_8_adp_pyruvate.csv`. 
+
+#### (a) Load the dataset
+
+As always, use the widget to load the dataset
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+import pandas as pd
+pd.set_option('display.max_rows', 6)
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('adp_pyruvate') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (b) Units
+
+The concentrations in the dataset are given in mM, add a new column to the `DataFrame` 
+with the units given in M. 
+
+```{python}
+#| exercise: true
+#| eval: false
+df['[ADPtot](M)'] = ...
+display(df)
+```
+
+```{python}
+#| solution: true
+df['[ADPtot](M)'] = df['[ADPtot](mM)'] * 10**(-3)
+display(df)
+```
+
+#### (c) Free ADP concentration 
+
+For each value of $\bar{n}$ calculate the concentration of [ADP$_\text{free}$] from [ADP$_\text{tot}$] and [enzyme].
+
+```{python}
+#| exercise: true
+#| eval: false
+enzyme_conc = ...
+df['[ADPfree](M)'] = ...
+display(df)
+```
+
+```{python}
+#| solution: true
+enzyme_conc = 4 * 10**(-6)
+df['[ADPfree](M)'] = df['[ADPtot](M)'] - df['nbar'] * enzyme_conc
+display(df)
+```
+
+#### (d) Make a plot
+
+Make a plot of the free ligand concentration versus $\bar{n}$. 
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots(figsize=(7, 4))
+
+# Write the code to make the plot.
+# Add the arguments:  marker='o', linestyle='none' to only plot points and not line segments.
+... # Add your code here!
+
+ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(df['[ADPfree](M)'], df['nbar'], marker='o', linestyle='none', label='Observations')
+ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+```
+
+#### (f) Preparing for fitting
+
+To fit we need a implement the function we want to fit the parameters of, the functional 
+form is 
+
+$$
+n = n_{\text{max}} \frac{[L]^n}{K_D + [L]^n}
+$$
+
+```{python}
+#| exercise: true
+#| eval: false
+def n_bound(L, n_max, K_D, n_exp):
+    return ...
+
+print(f"{n_bound(1, 1, 1, 1) = }") # Should give 1/2
+print(f"{n_bound(21, 47, 2.5, 1) = }") # Should give 42
+print(f"{n_bound(21, 47, 2.5, 2) = }") # Should give 46.73..
+```
+
+```{python}
+#| solution: true
+def n_bound(L, n_max, K_D, n_exp):
+    return n_max * L**n_exp / (K_D + L**n_exp)
+
+print(f"{n_bound(1, 1, 1, 1) = }") # Should give 1/2
+print(f"{n_bound(21, 47, 2.5, 1) = }") # Should give 42
+print(f"{n_bound(21, 47, 2.5, 2) = }") # Should give 46.73..
+```
+
+#### (e) Fitting
+
+Finish the code below to create a fit.
+
+```{python}
+#| exercise: true
+#| eval: false
+from scipy.optimize import curve_fit
+
+# Choose the variables from the dataframe
+x = df['[ADPfree](M)']
+y = df['nbar']
+
+# Initial guess
+K_D_guess = ... # Your initial guess for K_D 
+nu_max_guess = ... # Your initial guess for nu_max
+n_exp = ... # Your initial guess for the exponent.
+p0 = [K_D_guess, nu_max_guess, n_exp]
+
+# Bounds
+bounds = (0, np.inf) # We limit the parameters to be positve.
+
+# Curve fit
+popt, pcov = curve_fit(n_bound, x, y, p0=p0, bounds=bounds)
+
+# Print the parameters
+n_max_fit, K_D_fit, n_exp_fit = popt
+print(f"{n_max_fit = :1.3f} ")
+print(f"{K_D_fit = :e}")
+print(f"{n_exp_fit = :1.3f} ")
+```
+
+```{python}
+#| solution: true
+from scipy.optimize import curve_fit
+
+# Choose the variables from the dataframe
+x = df['[ADPfree](M)']
+y = df['nbar']
+
+# Initial guess
+K_D_guess = 1*10**(-3) # Your initial guess for K_D 
+nu_max_guess = 1 # Your initial guess for nu_max
+n_exp = 2 # Your initial guess for the exponent.
+p0 = [K_D_guess, nu_max_guess, n_exp]
+
+# Bounds
+bounds = (0, np.inf) # We limit the parameters to be positve.
+
+# Curve fit
+popt, pcov = curve_fit(n_bound, x, y, p0=p0, bounds=bounds)
+
+# Print the parameters
+n_max_fit, K_D_fit, n_exp_fit = popt
+print(f"{n_max_fit = :1.3f} ")
+print(f"{K_D_fit = :e}")
+print(f"{n_exp_fit = :1.3f} ")
+```
+
+Once we've obtained the fitted parameters we can plot the fit together with 
+the data. 
+
+```{python}
+#| exercise: true
+#| eval: false
+L = np.linspace(0, 1.2 * x.max(), 50)
+n = n_bound(L, n_max_fit, K_D_fit, 1)
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(df['[ADPfree](M)'], df['nbar'], 'o', label='Observations')
+ax.plot(L, n)
+ax.axvline(K_D_fit, color='k', linewidth=0.5, linestyle='--')
+ax.axhline(n_max_fit, color='k', linewidth=0.5, linestyle='--')
+
+
+ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+ax.set_ylim([0, n.max()*1.1])
+```
+
+```{python}
+#| solution: true
+L = np.linspace(0, 1.2 * x.max(), 50)
+n = n_bound(L, n_max_fit, K_D_fit, 1)
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(df['[ADPfree](M)'], df['nbar'], 'o', label='Observations')
+ax.plot(L, n)
+ax.axvline(K_D_fit, color='k', linewidth=0.5, linestyle='--')
+ax.axhline(n_max_fit, color='k', linewidth=0.5, linestyle='--')
+
+
+ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+ax.set_ylim([0, n.max()*1.1])
+```
+
+
+### Free energy
+
+Calculate the free energy for the association of the ADP-pyruvate kinase complex assuming $R = 8.314472 \times 10^{-3} \ \frac{\text{kJ}}{\text{mol} \cdot \text{K}}$  and $T = 310 \ \text{K}$. 
+
+::: {.callout-tip}
+Consider the difference between association and dissociation
+:::
+
+Start by defining the two given constants as variables
+
+```{python}
+#| exercise: true
+#| eval: false
+R = ...
+T = ...
+```
+
+```{python}
+#| solution: true
+R = 8.314472 * 10**(-3)
+T = 310
+```
+
+And do the calculation
+
+```{python}
+#| exercise:
+#| eval: false
+delta_G = ...
+print(f"{delta_G = :.3f} kJ/mol")
+```
+
+```{python}
+#| solution: true
+delta_G = R * T * np.log(K_D_fit)
+print(f"{delta_G = :.3f} kJ/mol")
+```

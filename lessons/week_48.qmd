@@ -1,5 +1,5 @@
 ---
-title: Week 48
+title: Week 47
 engine: jupyter
 categories: ['UVis']
 format-links:
@@ -10,32 +10,14 @@ format-links:
 
 {{< include tidbits/_install_import.qmd >}}
 
-```{python}
-import pandas as pd
-pd.set_option('display.max_rows', 6)
-import numpy as np
-```
+---
+
+{{< include exercises/widget_quali-descr-michae-kineti.qmd >}}
 
 ---
 
-{{< include exercises/week_48/week_48_1.qmd >}}
+{{< include exercises/data-plotting-regression_enzyme-inhib-i.qmd >}}
 
 ---
 
-{{< include exercises/week_48/week_48_2.qmd >}}
-
----
-
-{{< include exercises/week_48/week_48_4.qmd >}}
-
----
-
-{{< include exercises/week_48/week_48_6.qmd >}}
-
----
-
-{{< include exercises/week_48/week_48_7.qmd >}}
-
----
-
-{{< include exercises/week_48/week_48_8.qmd >}}
+{{< include exercises/data-plotting-regression_enzyme-inhib-ii.qmd >}}

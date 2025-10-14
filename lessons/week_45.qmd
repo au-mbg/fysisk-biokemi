@@ -1,0 +1,32 @@
+---
+title: Week 45
+engine: jupyter
+categories: ['Calculation', 'Plotting', 'Data']
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/week_45.ipynb"
+      icon: box-arrow-up-right
+---
+
+{{< include tidbits/_install_import.qmd >}}
+
+---
+
+{{< include exercises/calculation-data_averag-prope-amino-acids.qmd >}}
+
+---
+
+{{< include exercises/calculation-data_protei-blood-plasma.qmd >}}
+
+---
+
+{{< include exercises/calculation-data-plotting_the-fluor-protei-mcherr.qmd >}}
+
+---
+
+{{< include exercises/calculation-data-plotting_trypt-absor-fluor.qmd >}}
+
+---
+
+{{< include exercises/calculation-functions_extin-coeff-human-myogl.qmd >}}
+

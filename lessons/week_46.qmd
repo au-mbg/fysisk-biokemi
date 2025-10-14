@@ -1,5 +1,5 @@
 ---
-title: Week 46
+title: Week 47
 engine: jupyter
 categories: ['UVis']
 format-links:
@@ -10,12 +10,31 @@ format-links:
 
 {{< include tidbits/_install_import.qmd >}}
 
-```{python}
-import numpy as np
-```
+---
 
-{{< include exercises/week_46/exercise_1.qmd >}}
+{{< include exercises/widget_estim-bindin-affini.qmd >}}
 
 ---
 
-{{< include exercises/week_46/exercise_2.qmd >}}
+{{< include exercises/data-plot-regression_dialys-exper.qmd >}}
+
+---
+
+{{< include exercises/data-plot-regression_adp-bindin-pyruva-kinase.qmd >}}
+
+---
+
+{{< include exercises/data-plotting-regression_inter-bindin-data.qmd >}}
+
+---
+
+{{< include exercises/data-plotting-regression_deter-type-streng-coope.qmd >}}
+
+
+
+
+
+
+
+
+

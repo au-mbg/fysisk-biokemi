@@ -1,0 +1,191 @@
+---
+title: "Proteins in blood plasma"
+categories: ['calculation', 'data']
+topics: []
+datasets: ['proteins_blood_plasma']
+---
+
+## Proteins in blood plasma.
+
+In this exercise we will learn how Python is excellent for handling datasets with many data points and 
+how it can be used to apply the same procedure to all the data points at once.
+
+A researcher wants to determine the concentration of two proteins in blood plasma that is suspected to be involved in development of an autoimmune disease. 500 patients and 500 healthy individuals were included in the study and absorbance measurements of the two purified proteins from all blood plasma samples were measured at 280 nm. The molecular weight and extinction coefficients of the two proteins are given in the table below.
+
+| Protein  | $M_w$ $[\text{kDa}]$    |  $\epsilon$ $[\text{M}^{-1}\text{cm}^{-1}]$ |
+| -------- | ------- | ---------- |
+| 1        | 130     | 180000     | 
+| 2        | 57      | 80000      |
+
+: Properties of the two proteins.
+
+#### (a) Load the dataset
+
+Use the widget to load the dataset as a dataframe from the file **week47_3_protein_blood_plasma.xlsx**
+
+```{python}
+#| eval: false
+from IPython.display import display 
+from fysisk_biokemi.widgets import DataUploader
+uploader = DataUploader()
+uploader.display()
+```
+Run this cell **after** having uploaded the file in the cell above.
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from fysisk_biokemi.datasets import load_dataset
+from IPython.display import display 
+df = load_dataset('protein_blood_plasma') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (b) Calculate concentrations
+
+Calculate the molar concentration of the two proteins in all samples, the light path for 
+every measurement is 0.1 cm.
+
+Always a good idea to assign known values to variables
+```{python}
+protein_1_ext_coeff = 180000
+protein_2_ext_coeff = 80000
+l = 0.1
+```
+
+::: {.callout-tip}
+
+You can set new columns in a `DataFrame` by just assigning to it 
+
+```python
+df['new_column'] = [1, 2, 3, ..., 42]
+```
+
+It can also be set as a computation of a property from another row
+
+```python
+df['new_column'] = df['current_column'] / 4
+```
+
+::: 
+
+```{python}
+#| exercise: true
+#| eval: false
+df['protein1_healthy_molar_conc'] = ... # Calculate for concentration in healthy for protein 1.
+... # Your code that updates the data frame with the 3 other new columns.
+display(df)
+```
+
+```{python}
+#| solution: true
+df['protein1_healthy_molar_conc'] = df['A280_protein1_healthy'] / (protein_1_ext_coeff * l)
+df['protein1_patient_molar_conc'] = df['A280_protein1_patient'] / (protein_1_ext_coeff * l)
+df['protein2_healthy_molar_conc'] = df['A280_protein2_healthy'] / (protein_2_ext_coeff * l)
+df['protein2_patient_molar_conc'] = df['A280_protein2_patient'] / (protein_2_ext_coeff * l)
+display(df)
+```
+
+#### (c). Concentrations in mg/mL
+
+Add another set of four columns containing the concentrations in mg/mL.
+
+```{python}
+protein_1_mw = 130 * 10**3
+protein_2_mw = 57 * 10**3
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+df['protein1_healthy_conc'] = ...
+df['protein1_patient_conc'] = ...
+df['protein2_healthy_conc'] = ...
+df['protein2_patient_conc'] = ...
+
+names = ['protein1_healthy_conc', 'protein1_patient_conc', 'protein2_healthy_conc', 'protein2_patient_conc']
+display(df[names])
+```
+
+```{python}
+#| solution: true
+df['protein1_healthy_conc'] = df['protein1_healthy_molar_conc'] * protein_1_mw
+df['protein1_patient_conc'] = df['protein1_patient_molar_conc'] * protein_1_mw
+df['protein2_healthy_conc'] = df['protein2_healthy_molar_conc'] * protein_2_mw
+df['protein2_patient_conc'] = df['protein2_patient_molar_conc'] * protein_2_mw
+
+names = ['protein1_healthy_conc', 'protein1_patient_conc', 'protein2_healthy_conc', 'protein2_patient_conc']
+display(df[names])
+```
+
+#### (d) Mean concentration
+
+Now that we have the concentrations, calculate the concentration in the four categories. 
+
+::: {.callout-tip}
+
+When displaying the dataframe above we used indexed it with `names` as `df[names]`. 
+We can do the same to compute something over just the four rows. 
+
+For example the if we have a `DataFrame` called `example_df`, we can calculate the mean 
+over the **rows** as: 
+
+```python
+df[names].mean(axis=0)
+```
+
+Here `axis=0` means that we apply the operation over the first axis which by convention are the rows. The 
+figure below visualizes this
+
+![](https://numpy.org/doc/stable/_images/np_matrix_aggregation_row.png)
+
+::: 
+
+```{python}
+#| exercise: true
+#| eval: false
+mean = ...
+display(mean)
+```
+
+```{python}
+#| solution: true
+mean = df[names].mean(axis=0)
+display(mean)
+```
+
+#### (e) Standard deviation
+
+Calculate the standard deviation 
+
+::: {.callout-tip}
+
+The standard deviation can be calculated using the `.std`-method that works in the same way 
+as the `.mean`-method we used above.
+
+:::
+
+```{python}
+#| exercise: true
+#| eval: false
+std = ...
+display(std)
+```
+
+```{python}
+#| solution: true
+std = df[names].std(axis=0)
+display(std)
+```
+
+#### (f) Analyze the results 
+
+Consider the following questions
+
+- By comparing healthy individuals with patients, would you expect that any of the two proteins would be involved in disease development? 
+- What additional information does the standard deviation provide besides the average value of the protein concentration?
+

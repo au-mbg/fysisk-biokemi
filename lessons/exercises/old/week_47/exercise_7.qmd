@@ -1,0 +1,247 @@
+---
+title: "Dialysis experiment"
+categories: ['data', 'plot', "regression"]
+topics: []
+datasets: ['dialysis experiment']
+---
+
+## Dialysis experiment 
+
+```{python}
+#| code-fold: true
+import numpy as np
+```
+
+A dialysis experiment was set up where equal amounts of a protein were separately dialyzing against buffers containing different concentrations of a ligand – each measurement was done in triplicate. The average number of ligands bound per protein molecule, $\bar{n}$ were obtained from these experiments. The corresponding concentrations of free ligand and values are given in dataset `week47_7_dialysis_experiment.xlsx`.
+
+#### (a)    Load the dataset
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('dialysis_experiment') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (b) Explain calculation of $\bar{n}$
+
+Explain how the values of $\bar{n}$ is calculated when knowing the concentrations of ligand inside and outside the dialysis bag, as well as the total concentration of the protein, [$\text{P}_{\text{tot}}$].
+
+#### (c) Molar concentrations
+
+Convert the concentrations of free ligand to SI-units given in M, add it as a row to the `DataFrame`. 
+
+```{python}
+#| solution: true
+df['Free Ligand [L](M)'] = df['Free ligand [L](µM)'] * 10**(-6)
+display(df)
+```
+
+#### (c) Plot the data
+
+```{python}
+#| exercise: true
+#| eval: false
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+
+# The 'o' means we plot just the points and don't connect them.
+ax.plot(..., ..., 'o') # Replace ... with your code.
+
+ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
+ax.set_ylabel(r'$\bar{n}$', fontsize=16)
+```
+
+```{python}
+#| solution: true
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.plot(df['Free Ligand [L](M)'], df['n-bar'], 'o')
+ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
+ax.set_ylabel(r'$\bar{n}$', fontsize=16)
+plt.show()
+```
+
+#### (d) Prepare for fitting
+
+Now we want to fit the data to extract $K_D$ and $\nu_{\text{max}}$, by using the equation
+
+$$
+\nu([L_{\text{free}}]) = \nu_{\text{max}} \frac{[L_{\text{free}}]}{K_D + [L_{\text{free}}]}
+$$
+
+To do so we need to implmenet it as a Python function 
+
+```{python}
+#| exercise: true
+#| eval: false
+def nu(L, nu_max, K_D):
+    # Replace ... with your code that calculates the above equation. 
+    # Be careful with parenthesis!
+    result = ... 
+    return result
+
+print(f"{nu(1, 1, 1) = }") # Should give 1/2
+print(f"{nu(21, 47, 2.5) = }") # Should give 42
+```
+
+```{python}
+#| solution: true
+def nu(L, nu_max, K_D):
+    return nu_max * L / (K_D + L)
+
+print(f"{nu(1, 1, 1) = }") # Should give 1/2
+print(f"{nu(21, 47, 2.5) = }") # Should give 42
+```
+
+#### (e) Actually fitting
+
+::: {.callout-important}
+
+Fitting refers to finding the parameters that make an assumed functional form best 
+'fit' the data. Programmatically we will use the `curve_fit` from the `scipy` package to do so. 
+The signature of this function looks like this
+
+```python
+curve_fit(function, 
+            x_data, 
+            y_data, 
+            p0=[param_1, param_2, ...])
+```
+
+The arguments are 
+
+- `function`: A python function where the **first** argument is the independent variable, and other arguments are the parameters of the functions. 
+- `x_data`: The observed values of the independent variable. 
+- `y_data`: The observed values of the dependent variable.
+- `p0`: Initial guesses for the parameters. 
+
+When called `curve_fit` starts by calculating how well the functions fits the data 
+with the initial parameters in `p0` and then iteratively improves the fit by 
+trying new values for the parameters in an intelligent way. 
+
+The found parameters will generally depend on `p0` and it is therefore necessary 
+to provide a good (or good enough) guess for `p0`.
+
+Generally, the best way to learn more about a function is to read it's documentation
+and then play around with it. The documentation is in this case on the [SciPy website](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html). You don't need to read it, unless 
+you want more details. 
+
+:::
+
+Finish the code to perform the fitting in the cell below.
+
+```{python}
+#| exercise: true
+#| eval: false
+from scipy.optimize import curve_fit
+
+# Choose the variables from the dataframe
+x = df['Free Ligand [L](M)']
+y = df['n-bar']
+
+# Initial guess
+K_D_guess = ... # Your initial guess for K_D 
+nu_max_guess = ... # Your initial guess for nu_max
+p0 = [K_D_guess, nu_max_guess]
+
+# Curve fit
+# Replace the four ... with the correct arguments in the correct order.
+popt, pcov = curve_fit(..., ..., ..., ...) 
+
+# Print the parameters
+nu_max_fit, K_D_fit = popt
+print(f"{nu_max_fit = :1.3f} ")
+print(f"{K_D_fit = :e}")
+```
+
+```{python}
+#| solution: true
+from scipy.optimize import curve_fit
+
+# Choose the variables from the dataframe
+x = df['Free Ligand [L](M)']
+y = df['n-bar']
+
+# Initial guess
+K_D_guess = 10**(-5)
+nu_max_guess = 1
+p0 = [K_D_guess, nu_max_guess]
+
+# Curve fit
+popt, pcov = curve_fit(nu, x, y, p0=p0)
+nu_max_fit, K_D_fit = popt
+print(f"{nu_max_fit = :1.3f} ")
+print(f"{K_D_fit = :e}")
+```
+
+Are the parameters you find reasonable? How can you tell if they are reasonable by 
+looking at the plot you made earlier? 
+
+#### (f) Plot with fit
+
+When we have the fitted parameters we can calculate and plot the function. To do so 
+we make an array of values for the independent variable and use our function to 
+calculate the dependent variable
+
+```{python}
+#| exercise: true
+#| eval: false
+# This makes 50 equally spaced points between 0 and the highest concentration x 1.2
+L = np.linspace(0, x.max()*1.2, 50) 
+
+# Calculate by plugging L and the found parameters into the function.
+nu_calc = ...
+```
+
+```{python}
+#| solution: true
+# This makes 50 equally spaced points between 0 and the highest concentration x 1.2
+L = np.linspace(0, x.max()*1.2, 50) 
+
+# Calculate: 
+nu_calc = nu(L, nu_max_fit, K_D_fit)
+```
+
+Now that we calculated the dependent variable we can plot the fit along with the data. 
+
+```{python}
+#| solution: true
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+
+# Plot the fitted curve
+ax.plot(L, nu_calc, label='Fit')
+
+# Straight lines indicating the parameters 
+ax.axhline(nu_max_fit, color='red', label=r'$\nu_{max}$')
+ax.axvline(K_D_fit, color='green', label=r'$K_D$')
+
+# Same as before
+ax.plot(df['Free Ligand [L](M)'], df['n-bar'], 'o', color='C0')
+ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
+ax.set_ylabel(r'$\bar{n}$', fontsize=16)
+ax.legend(fontsize=16)
+plt.show()
+```
+

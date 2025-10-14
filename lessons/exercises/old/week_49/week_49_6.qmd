@@ -1,0 +1,171 @@
+---
+title: "Enzyme inhibitors (I)"
+categories: ['data', 'plotting', 'regression']
+topics: []
+datasets: ['week49_6_inhib']
+---
+
+## Enzyme inhibitors (I)
+
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy.optimize import curve_fit
+pd.set_option('display.max_rows', 6)
+```
+
+An enzyme obeying the Michaelis-Menten kinetics model was tested for substrate 
+conversion in the absence and presence of an inhibitor, called inhibitor1 at a 
+concentration of $[\textrm{I}] = 2.5 \cdot 10^{-3} \ \textrm{M}$. The data set 
+is contained in the file `week49_6_inhib.xlsx`. Using this data a researcher 
+wanted to determine the type of inhibition.
+
+Start by loading the dataset 
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('week49_6') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (a) Convert units
+
+Convert the concentrations of substrate and the initial velocities to units given in M and $\mathrm{M}\cdot \mathrm{s}^{-1}$, respectively.
+
+```{python}
+#| exercise: true
+#| eval: false
+df['[S]_(M)'] = ...
+df['V0_no_inhib_(M/s)'] = ...
+... # This one you'll have to do all on your own.
+display(df)
+```
+
+```{python}
+#| solution: true
+df['[S]_(M)'] = df['[S]_(mM)'] * 10**(-3)
+df['V0_no_inhib_(M/s)'] = df['V0_no_inhib_(uM/s)'] * 10**(-6)
+df['V0_inhib_(M/s)'] = df['V0_inhib_(uM/s)'] * 10**(-6)
+display(df)
+```
+
+#### (b) Plot 
+
+Plot the initial velocities of both experiments as a function of substrate concentration in one plot. Estimate $k_\mathrm{cat}$ and $V_\mathrm{max}$ in the presence and absence of inhibitor from the plot. 
+
+```{python}
+#| fig-align: center
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots(figsize=(6, 4))
+
+... # Your code for plotting here
+... # and here. 
+
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)')
+ax.legend()
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+fig, ax = plt.subplots(figsize=(6, 4))
+
+ax.plot(df['[S]_(M)'], df['V0_no_inhib_(M/s)'], 'o', label='No inhibitor')
+ax.plot(df['[S]_(M)'], df['V0_inhib_(M/s)'], 'o', label='Inhibitor')
+
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)')
+ax.legend()
+```
+---
+
+The researcher wanted to determine $V_\mathrm{max}$ and $K_M$ values for both experiments in order to correctly conclude on the type of inhibitor. 
+
+#### (c)
+
+Determine $V_\mathrm{max}$ and $K_M$ by fitting. 
+
+Start writing the function to fit with
+
+```{python}
+#| exercise: true
+#| eval: false
+def ...
+    ...
+```
+
+```{python}
+#| solution: true
+def michaelis_menten(S, Vmax, Km):
+    return (Vmax * S) / (S + Km)
+```
+
+And use the `curve_fit`-function to find the parameters
+
+```{python}
+#| exercise: true
+#| eval: false
+popt, _ = ...
+vmax, km = popt
+
+# With inhibitor
+popt, _ = ...
+vmax_inhib, km_inhib = popt
+
+# Printing
+print('Without inhibitor:')
+print(f'\t V_max = {vmax:.2e}')
+print(f'\t Km = {km:.2e}')
+print('With inhibitor:')
+print(f'\t V_max = {vmax_inhib:.2e}')
+print(f'\t Km = {km_inhib:.2e}')
+```
+
+```{python}
+#| solution: true
+# No inhibitor: 
+popt, _ = curve_fit(michaelis_menten, df['[S]_(M)'], df['V0_no_inhib_(M/s)'])
+vmax, km = popt
+
+# With inhibitor
+popt, _ = curve_fit(michaelis_menten, df['[S]_(M)'], df['V0_inhib_(M/s)'])
+vmax_inhib, km_inhib = popt
+
+# Printing
+print('Without inhibitor:')
+print(f'\t V_max = {vmax:.2e}')
+print(f'\t Km = {km:.2e}')
+print('With inhibitor:')
+print(f'\t V_max = {vmax_inhib:.2e}')
+print(f'\t Km = {km_inhib:.2e}')
+```
+
+#### (d)
+
+What type of inhibitor is inhibitor1?
+
+#### (e)
+
+Calculate $K_i$. 
+ 
