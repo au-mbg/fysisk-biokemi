@@ -123,28 +123,9 @@ datasets:
     exercise: "protei-blood-plasma.qmd"
     original_name: "week47_3_protein_blood_plasma.xlsx"
     description: "Protein concentration in blood plasma data"
-
-  # Datasets that exist but don't appear to be used in exercises
-  chlorophyll_adsorption.txt:
-    week: null
-    exercise: null
-    original_name: "chlorophyll_adsorption.txt"
-    description: "Chlorophyll absorption data (text format)"
   
   chlorophyll_adsorption.xlsx:
     week: null
     exercise: null
     original_name: "chlorophyll_adsorption.xlsx"
     description: "Chlorophyll absorption data (Excel format)"
-  
-  titin.csv:
-    week: null
-    exercise: "extin-coeff-human-myogl.qmd"
-    original_name: "titin.csv"
-    description: "Titin protein data for extinction coefficient calculation"
-  
-  mCherry.csv:
-    week: null
-    exercise: "the-fluor-protei-mcherr.qmd"  
-    original_name: "mCherry.csv"
-    description: "mCherry fluorescent protein data"

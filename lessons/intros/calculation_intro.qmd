@@ -58,7 +58,7 @@ a = np.arange(0, 10)
 ```{python}
 #| exercise: true
 #| eval: false
-b = a / 3 + a**2
+b = ...
 print(b)
 ```
 
@@ -102,9 +102,9 @@ $$
 ```{python}
 #| exercise: true
 #| eval: false
-a = 5 * 3      
-b = a + 9      
-c = 4/3*a + b - 2
+a = ...
+b = ...
+... 
 print(a, b, c)
 ```
 

@@ -247,6 +247,10 @@ Copy your code from the previous exercise and add labels for both the x and y ax
 according to the value of the the parameter $a$ like `a = 1` etc.
 
 ```{python}
+... # Put some code here and try customizing it.
+```
+
+```{python}
 #| solution: true
 #| fig-align: center
 x = np.linspace(0, 5, 50) # Make 50 points uniformly between 0 and 5. 
