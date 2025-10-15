@@ -1,0 +1,345 @@
+## Python: Introduction to plotting
+
+```{python}
+#| code-fold: true
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+There are many ways to plot, we will be using the `matplotlib` library - but 
+the concepts are similar across most ways of plotting.
+
+We can make a plot of a straight line between two points $(x_1, y_1)$ and $(x_2, y_2)$ like so; 
+
+```{python}
+#| fig-align: center
+x = np.array([1, 2]) # This array contains all the x-coordinates
+y = np.array([0, 1]) # And this contains all the y-coordinates.
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, y)
+```
+
+::: {.callout-note}
+
+`ax` is a special type (like `int`, `float`, `str`), you can think of it as the box that 
+contains the plot.
+
+::: 
+
+If we want to connect to a third point $(x_3, y_3)$ we would instead write
+
+```{python}
+#| fig-align: center
+x = np.array([1, 2, 2.5])
+y = np.array([0, 1, 2])
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, y)
+```
+
+Notice that with three sets of points we plot **two** line segments. 
+
+#### (a) Trying to plot a square
+
+Make a plot with lines between the following 4
+
+- $P_1 = (0, 0)$
+- $P_2 = (1, 0)$
+- $P_3 = (1, 1)$
+- $P_4 = (0, 1)$
+
+Start by defining an array for both `x` and `y`
+
+```{python}
+#| exercise: true
+#| eval: false
+x = np.array([...]) # Replace ... with your code
+# Do the equivalent for y
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+x = np.array([0, 1, 1, 0])
+y = np.array([0, 0, 1, 1])
+```
+Now use `ax.plot` to make the plot
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots(figsize=(5, 5))
+... # Replace with your code.
+ax.axis('equal')
+ax.set_xlim([-0.5, 1.5]) # Tells matplotlib to show us the region between -0.5 and 1.5 on the x-axis.
+ax.set_ylim([-0.5, 1.5])
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(5, 5))
+ax.plot(x, y)
+ax.axis('equal')
+ax.set_xlim([-0.5, 1.5])
+ax.set_ylim([-0.5, 1.5])
+```
+
+Consider the following; 
+
+- Why is it not a square? 
+- How many points did you use? 
+- How many line segments were plotted? 
+
+#### (b) Actually plotting a square
+
+In order to actually plot a square you will need to update `x` and `y`, they both need to contain five numbers such that four line 
+segments are plotted. 
+
+```{python}
+#| exercise: true
+#| eval: false
+x = np.array([...]) # Replace ... with your code
+# Do the equivalent for y
+```
+
+```{python}
+#| solution: true
+x = np.array([0, 1, 1, 0, 0])
+y = np.array([0, 0, 1, 1, 0])
+```
+
+Copy your code for making the plot from the previous exercise to the cell below 
+
+```{python}
+#| exercise: true
+#| eval: false
+... # Put your copied code here.
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(5, 5))
+ax.plot(x, y)
+ax.axis('equal')
+ax.set_xlim([-0.5, 1.5])
+ax.set_ylim([-0.5, 1.5])
+```
+
+#### (c) Plotting a function
+
+Often the data we plot can broadly be thought of as originating from a function, that is we have 
+
+$$
+y = f(x)
+$$
+
+Where $f$ is the function, this might for example be an experiment that produces some output $y$ given some input $x$ or 
+it might be a traditional mathematical function like $y = x^2$. Plotting this type of 
+data is exactly the same as plotting a square - it just usually consists of many more data points 
+resulting in many line segments producing a smooth looking curve. 
+
+Make a plot of the function 
+
+$$
+y = \mathrm{e}^x
+$$
+
+```{python}
+#| exercise: true
+#| eval: false
+x = np.linspace(0, 5, 50) # Make 50 points uniformly between 0 and 5. 
+y = ... # Your code here.
+
+fig, ax = plt.subplots(figsize=(6, 4))
+... # Your code to plot here
+
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+x = np.linspace(0, 5, 50) # Make 50 points uniformly between 0 and 5. 
+y = np.exp(x) # Calculate y from x.
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, y)
+```
+
+Once you've made the plot try changing the number of points in `x` by changing the last 
+argument in the call to `np.linspace`.
+
+- What happens if you have very few points? 
+
+::: {.callout-tip}
+
+Remember that `np.exp` is used to calculate the exponential function.
+
+::: 
+
+#### (d) Plotting multiple functions
+
+Often we want to plot multiple functions in the same figure as it enables us to compare them.
+Luckily, this is quite simple! 
+
+Plot the function 
+
+$$
+y = \mathrm{e}^{ax}
+$$
+
+With $a = \left[1, \cfrac{1}{2}, 1.2\right]$ in the same plot producing three curves. 
+
+```{python}
+#| exercise: true
+#| eval: false
+x = np.linspace(0, 5, 50) # Make 50 points uniformly between 0 and 5. 
+y1 = ...
+y2 = ...
+y3 = ...
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, y1)
+ax.plot(x, y2) # To plot a second curve we just use ax.plot again
+... # Plot the the third curve.
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+x = np.linspace(0, 5, 50) # Make 50 points uniformly between 0 and 5. 
+y1 = np.exp(1*x)
+y2 = np.exp(0.5*x)
+y3 = np.exp(1.2*x)
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, y1)
+ax.plot(x, y2)
+ax.plot(x, y3)
+```
+
+#### (e) Customizing plots 
+
+We will generally need to customize plots a little bit, for example the plot from 
+the previous exercise doesn't have a label for the axis, there's no way of telling 
+which curve is which and it has no title.
+
+To add labels to the x and y axis we use the two functions 
+
+- `ax.set_xlabel('String with the name of the x-axis')`
+- `ax.set_ylabel('String with the name of the y-axis')`
+
+Adding information about the curves we plot can be done by also giving them a label, 
+that is done as an argument to the `ax.plot` call, like so
+
+```python
+fig, ax = plt.subplots()
+
+ax.plot(x, y, label='Information about the curve.') # <1>
+ax.legend() # <2>
+ax.set_title('Title of plot') # <3>
+```
+1. The `label` argument is given when the curve is plotted. 
+2. `ax.legend()` is called to tell matplotlib to show the a 'legend' containing the `label` of all the plots that have been given one.
+3. Sets the title of the plot
+
+Copy your code from the previous exercise and add labels for both the x and y axis aswell as each curve, for example you can label them 
+according to the value of the the parameter $a$ like `a = 1` etc.
+
+```{python}
+#| solution: true
+#| fig-align: center
+x = np.linspace(0, 5, 50) # Make 50 points uniformly between 0 and 5. 
+y1 = np.exp(1*x)
+y2 = np.exp(0.5*x)
+y3 = np.exp(1.2*x)
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, y1, label='a = 1')
+ax.plot(x, y2, label='a = 1/2')
+ax.plot(x, y3, label='a = 1.2')
+
+# Customization:
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.legend()
+ax.set_title('Plots of exponential functions')
+```
+
+::: {.callout-note}
+
+There are many other customization options that can be added in the same way as the `label`, that is 
+
+```python
+ax.plot(x, y, option_name=option_value)
+```
+
+Some useful examples are
+
+- `linestyle`: Controls if the plot is made using a full, dashed or dotted line using `-`, `--` and `:` respectively. So `ax.plot(..., ..., linestyle = ":")` produces a dotted line. 
+- `color`: Controls the color of the line - valid options are listed here [https://matplotlib.org/stable/gallery/color/named_colors.html](https://matplotlib.org/stable/gallery/color/named_colors.html)
+- `linewidth`: Sets the width of the line - can be any number. 
+- `alpha`: Controls the transparency of the plot `0` being fully transparent and `1` being fully visible. 
+
+You can try some of these options for the plot you've made above if you want to. There are *many* 
+other ways of customizing plots for different situations. The matplotlib [gallery](https://matplotlib.org/stable/gallery/index.html)
+shows a number of them.
+
+::: 
+
+#### (f) Other types of plots: Scatter
+
+Sometimes we don't want to connect each point with a line segment but just show 
+the points in a *scatter* plot.
+
+The next cell makes some data 
+
+```{python}
+x = np.random.uniform(low=0, high=10, size=100)
+y = 2*x + np.random.normal(scale=2, size=100)
+```
+
+Try plotting it like for the previous exercises
+
+```{python}
+#| exercise: true
+#| eval: false
+# Put your code to quickly plot in this cell - no customization needed!
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+ax.plot(x, y)
+```
+
+You will see a very strange plot like when you scribble out a word on a piece of paper. 
+Clearly a line plot is not a very good way of showing this data! There are, at least, 
+two ways of making a scatter plot 
+
+- `ax.plot(x, y, 'o')`: Quick and dirty way of just showing the points and not the lines. 
+- `ax.scatter(x, y)`: Function specifically for making these types of plots - with its own set of customization arguments. 
+
+Try either, or both, of these ways in the cell below
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+
+# Your code here.
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots()
+
+ax.scatter(x, y, s=100, label='ax.scatter', facecolor='orange', edgecolor='black', linewidth=1)
+ax.plot(x, y, 'o', label='ax.plot', color='mediumpurple', markersize=4)
+ax.legend()
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_title('Scatter plot in two ways.')
+plt.show()
+```

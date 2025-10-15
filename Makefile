@@ -29,5 +29,6 @@ clean:
 	rm -rf lessons/*html lessons/*.ipynb lessons/*_files lessons/.ipynb_checkpoints
 	rm -rf lessions/*.ipynb lessons/*.html lessons/*_files lessons/.ipynb_checkpoints
 	rm -rf lessons/exercises/*.ipynb lessons/exercises/*.html lessons/exercises/*_files lessons/exercises/.ipynb_checkpoints
+	rm -rf lessons/intros/*.ipynb lessons/intros/*.html lessons/intros/*_files lessons/intros/.ipynb_checkpoints
 	rm -rf quizzes/*.html quizzes/*.ipynb quizzes/*_files quizzes/.ipynb_checkpoints
 

@@ -1,7 +1,7 @@
 ---
 title: Week 45
 engine: jupyter
-categories: ['Calculation', 'Plotting', 'Data']
+categories: ['calculation', 'data', 'plotting']
 format-links:
     - text: "Open in Google Colab"
       href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/week_45.ipynb"
@@ -9,6 +9,14 @@ format-links:
 ---
 
 {{< include tidbits/_install_import.qmd >}}
+
+---
+
+{{< include intros/calculation_intro.qmd >}}
+
+---
+
+{{< include intros/plotting_intro.qmd >}}
 
 ---
 

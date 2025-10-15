@@ -1,0 +1,198 @@
+## Python: Calculations
+
+```{python}
+#| code-fold: true
+import numpy as np
+```
+
+#### (a) Simple calculations
+
+Evaluate the following expressions using Python
+
+- $10.5 \times 4$
+- $5 + 10 + 15 + 12$
+- $70 - 30 + 2$
+- $420 / 10$
+
+```{python}
+#| exercise: true
+#| eval: false
+... # Replace ... with your code
+...
+...
+...
+```
+
+::: {.callout-tip}
+Recall that the basic arithemetic operations are, in Python, represented as follows
+
+- $+ \Rightarrow$ `+`
+- $- \Rightarrow$ `-`
+- $/ \Rightarrow$ `/`
+- $\times \Rightarrow$ `*`
+- $x^y \Rightarrow$ `x**y`
+
+::: 
+
+```{python}
+#| solution: true
+10.5 * 4
+5 + 10 + 15 + 12
+70 - 30 + 2 
+420 / 10
+```
+
+#### (b) Array calculations
+
+The cell below defines an array $a$ with all the numbers from 0 to 9.
+
+For each entry $a_i$ in the array calculate the expression $b_i = a_i / 3 + a_i^2$ and 
+assign that to a new array $b$.
+use the fact that you can do elementwise operations with an array - do not 
+calculate it seperately for every element of the array.
+
+```{python}
+a = np.arange(0, 10)
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+b = a / 3 + a**2
+print(b)
+```
+
+```{python}
+#| solution: true
+b = a / 3 + a**2
+print(b)
+```
+
+::: {.callout-tip}
+
+With an array all the basic arithemtic operations can do be done elementwise, so 
+the expression $x^2 + 1$ can be done for all elements in an array as such 
+
+```python
+x = np.arange(0, 10)
+y = x**2 + 1
+```
+Just like if `x` was just a single number. Similarly, expressions be involve adding 
+arrays together like
+
+```python
+y = x**2 + x
+```
+
+:::
+
+#### (c) Variables
+
+Variables are an essential part of a program. Calculate the following where each 
+intermediate is assigned to a variable 
+
+$$
+\begin{aligned}
+a &= 5 \times 3 \\
+b &= a + 9 \\
+c &= \frac{4}{3}a + b + 2
+\end{aligned}
+$$
+
+```{python}
+#| exercise: true
+#| eval: false
+a = 5 * 3      
+b = a + 9      
+c = 4/3*a + b - 2
+print(a, b, c)
+```
+
+```{python}
+#| solution: true
+a = 5 * 3      
+b = a + 9      
+c = 4/3*a + b - 2
+print(a, b, c)
+```
+
+Bonus question: Why does `c` print as a decimal number when the others print without decimals? 
+
+#### (d) Parentheses
+
+Parentheses a very important, one misplaced parentheses and the universe could have been drastically different - if parenthesis had been missing it is likely the universe would never have existed.
+
+Using the variables `a`, `b` and `c` you calculate in the previous exercise, evaluate
+the following expressions
+
+- $a \times (b + c)$
+- $a \times b + c$
+- $\frac{a + b + c}{b + c}$
+- $(b - a)(\frac{1}{c} + 1)$
+- $(b - a)(\frac{1}{c+1} + 1)$
+
+```{python}
+#| exercise: true
+#| eval: false
+
+q1 = ...
+q2 = ...
+q3 = ...
+q4 = ...
+q5 = ...
+print(q1, q2, q3, q4, q5)
+```
+
+```{python}
+#| solution: true
+
+q1 = a * (b + c)
+q2 = a * b + c
+q3 = (a + b + c) / (b + c)
+q4 = (b - a)*(1/c + 1)
+q5 = (b - a)*(1/(c+1)+1)
+
+print(q1, q2, q3, q4, q5)
+```
+
+
+
+#### (f) Functions
+
+For repeated computations it's good practice to define a function. Define a function
+that calculates the following expression
+
+$$
+f(x) = \frac{Ax + B + C}{A + B} 
+$$
+
+Where $A = 10$, $B=5$, $C=2.5$
+
+```{python}
+#| exercise: true
+#| eval: false
+def fun_function(x):
+    result = ...
+    return result
+```
+
+```{python}
+#| solution: true
+def fun_function(x):
+    return (10*x + 5 + 2.5) / (10 + 5)
+```
+
+Now evaluate the function for $x = 62.5$, 
+
+```{python}
+#| exercise: true
+#| eval: false
+fun_output = ...
+print(fun_output)
+```
+
+```{python}
+#| solution: true
+fun_output = fun_function(62.25)
+print(fun_output)
+```

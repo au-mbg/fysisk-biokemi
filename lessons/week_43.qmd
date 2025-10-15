@@ -1,7 +1,7 @@
 ---
 title: Week 43
 engine: jupyter
-categories: ['Units']
+categories: ['units', 'widgets', 'commas', ]
 format-links:
     - text: "Open in Google Colab"
       href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/week_43.ipynb"
