@@ -44,12 +44,6 @@ datasets:
     original_name: "week48_4_reaction_order.xlsx"
     description: "Reaction order determination data"
   
-  analys-rever-reacti.xlsx:
-    week: 47
-    exercise: "analys-rever-reacti.qmd"
-    original_name: "reversible_reaction_dataset.xlsx"
-    description: "Reversible reaction analysis data"
-  
   deter-reacti-order-activ.csv:
     week: 47
     exercise: "deter-reacti-order-activ.qmd"
@@ -87,45 +81,45 @@ datasets:
     original_name: "atcase_enzyme.csv"
     description: "Aspartate transcarbamoylase enzyme behavior data"
 
-  # Exercises not yet in week files
+  # Week 45 exercises (continued)
   trypt-absor-fluor-emission.xlsx:
-    week: null
+    week: 45
     exercise: "trypt-absor-fluor.qmd"
     original_name: "week47_1_tryp_emi.xlsx"
     description: "Tryptophan fluorescence emission data"
   
   trypt-absor-fluor-extinction.xlsx:
-    week: null
+    week: 45
     exercise: "trypt-absor-fluor.qmd"
     original_name: "week47_1_tryp_ext.xlsx"
     description: "Tryptophan fluorescence extinction data"
   
   trypt-absor-fluor-ph2.xlsx:
-    week: null
+    week: 45
     exercise: "trypt-absor-fluor.qmd"
     original_name: "week47_1_tryp_ph2.xlsx"
     description: "Tryptophan fluorescence at pH 2"
   
   trypt-absor-fluor-ph7.xlsx:
-    week: null
+    week: 45
     exercise: "trypt-absor-fluor.qmd"
     original_name: "week47_1_tryp_ph7.xlsx"
     description: "Tryptophan fluorescence at pH 7"
   
   extin-coeff-human-myogl.txt:
-    week: null
+    week: 45
     exercise: "extin-coeff-human-myogl.qmd"
     original_name: "titin.txt"
     description: "Titin protein sequence data"
   
   the-fluor-protei-mcherr.csv:
-    week: null
+    week: 45
     exercise: "the-fluor-protei-mcherr.qmd"
     original_name: "week47_2_mcherry_fpbase_spectra.csv"
     description: "mCherry fluorescent protein spectra"
   
   protei-blood-plasma.xlsx:
-    week: null
+    week: 45
     exercise: "protei-blood-plasma.qmd"
     original_name: "week47_3_protein_blood_plasma.xlsx"
     description: "Protein concentration in blood plasma data"
@@ -142,3 +136,15 @@ datasets:
     exercise: null
     original_name: "chlorophyll_adsorption.xlsx"
     description: "Chlorophyll absorption data (Excel format)"
+  
+  titin.csv:
+    week: null
+    exercise: "extin-coeff-human-myogl.qmd"
+    original_name: "titin.csv"
+    description: "Titin protein data for extinction coefficient calculation"
+  
+  mCherry.csv:
+    week: null
+    exercise: "the-fluor-protei-mcherr.qmd"  
+    original_name: "mCherry.csv"
+    description: "mCherry fluorescent protein data"

@@ -27,9 +27,14 @@ available_datasets = {
     'week47_1_ph2': 'trypt-absor-fluor-ph2.xlsx',
     'week47_1_ph7': 'trypt-absor-fluor-ph7.xlsx',
     # Other exercises not yet in week files:
-    'titin': 'extin-coeff-human-myogl.txt',
-    'mCherry': 'the-fluor-protei-mcherr.csv',
+    'titin': 'titin.csv',
+    'mCherry': 'mCherry.csv',
     'protein_blood_plasma': 'protei-blood-plasma.xlsx',
+    
+    # New exercise-based names (preferred):
+    'design-enzyme-kineti-exper.xlsx': 'design-enzyme-kineti-exper.xlsx',
+    'titin.csv': 'titin.csv', 
+    'mCherry.csv': 'mCherry.csv',
 }
 
 def get_dataset_path(name: str) -> str:

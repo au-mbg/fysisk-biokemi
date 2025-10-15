@@ -1,49 +1,106 @@
-## Placeholder
-
-<!-- ---
+---
 title: Datasets
-listing:
-  - id: week46
-    type: table
-    fields: [filename]
-    contents:
-    - src/fysisk_biokemi/datasets/files/*week46*
-  - id: week47
-    type: table
-    fields: [filename]
-    contents:
-    - src/fysisk_biokemi/datasets/files/*week47*
-  - id: week48
-    type: table
-    fields: [filename]
-    contents:
-    - src/fysisk_biokemi/datasets/files/*week48*
-  - id: week49
-    type: table
-    fields: [filename]
-    contents:
-    - src/fysisk_biokemi/datasets/files/*week49*
-
 resources:
   - src/fysisk_biokemi/datasets/files/**
+  - src/fysisk_biokemi/datasets/metadata.yml
 ---
 
-## Week 46
+The datasets used in the course exercises are organized by week. Click on the filenames to download the data files.
 
-:::{#week46}
-:::
+```{python}
+#| echo: false
+#| output: asis
+import yaml
+import re
+import os
 
-## Week 47
+# Function to extract exercise title from file
+def get_exercise_title(exercise_filename):
+    if not exercise_filename:
+        return "—"
+    
+    exercise_path = f"lessons/exercises/{exercise_filename}"
+    if not os.path.exists(exercise_path):
+        return "—"
+    
+    try:
+        with open(exercise_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Look for the first ## header (exercise title)
+        match = re.search(r'^##\s+(.+)', content, re.MULTILINE)
+        if match:
+            return match.group(1).strip()
+        else:
+            # Fallback to filename conversion
+            return exercise_filename.replace('.qmd', '').replace('-', ' ').title()
+    except:
+        # Fallback to filename conversion
+        return exercise_filename.replace('.qmd', '').replace('-', ' ').title()
 
-:::{#week47}
-:::
+# Load metadata
+with open('src/fysisk_biokemi/datasets/metadata.yml', 'r') as f:
+    metadata = yaml.safe_load(f)
 
-## Week 48
+# Group datasets by week
+datasets_by_week = {}
+for filename, info in metadata['datasets'].items():
+    week = info['week']
+    if week is not None:  # Only include datasets assigned to weeks
+        if week not in datasets_by_week:
+            datasets_by_week[week] = []
+        datasets_by_week[week].append({
+            'filename': filename,
+            'exercise': info['exercise'],
+            'description': info['description'],
+            'original_name': info.get('original_name', filename)
+        })
 
-:::{#week48}
-:::
+# Sort weeks
+sorted_weeks = sorted(datasets_by_week.keys())
 
-## Week 49
+# Generate markdown for each week
+for week in sorted_weeks:
+    print(f"## Week {week}\n")
+    
+    datasets = datasets_by_week[week]
+    
+    # Create table header
+    print("| Dataset | Exercise | Description |")
+    print("|---------|----------|-------------|")
+    
+    # Add each dataset as a table row
+    for dataset in datasets:
+        # Create download link
+        download_link = f"[{dataset['filename']}](src/fysisk_biokemi/datasets/files/{dataset['filename']})"
+        exercise_title = get_exercise_title(dataset['exercise'])
+        description = dataset['description']
+        
+        print(f"| {download_link} | {exercise_title} | {description} |")
+    
+    print("")  # Empty line after each week section
 
-:::{#week49}
-::: -->
+# Show unassigned datasets
+unassigned = []
+for filename, info in metadata['datasets'].items():
+    if info['week'] is None:
+        unassigned.append({
+            'filename': filename,
+            'exercise': info['exercise'],
+            'description': info['description']
+        })
+
+if unassigned:
+    print("## Additional Datasets\n")
+    print("*These datasets are available but not yet assigned to specific weeks.*\n")
+    
+    print("| Dataset | Exercise | Description |")
+    print("|---------|----------|-------------|")
+    
+    for dataset in unassigned:
+        download_link = f"[{dataset['filename']}](src/fysisk_biokemi/datasets/files/{dataset['filename']})"
+        exercise_title = get_exercise_title(dataset['exercise'])
+        description = dataset['description']
+        
+        print(f"| {download_link} | {exercise_title} | {description} |")
+```

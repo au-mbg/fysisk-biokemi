@@ -227,7 +227,7 @@ print(f"Epsilon from function: {epsilon_func}")
 ```
 
 The largest known protein is Titin, the cell below loads the sequence of titin 
-and prints a few bits of information about it.
+and prints a few bits of information about it. (You can also find the full sequence in the dataset `extin-coeff-human-myogl.txt`.)
 
 ```{python}
 #| exercise: true

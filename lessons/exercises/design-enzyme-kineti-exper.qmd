@@ -33,7 +33,7 @@ display(df)
 #| solution: true
 from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
-df = load_dataset('week49_1') # Load from package for the solution so it doesn't require to interact.
+df = load_dataset('design-enzyme-kineti-exper.xlsx') # Load from package for the solution so it doesn't require to interact.
 display(df)
 ```
 
