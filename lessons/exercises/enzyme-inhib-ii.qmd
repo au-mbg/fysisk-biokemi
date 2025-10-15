@@ -8,7 +8,7 @@ from scipy.optimize import curve_fit
 pd.set_option('display.max_rows', 6)
 ```
 
-Two enzyme inhibitors were identified as part of a drug discovery program. To characterize the mechanism of action, the reaction kinetics were analysed for the enzyme alone and in the presence of 5 $\mu$M of each of the inhibitors as a function of substrate concentration resulting in the data in the file `week49_7_inhib_II.xlsx`
+Two enzyme inhibitors were identified as part of a drug discovery program. To characterize the mechanism of action, the reaction kinetics were analysed for the enzyme alone and in the presence of 5 $\mu$M of each of the inhibitors as a function of substrate concentration resulting in the data in the file `enzyme-inhib-ii.xlsx`
 
 Load the dataset
 

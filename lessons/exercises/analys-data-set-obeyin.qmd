@@ -11,7 +11,7 @@ pd.set_option('display.max_rows', 6)
 
 The kinetics for an enzyme were investigated using the absorbance of the product 
 to calculate the initial velocities for a range of different initial concentrations
-of the substrate. The data given in the dataset `week49_2.xlsx` was obtained. 
+of the substrate. The data given in the dataset `analys-data-set-obeyin.xlsx` was obtained. 
 Use these data to answer the following questions.
 
 ```{python}

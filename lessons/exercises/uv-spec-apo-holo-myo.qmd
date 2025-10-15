@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 ```
 
 In this exercise we will analyze the spectra of apo- and holo-myoglobin. 
-The dataset is given in `uv_spectra_apo_holo_myo.csv`. 
+The dataset is given in `uv-spec-apo-holo-myo.csv`. 
 
 #### (a) Load the dataset
 

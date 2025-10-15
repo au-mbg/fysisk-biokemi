@@ -1,0 +1,144 @@
+datasets:
+  # Week 45 exercises
+  averag-prope-amino-acids.xlsx:
+    week: 45
+    exercise: "averag-prope-amino-acids.qmd"
+    original_name: "week46_1_AA_frequency.xlsx"
+    description: "Amino acid frequency data"
+  
+  uv-spec-apo-holo-myo.csv:
+    week: 45
+    exercise: "uv-spec-apo-holo-myo.qmd"
+    original_name: "uv_spectra_apo_holo_myo.csv"
+    description: "UV spectra for apo and holo myoglobin"
+
+  # Week 46 exercises
+  dialys-exper.xlsx:
+    week: 46
+    exercise: "dialys-exper.qmd"
+    original_name: "week47_7_dialysis_experiment.xlsx"
+    description: "Dialysis experiment data"
+  
+  adp-bindin-pyruva-kinase.csv:
+    week: 46
+    exercise: "adp-bindin-pyruva-kinase.qmd"
+    original_name: "week47_8_adp_pyruvate.csv"
+    description: "ADP binding to pyruvate kinase data"
+  
+  inter-bindin-data.xlsx:
+    week: 46
+    exercise: "inter-bindin-data.qmd"
+    original_name: "week48_1_interpret.xlsx"
+    description: "Binding data for interpretation"
+  
+  deter-type-streng-coope.xlsx:
+    week: 46
+    exercise: "deter-type-streng-coope.qmd"
+    original_name: "week48_2_determination_coop.xlsx"
+    description: "Cooperativity determination data"
+
+  # Week 47 exercises
+  deter-reacti-orders.xlsx:
+    week: 47
+    exercise: "deter-reacti-orders.qmd"
+    original_name: "week48_4_reaction_order.xlsx"
+    description: "Reaction order determination data"
+  
+  analys-rever-reacti.xlsx:
+    week: 47
+    exercise: "analys-rever-reacti.qmd"
+    original_name: "reversible_reaction_dataset.xlsx"
+    description: "Reversible reaction analysis data"
+  
+  deter-reacti-order-activ.csv:
+    week: 47
+    exercise: "deter-reacti-order-activ.qmd"
+    original_name: "week48_7_reaction_order_activation.csv"
+    description: "Reaction order and activation energy data"
+  
+  design-enzyme-kineti-exper.xlsx:
+    week: 47
+    exercise: "design-enzyme-kineti-exper.qmd"
+    original_name: "week49_1.xlsx"
+    description: "Enzyme kinetics experimental design data"
+  
+  analys-data-set-obeyin.xlsx:
+    week: 47
+    exercise: "analys-data-set-obeyin.qmd"
+    original_name: "week49_2.xlsx"
+    description: "Data set analysis for enzyme kinetics"
+
+  # Week 48 exercises
+  enzyme-inhib-i.xlsx:
+    week: 48
+    exercise: "enzyme-inhib-i.qmd"
+    original_name: "week49_6_inhib.xlsx"
+    description: "Enzyme inhibition data (part I)"
+  
+  enzyme-inhib-ii.xlsx:
+    week: 48
+    exercise: "enzyme-inhib-ii.qmd"
+    original_name: "week49_7_inhib_II.xlsx"
+    description: "Enzyme inhibition data (part II)"
+  
+  enzyme-behav-atcase.csv:
+    week: 48
+    exercise: "enzyme-behav-atcase.qmd"
+    original_name: "atcase_enzyme.csv"
+    description: "Aspartate transcarbamoylase enzyme behavior data"
+
+  # Exercises not yet in week files
+  trypt-absor-fluor-emission.xlsx:
+    week: null
+    exercise: "trypt-absor-fluor.qmd"
+    original_name: "week47_1_tryp_emi.xlsx"
+    description: "Tryptophan fluorescence emission data"
+  
+  trypt-absor-fluor-extinction.xlsx:
+    week: null
+    exercise: "trypt-absor-fluor.qmd"
+    original_name: "week47_1_tryp_ext.xlsx"
+    description: "Tryptophan fluorescence extinction data"
+  
+  trypt-absor-fluor-ph2.xlsx:
+    week: null
+    exercise: "trypt-absor-fluor.qmd"
+    original_name: "week47_1_tryp_ph2.xlsx"
+    description: "Tryptophan fluorescence at pH 2"
+  
+  trypt-absor-fluor-ph7.xlsx:
+    week: null
+    exercise: "trypt-absor-fluor.qmd"
+    original_name: "week47_1_tryp_ph7.xlsx"
+    description: "Tryptophan fluorescence at pH 7"
+  
+  extin-coeff-human-myogl.txt:
+    week: null
+    exercise: "extin-coeff-human-myogl.qmd"
+    original_name: "titin.txt"
+    description: "Titin protein sequence data"
+  
+  the-fluor-protei-mcherr.csv:
+    week: null
+    exercise: "the-fluor-protei-mcherr.qmd"
+    original_name: "week47_2_mcherry_fpbase_spectra.csv"
+    description: "mCherry fluorescent protein spectra"
+  
+  protei-blood-plasma.xlsx:
+    week: null
+    exercise: "protei-blood-plasma.qmd"
+    original_name: "week47_3_protein_blood_plasma.xlsx"
+    description: "Protein concentration in blood plasma data"
+
+  # Datasets that exist but don't appear to be used in exercises
+  chlorophyll_adsorption.txt:
+    week: null
+    exercise: null
+    original_name: "chlorophyll_adsorption.txt"
+    description: "Chlorophyll absorption data (text format)"
+  
+  chlorophyll_adsorption.xlsx:
+    week: null
+    exercise: null
+    original_name: "chlorophyll_adsorption.xlsx"
+    description: "Chlorophyll absorption data (Excel format)"

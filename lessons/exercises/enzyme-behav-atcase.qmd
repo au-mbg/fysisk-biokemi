@@ -11,7 +11,7 @@ such as CTP as shown in the reaction below:
 ![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/atcase.png){.lightbox}
 
 ATCase does not obey the Michaelis-Menten kinetics model but instead shows the behaviour recorded in the 
-`atcase_enzyme.csv` dataset.
+`enzyme-behav-atcase.csv` dataset.
 
 The dataset consists of three columns; the aspartate concentration in mM and the rate of formation of N-carbamyolaspartate
 with and without the presence of CTP. 

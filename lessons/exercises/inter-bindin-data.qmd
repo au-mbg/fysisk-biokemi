@@ -4,7 +4,7 @@
 import numpy as np
 ```
 
-The `week48_1_interpret.xlsx` contains a protein binding dataset. 
+The `inter-bindin-data.xlsx` contains a protein binding dataset. 
 
 #### (a) Load the dataset
 

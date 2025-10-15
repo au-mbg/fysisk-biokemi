@@ -14,7 +14,7 @@ A researcher wants to determine the concentration of two proteins in blood plasm
 
 #### (a) Load the dataset
 
-Use the widget to load the dataset as a dataframe from the file **week47_3_protein_blood_plasma.xlsx**
+Use the widget to load the dataset as a dataframe from the file `protei-blood-plasma.xlsx`
 
 ```{python}
 #| eval: false

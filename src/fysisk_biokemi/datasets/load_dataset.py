@@ -3,36 +3,33 @@ from importlib.resources import files
 
 available_datasets = {    
     'chlorophyll': 'chlorophyll_adsorption.xlsx',
-    'reversible_reaction': 'reversible_reaction_dataset.xlsx',
+    'reversible_reaction': 'analys-rever-reacti.xlsx',
+    # Week 45:
+    'apo_holo': 'uv-spec-apo-holo-myo.csv',
+    'AA_frequency': 'averag-prope-amino-acids.xlsx',
     # Week 46:
-    'apo_holo': 'uv_spectra_apo_holo_myo.csv',
-    'AA_frequency': 'week46_1_AA_frequency.xlsx',
+    'dialysis_experiment': 'dialys-exper.xlsx',
+    'adp_pyruvate': 'adp-bindin-pyruva-kinase.csv',
+    'interpret_week48': 'inter-bindin-data.xlsx',
+    'determination_coop_week48': 'deter-type-streng-coope.xlsx',
     # Week 47:
-    'week47_1_emi': 'week47_1_tryp_emi.xlsx',
-    'week47_1_ext': 'week47_1_tryp_ext.xlsx',
-    'week47_1_ph2': 'week47_1_tryp_ph2.xlsx',
-    'week47_1_ph7': 'week47_1_tryp_ph7.xlsx',
-    'mCherry': 'week47_2_mcherry_fpbase_spectra.csv',
-    'protein_blood_plasma': 'week47_3_protein_blood_plasma.xlsx',
-    'dialysis_experiment': 'week47_7_dialysis_experiment.xlsx',
-    'adp_pyruvate': 'week47_8_adp_pyruvate.csv',
-
+    'reaction_order_week48': 'deter-reacti-orders.xlsx',
+    'reaction_order_activation_week48': 'deter-reacti-order-activ.csv',
+    'week49_1': 'design-enzyme-kineti-exper.xlsx',
+    'week49_2': 'analys-data-set-obeyin.xlsx',
     # Week 48:
-    'interpret_week48': 'week48_1_interpret.xlsx',
-    'determination_coop_week48': 'week48_2_determination_coop.xlsx',
-    'reaction_order_week48': 'week48_4_reaction_order.xlsx',
-    'reaction_order_activation_week48': 'week48_7_reaction_order_activation.csv',
-
-    'atcase': 'atcase_enzyme.csv',
-
-    # Week 49:
-    'week49_1': 'week49_1.xlsx',
-    'week49_2': 'week49_2.xlsx',
-    'week49_6': 'week49_6_inhib.xlsx',
-    'week49_7': 'week49_7_inhib_II.xlsx',
-
-    # Other
-    'titin': 'titin.txt',
+    'week49_6': 'enzyme-inhib-i.xlsx',
+    'week49_7': 'enzyme-inhib-ii.xlsx',
+    'atcase': 'enzyme-behav-atcase.csv',
+    # Tryptophan exercise (not yet in week files):
+    'week47_1_emi': 'trypt-absor-fluor-emission.xlsx',
+    'week47_1_ext': 'trypt-absor-fluor-extinction.xlsx',
+    'week47_1_ph2': 'trypt-absor-fluor-ph2.xlsx',
+    'week47_1_ph7': 'trypt-absor-fluor-ph7.xlsx',
+    # Other exercises not yet in week files:
+    'titin': 'extin-coeff-human-myogl.txt',
+    'mCherry': 'the-fluor-protei-mcherr.csv',
+    'protein_blood_plasma': 'protei-blood-plasma.xlsx',
 }
 
 def get_dataset_path(name: str) -> str:

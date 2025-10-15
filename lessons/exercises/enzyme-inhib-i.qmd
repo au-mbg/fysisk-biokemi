@@ -11,7 +11,7 @@ pd.set_option('display.max_rows', 6)
 An enzyme obeying the Michaelis-Menten kinetics model was tested for substrate 
 conversion in the absence and presence of an inhibitor, called inhibitor1 at a 
 concentration of $[\textrm{I}] = 2.5 \cdot 10^{-3} \ \textrm{M}$. The data set 
-is contained in the file `week49_6_inhib.xlsx`. Using this data a researcher 
+is contained in the file `enzyme-inhib-i.xlsx`. Using this data a researcher 
 wanted to determine the type of inhibition.
 
 Start by loading the dataset 

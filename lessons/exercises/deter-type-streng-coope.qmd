@@ -7,7 +7,7 @@ import numpy as np
 ```
 
 The binding of NAD+ to the protein yeast glyceraldehyde 3-phosphate dehydrogenase (GAPDH) was studied using
-equilibrium dialysis. The enzyme concentration was 71 μM. The concentration of $[\text{NAD}^{+}_\text{free}]$ and the corresponding values of $\bar{n}$ were determined with the resulting data found in the dataset `week48_2_determination_coop.xlsx`.
+equilibrium dialysis. The enzyme concentration was 71 μM. The concentration of $[\text{NAD}^{+}_\text{free}]$ and the corresponding values of $\bar{n}$ were determined with the resulting data found in the dataset `deter-type-streng-coope.xlsx`.
 
 #### (a) Load the dataset
 

@@ -8,7 +8,7 @@ import numpy as np
 
 #### (a) Load the dataset
 
-Load the dataset `reaction_order_week48.xlsx` using the widget below
+Load the dataset `deter-reacti-orders.xlsx` using the widget below
 
 ```{python}
 #| eval: false
