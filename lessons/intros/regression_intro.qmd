@@ -1,0 +1,326 @@
+## Python: Introduction to curve fitting
+
+```{python}
+#| code-fold: true
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+```
+
+Curve fitting is a fundamental skill in biochemistry and biophysics for analyzing experimental data. We use curve fitting to determine parameters in mathematical models that describe biological processes like enzyme kinetics, binding affinity, and reaction rates.
+
+The basic idea is to find the parameters of a mathematical function that best describes our experimental data.
+
+#### (a) Understanding the problem
+
+Let's start with some simple data that follows a linear relationship. The data below represents a theoretical experiment where we measure some output $y$ at different input values $x$:
+
+```{python}
+# Generate some data with noise
+x_data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+y_data = np.array([2.1, 4.2, 6.0, 7.8, 10.1, 12.2, 13.9, 16.1, 18.0, 20.2])
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+#| eval: false
+# Plot the data
+fig, ax = plt.subplots(figsize=(6, 4))
+
+# Plot the data as a scatter plot!
+...
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+# Plot the data
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x_data, y_data, 'o', markersize=8, label='Experimental data')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.legend()
+ax.set_title('Experimental data points')
+```
+
+Looking at this data, we can see it roughly follows a straight line. Let's assume our model is:
+
+$$y = ax + b$$
+
+where $a$ and $b$ are parameters we want to determine from the data.
+
+#### (b) Defining a fitting function
+
+To use `scipy.optimize.curve_fit`, we need to define a function where:
+
+- The **first** argument is the independent variable (x)  
+- The remaining arguments are the parameters to be fitted
+
+Define a linear function for fitting:
+
+```{python}
+#| exercise: true
+#| eval: false
+def linear_function(x, a, b):
+    return ... # Complete this line
+```
+
+```{python}
+#| solution: true
+def linear_function(x, a, b):
+    return a * x + b
+```
+
+Always a good idea to check that your function works as expected 
+
+```{python}
+linear_function(1, 2, 0) # Should give 2
+```
+Come up with another test case to check
+
+```{python}
+#| exercise: true
+#| eval: false
+print(linear_function(0, 2, 3)) # Should give 3 
+print(linear_function(1, 2, 3)) # Should give 5
+```
+
+```{python}
+#| solution: true
+print(linear_function(0, 2, 3)) # Should give 3 
+print(linear_function(1, 2, 3)) # Should give 5
+```
+
+#### (c) Your first curve fit
+
+Now we can use `curve_fit` to find the best parameters. The basic syntax is:
+
+```python
+popt, pcov = curve_fit(function, x_data, y_data, p0=initial_guess)
+```
+
+Where:
+
+- `function`: The function we defined above
+- `x_data`, `y_data`: Our experimental data
+- `p0`: Initial guess for parameters (optional but recommended)
+- `popt`: The optimized parameters (what we want!)
+- `pcov`: Covariance matrix (contains information about parameter uncertainties)
+
+Finish the cell below to perform the curve fit by adding the three missing arguments to 
+the call to `curve_fit`.
+
+```{python}
+#| exercise: true
+#| eval: false
+# Initial guess: a=2, b=0
+p0 = [2, 0]
+
+# Perform the fit
+popt, pcov = curve_fit(..., ..., ..., p0=p0)
+
+# Extract parameters
+a_fit, b_fit = popt
+print(f"Fitted parameters: a = {a_fit:.3f}, b = {b_fit:.3f}")
+```
+
+```{python}
+#| solution: true
+# Initial guess: a=2, b=0
+p0 = [2, 0]
+
+# Perform the fit
+popt, pcov = curve_fit(linear_function, x_data, y_data, p0=p0)
+
+# Extract parameters
+a_fit, b_fit = popt
+print(f"Fitted parameters: a = {a_fit:.3f}, b = {b_fit:.3f}")
+```
+
+#### (d) Visualizing the fit
+
+It's crucial to always plot your fit to see how well it describes the data.
+To do this we evaluate the function with the fitted parameters and a densely sampled 
+independent variable. 
+
+```{python}
+#| solution: true
+x_smooth = np.linspace(0, 11, 100)
+y_fit = ... # Call the linear function using x_smooth, a_fit and b_fit
+```
+
+```{python}
+#| solution: true
+x_smooth = np.linspace(0, 11, 100)
+y_fit = linear_function(x_smooth, a_fit, b_fit)
+```
+
+Then we can plot it 
+
+```{python}
+#| exercise: true
+#| eval: false
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x_data, y_data, 'o', markersize=8, label='Experimental data')
+
+# Then we can plot the fit
+ax.plot(..., ..., '-', linewidth=2, label=f'Fit: y = {a_fit:.2f}x + {b_fit:.2f}') 
+ax.set_xlabel('x')
+ax.set_ylabel('y') 
+ax.legend()
+ax.set_title('Linear curve fit')
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x_data, y_data, 'o', markersize=8, label='Experimental data')
+ax.plot(x_smooth, y_fit, '-', linewidth=2, label=f'Fit: y = {a_fit:.2f}x + {b_fit:.2f}')
+ax.set_xlabel('x')
+ax.set_ylabel('y') 
+ax.legend()
+ax.set_title('Linear curve fit')
+```
+
+#### (e) Nonlinear fitting: Exponential decay
+
+Many biological processes follow nonlinear relationships. Let's work with exponential decay, which is common in biochemistry (e.g., radioactive decay).
+
+First, let's generate some exponential data:
+
+```{python}
+# Generate exponential decay data
+t = np.array([0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0])
+# True parameters: A=10, k=0.8
+A_true, k_true = 10, 0.8
+signal = A_true * np.exp(-k_true * t) + np.random.normal(0, 0.3, len(t))
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(t, signal, 'o', markersize=8)
+ax.set_xlabel('Time')
+ax.set_ylabel('Signal')
+ax.set_title('Exponential decay data')
+```
+
+The model we want to fit is:
+$$\text{signal} = A e^{-kt}$$
+
+Define the exponential decay function:
+
+```{python}
+#| exercise: true
+#| eval: false
+def exponential_decay(t, A, k):
+    return ... # Complete this line
+```
+
+```{python}
+#| solution: true
+def exponential_decay(t, A, k):
+    return A * np.exp(-k * t)
+```
+
+Now fit the exponential function to the data:
+
+```{python}
+#| exercise: true
+#| eval: false
+# Initial guess: A=8, k=1
+p0 = [8, 1]
+
+# Perform the fit
+popt, pcov = curve_fit(..., ..., ..., p0=p0)
+
+# Extract parameters
+A_fit, k_fit = popt
+print(f"Fitted parameters: A = {A_fit:.3f}, k = {k_fit:.3f}")
+print(f"True parameters:   A = {A_true:.3f}, k = {k_true:.3f}")
+```
+
+```{python}
+#| solution: true
+# Initial guess: A=8, k=1
+p0 = [8, 1]
+
+# Perform the fit
+popt, pcov = curve_fit(exponential_decay, t, signal, p0=p0)
+
+# Extract parameters
+A_fit, k_fit = popt
+print(f"Fitted parameters: A = {A_fit:.3f}, k = {k_fit:.3f}")
+print(f"True parameters:   A = {A_true:.3f}, k = {k_true:.3f}")
+```
+
+Again we should plot to check that it looks as expected 
+
+```{python}
+#| exercise: true
+#| eval: false
+t_smooth = np.linspace(0, 5, 100)
+signal_fit = ... # Evaluate using the exponential_decay funciton
+```
+
+```{python}
+#| solution: true
+t_smooth = np.linspace(0, 5, 100)
+signal_fit = exponential_decay(t_smooth, A_fit, k_fit)
+```
+
+```{python}
+#| solution: true
+#| eval: false
+fig, ax = plt.subplots(figsize=(6, 4))
+
+# Plot
+ax.plot(..., ..., 'o', markersize=8, label='Experimental data') # Plot the data
+ax.plot(..., ..., '-', linewidth=2, label=f'Fit: A={A_fit:.2f}, k={k_fit:.2f}') # Plot the fit
+
+# Customization:
+ax.set_xlabel('Time')
+ax.set_ylabel('Signal')
+ax.legend()
+ax.set_title('Exponential decay curve fit')
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(t, signal, 'o', markersize=8, label='Experimental data')
+ax.plot(t_smooth, signal_fit, '-', linewidth=2, label=f'Fit: A={A_fit:.2f}, k={k_fit:.2f}')
+ax.set_xlabel('Time')
+ax.set_ylabel('Signal')
+ax.legend()
+ax.set_title('Exponential decay curve fit')
+```
+
+---
+
+::: {.callout-tip}
+
+## Key points for successful curve fitting:
+
+1. **Always plot your data first** to understand what kind of function might fit
+2. **Provide good initial guesses** (`p0`) - poor guesses can lead to fitting failure
+3. **Use parameter bounds** when you know physical constraints
+4. **Always plot the fit** to visually check if it makes sense
+5. **Check if parameters are reasonable** based on your biochemical knowledge
+6. **Use logarithmic plotting** for data spanning many orders of magnitude
+
+:::
+
+::: {.callout-warning}
+
+## Common pitfalls:
+
+- **Overfitting**: Using too many parameters for the amount of data you have
+- **Poor initial guesses**: Can cause the fit to fail or find a local minimum
+- **Ignoring physical constraints**: Fitted parameters should make biological sense
+- **Not checking the fit visually**: Always plot to see if the fit is reasonable
+
+:::
+
+You now have the fundamental skills needed to fit curves to biochemical data! In the exercises, you'll apply these techniques to analyze real experimental data and extract meaningful biological parameters.
