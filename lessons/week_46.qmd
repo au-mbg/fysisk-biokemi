@@ -12,6 +12,10 @@ format-links:
 
 ---
 
+{{< include intros/regression_intro.qmd >}}
+
+---
+
 {{< include exercises/estim-bindin-affini.qmd >}}
 
 ---
