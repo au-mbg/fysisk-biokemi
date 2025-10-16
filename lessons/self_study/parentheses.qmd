@@ -1,4 +1,4 @@
-#### Parentheses
+## Parentheses
 
 Later in the course we will see equations such as the quadratic binding equation
 

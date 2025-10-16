@@ -24,6 +24,11 @@ Calculate the level of enzyme saturation, $f_{ES}$, at substrate concentrations 
 - $[S] = 10 \cdot K_M$
 - $[S] = 100 \cdot K_M$
 
+```{python}
+#| eval: false
+... # Calculate here
+```
+
 ---
 
 The Michaelis-Menten constant KM is defined as:
@@ -43,6 +48,11 @@ In a specific reaction, the following rate constants were determined:
 Calculate the value of $K_M$. Does $K_M$ approximate the dissociation constant for the $ES$ complex in
 this case?
 
+```{python}
+#| eval: false
+... # Calculate here
+```
+
 #### (d) Calculate $k_2$
 
 Assume that a solution of an enzyme at a concentration of $1 \cdot 10^{-7} \ \mathrm{M}$  with a substrate concentration of 
@@ -50,6 +60,11 @@ $[S]=100\cdot K_M$ has $V_0=10^{-4} \ \mathrm{M} \cdot \mathrm{min}^{-1}$
 
 Given this information and with your answers to (b) and (c) in mind, calculate the constant $k_2$. What is
 this constant also called?
+
+```{python}
+#| eval: false
+... # Calculate here
+```
 
 #### (e) Lineweaver-Burk plot
 

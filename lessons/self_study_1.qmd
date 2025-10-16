@@ -1,0 +1,27 @@
+---
+title: Self-study
+engine: jupyter
+categories: []
+format-links:
+    - text: "Open in Google Colab"
+      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/self_study_1.ipynb"
+      icon: box-arrow-up-right
+---
+
+{{< include tidbits/_install_import.qmd >}}
+
+---
+
+{{< include self_study/calculations.qmd >}}
+
+---
+
+{{< include self_study/functions_arrays.qmd >}}
+
+---
+
+{{< include self_study/parentheses.qmd >}}
+
+---
+
+{{< include self_study/dataset.qmd >}}
