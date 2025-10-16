@@ -1,0 +1,124 @@
+## Difference between $Q$ and $K_{eq}$
+
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import pandas as pd
+pd.set_option('display.max_rows', 6)
+```
+
+Consider the reaction:
+
+$$
+A \rightleftarrows B
+$$
+
+The time course of the reaction was followed monitoring formation of the product $B$. The starting concentration of $A$ was 50 µM, and as you will learn later in the course, the reversible reaction going from $A$ to $B$ follows first order kinetics. 
+
+#### (a) Load & convert
+
+The data is contained in the `reverse_reaction.xlsx` file.
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('diff_q_keq') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+Convert the measured concentrations of $B$, $[B]$, to concentrations in the SI-unit $\mathrm{M} \ (\mathrm{mol/L})$. Repeat for the starting concentration of $A$, $[A]_0$.
+
+```{python}
+#| exercise: true
+#| eval: false
+df['[B]_(M)'] = ...
+A0 = ...
+```
+
+```{python}
+#| solution: true
+df['[B]_(M)'] = df['[B]_(uM)'] * 10**(-6)
+A0 = 50 * 10**(-6)
+```
+
+
+#### (b) Law of mass balance
+
+Use the laws of mass balance to calculate $[A]$ as a function of time in the unit $\mathrm{M}, 
+add it as a column to the `DataFrame` 
+
+```{python}
+#| exercise: true
+#| eval: false
+... # Your code here.
+```
+
+```{python}
+#| solution: true
+df['[A]_(M)'] = A0 - df['[B]_(M)']
+```
+
+#### (c) Mass action ratio
+
+Calculate and plot the mass action ratio $Q$ as a function of time.
+
+```{python}
+#| exercise: true
+#| eval: false
+Q = ... # calculate Q 
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots(figsize=(6, 4))
+
+... # Make the plot
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+Q = df['[B]_(M)'] / df['[A]_(M)']
+
+fig, ax = plt.subplots(figsize=(6, 4))
+
+ax.plot(df['Time_(min)'], Q)
+ax.set_xlabel('Time (min)')
+ax.set_ylabel('Mass action ratio $Q$')
+```
+
+#### (d) $Q$ vs $K_{eq}$
+
+What is the difference between $Q$ and $K_{eq}$? 
+
+#### (e) Favoured compound
+
+Which of the two compounds $A$ and $B$ is favored at equilibrium? (Favored: highest concentration)
+
+#### (f) Equilibrium constant
+
+What is the equilibrium constant of this reaction?
+
+#### (g) Reequilibriate
+
+Assume that an additional $10 \times 10^{-6} \mathrm{M}$ $A$ is added at timepoint, $t=35$ min. What is the concentrations of $A$ and $B$ when equilibrium has been reached again say at $t > 70$ min?
+
+ 

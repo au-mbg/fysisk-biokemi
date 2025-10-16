@@ -131,7 +131,7 @@ datasets:
     description: "Chlorophyll absorption data (Excel format)"
 
   reverse_reaction.xlsx:
-    week: null
-    exercise: null
+    week: week46
+    exercise: diff_q_keq.qmd
     original_name: "reverse_reaction.xlsx"
     description: "Reversible reaction kinetics data (Excel format)"

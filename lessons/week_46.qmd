@@ -38,6 +38,9 @@ format-links:
 
 {{< include exercises/compe-ligand-bind.qmd >}}
 
+---
+
+{{< include exercises/diff_q_keq.qmd >}}
 
 
 

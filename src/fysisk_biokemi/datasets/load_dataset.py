@@ -4,6 +4,7 @@ from importlib.resources import files
 available_datasets = {    
     'chlorophyll': 'chlorophyll_adsorption.xlsx',
     'reversible_reaction': 'reverse_reaction.xlsx',
+    'diff_q_keq': 'diff_q_keq_data.xlsx',
     # Week 45:
     'apo_holo': 'uv-spec-apo-holo-myo.csv',
     'AA_frequency': 'averag-prope-amino-acids.xlsx',
