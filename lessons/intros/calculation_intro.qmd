@@ -159,8 +159,9 @@ print(q1, q2, q3, q4, q5)
 
 #### (f) Functions
 
-For repeated computations it's good practice to define a function. Define a function
-that calculates the following expression
+For repeated computations it's good practice to define a function. 
+
+Define a function that calculates the following expression
 
 $$
 f(x) = \frac{Ax + B + C}{A + B} 
@@ -182,17 +183,31 @@ def fun_function(x):
     return (10*x + 5 + 2.5) / (10 + 5)
 ```
 
-Now evaluate the function for $x = 62.5$, 
+Now evaluate the function for $x = 62.5$, $x = 629.25$, $x=42$ and $x = 2025$
 
 ```{python}
 #| exercise: true
 #| eval: false
-fun_output = ...
-print(fun_output)
+fun_output_1 = fun_function(...) # Your code replaces ...
+fun_output_2 = ... # Same here
+fun_output_3 = ... # And here
+fun_output_4 = ... # And finally here.
+
+print(f"{fun_output_1:.1f}")
+print(f"{fun_output_2:.1f}")
+print(f"{fun_output_3:.1f}")
+print(f"{fun_output_4:.1f}")
 ```
 
 ```{python}
 #| solution: true
-fun_output = fun_function(62.25)
-print(fun_output)
+fun_output_1 = fun_function(62.25)
+fun_output_2 = fun_function(629.25)
+fun_output_3 = fun_function(42)
+fun_output_4 = fun_function(2025)
+
+print(f"{fun_output_1:.1f}")
+print(f"{fun_output_2:.1f}")
+print(f"{fun_output_3:.1f}")
+print(f"{fun_output_4:.1f}")
 ```
