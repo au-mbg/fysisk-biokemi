@@ -33,12 +33,13 @@ jobs:
         shell: bash
         run: |
           source .venv/bin/activate
+          cd course
           make website
           
       # Upload the built site folder
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site-combined
+          path: course/_site-combined
 
       - uses: actions/checkout@v5
         with:
@@ -51,8 +52,8 @@ jobs:
           mkdir -p built_notebooks
           mkdir -p built_notebooks/student
           mkdir -p built_notebooks/master
-          cp _site-combined/student/lessons/*.ipynb built_notebooks/student/.
-          cp _site-combined/master/lessons/*.ipynb built_notebooks/master/.
+          cp course/_site-combined/student/lessons/*.ipynb built_notebooks/student/.
+          cp course/_site-combined/master/lessons/*.ipynb built_notebooks/master/.
 
       - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
