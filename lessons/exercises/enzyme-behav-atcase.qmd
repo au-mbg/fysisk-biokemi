@@ -3,6 +3,9 @@
 ```{python}
 #| code-fold: true
 import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+import numpy as np
+import pandas as pd
 ```
 
 The enzyme aspartate transcarbamoylase (ATCase) catalyzes the first reaction in the biosynthesis of pyrimidines
@@ -88,5 +91,115 @@ Qualitatively describe the effect of CTP on the rate of N-carbamyolaspartate for
 #### (f) Physiological advantage
 
 In fact many enzymes are regulated by certain end products in a fashion similar to the CTP effect on ATCase. Can you explain why this might be a physiological advantage?
+
+#### Hill coefficient 
+
+Use regression to determine the Hill coefficient for each of the datasets.
+Recall that the Hill equation is, 
+
+$$
+\theta = \frac{[L]^n}{K_d + [L]^n}
+$$
+
+As usual start by writing a function implementing this equation
+
+```{python}
+def hill_eq(L, Kd, n):
+    return L**n / (Kd + L**n)
+```
+
+And then make the fit for each dataset
+
+```{python}
+#| exercise: true
+#| eval: false
+# We start by massaging the data into the right units etc.
+L_M = df['aspartate'] * 10**(-3) # Convert to SI units in M.
+
+# For the dataset with ctp we need to discard the elements that are NaN / not measured.
+indices = np.argwhere(df['with_ctp'].notna()).flatten() # Don't worry too much about how this works - it just finds the indices of the non empty elements. 
+L_M_ctp = L_M[indices]
+theta_ctp = df['with_ctp'][indices]
+
+# Then we're ready to fit
+pcov, _ = ...
+pcov_ctp, _ = ...
+Kd, n = pcov
+Kd_ctp, n_ctp = pcov_ctp
+
+# Print
+print('Without CTP')
+print(f'   K_d = {Kd:.3e}')
+print(f'   n = {n:.3f}')
+print('With CTP')
+print(f'   K_d = {Kd_ctp:.3e}')
+print(f'   n = {n_ctp:.3f}')
+```
+
+```{python}
+#| solution: true
+# We start by massaging the data into the right units etc.
+L_M = df['aspartate'] * 10**(-3) # Convert to SI units in M.
+
+# For the dataset with ctp we need to discard the elements that are NaN / not measured.
+indices = np.argwhere(df['with_ctp'].notna()).flatten()
+L_M_ctp = L_M[indices]
+theta_ctp = df['with_ctp'][indices]
+
+# Then we're ready to fit
+pcov, _ = curve_fit(hill_eq, L_M, df['without_ctp'])
+pcov_ctp, _ = curve_fit(hill_eq, L_M_ctp, theta_ctp)
+
+Kd, n = pcov
+Kd_ctp, n_ctp = pcov_ctp
+
+print('Without CTP')
+print(f'   K_d = {Kd:.3e}')
+print(f'   n = {n:.3f}')
+print('With CTP')
+print(f'   K_d = {Kd_ctp:.3e}')
+print(f'   n = {n_ctp:.3f}')
+```
+
+Then we can plot 
+
+```{python}
+#| exercise: true
+#| eval: false
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(7, 4))
+
+L_smooth = np.linspace(0, L_M.max())
+theta_fit = hill_eq(L_smooth, Kd, n)
+theta_ctp_fit = hill_eq(L_smooth, Kd_ctp, n_ctp)
+
+ax.plot(L_M, df['without_ctp'], 'o', label='No CTP')
+ax.plot(L_smooth, theta_fit, 'k')
+
+ax.plot(L_M_ctp, theta_ctp, 'o', label='With CTP')
+ax.plot(L_smooth, theta_ctp_fit, 'k')
+
+ax.set_xlabel('[Aspartate] (M)')
+ax.set_ylabel('Rate of formation')
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(7, 4))
+
+L_smooth = np.linspace(0, L_M.max())
+theta_fit = hill_eq(L_smooth, Kd, n)
+theta_ctp_fit = hill_eq(L_smooth, Kd_ctp, n_ctp)
+
+ax.plot(L_M, df['without_ctp'], 'o', label='No CTP')
+ax.plot(L_smooth, theta_fit, 'k')
+
+ax.plot(L_M_ctp, theta_ctp, 'o', label='With CTP')
+ax.plot(L_smooth, theta_ctp_fit, 'k')
+
+ax.set_xlabel('[Aspartate] (M)')
+ax.set_ylabel('Rate of formation')
+```
 
 
