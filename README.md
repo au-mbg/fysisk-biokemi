@@ -34,10 +34,12 @@ To install the `fysisk_biokemi` package and all its dependencies.
 
 ## Rendering the exercises
 
-To render the exercises Quarto needs to be [installed](https://quarto.org/docs/get-started/).
+To render the exercises Quarto needs to be [installed](https://quarto.org/docs/get-started/), 
+a Python environment with the `fysisk_biokemi` package all needs to be active
 
 To render the full site, navigate to the course directory and use `make` like so; 
 ```bash
+source .venv/bin/activate # To activate the Python environment if installed like above.
 cd course/
 make website
 ```
