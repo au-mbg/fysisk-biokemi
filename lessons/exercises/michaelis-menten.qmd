@@ -1,4 +1,4 @@
-#### The Michaelis Menten equation
+## The Michaelis Menten equation
 
 Consider a reaction catalyzed by an enzyme obeying the Michaelis-Menten kinetics model.
 

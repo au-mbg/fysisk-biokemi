@@ -27,4 +27,4 @@ Now set $[E]_\mathrm{tot} = 0.0005$, and $K_M = 5$, change $V_\mathrm{max}$ from
 
 #### (d)
 
-Now set $K_M = 5$ and $V_\mathrm{max} = 100$, change $[E]_\mathrm{tot}$ from 0.0005 to 0.05. Do you observe any change in curve appearance, in kcat or in kcat/KM? Explain your answer
+Now set $K_M = 5$ and $V_\mathrm{max} = 100$, change $[E]_\mathrm{tot}$ from 0.0005 to 0.05. Do you observe any change in curve appearance, in $k_\mathrm{cat}$ or in $k_\mathrm{cat}/K_M$? Explain your answer
