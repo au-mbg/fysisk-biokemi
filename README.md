@@ -47,7 +47,10 @@ It will start printing stuff and after ~3 minutes it should have finished and
 all the files are in `_site_combined`. The `index.html` file can be opened in a browser 
 to preview the website. 
 
-For authoring or updating exercises see [authoring.md](course/authoring.md).
+## More
+
+- For authoring or updating exercises see [authoring.md](course/authoring.md).
+- For things related to `git`, including how the website is build and hosted, see [git.md](git.md)
 
 
 
