@@ -1,0 +1,318 @@
+```{python}
+#| code-fold: true
+import numpy as np
+```
+
+## Functions & arrays
+
+Previously we looked at functions, we will build on that now. Remember that a 
+function is a recipe that describes how a calculation should be performed that 
+can be reused many times. 
+
+A function is defined with `def` followed by its name and its parameters 
+(also called arguments) are placed in the parentheses. 
+
+```{python}
+def my_function(a, b):
+    result = a * b 
+    return result
+```
+
+The function is only executed when it is called, in this case for example 
+
+```{python}
+my_result = my_function(6, 7)
+print(my_result)
+```
+Where we now have the output of the function in the variable `my_result`. 
+
+#### (a) Calculaling cell sizes
+
+The tables below show the radius of different cell types
+
+| Cell type | Radius |
+|---------|:-----|
+|Mycoplasma |	~0.2–0.3 µm	 |
+|Typical bacterium | ~1–2 µm |
+|Yeast cell (S. cerevisiae) | ~5–7 µm	 |
+|Red blood cells (human) | ~7–8 µm	 |
+|Lymphocyte (white blood cell) | ~8–10 µm	 |
+|Typical animal cell |~10–20 µm |
+|Typical plant cell	| ~20–100 µm |
+|Human egg cell (oocyte) | ~120–140 µm |
+|Neuron (cell body) | ~10–100 µm |
+
+: Cell sizes
+
+We have previously calculated the volume of the cells by assuming that they are spherical, whereby 
+the volume is given by 
+
+$$
+V(r) = \frac{4}{3}\pi r^3
+$$
+
+Write a function that takes radius `r` as an argument and calculates volume -  
+you can use `np.pi` instead of writing $\pi$ yourself!
+
+```{python}
+#| exercise: true
+#| eval: false
+def ... # Replace with your code
+    ... # Replace with your code
+```
+
+```{python}
+#| solution: true
+def volume(r):
+    return 4/3 * np.pi * r**3
+```
+
+Call the function with some of the different radii from the table
+
+```{python}
+#| exercise: true
+#| eval: false
+mycoplasma_volume = ... # Replace with your code
+print(mycoplasma_volume)
+# Do the same for some of the other cell types
+...
+```
+
+```{python}
+#| solution: true
+mycoplasma_volume = volume(0.3)
+print(mycoplasma_volume)
+```
+
+#### (b) Calculations with arrays.
+
+::: {.callout-note}
+
+We have previously seen some of the different data types in Python
+
+- Integers `int`
+- Floats `float`
+- Strings `str`
+
+But there are many other types that can be helpful in different contexts. 
+One such type is numpy arrays, an example of a numpy array is shown below
+
+```{python}
+A = np.array([1.0, 2.5, 3.5])
+```
+
+One of the smart things about arrays is that we can perform operations on all the content at once
+
+```{python}
+B = 2 * A 
+print(B)
+```
+
+The same is true for using the array `A` in a function, for example we can write 
+
+```{python}
+def example_function(array):
+    return 1 + array
+
+print(example_function(A))
+```
+
+::::
+
+Create an array that contains the specified cell radii and use your `volume` function to 
+calculate the volume of all cells at once
+
+```{python}
+#| exercise: true
+#| eval: false
+radii = np.array([...]) # Replace ... with your code
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+cell_volumes = ... # Replace ... with your code.
+print(cell_volumes)
+```
+
+```{python}
+#| solution: true
+radii = np.array([0.2, 1, 6, 7.5, 9, 15, 60, 130, 50]) # Replace ... with your code
+```
+
+```{python}
+#| solution: true
+cell_volumes = volume(radii)
+print(cell_volumes)
+```
+
+#### (c) Array operations
+
+::: {.callout-note}
+
+There are many other operations we can perform on arrays, such as finding the 
+largest or smallest number 
+
+We can find the cell type with the largest volume as 
+
+```{python}
+np.max(cell_volumes)
+```
+The corresponding function for finding the smallest number is called `np.min`.
+
+::::
+
+The cell below creates an array with 1000 numbers 
+
+```{python}
+array_with_numbers = np.random.rand(1000) * np.exp(3.737669)
+```
+Use `np.max` to find the largest number in `array_with_numbers`
+
+```{python}
+#| exercise: true
+#| eval: false
+largest_number = ... # Replace ... with your code
+print(largest_number)
+```
+
+```{python}
+#| solution: true
+largest_number = np.max(array_with_numbers)
+print(largest_number)
+```
+
+##### (d) Array indexing
+
+::: {.callout-note}
+
+Sometimes we are interested in specific entries in an array, so we also need to 
+be able to extract data from an array. This is "indexing", for example 
+if we have an array 
+
+```{python}
+my_array = np.array([0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
+```
+We can extract the fourth number like this 
+```{python}
+fourth_number = my_array[3] 
+```
+
+In Python we start counting from 0, so the fourth number is found at position 3.
+::: 
+
+Use indexing to calculate the sum of
+
+- The last number (Position 10)
+- The second number (Position 1)
+- The fourth number (Position ??)
+- The eighth number (Position ??)
+
+```{python}
+#| solution: true
+sum_of_numbers = my_array[10] + my_array[1] + my_array[3] + my_array[7]
+print(sum_of_numbers)
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+sum_of_numbers = ... # Replace with your code
+print(sum_of_numbers)
+```
+
+#### (f) Working with data
+
+In molecular biology we often work with spectra, where the axes are for example 
+
+- $x$: Wavelength measured in nm
+- $y$: Absorption coefficient
+
+```{python}
+from fysisk_biokemi import load_dataset
+
+df = load_dataset("chlorophyll")
+print(df)
+
+wavelengths = df['Wavelength(nm)'] # An array with 501 entries
+absorption = df['AdsorptionCoefficient'] # An array with 501 entries
+```
+
+```{python}
+import matplotlib.pyplot as plt 
+fig, ax = plt.subplots()
+ax.plot(wavelengths, absorption)
+ax.set_xlabel('Wavelength [nm]')
+ax.set_ylabel('Absorption Coefficient')
+```
+
+::: {.callout-caution}
+How the plotting works with be explained in another exercise, for now just appreciate the 
+pretty plot.
+:::
+
+
+We want to use NumPy to find what the maximum absorption coefficient is, 
+and at which wavelength it occurs.
+
+Start by finding the maximum absorption coefficient using `np.max`
+
+```{python}
+#| solution: true
+max_absorption = np.max(absorption)
+print(max_absorption)
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+max_absorption = ... # Replace ... with your code
+print(max_absorption)
+```
+
+We can use another function from NumPy to find the wavelength where 
+the absorption coefficient has its maximum
+
+```{python}
+index_max_abs = np.argmax(absorption)
+```
+
+::: {.callout-note}
+`np.argmax` finds the index of the **arg**ument that contains the **max** value.
+:::
+
+Now use `index_max_abs` to extract the corresponding wavelength from `wavelengths`
+
+```{python}
+#| exercise: true
+#| eval: false
+wavelength_max_abs = ... # Your code here
+```
+
+```{python}
+#| solution: true
+wavelength_max_abs = wavelengths[index_max_abs]
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+import matplotlib.pyplot as plt 
+fig, ax = plt.subplots()
+ax.plot(wavelengths, absorption)
+ax.axvline(wavelength_max_abs, color='red')
+ax.set_xlabel('Wavelength [nm]')
+ax.set_ylabel('Absorption Coefficient')
+plt.show()
+```
+
+```{python}
+#| solution: true
+import matplotlib.pyplot as plt 
+fig, ax = plt.subplots()
+ax.plot(wavelengths, absorption)
+ax.axvline(wavelength_max_abs, color='red')
+ax.set_xlabel('Wavelength [nm]')
+ax.set_ylabel('Absorption Coefficient')
+plt.show()
+```

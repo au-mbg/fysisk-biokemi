@@ -129,3 +129,9 @@ datasets:
     exercise: null
     original_name: "chlorophyll_adsorption.xlsx"
     description: "Chlorophyll absorption data (Excel format)"
+
+  reverse_reaction.xlsx:
+    week: null
+    exercise: null
+    original_name: "reverse_reaction.xlsx"
+    description: "Reversible reaction kinetics data (Excel format)"

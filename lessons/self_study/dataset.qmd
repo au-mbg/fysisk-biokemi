@@ -1,0 +1,266 @@
+## Working with datasets
+
+```{python}
+#| code-fold: true
+import numpy as np
+import pandas as pd
+from fysisk_biokemi import load_dataset, get_dataset_path
+import matplotlib.pyplot as plt
+```
+
+We have previously looked at a dataset about the absorption spectrum of chlorophyll, 
+but we weren't focused on how we handled this dataset. 
+
+What we achieved was plotting the dataset, as seen below
+
+```{python}
+chloro_df = load_dataset("chlorophyll")
+wavelengths = chloro_df['Wavelength(nm)'] # An array with 501 entries
+absorption = chloro_df['AdsorptionCoefficient'] # An array with 501 entries
+
+fig, ax = plt.subplots()
+ax.plot(wavelengths, absorption)
+ax.set_xlabel('Wavelength [nm]')
+ax.set_ylabel('Absorption coefficient')
+```
+
+This time we will investigate a bit more how we can work with a dataset.
+
+### NumPy arrays as datasets.
+
+It is important that we keep good track of our data, it is often smart to use 
+a data type that helps us with this. We have previously seen arrays, which is one possibility - e.g. 
+
+```{python}
+a = np.array([1, 2, 3, 4])
+b = np.array([1, 4, 9, 16])
+```
+But if we have many quantities it can quickly become unmanageable - another possibility 
+is to store all our quantities in the same array
+
+```{python}
+combined_array = np.array([[1, 2, 3, 4], [1, 4, 9, 16]])
+print(combined_array[0, :]) # Corresponds to a
+print(combined_array[1, :]) # Corresponds to b
+```
+
+::: {.callout-note}
+NumPy arrays can have multiple dimensions, `combined_array` here has two dimensions (like a matrix).
+In this case each row describes one of our quantities. Here `:` is used to mean "all" 
+in indexing so `[0, :]` can be read as first row all columns. 
+::: 
+
+But then we need to keep track of which axis contains which quantity. 
+Sometimes it can be fine to keep our data as `np.array` but other times 
+it's better in other ways. 
+
+### Pandas `DataFrame`
+
+One such other way to handle a dataset is by using a new type, namely a 
+pandas `DataFrame`. 
+
+We can create a `DataFrame` from our two arrays like this; 
+
+```{python}
+df = pd.DataFrame({"a": a, "b": b})
+df.style.hide() # This just make printing a bit simpler
+print(df)
+```
+Here we have three columns, the first is `index`, the second is `a` and the third is `b`. 
+
+::: {.callout-note}
+The chlorophyll dataset was actually also a `DataFrame`. 
+::: 
+
+With a `DataFrame` we have more possibilities for indexing, we can for example use the name of the column.
+
+```{python}
+print(df['a'])
+```
+
+#### (a) Calculations with a dataset
+
+Calculate the formula $2 \times a$ where $a$ comes from the dataset above `df`
+
+```{python}
+#| exercise: true
+#| eval: false
+result = ... # Replace ... with your code.
+print(result)
+```
+```{python}
+#| solution: true
+result = 2 * df['a']
+print(result)
+```
+
+#### (b) Elementwise operations
+
+We can also add two arrays together using whats called an *elementwise* operation where
+for example the first element of each array are added, the second elements are added and so on.
+
+Use this to calculate $c = a + b$.
+
+```{python}
+#| exercise: true
+#| eval: false
+c = ... # Replace ... with your code
+print(c)
+```
+
+```{python}
+#| solution: true
+c = df['a'] + df['b']
+print(c)
+```
+
+#### (c) Plotting a dataset
+
+Make a plot of $a$ versus $b$ where the two quantities come from the `DataFrame` `df`.
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+... # Write your code to plot.
+```
+
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
+ax.plot(df['a'], df['b'])
+```
+
+::: {.callout-tip}
+
+You need to extract the two columns `df['a']` and `df['b']` and put those in `ax.plot(..., ...)`.
+
+:::
+
+#### (d) Datasets from files
+
+::: {.callout-note}
+
+Often we don't want to write our dataset directly into code, but store them as separate files
+that could for example come from experimental equipment. 
+
+We can get data from an Excel file, like this 
+
+```python
+#| eval: false
+dataset_path = "/path/to/the/file/that/has/our/data.xlsx"
+df = pd.read_excel(dataset_path)
+```
+
+::: 
+
+Through out the course we will use a widget to load datasets from your computer, 
+this makes it a little easier to manage with Google Colab. 
+
+You can run the cell below and click on the "Upload"-button that appears and you use that
+to select the `reverse_reaction.xlsx` dataset that you can download from here [datasets](https://au-mbg.github.io/fysisk-biokemi/student/datasets.html) under the "Additional Datasets" tab at the bottom of the page. 
+
+You should save it somewhere where you can find it again - a good idea would be to put it 
+in a folder specifically for this course.
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Once you've uploaded the dataset you can run the next cell
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+df = load_dataset('reversible_reaction')
+display(df)
+```
+
+Based on the information that has been printed out what do you think the dataset contains? 
+Think about the following
+
+- How many columns are there? 
+- What is the title of each column? 
+- How many rows are there? 
+
+### (f) Plot the dataset
+
+Now that we have retrieved the dataset we want to investigate it more easily by 
+plotting it. 
+
+Complete the code below
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+ax.plot(df['time'], ..., label='[A]') # Replace ... with your code
+... # Replace ... with your code that plots time versus concentration_B 
+ax.set_ylabel('Concentration') # Sets name on y-axis
+ax.set_xlabel('Time') # Sets name on x-axis
+ax.legend()# Shows what 'label' each plotted curve has.
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots()
+ax.plot(df['time'], df['concentration_A'], label='[A]')
+ax.plot(df['time'], df['concentration_B'], label='[B]')
+ax.set_ylabel('Concentration') # Sets name on y-axis
+ax.set_xlabel('Time') # Sets name on x-axis
+ax.legend() # Shows what 'label' each plotted curve has.
+```
+
+What do you think the dataset shows? 
+
+#### (g) Calculation with dataset
+
+As mentioned we can also do calculations with a dataset. Calculate 
+$$
+[T] = [A] + [B]
+$$
+And complete the plot in the cell below
+
+```{python}
+#| exercise: true
+#| eval: false
+concentration_T = ... # Replace ... with your code
+
+fig, ax = plt.subplots()
+ax.plot(..., ..., label='[T]', color='C2') # Replace both ... with your code.
+
+# From before
+ax.plot(df['time'], df['concentration_A'], label='[A]')
+ax.plot(df['time'], df['concentration_B'], label='[B]')
+ax.set_ylabel('Concentration') # Sets name on y-axis
+ax.set_xlabel('Time') # Sets name on x-axis
+ax.legend() # Shows what 'label' each plotted curve has.
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+concentration_T = df['concentration_A'] + df['concentration_B']
+
+fig, ax = plt.subplots()
+ax.plot(df['time'], concentration_T, label='[T]', color='C2')
+
+# From before
+ax.plot(df['time'], df['concentration_A'], label='[A]')
+ax.plot(df['time'], df['concentration_B'], label='[B]')
+ax.set_ylabel('Concentration') # Sets name on y-axis
+ax.set_xlabel('Time') # Sets name on x-axis
+ax.legend() # Shows what 'label' each plotted curve has.
+```
+
+Why do you think it looks like it does?

@@ -1,0 +1,120 @@
+#### Parentheses
+
+Later in the course we will see equations such as the quadratic binding equation
+
+$$
+\theta = \frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} - \sqrt{\left(\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]}\right)^2 - \frac{[L_{tot}]}{[P_{tot}]}},
+$$
+which can be used to describe titration data that reports protein saturation as a function of total ligand concentration.
+
+Calculating this function requires that we are careful with parentheses! Which we have all 
+learned, but since it is very important in this context, it is worth refreshing. 
+
+#### (a) Mind the $(...)$
+
+For the following pairs of expressions, calculate both (by hand or mentally, according to preference.)
+
+- $2 + 3 \times 4$ vs. $(2 + 3) \times 4$
+- $10 - 2^2$ vs. $(10 - 2)^2$
+- $100 / 10 \times 2$ vs. $100 / (10 \times 2)$ 
+- $\frac{12 + 8}{4}$ vs. $12 + 8 / 4$
+
+#### (b) Beware of the $(...)$
+
+For the three calculations below, consider what the result is **before** you run the cell. 
+
+```{python}
+#| exercise: true
+#| eval: false
+a = 1 + 2 * 3 ** 2
+```
+```{python}
+#| exercise: true
+#| eval: false
+b = (1 + 2) * 3 ** 2
+```
+```{python}
+#| exercise: true
+#| eval: false
+c = 1 + 2 * (3 ** 2)
+```
+
+```{python}
+#| solution: true
+a = 1 + 2 * 3 ** 2
+```
+```{python}
+#| solution: true
+b = (1 + 2) * 3 ** 2
+```
+```{python}
+#| solution: true
+c = 1 + 2 * (3 ** 2)
+```
+
+The cell below prints the result for each calculation
+
+```{python}
+#| eval: false
+print(f"{a = }")
+print(f"{b = }")
+print(f"{c = }")
+```
+
+#### (c) Fix the $(...)$
+
+We want to calculate the expression
+
+$$
+\frac{a + b}{c + d}
+$$
+
+Someone has implemented the function below, but it is incorrect - your task is to fix it.
+
+```{python}
+#| exercise: true
+#| eval: false
+def function(a, b, c, d):
+    return a + b / c + d
+
+result_1 = function(152, 16, 2, 2)
+print(result_1)
+```
+
+```{python}
+#| solution: true
+def function(a, b, c, d):
+    return (a + b) / (c + d)
+
+result_1 = function(152, 16, 2, 2)
+print(result_1)
+```
+
+#### (d) Implement the $(...)$
+
+The first term of the quadratic binding equation is 
+
+$$
+\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} = \frac{a + b + c}{2 b}
+$$
+
+Complete the function below so it calculates this expression 
+
+```{python}
+#| exercise: true
+#| eval: false
+def first_term(a, b, c):
+    return ... # Replace ... with your code.
+
+result = first_term(100, 2, 66)
+print(result)
+```
+
+```{python}
+#| solution: true
+def first_term(a, b, c):
+    return (a + b + c) / (2 * b)
+
+result = first_term(100, 2, 66)
+print(result)
+```

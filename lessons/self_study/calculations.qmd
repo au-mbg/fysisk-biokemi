@@ -1,0 +1,222 @@
+```{python}
+#| code-fold: true
+import numpy as np
+```
+
+## Python as a calculator
+
+We can use Jupyter notebooks as a calculator with all the operations we are 
+familiar with from a regular calculator.
+
+```python
+1 + 1       # Addition with +
+3 - 1       # Subtraction with - 
+4 * 4       # Multiplication with *
+20 / 5      # Division with /
+```
+
+#### (a) Doing some calculations
+
+Use Jupyter notebook to calculate the following: 
+
+1. $21 + 21$
+2. $53 - 11$
+3. $6 \times 7$
+4. $\frac{546}{13}$
+
+```{python}
+#| exercise: true
+# Write your code in this cell
+```
+
+```{python}
+#| solution: true
+21 + 21
+53 - 11
+6 * 7
+546 / 13
+```
+
+#### (b) Using variables
+
+As also mentioned in "Introduction to the molecules of life", it is often helpful to define 
+quantities in variables, which gives them a name that can be used later. 
+A variable is defined by using `=`, for example, we can define 
+
+```python
+a = 21 + 21
+```
+This means that the result of the calculation is stored in `a`. 
+
+Repeat the calculations from exercise 1, but now save each result in a variable
+
+```{python}
+#| exercise: true
+a = 21 + 21 
+b = ... # Replace ... with your code
+# Create variables c and d. 
+```
+
+```{python}
+#| solution: true
+a = 21 + 21 
+b = 53 - 11
+c = 6 * 7
+d = 546 / 13
+```
+
+We can then use the defined variables in a new calculation
+
+```{python}
+total = (a + b + c + d) / 4
+print(total)
+```
+
+#### (c) A biological calculation
+
+In "Introduction to the molecules of life" we have made calculations about the number of cells in different
+parts of the body. 
+
+```{python}
+total_cells = 37_000_000_000_000
+brain_cells = 86_000_000_000
+liver_cells = 240_000_000_000
+skin_cells = 1_600_000_000_000
+```
+
+Use Jupyter as a calculator to calculate the percentage each category represents of the 
+total number of cells in the body, i.e., for each category calculate 
+
+$$
+P = \frac{\mathrm{Number}}{\mathrm{Total}} \times 100
+$$
+
+```{python}
+#| exercise: true
+brain_pct = ... # Replace ... with your code.
+liver_pct = ... # Replace ... with your code.
+# Calculate and create variable for skin_pct
+```
+
+```{python}
+#| solution: true
+brain_pct = brain_cells / total_cells * 100
+liver_pct = liver_cells / total_cells * 100
+skin_pct = skin_cells / total_cells * 100
+```
+
+```{python}
+print(brain_pct)
+print(liver_pct)
+print(skin_pct)
+```
+
+#### (d) Using functions
+
+::: {.callout-note}
+
+When we perform the same calculation multiple times, it's smart not to have to write the 
+same code again, it makes the code more readable and reduces the chance of making errors. 
+The way to avoid this is by using **functions**, a function in Python defines a recipe 
+that is executed when it is called. 
+
+Above, we have for example used the function `print` to write output. A function is defined like this
+
+```{python}
+def my_function(a, b):
+    result = a * b 
+    return result
+```
+It's important that the function is indented (pushed to the right) as Python needs this 
+to read it. When a function is defined as above, the calculation is not performed, 
+just like writing down a recipe doesn't make a meal, only when the function is "called"
+is it executed
+```{python}
+my_function(6, 7) # Would give 6*7 = 42
+```
+
+::::
+
+Complete the function below so it calculates the percentage of `value` out of `total`. 
+
+```{python}
+#| exercise: true
+#| eval: false
+def percentage(value, total):
+    result = ... # Replace ... with your code.
+    return result
+```
+```{python}
+#| solution: true
+def percentage(value, total):
+    result = value / total * 100
+    return result
+```
+
+
+We can then use the function to calculate the percentages
+
+```{python}
+brain_pct = percentage(brain_cells, total_cells)
+liver_pct = percentage(liver_cells, total_cells)
+skin_pct = percentage(skin_cells, total_cells)
+print(brain_pct, liver_pct, skin_pct)
+```
+
+#### (f) Special functions
+
+::: {.callout-note}
+
+We have now seen that we can use Jupyter notebooks as a calculator to make 
+calculations with the basic arithmetic operations. However, we often need 
+to calculate power functions, square roots, exponential functions or logarithms. 
+
+Fortunately, this is also easy with Python, as we can use a package that 
+implements these operations as functions - specifically `numpy`. 
+
+Power functions, i.e., $x^k$ can be calculated as 
+
+- x**k
+
+The other three can be calculated with NumPy as 
+
+- `np.sqrt`
+- `np.exp`
+- `np.log`
+
+:::
+
+Use numpy functions to calculate the following
+
+- $6.4807^2$
+- $\sqrt{1764}$
+- $e^{3.737669}$
+- $\log{(66.6863)}$
+
+```{python}
+#| exercise: true
+#| eval: false
+import numpy as np # This imports NumPy so we can use the functions.
+
+result_1 = ... # Your code here
+result_2 = ... # Your code here
+result_3 = ... # Your code here
+result_4 = ... # Your code here
+
+print(result_1, result_2, result_3, result_4)
+```
+
+```{python}
+#| solution: true
+#| eval: true
+import numpy as np # This imports NumPy so we can use the functions.
+
+result_1 = 6.4807**2
+result_2 = np.sqrt(1764)
+result_3 = np.exp(3.737669)
+result_4 = np.log(66.6863)
+
+print(result_1, result_2, result_3, result_4)
+```
+
+
