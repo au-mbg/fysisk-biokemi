@@ -39,7 +39,7 @@ def get_exercise_title(exercise_filename):
         return exercise_filename.replace('.qmd', '').replace('-', ' ').title()
 
 # Load metadata
-with open('src/fysisk_biokemi/datasets/metadata.yml', 'r') as f:
+with open('../src/fysisk_biokemi/datasets/metadata.yml', 'r') as f:
     metadata = yaml.safe_load(f)
 
 # Group datasets by week

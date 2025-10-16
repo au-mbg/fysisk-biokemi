@@ -18,7 +18,7 @@ filters:
     path: filters/strip-solution.lua
 
 website:
-  title: "Fysisk Biokemi - Python Øvelser"
+  title: "Fysisk Biokemi & Dataanalyse"
   search: true
   favicon: other/favicon.svg
   navbar:

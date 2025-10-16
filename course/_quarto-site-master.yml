@@ -16,7 +16,7 @@ resources:
   - src/fysisk_biokemi/datasets/files/**
 
 website:
-  title: "Fysisk Biokemi - Python Øvelser"
+  title: "Fysisk Biokemi & Dataanalyse"
   search: true
   favicon: other/favicon.svg
   navbar:
