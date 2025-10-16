@@ -42,6 +42,13 @@ format-links:
 
 {{< include exercises/diff_q_keq.qmd >}}
 
+---
+
+{{< include exercises/deter_deltah_for_react.qmd >}}
+
+---
+
+{{< include exercises/atp_hydrolysis.qmd >}}
 
 
 

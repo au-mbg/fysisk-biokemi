@@ -1,0 +1,93 @@
+## ATP hydrolysis
+
+```{python}
+#| code-fold: true
+import numpy as np
+```
+
+
+Below is shown the structure of ATP.
+
+$\Delta G^\circ´$ for the hydrolysis of ATP to ADP and Pi is $-30.5 \ \mathrm{kJ/mol}$.
+
+![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/atp_structure.png){.lightbox}
+
+#### (a) $\Delta G´$
+
+In cells at $298 \ \mathrm{K}$ the steady state concentrations of ATP, ADP og Pi resulted in a value for the reaction quotient $Q = \frac{\mathrm{[ADP]}[\mathrm{Pi}]}{[\mathrm{ATP}]} = 0.002$. Calculate ΔG’ under these conditions. 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+# Known values:
+dG_std_prime = ... # kJ / mol
+Q = ...
+T = ...
+... # One more might be useful.
+
+# Calculation:
+dG_prime = dG_std_prime + R*T*np.log(Q)
+print(dG_prime)
+```
+
+```{python}
+#| solution: true
+
+# Known values:
+Q = 0.002
+T = 298 # K
+dG_std_prime = -30.5 # kJ / mol
+R = 8.314 * 10**(-3) # kJ /(mol K)
+
+# Calculation:
+dG_prime = dG_std_prime + R*T*np.log(Q)
+print(dG_prime)
+```
+
+#### (b) Equilibrium or not? 
+
+Assuming that the temperature within these cells is $298 \ \mathrm{K}$, are these cells in equilibrium with respect to the hydrolysis of ATP? 
+
+#### (c) ATP synthesized
+
+Calculate the number of moles of ATP synthesized by a resting person in a period of 24 hours, assuming that the energy consumption by this person is $8368 \ \mathrm{kJ}$ per 24 hours and that 40% of this energy is converted directly into ATP without loss of energy. Use the ΔG’ value calculated in question a, and assume that $298 \ \mathrm{K}$.
+
+```{python}
+#| exercise: true
+#| eval: false
+energy_atp = ...
+synth_atp = ...
+print(synth_atp)
+```
+
+```{python}
+#| solution: true
+energy_atp = 0.4 * 8368 # kJ
+synth_atp = energy_atp / np.absolute(dG_prime)
+print(synth_atp)
+```
+
+::: {.callout-tip}
+
+You can use `np.absolute` to calculate the absolute value of a number. 
+
+:::
+
+#### (d) Turnover
+
+Next, calculate the average number of times each ATP molecule is turned over (synthesis followed by hydrolysis) in 24 hours when the total amount of ATP in the body equals $0.2 \ \mathrm{mol}$.
+
+```{python}
+#| exercise: true
+#| eval: false
+... # Your calculation here
+```
+
+```{python}
+#| solution: true
+total_atp = 0.2 
+turn_over = synth_atp / total_atp
+print(turn_over)
+```
+ 

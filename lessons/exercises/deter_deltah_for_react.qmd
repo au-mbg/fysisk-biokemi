@@ -1,0 +1,204 @@
+## Determination of ΔH° for a reaction from the van’t Hoff plot.
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+import numpy as np
+```
+
+
+The equilibrium constant for a reversible reaction going from $A$ to $B$ was measured as a function of temperature.
+ 
+The data obtained is given in the Excel document `deter_delta_h_data.xlsx` - load the data with the widget 
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('deter_delta_h') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (a) Transform & plot the data
+
+Add new columns to the `DataFrame` containing $\ln(K_{eq})$ and $1/T$ and make a plot 
+with $1/T$ on the x-axis and $\ln(K_{eq})$ on the y-axis.
+
+```{python}
+#| exercise: true
+#| eval: false
+df['1/T'] = ...
+df['ln_Keq'] = ...
+```
+
+```{python}
+#| solution: true
+df['1/T'] = 1/df['T_(K)']
+df['ln_Keq'] = np.log(df['Keq'])
+```
+
+Now you can make the plot in the cell below
+
+```{python}
+#| fig-align: center
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots(figsize=(6, 4))
+
+... # Your code here.
+
+ax.set_xlabel('1/T [K]')
+ax.set_ylabel('$\ln(K_{eq})$')
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+fig, ax = plt.subplots(figsize=(6, 4))
+
+ax.plot(df['1/T'], df['ln_Keq'], 'o')
+ax.set_xlabel('1/T [K]')
+ax.set_ylabel('$\ln(K_{eq})$')
+plt.show()
+```
+
+#### (b) Fit trendline
+
+Make a linear trendline by fitting a linear function to the data. 
+
+Start by defining a linear function
+
+```{python}
+#| exercise: true
+#| eval: false
+def vant_hoff(T, a, b):
+    return ... # Your code here.
+```
+
+```{python}
+#| solution: true
+def vant_hoff(T, a, b):
+    return a * T + b
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+
+popt, pcov = ...
+a, b = popt
+
+print(f"{a:.3f}")
+print(f"{b:.3f}")
+```
+
+```{python}
+#| solution: true
+popt, pcov = curve_fit(vant_hoff, df['1/T'], df['ln_Keq'])
+a, b = popt
+
+print(f"{a:.3f}")
+print(f"{b:.3f}")
+```
+
+Then make a plot with the trendline added 
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots(figsize=(6, 4))
+T_trend = np.array([df['1/T'].min(), df['1/T'].max()])
+
+# Your code to plot under this line: 
+...
+...
+...
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+fig, ax = plt.subplots(figsize=(6, 4))
+T_trend = np.array([df['1/T'].min(), df['1/T'].max()])
+
+ax.plot(df['1/T'], df['ln_Keq'], 'o')
+ax.plot(T_trend, vant_hoff(T_trend, a, b))
+
+ax.set_xlabel('1/T [K]')
+ax.set_ylabel('$\ln(K_{eq})$')
+plt.show()
+```
+
+#### (c) Reaction type
+
+Is the reaction endo- or exothermic?
+
+```{python}
+#| solution: true
+print("Endothermic")
+```
+
+#### (d) Free energy change
+
+Calculate the free energy change, $\Delta G^\circ$, at $T = 298 \ \mathrm{K}$, assuming that $R = 8.314472 \times 10^{-3} \ \frac{\mathrm{kJ}}{\mathrm{mol}\cdot\mathrm{K}}$
+
+```{python}
+#| exercise: true
+#| eval: false
+
+# Define your known values:
+R = ...
+T = ...
+
+# Perform your calculation: 
+dG = ...
+
+print(f"{dG = :.3f}")
+```
+
+```{python}
+#| solution: true
+R = 8.314472 * 10**(-3)
+T = 298
+
+dH = -R * a
+dS = R * b
+dG = dH - T * dS
+
+print(f"{dH = :.3f}")
+print(f"{dS = :.3f}")
+print(f"{dG = :.3f}")
+```
+
+#### (e) Entropy contribution
+
+What is the entropy contribution $-T\Delta S^\circ$ to this reaction at $T = 298 \ \mathrm{K}$?
+
+```{python}
+#| exercise: true
+#| eval: false
+TdS = - T * dS 
+print(f"{TdS = :.3f}")
+```
+
+```{python}
+#| solution: true
+TdS = - T * dS 
+print(f"{TdS = :.3f}")
+```
