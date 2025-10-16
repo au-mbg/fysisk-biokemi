@@ -9,22 +9,25 @@ The datasets used in the course exercises are organized by week. Click on the fi
 
 ```{python}
 #| echo: false
-#| output: asis
 import yaml
 import re
 import os
 from importlib.resources import files
-import fysisk_biokemi.datasets
+from pathlib import Path
 
-# Get the dataset directory path for file checking
-try:
-    dataset_directory = files('fysisk_biokemi.datasets.files')
-    dataset_files_path = str(dataset_directory)
-except:
-    dataset_files_path = "../src/fysisk_biokemi/datasets/files"
+# Load metadata
+dataset_directory = files('fysisk_biokemi.datasets.files')
+dataset_files_path = str(dataset_directory)
+metadata_file_path = Path(dataset_directory).parent / 'metadata.yml'
 
-# Function to extract exercise title from file
+with open(metadata_file_path, 'r') as f:
+    metadata = yaml.safe_load(f)
+```
+
+```{python}
+#| echo: false
 def get_exercise_title(exercise_filename):
+    """Extract exercise title from the exercise file."""
     if not exercise_filename:
         return "—"
     
@@ -47,21 +50,18 @@ def get_exercise_title(exercise_filename):
         # Fallback to filename conversion
         return exercise_filename.replace('.qmd', '').replace('-', ' ').title()
 
-# Load metadata using the package function
-try:
-    # Try to use the package metadata loading function
-    import fysisk_biokemi.datasets as datasets_module
-    if hasattr(datasets_module, 'get_metadata'):
-        metadata = datasets_module.get_metadata()
-    else:
-        # Fallback to direct file loading
-        with open('../src/fysisk_biokemi/datasets/metadata.yml', 'r') as f:
-            metadata = yaml.safe_load(f)
-except:
-    # Fallback to direct file loading
-    with open('../src/fysisk_biokemi/datasets/metadata.yml', 'r') as f:
-        metadata = yaml.safe_load(f)
+def print_dataset_row(dataset):
+    """Print a table row for a dataset."""
+    github_raw_url = f"https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/main/src/fysisk_biokemi/datasets/files/{dataset['filename']}"
+    download_link = f"[{dataset['filename']}]({github_raw_url})"
+    exercise_title = get_exercise_title(dataset['exercise'])
+    description = dataset['description']
+    
+    print(f"| {download_link} | {exercise_title} | {description} |")
+```
 
+```{python}
+#| echo: false
 # Group datasets by week
 datasets_by_week = {}
 for filename, info in metadata['datasets'].items():
@@ -76,10 +76,23 @@ for filename, info in metadata['datasets'].items():
             'original_name': info.get('original_name', filename)
         })
 
-# Sort weeks
+# Collect unassigned datasets
+unassigned = []
+for filename, info in metadata['datasets'].items():
+    if info['week'] is None:
+        unassigned.append({
+            'filename': filename,
+            'exercise': info['exercise'],
+            'description': info['description']
+        })
+```
+
+```{python}
+#| echo: false
+#| output: asis
+# Generate markdown for each week
 sorted_weeks = sorted(datasets_by_week.keys())
 
-# Generate markdown for each week
 for week in sorted_weeks:
     print(f"## Week {week}\n")
     
@@ -91,26 +104,15 @@ for week in sorted_weeks:
     
     # Add each dataset as a table row
     for dataset in datasets:
-        # Create download link - use GitHub raw URL for now
-        github_raw_url = f"https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/main/src/fysisk_biokemi/datasets/files/{dataset['filename']}"
-        download_link = f"[{dataset['filename']}]({github_raw_url})"
-        exercise_title = get_exercise_title(dataset['exercise'])
-        description = dataset['description']
-        
-        print(f"| {download_link} | {exercise_title} | {description} |")
+        print_dataset_row(dataset)
     
     print("")  # Empty line after each week section
+```
 
+```{python}
+#| echo: false
+#| output: asis
 # Show unassigned datasets
-unassigned = []
-for filename, info in metadata['datasets'].items():
-    if info['week'] is None:
-        unassigned.append({
-            'filename': filename,
-            'exercise': info['exercise'],
-            'description': info['description']
-        })
-
 if unassigned:
     print("## Additional Datasets\n")
     print("*These datasets are available but not yet assigned to specific weeks.*\n")
@@ -119,10 +121,5 @@ if unassigned:
     print("|---------|----------|-------------|")
     
     for dataset in unassigned:
-        github_raw_url = f"https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/main/src/fysisk_biokemi/datasets/files/{dataset['filename']}"
-        download_link = f"[{dataset['filename']}]({github_raw_url})"
-        exercise_title = get_exercise_title(dataset['exercise'])
-        description = dataset['description']
-        
-        print(f"| {download_link} | {exercise_title} | {description} |")
+        print_dataset_row(dataset)
 ```
