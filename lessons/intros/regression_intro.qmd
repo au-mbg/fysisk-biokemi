@@ -308,7 +308,6 @@ ax.set_title('Exponential decay curve fit')
 3. **Use parameter bounds** when you know physical constraints
 4. **Always plot the fit** to visually check if it makes sense
 5. **Check if parameters are reasonable** based on your biochemical knowledge
-6. **Use logarithmic plotting** for data spanning many orders of magnitude
 
 :::
 
