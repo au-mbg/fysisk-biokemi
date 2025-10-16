@@ -104,7 +104,7 @@ print(f"{r_fwd = :.5f}")
 
 #### (g) Time-dependence
 
-![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_48/reversible_reaction.png){.lightbox}
+![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/week_48/reversible_reaction.png){.lightbox}
 
 We now want to calculate and plot the time-dependent concentrations using the above equations. 
 

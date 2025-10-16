@@ -11,7 +11,7 @@ import pandas as pd
 The enzyme aspartate transcarbamoylase (ATCase) catalyzes the first reaction in the biosynthesis of pyrimidines
 such as CTP as shown in the reaction below:
 
-![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/atcase.png){.lightbox}
+![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/atcase.png){.lightbox}
 
 ATCase does not obey the Michaelis-Menten kinetics model but instead shows the behaviour recorded in the 
 `enzyme-behav-atcase.csv` dataset.

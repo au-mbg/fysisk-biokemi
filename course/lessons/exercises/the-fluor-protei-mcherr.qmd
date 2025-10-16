@@ -121,7 +121,7 @@ The excitation and emission spectra can be downloaded as a csv-file by clicking 
 
 ::: {#fig-download-csv}
 
-<img width=300 src="https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/download_spectra.png">
+<img width=300 src="https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/week_47/download_spectra.png">
 
 Screenshot of the download button on fpbase
 
@@ -231,7 +231,7 @@ the maximum value in a given array. The figure below illustrates this
 
 ::: {#fig-npargmax}
 
-<img width=300 src="https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/week_47/np_argmax.png">
+<img width=300 src="https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/week_47/np_argmax.png">
 
 Illustration of argmax
 

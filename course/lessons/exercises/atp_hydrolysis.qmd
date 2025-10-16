@@ -10,7 +10,7 @@ Below is shown the structure of ATP.
 
 $\Delta G^\circ´$ for the hydrolysis of ATP to ADP and Pi is $-30.5 \ \mathrm{kJ/mol}$.
 
-![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/atp_structure.png){.lightbox}
+![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/atp_structure.png){.lightbox}
 
 #### (a) $\Delta G´$
 

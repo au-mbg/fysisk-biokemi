@@ -104,7 +104,7 @@ $$
 \end{aligned}
 $$
 
-![Absorbance spectra of different states of myoglobin. $\mathrm{MbFe(II)O}_2$ is "oxyMb", $\mathrm{MbFe(III)}$ is "metMb" and $\mathrm{MbFe(II)}$ is "deoxyMb". Taken from Barham et al (2010); ChemRev; 110 (4); pp2313-2365](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/lessons/figures/apo-holo-figure.jpg){.lightbox}
+![Absorbance spectra of different states of myoglobin. $\mathrm{MbFe(II)O}_2$ is "oxyMb", $\mathrm{MbFe(III)}$ is "metMb" and $\mathrm{MbFe(II)}$ is "deoxyMb". Taken from Barham et al (2010); ChemRev; 110 (4); pp2313-2365](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/apo-holo-figure.jpg){.lightbox}
 
 
 #### (g) Aged myoglobin
