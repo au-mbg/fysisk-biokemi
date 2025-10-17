@@ -130,6 +130,8 @@ In many projects, you will be working with a mixture of proteins. This could for
 
 #### (d)	Average concentration of residues 
 
+In many cases, we work with mixtures of proteins that do not have a defined molar extinctio coefficient. Instead, we work with an average ‘mass extinction coefficient’, which we will deduce here. 
+
 Calculate the average concentration of amino acid residues in a protein mixture at 1 mg/mL.
 
 ```{python}
@@ -145,7 +147,7 @@ c_residue_avg = 1 / average_mw
 print(f"{c_residue_avg = :3.3f} M")
 ```
 
-#### (e)	Absorbance
+#### (e) Absorbance of an average mixture of residues
 
 Calculate the absorbance from such a mixture under the assumption that only Trp and Tyr contribute.
 
@@ -176,18 +178,20 @@ print(f"{c_tyr = :3.5f}")
 ```{python}
 #| exercise: true
 #| eval: false
-A280 = ... # Erstat med din kode.
-print(f"{A280 = :3.3f}")
+A280_1mg_pr_ml = ... # Erstat med din kode.
+print(f"{A280_1mg_pr_ml = :3.3f}")
 ```
 
 ```{python}
 #| solution: true
 L = 1 # Path length
-A280 = L * (5500 * c_trp + 1490 * c_tyr)
-print(f"{A280 = :3.3f}")
+A280_1mg_pr_ml = L * (5500 * c_trp + 1490 * c_tyr)
+print(f"{A280_1mg_pr_ml = :3.3f}")
 ```
 
-#### (f)	Absorbance $\rightarrow$ concentration 
+In the compendium, we mentioned a “rule of thumb” that 1 mg/mL protein at a path length of 1 cm has an A280 = 1. How well does this compare to your calculated value?
+
+#### (f) Absorbance $\rightarrow$ concentration 
 
 For a cell lysate, you measure and absorbance of 0.78 at a path length of 0.5 cm. What is the protein concentration?
 
@@ -196,21 +200,12 @@ For a cell lysate, you measure and absorbance of 0.78 at a path length of 0.5 cm
 #| eval: false
 
 # Set known values:
-A = 0.78 # Unitless
-l = 0.5 # cm
+A = ... # Unitless
+l = ... # cm
 
-# Extract frequencies
-freq = df.set_index("Name")["Frequency in proteins"]
-f_trp = freq["Tryptophan (Trp/W)"]
-f_tyr = freq["Tyrosine (Tyr/Y)"]
-
-# Calculate extintinction coefficent in [L/(mol cm)]
-eps_mix = ...
-# Calculate molar concentration [mol/L]
-c_res = ...
-# Calculate concentration [g/L] = [mg/mL]:
-conc_mg_per_mL = ...
-print(f"Protein concentration = {conc_mg_per_mL:.3f} mg/mL")
+# Calculate concentration:
+conc_mg_pr_mL = ...
+print(f"Protein concentration = {conc_mg_pr_mL:.3f} mg/mL")
 ```
 
 ```{python}
@@ -220,16 +215,7 @@ print(f"Protein concentration = {conc_mg_per_mL:.3f} mg/mL")
 A = 0.78 # Unitless
 l = 0.5 # cm
 
-# Extract frequencies
-freq = df.set_index("Name")["Frequency in proteins"]
-f_trp = freq["Tryptophan (Trp/W)"]
-f_tyr = freq["Tyrosine (Tyr/Y)"]
-
-# Calculate extintinction coefficent in [L/(mol cm)]
-eps_mix = 5500 * f_trp + 1490 * f_tyr
-# Calculate molar concentration
-c_res = A / (l * eps_mix) # [mol/L]
 # Calculate concentration:
-conc_mg_per_mL = c_res * average_mw # [g/mol] = [mg/mL] because mw is [g/mol]
-print(f"Protein concentration = {conc_mg_per_mL:.3f} mg/mL")
+conc_mg_pr_mL = A / (A280_1mg_pr_ml * l)
+print(f"Protein concentration = {conc_mg_pr_mL:.3f} mg/mL")
 ```
