@@ -1,0 +1,61 @@
+## Introduction to Google Colaboratory
+
+Through the course we will use Google Colab as it makes working with Python a little bit 
+easier - as we can skip the step of installing and managing Python on our local machines. 
+
+#### Signing in
+
+![Colab sign-in button](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/sign_in.jpg){.lightbox}
+
+
+In order to run the code in a notebook on Google Colab you will need to sign in with a 
+google account. 
+
+#### Running cells
+
+![Colab run button](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/run.jpg){.lightbox}
+
+Once you're signed in you can edit and run cells. The basic way to run cells is 
+by clicking on the little arrow icon as shown in the image. 
+
+A few keyboard shortcuts can make the experience smoother
+
+- {{< kbd Ctrl-Enter >}}: Runs the selected cell.
+- {{< kbd Shift-Enter >}}: Runs the selected cell and goes to the next cell.
+
+#### Saving the notebook 
+
+To save the notebook you have two options.
+
+##### Download and save locally
+
+![Download the notebook](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/download_notebook.png){.lightbox}
+
+You can download the notebook to your computer and save it locally. It is a good idea to make 
+a folder for the course and store all of them there with appropriate names. 
+
+##### Save in Google Drive
+
+![Save in Google Drive](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/google_drive.png){.lightbox}
+
+You can also save the notebook to Google drive - again it's a good idea to make a 
+folder specifically for the course and save it there. 
+
+#### Loading a notebook 
+
+You can also open a notebook stored on your computer or in drive. 
+
+##### Loading from your computer
+
+![Upload notebook](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/upload_notebook.png){.lightbox}
+
+![Select notebook to upload](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/select_notebook.png){.lightbox}
+
+You can upload a notebook by clicking on the "Upload Notebook"-button under the "File"-menu, this opens a window where you either drag & drop a notebook or open click the button to open the file browser and select the notebook. 
+
+##### Loading from Google Drive
+
+![Upload notebook](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/select_from_drive.png){.lightbox}
+
+Similarly you can select a notebook from Google drive, again starting from the "File"-menu, selecting 
+open notebook (or with shortcuts {{< kbd Command-O >}} or {{< kbd Ctrl-O >}}). 
