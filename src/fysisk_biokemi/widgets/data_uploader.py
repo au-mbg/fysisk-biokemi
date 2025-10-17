@@ -5,6 +5,7 @@ import io
 
 import pandas as pd
 from dataclasses import dataclass
+from fysisk_biokemi.widgets.utils.colab import disable_custom_widget_colab
 
 @dataclass
 class Reader:
@@ -23,8 +24,8 @@ SUFFIX_TO_FUNC = {
 class DataUploader:
 
     def __init__(self):
+        disable_custom_widget_colab()
         self.uploader = widgets.FileUpload(accept='', multiple=False)
-
         self.uploader.observe(self._on_upload_change, names='value')
         self.output = widgets.Output()
 
