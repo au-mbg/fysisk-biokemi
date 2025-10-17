@@ -27,9 +27,9 @@ m_w = 26.7 * 10**3 # From fpbase
 ... # Your answers here. 
 ```
 
-#### (b)	Adorbance
+#### (b)	Absorbance
 
-What is the absorbance of a 1 µM solution of mCherry at its absorption maximum?
+What is the absorbance of a 1 µM solution of mCherry at its absorption maximum at a path length of $1 \ \mathrm{cm}$?
 
 ```{python}
 #| exercise: true
@@ -50,6 +50,22 @@ print(f"{A_max = :3.3f}")
 
 #### (c)	Extinction coefficient from sequence. 
 
+::: {.callout-note}
+
+We will treat the sequence as a `str`, like any other text, `str`'s are defined like
+
+```{python}
+one_line_string = "This is some text, that makes up my string."
+```
+Which uses `"`-quotation marks around the text, for longer strings it can be useful to instead use 
+```{python}
+multi_line_string = """This is a very long text, so long in fact that it 
+takes up multiple lines and I therefore use a slightly different syntax. 
+To make the string longer I will confess that I am hungry right now.
+"""
+```
+:::
+
 The sequence of the protein is also given. From this determine the extinction coefficient at 280 nm.
 
 Start by taking the sequence from the website and assigning it to the variable `sequence` in the cell below. 
@@ -57,7 +73,10 @@ Start by taking the sequence from the website and assigning it to the variable `
 ```{python}
 #| exercise: true
 #| eval: false
-sequence = ... # Your code here
+sequence = """
+Put the sequence in here to make a str with the sequence. 
+Remember to remove this text as it is not part of the sequence. 
+"""
 ```
 ```{python}
 #| solution: true
@@ -69,6 +88,7 @@ Now use the sequence to calculate the extinction coefficient, finish the code be
 
 ```{python}
 #| exercise: true
+#| eval: false
 
 # This is "dictionary" with the extinction coefficients of the relevant 
 # amino acid residues. Dictionaries are indexed with 'keys', so you can retrieve
@@ -98,21 +118,23 @@ ext_coeff = N_trp * ext_residue["W"] + N_tyr * ext_residue["Y"] + N_cys * ext_re
 print(f"{ext_coeff = :3.3f}")
 ```
 
-#### (d)	What is the concentration of a 1 µM solution of mCherry in mg/mL?
+#### (d) Concentration from A280nm 
+
+What is the molar concentration of solution of mCherry with an A_280nm of 0.45
 
 ```{python}
 #| exercise: true
 #| eval: false
-conc_molar = ... # Put the concentration in units of M. 
-conc_mg_mL = ... # Calculate the concentration in uts of mg/mL.
-print(f"{conc_mg_mL = }")
+A280 = ...
+c_mol = ...
+print(c_mol)
 ```
 
 ```{python}
 #| solution: true
-conc_molar = 1 * 10**(-6) # From 1 [uM].
-conc_mg_mL = conc_molar * m_w 
-print(f"{conc_mg_mL = }")
+A280 = 0.45
+c_mol = A280 / (ext_coeff)
+print(c_mol)
 ```
 
 ---
@@ -129,7 +151,10 @@ Screenshot of the download button on fpbase
 
 ---
 
-#### (e)    Load the dataset
+#### (e) Load the dataset
+
+Go to [www.fpbase.org](https://www.fpbase.org/) and download the spectrum as described 
+above. 
 
 Use the widget below to load the dataset as a `DataFrame`
 
@@ -161,34 +186,6 @@ display(df)
 
 Make your own plot showing the excitation and emission spectra of “mCherry” using the above data.
 
-::: {.callout-tip}
-
-To plot we use the `matplotlib` package. Plots are generally just straight lines 
-connecting points, with enough points we get a smooth looking figure. 
-
-For example, to plot a line connecting three datapoints
-
-```python
-fig, ax = plt.subplots() # <1>
-
-x = np.array([1, 2, 3]) # <2>
-y = np.array([1, 4, 9])
-ax.plot(x, y) # <3> 
-plt.show() # <4>
-```
-1. This creates a `fig` and an `ax`, the `ax`-object is the box where our plot is created. 
-2. Define the data to put on the x-axis.
-3. Does the actual plotting
-4. Shows the figure
-
-There are *many* ways of customizing plots, you will see different ones in the exercises, but 
-by no means all of them - if you are interested you can find more information on the [matplotlib documentation](https://matplotlib.org/stable/users/index).
-
-You don't have to worry about the `NaN` values in the dataset when plotting, matplotlib just skips 
-plotting that line segment.
-
-::::
-
 ```{python}
 #| exercise: true
 #| eval: false
@@ -216,48 +213,43 @@ plt.show()
 
 #### (g)	Stokes shift
 
-What is the Stokes shift of mCherry?
+Estimate the Stokes shift of mCherry from the plot. 
 
-::: {.callout-tip}
-
-If you have two arrays `A` and `B` you can find the entry in `A` corresponding to the largest 
-value in `B` like this 
-
-```python
-A_at_B_max = A[np.argmax(B)]
+```{python}
+#| solution: true
+estimated_stokes_shift = 30 # Your estimation
 ```
-The `np.argmax` stands for **arg**ument **max**imum meaning that it finds the index of 
-the maximum value in a given array. The figure below illustrates this 
-
-::: {#fig-npargmax}
-
-<img width=300 src="https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/week_47/np_argmax.png">
-
-Illustration of argmax
-
-:::
-::: 
 
 ```{python}
 #| exercise: true
 #| eval: false
+estimated_stokes_shift = ... # Your estimation
+```
+
+The cell below shows how this could calculated using Python 
+
+```{python}
+#| exercise: true
+#| eval: false
+#| solution: true
 import numpy as np
 # Start by extracting the wavelengths from the DataFrame
-wavelengths = ...
+wavelengths = df['wavelength']
 
 # Find the indices
-ex_max_idx = np.argmax(...)
-em_max_idx = ...
+ex_max_idx = np.argmax(df['mCherry ex'])
+em_max_idx = np.argmax(df['mCherry em'])
 
 # Use the index to find the corresponding wavelengths
-lambda_ex = wavelengths[...]
-lambda_em = ...
+lambda_ex = wavelengths[ex_max_idx]
+lambda_em = wavelengths[em_max_idx]
 
-stokes_shift = ...
+stokes_shift = lambda_em - lambda_ex
 
 print(f"{lambda_ex = :d}")
 print(f"{lambda_em = :d}")
 print(f"{stokes_shift = :d}")
+print(f"{estimated_stokes_shift = :d}")
 ```
 
 ```{python}
@@ -279,8 +271,32 @@ stokes_shift = lambda_em - lambda_ex
 print(f"{lambda_ex = :d}")
 print(f"{lambda_em = :d}")
 print(f"{stokes_shift = :d}")
+print(f"{estimated_stokes_shift = :d}")
 ```
+
+::: {.callout-tip}
+
+If you have two arrays `A` and `B` you can find the entry in `A` corresponding to the largest 
+value in `B` like this 
+
+```python
+A_at_B_max = A[np.argmax(B)]
+```
+The `np.argmax` stands for **arg**ument **max**imum meaning that it finds the index of 
+the maximum value in a given array. The figure below illustrates this 
+
+::: {#fig-npargmax}
+
+<img width=300 src="https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/week_47/np_argmax.png">
+
+Illustration of argmax
+
+:::
+::: 
+
 
 #### (h)	Colors 
 
-What colors are the light that correspond to the excitation and emission maxima respectively?
+Compare to a plot of the visual spectrum. What colors are the light that correspond to the excitation and emission maxima respectively? 
+
+Why do you think the protein is called *Cherry*?

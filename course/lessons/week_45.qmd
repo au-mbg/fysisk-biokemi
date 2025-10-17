@@ -32,7 +32,7 @@ format-links:
 
 ---
 
-{{< include exercises/the-fluor-protei-mcherr.qmd >}}
+{{< include exercises/extin-coeff-human-myogl.qmd >}}
 
 ---
 
@@ -40,5 +40,4 @@ format-links:
 
 ---
 
-{{< include exercises/extin-coeff-human-myogl.qmd >}}
-
+{{< include exercises/the-fluor-protei-mcherr.qmd >}}

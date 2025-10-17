@@ -117,7 +117,7 @@ display(df[names])
 
 #### (d) Mean concentration
 
-Now that we have the concentrations, calculate the concentration in the four categories. 
+Now that we have the mass concentrations, calculate the mean mass concentration in the four categories. 
 
 ::: {.callout-tip}
 
@@ -179,6 +179,6 @@ display(std)
 
 Consider the following questions
 
-- By comparing healthy individuals with patients, would you expect that any of the two proteins would be involved in disease development? 
+- By comparing healthy individuals with patients, could any of the two proteins would be involved in disease de-velopment or be used as a biomarker for diagnosing the disease? 
 - What additional information does the standard deviation provide besides the average value of the protein concentration?
 

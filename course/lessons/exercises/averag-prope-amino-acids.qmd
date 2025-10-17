@@ -145,7 +145,7 @@ c_residue_avg = 1 / average_mw
 print(f"{c_residue_avg = :3.3f} M")
 ```
 
-#### (e)	Absorbance 
+#### (e)	Absorbance
 
 Calculate the absorbance from such a mixture under the assumption that only Trp and Tyr contribute.
 
@@ -187,7 +187,7 @@ A280 = L * (5500 * c_trp + 1490 * c_tyr)
 print(f"{A280 = :3.3f}")
 ```
 
-#### (f)	Adsorbance $\rightarrow$ concentration 
+#### (f)	Absorbance $\rightarrow$ concentration 
 
 For a cell lysate, you measure and absorbance of 0.78 at a path length of 0.5 cm. What is the protein concentration?
 

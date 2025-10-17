@@ -44,6 +44,10 @@ Recall that the basic arithemetic operations are, in Python, represented as foll
 
 #### (b) Array calculations
 
+The ability to perform operations on all elements (or data points) is incredibly useful 
+when doing data analysis, for example when converting units. This is enabled my 
+array calculations.
+
 The cell below defines an array $a$ with all the numbers from 0 to 9.
 
 For each entry $a_i$ in the array calculate the expression $b_i = a_i / 3 + a_i^2$ and 
@@ -120,7 +124,8 @@ Bonus question: Why does `c` print as a decimal number when the others print wit
 
 #### (d) Parentheses
 
-Parentheses a very important, one misplaced parentheses and the universe could have been drastically different - if parenthesis had been missing it is likely the universe would never have existed.
+Parentheses are important, a misplaced or lacking parentheses can drastically change 
+a calculation. 
 
 Using the variables `a`, `b` and `c` you calculate in the previous exercise, evaluate
 the following expressions
@@ -155,6 +160,12 @@ q5 = (b - a)*(1/(c+1)+1)
 print(q1, q2, q3, q4, q5)
 ```
 
+::: {.callout-tip}
+
+If you're in doubt having an extra set of unecessary parentheses is better than missing a 
+necessary set of parentheses. Just be careful to place them correctly. 
+
+:::
 
 
 #### (f) Functions
@@ -211,3 +222,12 @@ print(f"{fun_output_2:.1f}")
 print(f"{fun_output_3:.1f}")
 print(f"{fun_output_4:.1f}")
 ```
+
+::: {.callout-tip}
+
+The input of a function will often be the independent variable and the functions 
+calculates the independent variable. 
+
+Later when we get to regression/fitting this will be the case.
+
+:::

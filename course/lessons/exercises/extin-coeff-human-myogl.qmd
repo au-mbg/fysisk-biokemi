@@ -93,7 +93,7 @@ to in the image below
 
 ![Protpram tool calculated properties.](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/week_46/protpram_output.png){.lightbox}
 
-On the output page you will see the number of residues, does that match your calculation? 
+On the output page you will see a calculated extinction coefficient. Does that match your calculation? If not, what is the different between the assumptions made?
 
 #### (d) Calculate the absorbance
 
@@ -131,7 +131,7 @@ print(A280)
 
 This value is what is known as the A280(0.1%) of a protein, i.e. the absorbance of a given protein at a concentration of 0.1% weight/volume (= 1 g/L = 1 mg/mL). 
 
-#### (e) Tintin 
+#### (e) Titin 
 
 We have now calculated the extinction coefficient of a protein, now we will make our 
 code more reusable so that it can be applied to other proteins easily. 

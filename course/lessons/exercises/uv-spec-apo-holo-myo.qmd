@@ -36,6 +36,34 @@ display(df)
 
 #### (b) Plot the spectra
 
+::: {.callout-tip}
+
+To plot we use the `matplotlib` package. Plots are generally just straight lines 
+connecting points, with enough points we get a smooth looking figure. 
+
+For example, to plot a line connecting three datapoints
+
+```python
+fig, ax = plt.subplots() # <1>
+
+x = np.array([1, 2, 3]) # <2>
+y = np.array([1, 4, 9])
+ax.plot(x, y) # <3> 
+plt.show() # <4>
+```
+1. This creates a `fig` and an `ax`, the `ax`-object is the box where our plot is created. 
+2. Define the data to put on the x-axis.
+3. Does the actual plotting
+4. Shows the figure
+
+There are *many* ways of customizing plots, you will see different ones in the exercises, but 
+by no means all of them - if you are interested you can find more information on the [matplotlib documentation](https://matplotlib.org/stable/users/index).
+
+You don't have to worry about the `NaN` values in the dataset when plotting, matplotlib just skips 
+plotting that line segment.
+
+::::
+
 Using `matplotlib` plot each spectrum in the same figure as line plots. 
 
 ```{python}
@@ -77,13 +105,14 @@ be explained here.
 
 ---
 
-#### (d) Adsorption above 320 nm.
+#### (d) Absorption above 320 nm.
 
 Explain why ApoMb in the spectrum above absorbs light at λ>320 nm.
 
 #### (e) Efficiency estimate.
 
-Give a rough estimate of the efficiency of the chosen procedure of heme-group removal.
+Give a rough estimate of the efficiency of the chosen procedure of heme-group removal. 
+You may wish to look at the numerical values in the `DataFrame`.
 
 #### (f) Isobestic points
 
@@ -116,11 +145,11 @@ bound iron?
 
 Give a qualitative explanation to the observed change in absorbance of metMb compared to fresh oxy-/deoxyMb?
 
-#### (I) Type of shift
+#### (i) Type of shift
 
 Is the spectral difference from deoxyMb to metMb a redshift or a blueshift?
 
-#### (J) Experiment design
+#### (j) Experiment design
 
 You would like to set up an experiment where the absorbance of myoglobin at defined
 wavelength(s) should be used to measure the level of $\mathrm{O}_2$ binding. Sketch how the

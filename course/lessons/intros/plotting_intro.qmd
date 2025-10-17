@@ -145,6 +145,11 @@ $$
 y = \mathrm{e}^x
 $$
 
+::: {.callout-note}
+The exponential function can be calculated using `np.exp` - likewise with the 
+logarithm `np.log`. 
+:::
+
 ```{python}
 #| exercise: true
 #| eval: false
