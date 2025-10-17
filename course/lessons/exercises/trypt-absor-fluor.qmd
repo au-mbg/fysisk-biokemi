@@ -149,7 +149,15 @@ print(f"{estimated_stokes_shift = :.1f} nm")
 
 #### (e) pH and how it changes pHroperties.
 
-Next, you compare the fluorescence emission spectra for your protein at pH 7 and at pH 2. You can find the data in the files `trypt-absor-fluor-ph2.xlsx` and `trypt-absor-fluor-ph7.xlsx` - the cell below also loads these datasets 
+Next, you compare the fluorescence emission spectra for your protein at pH 7 and at pH 2. You can find the data in the files `trypt-absor-fluor-ph2.xlsx` and `trypt-absor-fluor-ph7.xlsx` - the cell below also loads these datasets. 
+
+::: {callout-tip}
+
+The datasets are loaded in a different way than you've seen before - as help to you 
+as this exercise deals with multiple datasets. The datasets could also be loaded with the 
+widget you've seen before
+
+::: 
 
 ```{python}
 df_ph2 = load_dataset('week47_1_ph2')
