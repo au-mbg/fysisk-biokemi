@@ -1,4 +1,4 @@
-## ATP hydroly
+## ATP hydrolysis
 
 ```{python}
 #| code-fold: true

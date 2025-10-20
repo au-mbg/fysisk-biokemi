@@ -229,7 +229,7 @@ ax.set_ylim([0, n.max()*1.1])
 
 **Question**: Is the binding cooperative? 
 
-### (f) Free energy
+#### (f) Free energy
 
 Calculate the free energy for the association of the ADP-pyruvate kinase complex assuming $R = 8.314472 \times 10^{-3} \ \frac{\text{kJ}}{\text{mol} \cdot \text{K}}$  and $T = 310 \ \text{K}$. 
 

@@ -17,7 +17,7 @@ The time course of the reaction was followed monitoring formation of the product
 
 #### (a) Load & convert
 
-The data is contained in the `reverse_reaction.xlsx` file.
+The data is contained in the `diff_q_keq_data.xlsx` file.
 
 ```{python}
 #| eval: false

@@ -136,8 +136,6 @@ print(f"{theta_free_3 = :.3f}")
 print(f"{theta_free_4 = :.3f}")
 ```
 
-# (e) 
-
 #### (e) Qualitative analysis
 
 Describe in your own words why these four competitive situations end up with their respective binding patterns. Consider the relative concentrations and affinities of ligands L and C.
