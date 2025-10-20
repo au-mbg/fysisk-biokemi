@@ -4,14 +4,14 @@ Below is given the general expression for saturation of a binding site by one of
 $L$ and $C$ are competing for binding to the same site on a protein. Assume that $[P_T] = 10^{-9}$ $\mathrm{M}$.
 
 $$
-\theta = \frac{[PL]}{[P_T]} = \frac{1}{\frac{K_D}{[L]}\left(1 + \frac{[C]}{K_C}\right) + 1}
+\theta_L = \frac{[PL]}{[P_T]} = \frac{1}{\frac{K_D}{[L]}\left(1 + \frac{[C]}{K_C}\right) + 1}
 $$
 
 Consider these four situations 
 
 | #      | $K_D$                    | $[L_T]$                  | $K_C$                    | $[C_T]$
 |--------|--------------------------|--------------------------|--------------------------|--------------------------|
-| 1      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ |                          | $0$                        |
+| 1      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ | $0$                      |
 | 2      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ | $1·10^{-2}$ $\mathrm{M}$ |
 | 3      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ |
 | 4      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ |
@@ -41,7 +41,7 @@ def bound_fraction(L, C, Kd, Kc):
     return 1 / ((Kd / L)*(1+(C/Kc))+1)
 ```
 
-Then use that function to calculate $\theta$ for each situation.
+Then use that function to calculate $\theta_L$ for each situation.
 
 ```{python}
 #| exercise: true
@@ -70,7 +70,7 @@ print(f"{theta_L_4 = :.3f}")
 
 #### (c) Competitor degree of saturation
 
-What is the degree of saturation with respect to the competitor $C$ in #1, #2 and #4?
+What is the degree of saturation with respect to the competitor $C$ in #1, #2, #3 and #4?
 
 ```{python}
 #| exercise: true
@@ -101,7 +101,7 @@ print(f"{theta_C_4 = :.3f}")
 
 #### (d) Fraction of $[P_{\mathrm{free}}]$
 
-What is the fraction of $[P_{\mathrm{free}}]$ in #2, #3, #4? 
+What is the fraction of $[P_{\mathrm{free}}]$ in #1, #2, #3 and #4? 
 
 ::: {.callout-tip}
 
@@ -135,3 +135,9 @@ print(f"{theta_free_2 = :.3f}")
 print(f"{theta_free_3 = :.3f}")
 print(f"{theta_free_4 = :.3f}")
 ```
+
+# (e) 
+
+#### (e) Qualitative analysis
+
+Describe in your own words why these four competitive situations end up with their respective binding patterns. Consider the relative concentrations and affinities of ligands L and C.

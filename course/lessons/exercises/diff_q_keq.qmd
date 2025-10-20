@@ -61,7 +61,7 @@ A0 = 50 * 10**(-6)
 
 #### (b) Law of mass balance
 
-Use the laws of mass balance to calculate $[A]$ as a function of time in the unit $\mathrm{M}, 
+Use the laws of mass balance to calculate $[A]$ as a function of time in the unit $\mathrm{M}$, 
 add it as a column to the `DataFrame` 
 
 ```{python}

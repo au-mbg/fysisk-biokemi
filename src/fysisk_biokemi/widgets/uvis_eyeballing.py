@@ -76,7 +76,7 @@ def quadratic(params: QuadraticBindingParameters, L_total=None) -> float:
 
 class EyeBallingWidget:
 
-    def __init__(self):
+    def __init__(self, correct_threshold=10.0):
         self.plot_output = widgets.Output()
         self.error_output = widgets.Output()
 
@@ -103,6 +103,7 @@ class EyeBallingWidget:
             description="Correct Attempts:", value=0, disabled=True, style={'description_width': 'initial'})
 
         self.params = SingleBindingParameters.get_random()
+        self.correct_threshold = correct_threshold
 
     def display(self):
         self._make_plot()
@@ -179,11 +180,11 @@ class EyeBallingWidget:
         
         error = np.abs(kd_guess - self.params.K_D) / self.params.K_D * 100
         self.guess_kd_error.value = f"<b>Error:</b> {error:.2f} %"
-        if error < 5:
+        if error < self.correct_threshold:
             self.guess_kd_error.value += " 🎉 Correct!"
 
         self.total_guesses.value += 1
-        if error < 5:
+        if error < self.correct_threshold:
             self.correct_guesses.value += 1
             self.guess_kd_input.disabled = True
             

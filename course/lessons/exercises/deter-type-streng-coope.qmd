@@ -9,6 +9,8 @@ import numpy as np
 The binding of NAD+ to the protein yeast glyceraldehyde 3-phosphate dehydrogenase (GAPDH) was studied using
 equilibrium dialysis. The enzyme concentration was 71 μM. The concentration of $[\text{NAD}^{+}_\text{free}]$ and the corresponding values of $\bar{n}$ were determined with the resulting data found in the dataset `deter-type-streng-coope.xlsx`.
 
+The dataset consists of three independent repititions of the same experiment.
+
 #### (a) Load the dataset
 
 Load the dataset using the widget below
@@ -148,13 +150,26 @@ ax.set_ylim([0, nbar_over_L.max() * 1.2])
 
 #### (e) Binding sites
 
-How many binding sites does GAPDH contain for $\text{NAD}^{+}$?
+Estimate by eye how many bindings sites GAPDH contains for $\text{NAD}^{+}$?
 
 #### (f) Cooperativity 
 
-What type of cooperativity do the plots indicate?
+Based on a visual inspection of the plot above, are there in signs of cooperativity? If so, which kind?
 
 #### (g) Fit
+
+::: {.callout-note}
+
+The function `np.concatenate` takes a number of arrays and makes a new array that 
+consisting of the originals one after each other. For example, 
+
+```{python}
+A = np.array([1, 2, 3])
+B = np.array([4, 5, 6])
+C = np.concatenate([A, B])
+print(C)
+```
+::: 
 
 Make a fit using the functional form 
 
@@ -232,52 +247,15 @@ print(f"{k_d_fit = :e}")
 print(f"{h_fit = :.3f}")
 ```
 
+Do the fitted parameters support your intuitive reading of the type of kooperativity
+
 ::: {.callout-note}
 
-The function `np.concatenate` takes a number of arrays and makes a new array that 
-consisting of the originals one after each other. For example, 
+In the data sets used, repeated experiments were given as a three seperate columns, which 
+is a quite natural way of recording data during an experiment. However, it is not 
+an appropriate format for regression, where we want all the data-points in a single 
+column. In this exercise we did a bit of *data wrangling* to make the data appropriate 
+for what we want to do with it - in this case by creating a new joint column containing 
+all the data by using the `np.concatenate` function.
 
-```{python}
-A = np.array([1, 2, 3])
-B = np.array([4, 5, 6])
-C = np.concatenate([A, B])
-print(C)
-```
-::: 
-
-#### (h) Plot with fit
-
-```{python}
-#| exercise: true
-#| eval: false
-
-L = np.linspace(0, df['[NAD+free]_(M)'].max()*1.5)
-n_bar_fit = n_bar(L, N_fit, k_d_fit, h_fit)
-
-fig, ax = plt.subplots(figsize=(8, 4))
-ax.plot(x, y, 'o', label='Data')
-ax.plot(L, n_bar_fit, '-', label='Fit')
-ax.axhline(N_fit, color='C2', label='N from fit')
-ax.axvline(k_d_fit, color='C3', label=r'$K_D$ from fit')
-ax.set_xlabel(r'$[\text{NAD}^{+}_\text{free}]$', fontsize=14)
-ax.set_ylabel(r'$\bar{n}$', fontsize=14)
-ax.legend()
-plt.show()
-```
-
-```{python}
-#| solution: true
-L = np.linspace(0, df['[NAD+free]_(M)'].max()*1.5)
-n_bar_fit = n_bar(L, N_fit, k_d_fit, h_fit)
-
-fig, ax = plt.subplots(figsize=(8, 4))
-ax.plot(x, y, 'o', label='Data')
-ax.plot(L, n_bar_fit, '-', label='Fit')
-ax.axhline(N_fit, color='C2', label='N from fit')
-ax.axvline(k_d_fit, color='C3', label=r'$K_D$ from fit')
-ax.set_xscale('log')
-ax.set_xlabel(r'$[\text{NAD}^{+}_\text{free}]$', fontsize=14)
-ax.set_ylabel(r'$\bar{n}$', fontsize=14)
-ax.legend()
-plt.show()
-```
+:::

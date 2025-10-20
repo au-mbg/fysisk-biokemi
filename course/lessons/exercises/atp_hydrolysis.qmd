@@ -1,18 +1,17 @@
-## ATP hydrolysis
+## ATP hydroly
 
 ```{python}
 #| code-fold: true
 import numpy as np
 ```
 
-
 Below is shown the structure of ATP.
 
-$\Delta G^\circ´$ for the hydrolysis of ATP to ADP and Pi is $-30.5 \ \mathrm{kJ/mol}$.
+$\Delta G^\circ$ for the hydrolysis of ATP to ADP and Pi is $-30.5 \ \mathrm{kJ/mol}$.
 
 ![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/atp_structure.png){.lightbox}
 
-#### (a) $\Delta G´$
+#### (a) $\Delta G$
 
 In cells at $298 \ \mathrm{K}$ the steady state concentrations of ATP, ADP og Pi resulted in a value for the reaction quotient $Q = \frac{\mathrm{[ADP]}[\mathrm{Pi}]}{[\mathrm{ATP}]} = 0.002$. Calculate ΔG’ under these conditions. 
 
@@ -21,14 +20,14 @@ In cells at $298 \ \mathrm{K}$ the steady state concentrations of ATP, ADP og Pi
 #| eval: false
 
 # Known values:
-dG_std_prime = ... # kJ / mol
+dG_std = ... # kJ / mol
 Q = ...
 T = ...
 ... # One more might be useful.
 
 # Calculation:
-dG_prime = dG_std_prime + R*T*np.log(Q)
-print(dG_prime)
+dG = dG_std + R*T*np.log(Q)
+print(dG)
 ```
 
 ```{python}
@@ -37,12 +36,12 @@ print(dG_prime)
 # Known values:
 Q = 0.002
 T = 298 # K
-dG_std_prime = -30.5 # kJ / mol
+dG_std = -30.5 # kJ / mol
 R = 8.314 * 10**(-3) # kJ /(mol K)
 
 # Calculation:
-dG_prime = dG_std_prime + R*T*np.log(Q)
-print(dG_prime)
+dG = dG_std + R*T*np.log(Q)
+print(dG)
 ```
 
 #### (b) Equilibrium or not? 
@@ -64,7 +63,7 @@ print(synth_atp)
 ```{python}
 #| solution: true
 energy_atp = 0.4 * 8368 # kJ
-synth_atp = energy_atp / np.absolute(dG_prime)
+synth_atp = energy_atp / np.absolute(dG)
 print(synth_atp)
 ```
 

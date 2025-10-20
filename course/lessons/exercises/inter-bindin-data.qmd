@@ -106,12 +106,12 @@ Ths command `ax.set_xscale('log')` tells `matplotlib` that we want the x-axis to
 ```{python}
 #| exercise: true
 #| eval: false
-k_d_estimate = ...
+K_D_estimate = ...
 ```
 
 ```{python}
 #| solution: true
-k_d_estimate = 5 * 10**(-5)
+K_D_estimate = 5 * 10**(-5)
 ```
 
 #### (d) Make a fit
@@ -144,7 +144,7 @@ x = ... # Choose x-data from the dataframe
 y = ... # Choose y-data from the dataframe
 
 # Initial guess
-p0 = [k_d_estimate]
+p0 = [K_D_estimate] # Using your estimate as the initial value for K_D
 
 # Bounds
 bounds = (0, np.inf) # We limit the parameters to be positve.
@@ -153,8 +153,8 @@ bounds = (0, np.inf) # We limit the parameters to be positve.
 popt, pcov = ... # Call the curve_fit function.
 
 # Print the parameters
-k_d_fit = popt[0]
-print(f"{k_d_fit = :e}")
+K_D_fit = popt[0]
+print(f"{K_D_fit = :e}")
 ```
 
 ```{python}
@@ -166,7 +166,7 @@ x = df['[L]_(M)']
 y = df['nbar']
 
 # Initial guess
-p0 = [k_d_estimate]
+p0 = [K_D_estimate]
 
 # Bounds
 bounds = (0, np.inf) # We limit the parameters to be positve.
@@ -175,43 +175,93 @@ bounds = (0, np.inf) # We limit the parameters to be positve.
 popt, pcov = curve_fit(n_bar, x, y, p0=p0, bounds=bounds)
 
 # Print the parameters
-k_d_fit = popt[0]
-print(f"{k_d_fit = :e}")
+K_D_fit = popt[0]
+print(f"{K_D_fit = :e}")
 ```
 
-#### Compare 
+#### (e) Compare 
 
-Use the figure below to compare your guess with the fitted value.
+Make a plot to compare the fit with your estimate. Start by evaluating the 
+function
+
+```{python}
+#| exercise: true
+#| eval: false
+# Evaluate on the fit so we can plot it.
+L_smooth = np.linspace(0, df['[L]_(M)'].max(), 100)
+nbar_fit = ...
+
+# We will also evaluate where the points are sampled on a log-scale.
+# The `geomspace` function makes points uniformly spaced on a logaritmic axis.
+L_smooth_log = np.geomspace(df['[L]_(M)'].min(), df['[L]_(M)'].max(), 100)
+nbar_fit_log = ...
+```
 
 ```{python}
 #| solution: true
-#| code-fold: true
-import matplotlib.pyplot as plt
+# Evaluate on the fit so we can plot it.
+L_smooth = np.linspace(0, df['[L]_(M)'].max(), 100)
+nbar_fit = n_bar(L_smooth, K_D_fit)
 
+# We will also evaluate where the points are sampled on a log-scale.
+# The `geomspace` function makes points uniformly spaced on a logaritmic axis.
+L_smooth_log = np.geomspace(df['[L]_(M)'].min(), df['[L]_(M)'].max(), 100)
+nbar_fit_log = n_bar(L_smooth_log, K_D_fit)
+```
+
+Now finish the code below to make the plot.
+
+```{python}
+#| exercise: true
+#| eval: false
 # This makes a figure with two axes.
 fig, axes = plt.subplots(1, 2, figsize=(9, 4))
 
-# Can with [0] to plot in the first axis.
+# Index with [0] to plot in the first axis - Linear plot
 ax = axes[0]
-ax.plot(df['[L]_(M)'], df['nbar'], 'o')
-ax.axvline(k_d_estimate, label='Estimate', color='C1')
-ax.axvline(k_d_fit, label='Fit', color='C2')
+
+# Your code here - maybe you can copy part of it from somewhere.
+... 
+
+# Index with [1] to plot in the second axis - Log plot.
+ax = axes[1]
+
+# Also your code here - maybe you can copy part of it from somewhere.
+...
+
+ax.set_xscale('log')
+```
+
+```{python}
+#| solution: true
+# This makes a figure with two axes.
+fig, axes = plt.subplots(1, 2, figsize=(9, 4))
+
+# Index with [0] to plot in the first axis - Linear plot
+ax = axes[0]
+ax.plot(df['[L]_(M)'], df['nbar'], 'o', color='C0')
+ax.plot(L_smooth, nbar_fit, color='C2')
+
+ax.axvline(K_D_estimate, label='Estimate', color='C1')
+ax.axvline(K_D_fit, label='Fit', color='C2')
+ax.set_xlabel('[L](M)', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 ax.legend()
 
-ax.set_xlabel('[L](M)', fontsize=14)
-ax.set_ylabel(r'$\bar{n}$', fontsize=14)
-
+# Index with [1] to plot in the second axis - Log plot.
 ax = axes[1]
-ax.plot(df['[L]_(M)'], df['nbar'], 'o')
+ax.plot(df['[L]_(M)'], df['nbar'], 'o', color='C0')
+ax.plot(L_smooth_log, nbar_fit_log, color='C2')
+
 ax.set_xlabel('[L](M)', fontsize=14)
 ax.set_ylabel(r'$\bar{n}$', fontsize=14)
-ax.axvline(k_d_estimate, label='Estimate', color='C1')
-ax.axvline(k_d_fit, label='Fit', color='C2')
+ax.axvline(K_D_estimate, label='Estimate', color='C1')
+ax.axvline(K_D_fit, label='Fit', color='C2')
 ax.legend()
 ax.set_xscale('log')
 ```
 
-#### Saturation 
+#### (f) Saturation 
 
 Based on the value of $K_D$ found from the fit, 
 

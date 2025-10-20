@@ -1,6 +1,12 @@
 ## ADP binding to pyruvate kinase. 
 
-The binding of ADP to the enzyme pyruvate kinase was measured by fluorescence. The enzyme concentration was 4 μM throughout the titration, and each measurement was done in triplicate. The binding results were obtained at 310 K and are given in the `.csv`-file `adp-bindin-pyruva-kinase.csv`. 
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+Based on the literature, you suspect that the binding of ADP to the enzyme pyruvate kinase might be coopera-tive and decide to investigate this by measuring the binding to the enzyme using radioactive ATP. The enzyme concentration was 4 μM throughout the titration, and each measurement was done in triplicate. The binding results were obtained at 310 K and are given in the `.csv`-file `adp-bindin-pyruva-kinase.csv`. 
 
 #### (a) Load the dataset
 
@@ -100,13 +106,13 @@ To fit we need a implement the function we want to fit the parameters of, the fu
 form is 
 
 $$
-n = n_{\text{max}} \frac{[L]^n}{K_D + [L]^n}
+n = n_{\text{max}} \frac{[L]^h}{K_D + [L]^h}
 $$
 
 ```{python}
 #| exercise: true
 #| eval: false
-def n_bound(L, n_max, K_D, n_exp):
+def n_bound(L, n_max, K_D, h):
     return ...
 
 print(f"{n_bound(1, 1, 1, 1) = }") # Should give 1/2
@@ -116,8 +122,8 @@ print(f"{n_bound(21, 47, 2.5, 2) = }") # Should give 46.73..
 
 ```{python}
 #| solution: true
-def n_bound(L, n_max, K_D, n_exp):
-    return n_max * L**n_exp / (K_D + L**n_exp)
+def n_bound(L, n_max, K_D, h):
+    return n_max * L**h / (K_D + L**h)
 
 print(f"{n_bound(1, 1, 1, 1) = }") # Should give 1/2
 print(f"{n_bound(21, 47, 2.5, 1) = }") # Should give 42
@@ -139,9 +145,9 @@ y = df['nbar']
 
 # Initial guess
 K_D_guess = ... # Your initial guess for K_D 
-nu_max_guess = ... # Your initial guess for nu_max
-n_exp = ... # Your initial guess for the exponent.
-p0 = [K_D_guess, nu_max_guess, n_exp]
+n_max_guess = ... # Your initial guess for nu_max
+h = ... # Your initial guess for the exponent.
+p0 = [K_D_guess, n_max_guess, n_exp]
 
 # Bounds
 bounds = (0, np.inf) # We limit the parameters to be positve.
@@ -150,10 +156,10 @@ bounds = (0, np.inf) # We limit the parameters to be positve.
 popt, pcov = curve_fit(n_bound, x, y, p0=p0, bounds=bounds)
 
 # Print the parameters
-n_max_fit, K_D_fit, n_exp_fit = popt
+n_max_fit, K_D_fit, h_fit = popt
 print(f"{n_max_fit = :1.3f} ")
 print(f"{K_D_fit = :e}")
-print(f"{n_exp_fit = :1.3f} ")
+print(f"{h_fit = :1.3f} ")
 ```
 
 ```{python}
@@ -166,9 +172,9 @@ y = df['nbar']
 
 # Initial guess
 K_D_guess = 1*10**(-3) # Your initial guess for K_D 
-nu_max_guess = 1 # Your initial guess for nu_max
-n_exp = 2 # Your initial guess for the exponent.
-p0 = [K_D_guess, nu_max_guess, n_exp]
+n_max_guess = 1 # Your initial guess for nu_max
+h_guess = 2 # Your initial guess for the exponent.
+p0 = [K_D_guess, n_max_guess, h_guess]
 
 # Bounds
 bounds = (0, np.inf) # We limit the parameters to be positve.
@@ -177,10 +183,10 @@ bounds = (0, np.inf) # We limit the parameters to be positve.
 popt, pcov = curve_fit(n_bound, x, y, p0=p0, bounds=bounds)
 
 # Print the parameters
-n_max_fit, K_D_fit, n_exp_fit = popt
+n_max_fit, K_D_fit, h_fit = popt
 print(f"{n_max_fit = :1.3f} ")
 print(f"{K_D_fit = :e}")
-print(f"{n_exp_fit = :1.3f} ")
+print(f"{h_fit = :1.3f} ")
 ```
 
 Once we've obtained the fitted parameters we can plot the fit together with 
@@ -190,7 +196,7 @@ the data.
 #| exercise: true
 #| eval: false
 L = np.linspace(0, 1.2 * x.max(), 50)
-n = n_bound(L, n_max_fit, K_D_fit, 1)
+n = n_bound(L, n_max_fit, K_D_fit, h_fit)
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(df['[ADPfree](M)'], df['nbar'], 'o', label='Observations')
@@ -207,7 +213,7 @@ ax.set_ylim([0, n.max()*1.1])
 ```{python}
 #| solution: true
 L = np.linspace(0, 1.2 * x.max(), 50)
-n = n_bound(L, n_max_fit, K_D_fit, 1)
+n = n_bound(L, n_max_fit, K_D_fit, h_fit)
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(df['[ADPfree](M)'], df['nbar'], 'o', label='Observations')
@@ -221,8 +227,9 @@ ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 ax.set_ylim([0, n.max()*1.1])
 ```
 
+**Question**: Is the binding cooperative? 
 
-### Free energy
+### (f) Free energy
 
 Calculate the free energy for the association of the ADP-pyruvate kinase complex assuming $R = 8.314472 \times 10^{-3} \ \frac{\text{kJ}}{\text{mol} \cdot \text{K}}$  and $T = 310 \ \text{K}$. 
 

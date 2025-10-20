@@ -24,11 +24,11 @@ format-links:
 
 ---
 
-{{< include exercises/adp-bindin-pyruva-kinase.qmd >}}
+{{< include exercises/inter-bindin-data.qmd >}}
 
 ---
 
-{{< include exercises/inter-bindin-data.qmd >}}
+{{< include exercises/adp-bindin-pyruva-kinase.qmd >}}
 
 ---
 

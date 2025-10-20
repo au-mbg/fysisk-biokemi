@@ -16,9 +16,9 @@ estimate_kd()
 
 #### (b) Compare to quadratic
 
-The widget below shows the curves for $\theta$ using both the simple expression 
-and the quadratic binding expression. Use it to determine how large [P] has to be 
-for them to be notably different. 
+The widget below shows the curves for $\theta$ using both the simple expression assuming 
+that $L = L_{tot}$ and the quadratic binding expression. Vary $K_D$ and $P_{total}$ to work 
+out a rule of thumb for when the two equations give a similar curve. 
 
 ```{python}
 #| eval: false
@@ -27,4 +27,9 @@ from fysisk_biokemi.widgets import visualize_simple_vs_quadratic
 
 enable_custom_widget_colab()
 visualize_simple_vs_quadratic()
+```
+
+```{python}
+#| solution: true
+answer = "They are equal when P_tot << K_D"
 ```

@@ -37,6 +37,11 @@ display(df)
 
 #### (a) Transform & plot the data
 
+::: {.callout-tip}
+In NumPy the `np.log` function calculates the natural logarithm that we often write as $\ln$ and `np.log10` calculates the 
+base 10 logarithm. 
+:::
+
 Add new columns to the `DataFrame` containing $\ln(K_{eq})$ and $1/T$ and make a plot 
 with $1/T$ on the x-axis and $\ln(K_{eq})$ on the y-axis.
 
@@ -63,8 +68,8 @@ fig, ax = plt.subplots(figsize=(6, 4))
 
 ... # Your code here.
 
-ax.set_xlabel('1/T [K]')
-ax.set_ylabel('$\ln(K_{eq})$')
+ax.set_xlabel(...)
+ax.set_ylabel(...)
 ```
 
 ```{python}
@@ -73,8 +78,8 @@ ax.set_ylabel('$\ln(K_{eq})$')
 fig, ax = plt.subplots(figsize=(6, 4))
 
 ax.plot(df['1/T'], df['ln_Keq'], 'o')
-ax.set_xlabel('1/T [K]')
-ax.set_ylabel('$\ln(K_{eq})$')
+ax.set_xlabel(r'1/T [K]')
+ax.set_ylabel(r'$\ln(K_{eq})$')
 plt.show()
 ```
 
@@ -123,7 +128,7 @@ Then make a plot with the trendline added
 #| exercise: true
 #| eval: false
 fig, ax = plt.subplots(figsize=(6, 4))
-T_trend = np.array([df['1/T'].min(), df['1/T'].max()])
+T_trend = ... # Select or make some appropriate points for the plotting evaluating the trendline.
 
 # Your code to plot under this line: 
 ...
@@ -141,17 +146,40 @@ ax.plot(df['1/T'], df['ln_Keq'], 'o')
 ax.plot(T_trend, vant_hoff(T_trend, a, b))
 
 ax.set_xlabel('1/T [K]')
-ax.set_ylabel('$\ln(K_{eq})$')
+ax.set_ylabel(r'$\ln(K_{eq})$')
 plt.show()
 ```
 
 #### (c) Reaction type
 
-Is the reaction endo- or exothermic?
+Calculate the reaction enthalpy and entropy, at $T = 298 \ \mathrm{K}$, assuming that $R = 8.314472 \times 10^{-3} \ \frac{\mathrm{kJ}}{\mathrm{mol}\cdot\mathrm{K}}$. Is the reaction endo- or exothermic?
 
 ```{python}
 #| solution: true
-print("Endothermic")
+# Define your known values:
+R = 8.314472 * 10**(-3)
+T = 298
+
+dH = -R * a
+dS = R * b
+
+print(f"{dH = :.3f}")
+print(f"{dS = :.3f}")
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+# Define your known values:
+R = ...
+T = ...
+
+# Calculate the reaction enthalpy and reaction entropy
+dH = ...
+dS = ...
+
+print(f"{dH = :.3f}")
+print(f"{dS = :.3f}")
 ```
 
 #### (d) Free energy change
@@ -174,31 +202,9 @@ print(f"{dG = :.3f}")
 
 ```{python}
 #| solution: true
-R = 8.314472 * 10**(-3)
-T = 298
-
-dH = -R * a
-dS = R * b
 dG = dH - T * dS
 
 print(f"{dH = :.3f}")
 print(f"{dS = :.3f}")
 print(f"{dG = :.3f}")
-```
-
-#### (e) Entropy contribution
-
-What is the entropy contribution $-T\Delta S^\circ$ to this reaction at $T = 298 \ \mathrm{K}$?
-
-```{python}
-#| exercise: true
-#| eval: false
-TdS = - T * dS 
-print(f"{TdS = :.3f}")
-```
-
-```{python}
-#| solution: true
-TdS = - T * dS 
-print(f"{TdS = :.3f}")
 ```

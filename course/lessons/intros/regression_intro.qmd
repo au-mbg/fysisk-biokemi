@@ -23,7 +23,7 @@ y_data = np.array([2.1, 4.2, 6.0, 7.8, 10.1, 12.2, 13.9, 16.1, 18.0, 20.2])
 
 ```{python}
 #| fig-align: center
-#| solution: true
+#| exercise: true
 #| eval: false
 # Plot the data
 fig, ax = plt.subplots(figsize=(6, 4))
@@ -106,7 +106,7 @@ Where:
 - `x_data`, `y_data`: Our experimental data
 - `p0`: Initial guess for parameters (optional but recommended)
 - `popt`: The optimized parameters (what we want!)
-- `pcov`: Covariance matrix (contains information about parameter uncertainties)
+- `pcov`: Covariance matrix (contains information about parameter uncertainties, which you don't need to worry about at the moment.)
 
 Finish the cell below to perform the curve fit by adding the three missing arguments to 
 the call to `curve_fit`.
@@ -145,8 +145,9 @@ To do this we evaluate the function with the fitted parameters and a densely sam
 independent variable. 
 
 ```{python}
-#| solution: true
-x_smooth = np.linspace(0, 11, 100)
+#| exercise: true
+#| eval: false
+x_smooth = np.linspace(0, 11, 100) # Makes 100 equally spaced points between 0 and 11. 
 y_fit = ... # Call the linear function using x_smooth, a_fit and b_fit
 ```
 
@@ -170,7 +171,7 @@ ax.plot(..., ..., '-', linewidth=2, label=f'Fit: y = {a_fit:.2f}x + {b_fit:.2f}'
 ax.set_xlabel('x')
 ax.set_ylabel('y') 
 ax.legend()
-ax.set_title('Linear curve fit')
+ax.set_title('Fit')
 ```
 
 ```{python}
@@ -182,16 +183,33 @@ ax.plot(x_smooth, y_fit, '-', linewidth=2, label=f'Fit: y = {a_fit:.2f}x + {b_fi
 ax.set_xlabel('x')
 ax.set_ylabel('y') 
 ax.legend()
-ax.set_title('Linear curve fit')
+ax.set_title('Fit')
 ```
 
 #### (e) Nonlinear fitting: Exponential decay
 
-Many biological processes follow nonlinear relationships. Let's work with exponential decay, which is common in biochemistry (e.g., radioactive decay).
+Many biological processes follow nonlinear relationships. Let's work with exponential decay, which is common in biochemistry (e.g., radioactive decay or unimolecular chemical reactions).
 
 First, let's generate some exponential data:
 
 ```{python}
+#| exercise: true
+#| eval: false
+# Generate exponential decay data
+t = np.array([0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0])
+# True parameters: A=10, k=0.8
+A_true, k_true = 10, 0.8
+signal = A_true * np.exp(-k_true * t) + np.random.normal(0, 0.3, len(t))
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(t, signal, 'o', markersize=8)
+ax.set_xlabel('Time')
+ax.set_ylabel('Signal')
+ax.set_title('Exponential decay data')
+```
+
+```{python}
+#| solution: true
 # Generate exponential decay data
 t = np.array([0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0])
 # True parameters: A=10, k=0.8
@@ -319,6 +337,41 @@ ax.set_title('Exponential decay curve fit')
 - **Poor initial guesses**: Can cause the fit to fail or find a local minimum
 - **Ignoring physical constraints**: Fitted parameters should make biological sense
 - **Not checking the fit visually**: Always plot to see if the fit is reasonable
+
+:::
+
+::: {.callout-important}
+
+## Summary of `curve_fit`
+
+Fitting refers to finding the parameters that make an assumed functional form best 
+'fit' the data. Programmatically we will use the `curve_fit` from the `scipy` package to do so. 
+The signature of this function looks like this
+
+```python
+curve_fit(function, 
+            x_data, 
+            y_data, 
+            p0=[param_1, param_2, ...])
+```
+
+The arguments are 
+
+- `function`: A python function where the **first** argument is the independent variable, and other arguments are the parameters of the functions. 
+- `x_data`: The observed values of the independent variable. 
+- `y_data`: The observed values of the dependent variable.
+- `p0`: Initial guesses for the parameters. 
+
+When called `curve_fit` starts by calculating how well the functions fits the data 
+with the initial parameters in `p0` and then iteratively improves the fit by 
+trying new values for the parameters in an intelligent way. 
+
+The found parameters will generally depend on `p0` and it is therefore necessary 
+to provide a good (or good enough) guess for `p0`.
+
+Generally, the best way to learn more about a function is to read it's documentation
+and then play around with it. The documentation is in this case on the [SciPy website](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html). You don't need to read it, unless 
+you want more details. 
 
 :::
 

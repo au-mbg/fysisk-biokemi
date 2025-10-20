@@ -43,7 +43,7 @@ Convert the concentrations of free ligand to SI-units given in M, add it as a ro
 
 ```{python}
 #| solution: true
-df['Free Ligand [L](M)'] = df['Free ligand [L](µM)'] * 10**(-6)
+df['Free_ligand_(M)'] = df['Free_ligand_(uM)'] * 10**(-6)
 display(df)
 ```
 
@@ -68,7 +68,7 @@ ax.set_ylabel(r'$\bar{n}$', fontsize=16)
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots()
-ax.plot(df['Free Ligand [L](M)'], df['n-bar'], 'o')
+ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o')
 ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
 ax.set_ylabel(r'$\bar{n}$', fontsize=16)
 plt.show()
@@ -76,10 +76,10 @@ plt.show()
 
 #### (d) Prepare for fitting
 
-Now we want to fit the data to extract $K_D$ and $\nu_{\text{max}}$, by using the equation
+Now we want to fit the data to extract $K_D$ and $n$, by using the equation
 
 $$
-\nu([L_{\text{free}}]) = \nu_{\text{max}} \frac{[L_{\text{free}}]}{K_D + [L_{\text{free}}]}
+\bar{n}([L_{\text{free}}]) = n \frac{[L_{\text{free}}]}{K_D + [L_{\text{free}}]}
 $$
 
 To do so we need to implmenet it as a Python function 
@@ -87,59 +87,26 @@ To do so we need to implmenet it as a Python function
 ```{python}
 #| exercise: true
 #| eval: false
-def nu(L, nu_max, K_D):
+def nbar(L, n, K_D):
     # Replace ... with your code that calculates the above equation. 
     # Be careful with parenthesis!
     result = ... 
     return result
 
-print(f"{nu(1, 1, 1) = }") # Should give 1/2
-print(f"{nu(21, 47, 2.5) = }") # Should give 42
+print(f"{nbar(1, 1, 1) = }") # Should give 1/2
+print(f"{nbar(21, 47, 2.5) = }") # Should give 42
 ```
 
 ```{python}
 #| solution: true
-def nu(L, nu_max, K_D):
-    return nu_max * L / (K_D + L)
+def nbar(L, n, K_D):
+    return n * L / (K_D + L)
 
-print(f"{nu(1, 1, 1) = }") # Should give 1/2
-print(f"{nu(21, 47, 2.5) = }") # Should give 42
+print(f"{nbar(1, 1, 1) = }") # Should give 1/2
+print(f"{nbar(21, 47, 2.5) = }") # Should give 42
 ```
 
 #### (e) Actually fitting
-
-::: {.callout-important}
-
-Fitting refers to finding the parameters that make an assumed functional form best 
-'fit' the data. Programmatically we will use the `curve_fit` from the `scipy` package to do so. 
-The signature of this function looks like this
-
-```python
-curve_fit(function, 
-            x_data, 
-            y_data, 
-            p0=[param_1, param_2, ...])
-```
-
-The arguments are 
-
-- `function`: A python function where the **first** argument is the independent variable, and other arguments are the parameters of the functions. 
-- `x_data`: The observed values of the independent variable. 
-- `y_data`: The observed values of the dependent variable.
-- `p0`: Initial guesses for the parameters. 
-
-When called `curve_fit` starts by calculating how well the functions fits the data 
-with the initial parameters in `p0` and then iteratively improves the fit by 
-trying new values for the parameters in an intelligent way. 
-
-The found parameters will generally depend on `p0` and it is therefore necessary 
-to provide a good (or good enough) guess for `p0`.
-
-Generally, the best way to learn more about a function is to read it's documentation
-and then play around with it. The documentation is in this case on the [SciPy website](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html). You don't need to read it, unless 
-you want more details. 
-
-:::
 
 Finish the code to perform the fitting in the cell below.
 
@@ -149,21 +116,21 @@ Finish the code to perform the fitting in the cell below.
 from scipy.optimize import curve_fit
 
 # Choose the variables from the dataframe
-x = df['Free Ligand [L](M)']
-y = df['n-bar']
+x = df['Free_ligand_(M)']
+y = df['n_bar']
 
 # Initial guess
 K_D_guess = ... # Your initial guess for K_D 
-nu_max_guess = ... # Your initial guess for nu_max
-p0 = [K_D_guess, nu_max_guess]
+n_guess = ... # Your initial guess for nu_max
+p0 = [K_D_guess, n_guess]
 
 # Curve fit
 # Replace the four ... with the correct arguments in the correct order.
 popt, pcov = curve_fit(..., ..., ..., ...) 
 
 # Print the parameters
-nu_max_fit, K_D_fit = popt
-print(f"{nu_max_fit = :1.3f} ")
+n_fit, K_D_fit = popt
+print(f"{n_fit = :1.3f} ")
 print(f"{K_D_fit = :e}")
 ```
 
@@ -172,18 +139,18 @@ print(f"{K_D_fit = :e}")
 from scipy.optimize import curve_fit
 
 # Choose the variables from the dataframe
-x = df['Free Ligand [L](M)']
-y = df['n-bar']
+x = df['Free_ligand_(M)']
+y = df['n_bar']
 
 # Initial guess
 K_D_guess = 10**(-5)
-nu_max_guess = 1
-p0 = [K_D_guess, nu_max_guess]
+n_guess = 1
+p0 = [K_D_guess, n_guess]
 
 # Curve fit
-popt, pcov = curve_fit(nu, x, y, p0=p0)
-nu_max_fit, K_D_fit = popt
-print(f"{nu_max_fit = :1.3f} ")
+popt, pcov = curve_fit(nbar, x, y, p0=p0)
+n_fit, K_D_fit = popt
+print(f"{n_fit = :1.3f} ")
 print(f"{K_D_fit = :e}")
 ```
 
@@ -203,7 +170,7 @@ calculate the dependent variable
 L = np.linspace(0, x.max()*1.2, 50) 
 
 # Calculate by plugging L and the found parameters into the function.
-nu_calc = ...
+nbar_calc = ...
 ```
 
 ```{python}
@@ -212,7 +179,7 @@ nu_calc = ...
 L = np.linspace(0, x.max()*1.2, 50) 
 
 # Calculate: 
-nu_calc = nu(L, nu_max_fit, K_D_fit)
+nbar_calc = nbar(L, n_fit, K_D_fit)
 ```
 
 Now that we calculated the dependent variable we can plot the fit along with the data. 
@@ -224,17 +191,38 @@ import matplotlib.pyplot as plt
 fig, ax = plt.subplots()
 
 # Plot the fitted curve
-ax.plot(L, nu_calc, label='Fit')
+ax.plot(L, nbar_calc, label='Fit')
 
 # Straight lines indicating the parameters 
-ax.axhline(nu_max_fit, color='red', label=r'$\nu_{max}$')
+ax.axhline(n_fit, color='red', label=r'$\nu_{max}$')
 ax.axvline(K_D_fit, color='green', label=r'$K_D$')
 
 # Same as before
-ax.plot(df['Free Ligand [L](M)'], df['n-bar'], 'o', color='C0')
+ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o', color='C0')
 ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
 ax.set_ylabel(r'$\bar{n}$', fontsize=16)
 ax.legend(fontsize=16)
 plt.show()
 ```
 
+```{python}
+#| exercise: true
+#| eval: false
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+
+# Plot the fitted curve
+ax.plot(L, nbar_calc, label='Fit')
+
+# Straight lines indicating the parameters 
+ax.axhline(n_fit, color='red', label=r'$\nu_{max}$')
+ax.axvline(K_D_fit, color='green', label=r'$K_D$')
+
+# Same as before
+ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o', color='C0')
+ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
+ax.set_ylabel(r'$\bar{n}$', fontsize=16)
+ax.legend(fontsize=16)
+plt.show()
+```
