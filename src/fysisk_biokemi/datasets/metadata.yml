@@ -131,8 +131,8 @@ datasets:
     description: "Chlorophyll absorption data (Excel format)"
 
   reverse_reaction.xlsx:
-    week: 46
-    exercise: diff_q_keq.qmd
+    week: null
+    exercise: null
     original_name: "reverse_reaction.xlsx"
     description: "Reversible reaction kinetics data (Excel format)"
 
@@ -141,3 +141,9 @@ datasets:
     exercise: deter_deltah_for_react.qmd
     original_name: "deter_delta_h_data.xlsx"
     description: "Determination of ΔH° for a reaction dataset (Excel format)"
+
+  diff_q_keq_data.xlsx:
+    week: 46
+    exercise: diff_q_keq.qmd
+    original_name: "diff_q_keq_data.xlsx"
+    description: "Dataset of time and product concentrations."
