@@ -4,6 +4,8 @@
 #| code-fold: true
 import numpy as np  
 import matplotlib.pyplot as plt
+import pandas as pd
+pd.set_option('display.max_rows', 6)
 ```
 
 The irreversible isomerization of compound A to compound B results in a decreasing
@@ -218,8 +220,8 @@ for ax_col, order in zip(axes.T, orders):
 
     # Plot the residuals
     ax = ax_col[0]
-    ax.hist(residuals_25, facecolor='C0', alpha=0.75, edgecolor='k', label='25 C')
-    ax.hist(residuals_40, facecolor='C1', alpha=0.75, edgecolor='k', label='40 C')
+    ax.plot(t, residuals_25, 'o', color='C0', label='25 C')
+    ax.plot(t, residuals_40, 'o', color='C1', label='40 C')
     ax.set_xlabel('Residual')    
     ax.set_ylabel('Count')
     ax.legend()
@@ -253,8 +255,9 @@ for ax_col, order in zip(axes.T, orders):
 
     # Plot the residuals
     ax = ax_col[0]
-    ax.hist(residuals_25, facecolor='C0', alpha=0.75, edgecolor='k', label='25 C')
-    ax.hist(residuals_40, facecolor='C1', alpha=0.75, edgecolor='k', label='40 C')
+    ax.plot(t, residuals_25, 'o', color='C0', label='25 C')
+    ax.plot(t, residuals_40, 'o', color='C1', label='40 C')
+    ax.axhline(0, color='black', linestyle='--')
     ax.set_xlabel('Residual')    
     ax.set_ylabel('Count')
     ax.legend()
@@ -271,6 +274,11 @@ Based on these plots
 #### (f) Half-life 
 
 What is the half-life of the reaction at these temperatures and is it constant through-out the reaction?
+
+```{python}
+#| eval: false
+... 
+```
 
 #### (g) Activation energy
 

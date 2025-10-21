@@ -4,6 +4,8 @@
 #| code-fold: true
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+pd.set_option('display.max_rows', 6)
 ```
 
 #### (a) Load the dataset
@@ -115,6 +117,7 @@ plot_dataframe(ax, df)
 
 ```{python}
 #| solution: true
+#| fig-align: center
 fig, ax = plt.subplots(1, 1, figsize=(6, 4))
 
 plot_dataframe(ax, df)
@@ -314,44 +317,49 @@ def calculate_residuals(x_data, y_data, A0, order):
     return residuals
 ```
 
-We can then plot the residuals, here using a histogram where the x-axis is the value of the 
-residual and the bars indicate the number of residuals within that range of values.
+We can then plot the residuals, here with the time on the x-axis and the residuals on the y-axis.
 
 ```{python}
 #| exercise: true
 #| eval: false
 fig, axes = plt.subplots(2, 3, figsize=(8, 4), sharey=True, layout='constrained', sharex=True)
 
-axes[0, 0].set_ylabel('Count')
-axes[1, 0].set_ylabel('Count')
+axes[0, 0].set_ylabel('Reaction 1: Residuals')
+axes[1, 0].set_ylabel('Reaction 2: Residuals')
 
 for ax_col, order in zip(axes.T, orders):
-
+    
     residuals = calculate_residuals(t, A1, A1_0, order)
-    ax_col[0].hist(residuals, alpha=0.75, color='C0')
+    ax_col[0].plot(t, residuals, 'o', color='C0')
+    ax_col[0].axhline(0, color='black', linestyle='--')
+
+    ax_col[0].set_title(f'Reaction order: {order}')
 
     residuals = calculate_residuals(t, A2, A2_0, order)
-    ax_col[1].hist(residuals, alpha=0.75, color='C1')
+    ax_col[1].plot(t, residuals, 'o', color='C1')
+    ax_col[1].axhline(0, color='black', linestyle='--')
 
-    ax_col[1].set_xlabel('Residual')
 ```
 
 ```{python}
 #| solution: true
 fig, axes = plt.subplots(2, 3, figsize=(8, 4), sharey=True, layout='constrained', sharex=True)
 
-axes[0, 0].set_ylabel('Count')
-axes[1, 0].set_ylabel('Count')
+axes[0, 0].set_ylabel('Reaction 1: Residuals')
+axes[1, 0].set_ylabel('Reaction 2: Residuals')
 
 for ax_col, order in zip(axes.T, orders):
-
+    
     residuals = calculate_residuals(t, A1, A1_0, order)
-    ax_col[0].hist(residuals, alpha=0.75, color='C0')
+    ax_col[0].plot(t, residuals, 'o', color='C0')
+    ax_col[0].axhline(0, color='black', linestyle='--')
+
+    ax_col[0].set_title(f'Reaction order: {order}')
 
     residuals = calculate_residuals(t, A2, A2_0, order)
-    ax_col[1].hist(residuals, alpha=0.75, color='C1')
+    ax_col[1].plot(t, residuals, 'o', color='C1')
+    ax_col[1].axhline(0, color='black', linestyle='--')
 
-    ax_col[1].set_xlabel('Residual')
 ```
 
 Does this support your conclusions about the reaction order from (d)?
