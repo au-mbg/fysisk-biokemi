@@ -1,0 +1,333 @@
+## A tricky protein binding.
+
+```{python}
+#| code-fold: true
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy.optimize import curve_fit
+pd.set_option('display.max_rows', 6)
+```
+
+
+The dataset in `binding_data_sq.xlsx` contains the fraction bound measured 
+at different ligand concentrations with the experiment repeated threefold.
+
+Load the dataset as usual using the widget below
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('binding_data_sq') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (a) Convert to SI 
+
+Convert the ligand concentration to $\mathrm{M}$ and add it to the dataframe as a new column named `'L_(m)'`.
+
+```{python}
+#| exercise: true
+#| eval: false
+...
+```
+
+```{python}
+#| solution: true
+df['L_(M)'] = df['L_(uM)'] * 10**(-6)
+```
+
+#### (b) Plot
+
+Make a scatter plot of the dataset 
+
+```{python}
+#| fig-align: center
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+
+...
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+fig, ax = plt.subplots()
+
+ax.plot(df['L_(M)'], df['theta'], 'o')
+ax.set_xlabel('L (M)')
+ax.set_ylabel(r'$\theta$')
+plt.show()
+```
+
+#### (c) Fit and analyze.
+
+Fit the data using the simple binding expression
+
+$$
+\theta = \frac{[L]}{[L] + K_D}
+$$
+
+Start by defining a function, called `simple_binding`, that calculates this expression
+
+```{python}
+#| exercise: true
+#| eval: false
+def ...
+    ...
+    ...
+```
+
+```{python}
+#| solution: true
+def simple_binding(L, K_D):
+    theta = L / (L + K_D)
+    return theta
+```
+
+Then use that function to fit the data using `curve_fit`
+
+```{python}
+#| exercise: true
+#| eval: false
+... 
+```
+
+```{python}
+#| solution: true
+
+popt, pcov = curve_fit(simple_binding, df['L_(M)'], df['theta'])
+K_D_fit_simple = popt[0]
+print(f'{K_D_fit_simple = :.3e}')
+```
+
+And evaluate the fit and plot it together with the dataset
+
+```{python}
+#| exercise: true
+#| eval: false
+
+# Evaluate the fit at L_smooth
+L_smooth = np.linspace(0, df['L_(M)'].max(), 100)
+theta_fit_simple = ...
+
+fig, ax = plt.subplots()
+... # Plot the fit together with the data - you can probably paste most of this code.
+```
+
+
+```{python}
+#| solution: true
+L_smooth = np.linspace(0, df['L_(M)'].max(), 100)
+theta_fit_simple = simple_binding(L_smooth, K_D_fit_simple)
+
+fig, ax = plt.subplots()
+
+ax.plot(df['L_(M)'], df['theta'], 'o')
+ax.plot(L_smooth, theta_fit_simple)
+
+ax.set_xlabel('L (M)')
+ax.set_ylabel(r'$\theta$')
+plt.show()
+```
+
+Is it a good fit? 
+
+#### (d) Residuals
+
+To get a more quantitative view of the quality of the fit calculate residuals
+
+```{python}
+#| exercise: true
+#| eval: false
+
+# Calculate the residuals by evaluating the fit at the measured datapoints
+residuals_simple = ...
+```
+
+```{python}
+#| solution: true
+residuals_simple = df['theta'] - simple_binding(df['L_(M)'], K_D_fit_simple)
+```
+
+And plot them versus the measured $\mathrm{[L]}$
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+
+# Plot the residuals: 
+
+# This makes a horizontal line through 0
+ax.axhline(0, color='black', linestyle='--')
+
+# Add any customization settings:
+```
+
+```{python}
+#| solution: true
+#| eval: true
+fig, ax = plt.subplots()
+
+ax.plot(df['L_(M)'], residuals_simple, 'o')
+ax.axhline(0, color='black', linestyle='--')
+ax.set_xlabel('[L] (M)')
+ax.set_ylabel('Residual')
+```
+
+Are the residuals randomly distributed around zero? 
+What does this tell you about the quality of the fit? 
+
+#### (e) Choosing a better model
+
+Lets try fitting with a more expressive model, namely the quadratic binding expression, that is 
+
+$$
+\begin{aligned}
+\theta &= \frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} - \sqrt{\left(\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]}\right)^2 - \frac{[L_{tot}]}{[P_{tot}]}} \\
+    &= \frac{A}{B} - \sqrt{\left(\frac{A}{B}\right)^2 - C} \\
+    & = D - \sqrt{D^2 - C}
+\end{aligned}
+$$
+
+The value of $[P_{tot}]$ is $250 \ \mu\mathrm{M}$. 
+
+Start by implementing the expression as a Python function - remember that you need to 
+be careful with parentheses with a function like this and it might be easier to do 
+if you do it step by step (calculate $A$, $B$ and $C$, then calculate $D=\frac{A}{B}$ and make the full expression from these bits.)
+
+```{python}
+#| exercise: true
+#| eval: false
+
+def quadratic_binding(L, K_D):
+    P_tot = ... # Set to given value in the correct units. 
+
+    A = ... # Numerator in fraction in the first term.
+    B = ... # Denominator in the same term.
+    C = ... # Second term in the square root.
+    D = ... # A divided by B.
+    theta = ... # Final expression.
+    return ...
+
+print(f"{quadratic_binding(100, 138.09) = :.3f}") # Should give 0.420
+```
+
+```{python}
+#| solution: true
+
+
+def quadratic_binding(L, K_D):    
+    P_tot = 250 * 10**(-6)
+
+    A = K_D + P_tot + L
+    B = 2 * P_tot
+    C = L / P_tot
+    D = A / B
+    return D - np.sqrt(D**2 - C)
+
+print(f"{quadratic_binding(100, 138.09) = :.3f}") # Should give 0.420
+```
+
+And now make a fit using this expression
+
+```{python}
+#| solution: true
+popt, pcov = curve_fit(quadratic_binding, df['L_(M)'], df['theta'])
+K_D_fit_quad = popt[0]
+print(f'{K_D_fit_quad = :.3e}')
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+popt, pcov = ...
+K_D_fit_quad = popt[0]
+print(f'{K_D_fit_quad = :.3e}')
+```
+
+The cell below makes a figure of the data and the residuals for each case
+
+```{python}
+#| exercise: true
+#| eval: false
+theta_fit_quad = quadratic_binding(L_smooth, K_D_fit_quad)
+residuals_quad = df['theta'] - quadratic_binding(df['L_(M)'], K_D_fit_quad)
+
+fig, axes = plt.subplots(1, 2, figsize=(9, 4))
+
+# Data & Fit
+ax = axes[0]
+ax.plot(df['L_(M)'], df['theta'], 'o', label='Data')
+ax.plot(L_smooth, theta_fit_simple, label='Simple binding', linewidth=3)
+ax.plot(L_smooth, theta_fit_quad, label='Quadratic binding', linewidth=3)
+ax.set_xlabel('L (M)')
+ax.set_ylabel(r'$\theta$')
+ax.legend()
+
+# Residuals
+ax = axes[1]
+ax.plot(df['L_(M)'], residuals_simple, 'o', color='C1', label='Simple binding')
+ax.plot(df['L_(M)'], residuals_quad, 'o', color='C2', label='Quadratic binding')
+ax.axhline(0, color='black', linestyle='--')
+ax.legend()
+
+plt.show()
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+theta_fit_quad = quadratic_binding(L_smooth, K_D_fit_quad)
+residuals_quad = df['theta'] - quadratic_binding(df['L_(M)'], K_D_fit_quad)
+
+fig, axes = plt.subplots(1, 2, figsize=(9, 4))
+
+# Data & Fit
+ax = axes[0]
+ax.plot(df['L_(M)'], df['theta'], 'o', label='Data')
+ax.plot(L_smooth, theta_fit_simple, label='Simple binding', linewidth=3)
+ax.plot(L_smooth, theta_fit_quad, label='Quadratic binding', linewidth=3)
+ax.set_xlabel('L (M)')
+ax.set_ylabel(r'$\theta$')
+ax.legend()
+
+# Residuals
+ax = axes[1]
+ax.plot(df['L_(M)'], residuals_simple, 'o', color='C1', label='Simple binding')
+ax.plot(df['L_(M)'], residuals_quad, 'o', color='C2', label='Quadratic binding')
+ax.axhline(0, color='black', linestyle='--')
+ax.legend()
+
+plt.show()
+```
+
+Consider the following questions: 
+
+- How does the quadratic binding expression fit the data? 
+- Whats the difference in how the residuals are distributed? 
+- What is the biochemical situation that makes quadratic expression necessary? 
+
+
+
+
+
