@@ -12,6 +12,10 @@ format-links:
 
 ---
 
+{{< include exercises/tricky-binding.qmd >}}
+
+---
+
 {{< include exercises/deter-reacti-orders.qmd >}}
 
 ---

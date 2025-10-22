@@ -147,3 +147,9 @@ datasets:
     exercise: diff_q_keq.qmd
     original_name: "diff_q_keq_data.xlsx"
     description: "Dataset of time and product concentrations."
+
+  binding_data_sq.xlsx:
+    week: 47
+    exercise: tricky-binding.qmd
+    original_name: "binding_data_sq.xlsx"
+    description: "Binding data for a tricky protein."
