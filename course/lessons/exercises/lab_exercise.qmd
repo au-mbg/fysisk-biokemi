@@ -1,0 +1,364 @@
+## Lab Exercise Analysis: Michaelis Menten
+
+```{python}
+#| code-fold: true
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+```
+
+In the "Introduction to the Molecules of Life"-course you performed an experiment 
+where you measured absorption for different substrate concentrations as a function of 
+time. The experiment was done with p-nitrophenylphosphat as the substrate and turns 
+into p-nitrophenol when the enzyme (alkaline phosphatase) acts on it.
+
+Load your dataset using the widget below
+
+```{python}
+#| eval: false
+import numpy as np
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('kinetics_LØ') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (a) Units
+
+The measured absorbances are unitless, they are the log of the ratio between the incoming light intensity and the transmitted light intensity. We would like to work with concentrations instead, so we need to convert the absorbance to concentration. The conversion is done using Lambert-Beer's law. 
+
+The extinction coefficient of the product p-nitrophenol is $\varepsilon = 18000 \, \text{M}^{-1} \text{cm}^{-1}$ at $405 \ \text{nm}$ and the path length of the cuvette is $l = 1\, \text{cm}$. We will construct a new `DataFrame` with concentrations
+
+We will start by definining a function `lambert_beers` to calculate the concentrations
+
+```{python}
+#| exercise: true
+#| eval: false
+def lambert_beers(absorbance):    
+    L = ... # Units: cm
+    ext_coeff = ... # Units: 1 / (M cm)
+    conc = ... # Units: M
+    return conc
+```
+
+```{python}
+#| solution: true
+def lambert_beers(absorbance):
+    L = 1 # cm
+    ext_coeff = 18000 # 1 / (M cm)
+    conc = absorbance / (L * ext_coeff) # M 
+    return conc
+```
+
+The next cell makes a new `DataFrame` by applying the lambert_beers function to every column in the original
+
+```{python}
+#| exercise: true
+#| eval: false
+data = {
+    'time': df['time'],
+    'S_0.8_mM': lambert_beers(df['0.8']),
+    'S_0.4_mM': lambert_beers(df['0.4']),
+    'S_0.2_mM': lambert_beers(df['0.2']),
+    'S_0.12_mM': lambert_beers(df['0.12']),
+    'S_0.05_mM': lambert_beers(df['0.05']),
+    'S_0.02_mM': lambert_beers(df['0.02']),
+    'S_0.01_mM': lambert_beers(df['0.01']),
+    'S_0.003_mM': lambert_beers(df['0.003']),
+}
+
+df = pd.DataFrame(data)
+display(df)
+```
+
+```{python}
+#| solution: true
+data = {
+    'time': df['time'],
+    'S_0.8_mM': lambert_beers(df['0.8']),
+    'S_0.4_mM': lambert_beers(df['0.4']),
+    'S_0.2_mM': lambert_beers(df['0.2']),
+    'S_0.12_mM': lambert_beers(df['0.12']),
+    'S_0.05_mM': lambert_beers(df['0.05']),
+    'S_0.02_mM': lambert_beers(df['0.02']),
+    'S_0.01_mM': lambert_beers(df['0.01']),
+    'S_0.003_mM': lambert_beers(df['0.003']),
+}
+
+df = pd.DataFrame(data)
+display(df)
+```
+
+
+#### (b) Plot
+
+Now lets plot the data. Plot each column seperately as a function of time.
+
+```{python}
+#| fig-align: center
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+
+# Your code here, one line for each column, 
+# except for the time column, so 8 lines total.)
+...
+
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Concentration [M]')
+ax.legend()
+plt.show()
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+fig, ax = plt.subplots()
+
+for key in df.keys():
+    if key != 'time':
+        ax.plot(df['time'], df[key], '-o', label=key)
+
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Concentration [M]')
+ax.legend()
+plt.show()
+```
+
+#### (c) Finding the slopes
+
+In order to apply the Michaelis Menten equation we need the slopes of this curves as that is the reaction velocity $V_0$, luckily we have learned how to make fit! So we make a fit to the linear function to determine the slope $a$ in,
+$$
+y(x) = a x + b
+$$
+As always, start by writing the function
+
+```{python}
+#| solution: true
+def linear_function(x, a, b):
+    return ...
+```
+
+```{python}
+#| solution: true
+def linear_function(x, a, b):
+    return a * x + b
+```
+
+Now we want to find the slope for each column, to help with that we will introduce a 
+function that takes the time column and one of the absorbance columns and returns the slope
+
+```{python}
+#| exercise: true
+#| eval: false
+def find_slope(time_data, abs_data):
+    # This selects the times and absorbances that have been measured (not NaN)
+    indices = np.where(~abs_data.isna())[0]
+    time_data = time_data[indices]
+    abs_data = abs_data[indices]
+
+    # Find the slope and the intercept using curve_fit and return the slope    
+    ...
+    return slope
+```
+
+```{python}
+#| solution: true
+def find_slope(time_data, abs_data):
+    indices = np.where(~abs_data.isna())[0]
+    time_data = time_data[indices]
+    abs_data = abs_data[indices]
+    popt, pcov = curve_fit(linear_function, time_data, abs_data)
+    return popt[0]
+```
+
+Now we want to use this for each set of measurements at different substrate concentrations. 
+
+```{python}
+#| exercise: true
+#| eval: true
+slope_08 = ...
+slope_04 = ...
+slope_02 = ...
+slope_012 = ...
+slope_005 = ...
+slope_002 = ...
+slope_001 = ...
+slope_0003 = ...
+
+substrate_concentrations = np.array([0.8, 0.4, 0.2, 0.12, 0.05, 0.02, 0.01, 0.003]) * 10**(-3) # Converted from mM to M.
+slopes = np.array([slope_08, slope_04, slope_02, slope_012, slope_005, slope_002, slope_001, slope_0003])
+```
+
+```{python}
+#| solution: true
+slope_08 = find_slope(df['time'], df['S_0.8_mM'])
+slope_04 = find_slope(df['time'], df['S_0.4_mM'])
+slope_02 = find_slope(df['time'], df['S_0.2_mM'])
+slope_012 = find_slope(df['time'], df['S_0.12_mM'])
+slope_005 = find_slope(df['time'], df['S_0.05_mM'])
+slope_002 = find_slope(df['time'], df['S_0.02_mM'])
+slope_001 = find_slope(df['time'], df['S_0.01_mM'])
+slope_0003 = find_slope(df['time'], df['S_0.003_mM'])
+
+substrate_concentrations = np.array([0.8, 0.4, 0.2, 0.12, 0.05, 0.02, 0.01, 0.003]) * 10**(-3)
+slopes = np.array([slope_08, slope_04, slope_02, slope_012, slope_005, slope_002, slope_001, slope_0003])
+```
+
+Now make a plot of the slopes versus the substrate concentrations 
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots() 
+
+# Plot the slopes 
+...
+
+# Set the x and y labels
+...
+
+plt.show()
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots() 
+
+ax.plot(substrate_concentrations, slopes, 'o')
+ax.set_xlabel('Substrate concentration')
+ax.set_ylabel('Slope')
+plt.show()
+```
+
+#### (d) Michaelis Menten
+
+Now that we have the slopes we can fit to the Michaelis Menten equation, again we 
+need to implement the equation
+
+```{python}
+#| exercise: true
+#| eval: false
+def mich_menten(S, V_max, K_M):
+    return ...
+```
+
+```{python}
+#| solution: true
+def mich_menten(S, V_max, K_M):
+    return (V_max * S) / (K_M + S)
+```
+
+Then fit to the slopes we extracted
+
+```{python}
+#| exercise: true
+#| eval: false
+popt, pcov = ...
+V_max_fit, K_M_fit = popt
+
+print(f'{V_max_fit = :.3e}')
+print(f'{K_M_fit = :.3e}')
+```
+
+```{python}
+#| solution: true
+popt, pcov = curve_fit(mich_menten, substrate_concentrations, slopes)
+V_max_fit, K_M_fit = popt
+
+print(f'{V_max_fit = :.3e}')
+print(f'{K_M_fit = :.3e}')
+```
+
+- What is the physical meaning of $K_M$ and how does it relate to binding affinity? 
+- What's the meaning of $V_{max}$? Why does the curve saturate? 
+
+#### (e) Plot with fit
+
+```{python}
+#| exercise: true
+#| eval: false
+S_smooth = np.linspace(0, substrate_concentrations.max())
+V0_fit = ...
+```
+
+```{python}
+#| solution: true
+S_smooth = np.linspace(substrate_concentrations.min(), substrate_concentrations.max())
+V0_fit = mich_menten(S_smooth, V_max_fit, K_M_fit)
+```
+
+```{python}
+#| exercise: true
+#| eval: false
+#| fig-align: center
+fig, ax = plt.subplots() 
+
+# Put code to plot:
+...
+
+# Put code to customize:
+...
+
+plt.show()
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots() 
+
+ax.plot(substrate_concentrations, slopes, 'o', label='Data')
+ax.plot(S_smooth, V0_fit, label='Fit')
+
+ax.set_xlabel('Substrate concentration (M)')
+ax.set_ylabel('$V_0$ (M/s)')
+plt.show()
+```
+
+#### Turnover number 
+
+Given that the enzyme concentration was $3.33 \frac{\text{mg}}{\text{L}}$ and the molecular weight 
+of the enzyme (alkaline phosphatase) is 496.6 $\frac{\text{g}}{\text{mol}}$, calculate the turnover number.
+
+Stary by converting the enzyme concentration to molar units and then calculate turnover number.
+
+```{python}
+#| exercise: true
+#| eval: false
+enzyme_conc = ... # Your code here.
+
+kcat = ... # Your code here.
+
+print(f"{kcat = :.3e} 1/s")
+```
+
+
+```{python}
+#| solution: true
+enzyme_conc = (3.33*10**(-3)) / 496.6
+
+kcat = V_max_fit / enzyme_conc
+
+print(f"{kcat = :.3e} 1/s")
+```
+
+- What is the biochemical meaning of this number? 

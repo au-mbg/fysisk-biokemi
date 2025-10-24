@@ -37,3 +37,7 @@ format-links:
 ---
 
 {{< include exercises/analys-data-set-obeyin.qmd >}}
+
+---
+
+{{< include exercises/lab_exercise.qmd >}}
