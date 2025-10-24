@@ -42,7 +42,7 @@ display(df)
 
 The headers, like `Abs_S1` refer to the substrate concentration so `S1` means a substrate concentration of 1 $\mu\text{M}$.
 
-#### (a) 
+#### (a) Connvert extinction coefficient to SI.
 Convert the extinction coefficient to units given in $\text{M}^{-1}\cdot \text{cm}^{-1}$ and 
 assign it to a variable. Also assign the light path length to a variable.
 
