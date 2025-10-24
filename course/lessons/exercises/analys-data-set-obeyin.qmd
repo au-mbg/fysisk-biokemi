@@ -1,4 +1,4 @@
-## Analysis of a data set obeying Michaelis-Menten kinetics (Unfinished)
+## Analysis of a data set obeying Michaelis-Menten kinetics
 
 ```{python}
 #| code-fold: true
