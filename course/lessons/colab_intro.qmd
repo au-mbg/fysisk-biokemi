@@ -59,3 +59,15 @@ You can upload a notebook by clicking on the "Upload Notebook"-button under the 
 
 Similarly you can select a notebook from Google drive, again starting from the "File"-menu, selecting 
 open notebook (or with shortcuts {{< kbd Command-O >}} or {{< kbd Ctrl-O >}}). 
+
+#### Disabling AI Assistance
+
+Google Colab has Gemini AI features that may suggest code completions and other AI-generated content - these are not particularly helpful in order to learn and are **not allowed at the exam**. To disable them open the settings panel, like shown below
+
+![Upload notebook](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/settings.jpg){.lightbox}
+
+Navigate to "AI Assistance" and set the toggles to off as shown below
+
+![Upload notebook](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/colab/disable_gemini.png){.lightbox}
+
+
