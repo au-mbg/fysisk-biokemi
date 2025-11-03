@@ -99,7 +99,7 @@ $$
 \begin{aligned}
 a &= 5 \times 3 \\
 b &= a + 9 \\
-c &= \frac{4}{3}a + b + 2
+c &= \frac{4}{3}a + b - 2
 \end{aligned}
 $$
 
