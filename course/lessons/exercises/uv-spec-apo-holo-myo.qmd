@@ -143,7 +143,10 @@ bound iron?
 
 ```{python}
 #| solution: true
-"""In the aged state, the oxidation number of the iron is +3. The change in oxidation number of iron (+2 vs +3) in fresh vs aged myoglobin means that the electron configuration in the d- orbitals are different, which will affect the way iron is bound in the heme group"""
+"""In the aged state, the oxidation number of the iron is +3. The change in 
+oxidation number of iron (+2 vs +3) in fresh vs aged myoglobin means that the 
+electron configuration in the d- orbitals are different, which will affect the 
+way iron is bound in the heme group"""
 ```
 
 
@@ -152,9 +155,12 @@ bound iron?
 Give a qualitative explanation to the observed change in absorbance of metMb compared to fresh oxy-/deoxyMb?
 
 ```{python}
-#| solution: true
+#| solution: true
 """
-The changed in electronic configuration and the difference this causes to how iron is bound in the hemegroup influences the absorption.Moreover binding of oxygen via the iron again changes the electron configuration of the iron atom, resulting in differences between deoxy- and oxymyoglobin
+The changed in electronic configuration and the difference this causes to how 
+iron is bound in the hemegroup influences the absorption.Moreover binding of 
+oxygen via the iron again changes the electron configuration of the iron atom, 
+resulting in differences between deoxy- and oxymyoglobin
 """
 ```
 
@@ -163,9 +169,10 @@ The changed in electronic configuration and the difference this causes to how ir
 Is the spectral difference from deoxyMb to metMb a redshift or a blueshift?
 
 ```{python}
-#| solution: true
+#| solution: true
 """
-The absorbance peak in metMb is at lower wavelength (higher energy) as compared to deoxyMb, and is therefore described as a blueshift.
+The absorbance peak in metMb is at lower wavelength (higher energy) as compared 
+to deoxyMb, and is therefore described as a blueshift.
 """
 ```
 
