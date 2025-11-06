@@ -20,6 +20,14 @@ Consider these four situations
 
 Explain how the fact that $[P_T]$ is much smaller than $[L_T]$ and $[C_T]$ simplifies the calculations using the above equation.
 
+```{python}
+#| solution: true
+#| eval: false
+"""
+When P(total) is << L(total) and C(total), we can assume that L(total) =[L] and C(total) = [C].
+"""
+```
+
 #### (b) Ligand degree of saturation
 
 Calculate the degree of saturation of the protein with ligand $L$ in the four situations.
@@ -138,4 +146,21 @@ print(f"{theta_free_4 = :.3f}")
 
 #### (e) Qualitative analysis
 
-Describe in your own words why these four competitive situations end up with their respective binding patterns. Consider the relative concentrations and affinities of ligands L and C.
+Describe in your own words why these four competitive situations end up with 
+their respective binding patterns. Consider the relative concentrations and 
+affinities of ligands L and C.
+
+```{python}
+#| solution: true
+#| eval: false
+"""
+1. The competitor concentration is zero, so only the ligand L binds. 
+
+2. The affinity and concentration of C is higher so it binds more. 
+
+3. The affinity and concentration of L and C are equal and they both bind equally. 
+
+4. K_D > K_C with the same factor as [L_T] > [C_T] so they bind equally but 
+there are still free proteins as the concentrations are low relative to the affinities. 
+"""
+```

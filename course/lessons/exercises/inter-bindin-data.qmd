@@ -267,3 +267,10 @@ Based on the value of $K_D$ found from the fit,
 
 - At which concentration do you expect 10% saturation?
 - At which concentration do you expect 90% saturation?
+
+```{python}
+#| solution: true
+"""
+At K_D/9 and 9*K_D.
+"""
+```

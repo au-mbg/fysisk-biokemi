@@ -152,9 +152,28 @@ ax.set_ylim([0, nbar_over_L.max() * 1.2])
 
 Estimate by eye how many bindings sites GAPDH contains for $\text{NAD}^{+}$?
 
+```{python}
+#| solution: true
+#| eval: false
+"""
+Saturation suggest assumptotic approximation to 4, which seems like the like 
+intercept of the non-linear scatchard plot.
+"""
+```
+
 #### (f) Cooperativity 
 
 Based on a visual inspection of the plot above, are there in signs of cooperativity? If so, which kind?
+
+```{python}
+#| solution: true
+#| eval: false
+"""
+Positive cooperativity as witnessed e.g. by the increasing slope in the early 
+part of the lienar plot
+"""
+```
+
 
 #### (g) Fit
 
@@ -247,7 +266,7 @@ print(f"{k_d_fit = :e}")
 print(f"{h_fit = :.3f}")
 ```
 
-Do the fitted parameters support your intuitive reading of the type of kooperativity
+Do the fitted parameters support your intuitive reading of the type of cooperativity
 
 ::: {.callout-note}
 
