@@ -121,14 +121,14 @@ Now that we have the mass concentrations, calculate the mean mass concentration 
 
 ::: {.callout-tip}
 
-When displaying the dataframe above we used indexed it with `names` as `df[names]`. 
+When displaying the dataframe above we indexed it with `names` as `df[names]`. 
 We can do the same to compute something over just the four rows. 
 
 For example the if we have a `DataFrame` called `example_df`, we can calculate the mean 
 over the **rows** as: 
 
 ```python
-df[names].mean(axis=0)
+example_df[names].mean(axis=0)
 ```
 
 Here `axis=0` means that we apply the operation over the first axis which by convention are the rows. The 
@@ -179,6 +179,8 @@ display(std)
 
 Consider the following questions
 
-- By comparing healthy individuals with patients, could any of the two proteins would be involved in disease de-velopment or be used as a biomarker for diagnosing the disease? 
-- What additional information does the standard deviation provide besides the average value of the protein concentration?
+- By comparing healthy individuals with patients, could any of the two proteins would be involved in disease development or be used as a biomarker for diagnosing the disease? 
+- What additional information does the standard deviation provide in addition to the average value of the protein concentration?
+
+
 

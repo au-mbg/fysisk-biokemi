@@ -80,6 +80,7 @@ ax.plot(df['wavelength'], df['holo_absorbance'], label='Holo')
 
 ax.set_ylabel('Absorbance (AU)')
 ax.set_xlabel('Wavelength (nm)')
+ax.legend()
 ```
 
 ```{python}
@@ -92,9 +93,27 @@ ax.plot(df['wavelength'], df['apo_absorbance'], label='Apo')
 
 ax.set_ylabel('Absorbance (AU)')
 ax.set_xlabel('Wavelength (nm)')
+ax.legend()
 ```
 
+#### (c) Apo & Holo
+
 Based on the spectra explain what ApoMb and HoloMb represent? 
+
+```{python}
+#| solution: true
+#| eval: false
+"""
+ApoMb (Apo-myoglobin): Myoglobin without its heme prosthetic group. 
+"Apo" means the protein portion lacking its cofactor.
+
+HoloMb (Holo-myoglobin): Complete myoglobin with the heme group bound. 
+"Holo" means the whole, functional protein with its cofactor.
+
+The spectra show that HoloMb has strong visible light absorption due to 
+the heme group, while ApoMb lacks this characteristic absorption.
+"""
+```
 
 ---
 
@@ -143,6 +162,7 @@ bound iron?
 
 ```{python}
 #| solution: true
+#| eval: false
 """In the aged state, the oxidation number of the iron is +3. The change in 
 oxidation number of iron (+2 vs +3) in fresh vs aged myoglobin means that the 
 electron configuration in the d- orbitals are different, which will affect the 
@@ -156,6 +176,7 @@ Give a qualitative explanation to the observed change in absorbance of metMb com
 
 ```{python}
 #| solution: true
+#| eval: false
 """
 The changed in electronic configuration and the difference this causes to how 
 iron is bound in the hemegroup influences the absorption.Moreover binding of 
@@ -170,6 +191,7 @@ Is the spectral difference from deoxyMb to metMb a redshift or a blueshift?
 
 ```{python}
 #| solution: true
+#| eval: false
 """
 The absorbance peak in metMb is at lower wavelength (higher energy) as compared 
 to deoxyMb, and is therefore described as a blueshift.
