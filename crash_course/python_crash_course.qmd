@@ -1,0 +1,811 @@
+---
+title: "Python Lyn Kursus "
+subtitle: "Fysisk Biokemi & Dataanalyse"
+format: 
+    revealjs:
+        theme: [default, custom.scss]
+        preview-links: true
+        chalkboard: true
+        code-line-numbers: true
+author: Mads-Peter V. Christiansen
+date: 11/6/2025
+footer: "Fysisk Biokemi & Datanalayse - 6/11/2025"
+execute: 
+  cache: true
+  echo: true
+---
+
+## Syntax
+
+Python kode er læst oppe fra og ned
+
+```{python}
+#| echo: true
+
+A = 1 # <1>
+B = "Denne linje er læst efter den forrige" # <2> 
+```
+
+1. Først sættes variablen `A` lig med værdien `1`. 
+2. Derefter defineres `B` som en `str` med en noget tekst. 
+
+## Syntax
+
+Den her kode virker
+```{python}
+#| echo: true
+
+A = 1 # <1>
+B = 2
+C = A + B
+print(f"{C = }")
+```
+Da vi først definere `A = 1` og `B = 2` og derefter bruger dem. 
+
+## Syntax 
+
+```{python}
+#| echo: false
+del A
+del B
+del C
+```
+
+Så hvad sker der hvis vi prøver noget hvor rækkefølgen er forkert? 
+
+```{python}
+#| echo: true
+#| eval: false
+#| error: true
+A = 1 
+C = A + B
+B = 2
+print(f"{C = }")
+```
+
+::: {.fragment}
+```{python}
+#| error: true
+#| echo: false
+A = 1 
+C = A + B
+B = 2
+print(f"{C = }")
+```
+:::
+
+::: {.fragment}
+Det giver en fejl! Dette er selvfølgelig frusterende, men det kan vendes om til at 
+være meget hjælpsomt. 
+:::
+
+::: {.fragment}
+Alle får disse fejl - uanset erfaring - jeg får **mange** fejl! 
+
+Ikke noget galt i at få fejl - brug det til at finde ud af hvad der går galt. 
+:::
+
+## Data typer & Variable
+
+Python har forskellige **typer** af data 
+
+```{python}
+et_hel_tal = 1
+et_kommatal = 3.2
+en_streng = "Dette er en streng, den indeholder tekst"
+```
+
+::: {.fragment}
+Forskellige typer kan forskellige ting
+
+```{python}
+et_hel_tal + et_kommatal
+```
+
+Python forstår at vi kan lægge tal sammen, selvom de er forskellige typer.
+:::
+
+
+::: {.fragment}
+```{python}
+#| error: true
+et_hel_tal + en_streng
+```
+
+Fejl igen. <ins>Overvej hvad fejlen betyder!</ins>
+:::
+
+## Flere typer: `DataFrame`
+
+En `DataFrame` er en type der kan tænkes på som en tabel eller et excel ark.
+Her er en `DataFrame` med to kolonner og 5 rækker. 
+
+```{python}
+#| echo: false
+import pandas as pd
+df = pd.DataFrame({'Kolonne 1': [1, 2, 3, 4, 5], 'Kolonne 2': [2, 4, 9, 16, 25]})
+```
+
+```{python}
+print(df)
+```
+
+::: {.fragment}
+Vi kan spørge efter en af kolonnerne ved at **indeksere** med dens navn.
+
+```{python}
+col2 = df['Kolonne 2'] 
+print(col2)
+```
+:::
+
+## Flere typer: `DataFrame`
+
+Vi kan lave forskellige operationer med kolonner
+
+::: {.columns}
+
+::: {.column}
+```{.python code-line-numbers="4-4"}
+col1 = df['Kolonne 1']
+col2 = df['Kolonne 2'] 
+
+sum_of_cols = col1 + col2
+print(sum_of_cols)
+```
+
+```{python}
+#| echo: false
+col1 = df['Kolonne 1']
+col2 = df['Kolonne 2'] 
+
+sum_of_cols = col1 + col2
+print(sum_of_cols)
+```
+
+:::
+::: {.column}
+$$
+\begin{equation}
+\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+4 \\
+5
+\end{pmatrix}
++ 
+\begin{pmatrix}
+2 \\
+4 \\
+9 \\
+16 \\
+25
+\end{pmatrix}
+= 
+\begin{pmatrix}
+1 + 2 \\
+2 + 4 \\
+3 + 9 \\
+4 + 16 \\
+5 + 25
+\end{pmatrix}
+= 
+\begin{pmatrix}
+3\\
+6 \\
+12 \\
+20 \\
+30
+\end{pmatrix}
+\end{equation}
+$$
+:::
+
+::::
+
+Dette er en "elementwise"-operation.
+
+## Flere typer: `DataFrame`
+
+Kan også gange dem sammen.
+
+::: {.columns}
+
+::: {.column}
+```{.python code-line-numbers="4-4"}
+col1 = df['Kolonne 1']
+col2 = df['Kolonne 2'] 
+
+prod_of_cols = col1 * col2
+print(sum_of_cols)
+```
+
+```{python code-line-numbers="4-4"}
+#| echo: false
+col1 = df['Kolonne 1']
+col2 = df['Kolonne 2'] 
+
+prod_of_cols = col1 * col2
+print(sum_of_cols)
+```
+
+:::
+::: {.column}
+$$
+\begin{equation}
+\begin{pmatrix}
+1 \\
+2 \\
+3 \\
+4 \\
+5
+\end{pmatrix}
++ 
+\begin{pmatrix}
+2 \\
+4 \\
+9 \\
+16 \\
+25
+\end{pmatrix}
+= 
+\begin{pmatrix}
+1 \cdot 2 \\
+2 \cdot 4 \\
+3 \cdot 9 \\
+4 \cdot 16 \\
+5 \cdot 25
+\end{pmatrix}
+= 
+\begin{pmatrix}
+2\\
+8 \\
+27 \\
+64 \\
+125
+\end{pmatrix}
+\end{equation}
+$$
+:::
+
+::::
+
+## Parenteser
+
+Python bruger parenteser til forskellige ting.
+
+1. Runde parenteser `(...)` bruges i udregniner som almindeligt.
+2. Firkant parenteser `[...]` bruges til **indeksering** 
+3. Runde parenteser bruges også til funktions-kald `print('Noget tekst')`
+
+## Parenteser: Beregning
+
+Hvis vi vil regne dette udtryk 
+
+$$
+\frac{A + B + C}{2 \cdot C}
+$$
+Skal vi bruge de runde `(...)` parenteser. 
+
+```{python}
+#| echo: false
+A = 13
+B = 70
+C = 1
+```
+
+::: {.fragment}
+
+```{python}
+(A + B + C) / (2*C)
+```
+:::
+
+::: {.fragment}
+Hvis vi gør det forkert - bliver svaret ikke rigtigt! 
+
+```{python}
+A + B + C / (2*C)
+```
+:::
+
+## Parenteser: Beregning - Fortsat
+
+Altid en god ide at teste med simple værdier
+
+$$
+\frac{A + B + C}{2 \cdot C} 
+= \frac{1 + 1 + 1}{2 \cdot 1} 
+= \frac{3}{2} = 1.5
+$$
+
+```{python}
+A = 1
+B = 1 
+C = 1
+test_1 = (A + B + C) / (2*C)
+test_2 = A + B + C / (2*C)
+
+print(test_1)
+print(test_2)
+```
+
+## Parenteser: Indeksering
+
+En anden type brug af paranteser er **indeksering**. 
+
+::: {.columns}
+::: {.column}
+Indeksering handler om at trække det pågældende element ud af et 
+"data-objekt".
+
+\n\n
+Tænk: Slå op ved indeks 200 
+Her er "data-objektet" kartotekket. 
+:::
+::: {.column}
+![](https://stuckonstationery.com.au/wp-content/uploads/2022/02/index-strips-2.jpg)
+:::
+:::
+
+## Parenteser: Indeksering
+
+```{python}
+#| echo: false
+
+df = pd.DataFrame({
+                'Kolonne 1': [1, 2, 3, 4, 5], 
+                'Kolonne 2': [2, 4, 9, 16, 25], 
+                'Kolonne 3': [3, 6, 12, 20, 30]})
+```
+
+En anden type brug af paranteser er **indeksering**. 
+
+::: {.columns}
+::: {.column}
+
+Vi kan indeksere (eller "slå op i") en `DataFrame` - f.eks. hvis vi 
+gerne vil have `Kolonne 2`. 
+
+::: {.fragment}
+
+```{python}
+col2 = df['Kolonne 2']
+print(col2)
+```
+:::
+
+:::
+::: {.column}
+Nu er "data-objektet" en `DataFrame`
+```{python}
+print(df)
+```
+
+:::
+:::
+
+## Parenteser: Indeksering
+
+```{python}
+#| echo: false
+
+df = pd.DataFrame({
+                'Kolonne 1': [1, 2, 3, 4, 5], 
+                'Kolonne 2': [2, 4, 9, 16, 25], 
+                'Kolonne 3': [3, 6, 12, 20, 30]})
+```
+
+En anden type brug af paranteser er **indeksering**. 
+
+::: {.columns}
+::: {.column}
+
+Vi kan også indeksere yderligere og tage et specifikt element.
+
+::: {.fragment}
+```{python}
+col2 = df['Kolonne 2']
+element_3 = col2[2]
+print('Element 3 er', element_3)
+```
+:::
+
+:::
+::: {.column}
+Nu er "data-objektet" en `DataFrame`
+```{python}
+print(df)
+```
+
+:::
+:::
+
+## Parenteser: Funktioner
+
+Parenteser bruges ydermere til at give inputs/argumenter til funktioner
+
+Jeg har et par gange f.eks. brugt funktionen `print`. 
+
+::: {.fragment}
+```{python}
+print('Dette er det første argument')
+```
+:::
+
+::: {.fragment}
+
+Forskellige funktioenr tager forskellige argumenter
+
+```{python}
+print('Dette er det første argument', 'Dette er det andet argument')
+```
+:::
+
+::: {.fragment}
+Print funktionen sætter alle givne argumenter sammen og printer en samlet tekst.
+::: 
+
+## Parenteser: Funktioner
+
+Vi kan lave en funktion der tager et argument
+
+```{python}
+def min_funktion(a):
+    return 2 * a
+```
+
+::: {.fragment}
+
+Lad os forsøge at bruge den
+
+```{python}
+min_funktion # Uden parenteser for vi bare at vide hvor Python har gemt funktionen.
+```
+:::
+
+::: {.fragment}
+
+Hvis vi giver **et** argument går det godt! 
+
+```{python}
+min_funktion(1)
+```
+:::
+
+::: {.fragment}
+
+Hvis vi giver to argumenter går det galt
+
+```{python}
+#| error: true
+min_funktion(1, 2)
+```
+:::
+
+## Parenteser: Funktioner
+
+Lad os prøve det samme med en funktion der tager 2 argumenter
+
+```{python}
+def min_anden_funktion(a, b):
+    return a + b
+```
+
+::: {.fragment}
+Funktionen forventer to argumenter og alt går godt hvis vi giver to
+```{python}
+min_anden_funktion(1, 2)
+```
+
+:::
+
+::: {.fragment}
+Hvis vi kun giver denne funktion et argument får vi en fejl
+
+```{python}
+#| error: true
+min_anden_funktion(1)
+```
+:::
+
+## Opsummering om paretenser
+
+:::: {.fragment}
+
+::: {.columns}
+::: {.column}
+#### Matematik
+Brug runde parenteser `(...)` til matematik.
+God ide at checke med simple tal!
+:::
+::: {.column}
+```python
+(1 + 1 + 1) / (3 + 4)
+```
+:::
+:::
+::::
+
+:::: {.fragment}
+
+::: {.columns}
+::: {.column}
+#### Indeksering
+Brug firkant parenteser `[...]` til indeksering. 
+:::
+::: {.column}
+```python
+col1 = df['Kolonne 1']
+element_3 = col1[3]
+```
+:::
+:::
+::::
+
+:::: {.fragment}
+
+::: {.columns}
+::: {.column}
+#### Funktioner
+Funktioner kaldes med runde parenteser. Argumenter 
+er kommaseparerede
+:::
+::: {.column}
+```python
+en_funktion(argument_1, argument_2)
+```
+:::
+:::
+::::
+
+## In practice: Step 1
+
+::: {style="color: gray; font-size: 0.7em;"}
+Fra TØ opgaven: Proteins in blood plasma
+:::
+```{python}
+#| echo: false
+from fysisk_biokemi.datasets import load_dataset
+from IPython.display import display 
+pd.set_option('display.max_rows', 4)
+df = load_dataset('protein_blood_plasma') # Load from package for the solution so it doesn't require to interact.
+```
+
+Kig på datasættet og tænk over hvad det indeholder!
+
+```{python}
+df
+```
+
+## In practice: Step 2
+
+::: {style="color: gray; font-size: 0.7em;"}
+Fra TØ opgaven: Proteins in blood plasma
+:::
+
+Tænk over hvad opgaven spørg efter, og hvad der er oplyst.
+
+<blockquote>
+
+#### (b) Calculate concentrations
+
+Calculate the molar concentration of the two proteins in all samples, the light path for 
+every measurement is 0.1 cm.
+
+Always a good idea to assign known values to variables
+```{python}
+protein_1_ext_coeff = 180000
+protein_2_ext_coeff = 80000
+l = 0.1
+```
+...
+
+```{python}
+#| exercise: true
+#| eval: false
+df['protein1_healthy_molar_conc'] = ... # Calculate for concentration in healthy for protein 1.
+... # Your code that updates the data frame with the 3 other new columns.
+display(df)
+```
+</blockquote>
+
+## In practice: Step 2
+
+::: {style="color: gray; font-size: 0.7em;"}
+Fra TØ opgaven: Proteins in blood plasma
+:::
+
+Tænk over hvad opgaven spørg efter, og hvad der er oplyst.
+
+<blockquote>
+
+#### (b) Calculate concentrations
+
+Calculate the molar **concentration** of the two proteins in all samples, the **light path** for 
+every measurement is **0.1 cm**.
+
+Always a good idea to assign known values to variables
+```{python}
+protein_1_ext_coeff = 180000 # Disse er givet ovenfor
+protein_2_ext_coeff = 80000  # -//-
+l = 0.1 # Det er værdien givet fra opgave teksten.
+```
+...
+
+```{python}
+#| exercise: true
+#| eval: false
+df['protein1_healthy_molar_conc'] = ... # Calculate for concentration in healthy for protein 1.
+... # Your code that updates the data frame with the 3 other new columns.
+display(df)
+```
+</blockquote>
+
+## In practice: Step 3
+
+Løs det biokemiske problem 
+
+<blockquote>
+
+Kender absorbans $A$, lys vej længde $l$, extinctions coefficenter $\epsilon$.
+Vil gerne regne molar concentrationen $c$. Hvilken ligningen kunne gøre det? 
+
+::: {.fragment}
+Beer-Lamberts lov
+$$
+A = \epsilon \cdot l \cdot c
+$$
+:::
+
+::: {.fragment}
+Isoler den relevante størrelse 
+
+$$
+A = \epsilon \cdot l \cdot c \rightarrow 
+c = \frac{A}{\epsilon \cdot l}
+$$
+:::
+</blockquote>
+
+## In practice: Step 4
+
+Nu skal vi så skrive koden for at gøre dette.
+
+Det givne kode var
+
+```{python}
+#| eval: false
+df['protein1_healthy_molar_conc'] = ... # Calculate for concentration in healthy for protein 1.
+... # Your code that updates the data frame with the 3 other new columns.
+df
+```
+
+Tænk over hvad der svarer til hvad imellem ligning og kode
+
+$A \rightarrow$ `df['A280_protein1_healthy']`
+
+$\epsilon \rightarrow$ `protein_1_ext_coeff`
+
+$l \rightarrow$ `l`
+
+
+Så 
+
+$$
+c = \frac{A}{\epsilon \cdot l}
+$$
+
+Bliver til 
+
+```{python}
+df['protein1_healthy_molar_conc'] = df['A280_protein1_healthy'] / (protein_1_ext_coeff * l)
+```
+
+## In practice: Step 5
+
+Tænk over om resultatet giver mening
+
+Vi har regnet
+```{python} 
+print(df['protein1_healthy_molar_conc'][0]) # Her kigger jeg på den første værdi.
+```
+Med 
+
+```{python}
+print(df['A280_protein1_healthy'][0])
+print(f"{protein_1_ext_coeff = }")
+print(f"{l = }")
+```
+
+## Mentalitet
+
+::: {.columns}
+::: {.column}
+Tænk på det som at i er en mekaniker lærling der er givet en motor. 
+
+Med den vigtige forskelle er at i kan **ikke** ødelægge noget.
+
+:::
+::: {.column}
+![](https://img.freepik.com/premium-psd/cute-cartoon-mechanic-servicing-car-engine-transparent-background_1136343-42524.jpg?w=360)
+:::
+:::
+
+## Mentalitet
+
+Opgaven fra før, men med en fejl 
+
+```{python}
+#| error: true
+df('protein1_healthy_molar_conc') = df['A280_protein1_healthy'] / (protein_1_ext_coeff * l)
+```
+|
+| Okay, det giver en fejl - prøver at gøre som fejlen siger
+| 
+|
+
+```{python}
+#| error: true
+df('protein1_healthy_molar_conc') == df['A280_protein1_healthy'] / (protein_1_ext_coeff * l)
+```
+|
+| Så, det giver en anden fejl. Den fejl er lidt sværere at forstå hvad betyder...
+|
+
+## Mentalitet
+
+Før havde det nu været tid til at Google' og forhåbenligt få et svar fra stackoverflow.
+Men det er nemmere nu om dage.
+
+::: {.fragment}
+
+![](chatgpt_error_msg_help.png){width="60%" fig-align="center"}
+
+:::
+
+## Mentalitet 
+
+Okay, skal bruge firkant parenteser 
+
+```{python}
+#| error: true
+df['protein1_healthy_molar_conc'] = df['A280_protein1_healthy'] / (protein_1_ext_coeff * l)
+print(df['protein1_healthy_molar_conc'])
+```
+
+
+
+
+
+
+## Helpdesk
+
+::: {style="text-align: center;"}
+### Kom til `Python Helpdesk`
+
+### Tirsdage: `10.00-12.00`
+
+### Lokation: `Kælderen`
+
+### Person: Mig (`Mads-Peter`)
+
+...
+
+...
+
+...
+
+...
+
+
+###### 9/10 tandlæger siger jeg er flink og 10/10 siger jeg har dårlig humor.
+:::
+
+
+
+
+
+
+
