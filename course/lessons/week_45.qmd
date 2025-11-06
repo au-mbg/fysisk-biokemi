@@ -24,20 +24,20 @@ format-links:
 
 ---
 
-<!-- {{< include exercises/uv-spec-apo-holo-myo.qmd >}} -->
+{{< include exercises/uv-spec-apo-holo-myo.qmd >}}
 
 ---
 
-<!-- {{< include exercises/protei-blood-plasma.qmd >}} -->
+{{< include exercises/protei-blood-plasma.qmd >}}
 
 ---
 
-<!-- {{< include exercises/extin-coeff-human-myogl.qmd >}} -->
+{{< include exercises/extin-coeff-human-myogl.qmd >}}
 
 ---
 
-<!-- {{< include exercises/trypt-absor-fluor.qmd >}} -->
+{{< include exercises/trypt-absor-fluor.qmd >}}
 
 ---
 
-<!-- {{< include exercises/the-fluor-protei-mcherr.qmd >}} -->
+{{< include exercises/the-fluor-protei-mcherr.qmd >}}
