@@ -128,14 +128,39 @@ be explained here.
 
 Explain why ApoMb in the spectrum above absorbs light at λ>320 nm.
 
+```{python}
+#| solution: true
+#| eval: false
+"""
+As ApoMb was generated from HoloMb, the ApoMb sample might still be contaminated
+with some HoloMb
+"""
+```
+
 #### (e) Efficiency estimate.
 
 Give a rough estimate of the efficiency of the chosen procedure of heme-group removal. 
 You may wish to look at the numerical values in the `DataFrame`.
 
+```{python}
+#| solution: true
+#| eval: false
+"""
+Compare the percentage by which the absorbance decreases at 410 nm ~94% removal efficiency. 
+"""
+```
+
 #### (f) Isobestic points
 
 Are there any isobestic points between the two spectra?
+
+```{python}
+#| solution: true
+#| eval: false
+"""
+Yes at around 300-310 nm.
+"""
+```
 
 ---
 

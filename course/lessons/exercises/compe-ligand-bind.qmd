@@ -154,11 +154,11 @@ affinities of ligands L and C.
 #| solution: true
 #| eval: false
 """
-1. The competitor concentration is zero, so only the ligand L binds. 
+1. The competitor concentration is zero, so only the ligand L binds. Affinity/concentration is such that nearly all proteins have an L-ligand bound.
 
-2. The affinity and concentration of C is higher so it binds more. 
+2. The affinity and concentration of C is higher so it binds more and the ratio of affinity and concentration is high enough that nearly all proteins have a C-ligand bound. 
 
-3. The affinity and concentration of L and C are equal and they both bind equally. 
+3. The affinity and concentration of L and C are equal and they both bind equally. Again, the affinities/concentrations are such that nearly all proteins have a ligand bound. 
 
 4. K_D > K_C with the same factor as [L_T] > [C_T] so they bind equally but 
 there are still free proteins as the concentrations are low relative to the affinities. 

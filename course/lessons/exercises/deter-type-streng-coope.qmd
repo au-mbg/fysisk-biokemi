@@ -266,7 +266,7 @@ print(f"{k_d_fit = :e}")
 print(f"{h_fit = :.3f}")
 ```
 
-Do the fitted parameters support your intuitive reading of the type of cooperativity
+Do the fitted parameters support your intuitive reading of the type of cooperativity?
 
 ::: {.callout-note}
 

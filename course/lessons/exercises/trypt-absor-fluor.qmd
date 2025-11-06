@@ -200,3 +200,11 @@ plt.show()
 
 Explain why the same protein gives such different spectra at pH 2 and pH 7. 
  
+```{python}
+#| solution: true
+#| eval: false
+"""
+The protein unfolds at acidic pH. Therefore the Trp residues are exposed to water 
+at pH 2, but buried in the hydrophobic core (and thus blue-shifted) at pH 7
+"""
+```

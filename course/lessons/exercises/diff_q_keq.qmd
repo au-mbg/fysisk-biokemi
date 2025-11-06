@@ -109,16 +109,40 @@ ax.set_ylabel('Mass action ratio $Q$')
 
 What is the difference between $Q$ and $K_{eq}$? 
 
+```{python}
+#| solution: true
+#| eval: false
+"""
+Q is the mass action ratio at any time throughout the reaction. Keq is the mass 
+action ratio at equilibrium only, and tells about the energetic favorisation of 
+one direction over the other.
+"""
+```
+
 #### (e) Favoured compound
 
 Which of the two compounds $A$ and $B$ is favored at equilibrium? (Favored: highest concentration)
+
+```{python}
+#| solution: true
+#| eval: false
+"""
+When the reaction reaches close to equilibrium, more B is present as compared to A, telling that B is favored. 
+Keq > 1 --> B is favored
+"""
+```
 
 #### (f) Equilibrium constant
 
 What is the equilibrium constant of this reaction?
 
-#### (g) Reequilibriate
-
-Assume that an additional $10 \times 10^{-6} \mathrm{M}$ $A$ is added at timepoint, $t=35$ min. What is the concentrations of $A$ and $B$ when equilibrium has been reached again say at $t > 70$ min?
-
+```{python}
+#| solution: true
+"""
+The students can just read the concentrations values at eq from the graph and calculate K_eq from those. 
+But it can of course also just be calculated.
+"""
+K_eq = df['[B]_(M)'].iloc[-1] / df['[A]_(M)'].iloc[-1]
+print(K_eq)
+```
  

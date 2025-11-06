@@ -297,6 +297,6 @@ Illustration of argmax
 
 #### (h)	Colors 
 
-Compare to a plot of the visual spectrum. What colors are the light that correspond to the excitation and emission maxima respectively? 
+Compare to a plot of the visual spectrum. What colors are the light that corresponds to the excitation and emission maxima respectively? 
 
 Why do you think the protein is called *Cherry*?

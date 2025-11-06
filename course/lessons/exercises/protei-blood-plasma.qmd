@@ -182,5 +182,3 @@ Consider the following questions
 - By comparing healthy individuals with patients, could any of the two proteins would be involved in disease development or be used as a biomarker for diagnosing the disease? 
 - What additional information does the standard deviation provide in addition to the average value of the protein concentration?
 
-
-

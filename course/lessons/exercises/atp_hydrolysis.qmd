@@ -47,6 +47,21 @@ print(dG)
 #### (b) Equilibrium or not? 
 
 Assuming that the temperature within these cells is $298 \ \mathrm{K}$, are these cells in equilibrium with respect to the hydrolysis of ATP? 
+```{python}
+#| solution: true
+K_eq = np.exp(-dG_std/(R*T))
+print(K_eq)
+```
+
+```{python}
+#| solution: true
+#| eval: false
+"""
+Q is very different from this value, and therefore these cells are very far from 
+equilibrium with respect to hydrolysis of ATP. This value of Q further favors the 
+hydrolysis of ATP
+"""
+```
 
 #### (c) ATP synthesized
 
