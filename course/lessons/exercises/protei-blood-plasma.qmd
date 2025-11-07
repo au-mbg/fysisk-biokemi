@@ -192,6 +192,6 @@ Consider the following questions
 ```{python}
 #| solution: true
 
-"The standard deviations provide information about the natural variation in protein levels. This will be important for deciding whether a difference between the two groups compared is "significant". For a larger natural variation, tyou will need a larger difference between the groups or a a larger sample size (number of patients tested) to conclude a difference is significant. You will return to this in a more formal setting in statistics classes later in your studies."
+"The standard deviations provide information about the natural variation in protein levels. This will be important for deciding whether a difference between the two groups compared is reliable. For a larger natural variation, tyou will need a larger difference between the groups or a a larger sample size (number of patients tested) to conclude a difference is significant. You will return to this in a more formal setting in statistics classes later in your studies."
 
 ```
