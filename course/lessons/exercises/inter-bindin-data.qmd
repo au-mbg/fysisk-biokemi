@@ -2,6 +2,12 @@
 
 ```{python}
 import numpy as np
+import pandas as pd
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+pd.set_option('display.max_rows', 6)
 ```
 
 The `inter-bindin-data.xlsx` contains a protein binding dataset. 
@@ -12,9 +18,6 @@ Load the dataset using the widget below
 
 ```{python}
 #| eval: false
-import numpy as np
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -42,12 +45,22 @@ Add a new column to the `DataFrame` with the ligand concentration in SI units.
 ```{python}
 #| exercise: true
 #| eval: false
-... # Replace ... with your code.
+
+## Your task: Add a column with the concentration in M ##
+## Call this column df['[L]_(M)'] ##
+## Recall that you can say df['[L]_(M)'] = df["[L]_(uM)"] * XXX ##
+## Where XXX is the factor to multiply by. ##
+df[...] = df[...] * XXX
 display(df)
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Add a column with the concentration in M ##
+## Call this column df['[L]_(M)'] ##
+## Recall that you can say df['[L]_(M)'] = df["[L]_(uM)"] * XXX ##
+## Where XXX is the factor to multiply by. ##
 df['[L]_(M)'] = df["[L]_(uM)"] * 10**(-6)
 display(df)
 ```
@@ -64,37 +77,62 @@ Estimate $K_D$ by visual inspection of these plots!
 import matplotlib.pyplot as plt
 
 # This makes a figure with two axes.
-fig, axes = plt.subplots(1, 2, figsize=(9, 4))
+fig, axes = plt.subplots(1, 2)
 
-# Can with [0] to plot in the first axis.
+## We index with [0] to plot in the first axis. ## 
+## Don't worry about remembering this ## 
 ax = axes[0]
-ax.plot(..., ..., 'o') # Replace ... with your code.
-ax.set_xlabel('[L](M)', fontsize=14)
-ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 
+## Your task: Plot the data [L]_(M) vs nbar.
+ax.plot(..., ..., 'o') # Replace ... with your code.
+
+
+## We index with [0] to plot in the first axis. ## 
+## Don't worry about remembering this ## 
+## We will make this a log plot ## 
 ax = axes[1]
-... # Put some code here - perhaps you can copy it from somewhere?
-ax.set_xscale('log') # This make the x-axis logarithmic.
+
+## Your task: Plot the data [L]_(M) vs nbar.
+## Same exact code as above
+ax.plot(..., ..., 'o') # Replace ... with your code.
+
+## This makes it a log plot ## 
+## You do not need to remember or understand this in detail ##
+ax.set_xscale('log')
 ```
 
 ```{python}
 #| solution: true
-import matplotlib.pyplot as plt
 
 # This makes a figure with two axes.
-fig, axes = plt.subplots(1, 2, figsize=(9, 4))
+fig, axes = plt.subplots(1, 2)
 
-# Can with [0] to plot in the first axis.
+## We index with [0] to plot in the first axis. ## 
+## Don't worry about remembering this ## 
 ax = axes[0]
-ax.plot(df['[L]_(M)'], df['nbar'], 'o') # Replace ... with your code.
+ax.plot(df['[L]_(M)'], df['nbar'], 'o')
+
+## We index with [0] to plot in the first axis. ## 
+## Don't worry about remembering this ## 
+## We will make this a log plot ## 
+ax = axes[1]
+
+## Your task: Plot the data [L]_(M) vs nbar.
+## Same exact code as above
+ax = axes[1]
+ax.plot(df['[L]_(M)'], df['nbar'], 'o')
+ax.set_xscale('log')
+
+
+## EXTRA: You do not need to understand this ## 
+## Customization: Adds labels for the axis in both plots. 
+ax = axes[0]
 ax.set_xlabel('[L](M)', fontsize=14)
 ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 
 ax = axes[1]
-ax.plot(df['[L]_(M)'], df['nbar'], 'o')
-ax.set_xlabel('[L](M)', fontsize=14)
+ax.set_xlabel('log [L](M)', fontsize=14)
 ax.set_ylabel(r'$\bar{n}$', fontsize=14)
-ax.set_xscale('log')
 ```
 
 ::: {.callout-note}
@@ -122,13 +160,18 @@ to fit with
 ```{python}
 #| exercise: true
 #| eval: false
-def ... # Give the function an appropriate name.
-    return ... # Implement the expression for nbar
+def nbar(L, K_D):
+    ## Your task: Implement the function to fit with
+    ## Use your biochemical knowledge to decide which function that is. 
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
 def n_bar(L, K_D):
+    ## Your task: Implement the function to fit with
+    ## Use your biochemical knowledge to decide which function that is. 
     return L / (L + K_D)
 ```
 
@@ -137,98 +180,103 @@ And then we can make the fit
 ```{python}
 #| exercise: true
 #| eval: false
-from scipy.optimize import curve_fit
 
-# Choose the variables from the dataframe
+## Your task: Choose the variables from the dataframe ## 
 x = ... # Choose x-data from the dataframe
 y = ... # Choose y-data from the dataframe
 
-# Initial guess
-p0 = [K_D_estimate] # Using your estimate as the initial value for K_D
+## Initial guess ## 
+initial_guess = [K_D_estimate] # Using your estimate as the initial value for K_D
 
-# Bounds
-bounds = (0, np.inf) # We limit the parameters to be positve.
-
-# Curve fit
-popt, pcov = ... # Call the curve_fit function.
+## Your task: Finish the curve fitting
+fitted_parameters, trash = ... # Call the curve_fit function.
 
 # Print the parameters
-K_D_fit = popt[0]
-print(f"{K_D_fit = :e}")
+K_D_fit = fitted_parameters[0]
+print(K_D_fit)
 ```
 
 ```{python}
 #| solution: true
-from scipy.optimize import curve_fit
 
-# Choose the variables from the dataframe
+## Your task: Choose the variables from the dataframe ## 
 x = df['[L]_(M)']
 y = df['nbar']
 
 # Initial guess
-p0 = [K_D_estimate]
+initial_guess = [K_D_estimate]
 
-# Bounds
-bounds = (0, np.inf) # We limit the parameters to be positve.
-
-# Curve fit
-popt, pcov = curve_fit(n_bar, x, y, p0=p0, bounds=bounds)
+## Your task: Finish the curve fitting
+fitted_parameters, trash = curve_fit(n_bar, x, y, initial_guess)
 
 # Print the parameters
-K_D_fit = popt[0]
-print(f"{K_D_fit = :e}")
+K_D_fit = fitted_parameters[0]
+print(K_D_fit)
 ```
 
 #### (e) Compare 
 
-Make a plot to compare the fit with your estimate. Start by evaluating the 
-function
+Compare the fitted values with your guess.
 
 ```{python}
 #| exercise: true
 #| eval: false
-# Evaluate on the fit so we can plot it.
+## These lines make equally spaced points on a normal linear axis ##
+## And on a logarithmic axis. ##
 L_smooth = np.linspace(0, df['[L]_(M)'].max(), 100)
-nbar_fit = ...
-
-# We will also evaluate where the points are sampled on a log-scale.
-# The `geomspace` function makes points uniformly spaced on a logaritmic axis.
 L_smooth_log = np.geomspace(df['[L]_(M)'].min(), df['[L]_(M)'].max(), 100)
-nbar_fit_log = ...
+
+## Youe task: Evaluate the fitted function with L_smooth and L_smooth_log ##
+nbar_fit = n_bar(..., K_D_fit)
+nbar_fit_log = n_bar(..., K_D_fit)
 ```
 
 ```{python}
 #| solution: true
-# Evaluate on the fit so we can plot it.
-L_smooth = np.linspace(0, df['[L]_(M)'].max(), 100)
-nbar_fit = n_bar(L_smooth, K_D_fit)
 
-# We will also evaluate where the points are sampled on a log-scale.
-# The `geomspace` function makes points uniformly spaced on a logaritmic axis.
+## These lines make equally spaced points on a normal linear axis ##
+## And on a logarithmic axis. ##
+L_smooth = np.linspace(0, df['[L]_(M)'].max(), 100)
 L_smooth_log = np.geomspace(df['[L]_(M)'].min(), df['[L]_(M)'].max(), 100)
+
+## Youe task: Evaluate the fitted function with L_smooth and L_smooth_log ##
+nbar_fit = n_bar(L_smooth, K_D_fit)
 nbar_fit_log = n_bar(L_smooth_log, K_D_fit)
 ```
 
-Now finish the code below to make the plot.
+Now we can make a plot. 
 
 ```{python}
 #| exercise: true
 #| eval: false
+
+## This plot uses some extra commands to make it look nice, don't worry 
+## about it -  you don't need to understand all the details. 
+
 # This makes a figure with two axes.
 fig, axes = plt.subplots(1, 2, figsize=(9, 4))
 
 # Index with [0] to plot in the first axis - Linear plot
 ax = axes[0]
+ax.plot(df['[L]_(M)'], df['nbar'], 'o', color='C0')
+ax.plot(L_smooth, nbar_fit, color='C2')
 
-# Your code here - maybe you can copy part of it from somewhere.
-... 
+ax.axvline(K_D_estimate, label='Estimate', color='C1')
+ax.axvline(K_D_fit, label='Fit', color='C2')
+ax.set_xlabel('[L](M)', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+ax.legend()
 
 # Index with [1] to plot in the second axis - Log plot.
 ax = axes[1]
+ax.plot(df['[L]_(M)'], df['nbar'], 'o', color='C0')
+ax.plot(L_smooth_log, nbar_fit_log, color='C2')
 
-# Also your code here - maybe you can copy part of it from somewhere.
-...
-
+ax.set_xlabel('[L](M)', fontsize=14)
+ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+ax.axvline(K_D_estimate, label='Estimate', color='C1')
+ax.axvline(K_D_fit, label='Fit', color='C2')
+ax.legend()
 ax.set_xscale('log')
 ```
 
