@@ -4,6 +4,9 @@
 #| code-fold: true
 import matplotlib.pyplot as plt
 import numpy as np
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+from scipy.optimize import curve_fit
 ```
 
 The binding of NAD+ to the protein yeast glyceraldehyde 3-phosphate dehydrogenase (GAPDH) was studied using
@@ -17,8 +20,6 @@ Load the dataset using the widget below
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -33,7 +34,6 @@ display(df)
 
 ```{python}
 #| solution: true
-from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('determination_coop_week48') # Load from package for the solution so it doesn't require to interact.
 display(df)
@@ -54,11 +54,17 @@ df['new_col'] = df['col1'] + df['col2']
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Calculate the of the values in the three columns ##
+## nbar1, nbar2, nbar3 ##
 df['nbar_avg'] = ...
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Calculate the of the values in the three columns ##
+## nbar1, nbar2, nbar3 ##
 df['nbar_avg'] = (df['nbar1'] + df['nbar2'] + df['nbar3']) / 3
 ```
 
@@ -67,12 +73,18 @@ Now also add a column with the ligand concentration in SI units with the column-
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Task: Calculate the ligand concentration in M and ##
+## set it as a new column with the name '[NAD+free]_(M)'
 ... # Your code here. 
 display(df)
 ```
 
 ```{python}
 #| solution: true
+
+## Task: Calculate the ligand concentration in M and ##
+## set it as a new column with the name '[NAD+free]_(M)'
 df['[NAD+free]_(M)'] = df['[NAD+free]_(uM)'] * 10**(-6)
 display(df)
 ```
@@ -80,7 +92,22 @@ display(df)
 Finally, set the concentration of the GADPH in SI units
 
 ```{python}
- c_gadph = 71 * 10**(-6)
+#| exercise: true
+#| eval: false
+
+## Task: Convert the GADPH concentration to M  ## 
+## Set it to the variable c_gadph ## 
+## Add a comment about the unit ##
+c_gadph = ...
+```
+
+```{python}
+#| solution: true
+
+## Task: Convert the GADPH concentration to M  ## 
+## Set it to the variable c_gadph ## 
+## Add a comment about the unit ##
+c_gadph = 71 * 10**(-6) # M
 ```
 
 #### (c) Plot
@@ -91,23 +118,23 @@ Make a plot of the average $\bar{n}$ as a function of $[\text{NAD}^{+}_\text{fre
 #| exercise: true
 #| eval: false
 
-fig, ax = plt.subplots(figsize=(8, 4))
+fig, ax = plt.subplots()
 
-# Your code to plot here.
+## Your task: Add plot of nbar vs [NAD+_free]_(M)
 ... 
-
-# This sets the labels.
-ax.set_xlabel(r'$[\text{NAD}^{+}_\text{free}]$', fontsize=14)
-ax.set_ylabel(r'$\bar{n}$', fontsize=14)
-plt.show()
 ```
 
 ```{python}
 #| solution: true
+#| fig-align: center
 
-fig, ax = plt.subplots(figsize=(8, 4))
+fig, ax = plt.subplots()
 
+## Your task: Add plot of nbar vs [NAD+_free]_(M)
 ax.plot(df['[NAD+free]_(M)'], df['nbar_avg'], 'o')
+
+## EXTRA: You don't need to understand this
+## Customization
 ax.set_xlabel(r'$[\text{NAD}^{+}_\text{free}]$', fontsize=14)
 ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 plt.show()
@@ -121,27 +148,29 @@ Make a Scatchard plot based on the average $\bar{n}$.
 #| exercise: true
 #| eval: false
 
-# Calculate nbar / L 
+# Your task: Calculate nbar / L 
 nbar_over_L = ...
 
-fig, ax = plt.subplots(figsize=(6, 4)) 
+fig, ax = plt.subplots() 
 
-ax.plot(..., ... 'o') # Plot the right thins. 
-
-ax.set_xlabel(r'$\bar{n}$', fontsize=14)
-ax.set_ylabel(r'$\bar{n}/L$', fontsize=14)
-ax.set_xlim([0, df['nbar_avg'].max()*1.2])
-ax.set_ylim([0, nbar_over_L.max() * 1.2])
+# Your task: Choose the right things to make a Scatchard plot. 
+ax.plot(..., ... 'o')
 ```
 
 ```{python}
 #| solution: true
+#| fig-align: center
 
-# Calculate nbar / L 
+# Your task: Calculate nbar / L 
 nbar_over_L = df['nbar_avg'] / df['[NAD+free]_(M)']
 
-fig, ax = plt.subplots(figsize=(6, 4)) 
+fig, ax = plt.subplots() 
+
+# Your task: Choose the right things to make a Scatchard plot. 
 ax.plot(df['nbar_avg'], nbar_over_L, 'o')
+
+## EXTRA: You dont need to understand this. 
+## Adds customization. 
 ax.set_xlabel(r'$\bar{n}$', fontsize=14)
 ax.set_ylabel(r'$\bar{n}/L$', fontsize=14)
 ax.set_xlim([0, df['nbar_avg'].max()*1.2])
@@ -177,19 +206,6 @@ part of the lienar plot
 
 #### (g) Fit
 
-::: {.callout-note}
-
-The function `np.concatenate` takes a number of arrays and makes a new array that 
-consisting of the originals one after each other. For example, 
-
-```{python}
-A = np.array([1, 2, 3])
-B = np.array([4, 5, 6])
-C = np.concatenate([A, B])
-print(C)
-```
-::: 
-
 Make a fit using the functional form 
 
 $$
@@ -199,71 +215,78 @@ $$
 As usual, start by defining the function in Python 
 
 ```{python}
-#| solution: true
-def n_bar(L, N, k_d, h):
-    return N * L**h / (k_d + L**h)
-```
-
-```{python}
 #| exercise: true
 #| eval: false
-def n_bar(L, N, k_d, h):
-    # Replace ... with your code.
-    # Be careful with parentheses.
+def n_bar(L, N, K_D, h):
+    ## Your task: Implement the function
+    # Be careful with parentheses!
     result = ...
     return result 
 ```
+
+```{python}
+#| solution: true
+def n_bar(L, N, K_D, h):
+    ## Your task: Implement the function
+    # Be careful with parentheses!
+    result = N * L**h / (K_D + L**h)
+    return result
+```
+
 
 Now we can fit
 
 ```{python}
 #| exercise: true
 #| eval: false
-from scipy.optimize import curve_fit
 
-# This selects the '[NAD+free]_(m)'-column three times and stitches it together.
+## We want to use all the data for the fit, but it was given in three different columns. 
+## We stitch it together to make a column containing all x-coordinates 
+## And another column containing all y-coordinates
 x = np.concatenate([df['[NAD+free]_(M)'], df['[NAD+free]_(M)'], df['[NAD+free]_(M)']])
-# Do the same to stitch together the nbar1, nbar2 and nbar3 columns.
-y = ...
+y = np.concatenate([df['nbar1'], df['nbar2'], df['nbar3']])
 
-# Initial guess
-p0 = [..., ..., ...]
+## Your task: Make initial guesses for the three parameters
+## The order is that of the function 
+## So N, K_D and h.
+initial_guess = [..., ..., ...]
 
-# Bounds
-bounds = (0, np.inf) # We limit the parameters to be positve.
-
-# Curve fit
-popt, pcov = curve_fit(n_bar, x, y, p0=p0, bounds=bounds)
+## Your task: Make the fit
+## Note: The bounds argument has been added to have the function 
+## only explore positive sets of parameters. 
+fitted_parameters, trash = curve_fit(..., ..., ..., ..., bounds=(0, np.inf))
 
 # Print the parameters
-N_fit, k_d_fit, h_fit = popt
-print(f"{N_fit = :.3f}")
-print(f"{k_d_fit = :e}")
-print(f"{h_fit = :.3f}")
+N_fit, K_D_fit, h_fit = fitted_parameters
+print('N_fit', N_fit)
+print('K_D_fit', K_D_fit)
+print('h_fit', h_fit)
 ```
 
 ```{python}
 #| solution: true
-from scipy.optimize import curve_fit
 
-# Choose the variables from the dataframe
+## We want to use all the data for the fit, but it was given in three different columns. 
+## We stitch it together to make a column containing all x-coordinates 
+## And another column containing all y-coordinates
 x = np.concatenate([df['[NAD+free]_(M)'], df['[NAD+free]_(M)'], df['[NAD+free]_(M)']])
 y = np.concatenate([df['nbar1'], df['nbar2'], df['nbar3']])
 
-# Initial guess
-p0 = [4, 1*10**(-4), 1]
+## Your task: Make initial guesses for the three parameters
+## The order is that of the function 
+## So N, K_D and h.
+initial_guess = [1, 1, 1]
 
-# Bounds
-bounds = (0, np.inf) # We limit the parameters to be positve.
-
-# Curve fit
-popt, pcov = curve_fit(n_bar, x, y, p0=p0, bounds=bounds)
+## Your task: Make the fit
+## Note: The bounds argument has been added to have the function 
+## only explore positive sets of parameters. 
+fitted_parameters, trash = curve_fit(n_bar, x, y, initial_guess, bounds=(0, np.inf))
 
 # Print the parameters
-N_fit, k_d_fit, h_fit = popt
-print(f"{N_fit = :.3f}")
-print(f"{k_d_fit = :e}")
-print(f"{h_fit = :.3f}")
+N_fit, K_D_fit, h_fit = fitted_parameters
+print('N_fit', N_fit)
+print('K_D_fit', K_D_fit)
+print('h_fit', h_fit)
 ```
 
 Do the fitted parameters support your intuitive reading of the type of cooperativity?
