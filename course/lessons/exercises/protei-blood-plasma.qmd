@@ -180,5 +180,18 @@ display(std)
 Consider the following questions
 
 - By comparing healthy individuals with patients, could any of the two proteins would be involved in disease development or be used as a biomarker for diagnosing the disease? 
+
+```{python}
+#| solution: true
+"The concentration of protein1 is much lower in patients compared to the healthy individuals, whereas protein2 is basically the same. This suggests that the loss of protein1 was some how involved in the disease, although you cannot conclude causality from a correlation. However, you might be able to use it as a biomarker to diagnose whether an individual had the disease. In this case, you only need correlation, not causation. Examples of this would include prostate specific-antigen (PSA), which is routinely used to screen for prostate cancer. "
+
+```
+
 - What additional information does the standard deviation provide in addition to the average value of the protein concentration?
 
+```{python}
+#| solution: true
+
+"The standard deviations provide information about the natural variation in protein levels. This will be important for deciding whether a difference between the two groups compared is "significant". For a larger natural variation, tyou will need a larger difference between the groups or a a larger sample size (number of patients tested) to conclude a difference is significant. You will return to this in a more formal setting in statistics classes later in your studies."
+
+```
