@@ -153,3 +153,9 @@ datasets:
     exercise: tricky-binding.qmd
     original_name: "binding_data_sq.xlsx"
     description: "Binding data for a tricky protein."
+
+  exp_decay_data.xlsx:
+    week: 46
+    exercise: regression_intro.qmd
+    original_name: "exp_decay_data.xlsx"
+    description: "Exponential decay data for regression exercises."

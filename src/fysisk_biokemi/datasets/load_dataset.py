@@ -8,6 +8,7 @@ available_datasets = {
     'deter_delta_h': 'deter_delta_h_data.xlsx',
     'binding_data_sq': 'binding_data_sq.xlsx',
     'kinetics_LØ': 'kinetics_data.xlsx',
+    'exp_decay_data': 'exp_decay_data.xlsx',
     # Week 45:
     'apo_holo': 'uv-spec-apo-holo-myo.csv',
     'AA_frequency': 'averag-prope-amino-acids.xlsx',

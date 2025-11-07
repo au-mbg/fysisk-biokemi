@@ -12,23 +12,24 @@ Curve fitting is a fundamental skill in biochemistry and biophysics for analyzin
 The basic idea is to find the parameters of a mathematical function that best describes our experimental data.
 
 #### (a) Understanding the problem
-
-Let's start with some simple data that follows a linear relationship. The data below represents a theoretical experiment where we measure some output $y$ at different input values $x$:
+Real biochemical data is often requires complex fitting functions. Therefore, we will start out with a simpler data that follows a linear relationship. The data below represents a theoretical experiment where we measure some output $y$ at different input values $x$:
 
 ```{python}
-# Generate some data with noise
+## This makes two arrays (columns) ##
+## One with the x coordinates ##
+## One with the y coordinates ##
 x_data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 y_data = np.array([2.1, 4.2, 6.0, 7.8, 10.1, 12.2, 13.9, 16.1, 18.0, 20.2])
 ```
-
+The functions above simply make two arrays - i.e. columns of data - containing the number. You can view the content of these colmns by with `print(x_data)` or `print(y_data)`.
 ```{python}
 #| fig-align: center
 #| exercise: true
 #| eval: false
-# Plot the data
-fig, ax = plt.subplots(figsize=(6, 4))
+fig, ax = plt.subplots()
 
-# Plot the data as a scatter plot!
+## Your task: Plot the data as a scatter plot ##
+## Recall that you can do this with: ax.plot(x_data, y_data, 'o')
 ...
 ```
 
@@ -36,12 +37,17 @@ fig, ax = plt.subplots(figsize=(6, 4))
 #| fig-align: center
 #| solution: true
 # Plot the data
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.plot(x_data, y_data, 'o', markersize=8, label='Experimental data')
+fig, ax = plt.subplots()
+
+## Your task: Plot the data as a scatter plot! ##
+## Recall that you can do this with: ax.plot(x_data, y_data, 'o')
+ax.plot(x_data, y_data, 'o')
+
+## EXTRAS - You do not need to read or understand ##
+## Adding customization ##
 ax.set_xlabel('x')
 ax.set_ylabel('y')
-ax.legend()
-ax.set_title('Experimental data points')
+ax.set_title('Experimental data points');
 ```
 
 Looking at this data, we can see it roughly follows a straight line. Let's assume our model is:
@@ -63,41 +69,37 @@ Define a linear function for fitting:
 #| exercise: true
 #| eval: false
 def linear_function(x, a, b):
-    return ... # Complete this line
+    ## Your task: Calculate the linear function ##
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
 def linear_function(x, a, b):
-    return a * x + b
+    ## Your task: Calculate the linear function ##
+    result = a * x + b
+    return result
 ```
 
 Always a good idea to check that your function works as expected 
 
+As a test we are adding 1 in the place of x, 2 in the place of a and 0 in the place of 
+b. In other words: $1 \cdot 2 + 0 = 2$
+
 ```{python}
+#| eval: false
 linear_function(1, 2, 0) # Should give 2
 ```
-Come up with another test case to check
 
-```{python}
-#| exercise: true
-#| eval: false
-print(linear_function(0, 2, 3)) # Should give 3 
-print(linear_function(1, 2, 3)) # Should give 5
-```
-
-```{python}
-#| solution: true
-print(linear_function(0, 2, 3)) # Should give 3 
-print(linear_function(1, 2, 3)) # Should give 5
-```
+When in doubt it is a good idea to do sanity checks like this.
 
 #### (c) Your first curve fit
 
 Now we can use `curve_fit` to find the best parameters. The basic syntax is:
 
 ```python
-popt, pcov = curve_fit(function, x_data, y_data, p0=initial_guess)
+fitted_parameters, trash = curve_fit(function, x_data, y_data, p0=initial_guess)
 ```
 
 Where:
@@ -105,8 +107,8 @@ Where:
 - `function`: The function we defined above
 - `x_data`, `y_data`: Our experimental data
 - `p0`: Initial guess for parameters (optional but recommended)
-- `popt`: The optimized parameters (what we want!)
-- `pcov`: Covariance matrix (contains information about parameter uncertainties, which you don't need to worry about at the moment.)
+- `fitted_parameters`: The optimized parameters (what we want!)
+- `trash`: Don't worry about this. 
 
 Finish the cell below to perform the curve fit by adding the three missing arguments to 
 the call to `curve_fit`.
@@ -115,27 +117,37 @@ the call to `curve_fit`.
 #| exercise: true
 #| eval: false
 # Initial guess: a=2, b=0
-p0 = [2, 0]
+initial_guess = [2, 0]
 
-# Perform the fit
-popt, pcov = curve_fit(..., ..., ..., p0=p0)
+## Your task: Perform the fit ##
+## You need give the function three arguments ##
+## The function: linear_function ##
+## The x-data: x_data
+## The y-data: y_data
+fitted_parameters, trash = curve_fit(..., ..., ..., p0=initial_guess)
 
-# Extract parameters
+## Extract parameters ## 
 a_fit, b_fit = popt
-print(f"Fitted parameters: a = {a_fit:.3f}, b = {b_fit:.3f}")
+
+print(fitted_parameters)
+print(a_fit)
+print(b_fit)
 ```
 
 ```{python}
 #| solution: true
 # Initial guess: a=2, b=0
-p0 = [2, 0]
+initial_guess = [2, 0]
 
 # Perform the fit
-popt, pcov = curve_fit(linear_function, x_data, y_data, p0=p0)
+fitted_parameters, trash = curve_fit(linear_function, x_data, y_data, p0=initial_guess)
 
 # Extract parameters
-a_fit, b_fit = popt
-print(f"Fitted parameters: a = {a_fit:.3f}, b = {b_fit:.3f}")
+a_fit, b_fit = fitted_parameters
+
+print(fitted_parameters)
+print(a_fit)
+print(b_fit)
 ```
 
 #### (d) Visualizing the fit
@@ -147,14 +159,18 @@ independent variable.
 ```{python}
 #| exercise: true
 #| eval: false
-x_smooth = np.linspace(0, 11, 100) # Makes 100 equally spaced points between 0 and 11. 
-y_fit = ... # Call the linear function using x_smooth, a_fit and b_fit
+
+## This makes an array with 100 equally spaced points between 0 and 11. ##
+x_smooth = np.linspace(0, 11, 100)
+
+## Your task: Calculate linear_function using x_smooth, a_fit and b_fit ##
+y_fit = ... 
 ```
 
 ```{python}
 #| solution: true
-x_smooth = np.linspace(0, 11, 100)
-y_fit = linear_function(x_smooth, a_fit, b_fit)
+x_smooth = np.linspace(0, 11, 100) # Makes 100 equally spaced points between 0 and 11. 
+y_fit = linear_function(x_smooth, a_fit, b_fit) # Call the linear function using x_smooth, a_fit and b_fit
 ```
 
 Then we can plot it 
@@ -163,26 +179,31 @@ Then we can plot it
 #| exercise: true
 #| eval: false
 #| fig-align: center
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.plot(x_data, y_data, 'o', markersize=8, label='Experimental data')
+fig, ax = plt.subplots()
 
-# Then we can plot the fit
-ax.plot(..., ..., '-', linewidth=2, label=f'Fit: y = {a_fit:.2f}x + {b_fit:.2f}') 
-ax.set_xlabel('x')
-ax.set_ylabel('y') 
-ax.legend()
-ax.set_title('Fit')
+## Your task: Plot the fitted function using x_smooth and y_fit ##
+ax.plot(..., ...)
+
+## Plots the experimental data ##
+ax.plot(x_data, y_data, 'o')
 ```
 
 ```{python}
 #| solution: true
 #| fig-align: center
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.plot(x_data, y_data, 'o', markersize=8, label='Experimental data')
-ax.plot(x_smooth, y_fit, '-', linewidth=2, label=f'Fit: y = {a_fit:.2f}x + {b_fit:.2f}')
+fig, ax = plt.subplots()
+
+## Your task: Plot the fitted function using x_smooth and y_fit ##
+ax.plot(x_smooth, y_fit)
+
+## Plots the experimental data ##
+ax.plot(x_data, y_data, 'o')
+
+## EXTRA ##
+## You do not need to understand this ##
+## Customizes the plot ## 
 ax.set_xlabel('x')
 ax.set_ylabel('y') 
-ax.legend()
 ax.set_title('Fit')
 ```
 
@@ -190,37 +211,55 @@ ax.set_title('Fit')
 
 Many biological processes follow nonlinear relationships. Let's work with exponential decay, which is common in biochemistry (e.g., radioactive decay or unimolecular chemical reactions).
 
-First, let's generate some exponential data:
+You can load the dataset from the `exp_decay_data.xlsx`-file with the widget below 
+
+```{python}
+#| eval: false
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from IPython.display import display 
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('exp_decay_data')
+display(df)
+```
+
+Now make a plot of the data
 
 ```{python}
 #| exercise: true
 #| eval: false
 # Generate exponential decay data
-t = np.array([0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0])
-# True parameters: A=10, k=0.8
-A_true, k_true = 10, 0.8
-signal = A_true * np.exp(-k_true * t) + np.random.normal(0, 0.3, len(t))
+fig, ax = plt.subplots()
 
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.plot(t, signal, 'o', markersize=8)
-ax.set_xlabel('Time')
-ax.set_ylabel('Signal')
-ax.set_title('Exponential decay data')
+## Your task: Plot the data from the dataframe ´df´. ##
+## Recall that your get the time-column as df['time'] ##
+## Similarly you get the signal-column  as df['signal'] ##
+ax.plot(..., ...)
 ```
 
 ```{python}
 #| solution: true
-# Generate exponential decay data
-t = np.array([0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0])
-# True parameters: A=10, k=0.8
-A_true, k_true = 10, 0.8
-signal = A_true * np.exp(-k_true * t) + np.random.normal(0, 0.3, len(t))
+#| fig-align: center
 
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.plot(t, signal, 'o', markersize=8)
-ax.set_xlabel('Time')
-ax.set_ylabel('Signal')
-ax.set_title('Exponential decay data')
+## Your task: Plot the data from the dataframe ´df´. ##
+## Recall that your get the time-column as df['time'] ##
+## Similarly you get the signal-column  as df['signal'] ##
+fig, ax = plt.subplots()
+ax.plot(df['time'], df['signal'], 'o')
 ```
 
 The model we want to fit is:
@@ -232,13 +271,29 @@ Define the exponential decay function:
 #| exercise: true
 #| eval: false
 def exponential_decay(t, A, k):
-    return ... # Complete this line
+    ## Your task: Calculate the exponential function ##
+    ## Remember that np.exp calculates the exponential function ##
+    result = ...
+    return result
+
+## This calculates the function for t=1, A=1, k=1 ##
+## If you did it correctly you should see 0.3678...
+test_result = exponential_decay(1, 1, 1)
+print(test_result)
 ```
 
 ```{python}
 #| solution: true
 def exponential_decay(t, A, k):
-    return A * np.exp(-k * t)
+    ## Your task: Calculate the exponential function ##
+    ## Remember that np.exp calculates the exponential function ##
+    result = A * np.exp(-k * t)
+    return result
+
+## This calculates the function for t=1, A=1, k=1 ##
+## If you did it correctly you should see 0.3678... ##
+test_result = exponential_decay(1, 1, 1)
+print(test_result)
 ```
 
 Now fit the exponential function to the data:
@@ -246,30 +301,34 @@ Now fit the exponential function to the data:
 ```{python}
 #| exercise: true
 #| eval: false
-# Initial guess: A=8, k=1
-p0 = [8, 1]
 
-# Perform the fit
-popt, pcov = curve_fit(..., ..., ..., p0=p0)
+## We set the initial guess as A=8 and k=1 ##
+initial_guess = [8, 1]
+
+## Your task: Make the fit using the exponenital_decay function, and the time and signal data. 
+## 
+fitted_parameters, trash = curve_fit(..., ..., ..., p0=initial_guess)
 
 # Extract parameters
-A_fit, k_fit = popt
-print(f"Fitted parameters: A = {A_fit:.3f}, k = {k_fit:.3f}")
-print(f"True parameters:   A = {A_true:.3f}, k = {k_true:.3f}")
+A_fit, k_fit = fitted_paremters
+
+print(A_fit)
+print(k_fit)
 ```
 
 ```{python}
 #| solution: true
 # Initial guess: A=8, k=1
-p0 = [8, 1]
+initial_guess = [8, 1]
 
 # Perform the fit
-popt, pcov = curve_fit(exponential_decay, t, signal, p0=p0)
+fitted_parameters, trash = curve_fit(exponential_decay, df['time'], df['signal'], p0=initial_guess)
 
 # Extract parameters
-A_fit, k_fit = popt
-print(f"Fitted parameters: A = {A_fit:.3f}, k = {k_fit:.3f}")
-print(f"True parameters:   A = {A_true:.3f}, k = {k_true:.3f}")
+A_fit, k_fit = fitted_parameters
+
+print(A_fit)
+print(k_fit)
 ```
 
 Again we should plot to check that it looks as expected 
@@ -277,42 +336,57 @@ Again we should plot to check that it looks as expected
 ```{python}
 #| exercise: true
 #| eval: false
+
+## This makes 100 linearly spaced points between 0 and 5.
 t_smooth = np.linspace(0, 5, 100)
+
+## Your task: Calculate the function using the fitted parameters and t_smooth. ##
 signal_fit = ... # Evaluate using the exponential_decay funciton
 ```
 
 ```{python}
 #| solution: true
+
+## This makes 100 linearly spaced points between 0 and 5 ##
 t_smooth = np.linspace(0, 5, 100)
+
+## Your task: Calculate the function using the fitted parameters and t_smooth ##
 signal_fit = exponential_decay(t_smooth, A_fit, k_fit)
 ```
+
+Now we can plot the fit along with the data. 
 
 ```{python}
 #| solution: true
 #| eval: false
-fig, ax = plt.subplots(figsize=(6, 4))
+fig, ax = plt.subplots()
 
-# Plot
-ax.plot(..., ..., 'o', markersize=8, label='Experimental data') # Plot the data
-ax.plot(..., ..., '-', linewidth=2, label=f'Fit: A={A_fit:.2f}, k={k_fit:.2f}') # Plot the fit
+## Your task: Plot the observations - you can copy this line from the ## 
+## previous plot. ##
+ax.plot(..., ...)
 
-# Customization:
-ax.set_xlabel('Time')
-ax.set_ylabel('Signal')
-ax.legend()
-ax.set_title('Exponential decay curve fit')
+## Your task: Plot the fit using t_smooth and signal_fit
+ax.plot(..., ...)
 ```
 
 ```{python}
 #| solution: true
 #| fig-align: center
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.plot(t, signal, 'o', markersize=8, label='Experimental data')
-ax.plot(t_smooth, signal_fit, '-', linewidth=2, label=f'Fit: A={A_fit:.2f}, k={k_fit:.2f}')
+fig, ax = plt.subplots()
+
+## Your task: Plot the observations - you can copy this line from the ## 
+## previous plot. ##
+ax.plot(df['time'], df['signal'], 'o')
+
+## Your task: Plot the fit using t_smooth and signal_fit
+ax.plot(t_smooth, signal_fit)
+
+## EXTRA - You do not need to understand this ## 
+## This adds customization ##
 ax.set_xlabel('Time')
 ax.set_ylabel('Signal')
-ax.legend()
 ax.set_title('Exponential decay curve fit')
+plt.show()
 ```
 
 ---
@@ -322,21 +396,8 @@ ax.set_title('Exponential decay curve fit')
 ## Key points for successful curve fitting:
 
 1. **Always plot your data first** to understand what kind of function might fit
-2. **Provide good initial guesses** (`p0`) - poor guesses can lead to fitting failure
-3. **Use parameter bounds** when you know physical constraints
 4. **Always plot the fit** to visually check if it makes sense
 5. **Check if parameters are reasonable** based on your biochemical knowledge
-
-:::
-
-::: {.callout-warning}
-
-## Common pitfalls:
-
-- **Overfitting**: Using too many parameters for the amount of data you have
-- **Poor initial guesses**: Can cause the fit to fail or find a local minimum
-- **Ignoring physical constraints**: Fitted parameters should make biological sense
-- **Not checking the fit visually**: Always plot to see if the fit is reasonable
 
 :::
 
@@ -345,8 +406,10 @@ ax.set_title('Exponential decay curve fit')
 ## Summary of `curve_fit`
 
 Fitting refers to finding the parameters that make an assumed functional form best 
-'fit' the data. Programmatically we will use the `curve_fit` from the `scipy` package to do so. 
-The signature of this function looks like this
+'fit' the data. 
+
+In Python we will use the `curve_fit` from the `scipy` package to do so. 
+The function looks like this
 
 ```python
 curve_fit(function, 
@@ -357,9 +420,9 @@ curve_fit(function,
 
 The arguments are 
 
-- `function`: A python function where the **first** argument is the independent variable, and other arguments are the parameters of the functions. 
-- `x_data`: The observed values of the independent variable. 
-- `y_data`: The observed values of the dependent variable.
+- `function`: A python function where the **first** argument is the independent variable (typically the x coordinate), and other arguments are the parameters of the functions. 
+- `x_data`: The observed values of the independent variable (The x coordinates). 
+- `y_data`: The observed values of the dependent variable (The y coordinates) .
 - `p0`: Initial guesses for the parameters. 
 
 When called `curve_fit` starts by calculating how well the functions fits the data 
