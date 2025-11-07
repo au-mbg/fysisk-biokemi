@@ -4,9 +4,20 @@
 #| code-fold: true
 import matplotlib.pyplot as plt
 import numpy as np
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+import pandas as pd
+from scipy.optimize import curve_fit
+pd.set_option('display.max_rows', 6)
 ```
 
 Based on the literature, you suspect that the binding of ADP to the enzyme pyruvate kinase might be coopera-tive and decide to investigate this by measuring the binding to the enzyme using radioactive ATP. The enzyme concentration was 4 μM throughout the titration, and each measurement was done in triplicate. The binding results were obtained at 310 K and are given in the `.csv`-file `adp-bindin-pyruva-kinase.csv`. 
+
+::: {.callout-note}
+
+When downloading the `.csv`-file you can right click and choose "Save link as".
+
+::: 
 
 #### (a) Load the dataset
 
@@ -14,8 +25,6 @@ As always, use the widget to load the dataset
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -30,9 +39,6 @@ display(df)
 
 ```{python}
 #| solution: true
-import pandas as pd
-pd.set_option('display.max_rows', 6)
-from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('adp_pyruvate') # Load from package for the solution so it doesn't require to interact.
 display(df)
@@ -46,12 +52,14 @@ with the units given in M.
 ```{python}
 #| exercise: true
 #| eval: false
+## Your task: Calculate the concentration in M and add it to the dataframe. ##
 df['[ADPtot](M)'] = ...
 display(df)
 ```
 
 ```{python}
 #| solution: true
+## Your task: Calculate the concentration in M and add it to the dataframe. ##
 df['[ADPtot](M)'] = df['[ADPtot](mM)'] * 10**(-3)
 display(df)
 ```
@@ -63,14 +71,20 @@ For each value of $\bar{n}$ calculate the concentration of [ADP$_\text{free}$] f
 ```{python}
 #| exercise: true
 #| eval: false
-enzyme_conc = ...
+
+## Your task: Set the enzyme concentration in the variable enzyme_conc
+## Use that and the df['[ADPtot](M)'] and df['nbar'] columns to conc. of free ADP.
+enzyme_conc = ... # Unit: M
 df['[ADPfree](M)'] = ...
 display(df)
 ```
 
 ```{python}
 #| solution: true
-enzyme_conc = 4 * 10**(-6)
+
+## Your task: Set the enzyme concentration in the variable enzyme_conc
+## Use that and the df['[ADPtot](M)'] and df['nbar'] columns to conc. of free ADP.
+enzyme_conc = 4 * 10**(-6) # Unit: M
 df['[ADPfree](M)'] = df['[ADPtot](M)'] - df['nbar'] * enzyme_conc
 display(df)
 ```
@@ -82,20 +96,21 @@ Make a plot of the free ligand concentration versus $\bar{n}$.
 ```{python}
 #| exercise: true
 #| eval: false
-fig, ax = plt.subplots(figsize=(7, 4))
+fig, ax = plt.subplots()
 
-# Write the code to make the plot.
-# Add the arguments:  marker='o', linestyle='none' to only plot points and not line segments.
-... # Add your code here!
-
-ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
-ax.set_ylabel(r'$\bar{n}$', fontsize=14)
+## Your task: Plot [ADfree](M) vs. nbar as a scatter plot
+ax.plot(..., ..., 'o')
 ```
 
 ```{python}
 #| solution: true
-fig, ax = plt.subplots(figsize=(7, 4))
-ax.plot(df['[ADPfree](M)'], df['nbar'], marker='o', linestyle='none', label='Observations')
+fig, ax = plt.subplots()
+
+## Your task: Plot [ADfree](M) vs. nbar as a scatter plot
+ax.plot(df['[ADPfree](M)'], df['nbar'], 'o')
+
+## EXTRA: You do not need to understand this.
+## Customization:
 ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
 ax.set_ylabel(r'$\bar{n}$', fontsize=14)
 ```
@@ -113,80 +128,88 @@ $$
 #| exercise: true
 #| eval: false
 def n_bound(L, n_max, K_D, h):
+    ## Your task: Implement the function ## 
+    result = ...
     return ...
 
-print(f"{n_bound(1, 1, 1, 1) = }") # Should give 1/2
-print(f"{n_bound(21, 47, 2.5, 1) = }") # Should give 42
-print(f"{n_bound(21, 47, 2.5, 2) = }") # Should give 46.73..
+## Your task: Check that these give the outputs they are supposed to.
+print(n_bound(1, 1, 1, 1)) # Should give 0.5
+print(n_bound(21, 47, 2.5, 1)) # Should give 42.0
+print(n_bound(21, 47, 2.5, 2)) # Should give 46.73..
 ```
 
 ```{python}
 #| solution: true
 def n_bound(L, n_max, K_D, h):
-    return n_max * L**h / (K_D + L**h)
+    ## Your task: Implement the function ## 
+    result = n_max * L**h / (K_D + L**h)
+    return result
 
-print(f"{n_bound(1, 1, 1, 1) = }") # Should give 1/2
-print(f"{n_bound(21, 47, 2.5, 1) = }") # Should give 42
-print(f"{n_bound(21, 47, 2.5, 2) = }") # Should give 46.73..
+## Your task: Check that these give the outputs they are supposed to.
+print(n_bound(1, 1, 1, 1)) # Should give 1/2
+print(n_bound(21, 47, 2.5, 1)) # Should give 42.0
+print(n_bound(21, 47, 2.5, 2)) # Should give 46.73..
 ```
 
 #### (e) Fitting
 
-Finish the code below to create a fit.
+Now we want to use regression to find the biochemical parameters $K_D$, $n_\mathrm{max}$ and $h$. 
 
 ```{python}
 #| exercise: true
 #| eval: false
-from scipy.optimize import curve_fit
 
-# Choose the variables from the dataframe
-x = df['[ADPfree](M)']
-y = df['nbar']
+## Your task: Select the data from the dataframe. ##
+x = ...
+y = ...
 
-# Initial guess
+## Your task: Make initial guesses for each of the three parameters ##
 K_D_guess = ... # Your initial guess for K_D 
 n_max_guess = ... # Your initial guess for nu_max
-h = ... # Your initial guess for the exponent.
-p0 = [K_D_guess, n_max_guess, n_exp]
+h_guess = ... # Your initial guess for the exponent.
 
-# Bounds
-bounds = (0, np.inf) # We limit the parameters to be positve.
+initial_guess = [K_D_guess, n_max_guess, h_guess]
+
+## This limit the parameters to be positive
+## This fit can be difficult otherwise.
+bounds = [0, np.inf]
 
 # Curve fit
-popt, pcov = curve_fit(n_bound, x, y, p0=p0, bounds=bounds)
+fitted_parameters, trash = curve_fit(n_bound, x, y, initial_guess, bounds=bounds)
 
 # Print the parameters
-n_max_fit, K_D_fit, h_fit = popt
-print(f"{n_max_fit = :1.3f} ")
-print(f"{K_D_fit = :e}")
-print(f"{h_fit = :1.3f} ")
+n_max_fit, K_D_fit, h_fit = fitted_parameters
+print(n_max_fit)
+print(K_D_fit)
+print(h_fit)
 ```
 
 ```{python}
 #| solution: true
-from scipy.optimize import curve_fit
 
-# Choose the variables from the dataframe
+## Your task: Select the data from the dataframe. ##
 x = df['[ADPfree](M)']
 y = df['nbar']
 
-# Initial guess
+## Your task: Make initial guesses for each of the three parameters ##
 K_D_guess = 1*10**(-3) # Your initial guess for K_D 
-n_max_guess = 1 # Your initial guess for nu_max
-h_guess = 2 # Your initial guess for the exponent.
-p0 = [K_D_guess, n_max_guess, h_guess]
+n_max_guess = 2 # Your initial guess for nu_max
+h_guess = 3 # Your initial guess for the exponent.
 
-# Bounds
-bounds = (0, np.inf) # We limit the parameters to be positve.
+initial_guess = [K_D_guess, n_max_guess, h_guess]
+
+# This limit the parameters to be positive
+bounds = [0, np.inf]
 
 # Curve fit
-popt, pcov = curve_fit(n_bound, x, y, p0=p0, bounds=bounds)
+## This fit can be difficult otherwise.
+fitted_parameters, trash = curve_fit(n_bound, x, y, initial_guess, bounds=bounds)
 
 # Print the parameters
-n_max_fit, K_D_fit, h_fit = popt
-print(f"{n_max_fit = :1.3f} ")
-print(f"{K_D_fit = :e}")
-print(f"{h_fit = :1.3f} ")
+n_max_fit, K_D_fit, h_fit = fitted_parameters
+print(n_max_fit)
+print(K_D_fit)
+print(h_fit)
 ```
 
 Once we've obtained the fitted parameters we can plot the fit together with 
@@ -195,41 +218,43 @@ the data.
 ```{python}
 #| exercise: true
 #| eval: false
+
+## As usual we evaluate the fitted function ##
 L = np.linspace(0, 1.2 * x.max(), 50)
 n = n_bound(L, n_max_fit, K_D_fit, h_fit)
 
+## Dont worry about the details of this plot is made ##
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(df['[ADPfree](M)'], df['nbar'], 'o', label='Observations')
 ax.plot(L, n)
 ax.axvline(K_D_fit, color='k', linewidth=0.5, linestyle='--')
 ax.axhline(n_max_fit, color='k', linewidth=0.5, linestyle='--')
-
-
 ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
-ax.set_ylabel(r'$\bar{n}$', fontsize=14)
-ax.set_ylim([0, n.max()*1.1])
+ax.set_ylabel(r'$\bar{n}$', fontsize=14);
 ```
 
 ```{python}
 #| solution: true
+
+## As usual we evaluate the fitted function ##
 L = np.linspace(0, 1.2 * x.max(), 50)
 n = n_bound(L, n_max_fit, K_D_fit, h_fit)
 
+## Dont worry about the details of this plot is made.
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(df['[ADPfree](M)'], df['nbar'], 'o', label='Observations')
 ax.plot(L, n)
 ax.axvline(K_D_fit, color='k', linewidth=0.5, linestyle='--')
 ax.axhline(n_max_fit, color='k', linewidth=0.5, linestyle='--')
-
-
 ax.set_xlabel(r'$[\text{ADP}_{\text{free}}]$', fontsize=14)
-ax.set_ylabel(r'$\bar{n}$', fontsize=14)
-ax.set_ylim([0, n.max()*1.1])
+ax.set_ylabel(r'$\bar{n}$', fontsize=14);
 ```
 
-**Question**: Is the binding cooperative? 
+#### (f) Cooperative or not? 
 
-#### (f) Free energy
+Based on the biochemical parameters you've found and the plot above answer the question is the binding cooperative? 
+
+#### (g) Free energy
 
 Calculate the free energy for the association of the ADP-pyruvate kinase complex assuming $R = 8.314472 \times 10^{-3} \ \frac{\text{kJ}}{\text{mol} \cdot \text{K}}$  and $T = 310 \ \text{K}$. 
 
@@ -242,14 +267,20 @@ Start by defining the two given constants as variables
 ```{python}
 #| exercise: true
 #| eval: false
-R = ...
+
+## Your task: Assign the known values to variables. 
+## Its a good idea to add a comment with the units e.g. # kJ/(mol K)
+R = ... # kJ/(mol K)
 T = ...
 ```
 
 ```{python}
 #| solution: true
-R = 8.314472 * 10**(-3)
-T = 310
+
+## Your task: Assign the known values to variables. 
+## Its a good idea to add a comment with the units e.g. # kJ/(mol K)
+R = 8.314472 * 10**(-3) # kJ/(mol K)
+T = 310 # K
 ```
 
 And do the calculation
@@ -257,12 +288,17 @@ And do the calculation
 ```{python}
 #| exercise:
 #| eval: false
-delta_G = ...
-print(f"{delta_G = :.3f} kJ/mol")
+
+## Your task: Calculate ΔG
+## Again its a good idea to add the unit as a comment.
+delta_G = ... 
+print(delta_G)
 ```
 
 ```{python}
 #| solution: true
-delta_G = R * T * np.log(K_D_fit)
-print(f"{delta_G = :.3f} kJ/mol")
+
+## Your task: Calculate ΔG
+delta_G = R * T * np.log(K_D_fit) # kJ/mol
+print(delta_G)
 ```
