@@ -9,12 +9,12 @@ $$
 
 Consider these four situations 
 
-| #      | $K_D$                    | $[L_T]$                  | $K_C$                    | $[C_T]$
+| #      | $[L_T]$                  | $[C_T]$                  | $K_D$                    | $K_C$                    |
 |--------|--------------------------|--------------------------|--------------------------|--------------------------|
-| 1      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ | $0$                      |
-| 2      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ | $1·10^{-2}$ $\mathrm{M}$ |
-| 3      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ |
-| 4      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ |
+| 1      | $1·10^{-3}$ $\mathrm{M}$ | $0$                      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ |
+| 2      | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-2}$ $\mathrm{M}$ | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ |
+| 3      | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-3}$ $\mathrm{M}$ | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-5}$ $\mathrm{M}$ |
+| 4      | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ | $1·10^{-5}$ $\mathrm{M}$ | $1·10^{-6}$ $\mathrm{M}$ |
 
 ##### (a) Explain simplification
 
@@ -37,8 +37,9 @@ Start by writing a Python function that calculates the degree of saturation $\th
 ```{python}
 #| exercise: true
 #| eval: false
-def bound_fraction(L, C, Kd, Kc):
-    # Write the equation for binding saturation. Be careful with parentheses!
+def bound_fraction(L, C, Kd, Kc):    
+    ## Your task: Write the equation for binding saturation. 
+    ## Be careful with parentheses!
     theta = ... 
     return theta
 ```
@@ -46,7 +47,10 @@ def bound_fraction(L, C, Kd, Kc):
 ```{python}
 #| solution: true
 def bound_fraction(L, C, Kd, Kc):
-    return 1 / ((Kd / L)*(1+(C/Kc))+1)
+    ## Your task: Write the equation for binding saturation. 
+    ## Be careful with parentheses!
+    theta = 1 / ((Kd / L)*(1+(C/Kc))+1) 
+    return theta
 ```
 
 Then use that function to calculate $\theta_L$ for each situation.
@@ -54,26 +58,32 @@ Then use that function to calculate $\theta_L$ for each situation.
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Calculate the degree of saturation for each set of parameters ##
 theta_L_1 = bound_fraction(..., ..., ..., ...)
 theta_L_2 = ...
 theta_L_3 = ...
 theta_L_4 = ...
-print(f"{theta_L_1 = :.3f}")
-print(f"{theta_L_2 = :.3f}")
-print(f"{theta_L_3 = :.3f}")
-print(f"{theta_L_4 = :.3f}")
+print('Situation 1', theta_L_1)
+print('Situation 2', theta_L_2)
+print('Situation 3', theta_L_3)
+print('Situation 4', theta_L_4)
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Calculate the degree of saturation for each set of parameters ##
 theta_L_1 = bound_fraction(10**(-3), 0, 10**(-5), 10**(-18))
 theta_L_2 = bound_fraction(10**(-3), 10**(-2), 10**(-5), 10**(-6))
 theta_L_3 = bound_fraction(10**(-3), 10**(-3), 10**(-5), 10**(-5))
 theta_L_4 = bound_fraction(10**(-5), 10**(-6), 10**(-5), 10**(-6))
-print(f"{theta_L_1 = :.3f}")
-print(f"{theta_L_2 = :.3f}")
-print(f"{theta_L_3 = :.3f}")
-print(f"{theta_L_4 = :.3f}")
+
+## Prints the results so we can analyze them.
+print('Situation 1', theta_L_1)
+print('Situation 2', theta_L_2)
+print('Situation 3', theta_L_3)
+print('Situation 4', theta_L_4)
 ```
 
 #### (c) Competitor degree of saturation
@@ -83,28 +93,34 @@ What is the degree of saturation with respect to the competitor $C$ in #1, #2, #
 ```{python}
 #| exercise: true
 #| eval: false
+## Your task: Calculate the degree of saturation for each set of parameters ##
+## Note: Now you are calculating it for the competitor!
 theta_C_1 = ...
 theta_C_2 = ...
 theta_C_3 = ...
 theta_C_4 = ...
 
-print(f"{theta_C_1 = :.3f}")
-print(f"{theta_C_2 = :.3f}")
-print(f"{theta_C_3 = :.3f}")
-print(f"{theta_C_4 = :.3f}")
+## Prints the results so we can analyze them.
+print('Situation 1', theta_C_1)
+print('Situation 2', theta_C_2)
+print('Situation 3', theta_C_3)
+print('Situation 4', theta_C_4)
 ```
 
 ```{python}
 #| solution: true
+## Your task: Calculate the degree of saturation for each set of parameters ##
+## Note: Now you are calculating it for the competitor!
 theta_C_1 = 0 # [C] = 0
 theta_C_2 = bound_fraction(10**(-2), 10**(-3), 10**(-6), 10**(-5))
 theta_C_3 = bound_fraction(10**(-3), 10**(-3), 10**(-5), 10**(-5))
 theta_C_4 = bound_fraction(10**(-6), 10**(-5), 10**(-6), 10**(-5))
 
-print(f"{theta_C_1 = :.3f}")
-print(f"{theta_C_2 = :.3f}")
-print(f"{theta_C_3 = :.3f}")
-print(f"{theta_C_4 = :.3f}")
+## Prints the results so we can analyze them.
+print('Situation 1', theta_C_1)
+print('Situation 2', theta_C_2)
+print('Situation 3', theta_C_3)
+print('Situation 4', theta_C_4)
 ```
 
 #### (d) Fraction of $[P_{\mathrm{free}}]$
@@ -120,15 +136,19 @@ Consider how to express the fraction of $[P_{\mathrm{free}}]$ in terms of `theta
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Calculate the P_free. 
+## Hint: Do not use the function from before - figure out another way. 
 theta_free_1 = ...
 theta_free_2 = ...
 theta_free_3 = ...
 theta_free_4 = ...
 
-print(f"{theta_free_1 = :.3f}")
-print(f"{theta_free_2 = :.3f}")
-print(f"{theta_free_3 = :.3f}")
-print(f"{theta_free_4 = :.3f}")
+## Prints the results so we can analyze them.
+print('Situation 1', theta_free_1)
+print('Situation 2', theta_free_2)
+print('Situation 3', theta_free_3)
+print('Situation 4', theta_free_4)
 ```
 
 ```{python}
@@ -138,10 +158,11 @@ theta_free_2 = 1 - (theta_L_2 + theta_C_2)
 theta_free_3 = 1 - (theta_L_3 + theta_C_3)
 theta_free_4 = 1 - (theta_L_4 + theta_C_4)
 
-print(f"{theta_free_1 = :.3f}")
-print(f"{theta_free_2 = :.3f}")
-print(f"{theta_free_3 = :.3f}")
-print(f"{theta_free_4 = :.3f}")
+## Prints the results so we can analyze them.
+print('Situation 1', theta_free_1)
+print('Situation 2', theta_free_2)
+print('Situation 3', theta_free_3)
+print('Situation 4', theta_free_4)
 ```
 
 #### (e) Qualitative analysis
