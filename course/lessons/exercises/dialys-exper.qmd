@@ -40,6 +40,12 @@ display(df)
 
 Explain how the values of $\bar{n}$ is calculated when knowing the concentrations of ligand inside and outside the dialysis bag, as well as the total concentration of the protein, [$\text{P}_{\text{tot}}$].
 
+```{python}
+#| solution: true
+
+"Mit svar her"
+
+```
 #### (c) Molar concentrations
 
 Convert the concentrations of free ligand to SI-units given in M, add it as a row to the `DataFrame`. 
