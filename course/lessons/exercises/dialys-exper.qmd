@@ -42,19 +42,26 @@ Explain how the values of $\bar{n}$ is calculated when knowing the concentration
 
 ```{python}
 #| solution: true
+#| echo: false
+from IPython.display import Markdown
+answer="""
+:::{.callout-note}
+## Calculation of $\\bar{n}$
 
-"The concentration of free ligand [L] is the same inside and outside the dialysis bag at equilibirum. Outside there is no protein, so only free ligand \text{L}_{\text{outside}} = [L]
+The concentration of free ligand [L] is the same inside and outside the dialysis
+bag at equilibrium. Outside there is no protein, so only free ligand $L_{outside} = [L]$
 
-The total concentration of ligand inside the dialysis bag is thus the combination of free and bound ligand \text{L}_{\text{inside}} = [L] + [PL]. [PL] can thus be calculated as:
+The total concentration of ligand inside the dialysis bag is thus the combination 
+of free and bound ligand $L_{inside} = [L] + [PL]$. [PL] can thus be calculated as:
 
-[PL] = [$\text{L}_{\text{inside}}$] - [$\text{L}_{\text{outside}}$]
+$$[PL] = [L_{inside}] - [L_{outside}]$$
 
-This can be combined with [$\text{P}_{\text{tot}}$] to give $\bar{n}$:
+This can be combined with $[P_{tot}]$ to give $\\bar{n}$:
 
-$\bar{n}$ = ([$\text{L}_{\text{inside}}$] - [$\text{L}_{\text{outside}}$])/[$\text{P}_{\text{tot}}$]
-
-"
-
+$$\\bar{n} = \\frac{[L_{inside}] - [L_{outside}]}{[P_{tot}]}$$
+:::
+"""
+display(Markdown(answer))
 ```
 #### (c) Molar concentrations
 
