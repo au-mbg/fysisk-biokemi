@@ -19,13 +19,14 @@ In cells at $298 \ \mathrm{K}$ the steady state concentrations of ATP, ADP og Pi
 #| exercise: true
 #| eval: false
 
-# Known values:
+## Your task: Define known values
+## Add units as comments! E.g. # kJ / mol
 dG_std = ... # kJ / mol
 Q = ...
 T = ...
 ... # One more might be useful.
 
-# Calculation:
+## Your task: Calculate dG
 dG = dG_std + R*T*np.log(Q)
 print(dG)
 ```
@@ -33,13 +34,14 @@ print(dG)
 ```{python}
 #| solution: true
 
-# Known values:
+## Your task: Define known values
+## Add units as comments! E.g. # kJ / mol
 Q = 0.002
 T = 298 # K
 dG_std = -30.5 # kJ / mol
 R = 8.314 * 10**(-3) # kJ /(mol K)
 
-# Calculation:
+## Your task: Calculate dG
 dG = dG_std + R*T*np.log(Q)
 print(dG)
 ```
@@ -47,6 +49,14 @@ print(dG)
 #### (b) Equilibrium or not? 
 
 Assuming that the temperature within these cells is $298 \ \mathrm{K}$, are these cells in equilibrium with respect to the hydrolysis of ATP? 
+
+```{python}
+#| exercise: true
+#| eval: false
+## Your task: Calculate K_eq.
+...
+```
+
 ```{python}
 #| solution: true
 K_eq = np.exp(-dG_std/(R*T))
@@ -70,14 +80,22 @@ Calculate the number of moles of ATP synthesized by a resting person in a period
 ```{python}
 #| exercise: true
 #| eval: false
+
+# Your task: Set the known value of the energy spent for ATP.
 energy_atp = ...
+
+# Your task: Calculate the number of moles of ATP synthezied
 synth_atp = ...
 print(synth_atp)
 ```
 
 ```{python}
 #| solution: true
+
+# Your task: Set the known value of the energy spent for ATP.
 energy_atp = 0.4 * 8368 # kJ
+
+# Your task: Calculate the number of moles of ATP synthezied
 synth_atp = energy_atp / np.absolute(dG)
 print(synth_atp)
 ```
@@ -95,13 +113,25 @@ Next, calculate the average number of times each ATP molecule is turned over (sy
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Set the known total_atp value
+## Remember unit
+...
+
+## Your task: Calculate the turnover number.
 ... # Your calculation here
+
+## Your task: Print the calculated turnover number.
 ```
 
 ```{python}
 #| solution: true
-total_atp = 0.2 
-turn_over = synth_atp / total_atp
+
+## Your task: Set the known total_atp value
+total_atp = 0.2 # Unit: mol
+
+## Your task: Calculate the turnover number.
+turn_over = synth_atp / total_atp # Unit mol/mol -> Unitless
 print(turn_over)
 ```
  
