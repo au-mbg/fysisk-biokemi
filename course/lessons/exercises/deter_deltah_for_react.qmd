@@ -4,6 +4,8 @@
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import numpy as np
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
 ```
 
 
@@ -13,8 +15,6 @@ The data obtained is given in the Excel document `deter_delta_h_data.xlsx` - loa
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -29,7 +29,6 @@ display(df)
 
 ```{python}
 #| solution: true
-from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('deter_delta_h') # Load from package for the solution so it doesn't require to interact.
 display(df)
@@ -47,40 +46,49 @@ with $1/T$ on the x-axis and $\ln(K_{eq})$ on the y-axis.
 
 ```{python}
 #| exercise: true
-#| eval: false
+#| eval: false 
+
+## Your task: Add a column containing 1/T and one containing ln(Keq) ##
 df['1/T'] = ...
 df['ln_Keq'] = ...
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Add a column containing 1/T and one containing ln(Keq) ##
 df['1/T'] = 1/df['T_(K)']
-df['ln_Keq'] = np.log(df['Keq'])
+df['ln(Keq)'] = np.log(df['Keq'])
 ```
 
 Now you can make the plot in the cell below
 
 ```{python}
-#| fig-align: center
 #| exercise: true
 #| eval: false
-fig, ax = plt.subplots(figsize=(6, 4))
+fig, ax = plt.subplots()
 
-... # Your code here.
+## Your task: Make a plot of 1/T vs ln(Keq)
+...
 
-ax.set_xlabel(...)
-ax.set_ylabel(...)
+## EXTRA: Customization you don't need to edit or understand this
+## It adds axis labels to the plot you made.
+ax.set_xlabel(r'1/T [K]')
+ax.set_ylabel(r'$\ln(K_{eq})$');
 ```
 
 ```{python}
-#| fig-align: center
 #| solution: true
-fig, ax = plt.subplots(figsize=(6, 4))
+#| fig-align: center
+fig, ax = plt.subplots()
 
-ax.plot(df['1/T'], df['ln_Keq'], 'o')
+## Your task: Make a plot of 1/T vs ln(Keq)
+ax.plot(df['1/T'], df['ln(Keq)'], 'o')
+
+## EXTRA: Customization you don't need to edit or understand this
+## It adds axis labels to the plot you made.
 ax.set_xlabel(r'1/T [K]')
-ax.set_ylabel(r'$\ln(K_{eq})$')
-plt.show()
+ax.set_ylabel(r'$\ln(K_{eq})$');
 ```
 
 #### (b) Fit trendline
@@ -93,33 +101,44 @@ Start by defining a linear function
 #| exercise: true
 #| eval: false
 def vant_hoff(T, a, b):
-    return ... # Your code here.
+    ## Your task: Implement a linear function
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
 def vant_hoff(T, a, b):
-    return a * T + b
+    ## Your task: Implement a linear function
+    result = a * T + b
+    return result
 ```
+
+Now we can use regression to find the parameters 
 
 ```{python}
 #| exercise: true
 #| eval: false
 
-popt, pcov = ...
-a, b = popt
+## Your task: Make a fit with curve_fit to find the parameters ##
+fitted_parameters, trash = ...
+a_fit, b_fit = fitted_parameters
 
-print(f"{a:.3f}")
-print(f"{b:.3f}")
+# Print
+print(a_fit)
+print(b_fit)
 ```
 
 ```{python}
 #| solution: true
-popt, pcov = curve_fit(vant_hoff, df['1/T'], df['ln_Keq'])
-a, b = popt
 
-print(f"{a:.3f}")
-print(f"{b:.3f}")
+## Your task: Make a fit with curve_fit to find the parameters ##
+fitted_parameters, trash = curve_fit(vant_hoff, df['1/T'], df['ln(Keq)'])
+a_fit, b_fit = fitted_parameters
+
+## Print ##
+print(a_fit)
+print(b_fit)
 ```
 
 Then make a plot with the trendline added 
@@ -127,27 +146,51 @@ Then make a plot with the trendline added
 ```{python}
 #| exercise: true
 #| eval: false
-fig, ax = plt.subplots(figsize=(6, 4))
-T_trend = ... # Select or make some appropriate points for the plotting evaluating the trendline.
+fig, ax = plt.subplots()
 
-# Your code to plot under this line: 
+## Your task: Choose points to evaluate the fit
+## Look at the x-axis above and estimate a value for the minimum and maximum. 
+## Then calculate the fit at those points
+max_x = ...
+min_x = ...
+T_trend = np.array([min_x, max_x]) # Select or make some appropriate points for the plotting evaluating the trendline.
+y_fit = vant_hoff(T_trend, ..., ...)
+
+## Your task: Plot the fit
 ...
-...
-...
+
+## Plots the data
+ax.plot(df['1/T'], df['ln(Keq)'], 'o')
+
+## EXTRA: You do not need to edit or understand this.
+## It adds axis labels to the plot you made.
+ax.set_xlabel('1/T [K]')
+ax.set_ylabel(r'$\ln(K_{eq})$');
 ```
 
 ```{python}
 #| fig-align: center
 #| solution: true
-fig, ax = plt.subplots(figsize=(6, 4))
-T_trend = np.array([df['1/T'].min(), df['1/T'].max()])
+fig, ax = plt.subplots()
 
-ax.plot(df['1/T'], df['ln_Keq'], 'o')
-ax.plot(T_trend, vant_hoff(T_trend, a, b))
+## Your task: Choose points to evaluate the fit
+## Look at the x-axis above and estimate a value for the minimum and maximum. 
+## Then calculate the fit at those points
+max_x = 0.0032
+min_x = 0.0036
+T_trend = np.array([min_x, max_x])
+y_fit = vant_hoff(T_trend, a_fit, b_fit)
 
+## Your task: Plot the fit
+ax.plot(T_trend, y_fit)
+
+## Plots the data
+ax.plot(df['1/T'], df['ln(Keq)'], 'o')
+
+## EXTRA: You do not need to edit or understand this.
+## It adds axis labels to the plot you made.
 ax.set_xlabel('1/T [K]')
-ax.set_ylabel(r'$\ln(K_{eq})$')
-plt.show()
+ax.set_ylabel(r'$\ln(K_{eq})$');
 ```
 
 #### (c) Reaction type
@@ -156,31 +199,45 @@ Calculate the reaction enthalpy and entropy, at $T = 298 \ \mathrm{K}$, assuming
 
 ```{python}
 #| solution: true
-# Define your known values:
-R = 8.314472 * 10**(-3)
-T = 298
 
-dH = -R * a
-dS = R * b
+## Your task: Set known values and add units as comments e.g. # kJ/(mol K) ##
+R = 8.314472 * 10**(-3) # Unit: # kJ/(mol K)
+T = 298 # Unit: K 
 
-print(f"{dH = :.3f}")
-print(f"{dS = :.3f}")
+
+## Your task: Calculate ΔH and ΔS ##
+## Consider the units!
+dH = -R * a_fit # kJ/mol
+dS = R * b_fit # kJ/(mol K)
+
+print(dH)
+print(dS)
 ```
 
 ```{python}
 #| exercise: true
 #| eval: false
-# Define your known values:
-R = ...
+
+## Your task: Set known values and add units as comments e.g. # kJ/(mol K) ##
+R = ... 
 T = ...
 
-# Calculate the reaction enthalpy and reaction entropy
+## Your task: Calculate ΔH and ΔS ##
+## Consider the units!
 dH = ...
 dS = ...
 
-print(f"{dH = :.3f}")
-print(f"{dS = :.3f}")
+print(dH)
+print(dS)
 ```
+
+::: {.callout-tip}
+The units of a slope is the units of the y-axis dvided by the units of the x-axis. 
+
+In the van't Hoff plot the y-axis is unitless and the x-axis is in 1/K.
+::: 
+
+
 
 #### (d) Free energy change
 
@@ -190,21 +247,17 @@ Calculate the free energy change, $\Delta G^\circ$, at $T = 298 \ \mathrm{K}$, a
 #| exercise: true
 #| eval: false
 
-# Define your known values:
-R = ...
-T = ...
-
-# Perform your calculation: 
+## Your task: Calculate ΔG
 dG = ...
 
-print(f"{dG = :.3f}")
+print(dG)
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Calculate ΔG
 dG = dH - T * dS
 
-print(f"{dH = :.3f}")
-print(f"{dS = :.3f}")
-print(f"{dG = :.3f}")
+print(dG)
 ```
