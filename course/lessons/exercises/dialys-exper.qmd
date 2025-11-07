@@ -3,6 +3,9 @@
 ```{python}
 #| code-fold: true
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+pd.set_option('display.max_rows', 6)
 ```
 
 A dialysis experiment was set up where equal amounts of a protein were separately dialyzing against buffers containing different concentrations of a ligand – each measurement was done in triplicate. The average number of ligands bound per protein molecule, $\bar{n}$ were obtained from these experiments. The corresponding concentrations of free ligand and values are given in dataset `dialys-exper.xlsx`. 
@@ -42,36 +45,48 @@ Explain how the values of $\bar{n}$ is calculated when knowing the concentration
 Convert the concentrations of free ligand to SI-units given in M, add it as a row to the `DataFrame`. 
 
 ```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Convert the concentration to SI units (from uM to M). 
+## The column containing the data in uM can be indexed with: df['Free_ligand_(uM)']
+df['Free_ligand_(M)'] = ...
+display(df)
+```
+
+```{python}
 #| solution: true
 df['Free_ligand_(M)'] = df['Free_ligand_(uM)'] * 10**(-6)
 display(df)
 ```
+
 
 #### (c) Plot the data
 
 ```{python}
 #| exercise: true
 #| eval: false
-import matplotlib.pyplot as plt
-
 fig, ax = plt.subplots()
 
-# The 'o' means we plot just the points and don't connect them.
-ax.plot(..., ..., 'o') # Replace ... with your code.
-
-ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
-ax.set_ylabel(r'$\bar{n}$', fontsize=16)
+## Your task: Plot the raw data 
+## With the ligand concentration df['Free_ligand_(M)'] on the x-axis
+## And with n-bar df['n_bar'] on the y-axis.
+ax.plot(..., ..., 'o')
 ```
 
 ```{python}
 #| solution: true
-import matplotlib.pyplot as plt
-
 fig, ax = plt.subplots()
+
+## Your task: Plot the raw data 
+## With the ligand concentration df['Free_ligand_(M)'] on the x-axis
+## And with n-bar df['n_bar'] on the y-axis.
 ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o')
+
+## EXTRAS: You do not need to understand this ## 
+## This adds customization ##
 ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
-ax.set_ylabel(r'$\bar{n}$', fontsize=16)
-plt.show()
+ax.set_ylabel(r'$\bar{n}$', fontsize=16);
 ```
 
 #### (d) Prepare for fitting
@@ -88,13 +103,13 @@ To do so we need to implmenet it as a Python function
 #| exercise: true
 #| eval: false
 def nbar(L, n, K_D):
-    # Replace ... with your code that calculates the above equation. 
-    # Be careful with parenthesis!
+    ## Your task: Calculate n-bar using the equation from above.
     result = ... 
     return result
 
-print(f"{nbar(1, 1, 1) = }") # Should give 1/2
-print(f"{nbar(21, 47, 2.5) = }") # Should give 42
+## This calculates the function and prints for two different sets of values ## 
+print(nbar(1, 1, 1)) # Should give 1/2
+print(nbar(21, 47, 2.5)) # Should give 42
 ```
 
 ```{python}
@@ -102,8 +117,9 @@ print(f"{nbar(21, 47, 2.5) = }") # Should give 42
 def nbar(L, n, K_D):
     return n * L / (K_D + L)
 
-print(f"{nbar(1, 1, 1) = }") # Should give 1/2
-print(f"{nbar(21, 47, 2.5) = }") # Should give 42
+## This calculates the function and prints for two different sets of values ## 
+print(nbar(1, 1, 1)) # Should give 1/2
+print(nbar(21, 47, 2.5)) # Should give 42
 ```
 
 #### (e) Actually fitting
@@ -119,19 +135,20 @@ from scipy.optimize import curve_fit
 x = df['Free_ligand_(M)']
 y = df['n_bar']
 
-# Initial guess
+## Your task: Make initial guesses for the two parameters ## 
 K_D_guess = ... # Your initial guess for K_D 
-n_guess = ... # Your initial guess for nu_max
-p0 = [K_D_guess, n_guess]
+n_guess = ... # Your initial guess for n.
+initial_guess = [K_D_guess, n_guess]
 
-# Curve fit
-# Replace the four ... with the correct arguments in the correct order.
-popt, pcov = curve_fit(..., ..., ..., ...) 
+## Your task: Give the four arguments in the correct order to make calculate ##
+## the fitted parameters ##
+fitted_parameters, trash = curve_fit(..., ..., ..., ...) 
 
 # Print the parameters
-n_fit, K_D_fit = popt
-print(f"{n_fit = :1.3f} ")
-print(f"{K_D_fit = :e}")
+n_fit, K_D_fit = fitted_parameters
+print(fitted_parameters)
+print(n_fit)
+print(K_D_fit)
 ```
 
 ```{python}
@@ -142,16 +159,20 @@ from scipy.optimize import curve_fit
 x = df['Free_ligand_(M)']
 y = df['n_bar']
 
-# Initial guess
+## Your task: Make initial guesses for the two parameters ## 
 K_D_guess = 10**(-5)
 n_guess = 1
-p0 = [K_D_guess, n_guess]
+initial_guess = [K_D_guess, n_guess]
 
-# Curve fit
-popt, pcov = curve_fit(nbar, x, y, p0=p0)
-n_fit, K_D_fit = popt
-print(f"{n_fit = :1.3f} ")
-print(f"{K_D_fit = :e}")
+## Your task: Give the four arguments in the correct order to make calculate ##
+## the fitted parameters ##
+fitted_parameters, pcov = curve_fit(nbar, x, y, initial_guess)
+
+# Print the parameters
+n_fit, K_D_fit = fitted_parameters
+print(fitted_parameters)
+print(n_fit)
+print(K_D_fit)
 ```
 
 Are the parameters you find reasonable? How can you tell if they are reasonable by 
@@ -166,63 +187,53 @@ calculate the dependent variable
 ```{python}
 #| exercise: true
 #| eval: false
-# This makes 50 equally spaced points between 0 and the highest concentration x 1.2
-L = np.linspace(0, x.max()*1.2, 50) 
+## This makes 50 equally spaced points ##
+L_smooth = np.linspace(0, x.max()*1.2, 50) 
 
-# Calculate by plugging L and the found parameters into the function.
+## Your task: Calculate the fitted function using the found parameters and L_smooth
 nbar_calc = ...
 ```
 
 ```{python}
 #| solution: true
-# This makes 50 equally spaced points between 0 and the highest concentration x 1.2
-L = np.linspace(0, x.max()*1.2, 50) 
+## This makes 50 equally spaced points ##
+L_smooth = np.linspace(0, x.max()*1.2, 50) 
 
-# Calculate: 
-nbar_calc = nbar(L, n_fit, K_D_fit)
+## Your task: Calculate the fitted function using the found parameters and L_smooth
+nbar_calc = nbar(L_smooth, n_fit, K_D_fit)
 ```
 
 Now that we calculated the dependent variable we can plot the fit along with the data. 
 
 ```{python}
-#| solution: true
-import matplotlib.pyplot as plt
-
+#| exercise: true
+#| eval: false
 fig, ax = plt.subplots()
 
-# Plot the fitted curve
-ax.plot(L, nbar_calc, label='Fit')
+## Your task: Plot the fitted function ##
+ax.plot(..., ...)
 
-# Straight lines indicating the parameters 
-ax.axhline(n_fit, color='red', label=r'$\nu_{max}$')
-ax.axvline(K_D_fit, color='green', label=r'$K_D$')
-
-# Same as before
-ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o', color='C0')
-ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
-ax.set_ylabel(r'$\bar{n}$', fontsize=16)
-ax.legend(fontsize=16)
-plt.show()
+## Plots the data ## 
+ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o')
 ```
 
 ```{python}
-#| exercise: true
-#| eval: false
-import matplotlib.pyplot as plt
-
+#| solution: true
 fig, ax = plt.subplots()
 
-# Plot the fitted curve
-ax.plot(L, nbar_calc, label='Fit')
+## Your task: Plot the fitted function ##
+ax.plot(L_smooth, nbar_calc)
 
-# Straight lines indicating the parameters 
+## Plots the data ## 
+ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o')
+
+## EXTRA: You do not need to understand this ## 
+## This customizes the plot ## 
+## It also adds lines indicating the values of n and K_D found ## 
 ax.axhline(n_fit, color='red', label=r'$\nu_{max}$')
 ax.axvline(K_D_fit, color='green', label=r'$K_D$')
-
-# Same as before
-ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o', color='C0')
 ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
 ax.set_ylabel(r'$\bar{n}$', fontsize=16)
 ax.legend(fontsize=16)
-plt.show()
 ```
+
