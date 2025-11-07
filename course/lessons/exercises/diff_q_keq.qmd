@@ -4,6 +4,8 @@
 #| code-fold: true
 import matplotlib.pyplot as plt
 import pandas as pd
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
 
@@ -21,8 +23,6 @@ The data is contained in the `diff_q_keq_data.xlsx` file.
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -37,25 +37,34 @@ display(df)
 
 ```{python}
 #| solution: true
-from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('diff_q_keq') # Load from package for the solution so it doesn't require to interact.
 display(df)
 ```
 
-Convert the measured concentrations of $B$, $[B]$, to concentrations in the SI-unit $\mathrm{M} \ (\mathrm{mol/L})$. Repeat for the starting concentration of $A$, $[A]_0$.
+Convert the measured concentrations of $B$, $[B]$, to concentrations in the SI-unit $\mathrm{M} \ (\mathrm{mol/L})$. Repeat for the starting concentration of $A$, $[A_0]$.
 
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Convert the concentration of B to M and set in new column ##
 df['[B]_(M)'] = ...
+
+## Your task: Set the initial concentration of A, in the variable A0.
+## Remember to convert to M.
 A0 = ...
 ```
 
 ```{python}
 #| solution: true
-df['[B]_(M)'] = df['[B]_(uM)'] * 10**(-6)
-A0 = 50 * 10**(-6)
+
+## Your task: Convert the concentration of B to M and set in new column ##
+df['[B]_(M)'] = df['[B]_(uM)'] * 10**(-6) # Unit: M
+
+## Your task: Set the initial concentration of A, in the variable A0.
+## Remember to convert to M.
+A0 = 50 * 10**(-6) # Unit: M 
 ```
 
 
@@ -67,6 +76,9 @@ add it as a column to the `DataFrame`
 ```{python}
 #| exercise: true
 #| eval: false
+
+# Your task: Calculate the concentration of A for each time-point
+## Add it as a column to the dataframe called '[A]_(M)'.
 ... # Your code here.
 ```
 
@@ -75,6 +87,39 @@ add it as a column to the `DataFrame`
 df['[A]_(M)'] = A0 - df['[B]_(M)']
 ```
 
+Make a plot of the time vs. the concentration of $A$ and of time versus the concentration of $B$.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+fig, ax = plt.subplots()
+## Your task: Plot time vs. concentrations. ##
+ax.plot(..., ..., label='[A]') # Time vs. concentration of A
+ax.plot(..., ..., label='[B]') # Time vs. concentration of B
+
+## This shows the labels. ##
+ax.legend()
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+
+fig, ax = plt.subplots()
+## Your task: Plot time vs. concentrations.
+ax.plot(df['Time_(min)'], df['[A]_(M)'], label='[A]') # Time vs. concentration of A
+ax.plot(df['Time_(min)'], df['[B]_(M)'], label='[B]') # Time vs. concentration of B
+
+## This shows the labels.
+ax.legend()
+
+## EXTRA: You do not need to understand this: 
+ax.set_xlabel('Time [min]')
+ax.set_ylabel('Concentrations [M]')
+```
+
+
 #### (c) Mass action ratio
 
 Calculate and plot the mass action ratio $Q$ as a function of time.
@@ -82,25 +127,40 @@ Calculate and plot the mass action ratio $Q$ as a function of time.
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Calculate the mass action ratio
 Q = ... # calculate Q 
-```
-
-```{python}
-#| exercise: true
-#| eval: false
-fig, ax = plt.subplots(figsize=(6, 4))
-
-... # Make the plot
 ```
 
 ```{python}
 #| solution: true
 #| fig-align: center
+
+## Your task: Calculate the mass action ratio
 Q = df['[B]_(M)'] / df['[A]_(M)']
+```
 
-fig, ax = plt.subplots(figsize=(6, 4))
+Now plot the mass action ratio versus time.
 
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+
+## Your task: Make a plot of the axis from the dataframe df['Time_(min)'] vs Q
+...
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots()
+
+## Your task: Make a plot of the axis from the dataframe df['Time_(min)'] vs Q
 ax.plot(df['Time_(min)'], Q)
+
+## EXTRA: You do not need to understand this
+## Adds customization.
 ax.set_xlabel('Time (min)')
 ax.set_ylabel('Mass action ratio $Q$')
 ```
@@ -139,10 +199,11 @@ What is the equilibrium constant of this reaction?
 ```{python}
 #| solution: true
 """
-The students can just read the concentrations values at eq from the graph and calculate K_eq from those. 
+Can also just read the concentrations values at eq from the graph and calculate K_eq from those. 
 But it can of course also just be calculated.
 """
-K_eq = df['[B]_(M)'].iloc[-1] / df['[A]_(M)'].iloc[-1]
+K_eq = df['[B]_(M)'][35] / df['[A]_(M)'][35]
 print(K_eq)
 ```
+
  
