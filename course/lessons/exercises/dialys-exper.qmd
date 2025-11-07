@@ -43,7 +43,17 @@ Explain how the values of $\bar{n}$ is calculated when knowing the concentration
 ```{python}
 #| solution: true
 
-"Mit svar her"
+"The concentration of free ligand [L] is the same inside and outside the dialysis bag at equilibirum. Outside there is no protein, so only free ligand \text{L}_{\text{outside}} = [L]
+
+The total concentration of ligand inside the dialysis bag is thus the combination of free and bound ligand \text{L}_{\text{inside}} = [L] + [PL]. [PL] can thus be calculated as:
+
+[PL] = [$\text{L}_{\text{inside}}$] - [$\text{L}_{\text{outside}}$]
+
+This can be combined with [$\text{P}_{\text{tot}}$] to give $\bar{n}$:
+
+$\bar{n}$ = ([$\text{L}_{\text{inside}}$] - [$\text{L}_{\text{outside}}$])/[$\text{P}_{\text{tot}}$]
+
+"
 
 ```
 #### (c) Molar concentrations
