@@ -26,9 +26,9 @@ format-links:
 
 {{< include exercises/inter-bindin-data.qmd >}}
 
----
+<!-- ---
 
-{{< include exercises/adp-bindin-pyruva-kinase.qmd >}}
+{{< include exercises/adp-bindin-pyruva-kinase.qmd >}} -->
 
 ---
 
