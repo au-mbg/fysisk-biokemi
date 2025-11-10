@@ -9,9 +9,7 @@ from scipy.optimize import curve_fit
 pd.set_option('display.max_rows', 6)
 ```
 
-
-The dataset in `binding_data_sq.xlsx` contains the fraction bound measured 
-at different ligand concentrations with the experiment repeated threefold.
+Here, we will analyse the results from an experiment used to quantify affinity of a protein:lignd interaction. The data in `binding_data_sq.xlsx` is in the form of saturation (theta) as a function of the total ligand concentration L_tot. This is the type of data you typically get from e.g. a fluorescence titration experiment. Each measure-ment has been repeated three times.
 
 Load the dataset as usual using the widget below
 
@@ -24,6 +22,10 @@ uploader.display()
 ```
 
 Run the next cell **after** uploading the file
+
+::: {.callout-tip}
+The command `display(df)` shows the dataframe that you've loaded. 
+:::
 
 ```{python}
 #| eval: false
@@ -43,20 +45,25 @@ display(df)
 
 Convert the ligand concentration to $\mathrm{M}$ and add it to the dataframe as a new column named `'L_(m)'`.
 
+You can use `display(df)` to check if you have been successful.
+
 ```{python}
 #| exercise: true
 #| eval: false
+
+# Your task: Add a column to the dataframe with the ligand concentration in M.
 ...
 ```
 
 ```{python}
 #| solution: true
 df['L_(M)'] = df['L_(uM)'] * 10**(-6)
+display(df)
 ```
 
 #### (b) Plot
 
-Make a scatter plot of the dataset 
+Make a scatter plot of the dataset and use the plot to estimate $K_D$.
 
 ```{python}
 #| fig-align: center
@@ -64,6 +71,7 @@ Make a scatter plot of the dataset
 #| eval: false
 fig, ax = plt.subplots()
 
+## Your task: Make a scatter plot (just points, no lines) of the data.  ##
 ...
 ```
 
@@ -72,10 +80,21 @@ fig, ax = plt.subplots()
 #| solution: true
 fig, ax = plt.subplots()
 
+## Your task: Make a scatter plot (just points, no lines) of the data.  ##
 ax.plot(df['L_(M)'], df['theta'], 'o')
+
+## EXTRA: ##
+## This adds x and y-axis labels. ##
 ax.set_xlabel('L (M)')
 ax.set_ylabel(r'$\theta$')
 plt.show()
+```
+
+Put your estimate of $K_D$ in the cell below 
+
+```{python}
+## Your task: Assign your estimate of K_D to the variable below ##
+K_D_estimate = 0.0001
 ```
 
 #### (c) Fit and analyze.
@@ -91,6 +110,10 @@ Start by defining a function, called `simple_binding`, that calculates this expr
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Define the function simple_binding that evaluates the equation ##
+## from above. ##
+## Hint: It takes two inputs - the first has to be the independent variable. 
 def ...
     ...
     ...
@@ -98,6 +121,8 @@ def ...
 
 ```{python}
 #| solution: true
+## Your task: Define the function simple_binding that evaluates the equation ##
+## from above. ##
 def simple_binding(L, K_D):
     theta = L / (L + K_D)
     return theta
@@ -108,15 +133,28 @@ Then use that function to fit the data using `curve_fit`
 ```{python}
 #| exercise: true
 #| eval: false
-... 
+## Your task: Set your estimate of K_D as the inital guess.
+initial_guess = [...]
+
+## Your task: Use curve_fit to find the fitted value of K_D
+fitted_parameters, trash = ...
+
+## This extracts K_D and prints it ##
+K_D_fit_simple = fitted_parameters
+print(K_D_fit_simple)
 ```
 
 ```{python}
 #| solution: true
+## Your task: Set your estimate of K_D as the inital guess.
+initial_guess = [K_D_estimate]
 
-popt, pcov = curve_fit(simple_binding, df['L_(M)'], df['theta'])
-K_D_fit_simple = popt[0]
-print(f'{K_D_fit_simple = :.3e}')
+## Your task: Use curve_fit to find the fitted value of K_D
+fitted_parameters, trash = curve_fit(simple_binding, df['L_(M)'], df['theta'], initial_guess)
+
+## This extracts K_D and prints it ##
+K_D_fit_simple = fitted_parameters[0]
+print(K_D_fit_simple)
 ```
 
 And evaluate the fit and plot it together with the dataset
@@ -125,25 +163,30 @@ And evaluate the fit and plot it together with the dataset
 #| exercise: true
 #| eval: false
 
-# Evaluate the fit at L_smooth
-L_smooth = np.linspace(0, df['L_(M)'].max(), 100)
+## Your task: Evaluate simple_binding using L_smooth and the value of K_D from your fit ##
+L_smooth = np.linspace(0, 0.0005, 100)
 theta_fit_simple = ...
 
 fig, ax = plt.subplots()
-... # Plot the fit together with the data - you can probably paste most of this code.
+## Your task: Plot the fit as line plot and the data as a scatter plot. ##
+...
+...
 ```
 
 
 ```{python}
 #| solution: true
-L_smooth = np.linspace(0, df['L_(M)'].max(), 100)
+## Your task: Evaluate simple_binding using L_smooth and the value of K_D from your fit ##
+L_smooth = np.linspace(0, 0.0005, 100)
 theta_fit_simple = simple_binding(L_smooth, K_D_fit_simple)
 
 fig, ax = plt.subplots()
-
+## Your task: Plot the fit as line plot and the data as a scatter plot. ##
 ax.plot(df['L_(M)'], df['theta'], 'o')
 ax.plot(L_smooth, theta_fit_simple)
 
+## EXTRA: 
+## Labels for the axis.
 ax.set_xlabel('L (M)')
 ax.set_ylabel(r'$\theta$')
 plt.show()
@@ -159,13 +202,15 @@ To get a more quantitative view of the quality of the fit calculate residuals
 #| exercise: true
 #| eval: false
 
-# Calculate the residuals by evaluating the fit at the measured datapoints
+# Your task: Calculate the residuals by evaluating the fit at the measured datapoints
+theta_model = ...
 residuals_simple = ...
 ```
 
 ```{python}
 #| solution: true
-residuals_simple = df['theta'] - simple_binding(df['L_(M)'], K_D_fit_simple)
+theta_model = simple_binding(df['L_(M)'], K_D_fit_simple)
+residuals_simple = df['theta'] - theta_model
 ```
 
 And plot them versus the measured $\mathrm{[L]}$
@@ -175,12 +220,10 @@ And plot them versus the measured $\mathrm{[L]}$
 #| eval: false
 fig, ax = plt.subplots()
 
-# Plot the residuals: 
+## Your task: Make a plot with residuals on the y-axis and L on the x-axis ##
 
 # This makes a horizontal line through 0
 ax.axhline(0, color='black', linestyle='--')
-
-# Add any customization settings:
 ```
 
 ```{python}
@@ -188,8 +231,14 @@ ax.axhline(0, color='black', linestyle='--')
 #| eval: true
 fig, ax = plt.subplots()
 
+## Your task: Make a plot with residuals on the y-axis and L on the x-axis ##
 ax.plot(df['L_(M)'], residuals_simple, 'o')
+
+## This makes a horizontal line through 0 ##
 ax.axhline(0, color='black', linestyle='--')
+
+## EXTRA
+## Adds axis labels. 
 ax.set_xlabel('[L] (M)')
 ax.set_ylabel('Residual')
 ```
@@ -197,36 +246,55 @@ ax.set_ylabel('Residual')
 Are the residuals randomly distributed around zero? 
 What does this tell you about the quality of the fit? 
 
-#### (e) Choosing a better model
+#### (e) Formulate a hypothesis
 
-Lets try fitting with a more expressive model, namely the quadratic binding expression, that is 
+The protein concentration in the above titrations was 250 uM. Formulate a hypothesis for why the fit fails. 
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+The assumption made to derive the simple binding model is that the ligand concentration is much 
+larger than the protein concentration such that the $[L_\mathrm{free}] \approx [L_\mathrm{total}]$ - 
+or in other words that the number of ligand molecules bound to the proteins are not a significant proportion 
+of the total number of ligand molecules. With $[P] = 250 \ \mu\textrm{M}$ and ligand concentrations in 
+the range of 0 to 500 $\mu\mathrm{M}$ this assumption is not valid.
+:::
+"""
+print(answer)
+```
+
+#### (f) Choosing a better model
+
+Next, we will try a fitting model that explicitly considers the concentration of the protein being titrated. 
+This is known as the quadratic binding equation
 $$
 \begin{aligned}
 \theta &= \frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} - \sqrt{\left(\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]}\right)^2 - \frac{[L_{tot}]}{[P_{tot}]}} \\
-    &= \frac{A}{B} - \sqrt{\left(\frac{A}{B}\right)^2 - C} \\
-    & = D - \sqrt{D^2 - C}
 \end{aligned}
 $$
 
 The value of $[P_{tot}]$ is $250 \ \mu\mathrm{M}$. 
 
 Start by implementing the expression as a Python function - remember that you need to 
-be careful with parentheses with a function like this and it might be easier to do 
-if you do it step by step (calculate $A$, $B$ and $C$, then calculate $D=\frac{A}{B}$ and make the full expression from these bits.)
+be careful with parentheses with a function like this.
 
 ```{python}
 #| exercise: true
 #| eval: false
 
 def quadratic_binding(L, K_D):
-    P_tot = ... # Set to given value in the correct units. 
+    ## Your task: Set the protein concentration in appropriate units. ##
+    P_tot = ... 
 
-    A = ... # Numerator in fraction in the first term.
-    B = ... # Denominator in the same term.
-    C = ... # Second term in the square root.
-    D = ... # A divided by B.
-    theta = ... # Final expression.
+    ## Your task: Implement the quadratic binding equation ## 
+    ## Be careful with parentheses! ##
+    theta = ... 
     return ...
 
 print(f"{quadratic_binding(100, 138.09) = :.3f}") # Should give 0.420
@@ -234,16 +302,14 @@ print(f"{quadratic_binding(100, 138.09) = :.3f}") # Should give 0.420
 
 ```{python}
 #| solution: true
-
-
 def quadratic_binding(L, K_D):    
+    ## Your task: Set the protein concentration in appropriate units. ##
     P_tot = 250 * 10**(-6)
 
-    A = K_D + P_tot + L
-    B = 2 * P_tot
-    C = L / P_tot
-    D = A / B
-    return D - np.sqrt(D**2 - C)
+    ## Your task: Implement the quadratic binding equation ## 
+    ## Be careful with parentheses! ##
+    theta = (K_D + P_tot + L) / (2 * P_tot) - np.sqrt(((K_D + P_tot + L) / (2 * P_tot))**2 - L / P_tot)
+    return theta
 
 print(f"{quadratic_binding(100, 138.09) = :.3f}") # Should give 0.420
 ```
@@ -251,22 +317,32 @@ print(f"{quadratic_binding(100, 138.09) = :.3f}") # Should give 0.420
 And now make a fit using this expression
 
 ```{python}
-#| solution: true
-popt, pcov = curve_fit(quadratic_binding, df['L_(M)'], df['theta'])
-K_D_fit_quad = popt[0]
-print(f'{K_D_fit_quad = :.3e}')
+#| exercise: true
+#| eval: false
+
+## Your task: Make a fit using the quadratic binding equation. ##
+fitted_parameters, trash = ...
+
+## Extratcs and prints K_D ##
+K_D_fit_quad = fitted_parameters[0]
+print(K_D_fit_quad)
 ```
 
 ```{python}
-#| exercise: true
-#| eval: false
-popt, pcov = ...
-K_D_fit_quad = popt[0]
-print(f'{K_D_fit_quad = :.3e}')
+#| solution: true
+
+## Your task: Make a fit using the quadratic binding equation. ##
+fitted_parameters, trash = curve_fit(quadratic_binding, df['L_(M)'], df['theta'])
+
+## Extratcs and prints K_D ##
+K_D_fit_quad = fitted_parameters[0]
+print(K_D_fit_quad)
 ```
 
-The cell below makes a figure of the data and the residuals for each case
-
+The cell below makes a figure of the data and the residuals for each fit. You are 
+not expected to understand every line of code – the figure is mainly to aid you 
+interpretation of the data and show case how you can make beautiful figures from 
+you own data later on.
 ```{python}
 #| exercise: true
 #| eval: false
@@ -282,6 +358,7 @@ ax.plot(L_smooth, theta_fit_simple, label='Simple binding', linewidth=3)
 ax.plot(L_smooth, theta_fit_quad, label='Quadratic binding', linewidth=3)
 ax.set_xlabel('L (M)')
 ax.set_ylabel(r'$\theta$')
+ax.set_title('Data & Fits')
 ax.legend()
 
 # Residuals
@@ -289,6 +366,8 @@ ax = axes[1]
 ax.plot(df['L_(M)'], residuals_simple, 'o', color='C1', label='Simple binding')
 ax.plot(df['L_(M)'], residuals_quad, 'o', color='C2', label='Quadratic binding')
 ax.axhline(0, color='black', linestyle='--')
+ax.set_title('Residuals')
+ax.set_xlabel('L (M)')
 ax.legend()
 
 plt.show()
@@ -309,6 +388,7 @@ ax.plot(L_smooth, theta_fit_simple, label='Simple binding', linewidth=3)
 ax.plot(L_smooth, theta_fit_quad, label='Quadratic binding', linewidth=3)
 ax.set_xlabel('L (M)')
 ax.set_ylabel(r'$\theta$')
+ax.set_title('Data & Fits')
 ax.legend()
 
 # Residuals
@@ -316,10 +396,14 @@ ax = axes[1]
 ax.plot(df['L_(M)'], residuals_simple, 'o', color='C1', label='Simple binding')
 ax.plot(df['L_(M)'], residuals_quad, 'o', color='C2', label='Quadratic binding')
 ax.axhline(0, color='black', linestyle='--')
+ax.set_title('Residuals')
+ax.set_xlabel('L (M)')
 ax.legend()
 
 plt.show()
 ```
+
+#### (g) Analyze 
 
 Consider the following questions: 
 
@@ -327,7 +411,22 @@ Consider the following questions:
 - Whats the difference in how the residuals are distributed? 
 - What is the biochemical situation that makes quadratic expression necessary? 
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
 
+## Answer
+- The quadratic binding equation fits the data very well! 
+- For the quadratic binding equation the residuals are randomly distributed around zero, whereas for the simple binding model there is a trend as a function of the ligand concentration with negative residuals at low concentrations and positive residuals at higher concentrations. 
+- That the protein and ligand concentrations are comparable - making the assumptions that the simple binding model is based on invalid. 
+
+:::
+"""
+print(answer)
+```
 
 
 
