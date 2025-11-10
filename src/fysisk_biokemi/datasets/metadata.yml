@@ -38,7 +38,7 @@ datasets:
     description: "Cooperativity determination data"
 
   # Week 47 exercises
-  deter-reacti-orders.xlsx:
+  reaction-orders.xlsx:
     week: 47
     exercise: "deter-reacti-orders.qmd"
     original_name: "week48_4_reaction_order.xlsx"

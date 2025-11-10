@@ -8,9 +8,11 @@ import pandas as pd
 pd.set_option('display.max_rows', 6)
 ```
 
+You have carried out a kinetic experiment investigating the turnover of two metabolites, A1 and A2, in a cell lysate. For each metabolite, you have measured the concentration of the compound as a function of time using UV-Vis spectroscopy aiming to determine the reaction order, and thus deduce something about the reaction mechanism by which they are processed. The date from this experiment is found in `reaction-orders.xlsx`.
+
 #### (a) Load the dataset
 
-Load the dataset `deter-reacti-orders.xlsx` using the widget below
+Load the dataset `reaction-orders.xlsx` using the widget below
 
 ```{python}
 #| eval: false
@@ -51,8 +53,8 @@ display(df)
 
 ```{python}
 #| solution: true
-df['[A1]_(M)'] = df['[A1]_(uM)'] * 10**(-6)
-df['[A2]_(M)'] = df['[A2]_(uM)'] * 10**(-6)
+df['A1_M'] = df['A1_uM'] * 10**(-6)
+df['A2_M'] = df['A2_uM'] * 10**(-6)
 display(df)
 ```
 
@@ -77,9 +79,9 @@ with `...`.
 #| eval: false
 def plot_dataframe(ax, df):
     # Extract from dataframe
-    t = df['Time_(s)']
-    A1 = df['[A1]_(M)']
-    A2 = df['[A2]_(M)']
+    t = df['Time_s']
+    A1 = df['A1_M']
+    A2 = df['A2_M']
 
     ax.plot(t, A1, 'o', label='[A1]')
     ... # Your code here to plot A2
@@ -93,9 +95,9 @@ def plot_dataframe(ax, df):
 #| solution: true
 def plot_dataframe(ax, df):
     # Extract from dataframe
-    t = df['Time_(s)']
-    A1 = df['[A1]_(M)']
-    A2 = df['[A2]_(M)']
+    t = df['Time_s']
+    A1 = df['A1_M']
+    A2 = df['A2_M']
 
     # First subfigure: t vs [A]
     ax.plot(t, A1, 'o', label='[A1]')
@@ -192,9 +194,9 @@ A1_0 = ... # Set the initial concentration [A1]_0
 A2_0 = ... # Set the initial concentration [A2]_0
 
 # Extract data
-t = df['Time_(s)']
-A1 = df['[A1]_(M)']
-A2 = df['[A2]_(M)']
+t = df['Time_s']
+A1 = df['A1_M']
+A2 = df['A2_M']
 orders = [0, 1, 2]
 t_eval = np.linspace(0, t.max()*1.1)
 ```
@@ -207,9 +209,9 @@ A1_0 = 2 * 10**(-6)
 A2_0 = 4.5 * 10**(-6)
 
 # Extract data
-t = df['Time_(s)']
-A1 = df['[A1]_(M)']
-A2 = df['[A2]_(M)']
+t = df['Time_s']
+A1 = df['A1_M']
+A2 = df['A2_M']
 orders = [0, 1, 2]
 t_eval = np.linspace(0, t.max()*1.1)
 ```
@@ -257,19 +259,40 @@ for ax, order in zip(axes, orders):
 
 Based on this plot; 
 
-- What do you believe is the reaction order for [A1]?
+- What is the reaction order for [A1]?
 - What is the unit of the rate constant for [A1]? 
-- What do you believe is the reaction order for [A2]?
+- What is the reaction order for [A2]?
 - What is the unit of the rate constant for [A2]? 
 
 ::: {.callout-note}
 
 The cell above used a `for`-loop. These are a powerful way of performing the same 
-operation with different inputs, you will learn more about them later on.
+operation with different inputs.
 
 ::: 
 
-#### (e) Residuals 
+#### (e) Reaction mechanism
+
+What does the above tell you about the reaction mechanism whereby the two compounds
+disappear from the lysate?
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+:::
+"""
+print(answer)
+```
+
+
+
+<!-- #### (e) Residuals 
 
 By inspecting the plot we can make a qualitative judgement of the reaction orders. 
 To get a more quantitative results we can look at the residuals, recall they are defined as 
@@ -362,4 +385,4 @@ for ax_col, order in zip(axes.T, orders):
 
 ```
 
-Does this support your conclusions about the reaction order from (d)?
+Does this support your conclusions about the reaction order from (d)? -->

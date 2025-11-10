@@ -18,7 +18,7 @@ available_datasets = {
     'interpret_week48': 'inter-bindin-data.xlsx',
     'determination_coop_week48': 'deter-type-streng-coope.xlsx',
     # Week 47:
-    'reaction_order_week48': 'deter-reacti-orders.xlsx',
+    'reaction_order_week48': 'reaction-orders.xlsx',
     'reaction_order_activation_week48': 'deter-reacti-order-activ.csv',
     'week49_1': 'design-enzyme-kineti-exper.xlsx',
     'week49_2': 'analys-data-set-obeyin.xlsx',
