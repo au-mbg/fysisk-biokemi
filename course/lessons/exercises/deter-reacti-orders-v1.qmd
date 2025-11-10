@@ -1,0 +1,373 @@
+## Determination of reaction orders.
+
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from scipy.optimize import curve_fit
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+pd.set_option('display.max_rows', 6)
+```
+
+You have carried out a kinetic experiment investigating the turnover of two metabolites, A1 and A2, in a cell lysate. For each metabolite, you have measured the concentration of the compound as a function of time using UV-Vis spectroscopy aiming to determine the reaction order, and thus deduce something about the reaction mechanism by which they are processed. The date from this experiment is found in `reaction-orders.xlsx`.
+
+#### (a) Load the dataset
+
+Load the dataset `reaction-orders.xlsx` using the widget below
+
+```{python}
+#| eval: false
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('reaction_order_week48') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+
+#### (b) SI units. 
+
+Add two new columns with the concentrations given in M. 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Add new columns with the A1_M and A2_M. 
+...
+...
+
+display(df)
+```
+
+```{python}
+#| solution: true
+df['A1_M'] = df['A1_uM'] * 10**(-6)
+df['A2_M'] = df['A2_uM'] * 10**(-6)
+display(df)
+```
+
+#### (c) Plotting 
+
+For each reactant make a plot of the concentration versus time.
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots() 
+
+## Your task: Make plots of concentration (y) versus time (x). ##
+## Hint: ax.plot(x_data, y_data, 'o') to make a scatter plot.
+...
+...
+
+## EXTRA: Customization of axis labels ##
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Concentration')
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots() 
+
+## Your task: Make plots of concentration (y) versus time (x). ##
+## Hint: ax.plot(x_data, y_data, 'o') to make a scatter plot. ##
+ax.plot(df['Time_s'], df['A1_M'], 'o')
+ax.plot(df['Time_s'], df['A2_M'], 'o')
+
+## EXTRA: Customization of axis labels ##
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Concentration')
+```
+
+#### (d) Model as zeroth-order reaction
+
+We can start by modelling both reactions as zeroths order. To do so we first 
+define the model 
+
+```{python}
+#| exercise: true
+#| eval: false
+def zeroth_order(t, k, A0):
+    ## Your task: Implement the zeroth order rate equation
+    concentration = ...
+    return concentration
+```
+
+```{python}
+#| solution: true
+def zeroth_order(t, k, A0):
+    ## Your task: Implement the zeroth order rate equation
+    concentration = A0 - k*t
+    return concentration
+```
+
+Then we can make a fit to measurements of each reactant. 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Look at the displayed dataframe to determine the initial concs.
+## Assign them to these variables in SI units (Molar).
+A1_0 = ...
+A2_0 = ...
+
+
+## Helper functions: Don't worry too much about these. 
+def zeroth_order_A1(t, k):
+    ## Uses the initial concentration of A1
+    return zeroth_order(t, k, A1_0)
+
+def zeroth_order_A2(t, k):
+    ## Uses the initial concentration of A2
+    return zeroth_order(t, k, A2_0)
+
+## Your task: Make a fit of the A1_M data using the zeroth_order_A1 function ##
+fitted_parameters_A1, trash = ...
+k_A1 = fitted_parameters_A1[0]
+
+## Your task: Make a fit of the A2_M data using the zeroth_order_A2 function ##
+fitted_parameters_A2, trash = ...
+k_A2 = fitted_parameters_A2[0]
+
+## Prints the found parameters
+print(k_A1)
+print(k_A2)
+```
+
+```{python}
+#| solution: true
+
+## Your task: Look at the displayed dataframe to determine the initial concs.
+## Assign them to these variables in SI units (Molar).
+A1_0 = 2.0 * 10**(-6)
+A2_0 = 4.5 * 10**(-6)
+
+
+## Helper functions: Don't worry too much about these. 
+def zeroth_order_A1(t, k):
+    ## Uses the initial concentration of A1
+    return zeroth_order(t, k, A1_0)
+
+def zeroth_order_A2(t, k):
+    ## Uses the initial concentration of A2
+    return zeroth_order(t, k, A2_0)
+
+## Your task: Make a fit of the A1_M data using the zeroth_order_A1 function ##
+fitted_parameters_A1, trash = curve_fit(zeroth_order_A1, df['Time_s'], df['A1_M'])    
+k_A1 = fitted_parameters_A1[0]
+
+## Your task: Make a fit of the A2_M data using the zeroth_order_A2 function ##
+fitted_parameters_A2, trash = curve_fit(zeroth_order_A2, df['Time_s'], df['A2_M'])
+k_A2 = fitted_parameters_A2[0]
+
+## Prints the found parameters
+print(k_A1)
+print(k_A2)
+```
+
+Now that we fitted the data as a zeroth order reaction, we can plot to see how well it fits
+
+```{python}
+#| exercise: true
+#| eval: false
+
+fig, ax = plt.subplots() 
+
+t_smooth = np.linspace(0, 55)
+A1_fit = zeroth_order_A1(t_smooth, k_A1)
+A2_fit = zeroth_order_A2(t_smooth, k_A2)
+
+## Your task: Make plots of concentration (y) versus time (x). ##
+## Hint: ax.plot(x_data, y_data, 'o') to make a scatter plot. ##
+...
+...
+
+## Plots the data ##
+ax.plot(df['Time_s'], df['A1_M'], 'o')
+ax.plot(df['Time_s'], df['A2_M'], 'o')
+
+## EXTRA: Customization of axis labels ##
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Concentration')
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots() 
+
+t_smooth = np.linspace(0, 55)
+A1_fit = zeroth_order_A1(t_smooth, k_A1)
+A2_fit = zeroth_order_A2(t_smooth, k_A2)
+
+## Your task: Make plots of concentration (y) versus time (x). ##
+## Hint: ax.plot(x_data, y_data, 'o') to make a scatter plot. ##
+ax.plot(t_smooth, A1_fit)
+ax.plot(t_smooth, A2_fit)
+
+## Plots the data ##
+ax.plot(df['Time_s'], df['A1_M'], 'o')
+ax.plot(df['Time_s'], df['A2_M'], 'o')
+
+## EXTRA: Customization of axis labels ##
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Concentration')
+```
+
+This doesn't fit particularly well in either case! 
+
+#### (f) Determining reaction orders
+
+Our assumption of a zeroth order reaction is not great, so we can perform the same 
+analysis with first and second order reactions.
+
+In the cell below finish the code to define functions for the integrated rate laws of 
+first and second order.
+
+```{python}
+#| exercise: true
+#| eval: false
+def first_order(t, k, A0):
+    ## Your task: Implement the first order rate equation ##
+    result = ...
+    return result
+
+def second_order(t, k, A0):
+    ## Your task: Implement the second order rate equation ##
+    result = ...
+    return result
+
+## EXTRA: You don't need to edit or understand this. 
+rate_laws = {0: zeroth_order, 1: first_order, 2:second_order}
+```
+
+```{python}
+#| solution: true
+def first_order(t, k, A0):
+    return A0 * np.exp(-k*t)
+
+def second_order(t, k, A0):
+    return A0 / (1 + 2*k*t*A0)
+
+## EXTRA: You don't need to edit or understand this. 
+rate_laws = {0: zeroth_order, 1: first_order, 2:second_order}
+```
+
+
+The procedure to fit is the same as we saw for zeroth order, in order to help you 
+the cell below uses your functions to fit in exactly that way and makes a plot 
+containing fits for each dataset for zeroth, first and second order integrated rate law 
+models. 
+
+```{python}
+#| exercise: true
+#| eval: false
+from fysisk_biokemi.utils.deter_reacti_orders import make_plot
+make_plot(df, rate_laws)
+```
+
+
+```{python}
+#| solution: true
+from fysisk_biokemi.utils.deter_reacti_orders import make_plot
+make_plot(df, rate_laws)
+```
+
+Based on this plot; 
+
+1. What is the reaction order for [A1]?
+2. What is the unit of the rate constant for [A1]? 
+3. What is the reaction order for [A2]?
+4. What is the unit of the rate constant for [A2]? 
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+1. First order
+2. The unit of the rate contant for a first order reaction is $\frac{1}{\text{s}}$
+
+The first order rate equation is 
+
+$$
+A_0 \cdot \exp({-k\cdot t})
+$$
+
+The term in the exponential has to be unitless, so we need $k$ to have the inverse units of $t$
+
+$$
+k \rightarrow \frac{1}{t} \rightarrow \frac{1}{\text{s}}
+$$
+
+
+3. Second order
+4. The unit of the rate contant for a second order reaction is $\frac{1}{\text{s} \cdot \text{M}}$
+
+The integrated second order rate is 
+
+$$
+\frac{A_0}{1 + 2\cdot k \cdot t \cdot A_0}
+$$
+
+Looking at the denominator it includes the term
+$$
+1 + 2\cdot k \cdot t \cdot A_0
+$$
+For this addition to make sense the second term needs to be unitless, so we have 
+can conclude that the unit of $k$ must cancel those of $t \cdot A_0$, so 
+
+$$
+k \rightarrow \frac{1}{t \cdot A_0} \rightarrow \frac{1}{\text{s} \cdot \text{M}}
+$$
+
+
+
+
+
+
+
+
+:::
+"""
+print(answer)
+```
+
+#### (e) Reaction mechanism
+
+What does the above tell you about the reaction mechanism whereby the two compounds
+disappear from the lysate?
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+:::
+"""
+print(answer)
+```

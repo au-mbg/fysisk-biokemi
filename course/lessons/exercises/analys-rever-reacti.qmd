@@ -18,27 +18,89 @@ The magnitudes of the rate constants are $k_1 = 10 \ \mathrm{s}^{-1}$ and $k_2 =
 
 What is the reaction order in each direction?
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+Two perspectives
+
+From the chemical equation: Each elementary step involves only one reactant molecule:
+
+- Forward reaction: A → B (one molecule of A)
+- Reverse reaction: B → A (one molecule of B)
+   
+Since each step involves a single reactant, both are first-order reactions.
+
+From the units: The rate constants have units of $\mathrm{s}^{-1}$, which is the unit of first order reactions.
+:::
+"""
+print(answer)
+```
+
 #### (b) Derive equilibrium constant 
 
 Show mathematically how the equilibrium constant $K_{\mathrm{eq}}$ is given by the ratio between the two rate constants.
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+At equilibrium, the forward and reverse reaction rates are equal:
+
+$$r_{\text{forward}} = r_{\text{reverse}}$$
+
+For the reaction $A \rightleftharpoons B$, both are first order as discussed above:
+
+- Forward rate: $r_{\text{forward}} = k_1[A]_{\text{eq}}$
+- Reverse rate: $r_{\text{reverse}} = k_2[B]_{\text{eq}}$
+
+Setting them equal:
+$$k_1[A]_{\text{eq}} = k_2[B]_{\text{eq}}$$
+
+Rearranging to solve for the ratio of concentrations:
+$$\frac{[B]_{\text{eq}}}{[A]_{\text{eq}}} = \frac{k_1}{k_2}$$
+
+By definition, the equilibrium constant is:
+$$K_{\text{eq}} = \frac{[B]_{\text{eq}}}{[A]_{\text{eq}}}$$
+
+Therefore:
+$$K_{\text{eq}} = \frac{k_1}{k_2}$$
+
+:::
+"""
+print(answer)
+```
 
 #### (c) Calculate $K_{\mathrm{eq}}$
 
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Assign known values & calculate the equilibrium constant.
 k1 = ...
 k2 = ...
 K_eq = ...
-print(f"{K_eq = }")
+print(K_eq)
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Assign known values & calculate the equilibrium constant.
 k1 = 10 
 k2 = 1
 K_eq = k1 / k2
-print(f"{K_eq = }")
+print(K_eq)
 ```
 
 #### (d) Equilibrium concentrations 
@@ -48,11 +110,13 @@ Calculate the concentrations of A and B at equilibrium, $[\mathrm{A}]_{\mathrm{e
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Assign known values and calculate the concentrations at equilibrium.
 A0 = ...
 A_eq = ...
 B_eq = ...
-print(f"{A_eq = }")
-print(f"{B_eq = }")
+print(A_eq)
+print(B_eq)
 ```
 
 ```{python}
@@ -60,8 +124,8 @@ print(f"{B_eq = }")
 A0 = 10**(-3)
 A_eq = (k2 * A0) / (k1 + k2)
 B_eq = (k1 * A0) / (k1 + k2)
-print(f"{A_eq = }")
-print(f"{B_eq = }")
+print(A_eq)
+print(B_eq)
 ```
 
 #### (e) Rates at equilibrium
@@ -71,18 +135,24 @@ Calculate the forward and reverse rates at equilibrium at this concentration.
 ```{python}
 #| exercise: true
 #| eval: false
-r_fwd = A_eq * k1
-r_bwd = B_eq * k2
-print(f"{r_fwd = :.5f}")
-print(f"{r_bwd = :.5f}")
+
+## Your task: Calculate the forward and backward reaction rates.
+## Hint: Use the variables assigned or calculated from previous exercises.
+r_fwd = ...
+r_bwd = ...
+print(r_fwd)
+print(r_bwd)
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Calculate the forward and backward reaction rates.
+## Hint: Use the variables assigned or calculated from previous exercises.
 r_fwd = A_eq * k1
-r_bwd = B_eq * k2 # Sanity check
-print(f"{r_fwd = :.5f}")
-print(f"{r_bwd = :.5f}")
+r_bwd = B_eq * k2
+print(r_fwd)
+print(r_bwd)
 ```
 
 #### (f) Initial rate of formation 
@@ -91,15 +161,18 @@ If $[\mathrm{A}]_0 = 10^{-3} \text{M}$ and $[\mathrm{B}]_0 = 0 \text{M}$, calcul
 
 ```{python}
 #| exercise: true
-#| eval: true
-r_fwd = A0 * k1
-print(f"{r_fwd = :.5f}")
+#| eval: false
+
+## Your task: Calculate initial rate of formation of B
+r_fwd = ...
+print(r_fwd)
 ```
 
 ```{python}
 #| solution: true
+## Your task: Calculate initial rate of formation of B
 r_fwd = A0 * k1
-print(f"{r_fwd = :.5f}")
+print(r_fwd)
 ```
 
 #### (g) Time-dependence
@@ -115,22 +188,21 @@ the concentration [A] as a function of time.
 #| exercise: true
 #| eval: false
 
+## Your task: Implement the function to calculate the time dependent concentration.
+## Be careful with parentheses.
 def A_time(t, A0, k_f, k_b):
+
     return ...
 ```
 
 ```{python}
 #| solution: true
 
+## Your task: Implement the function to calculate the time dependent concentration.
+## Be careful with parentheses.
 def A_time(t, A0, k_f, k_b):
     return (k_b + k_f * np.exp(-(k_f+k_b)*t)) / (k_f + k_b) * A0
 ```
-
-::: {.callout-caution}
-
-Be careful to correctly set parantheses when implementing this function!
-
-::: 
 
 And then we can use that function to calculate and plot the concentrations as a function of time. 
 

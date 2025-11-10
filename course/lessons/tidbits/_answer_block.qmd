@@ -1,0 +1,15 @@
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+Put answer text here, full quarto markdown syntax.
+
+:::
+"""
+print(answer)
+```
