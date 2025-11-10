@@ -27,22 +27,34 @@ Histidine, $\text{His}$, at pH 6.0.
 ```{python}
 #| exercise: true
 #| eval: false 
+
+## Your set known values. ##
 pKa = ...
 pH = ...
 
-... # Possible intermediate calculation, otherwise delete this line.
-
+## Your task: percentage of unprotonated 
+## It may be useful to do an intermediate calculation..
+... # Intermediate
 percentage_unprotonated = ...
-print(f"{percentage_unprotonated = } %")
+
+## Prints
+print(percentage_unprotonated)
 ```
 
 ```{python}
 #| solution: true
+
+## Your set known values. ##
 pKa = 6.0
 pH = 6.0
-ratio = 10 ** (pH - pKa)
+
+## Your task: percentage of unprotonated 
+## It may be useful to do an intermediate calculation..
+ratio = 10 ** (pH - pKa) # The intermediate
 percentage_unprotonated = 1 / (1 + ratio) * 100
-print(f"{percentage_unprotonated = } %")
+
+## Prints
+print(percentage_unprotonated)
 ```
 
 #### (b) Concentration 
@@ -52,16 +64,20 @@ Calculate $[\text{His}]$ at pH 6
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Assign known value and calculate [His]
 total_conc = ...
 his_conc = ...
-print(f"{his_conc = } M")
+print(his_conc)
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Assign known value and calculate [His]
 total_conc = 10**(-3)
 his_conc = total_conc * percentage_unprotonated
-print(f"{his_conc = } M")
+print(his_conc)
 ```
 
 #### (c) Reaction order
@@ -74,30 +90,111 @@ $$
 
 What's the reaction order? 
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+Bimolecular so we expect second order reaction.
+
+:::
+"""
+print(answer)
+```
+
+
 #### (d) High concentrations
 
 If $[\text{R}]$ is much higher than $[\text{His}]$, what can then be concluded regarding the order of the reaction? 
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+$[R]$ will remain roughly constant - we are thus in the regime of a pseudo first order reaction
+
+:::
+"""
+print(answer)
+```
 
 #### (e) New rate constant
 
 Show how a new rate constant, $k'$, can be defined in these conditions. How does $k'$ depend on $\text{R}$?
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+$v = k \cdot [\text{His}] \cdot [\text{R}]$
+
+$k^{\prime} = k[\text{R}]$
+
+$v = k^{\prime}[\text{His}]$
+
+
+Then $k^{\prime}$ is linearly proportional with $[\text{R}]$.
+
+:::
+"""
+print(answer)
+```
+
+
 #### (f) SI Units
 
-At pH 6.0 the reaction rate $v = 1 \ \text{mM}\cdot \text{s}^{-1}$ and constant $[\text{R}] = 0.2 \ \text{M}$
+At pH 6.0 the reaction rate $v = 1 \ \text{mM}\cdot \text{s}^{-1}$.
 
 Convert the reaction rate to SI-units given in $\text{M}\cdot \text{s}^{-1}$.
 
 ```{python}
+#| exercise: true
 #| eval: false
-...
+
+# Your task: Calculate v in SI units M / s
+reaction_rate = ...
+print(reaction_rate)
+```
+
+```{python}
+#| solution: true
+
+# Your task: Calculate v in SI units M / s
+reaction_rate = 1 * 10**(-3) # Units: M / s
+print(reaction_rate)
 ```
 
 #### (g) Calculate the rate constant 
 
-Use the concentration of $[\text{His}]$ at pH 6 calculated in question (b) and calculate the rate constant k.
+Use the concentration of $[\text{His}]$ at pH 6 calculated in question (b), the reaction rate from (f) and constant $[\text{R}] = 0.2 \ \text{M}$ to calculate the rate constant $k$. 
 
 ```{python}
 #| eval: false
-...
+#| exercise: true
+
+## Your task: Set known value and calculate k ##
+## Hint: You should use the his_conc and reaction_rate variables ##
+R_conc = ...
+k = ...
+```
+
+```{python}
+#| solution: true
+
+## Your task: Set known value and calculate k ##
+## Hint: You can use the his_conc variable ##
+R_conc = 0.2
+k = reaction_rate / (R_conc * his_conc)
+print(k)
 ```
