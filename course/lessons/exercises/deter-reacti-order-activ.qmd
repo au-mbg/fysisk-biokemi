@@ -5,6 +5,8 @@
 import numpy as np  
 import matplotlib.pyplot as plt
 import pandas as pd
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
 
@@ -21,12 +23,16 @@ What are the two temperatures in Kelvin? Set them as varilabes in the cell below
 ```{python}
 #| exercise: true
 #| eval: false
-T1 = 25 + 273.15
-T2 = 40 + 273.15
+
+## Your task: Convert the temperatures to K and assign to the variables:
+T1 = ...
+T2 = ...
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Convert the temperatures to K and assign to the variables:
 T1 = 25 + 273.15
 T2 = 40 + 273.15
 ```
@@ -37,8 +43,6 @@ Load the dataset using the widget below
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -53,7 +57,6 @@ display(df)
 
 ```{python}
 #| solution: true
-from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('reaction_order_activation_week48') # Load from package for the solution so it doesn't require to interact.
 display(df)
@@ -65,9 +68,12 @@ Calculate the concentration of A at each timepoint in SI units, by adding new co
 ```{python}
 #| exercise: true
 #| eval: false
-extinction_coeff = ...
-L = 1 # Path length
 
+## Your task: Assign known values ##
+extinction_coeff = ...
+L = ...
+
+## Calculate concentrations using the variables above and the data in the dataframe ##
 df['[A]_(M)_25C'] = ... # For 25 C
 ... # For 40 C
 display(df)
@@ -75,9 +81,12 @@ display(df)
 
 ```{python}
 #| solution: true
+
+## Your task: Assign known values ##
 extinction_coeff = 16700 
 L = 1 # Path length
 
+## Calculate concentrations using the variables above and the data in the dataframe ##
 df['[A]_(M)_25C'] = df['Abs(t)_25C'] / (extinction_coeff * L)
 df['[A]_(M)_40C'] = df['Abs(t)_40C'] / (extinction_coeff * L)
 display(df)

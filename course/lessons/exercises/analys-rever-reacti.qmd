@@ -128,34 +128,7 @@ print(A_eq)
 print(B_eq)
 ```
 
-#### (e) Rates at equilibrium
-
-Calculate the forward and reverse rates at equilibrium at this concentration.
-
-```{python}
-#| exercise: true
-#| eval: false
-
-## Your task: Calculate the forward and backward reaction rates.
-## Hint: Use the variables assigned or calculated from previous exercises.
-r_fwd = ...
-r_bwd = ...
-print(r_fwd)
-print(r_bwd)
-```
-
-```{python}
-#| solution: true
-
-## Your task: Calculate the forward and backward reaction rates.
-## Hint: Use the variables assigned or calculated from previous exercises.
-r_fwd = A_eq * k1
-r_bwd = B_eq * k2
-print(r_fwd)
-print(r_bwd)
-```
-
-#### (f) Initial rate of formation 
+#### (e) Initial rate of formation 
 
 If $[\mathrm{A}]_0 = 10^{-3} \text{M}$ and $[\mathrm{B}]_0 = 0 \text{M}$, calculate the initial rate of formation of B.
 
@@ -175,7 +148,7 @@ r_fwd = A0 * k1
 print(r_fwd)
 ```
 
-#### (g) Time-dependence
+#### (f) Time-dependence
 
 ![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/week_48/reversible_reaction.png){.lightbox}
 
@@ -193,6 +166,9 @@ the concentration [A] as a function of time.
 def A_time(t, A0, k_f, k_b):
 
     return ...
+
+test = A_time(1, 1, 1, 1)
+print(test) # This should 0.567...
 ```
 
 ```{python}
@@ -202,23 +178,30 @@ def A_time(t, A0, k_f, k_b):
 ## Be careful with parentheses.
 def A_time(t, A0, k_f, k_b):
     return (k_b + k_f * np.exp(-(k_f+k_b)*t)) / (k_f + k_b) * A0
+
+
+test = A_time(1, 1, 1, 1)
+print(test) # This should 0.567...
 ```
 
 And then we can use that function to calculate and plot the concentrations as a function of time. 
+As you have seen above, the reaction is pretty fast, so we will just focus on the first second
 
 ```{python}
 #| exercise: true
 #| eval: false
 fig, ax = plt.subplots()
+t = np.linspace(0, 1, 100)
 
-t_max = ... # Set the time in seconds
-t = np.linspace(0, t_max, 100)
-
+## Your task: Calculate [A](t) and [B](t) ##
 At = ... # Use your function to calculate [A](t)
 Bt = ... # Calculate [B](t)
 
+## Plots the concentrations versus time.
 ax.plot(t, At, label='[A](t)')
 ax.plot(t, Bt, label='[B](t)')
+
+## EXTRA: Sets x and y-axis labels. 
 ax.set_ylabel('Concentrations (M)')
 ax.set_xlabel('Time (s)')
 ax.legend()
@@ -227,15 +210,17 @@ ax.legend()
 ```{python}
 #| solution: true
 fig, ax = plt.subplots()
+t = np.linspace(0, 1, 100)
 
-t_max = 0.08 * 60 # Time in seconds
-t = np.linspace(0, t_max, 100)
-
+## Your task: Calculate [A](t) and [B](t) ##
 At = A_time(t, A0, k1, k2)
 Bt = A0 - At
 
+## Plots the concentrations versus time.
 ax.plot(t, At, label='[A](t)')
 ax.plot(t, Bt, label='[B](t)')
+
+## EXTRA: Sets x and y-axis labels. 
 ax.set_ylabel('Concentrations (M)', fontsize=14)
 ax.set_xlabel('Time (s)', fontsize=14)
 ax.legend()
