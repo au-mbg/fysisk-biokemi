@@ -310,7 +310,7 @@ initial_guess = [8, 1]
 fitted_parameters, trash = curve_fit(..., ..., ..., p0=initial_guess)
 
 # Extract parameters
-A_fit, k_fit = fitted_paremters
+A_fit, k_fit = fitted_parameters
 
 print(A_fit)
 print(k_fit)
