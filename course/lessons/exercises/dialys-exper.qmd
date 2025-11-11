@@ -84,7 +84,7 @@ display(df)
 ```
 
 
-#### (c) Plot the data
+#### (d) Plot the data
 
 ```{python}
 #| exercise: true
@@ -112,7 +112,7 @@ ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
 ax.set_ylabel(r'$\bar{n}$', fontsize=16);
 ```
 
-#### (d) Prepare for fitting
+#### (e) Prepare for fitting
 
 Now we want to fit the data to extract $K_D$ and $n$, by using the equation
 
@@ -145,7 +145,7 @@ print(nbar(1, 1, 1)) # Should give 1/2
 print(nbar(21, 47, 2.5)) # Should give 42
 ```
 
-#### (e) Actually fitting
+#### (f) Actually fitting
 
 Finish the code to perform the fitting in the cell below.
 
@@ -201,7 +201,7 @@ print(K_D_fit)
 Are the parameters you find reasonable? How can you tell if they are reasonable by 
 looking at the plot you made earlier? 
 
-#### (f) Plot with fit
+#### (g) Plot with fit
 
 When we have the fitted parameters we can calculate and plot the function. To do so 
 we make an array of values for the independent variable and use our function to 
