@@ -6,6 +6,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.optimize import curve_fit
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
 
@@ -14,9 +16,8 @@ Here, we will analyse the results from an experiment used to quantify affinity o
 Load the dataset as usual using the widget below
 
 ```{python}
+#| exercise: true
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -28,6 +29,7 @@ The command `display(df)` shows the dataframe that you've loaded.
 :::
 
 ```{python}
+#| exercise: true
 #| eval: false
 df = uploader.get_dataframe()
 display(df)
@@ -35,7 +37,6 @@ display(df)
 
 ```{python}
 #| solution: true
-from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('binding_data_sq') # Load from package for the solution so it doesn't require to interact.
 display(df)

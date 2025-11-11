@@ -1,0 +1,360 @@
+## Determination of reaction order and activation energy
+
+```{python}
+#| code-fold: true
+import numpy as np  
+import matplotlib.pyplot as plt
+import pandas as pd
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
+from scipy.optimize import curve_fit
+pd.set_option('display.max_rows', 6)
+```
+
+The irreversible isomerization of compound A to compound B results in a decreasing
+absorbance. The isomerization was followed in a time course at two different temperatures
+(T1 = 25 °C and T2 = 40 °C). The absorbance ($\epsilon$ = 16700 $\mathrm{cm}^{-1} \mathrm{M}^{-1}$) was used to 
+calculate the concentration of compound A in a spectrophotometer with a pathlength 
+of 1 cm. The obtained dataset is given in the file `deter-reacti-order-activ.csv`.
+
+#### (a) Temperatures 
+
+What are the two temperatures in Kelvin? Set them as varilabes in the cell below. 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Convert the temperatures to K and assign to the variables:
+T1 = ...
+T2 = ...
+```
+
+```{python}
+#| solution: true
+
+## Your task: Convert the temperatures to K and assign to the variables:
+T1 = 25 + 273.15
+T2 = 40 + 273.15
+```
+
+#### (b) Load the dataset
+
+Load the dataset using the widget below
+
+```{python}
+#| eval: false
+uploader = DataUploader()
+uploader.display()
+```
+
+Run the next cell **after** uploading the file
+
+```{python}
+#| eval: false
+df = uploader.get_dataframe()
+display(df)
+```
+
+```{python}
+#| solution: true
+from fysisk_biokemi.datasets import load_dataset
+df = load_dataset('reaction_order_activation_week48') # Load from package for the solution so it doesn't require to interact.
+display(df)
+```
+#### (c) SI Units
+
+Calculate the concentration of A at each timepoint in SI units, by adding new columns to the `DataFrame`.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Assign known values ##
+extinction_coeff = ...
+L = ...
+
+## Your task: Calculate concentrations using the variables above and the ##
+## data in the dataframe ##
+df['[A]_(M)_25C'] = ... # For 25 C
+... # For 40 C
+display(df)
+```
+
+```{python}
+#| solution: true
+
+## Your task: Assign known values ##
+extinction_coeff = 16700 
+L = 1 # Path length
+
+## Calculate concentrations using the variables above and the data in the dataframe ##
+df['[A]_(M)_25C'] = df['Abs(t)_25C'] / (extinction_coeff * L)
+df['[A]_(M)_40C'] = df['Abs(t)_40C'] / (extinction_coeff * L)
+display(df)
+```
+
+#### (d) Plot the data
+
+We will be resuing the plot, so we will put the code for it in a function.
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+
+# Task: Plot the two data series in a scatter plot
+# That is: t_(s) vs [A]_(M)_25C 
+# and: t_(s) vs [A]_(M)_40C
+ax.plot(..., ..., 'o', label='[A]_25C')
+ax.plot(..., ..., 'o', label='[A]_40C')
+
+## EXTRA: This sets x and y-axis labels and shows the legends.
+ax.set_xlabel('t (s)')
+ax.set_ylabel('[A] (M)')
+ax.legend()
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots()
+
+# Task: Plot the two data series in a scatter plot
+# That is: t_(s) vs [A]_(M)_25C 
+# and: t_(s) vs [A]_(M)_40C
+ax.plot(df['t_(s)'], df['[A]_(M)_25C'], 'o', label='[A]_25C')
+ax.plot(df['t_(s)'], df['[A]_(M)_40C'], 'o', label='[A]_40C')
+
+## EXTRA: This sets x and y-axis labels and shows the legends.
+ax.set_xlabel('t (s)')
+ax.set_ylabel('[A] (M)')
+ax.legend()
+```
+
+#### (e) Fitting with rate equations
+
+Now want to fit the data using integrated rate laws - in order to ultimately determine 
+the reaction orders of the two datasets.
+
+To do so we need functions for zeroth, first and second order integrated rate laws. 
+
+```{python}
+#| exercise: true
+#| eval: false
+def zeroth_order(t, k, A0):
+    ## Your task: Implement the zeroth order rate equation ##
+    result = ...
+    return result
+
+def first_order(t, k, A0):
+    ## Your task: Implement the first order rate equation ##
+    result = ...
+    return result
+
+def second_order(t, k, A0):
+    ## Your task: Implement the second order rate equation ##
+    result = ...
+    return result
+
+## Use these to check that your functions are correct!  
+print('zeroth_order', zeroth_order(1, 1, 2)) # Should give 1
+print('first_order', first_order(1, 1, 2)) # Should give 0.7357...
+print('second_order', second_order(1, 1, 2)) # Should give 0.4
+```
+
+```{python}
+#| solution: true
+def zeroth_order(t, k, A0):
+    ## Your task: Implement the zeroth order rate equation ##
+    result = A0 - k*t
+    return result
+
+def first_order(t, k, A0):
+    ## Your task: Implement the first order rate equation ##
+    result = A0 * np.exp(-k*t)
+    return result
+
+def second_order(t, k, A0):
+    ## Your task: Implement the second order rate equation ##
+    result = A0 / (1 + 2*k*t*A0)
+    return result
+
+## Use these to check that your functions are correct!  
+print('zeroth_order', zeroth_order(1, 1, 2)) # Should give 1
+print('first_order', first_order(1, 1, 2)) # Should give 0.7357...
+print('second_order', second_order(1, 1, 2)) # Should give 0.4
+```
+
+Having defined these functions we can use them for fitting
+
+```{python}
+
+## Task: Choose one of the rate equations and assign to the variable
+rate_equation = first_order
+
+## Task: Fit to the data at 25 C
+fitted_parameters_25C, trash = curve_fit(rate_equation, df['t_(s)'], df['[A]_(M)_25C'])
+
+## Task: Fit to the data at 40 C
+fitted_parameters_40C, trash = curve_fit(rate_equation, df['t_(s)'], df['[A]_(M)_40C'])
+
+## Extracts & prints the parameters
+k_25C, A0_25C = fitted_parameters_25C
+k_40C, A0_40C = fitted_parameters_40C
+
+print(k_25C, A0_25C)
+print(k_40C, A0_40C)
+```
+
+Having made the fits we plot it together with the two data series. 
+
+```{python}
+
+## Your task: Calculate the fits using the chosen rate equation & 
+## the found parameters found during fitting.
+t_smooth = np.linspace(0, 0.05, 100)
+A_fit_25C = rate_equation(t_smooth, k_25C, A0_25C)
+A_fit_40C = rate_equation(t_smooth, k_40C, A0_40C)
+
+fig, ax = plt.subplots()
+
+## Your task: Plot the two fits
+ax.plot(t_smooth, A_fit_25C)
+ax.plot(t_smooth, A_fit_40C)
+
+## This plots the data sets
+ax.plot(df['t_(s)'], df['[A]_(M)_25C'], 'o', label='[A]_25C', color='C0')
+ax.plot(df['t_(s)'], df['[A]_(M)_40C'], 'o', label='[A]_40C', color='C1')
+
+## EXTRA: Sets the axis labels and legend.
+ax.set_xlabel('t (s)')
+ax.set_ylabel('[A] (M)')
+ax.legend()
+```
+
+You can go back to the cell where you set `rate_equation` and use another of the three: 
+`zeroth_order`, `first_order`, `second_order`.
+
+#### (g) Determine reaction order
+
+Based on your analysis above or by using the plot the created by the next cell 
+determine the reaction order and the units of the rate constant for each of the two 
+reactions. 
+
+```{python}
+#| exercise: true
+#| eval: false
+from fysisk_biokemi.utils.deter_reacti_order_activ import make_plot
+rate_laws = {0: zeroth_order, 1: first_order, 2: second_order}
+make_plot(df, rate_laws)
+```
+
+```{python}
+#| solution: true
+from fysisk_biokemi.utils.deter_reacti_order_activ import make_plot
+rate_laws = {0: zeroth_order, 1: first_order, 2: second_order}
+make_plot(df, rate_laws)
+```
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+Both are first order reactions for which the units of the rate constant is $\frac{1}{\mathrm{s}}$.
+
+:::
+"""
+print(answer)
+```
+
+
+#### (h) Activation energy
+
+With the assumption that the Arrhenius constant $A$ and the activation energy are temperature independent
+in the interval measured, use the Arrhenius equation to calculate the activation energy of the isomerization
+of the compound A. 
+
+You can use $R = 8.314 \times 10^{-3} \ \frac{\text{kJ}}{\text{mol} \cdot \text{K}}$
+
+::: {.callout-caution}
+You need to derive the correct equation __before__ using Python to calculate the result.
+:::
+
+Perform the calculation in the cell below.
+```{python}
+#| exercise: true
+#| eval: false
+activation_energy = ...
+```
+
+```{python}
+#| solution: true
+
+## Your task: Define known & fitted values
+k1 = 20.08175
+k2 = 29.96091
+R = 8.318 * 10**(-3) # kJ / (mol K)
+
+## Your task: Calculate the activation energy
+## Remember: Derive the correct formula first using pen and paper!
+activation_energy = R * np.log(k1/k2)/(1/T2 - 1/T1) # kJ/mol
+print(activation_energy)
+```
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+The Arrhenius equation is 
+
+$$
+k = A \cdot \exp\left(\frac{-E_A}{RT}\right)
+$$
+We have this for the two situations
+$$
+\begin{aligned}
+k_1 &= A \cdot \exp\left(\frac{-E_A}{RT_1}\right) \\
+k_2 &= A \cdot \exp\left(\frac{-E_A}{RT_2}\right)
+\end{aligned}
+$$
+Giving us two equations with two unknowns $A$ and $E_A$ where $E_A$ is the activation 
+energy that we are interested in. 
+
+Taking the log on both sides we get
+$$
+\ln(k) = \ln(A) - \frac{E_A}{RT}
+$$
+Where we can isolate for $\ln(A)$
+$$
+\ln(A) = \ln(k) + \frac{E_A}{RT}
+$$
+We can equate this for both our equations 
+$$
+\ln(k_1) + \frac{E_A}{RT_1} = \ln(k_2) + \frac{E_A}{RT_2}
+$$
+Rearranging a bit we get
+$$
+\ln(k_1) - \ln(k_2) = \frac{E_A}{R} \left( \frac{1}{T_2} - \frac{1}{T_1} \right)
+$$
+Isolating for $E_A$ 
+
+$$
+\begin{aligned}
+E_A &= R\frac{\ln(k_1)-\ln(k_2)}{\left( \frac{1}{T_2} - \frac{1}{T_1} \right)} \\
+& = \frac{R\ln\left(\frac{k_1}{k_2}\right)}{{\left( \frac{1}{T_2} - \frac{1}{T_1} \right)}}
+\end{aligned}
+$$
+
+:::
+"""
+print(answer)
+```

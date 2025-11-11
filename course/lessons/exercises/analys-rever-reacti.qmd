@@ -168,7 +168,7 @@ def A_time(t, A0, k_f, k_b):
     return ...
 
 test = A_time(1, 1, 1, 1)
-print(test) # This should 0.567...
+print(test) # This should give 0.567...
 ```
 
 ```{python}
@@ -181,7 +181,7 @@ def A_time(t, A0, k_f, k_b):
 
 
 test = A_time(1, 1, 1, 1)
-print(test) # This should 0.567...
+print(test) # This should give 0.567...
 ```
 
 And then we can use that function to calculate and plot the concentrations as a function of time. 

@@ -73,7 +73,8 @@ Calculate the concentration of A at each timepoint in SI units, by adding new co
 extinction_coeff = ...
 L = ...
 
-## Calculate concentrations using the variables above and the data in the dataframe ##
+## Your task: Calculate concentrations using the variables above and the ##
+## data in the dataframe ##
 df['[A]_(M)_25C'] = ... # For 25 C
 ... # For 40 C
 display(df)
@@ -115,26 +116,17 @@ def plot_dataframe(ax, df):
 
 ```{python}
 #| solution: true
-def plot_dataframe(ax, df):
-    # Extract from dataframe
-    t = df['t_(s)']
-    A_25 = df['[A]_(M)_25C']
-    A_40 = df['[A]_(M)_40C']
+fig, ax = plt.subplots()
 
-    # First subfigure: t vs [A]
-    ax.plot(t, A_25, 'o', label='[A]_25C')
-    ax.plot(t, A_40, 'o', label='[A]_40C')
-    ax.set_xlabel('t (s)')
-    ax.set_ylabel('[A] (M)')
-    ax.legend()
+# First subfigure: t vs [A]
+ax.plot(df['t_(s)'], df['[A]_(M)_25C'], 'o', label='[A]_25C')
+ax.plot(df['t_(s)'], df['[A]_(M)_40C'], 'o', label='[A]_40C')
+ax.set_xlabel('t (s)')
+ax.set_ylabel('[A] (M)')
+ax.legend()
 ```
 
 You can run this next cell to see your plot and adjust as neccesarry. 
-
-```{python}
-fig, ax = plt.subplots()
-plot_dataframe(ax, df)
-```
 
 #### (e) Determine reaction order
 

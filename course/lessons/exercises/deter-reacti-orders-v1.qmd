@@ -19,6 +19,7 @@ Load the dataset `reaction-orders.xlsx` using the widget below
 
 ```{python}
 #| eval: false
+#| exercise: true
 uploader = DataUploader()
 uploader.display()
 ```
@@ -27,6 +28,7 @@ Run the next cell **after** uploading the file
 
 ```{python}
 #| eval: false
+#| exercise: true
 df = uploader.get_dataframe()
 display(df)
 ```
@@ -96,16 +98,16 @@ ax.set_ylabel('Concentration')
 
 #### (d) Model as N'th-order reaction
 
-We can start by modelling both reactions as zeroths order. We will consider both the 
-the rate constant $k$ and the concentration at time $t = 0$ parameters. 
+We will model the reactions as zeroth, first and second order. We will consider both the 
+the rate constant $k$ and the concentration at time $t = 0$ parameters of the fit. 
 
 ```{python}
 #| exercise: true
 #| eval: false
 def zeroth_order(t, k, A0):
     ## Your task: Implement the zeroth order rate equation ##
-    concentration = ...
-    return concentration
+    result = ...
+    return result
 
 def first_order(t, k, A0):
     ## Your task: Implement the first order rate equation ##
@@ -116,22 +118,34 @@ def second_order(t, k, A0):
     ## Your task: Implement the second order rate equation ##
     result = ...
     return result
+
+## Use these to check that your functions are correct!  
+print('zeroth_order', zeroth_order(1, 1, 2)) # Should give 1
+print('first_order', first_order(1, 1, 2)) # Should give 0.7357...
+print('second_order', second_order(1, 1, 2)) # Should give 0.4
 ```
 
 ```{python}
 #| solution: true
 def zeroth_order(t, k, A0):
     ## Your task: Implement the zeroth order rate equation ##
-    concentration = A0 - k*t
-    return concentration
+    result = A0 - k*t
+    return result
 
 def first_order(t, k, A0):
     ## Your task: Implement the first order rate equation ##
-    return A0 * np.exp(-k*t)
+    result = A0 * np.exp(-k*t)
+    return result
 
 def second_order(t, k, A0):
     ## Your task: Implement the second order rate equation ##
-    return A0 / (1 + 2*k*t*A0)
+    result = A0 / (1 + 2*k*t*A0)
+    return result
+
+## Use these to check that your functions are correct!  
+print('zeroth_order', zeroth_order(1, 1, 2)) # Should give 1
+print('first_order', first_order(1, 1, 2)) # Should give 0.7357...
+print('second_order', second_order(1, 1, 2)) # Should give 0.4
 ```
 
 Then we can make a fit to measurements of each reactant. 
@@ -242,7 +256,7 @@ ax.set_ylabel('Concentration')
 Once you've finished the fitting with one of the rate equations you can go back 
 and change the `rate_equation` variable to try one of the others. 
 
-#### (f) Determining reaction orders
+#### (e) Determining reaction orders
 
 The cell below makes a plot for each rate law in the same panel using your 
 defined rate equations. 
@@ -320,7 +334,7 @@ $$
 print(answer)
 ```
 
-#### (e) Reaction mechanism
+#### (f) Reaction mechanism
 
 What does the above tell you about the reaction mechanism whereby the two compounds
 disappear from the lysate?
