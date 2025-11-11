@@ -19,4 +19,5 @@ testing_ideas/
 **/*.quarto_ipynb
 _site-combined/
 
-
+.github/copilot-instructions.md
+scripts/
