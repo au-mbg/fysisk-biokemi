@@ -45,6 +45,9 @@ $\text{M}$ and $\text{M}\cdot\text{s}^{-1}$, respectively.
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Add new columns with both properties in proper SI units. 
+## Use the column names: '[S]_(M)' and 'V0_(M/s)'
 ...
 ...
 display(df)
@@ -52,6 +55,9 @@ display(df)
 
 ```{python}
 #| solution: true
+
+## Your task: Add new columns with both properties in proper SI units. 
+## Use the column names: '[S]_(M)' and 'V0_(M/s)'
 df['[S]_(M)'] = df['[S]_(mM)'] * 10**(-3)
 df['V0_(M/s)'] = df['V0_(uM/s)'] * 10**(-6)
 display(df)
@@ -67,25 +73,50 @@ Estimate $K_M$ and $V_\mathrm{max}$ from this plot.
 
 fig, ax = plt.subplots()
 
+## Your task: Plot '[S]_(M)' vs 'V0_(M/s)'.
 ... # Your code here. 
 
-# Some settings to make the plot nicer..
+## Sets x and y-axis labels:
 ax.set_xlabel('[S] (M)')
 ax.set_ylabel('$V_0$ (M/s)')
-ax.grid('on')
-ax.set_ylim(0, df['V0_(M/s)'].max()*1.2)
 
+## EXTRA: Sets the y-axis limits.
+ax.set_ylim(0, df['V0_(M/s)'].max()*1.2)
 ```
 
 ```{python}
 #| solution: true
 
 fig, ax = plt.subplots()
+
+## Your task: Plot '[S]_(M)' vs 'V0_(M/s)'.
 ax.plot(df['[S]_(M)'], df['V0_(M/s)'], 'o')
+
+## Sets x and y-axis labels:
 ax.set_xlabel('[S] (M)')
 ax.set_ylabel('$V_0$ (M/s)')
-ax.grid('on')
+
+## EXTRA: Sets the y-axis limits.
 ax.set_ylim(0, df['V0_(M/s)'].max()*1.2)
+```
+
+Put your estimate of $K_M$ and $V_\text{max}$ in the cell below:
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Task: Put your estimate of the two parameters.
+Vmax_estimate = ...
+K_M_estimate = ...
+```
+
+```{python}
+#| solution: true
+
+## Task: Put your estimate of the two parameters.
+Vmax_estimate = 0.0005
+K_M_estimate = 0.005
 ```
 
 #### (c) Fit
@@ -96,21 +127,21 @@ task is fitting we have to define the function we are fitting with
 ```{python}
 #| exercise: true
 #| eval: false
-def michaelis_menten(S, Vmax, Km):
-    return ... # Replace ...
+def michaelis_menten(S, K_M, Vmax):
+    ## Your task: Implement the Michaelis-Menten equation.
+    ## Be careful with parentheses.
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
-def michaelis_menten(S, Vmax, Km):
-    return (Vmax * S) / (Km + S)
+def michaelis_menten(S, K_M, Vmax):
+    ## Your task: Implement the Michaelis-Menten equation.
+    ## Be careful with parentheses.
+    result = (Vmax * S) / (K_M + S)
+    return result
 ```
-
-::: {.callout-caution}
-
-This is one of those places were parentheses are crucial.
-
-::: 
 
 And then we can follow our usual procedure to make the fit
 
@@ -118,32 +149,87 @@ And then we can follow our usual procedure to make the fit
 #| exercise: true
 #| eval: false
 
-x_data = ...
-y_data = ...
+initial_guess = [K_M_estimate, Vmax_estimate]
 
-popt, pcov = ...
-Vmax, Km = popt
+## Your task: Use curve_fit 
+fitted_parameters, trash = ...
 
-print(f"{Vmax = :03f}")
-print(f"{Km = :03f}")
+## Extracts and prints
+K_M_fit, Vmax_fit = fitted_parameters
+print(Vmax_fit)
+print(K_M_fit)
 ```
 
 ```{python}
 #| solution: true
 
-x_data = df['[S]_(M)']
-y_data = df['V0_(M/s)']
+initial_guess = [K_M_estimate, Vmax_estimate]
 
-popt, pcov = curve_fit(michaelis_menten, x_data, y_data)
-Vmax, Km = popt
+## Your task: Use curve_fit
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['V0_(M/s)'], initial_guess)
 
-print(f"{Vmax = :.4f}")
-print(f"{Km = :.4f}")
+## Extracts and prints
+K_M_fit, Vmax_fit = fitted_parameters
+print(Vmax_fit)
+print(K_M_fit)
 ```
 
 How do these values compare to your estimate? 
 
-#### (d) Enzyme concentration
+#### (d) Plot fit & data
+
+Plot the fit alongside the data. 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Evaluate the fit
+S_smooth = np.linspace(0, 0.055)
+V0_fit = ...
+
+## Creates the figure
+fig, ax = plt.subplots()
+
+## Your task: Make plot of the fit.
+...
+
+## This plot the data and sets the options as before.
+ax.plot(df['[S]_(M)'], df['V0_(M/s)'], 'o')
+
+## Sets x and y-axis labels:
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)')
+
+## EXTRA: Sets the y-axis limits.
+ax.set_ylim(0, df['V0_(M/s)'].max()*1.2)
+```
+
+```{python}
+#| solution: true
+
+## Your task: Evaluate the fit
+S_smooth = np.linspace(0, 0.055)
+V0_fit = michaelis_menten(S_smooth, K_M_fit, Vmax_estimate)
+
+## Your task: Make the plot 
+fig, ax = plt.subplots()
+
+## Your task: Make plot of the fit.
+ax.plot(S_smooth, V0_fit)
+
+## This plot the data and sets the options as before.
+ax.plot(df['[S]_(M)'], df['V0_(M/s)'], 'o')
+
+## Sets x and y-axis labels:
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)')
+
+## EXTRA: Sets the y-axis limits.
+ax.set_ylim(0, df['V0_(M/s)'].max()*1.2)
+```
+
+#### (e) Enzyme concentration
 
 The $k_{cat}$ of the enzyme was determined to be $20000 \ \text{s}^{-1}$. 
 Calculate, in the cell below, the concentration of the enzyme used in the assay.
@@ -151,14 +237,18 @@ Calculate, in the cell below, the concentration of the enzyme used in the assay.
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task assign kcat to variable and calculate + print the enzyme_concentration
 kcat = ...
-... # Calculate the enzyme_concentration
-print(...) # Print the concentration.
+enzyme_concentration = ... # Calculate the enzyme_concentration
+print(...)
 ```
 
 ```{python}
 #| solution: true
+
+## Your task assign kcat to variable and calculate + print the enzyme_concentration
 kcat = 20000
-enzyme_concentration = Vmax / kcat 
-print(f'Enzyme concentration: {enzyme_concentration:.3e} M')
+enzyme_concentration = Vmax_fit / kcat 
+print(enzyme_concentration)
 ```
