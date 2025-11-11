@@ -187,6 +187,7 @@ Use the concentration of $[\text{His}]$ at pH 6 calculated in question (b), the 
 ## Hint: You should use the his_conc and reaction_rate variables ##
 R_conc = ...
 k = ...
+print(k)
 ```
 
 ```{python}

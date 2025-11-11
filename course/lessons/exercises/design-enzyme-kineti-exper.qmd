@@ -66,64 +66,65 @@ l = 1 # cm
 
 #### (b) Calculate concentrations
 
-Using Lambert-Beers law, calculate the concentration of product, [P], in M for each time series.
-
-::: {.callout-note title="Loops"}
-Loops are one of the most useful parts of programming, loops allows us to repeat an operation 
-on many different elements. This allows us to not have to repeat code many times, making it 
-simpler to understand and less prone to error - and at the same time more flexible. 
-
-A common type of loop in Python is the `for` loop, which does something `for` every item it is 
-told to consider. The syntax of a `for`-loop is like so: 
-
-```python
-total = 0
-for count in [1, 2, 3, 4, 5]:
-    print(f"I have {count} apples.")
-```
-Which will print 
-```
-I have 1 apples
-I have 2 apples
-I have 3 apples
-I have 4 apples
-I have 5 apples
-```
-So the `for`-loop did the operation of printing a string for each value of `count`. 
-
-When working with a `DataFrame` like in this exercise, we may for example want to do something `for` 
-each column, one way of doing that is to loop over the column names, say we want we have a `DataFrame` `df` with 
-columns named `"col1", "col2", "col3"` we can loop over that as 
-```python
-for name in ['col1', 'col2', 'col3']
-    df[name] = ... # Some operation
-```
-::: 
+Using Lambert-Beers law, calculate the concentration of product, $[P]$, in $\text{M}$ for each time series.
 
 The cell below setups a loop calculate the concentrations for each of these current columns in the dataframe.
 
 ```{python}
 #| exercise: true
 #| eval: false
-substrate_concentrations = [1, 2, 4, 8, 16, 32, 64, 128, 256]
-for s in substrate_concentrations:
-    abs_col_name = f'Abs_S{s}' # This creates a string where the value of 's' is put instead of "{s}"".
-    conc_col_name = f'C_S{s}' # Same type string creation 
-    df[conc_col_name] = ... # Your code here
 
-    # We can print in each iteration of the loop to see what's going on.
-    print(s, abs_col_name, conc_col_name) 
+## Your task calculate the concentration for each 'Abs_SX' column and add it ##
+## as a new column. 
+df['C_S1'] = ...
+df['C_S2'] = ...
+df['C_S4'] = ...
+df['C_S8'] = ...
+df['C_S16'] = ...
+df['C_S32'] = ...
+df['C_S64'] = ...
+df['C_S128'] = ...
+df['C_S256'] = ...
 ```
 
 ```{python}
 #| solution: true
-substrate_concentrations = [1, 2, 4, 8, 16, 32, 64, 128, 256]
-for s in substrate_concentrations:
-    abs_col_name = f'Abs_S{s}' # This creates a string where the value of 's' is put instead of "{s}"".
-    conc_col_name = f'C_S{s}' # Same type string creation 
-    df[conc_col_name] = df[abs_col_name] / (ext_coeff * l)
-    print(s, abs_col_name, conc_col_name)
+
+## Your task calculate the concentration for each 'Abs_SX' column and add it ##
+## as a new column. 
+df['C_S1'] = df['Abs_S1'] / (ext_coeff * l)
+df['C_S2'] = df['Abs_S2'] / (ext_coeff * l)
+df['C_S4'] = df['Abs_S4'] / (ext_coeff * l)
+df['C_S8'] = df['Abs_S8'] / (ext_coeff * l)
+df['C_S16'] = df['Abs_S16'] / (ext_coeff * l)
+df['C_S32'] = df['Abs_S32'] / (ext_coeff * l)
+df['C_S64'] = df['Abs_S64'] / (ext_coeff * l)
+df['C_S128'] = df['Abs_S128'] / (ext_coeff * l)
+df['C_S256'] = df['Abs_S256'] / (ext_coeff * l)
 ```
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Alternative solution
+
+A more advanced alternative solution is to use a for-loop like done below, however
+this is outside the scope of what you're going to learn in this course. 
+
+:::
+"""
+print(answer)
+```
+
+```{python}
+for s in [1, 2, 4, 8, 16, 32, 64, 128, 256]: 
+    df[f'C_{s}'] = df[f'Abs_S{s}'] / (ext_coeff * l)
+```
+
 
 And we can check that the columns we expect have been added to the `DataFrame`.
 
@@ -137,33 +138,37 @@ display(df)
 display(df)
 ```
 
-#### (c) Plot 
+#### (c) Plot
 
-Plot [P] as a function of time for all experiments in one single graph. 
-
-Here it is again very useful to use a `for`-loop
+We focus now on the `C_S32`-column and plot it versus the time measurements.
 
 ```{python}
-fig, ax = plt.subplots(figsize=(7, 4))
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
 
-x_axis = df['time_(s)']
-substrate_concentrations = [1, 2, 4, 8, 16, 32, 64, 128, 256]
-for s in substrate_concentrations:
-    conc_col_name = f'C_S{s}'
-    y_axis = df[conc_col_name]
+## Your task: Plot the C_S32 column 
+ax.plot(df['time_(s)'], df['C_S32'])
 
-    ax.plot(x_axis, y_axis, label=conc_col_name)    
+## EXTRA: 
+ax.set_xlabel('Time (s)')
+ax.set_ylabel('Concentration (M)')
+```
 
-    ax.set_xlabel('Time (s)')
-    ax.set_ylabel('Concentration (M)')
+```{python}
+#| solution: true
+fig, ax = plt.subplots()
 
+## Your task: Plot the C_S32 column 
+ax.plot(df['time_(s)'], df['C_S32'])
 
-ax.legend()    
+## EXTRA: 
+ax.set_xlabel('Time (s)')
+ax.set_ylabel('Concentration (M)')
 ```
 
 #### (d) Extracting $V_0$.
-We want to use Python to determine $V_0$ for each concentration of $S$, in order to create a table of $V_0$ vs $[S]$. To do so we will fit linear functions to the initial parts of the curves, 
-as the slope of these is then $V_0$.
+We want to use Python to determine $V_0$ for each concentration of $S$, in order to create a table of $V_0$ vs $[S]$. To do so we will fit linear functions to the initial parts of the curves, as the slope of these is then $V_0$.
 
 Start by defining a linear function; 
 
@@ -184,84 +189,114 @@ As mentioned we want to to get the slope in the initial part of the reaction,
 where the curves are approximately linear. To do so we need to fit not on 
 all the data-points but only some of them. 
 
-In the cell below `n_points` determines the number of data-points used for the linear fit. 
-Use this cell to find an appropriate value of `n_points`.
+We will first do this for the `C_S32`-column. 
 
 ```{python}
 #| exercise: true
 #| eval: false
 
-# The number of points used to make the fit
+## Determine the x and y data
+x_data_full = df['time_(s)']
+y_data_full = df['C_S32']
+
+## Your task: Set n_points to choose the number of points to fit with.
 n_points = ...
+x_data = x_data_full[0:n_points] # This picks the first n_points points.
+y_data = y_data_full[0:n_points] # This picks the first n_points points.
 
-# Variables to store calculated values.
-slopes = []
-concentrations = []
-
-fig, axes = plt.subplots(3, 3, figsize=(8, 8), sharex=True, sharey='row') # We make the figure while also finding the slopes.
-for i, (s, ax) in enumerate(zip(substrate_concentrations, axes.flatten())): # Don't worry about the details of this.
-
-    # Make the
-    conc_col_name = f'C_S{s}'
-    x_data = df['time_(s)'][:n_points]
-    y_data = df[conc_col_name][:n_points]
-    popt, pcov = curve_fit(linear_func, x_data, y_data)
-
-    # Plot the data
-    ax.plot(df['time_(s)'], df[conc_col_name], 'o', color=f'C{i}', label=f'[S]={s} uM')
-
-    # Plot the fit
-    t_smooth = np.linspace(0, 10, 10)
-    ax.plot(t_smooth, linear_func(t_smooth, *popt), color='black', linestyle='-')
-
-    # Customize
-    ax.set_xlabel('Time (s)')
-    ax.set_ylabel('Concentration (M)')
-    ax.legend()
-
-    # Store calculated slopes and concentrations, concentration converted to molar.
-    slopes.append(popt[0])
-    concentrations.append(s * 10**(-6))
+## Your task: Make the fit.
+fitted_parameters, trash = curve_fit(..., ..., ...)
+a, b = fitted_parameters
 ```
 
 ```{python}
 #| solution: true
 #| fig-align: center
 
-# The number of points used to make the fit
+## Determine the x and y data
+x_data_full = df['time_(s)']
+y_data_full = df['C_S32']
+
+## Your task: Set n_points to choose the number of points to fit with
+n_points = 5
+x_data = x_data_full[0:n_points] # This picks the first n_points points.
+y_data = y_data_full[0:n_points] # This picks the first n_points points.
+
+## Your task: Make the fit.
+fitted_parameters, trash = curve_fit(linear_func, x_data, y_data)
+a, b = fitted_parameters
+```
+
+The cell below plots your fit alongside the data
+
+```{python}
+#| exercise: true
+#| eval: false
+fig, ax = plt.subplots()
+t_smooth = np.linspace(0, 20)
+y_fit = linear_func(t_smooth, a, b)
+ax.plot(x_data_full, y_data_full, 'o')
+ax.plot(t_smooth, y_fit)
+ax.set_xlabel('Time (s)')
+ax.set_ylabel('Concentration')
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots()
+t_smooth = np.linspace(0, 20)
+y_fit = linear_func(t_smooth, a, b)
+ax.plot(x_data_full, y_data_full, 'o')
+ax.plot(t_smooth, y_fit)
+ax.set_xlabel('Time (s)')
+ax.set_ylabel('Concentration')
+```
+
+You want the line to fit well with the initial approximately linear part of the data, 
+adjust `n_points` such that this is the case. 
+
+#### (e) Using all the datasets
+
+In the cell below `n_points` again determines the number of data-points used for the linear fit, 
+and makes the fits and plots for every dataset.
+
+```{python}
+#| fig-align: center
+#| exercise: true
+#| eval: false
+from fysisk_biokemi.utils.design_enzyme_kineti_exper import make_fits_and_plots
+
+## Your task: Select a number of points to fit with that is appropriate in 
+## all cases
+n_points = ...
+
+## This function does what you did in the previous exercise but for all the datasets. ##
+slopes, concentrations = make_fits_and_plots(df, n_points)
+```
+
+```{python}
+#| fig-align: center
+#| solution: true
+from fysisk_biokemi.utils.design_enzyme_kineti_exper import make_fits_and_plots
+
+## Your task: Select a number of points to fit with that is appropriate in 
+## all cases
 n_points = 5
 
-# Variables to store calculated values.
-slopes = []
-concentrations = []
-
-fig, axes = plt.subplots(3, 3, figsize=(8, 8), sharex=True, sharey='row') # We make the figure while also finding the slopes.
-for i, (s, ax) in enumerate(zip(substrate_concentrations, axes.flatten())): # Don't worry about the details of this.
-
-    # Make the
-    conc_col_name = f'C_S{s}'
-    x_data = df['time_(s)'][:n_points]
-    y_data = df[conc_col_name][:n_points]
-    popt, pcov = curve_fit(linear_func, x_data, y_data)
-
-    # Plot the data
-    ax.plot(df['time_(s)'], df[conc_col_name], 'o', color=f'C{i}', label=f'[S]={s} uM')
-
-    # Plot the fit
-    t_smooth = np.linspace(0, 10, 10)
-    ax.plot(t_smooth, linear_func(t_smooth, *popt), color='black', linestyle='-')
-
-    # Customize
-    ax.set_xlabel('Time (s)')
-    ax.set_ylabel('Concentration (M)')
-    ax.legend()
-
-    # Store calculated slopes and concentrations, concentration converted to molar.
-    slopes.append(popt[0])
-    concentrations.append(s * 10**(-6))
+## This function does what you did in the previous exercise but for all the datasets. ##
+slopes, concentrations = make_fits_and_plots(df, n_points)
 ```
 
 Once you're satisfied with the fit you can display the collected slopes with the cell below 
+
+```{python}
+#| exercise: true
+#| eval: false
+V0_df = pd.DataFrame({'[S]_(M)': concentrations, 'V0_(M/s)': slopes})
+display(V0_df)
+```
+
 
 ```{python}
 #| solution: true
@@ -269,44 +304,155 @@ V0_df = pd.DataFrame({'[S]_(M)': concentrations, 'V0_(M/s)': slopes})
 display(V0_df)
 ```
 
-#### (e) Understanding of $V_0$
+#### (f) Understanding of $V_0$
 Why is it important to use $V_0$ rather than $V$ at a later time point when creating the Michaelis-Menten plot?
 
-#### (f) Plotting again.
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+The initial velocities, $V_0$, represent velocities in which the consumption/formation is only dependent on substrate concentration as no product is yet formed.
+
+:::
+"""
+print(answer)
+```
+
+
+#### (g) Plotting again.
 
 Plot $V_0$ against substrate concentration and estimate $k_{cat}$ and $K_M$ visually (remember units) 
 
 ```{python}
 #| exercise: true
 #| eval: false
-
 fig, ax = plt.subplots()
 
-# Make the plot
-...
-
-# Customize with axis labels
-...
+# Your task: Plot the V0_(M/s) versus [S_(M)]
 ...
 ```
 
 ```{python}
 #| solution: true
 #| fig-align: center
-
 fig, ax = plt.subplots()
-ax.plot(V0_df['[S]_(M)'], V0_df['V0_(M/s)'], '-o')
 
-ax.set_xlabel('[S] (M)', fontsize=14)
-ax.set_ylabel('$V_0$ (M/s)', fontsize=14);
+# Your task: Plot the V0_(M/s) versus [S_(M)]
+ax.plot(V0_df['[S]_(M)'], V0_df['V0_(M/s)'], 'o')
+
+## EXTRA: Axis labels.
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)')
 ```
+
+Use the figure to estimate the value of $K_M$ and $V_\text{max}$ and put those in the cell below.
 
 ```{python}
 #| exercise: true
 #| eval: false
 
-# Put your estimated values here: 
-k_cat_estimate = ...
+# Your task: Put your estimated values here: 
 K_M_estimate = ...
+V_max_estimate = ...
+```
 
+```{python}
+#| solution: true
+
+# Your task: Put your estimated values here: 
+K_M_estimate = 30 * 10**(-6)
+V_max_estimate = 10 * 10**(-7)
+```
+
+#### (h) Fitting with Michealis-Menten
+
+Now we can fit with the Michealis-Menten equation, as always in a fitting 
+task we need to implement the model.
+
+```{python}
+#| exercise: true
+#| eval: false
+def michaelis_menten(S, K_M, V_max):
+    ## Your task: Implement the Michaelis-Menten model.
+    result = ...
+    return result
+```
+
+```{python}
+#| solution: true
+def michaelis_menten(S, K_M, V_max):
+    ## Your task: Implement the Michaelis-Menten model.
+    result = (V_max * S) / (K_M + S)
+    return result
+```
+
+Then use the next two cells to make the fit and plot it.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Uses your estimate as initial guess
+initial_guess = [K_M_estimate, V_max_estimate]
+fitted_parameters, trash = curve_fit(michaelis_menten, V0_df['[S]_(M)'], V0_df['V0_(M/s)'], initial_guess)
+
+## Extract and prints the parameters
+K_M_fit, V_max_fit = fitted_parameters
+print(K_M_fit)
+print(V_max_fit)
+```
+
+```{python}
+#| solution: true
+
+## Uses your estimate as initial guess
+initial_guess = [K_M_estimate, V_max_estimate]
+fitted_parameters, trash = curve_fit(michaelis_menten, V0_df['[S]_(M)'], V0_df['V0_(M/s)'], initial_guess)
+
+## Extract and prints the parameters
+K_M_fit, V_max_fit = fitted_parameters
+print(K_M_fit)
+print(V_max_fit)
+```
+
+```{python}
+#| exercise: true
+#| fig-align: center
+#| eval: false
+fig, ax = plt.subplots()
+
+## Evaluates the fit
+S_smooth = np.linspace(0, 0.0003, 100)
+V0_fit = michaelis_menten(S_smooth, K_M_fit, V_max_fit)
+
+## Plots the fit and the data.
+ax.plot(S_smooth, V0_fit)
+ax.plot(V0_df['[S]_(M)'], V0_df['V0_(M/s)'], 'o')
+
+## Axis labels.
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)');
+```
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots()
+
+## Evaluates the fit
+S_smooth = np.linspace(0, 0.0003, 100)
+V0_fit = michaelis_menten(S_smooth, K_M_fit, V_max_fit)
+
+## Plots the fit and the data.
+ax.plot(S_smooth, V0_fit)
+ax.plot(V0_df['[S]_(M)'], V0_df['V0_(M/s)'], 'o')
+
+## Axis labels.
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)');
 ```
