@@ -1,0 +1,15 @@
+title: "Quarto Cheatsheet"
+format:
+  pdf:
+    documentclass: article
+    geometry: "landscape, a4paper"
+    includes:
+      in-header: styles/cheatsheet.scss
+    toc: false
+    number-sections: false
+    fontsize: 9pt
+execute:
+  echo: false
+  warning: false
+  error: false
+  results: hide

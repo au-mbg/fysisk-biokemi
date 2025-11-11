@@ -1,0 +1,242 @@
+---
+title: ""
+format:
+  typst:
+    code-line-numbers: true
+    papersize: a4
+    margin: 
+      x: 0.3in
+      y: 0.3in
+    fontsize: 9pt
+    columns: 3
+    number-sections: false
+    include-in-header:
+      - text: |
+          #set page(
+            flipped: true,
+            header-ascent: 0%,
+            numbering: none,
+            footer: [
+              #align(right)[
+                #text(size: 6pt, fill: gray)[By: Mads-Peter V. Christiansen]
+              ]
+            ],
+            fill: gradient.linear(
+              rgb("#f0f4ff"),
+              rgb("#fff0e8"),
+              rgb("#f0f4ff"),
+              angle: 45deg
+            )
+          )
+          #set columns(3, gutter: 0.3cm)
+          #set par(leading: 0.25em)
+          #set heading(numbering: none)
+          #show heading.where(level: 2): it => [
+            #v(0.15em)
+            #text(size: 9pt, weight: "bold")[#it.body]
+            #v(0.05em)
+          ]
+          #show raw.where(block: true): it => [
+            #set text(size: 9pt)
+            #set par(leading: 0.35em)
+            #v(-0.5em)
+            #block(
+              fill: rgb("#ffffff").transparentize(20%),
+              inset: 0pt,
+              radius: 0pt,
+              width: 100%,
+            )[#it]
+            #v(-0.5em)
+          ]
+execute:
+  echo: false
+  warning: false
+  error: false
+---
+## Parentheses and Brackets
+
+Math grouping with round `( )`
+```python
+prod = (a + b) * c
+frac = L / (L + K_D)
+```
+Function calls with round `( )`
+```python
+print('Hello')
+my_function(input_1, input_2)
+```
+Indexing with square `[ ]`
+```python
+df['conc'] # 'conc'-column.
+x_data[0] # First element of list/array.
+```
+
+## Variables
+
+Assigning a variable 
+
+```python
+my_var = 1000
+my_other_var = 42 * my_var
+```
+
+Adding a column to a `DataFrame`
+```python
+my_array = np.array([1, 2, 3, 4])
+df['my_array_column'] = my_array
+df['col_name'] = df['another_col'] * 2
+```
+
+## Mathematical operations 
+
+Basic operations 
+```python
+1 + 1   # Sum
+1 - 1   # Subtract
+2 * 2   # Multiply
+2 / 2   # Divide
+2 ** 2  # Exponent
+```
+Math functions 
+```python
+np.exp(42)   # Exponential function.
+np.log(42)   # Natural logarithm.
+np.log10(42) # Base 10 logarithm.
+np.sqrt(42)  # Square root.
+```
+Elementwise operations
+```python
+arr_1 = np.array([1, 2, 3])
+arr_2 = np.array([2, 3, 4])
+
+arr_1 * arr_2 # ---> [2, 6, 12]
+df['c1'] + df['c2'] # Sum elementwise
+```
+
+## Basic Plotting
+
+Create a figure
+```python
+fig, ax = plt.subplots()
+```
+Line plot with label
+```python
+ax.plot(x_fit, y_fit, label='Fit Label')
+```
+Scatter plot with label.
+```python
+ax.plot(df['x'], df['y'], 'o', label='Data')
+```
+Customization options
+```python
+ax.legend() # Show legend with graph labels.
+ax.set_xlabel('My x-label') # x-axis label.
+ax.set_ylabel('My y-label') # y-axis label.
+ax.set_title('My title') # The title.
+ax.set_xscale('log') # Logarithmic x-axis.
+```
+
+```{python}
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(figsize=(2.7, 1.25))
+fig.patch.set_alpha(0)  # Transparent figure background
+ax.patch.set_alpha(0)   # Transparent axes background
+x = np.linspace(0, 5)
+y = x**2
+
+x_data = np.linspace(0, 5, 8)
+y_data = x_data**2 + np.random.normal(size=8)
+
+ax.plot(x, y, label='Fit label', color='darkorange')
+ax.plot(x_data, y_data, 'o', label='Data', markersize=4, color='mediumpurple')
+
+ax.set_xlabel('This is the x-label', fontsize=7)
+ax.set_ylabel('This is the y-label', fontsize=7)
+ax.set_title('This is the title', fontsize=7)
+ax.legend(fontsize=7, facecolor='none', framealpha=0)
+ax.tick_params(axis='both', which='major', labelsize=6)
+ax.tick_params(axis='both', which='minor', labelsize=6)
+```
+
+## Function Definition
+
+Definition ends with colon - function body indented by 4 spaces or 1 tab.
+```python
+def my_function(input_1, input_2):   # 1
+    result = input_1 + input_2       # 2
+    return result                    # 3
+```
+| **1:** Function name and  comma-seperated inputs, always end with colon.
+| **2:** Any number of lines of function logic.
+| **3:** `return`-statement specifies the function output.
+
+For example, 
+```python
+def simple_binding(L, K_D):
+    return L / (L + K_D)
+```
+Good idea to test with simple values
+$$
+L = 1, K_D = 1 \rightarrow \frac{1}{1+1} = \frac{1}{2}
+$$
+
+|
+|
+
+```python
+test_result = simple_binding(1, 1)
+print(test_result) # Should give 0.5
+```
+Functions can be called with variables as arguments and return value assigned to a variable.
+```python
+output = binding(df['L'], K_D_fit)
+```
+
+## Curve Fitting
+
+*The first decision is always to choose an appropriate biochemical model*
+
+Making a fit
+```python
+fit_params, trash = curve_fit(model_func, 
+                              x_data, 
+                              y_data, 
+                          initial_guess)
+```
+Extracting parameters
+```python
+# Single parameter, e.g. simple_binding
+K_D_fit = fit_params[0]
+# Two parameters, e.g. Michaelis Menten
+Vmax_fit = fit_params[0] 
+KM_fit = fit_params[1]
+# Or generally
+p1, p2, p3 = fit_params
+```
+
+Evaluating a fit
+```python
+# Make linearly space points
+x_fit = np.linspace(xmin, xmax, n_points)
+# Calc. model with 1 parameter
+y_fit = model_func(x_fit, param1)
+# Calculate model with 2 parameters
+y_fit = model_func(x_fit, p1, p2)
+```
+Calculating residuals
+```python
+y_model =  model_func(x_data, param1)
+residuals = y_data - y_model
+```
+
+## DataFrame Operations
+```python
+rate = df['rate']             # Indexing
+max_rate = df['rate'].max()   # Minimum
+min_rate = df['rate'].min()   # Maximum
+mean_rate = df['rate'].mean() # Mean
+rate0 = df['rate'][0]         # Index twice
+```
+---
