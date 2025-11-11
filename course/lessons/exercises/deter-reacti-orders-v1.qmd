@@ -94,26 +94,44 @@ ax.set_xlabel('Time [s]')
 ax.set_ylabel('Concentration')
 ```
 
-#### (d) Model as zeroth-order reaction
+#### (d) Model as N'th-order reaction
 
-We can start by modelling both reactions as zeroths order. To do so we first 
-define the model 
+We can start by modelling both reactions as zeroths order. We will consider both the 
+the rate constant $k$ and the concentration at time $t = 0$ parameters. 
 
 ```{python}
 #| exercise: true
 #| eval: false
 def zeroth_order(t, k, A0):
-    ## Your task: Implement the zeroth order rate equation
+    ## Your task: Implement the zeroth order rate equation ##
     concentration = ...
     return concentration
+
+def first_order(t, k, A0):
+    ## Your task: Implement the first order rate equation ##
+    result = ...
+    return result
+
+def second_order(t, k, A0):
+    ## Your task: Implement the second order rate equation ##
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
 def zeroth_order(t, k, A0):
-    ## Your task: Implement the zeroth order rate equation
+    ## Your task: Implement the zeroth order rate equation ##
     concentration = A0 - k*t
     return concentration
+
+def first_order(t, k, A0):
+    ## Your task: Implement the first order rate equation ##
+    return A0 * np.exp(-k*t)
+
+def second_order(t, k, A0):
+    ## Your task: Implement the second order rate equation ##
+    return A0 / (1 + 2*k*t*A0)
 ```
 
 Then we can make a fit to measurements of each reactant. 
@@ -122,66 +140,56 @@ Then we can make a fit to measurements of each reactant.
 #| exercise: true
 #| eval: false
 
-## Your task: Look at the displayed dataframe to determine the initial concs.
-## Assign them to these variables in SI units (Molar).
-A1_0 = ...
-A2_0 = ...
+## Your task: Pick a rate equation and assign it to the variable rate_equation
+## You can change this to first_order or second_order
+## Do not call the function - so no (...) just assign it to the variable.
+rate_equation = zeroth_order 
 
-
-## Helper functions: Don't worry too much about these. 
-def zeroth_order_A1(t, k):
-    ## Uses the initial concentration of A1
-    return zeroth_order(t, k, A1_0)
-
-def zeroth_order_A2(t, k):
-    ## Uses the initial concentration of A2
-    return zeroth_order(t, k, A2_0)
-
-## Your task: Make a fit of the A1_M data using the zeroth_order_A1 function ##
+## Your task: Make a fit of the A1_M data with 'rate_equation'.
 fitted_parameters_A1, trash = ...
-k_A1 = fitted_parameters_A1[0]
+k_A1_fit = fitted_parameters_A1[0]
+A1_0_fit = fitted_parameters_A1[1]
 
-## Your task: Make a fit of the A2_M data using the zeroth_order_A2 function ##
+## Your task: Make a fit of the A2_M with 'rate_equation'.
 fitted_parameters_A2, trash = ...
-k_A2 = fitted_parameters_A2[0]
+k_A2_fit = fitted_parameters_A2[0]
+A2_0_fit = fitted_parameters_A2[1]
 
 ## Prints the found parameters
-print(k_A1)
-print(k_A2)
+print(k_A1_fit)
+print(A1_0_fit)
+
+print(k_A2_fit)
+print(A2_0_fit)
 ```
 
 ```{python}
 #| solution: true
 
-## Your task: Look at the displayed dataframe to determine the initial concs.
-## Assign them to these variables in SI units (Molar).
-A1_0 = 2.0 * 10**(-6)
-A2_0 = 4.5 * 10**(-6)
+## Your task: Pick a rate equation and assign it to the variable rate_equation
+## You can change this to first_order or second_order
+## Do not call the function - so no (...) just assign it to the variable.
+rate_equation = zeroth_order
 
+## Your task: Make a fit of the A1_M data with 'rate_equation'.
+fitted_parameters_A1, trash = curve_fit(rate_equation, df['Time_s'], df['A1_M'])    
+k_A1_fit = fitted_parameters_A1[0]
+A1_0_fit = fitted_parameters_A1[1]
 
-## Helper functions: Don't worry too much about these. 
-def zeroth_order_A1(t, k):
-    ## Uses the initial concentration of A1
-    return zeroth_order(t, k, A1_0)
-
-def zeroth_order_A2(t, k):
-    ## Uses the initial concentration of A2
-    return zeroth_order(t, k, A2_0)
-
-## Your task: Make a fit of the A1_M data using the zeroth_order_A1 function ##
-fitted_parameters_A1, trash = curve_fit(zeroth_order_A1, df['Time_s'], df['A1_M'])    
-k_A1 = fitted_parameters_A1[0]
-
-## Your task: Make a fit of the A2_M data using the zeroth_order_A2 function ##
-fitted_parameters_A2, trash = curve_fit(zeroth_order_A2, df['Time_s'], df['A2_M'])
-k_A2 = fitted_parameters_A2[0]
+## Your task: Make a fit of the A2_M with 'rate_equation'.
+fitted_parameters_A2, trash = curve_fit(rate_equation, df['Time_s'], df['A2_M'])
+k_A2_fit = fitted_parameters_A2[0]
+A2_0_fit = fitted_parameters_A2[1]
 
 ## Prints the found parameters
-print(k_A1)
-print(k_A2)
+print(k_A1_fit)
+print(A1_0_fit)
+
+print(k_A2_fit)
+print(A2_0_fit)
 ```
 
-Now that we fitted the data as a zeroth order reaction, we can plot to see how well it fits
+Now that we fitted the data using one of the rate equations, we can plot to see how well it fits
 
 ```{python}
 #| exercise: true
@@ -189,12 +197,14 @@ Now that we fitted the data as a zeroth order reaction, we can plot to see how w
 
 fig, ax = plt.subplots() 
 
-t_smooth = np.linspace(0, 55)
-A1_fit = zeroth_order_A1(t_smooth, k_A1)
-A2_fit = zeroth_order_A2(t_smooth, k_A2)
 
-## Your task: Make plots of concentration (y) versus time (x). ##
-## Hint: ax.plot(x_data, y_data, 'o') to make a scatter plot. ##
+## Your task: Finish the code to calculate the fit for A2.
+t_smooth = np.linspace(0, 55)
+A1_fit = rate_equation(t_smooth, k_A1_fit, A1_0_fit)
+A2_fit = ...
+
+
+## Your task: Plot the fits 
 ...
 ...
 
@@ -213,11 +223,10 @@ ax.set_ylabel('Concentration')
 fig, ax = plt.subplots() 
 
 t_smooth = np.linspace(0, 55)
-A1_fit = zeroth_order_A1(t_smooth, k_A1)
-A2_fit = zeroth_order_A2(t_smooth, k_A2)
+A1_fit = rate_equation(t_smooth, k_A1_fit, A1_0_fit)
+A2_fit = rate_equation(t_smooth, k_A2_fit, A2_0_fit)
 
-## Your task: Make plots of concentration (y) versus time (x). ##
-## Hint: ax.plot(x_data, y_data, 'o') to make a scatter plot. ##
+## Your task: Plot the fits 
 ax.plot(t_smooth, A1_fit)
 ax.plot(t_smooth, A2_fit)
 
@@ -230,55 +239,19 @@ ax.set_xlabel('Time [s]')
 ax.set_ylabel('Concentration')
 ```
 
-This doesn't fit particularly well in either case! 
+Once you've finished the fitting with one of the rate equations you can go back 
+and change the `rate_equation` variable to try one of the others. 
 
 #### (f) Determining reaction orders
 
-Our assumption of a zeroth order reaction is not great, so we can perform the same 
-analysis with first and second order reactions.
-
-In the cell below finish the code to define functions for the integrated rate laws of 
-first and second order.
-
-```{python}
-#| exercise: true
-#| eval: false
-def first_order(t, k, A0):
-    ## Your task: Implement the first order rate equation ##
-    result = ...
-    return result
-
-def second_order(t, k, A0):
-    ## Your task: Implement the second order rate equation ##
-    result = ...
-    return result
-
-## EXTRA: You don't need to edit or understand this. 
-rate_laws = {0: zeroth_order, 1: first_order, 2:second_order}
-```
-
-```{python}
-#| solution: true
-def first_order(t, k, A0):
-    return A0 * np.exp(-k*t)
-
-def second_order(t, k, A0):
-    return A0 / (1 + 2*k*t*A0)
-
-## EXTRA: You don't need to edit or understand this. 
-rate_laws = {0: zeroth_order, 1: first_order, 2:second_order}
-```
-
-
-The procedure to fit is the same as we saw for zeroth order, in order to help you 
-the cell below uses your functions to fit in exactly that way and makes a plot 
-containing fits for each dataset for zeroth, first and second order integrated rate law 
-models. 
+The cell below makes a plot for each rate law in the same panel using your 
+defined rate equations. 
 
 ```{python}
 #| exercise: true
 #| eval: false
 from fysisk_biokemi.utils.deter_reacti_orders import make_plot
+rate_laws = {0: zeroth_order, 1: first_order, 2: second_order}
 make_plot(df, rate_laws)
 ```
 
@@ -286,6 +259,7 @@ make_plot(df, rate_laws)
 ```{python}
 #| solution: true
 from fysisk_biokemi.utils.deter_reacti_orders import make_plot
+rate_laws = {0: zeroth_order, 1: first_order, 2: second_order}
 make_plot(df, rate_laws)
 ```
 
@@ -340,13 +314,6 @@ can conclude that the unit of $k$ must cancel those of $t \cdot A_0$, so
 $$
 k \rightarrow \frac{1}{t \cdot A_0} \rightarrow \frac{1}{\text{s} \cdot \text{M}}
 $$
-
-
-
-
-
-
-
 
 :::
 """

@@ -357,7 +357,7 @@ signal_fit = exponential_decay(t_smooth, A_fit, k_fit)
 Now we can plot the fit along with the data. 
 
 ```{python}
-#| solution: true
+#| exercise: true
 #| eval: false
 fig, ax = plt.subplots()
 
