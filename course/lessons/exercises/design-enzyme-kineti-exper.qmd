@@ -11,6 +11,8 @@ from IPython.display import display
 pd.set_option('display.max_rows', 6)
 ```
 
+We have finally arrived at the part of the course where we are ready to analyse the data from your lab exercise in the first quarter. First, however we will analyse a similar data set where we are sure about the data quality (😉) to illustrate the process.
+
 In the Excel document `design-enzyme-kineti-exper.xlsx` you will find a data set in which an enzyme
 catalyzed formation of product P, with varying start concentration of substrates, 
 [S], was followed over time. The product absorbs light at a specific wavelength 
@@ -121,6 +123,8 @@ print(answer)
 ```
 
 ```{python}
+#| solution: true
+#| eval: false
 for s in [1, 2, 4, 8, 16, 32, 64, 128, 256]: 
     df[f'C_{s}'] = df[f'Abs_S{s}'] / (ext_coeff * l)
 ```

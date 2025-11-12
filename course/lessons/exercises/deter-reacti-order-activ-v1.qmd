@@ -189,6 +189,28 @@ print('second_order', second_order(1, 1, 2)) # Should give 0.4
 Having defined these functions we can use them for fitting
 
 ```{python}
+#| exercise: true
+#| eval: false
+
+## Task: Choose one of the rate equations and assign to the variable
+rate_equation = ... # Choose a fitting model here. 
+
+## Task: Fit to the data at 25 C
+fitted_parameters_25C, trash = curve_fit(rate_equation, df['t_(s)'], df['[A]_(M)_25C'])
+
+## Task: Fit to the data at 40 C
+fitted_parameters_40C, trash = curve_fit(rate_equation, df['t_(s)'], df['[A]_(M)_40C'])
+
+## Extracts & prints the parameters
+k_25C, A0_25C = fitted_parameters_25C
+k_40C, A0_40C = fitted_parameters_40C
+
+print(k_25C, A0_25C)
+print(k_40C, A0_40C)
+```
+
+```{python}
+#| solution: true
 
 ## Task: Choose one of the rate equations and assign to the variable
 rate_equation = first_order
@@ -210,6 +232,35 @@ print(k_40C, A0_40C)
 Having made the fits we plot it together with the two data series. 
 
 ```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Calculate the fits using the chosen rate equation & 
+## the found parameters found during fitting.
+## Hint: You should use the 'rate_equation'-function.
+t_smooth = np.linspace(0, 0.05, 100)
+A_fit_25C = ...
+A_fit_40C = ...
+
+fig, ax = plt.subplots()
+
+## Your task: Plot the two fits
+ax.plot(t_smooth, A_fit_25C)
+ax.plot(t_smooth, A_fit_40C)
+
+## This plots the data sets
+ax.plot(df['t_(s)'], df['[A]_(M)_25C'], 'o', label='[A]_25C', color='C0')
+ax.plot(df['t_(s)'], df['[A]_(M)_40C'], 'o', label='[A]_40C', color='C1')
+
+## EXTRA: Sets the axis labels and legend.
+ax.set_xlabel('t (s)')
+ax.set_ylabel('[A] (M)')
+ax.legend()
+```
+
+
+```{python}
+#| solution: true
 
 ## Your task: Calculate the fits using the chosen rate equation & 
 ## the found parameters found during fitting.
@@ -236,11 +287,14 @@ ax.legend()
 You can go back to the cell where you set `rate_equation` and use another of the three: 
 `zeroth_order`, `first_order`, `second_order`.
 
-#### (g) Determine reaction order
+#### (f) Determine reaction order
 
 Based on your analysis above or by using the plot the created by the next cell 
 determine the reaction order and the units of the rate constant for each of the two 
 reactions. 
+
+The function makes the same fits that you made, but makes them all at once and 
+plots the results side by side. 
 
 ```{python}
 #| exercise: true
@@ -256,6 +310,16 @@ from fysisk_biokemi.utils.deter_reacti_order_activ import make_plot
 rate_laws = {0: zeroth_order, 1: first_order, 2: second_order}
 make_plot(df, rate_laws)
 ```
+
+::: {.callout-note collapse="true"}
+
+## Information on 'make_plot'
+
+The function 'make_plot' is beyond what is expected for this course, if you are 
+interested you can see the source code for it on [github](https://github.com/au-mbg/fysisk-biokemi/blob/main/src/fysisk_biokemi/utils/deter_reacti_order_activ.py).
+
+:::
+
 
 ```{python}
 #| solution: true
@@ -273,7 +337,7 @@ print(answer)
 ```
 
 
-#### (h) Activation energy
+#### (g) Activation energy
 
 With the assumption that the Arrhenius constant $A$ and the activation energy are temperature independent
 in the interval measured, use the Arrhenius equation to calculate the activation energy of the isomerization

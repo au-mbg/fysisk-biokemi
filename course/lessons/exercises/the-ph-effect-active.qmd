@@ -21,45 +21,44 @@ $$
 
 #### (a) Percentage unprotonated
 
-Using the Henderson-Hasselbach equation, calculate the percentage of unprotonated 
-Histidine, $\text{His}$, at pH 6.0. 
+What percentage of Histidine is unprotonated at pH 6.0. What do you notice about the relationship between pH and pKa in this case? (You should not need to do any arithemtic or algebra to answer this exercise.)
 
 ```{python}
 #| exercise: true
 #| eval: false 
 
-## Your set known values. ##
-pKa = ...
-pH = ...
-
-## Your task: percentage of unprotonated 
-## It may be useful to do an intermediate calculation..
-... # Intermediate
+## Your task: What percentage is unprotonated? 
 percentage_unprotonated = ...
-
-## Prints
-print(percentage_unprotonated)
 ```
 
 ```{python}
 #| solution: true
 
-## Your set known values. ##
-pKa = 6.0
-pH = 6.0
-
-## Your task: percentage of unprotonated 
-## It may be useful to do an intermediate calculation..
-ratio = 10 ** (pH - pKa) # The intermediate
-percentage_unprotonated = 1 / (1 + ratio) * 100
-
-## Prints
-print(percentage_unprotonated)
+## Your task: What percentage is unprotonated? 
+percentage_unprotonated = 50
 ```
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+Because $\text{pH} = \text{pKa}$ the percentage of unprotonated is 50%, so there 
+is no need to do a direct calculation in this case.
+
+:::
+"""
+print(answer)
+```
+
 
 #### (b) Concentration 
 
-Calculate $[\text{His}]$ at pH 6
+Determine $[\text{His}]$ at pH 6
 
 ```{python}
 #| exercise: true
@@ -76,7 +75,11 @@ print(his_conc)
 
 ## Your task: Assign known value and calculate [His]
 total_conc = 10**(-3)
-his_conc = total_conc * percentage_unprotonated
+his_conc = total_conc * percentage_unprotonated / 100 # Unit: M
+print(his_conc)
+
+# Or directly 
+his_conc = 0.5 * 10**(-3) # Unit: M
 print(his_conc)
 ```
 
