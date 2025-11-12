@@ -315,7 +315,7 @@ make_plot(df, rate_laws)
 
 ## Information on 'make_plot'
 
-The function 'make_plot' is beyond what is expected for this course, if you are 
+The function 'make_plot' is beyond what is expected for this course, however if you are 
 interested you can see the source code for it on [github](https://github.com/au-mbg/fysisk-biokemi/blob/main/src/fysisk_biokemi/utils/deter_reacti_order_activ.py).
 
 :::
