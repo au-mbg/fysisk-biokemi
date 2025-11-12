@@ -16,28 +16,42 @@ format-links:
 
 ---
 
+{{< pagebreak >}}
+
 {{< include exercises/deter-reacti-orders-v1.qmd >}}
 
 ---
+
+{{< pagebreak >}}
 
 {{< include exercises/analys-rever-reacti.qmd >}}
 
 ---
 
+{{< pagebreak >}}
+
 {{< include exercises/deter-reacti-order-activ-v1.qmd >}}
 
 ---
+
+{{< pagebreak >}}
 
 {{< include exercises/the-ph-effect-active.qmd >}}
 
 ---
 
+{{< pagebreak >}}
+
 {{< include exercises/quali-descr-michae-kineti.qmd >}}
 
 ---
 
+{{< pagebreak >}}
+
 {{< include exercises/design-enzyme-kineti-exper.qmd >}}
 
 ---
+
+{{< pagebreak >}}
 
 {{< include exercises/lab_exercise.qmd >}}
