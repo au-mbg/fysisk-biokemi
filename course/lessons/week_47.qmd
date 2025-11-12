@@ -12,6 +12,8 @@ format-links:
 
 ---
 
+{{< pagebreak >}}
+
 {{< include exercises/tricky-binding.qmd >}}
 
 ---
