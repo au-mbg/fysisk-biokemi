@@ -1,30 +1,42 @@
 ## Qualitative description of Michaelis-Menten kinetics 
 
 ```{python}
-#| eval: false
+#| code-fold: true
+import plotly
 import fysisk_biokemi.widgets as fbw
 from fysisk_biokemi.widgets.utils import enable_custom_widget_colab, disable_custom_widget_colab
-
-import plotly
 from IPython.display import display, HTML
 enable_custom_widget_colab()
+```
+
+```{python}
+#| eval: false
 fbw.michaelis_menten_demo()
 ```
 
 Use the widget created by the cell above to answer the following the questions.
 
-#### (a)
+#### (a) Change $K_M$
 
 Setting $V_\mathrm{max} = 400$ and $[E]_\mathrm{tot} = 0.0005$, change $K_M$ from 0.5 to 5 to 10 to 50. Describe the change in curve appearance and explain it using the Michaelis-Menten (MM) equation.
 
-#### (b)
+#### (b) Meaning of $K_M$
 
 What is the biological meaning of $K_M$?
 
-#### (c)
+#### (c) Change $V_\mathrm{max}$
 
 Now set $[E]_\mathrm{tot} = 0.0005$, and $K_M = 5$, change $V_\mathrm{max}$ from 40 to 100 to 900. Do you observe any changes? Explain your answer using the widget and the MM equation
 
-#### (d)
+#### (d) Change $[E]_\mathrm{tot}$
 
 Now set $K_M = 5$ and $V_\mathrm{max} = 100$, change $[E]_\mathrm{tot}$ from 0.0005 to 0.05. Do you observe any change in curve appearance, in $k_\mathrm{cat}$ or in $k_\mathrm{cat}/K_M$? Explain your answer
+
+#### (f) Training estimation skills.
+
+Train your estimation skills using the widget below.
+
+```{python}
+#| eval: false
+fbw.michealis_menten_guess()
+```

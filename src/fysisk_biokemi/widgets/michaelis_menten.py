@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 class MichaelisMenten:
     def __init__(self):
         # Inputs:
-        self.km_input = widgets.FloatSlider(value=5, min=0.1, max=50.0, step=0.1, description="Km:", disabled=False)
+        self.km_input = widgets.FloatSlider(value=5, min=0.1, max=100.0, step=0.1, description="Km:", disabled=False)
 
         self.vmax_input = widgets.FloatSlider(value=30, min=1, max=1000.0, step=1, description="Vmax:", disabled=False)
 

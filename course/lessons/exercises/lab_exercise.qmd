@@ -40,7 +40,7 @@ df = load_dataset('kinetics_LØ') # Load from package for the solution so it doe
 display(df)
 ```
 
-#### (a) Units
+#### (a) Absorbance to concentration
 
 The measured absorbances are unitless, they are the log of the ratio between the incoming light intensity and the transmitted light intensity. We would like to work with concentrations instead, so we need to convert the absorbance to concentration. The conversion is done using Lambert-Beer's law. 
 
