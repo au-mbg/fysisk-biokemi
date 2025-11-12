@@ -53,7 +53,7 @@ assign it to a variable. Also assign the light path length to a variable.
 #| exercise: true
 #| eval: false
 
-## Assign known values in SI units.
+## Your task: Assign known values in SI units.
 ...
 ...
 ```
@@ -61,7 +61,7 @@ assign it to a variable. Also assign the light path length to a variable.
 ```{python}
 #| solution: true
 
-## Assign known values in SI units.
+## Your task: Assign known values in SI units.
 ext_coeff = 0.068 / 10**(-6) # 1/(M cm)
 l = 1 # cm
 ```
@@ -161,6 +161,7 @@ ax.set_ylabel('Concentration (M)')
 
 ```{python}
 #| solution: true
+#| fig-align: center
 fig, ax = plt.subplots()
 
 ## Your task: Plot the C_S32 column 
@@ -172,7 +173,19 @@ ax.set_ylabel('Concentration (M)')
 ```
 
 #### (d) Extracting $V_0$.
-We want to use Python to determine $V_0$ for each concentration of $S$, in order to create a table of $V_0$ vs $[S]$. To do so we will fit linear functions to the initial parts of the curves, as the slope of these is then $V_0$.
+
+In enzyme kinetics, we usually focus on the initial time points, i.e. before the 
+reaction has progressed far enough to allow products to be accumulated and substrate
+to be depleted. In this early stage of the reaction, we know that the concentration 
+has not changed significantly yet and thus the [S] = S0. Therefore, the reaction 
+time course tends to be linear in this range. 
+
+In the following, we want to just fit the initial part of the curve. We do this by 
+defining a new data array containing only the first values. 
+
+We want to use Python to determine $V_0$ for each concentration of $S$, in order 
+to create a table of $V_0$ vs $[S]$. To do so we will fit linear functions to the
+initial parts of the curves, as the slope of these is then $V_0$.
 
 Start by defining a linear function; 
 
@@ -291,6 +304,15 @@ n_points = 5
 ## This function does what you did in the previous exercise but for all the datasets. ##
 slopes, concentrations = make_fits_and_plots(df, n_points)
 ```
+
+::: {.callout-note collapse="true"}
+
+## Information on 'make_fits_and_plot'
+
+The function 'make_fits_and_plots' is beyond what is expected for this course, however if you are 
+interested you can see the source code for it on [github](https://github.com/au-mbg/fysisk-biokemi/blob/main/src/fysisk_biokemi/utils/design_enzyme_kineti_exper.py).
+
+:::
 
 Once you're satisfied with the fit you can display the collected slopes with the cell below 
 
@@ -424,6 +446,8 @@ print(K_M_fit)
 print(V_max_fit)
 ```
 
+How do these compare to your estimates of the two parameters? 
+
 ```{python}
 #| exercise: true
 #| fig-align: center
@@ -460,3 +484,4 @@ ax.plot(V0_df['[S]_(M)'], V0_df['V0_(M/s)'], 'o')
 ax.set_xlabel('[S] (M)')
 ax.set_ylabel('$V_0$ (M/s)');
 ```
+
