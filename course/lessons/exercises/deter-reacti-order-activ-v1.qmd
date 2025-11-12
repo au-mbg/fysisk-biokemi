@@ -196,10 +196,10 @@ Having defined these functions we can use them for fitting
 rate_equation = ... # Choose a fitting model here. 
 
 ## Task: Fit to the data at 25 C
-fitted_parameters_25C, trash = curve_fit(rate_equation, df['t_(s)'], df['[A]_(M)_25C'])
+fitted_parameters_25C, trash = curve_fit(rate_equation, ..., ...)
 
 ## Task: Fit to the data at 40 C
-fitted_parameters_40C, trash = curve_fit(rate_equation, df['t_(s)'], df['[A]_(M)_40C'])
+fitted_parameters_40C, trash = curve_fit(rate_equation, ..., ...)
 
 ## Extracts & prints the parameters
 k_25C, A0_25C = fitted_parameters_25C

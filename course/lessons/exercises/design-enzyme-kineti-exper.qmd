@@ -193,6 +193,7 @@ Start by defining a linear function;
 #| exercise: true
 #| eval: false
 def linear_func(x, a, b):
+    ## Your task: Finish implementing the linear function
     return ...
 ```
 

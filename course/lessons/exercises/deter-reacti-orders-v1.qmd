@@ -157,7 +157,7 @@ Then we can make a fit to measurements of each reactant.
 ## Your task: Pick a rate equation and assign it to the variable rate_equation
 ## You can change this to first_order or second_order
 ## Do not call the function - so no (...) just assign it to the variable.
-rate_equation = zeroth_order 
+rate_equation = ...
 
 ## Your task: Make a fit of the A1_M data with 'rate_equation'.
 fitted_parameters_A1, trash = ...
@@ -211,12 +211,10 @@ Now that we fitted the data using one of the rate equations, we can plot to see 
 
 fig, ax = plt.subplots() 
 
-
 ## Your task: Finish the code to calculate the fit for A2.
 t_smooth = np.linspace(0, 55)
 A1_fit = rate_equation(t_smooth, k_A1_fit, A1_0_fit)
 A2_fit = ...
-
 
 ## Your task: Plot the fits 
 ...
@@ -236,6 +234,7 @@ ax.set_ylabel('Concentration')
 #| fig-align: center
 fig, ax = plt.subplots() 
 
+## Your task: Finish the code to calculate the fit for A2.
 t_smooth = np.linspace(0, 55)
 A1_fit = rate_equation(t_smooth, k_A1_fit, A1_0_fit)
 A2_fit = rate_equation(t_smooth, k_A2_fit, A2_0_fit)

@@ -1,5 +1,6 @@
 ---
 title: Week 47
+subtitle: v0.0.0
 engine: jupyter
 categories: ['regression', 'calculation', 'data', 'plotting']
 format-links:

@@ -94,6 +94,14 @@ plt.show()
 Put your estimate of $K_D$ in the cell below 
 
 ```{python}
+#| exercise: true
+#| eval: false
+## Your task: Assign your estimate of K_D to the variable below ##
+K_D_estimate = ...
+```
+
+```{python}
+#| solution: true
 ## Your task: Assign your estimate of K_D to the variable below ##
 K_D_estimate = 0.0001
 ```

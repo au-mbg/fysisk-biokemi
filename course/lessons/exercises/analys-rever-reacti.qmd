@@ -130,7 +130,7 @@ print(B_eq)
 
 #### (e) Initial rate of formation 
 
-If $[\mathrm{A}]_0 = 10^{-3} \text{M}$ and $[\mathrm{B}]_0 = 0 \text{M}$, calculate the initial rate of formation of B.
+If $[\mathrm{A}]_0 = 10^{-3} \ \text{M}$ and $[\mathrm{B}]_0 = 0 \ \text{M}$, calculate the initial rate of formation of B.
 
 ```{python}
 #| exercise: true
@@ -164,8 +164,8 @@ the concentration [A] as a function of time.
 ## Your task: Implement the function to calculate the time dependent concentration.
 ## Be careful with parentheses.
 def A_time(t, A0, k_f, k_b):
-
-    return ...
+    A_t = ...
+    return A_t
 
 test = A_time(1, 1, 1, 1)
 print(test) # This should give 0.567...
@@ -177,7 +177,8 @@ print(test) # This should give 0.567...
 ## Your task: Implement the function to calculate the time dependent concentration.
 ## Be careful with parentheses.
 def A_time(t, A0, k_f, k_b):
-    return (k_b + k_f * np.exp(-(k_f+k_b)*t)) / (k_f + k_b) * A0
+    A_t = (k_b + k_f * np.exp(-(k_f+k_b)*t)) / (k_f + k_b) * A0
+    return A_t
 
 
 test = A_time(1, 1, 1, 1)
