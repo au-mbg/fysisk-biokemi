@@ -80,6 +80,10 @@ $$K_{\text{eq}} = \frac{k_1}{k_2}$$
 print(answer)
 ```
 
+:::::: {.cell .markdown}
+
+::::::
+
 #### (c) Calculate $K_{\mathrm{eq}}$
 
 ```{python}
@@ -102,6 +106,10 @@ k2 = 1
 K_eq = k1 / k2
 print(K_eq)
 ```
+
+:::::: {.cell .markdown}
+
+::::::
 
 #### (d) Equilibrium concentrations 
 

@@ -20,17 +20,33 @@ Use the widget created by the cell above to answer the following the questions.
 
 Setting $V_\mathrm{max} = 400$ and $[E]_\mathrm{tot} = 0.0005$, change $K_M$ from 0.5 to 5 to 10 to 50. Describe the change in curve appearance and explain it using the Michaelis-Menten (MM) equation.
 
+:::::: {.cell .markdown}
+
+::::::
+
 #### (b) Meaning of $K_M$
 
 What is the biological meaning of $K_M$?
+
+:::::: {.cell .markdown}
+
+::::::
 
 #### (c) Change $V_\mathrm{max}$
 
 Now set $[E]_\mathrm{tot} = 0.0005$, and $K_M = 5$, change $V_\mathrm{max}$ from 40 to 100 to 900. Do you observe any changes? Explain your answer using the widget and the MM equation
 
+:::::: {.cell .markdown}
+
+::::::
+
 #### (d) Change $[E]_\mathrm{tot}$
 
-Now set $K_M = 5$ and $V_\mathrm{max} = 100$, change $[E]_\mathrm{tot}$ from 0.0005 to 0.05. Do you observe any change in curve appearance, in $k_\mathrm{cat}$ or in $k_\mathrm{cat}/K_M$? Explain your answer
+Now set $K_M = 5$ and $V_\mathrm{max} = 100$, change $[E]_\mathrm{tot}$ from 0.0005 to 0.05. Do you observe any change in curve appearance, in $k_\mathrm{cat}$ or in $k_\mathrm{cat}/K_M$? Explain your answer.
+
+:::::: {.cell .markdown}
+
+::::::
 
 #### (f) Training estimation skills.
 

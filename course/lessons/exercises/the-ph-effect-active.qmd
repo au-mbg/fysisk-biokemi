@@ -55,6 +55,9 @@ is no need to do a direct calculation in this case.
 print(answer)
 ```
 
+:::::: {.cell .markdown}
+
+::::::
 
 #### (b) Concentration 
 
@@ -83,6 +86,10 @@ his_conc = 0.5 * 10**(-3) # Unit: M
 print(his_conc)
 ```
 
+:::::: {.cell .markdown}
+
+::::::
+
 #### (c) Reaction order
 
 The reaction equation for the reaction between  $\text{His}$ and $\text{R}$ is 
@@ -108,6 +115,9 @@ Bimolecular so we expect second order reaction.
 print(answer)
 ```
 
+:::::: {.cell .markdown}
+
+::::::
 
 #### (d) High concentrations
 
@@ -127,6 +137,10 @@ $[R]$ will remain roughly constant - we are thus in the regime of a pseudo first
 """
 print(answer)
 ```
+
+:::::: {.cell .markdown}
+
+::::::
 
 #### (e) New rate constant
 
@@ -154,6 +168,9 @@ Then $k^{\prime}$ is linearly proportional with $[\text{R}]$.
 print(answer)
 ```
 
+:::::: {.cell .markdown}
+
+::::::
 
 #### (f) SI Units
 

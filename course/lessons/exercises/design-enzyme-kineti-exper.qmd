@@ -350,6 +350,10 @@ The initial velocities, $V_0$, represent velocities in which the consumption/for
 print(answer)
 ```
 
+:::::: {.cell .markdown}
+
+::::::
+
 
 #### (g) Plotting again.
 
