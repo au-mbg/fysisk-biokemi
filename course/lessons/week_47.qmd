@@ -12,48 +12,80 @@ format-links:
 
 ---
 
+::: {.content-visible when-format="typst"}
+
 {{< pagebreak >}}
+
+:::
 
 {{< include exercises/tricky-binding.qmd >}}
 
 ---
 
+::: {.content-visible when-format="typst"}
+
 {{< pagebreak >}}
+
+:::
 
 {{< include exercises/deter-reacti-orders-v1.qmd >}}
 
 ---
 
+::: {.content-visible when-format="typst"}
+
 {{< pagebreak >}}
+
+:::
 
 {{< include exercises/analys-rever-reacti.qmd >}}
 
 ---
 
+::: {.content-visible when-format="typst"}
+
 {{< pagebreak >}}
+
+:::
 
 {{< include exercises/deter-reacti-order-activ-v1.qmd >}}
 
 ---
 
+::: {.content-visible when-format="typst"}
+
 {{< pagebreak >}}
+
+:::
 
 {{< include exercises/the-ph-effect-active.qmd >}}
 
 ---
 
+::: {.content-visible when-format="typst"}
+
 {{< pagebreak >}}
+
+:::
 
 {{< include exercises/quali-descr-michae-kineti.qmd >}}
 
 ---
 
+::: {.content-visible when-format="typst"}
+
 {{< pagebreak >}}
+
+:::
 
 {{< include exercises/design-enzyme-kineti-exper.qmd >}}
 
 ---
 
+::: {.content-visible when-format="typst"}
+
 {{< pagebreak >}}
+
+:::
 
 {{< include exercises/lab_exercise.qmd >}}
