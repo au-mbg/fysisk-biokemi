@@ -32,11 +32,11 @@ format-links:
 
 ---
 
-{{< include exercises/design-enzyme-kineti-exper.qmd >}}
+{{< include exercises/quali-descr-michae-kineti.qmd >}}
 
 ---
 
-{{< include exercises/analys-data-set-obeyin.qmd >}}
+{{< include exercises/design-enzyme-kineti-exper.qmd >}}
 
 ---
 

@@ -12,7 +12,7 @@ format-links:
 
 ---
 
-{{< include exercises/quali-descr-michae-kineti.qmd >}}
+{{< include exercises/analys-data-set-obeyin.qmd >}}
 
 ---
 
