@@ -21,6 +21,10 @@ format-links:
 
 {{< include exercises/tricky-binding.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
 
 ::: {.content-visible when-format="typst"}
@@ -30,6 +34,10 @@ format-links:
 :::
 
 {{< include exercises/deter-reacti-orders-v1.qmd >}}
+
+:::::: {.cell .markdown}
+
+::::::
 
 ---
 
@@ -41,6 +49,10 @@ format-links:
 
 {{< include exercises/analys-rever-reacti.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
 
 ::: {.content-visible when-format="typst"}
@@ -50,6 +62,10 @@ format-links:
 :::
 
 {{< include exercises/deter-reacti-order-activ-v1.qmd >}}
+
+:::::: {.cell .markdown}
+
+::::::
 
 ---
 
@@ -61,6 +77,10 @@ format-links:
 
 {{< include exercises/the-ph-effect-active.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
 
 ::: {.content-visible when-format="typst"}
@@ -70,6 +90,10 @@ format-links:
 :::
 
 {{< include exercises/quali-descr-michae-kineti.qmd >}}
+
+:::::: {.cell .markdown}
+
+::::::
 
 ---
 
@@ -81,6 +105,10 @@ format-links:
 
 {{< include exercises/design-enzyme-kineti-exper.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
 
 ::: {.content-visible when-format="typst"}
@@ -90,3 +118,7 @@ format-links:
 :::
 
 {{< include exercises/lab_exercise.qmd >}}
+
+:::::: {.cell .markdown}
+
+::::::

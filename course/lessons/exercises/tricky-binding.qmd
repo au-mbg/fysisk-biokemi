@@ -282,11 +282,13 @@ print(answer)
 
 Next, we will try a fitting model that explicitly considers the concentration of the protein being titrated. 
 This is known as the quadratic binding equation
+
 $$
 \begin{aligned}
 \theta &= \frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} - \sqrt{\left(\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]}\right)^2 - \frac{[L_{tot}]}{[P_{tot}]}} \\
 \end{aligned}
 $$
+
 
 The value of $[P_{tot}]$ is $250 \ \mu\mathrm{M}$. 
 
@@ -437,7 +439,6 @@ answer=r"""
 print(answer)
 ```
 
-```{python}
-#| echo: false
-```
+:::::: {.cell .markdown}
 
+::::::
