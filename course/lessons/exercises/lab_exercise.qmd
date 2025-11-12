@@ -6,20 +6,21 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display
 ```
 
-In the "Introduction to the Molecules of Life"-course you performed an experiment 
+In the "Introduction to the Molecules of Life" course, you performed an experiment 
 where you measured absorption for different substrate concentrations as a function of 
-time. The experiment was done with p-nitrophenylphosphat as the substrate and turns 
+time. The experiment was done with p-nitrophenylphosphate as the substrate, which turns 
 into p-nitrophenol when the enzyme (alkaline phosphatase) acts on it.
+
+If you do not have data, or you find that your data set is not of sufficient quality, you can use the following `kinetics_data.xlsx`.
 
 Load your dataset using the widget below
 
 ```{python}
 #| eval: false
-import numpy as np
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -34,7 +35,6 @@ display(df)
 
 ```{python}
 #| solution: true
-from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('kinetics_LØ') # Load from package for the solution so it doesn't require to interact.
 display(df)
@@ -46,12 +46,13 @@ The measured absorbances are unitless, they are the log of the ratio between the
 
 The extinction coefficient of the product p-nitrophenol is $\varepsilon = 18000 \, \text{M}^{-1} \text{cm}^{-1}$ at $405 \ \text{nm}$ and the path length of the cuvette is $l = 1\, \text{cm}$. We will construct a new `DataFrame` with concentrations
 
-We will start by definining a function `lambert_beers` to calculate the concentrations
+We will start by defining a function `lambert_beers` to calculate the concentrations
 
 ```{python}
 #| exercise: true
 #| eval: false
-def lambert_beers(absorbance):    
+def lambert_beers(absorbance):
+    ## Your task: Finish the implementation of LBs-law to calculate concentrations.    
     L = ... # Units: cm
     ext_coeff = ... # Units: 1 / (M cm)
     conc = ... # Units: M
@@ -61,6 +62,7 @@ def lambert_beers(absorbance):
 ```{python}
 #| solution: true
 def lambert_beers(absorbance):
+    ## Your task: Finish the implementation of LBs-law to calculate concentrations.
     L = 1 # cm
     ext_coeff = 18000 # 1 / (M cm)
     conc = absorbance / (L * ext_coeff) # M 
@@ -109,7 +111,7 @@ display(df)
 
 #### (b) Plot
 
-Now lets plot the data. Plot each column seperately as a function of time.
+Now let's plot the data. Plot each column separately as a function of time.
 
 ```{python}
 #| fig-align: center
@@ -117,10 +119,11 @@ Now lets plot the data. Plot each column seperately as a function of time.
 #| eval: false
 fig, ax = plt.subplots()
 
-# Your code here, one line for each column, 
-# except for the time column, so 8 lines total.)
+# Your task: Plot concentration vs. time for each column of the dataset, 
+# So 8 lines of code total.
 ...
 
+## Sets the x and y axis labels.
 ax.set_xlabel('Time [s]')
 ax.set_ylabel('Concentration [M]')
 ax.legend()
@@ -132,9 +135,16 @@ plt.show()
 #| solution: true
 fig, ax = plt.subplots()
 
-for key in df.keys():
-    if key != 'time':
-        ax.plot(df['time'], df[key], '-o', label=key)
+# Your task: Plot concentration vs. time for each column of the dataset, 
+# So 8 lines of code total.
+ax.plot(df['time'], df['S_0.8_mM'], '-o', label='S_0.8_mM')
+ax.plot(df['time'], df['S_0.4_mM'], '-o', label='S_0.4_mM')
+ax.plot(df['time'], df['S_0.2_mM'], '-o', label='S_0.2_mM')
+ax.plot(df['time'], df['S_0.12_mM'], '-o', label='S_0.12_mM')
+ax.plot(df['time'], df['S_0.05_mM'], '-o', label='S_0.05_mM')
+ax.plot(df['time'], df['S_0.02_mM'], '-o', label='S_0.02_mM')
+ax.plot(df['time'], df['S_0.01_mM'], '-o', label='S_0.01_mM')
+ax.plot(df['time'], df['S_0.003_mM'], '-o', label='S_0.003_mM')
 
 ax.set_xlabel('Time [s]')
 ax.set_ylabel('Concentration [M]')
@@ -142,9 +152,43 @@ ax.legend()
 plt.show()
 ```
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Alternative solution: for-loop
+
+An alternative solution is using a for-loop, this is beyond the scope 
+of the course and you will not get exam questions regarding this. 
+
+However it is more flexible than writing code for every column - the same code  
+could be used datasets with hundreds or thousands of columns. 
+
+````python
+fig, ax = plt.subplots()
+
+for column_name in df.keys(): # This loops over each column name of the dataframe.
+    if column_name != 'time': # Means "if column_name is not equal to 'time'".
+        # This only happens when the above condition is met.
+        ax.plot(df['time'], df[column_name], '-o', label=column_name)
+
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Concentration [M]')
+ax.legend()
+plt.show()
+````
+
+:::
+"""
+print(answer)
+```
+
 #### (c) Finding the slopes
 
-In order to apply the Michaelis Menten equation we need the slopes of this curves as that is the reaction velocity $V_0$, luckily we have learned how to make fit! So we make a fit to the linear function to determine the slope $a$ in,
+In order to apply the Michaelis Menten equation we need the slopes of these curves as that is the reaction velocity $V_0$, luckily we have learned how to make fits! So we make a fit to the linear function to determine the slope $a$ in,
 $$
 y(x) = a x + b
 $$
@@ -153,40 +197,53 @@ As always, start by writing the function
 ```{python}
 #| solution: true
 def linear_function(x, a, b):
-    return ...
+    ## Your task: Implement the linear function
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
 def linear_function(x, a, b):
-    return a * x + b
+    ## Your task: Implement the linear function
+    result = a * x + b
+    return result
 ```
 
 Now we want to find the slope for each column, to help with that we will introduce a 
-function that takes the time column and one of the absorbance columns and returns the slope
+function that takes the time column and one of the concentration columns and returns the slope
 
 ```{python}
 #| exercise: true
 #| eval: false
 def find_slope(time_data, abs_data):
-    # This selects the times and absorbances that have been measured (not NaN)
+    ## This selects the times and absorbances that have been measured (not NaN)
+    ## Don't worry about this - this is just to help you with this exercise.
     indices = np.where(~abs_data.isna())[0]
     time_data = time_data[indices]
     abs_data = abs_data[indices]
 
     # Find the slope and the intercept using curve_fit and return the slope    
-    ...
+    fitted_parameters, trash = ...
+    slope = fitted_parameters[0]
+
     return slope
 ```
 
 ```{python}
 #| solution: true
 def find_slope(time_data, abs_data):
+
+    ## This selects the times and absorbances that have been measured (not NaN)
+    ## Don't worry about this - this is just to help you with this exercise.
     indices = np.where(~abs_data.isna())[0]
     time_data = time_data[indices]
     abs_data = abs_data[indices]
-    popt, pcov = curve_fit(linear_function, time_data, abs_data)
-    return popt[0]
+
+    ## Find the slope and the intercept using curve_fit and return the slope
+    fitted_parameters, trash = curve_fit(linear_function, time_data, abs_data)
+    slope = fitted_parameters[0]
+    return slope
 ```
 
 Now we want to use this for each set of measurements at different substrate concentrations. 
@@ -194,6 +251,8 @@ Now we want to use this for each set of measurements at different substrate conc
 ```{python}
 #| exercise: true
 #| eval: true
+
+## Your task: Find the slopes for every substrate concentration.
 slope_08 = ...
 slope_04 = ...
 slope_02 = ...
@@ -203,12 +262,15 @@ slope_002 = ...
 slope_001 = ...
 slope_0003 = ...
 
+## This gathers the slopes and makes an array with the substrate concentrations.
 substrate_concentrations = np.array([0.8, 0.4, 0.2, 0.12, 0.05, 0.02, 0.01, 0.003]) * 10**(-3) # Converted from mM to M.
 slopes = np.array([slope_08, slope_04, slope_02, slope_012, slope_005, slope_002, slope_001, slope_0003])
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Find the slopes for every substrate concentration.
 slope_08 = find_slope(df['time'], df['S_0.8_mM'])
 slope_04 = find_slope(df['time'], df['S_0.4_mM'])
 slope_02 = find_slope(df['time'], df['S_0.2_mM'])
@@ -218,23 +280,25 @@ slope_002 = find_slope(df['time'], df['S_0.02_mM'])
 slope_001 = find_slope(df['time'], df['S_0.01_mM'])
 slope_0003 = find_slope(df['time'], df['S_0.003_mM'])
 
+## This gathers the slopes and makes an array with the substrate concentrations.
 substrate_concentrations = np.array([0.8, 0.4, 0.2, 0.12, 0.05, 0.02, 0.01, 0.003]) * 10**(-3)
 slopes = np.array([slope_08, slope_04, slope_02, slope_012, slope_005, slope_002, slope_001, slope_0003])
 ```
 
-Now make a plot of the slopes versus the substrate concentrations 
+Now make a plot of the slopes versus the substrate concentrations using the two arrays 
+`substrate_concentrations` and `slopes`.
 
 ```{python}
 #| exercise: true
 #| eval: false
 fig, ax = plt.subplots() 
 
-# Plot the slopes 
+## Your task plot the slopes vs. substrate concentration.
 ...
 
-# Set the x and y labels
-...
-
+## Sets x and y axis labels. 
+ax.set_xlabel('Substrate concentration')
+ax.set_ylabel('Slope')
 plt.show()
 ```
 
@@ -243,11 +307,32 @@ plt.show()
 #| fig-align: center
 fig, ax = plt.subplots() 
 
+## Your task plot the slopes vs. substrate concentration.
 ax.plot(substrate_concentrations, slopes, 'o')
+
+## Sets x and y axis labels. 
 ax.set_xlabel('Substrate concentration')
 ax.set_ylabel('Slope')
 plt.show()
 ```
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Estimate K_M and V_max from the plot.
+K_M_estimate = ...
+V_max_estimate = ...
+```
+
+```{python}
+#| solution: true
+
+## Your task: Estimate K_M and V_max from the plot.
+K_M_estimate = 0.00001
+V_max_estimate = 8 * 10**(-8)
+```
+
 
 #### (d) Michaelis Menten
 
@@ -257,35 +342,49 @@ need to implement the equation
 ```{python}
 #| exercise: true
 #| eval: false
-def mich_menten(S, V_max, K_M):
-    return ...
+def michaelis_menten(S, K_M, V_max):
+    ## Your task: Implement the Michaelis-Menten model.
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
-def mich_menten(S, V_max, K_M):
-    return (V_max * S) / (K_M + S)
+def michaelis_menten(S, K_M, V_max):
+    ## Your task: Implement the Michaelis-Menten model.
+    result = (V_max * S) / (K_M + S)
+    return result
 ```
 
-Then fit to the slopes we extracted
+Then fit to the slopes we extracted to the Michealis-Menten equation
 
 ```{python}
 #| exercise: true
 #| eval: false
-popt, pcov = ...
-V_max_fit, K_M_fit = popt
 
-print(f'{V_max_fit = :.3e}')
-print(f'{K_M_fit = :.3e}')
+## This is your estimates as the initial guess.
+initial_guess = [K_M_estimate, V_max_estimate]
+
+## Your task: Make a fit to the Michaelis-Menten equation & extract K_M and V_max.
+fitted_parameters, trash = ...
+K_M_fit, V_max_fit = ...
+
+print(K_M_fit)
+print(V_max_fit)
 ```
 
 ```{python}
 #| solution: true
-popt, pcov = curve_fit(mich_menten, substrate_concentrations, slopes)
-V_max_fit, K_M_fit = popt
 
-print(f'{V_max_fit = :.3e}')
-print(f'{K_M_fit = :.3e}')
+## This is your estimates as the initial guess.
+initial_guess = [K_M_estimate, V_max_estimate]
+
+## Your task: Make a fit to the Michaelis-Menten equation & extract K_M and V_max.
+fitted_parameters, trash = curve_fit(michaelis_menten, substrate_concentrations, slopes, initial_guess)
+K_M_fit, V_max_fit = fitted_parameters
+
+print(K_M_fit)
+print(V_max_fit)
 ```
 
 - What is the physical meaning of $K_M$ and how does it relate to binding affinity? 
@@ -303,7 +402,7 @@ V0_fit = ...
 ```{python}
 #| solution: true
 S_smooth = np.linspace(substrate_concentrations.min(), substrate_concentrations.max())
-V0_fit = mich_menten(S_smooth, V_max_fit, K_M_fit)
+V0_fit = michaelis_menten(S_smooth, K_M_fit, V_max_fit)
 ```
 
 ```{python}
@@ -312,12 +411,12 @@ V0_fit = mich_menten(S_smooth, V_max_fit, K_M_fit)
 #| fig-align: center
 fig, ax = plt.subplots() 
 
-# Put code to plot:
+## Your task: Plot the data and the fit
 ...
 
-# Put code to customize:
-...
-
+## These add x and y axis labels.
+ax.set_xlabel('Substrate concentration (M)')
+ax.set_ylabel('$V_0$ (M/s)')
 plt.show()
 ```
 
@@ -326,9 +425,11 @@ plt.show()
 #| fig-align: center
 fig, ax = plt.subplots() 
 
+## Your task: Plot the data and the fit
 ax.plot(substrate_concentrations, slopes, 'o', label='Data')
 ax.plot(S_smooth, V0_fit, label='Fit')
 
+## These add x and y axis labels.
 ax.set_xlabel('Substrate concentration (M)')
 ax.set_ylabel('$V_0$ (M/s)')
 plt.show()
@@ -337,28 +438,31 @@ plt.show()
 #### (f) Turnover number 
 
 Given that the enzyme concentration was $3.33 \frac{\text{mg}}{\text{L}}$ and the molecular weight 
-of the enzyme (alkaline phosphatase) is 496.6 $\frac{\text{g}}{\text{mol}}$, calculate the turnover number.
+of the enzyme (alkaline phosphatase) is 496.6 $\frac{\text{g}}{\text{mol}}$, calculate the turnover number $k_{cat}$.
 
-Stary by converting the enzyme concentration to molar units and then calculate turnover number.
+Start by converting the enzyme concentration to molar units and then calculate the turnover number.
 
 ```{python}
 #| exercise: true
 #| eval: false
-enzyme_conc = ... # Your code here.
 
-kcat = ... # Your code here.
+## Your task: Calculate the enzyme concentration and use that and your fit to 
+## calculate kcat.
+enzyme_conc = ... 
+kcat = ... 
 
-print(f"{kcat = :.3e} 1/s")
+print(kcat)
 ```
 
 
 ```{python}
 #| solution: true
+
+## Your task: Calculate the enzyme concentration and use that and your fit to 
+## calculate kcat.
 enzyme_conc = (3.33*10**(-3)) / 496.6
-
 kcat = V_max_fit / enzyme_conc
-
-print(f"{kcat = :.3e} 1/s")
+print(kcat)
 ```
 
 - What is the biochemical meaning of this number? 

@@ -159,3 +159,9 @@ datasets:
     exercise: regression_intro.qmd
     original_name: "exp_decay_data.xlsx"
     description: "Exponential decay data for regression exercises."
+
+  kinetics_data.xlsx:
+    week: 47
+    exercise: lab_exercise.qmd
+    original_name: "kinetics_data.xlsx"
+    description: "Use your own data if you have it, use this dataset if you don't or your data is of poor quality."
