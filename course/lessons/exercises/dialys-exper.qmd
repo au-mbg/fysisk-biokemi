@@ -117,7 +117,7 @@ ax.set_ylabel(r'$\bar{n}$', fontsize=16);
 Now we want to fit the data to extract $K_D$ and $n$, by using the equation
 
 $$
-\bar{n}([L_{\text{free}}]) = n \frac{[L_{\text{free}}]}{K_D + [L_{\text{free}}]}
+\bar{n}([L_{\text{free}}]) = N \frac{[L_{\text{free}}]}{K_D + [L_{\text{free}}]}
 $$
 
 To do so we need to implmenet it as a Python function 
@@ -125,7 +125,7 @@ To do so we need to implmenet it as a Python function
 ```{python}
 #| exercise: true
 #| eval: false
-def nbar(L, n, K_D):
+def nbar(L, N, K_D):
     ## Your task: Calculate n-bar using the equation from above.
     result = ... 
     return result
@@ -137,8 +137,8 @@ print(nbar(21, 47, 2.5)) # Should give 42
 
 ```{python}
 #| solution: true
-def nbar(L, n, K_D):
-    return n * L / (K_D + L)
+def nbar(L, N, K_D):
+    return N * L / (K_D + L)
 
 ## This calculates the function and prints for two different sets of values ## 
 print(nbar(1, 1, 1)) # Should give 1/2
@@ -160,17 +160,17 @@ y = df['n_bar']
 
 ## Your task: Make initial guesses for the two parameters ## 
 K_D_guess = ... # Your initial guess for K_D 
-n_guess = ... # Your initial guess for n.
-initial_guess = [K_D_guess, n_guess]
+N_guess = ... # Your initial guess for N.
+initial_guess = [K_D_guess, N_guess]
 
 ## Your task: Give the four arguments in the correct order to make calculate ##
 ## the fitted parameters ##
 fitted_parameters, trash = curve_fit(..., ..., ..., ...) 
 
 # Print the parameters
-n_fit, K_D_fit = fitted_parameters
+N_fit, K_D_fit = fitted_parameters
 print(fitted_parameters)
-print(n_fit)
+print(N_fit)
 print(K_D_fit)
 ```
 
@@ -184,17 +184,17 @@ y = df['n_bar']
 
 ## Your task: Make initial guesses for the two parameters ## 
 K_D_guess = 10**(-5)
-n_guess = 1
-initial_guess = [K_D_guess, n_guess]
+N_guess = 1
+initial_guess = [K_D_guess, N_guess]
 
 ## Your task: Give the four arguments in the correct order to make calculate ##
 ## the fitted parameters ##
 fitted_parameters, pcov = curve_fit(nbar, x, y, initial_guess)
 
 # Print the parameters
-n_fit, K_D_fit = fitted_parameters
+N_fit, K_D_fit = fitted_parameters
 print(fitted_parameters)
-print(n_fit)
+print(N_fit)
 print(K_D_fit)
 ```
 
@@ -223,7 +223,7 @@ nbar_calc = ...
 L_smooth = np.linspace(0, x.max()*1.2, 50) 
 
 ## Your task: Calculate the fitted function using the found parameters and L_smooth
-nbar_calc = nbar(L_smooth, n_fit, K_D_fit)
+nbar_calc = nbar(L_smooth, N_fit, K_D_fit)
 ```
 
 Now that we calculated the dependent variable we can plot the fit along with the data. 
@@ -253,7 +253,7 @@ ax.plot(df['Free_ligand_(M)'], df['n_bar'], 'o')
 ## EXTRA: You do not need to understand this ## 
 ## This customizes the plot ## 
 ## It also adds lines indicating the values of n and K_D found ## 
-ax.axhline(n_fit, color='red', label=r'$\nu_{max}$')
+ax.axhline(N_fit, color='red', label=r'$N$')
 ax.axvline(K_D_fit, color='green', label=r'$K_D$')
 ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
 ax.set_ylabel(r'$\bar{n}$', fontsize=16)
