@@ -209,7 +209,7 @@ part of the lienar plot
 Make a fit using the functional form 
 
 $$
-\bar{n} = N \frac{[L]^h}{K_D + [L]^h}
+\bar{n} = N \frac{[L]^h}{K + [L]^h}
 $$
 
 As usual, start by defining the function in Python 
@@ -217,7 +217,7 @@ As usual, start by defining the function in Python
 ```{python}
 #| exercise: true
 #| eval: false
-def n_bar(L, N, K_D, h):
+def n_bar(L, N, K, h):
     ## Your task: Implement the function
     # Be careful with parentheses!
     result = ...
@@ -226,10 +226,10 @@ def n_bar(L, N, K_D, h):
 
 ```{python}
 #| solution: true
-def n_bar(L, N, K_D, h):
+def n_bar(L, N, K, h):
     ## Your task: Implement the function
     # Be careful with parentheses!
-    result = N * L**h / (K_D + L**h)
+    result = N * L**h / (K + L**h)
     return result
 ```
 
@@ -248,7 +248,7 @@ y = np.concatenate([df['nbar1'], df['nbar2'], df['nbar3']])
 
 ## Your task: Make initial guesses for the three parameters
 ## The order is that of the function 
-## So N, K_D and h.
+## So N, K and h.
 initial_guess = [..., ..., ...]
 
 ## Your task: Make the fit
@@ -257,9 +257,9 @@ initial_guess = [..., ..., ...]
 fitted_parameters, trash = curve_fit(..., ..., ..., ..., bounds=(0, np.inf))
 
 # Print the parameters
-N_fit, K_D_fit, h_fit = fitted_parameters
+N_fit, K_fit, h_fit = fitted_parameters
 print('N_fit', N_fit)
-print('K_D_fit', K_D_fit)
+print('K_fit', K_fit)
 print('h_fit', h_fit)
 ```
 
@@ -274,7 +274,7 @@ y = np.concatenate([df['nbar1'], df['nbar2'], df['nbar3']])
 
 ## Your task: Make initial guesses for the three parameters
 ## The order is that of the function 
-## So N, K_D and h.
+## So N, K and h.
 initial_guess = [1, 1, 1]
 
 ## Your task: Make the fit
@@ -283,9 +283,9 @@ initial_guess = [1, 1, 1]
 fitted_parameters, trash = curve_fit(n_bar, x, y, initial_guess, bounds=(0, np.inf))
 
 # Print the parameters
-N_fit, K_D_fit, h_fit = fitted_parameters
+N_fit, K_fit, h_fit = fitted_parameters
 print('N_fit', N_fit)
-print('K_D_fit', K_D_fit)
+print('K_fit', K_fit)
 print('h_fit', h_fit)
 ```
 
