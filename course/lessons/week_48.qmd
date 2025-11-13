@@ -10,26 +10,90 @@ format-links:
 
 {{< include tidbits/_install_import.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
+
+::: {.content-visible when-format="typst"}
+
+{{< pagebreak >}}
+
+:::
 
 {{< include exercises/analys-data-set-obeyin.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
+
+::: {.content-visible when-format="typst"}
+
+{{< pagebreak >}}
+
+:::
 
 {{< include exercises/michaelis-menten.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
+
+::: {.content-visible when-format="typst"}
+
+{{< pagebreak >}}
+
+:::
 
 {{< include exercises/enzyme-inhib-i.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
+
+::: {.content-visible when-format="typst"}
+
+{{< pagebreak >}}
+
+:::
 
 {{< include exercises/enzyme-inhib-ii.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
+
+::: {.content-visible when-format="typst"}
+
+{{< pagebreak >}}
+
+:::
 
 {{< include exercises/snake-dependent-enzyme.qmd >}}
 
+:::::: {.cell .markdown}
+
+::::::
+
 ---
 
+::: {.content-visible when-format="typst"}
+
+{{< pagebreak >}}
+
+:::
+
 {{< include exercises/enzyme-behav-atcase.qmd >}}
+
+:::::: {.cell .markdown}
+
+::::::
