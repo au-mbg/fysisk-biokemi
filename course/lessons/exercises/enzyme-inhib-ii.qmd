@@ -5,6 +5,9 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.optimize import curve_fit
+import numpy as np
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
 
@@ -14,8 +17,6 @@ Load the dataset
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -39,24 +40,30 @@ display(df)
 
 #### (a) Convert & plot
 
-Convert the measurements to SI units and plot the reaction rate against time for all three reactions. 
+Convert the measurements to SI units and plot the initial reaction velocity versus substrate concentration for all three reactions. 
 
 Start by converting the units 
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Add new columns with the properties in the correct SI units. 
+## There are 4 properties, so you should add 4 columns. 
 ... # Your code to convert units here.
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Add new columns with the properties in the correct SI units. 
+## There are 4 properties, so you should add 4 columns. 
 df['[S]_(M)'] = df['[S]_(uM)'] * 10**(-6)
 df['enz_(M/s)'] = df['enz_(nM/s)'] * 10**(-9)
 df['inhibitor2_(M/s)'] = df['inhibitor2_(nM/s)'] * 10**(-9)
 df['inhibitor3_(M/s)'] = df['inhibitor3_(nM/s)'] * 10**(-9)
 ```
 
-And then plot 
+And then plot to visualize the data
 
 ```{python}
 #| exercise: true
@@ -64,10 +71,11 @@ And then plot
 
 fig, ax = plt.subplots()
 
-col_names = ['enz_(M/s)', 'inhibitor2_(M/s)', 'inhibitor3_(M/s)']
-
-for col_name in col_names:
-    ax.plot(..., ..., 'o', label=col_name) # Replace ... with your code here. 
+## Your task plot each data vs. [S]_(M).
+## To distinguish the data its a good idea to use label='enz_(M/s)' and so on.
+...
+...
+...
     
 ax.legend()
 ax.set_xlabel('Substrate concentration [M]', fontsize=14)
@@ -81,28 +89,46 @@ plt.show()
 
 fig, ax = plt.subplots()
 
-col_names = ['enz_(M/s)', 'inhibitor2_(M/s)', 'inhibitor3_(M/s)']
+## Your task plot each data vs. [S]_(M).
+ax.plot(df['[S]_(M)'], df['enz_(M/s)'], 'o', label='enz_(M/s)')
+ax.plot(df['[S]_(M)'], df['inhibitor2_(M/s)'], 'o', label='inhibitor2_(M/s)')
+ax.plot(df['[S]_(M)'], df['inhibitor3_(M/s)'], 'o', label='inhibitor3_(M/s)')
 
-for col_name in col_names:
-    ax.plot(df['[S]_(M)'], df[col_name], 'o', label=col_name)
-
+## Adds legend and axis labels. 
 ax.legend()
-ax.set_xlabel('Substrate concentration [M]', fontsize=14)
-ax.set_ylabel('$V_0$', fontsize=14)
+ax.set_xlabel('Substrate concentration (M)')
+ax.set_ylabel('V0 (M/s)')
 plt.show()
 ```
+
+#### (b) Intuit parameters
 
 Based on the appearance of these plots:
 
 - Can you determine the type of inhibition? 
 - Alternatively, can you exclude some mechanisms?
 
-#### (b) Intuit parameters
-
-Based on your answer to in (a) what do you expect for the parameters $K_M$ and $V_\mathrm{max}$? 
+Based on your answers what do you expect for the parameters $K_M$ and $V_\mathrm{max}$? 
 
 - Which dataset would have the highest $V_\mathrm{max}$, which the lowest? 
 - What about $K_M$? 
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+$V_\mathrm{max}$ changes by a lot, with little or no change in $K_M$. This rules out competetive inhibition.
+
+:::
+"""
+print(answer)
+```
+
 
 #### (c) Fit
 
@@ -113,53 +139,137 @@ def michaelis_menten(S, Vmax, Km):
     return (Vmax * S) / (S + Km)
 ```
 
-Given we're fitting on multiple datasets we will make our lives a bit easier by making a little function
+And then we can make the fit
 
 ```{python}
 #| exercise: true
 #| eval: false
 
-def fit_parameters(df, col_name):
-    popt, _ = curve_fit(..., ..., ...) # Replace ... with your code.
-    vmax, km = popt
-    # Printing
-    print(f'{col_name}:')
-    print(f'\t V_max = {vmax:.2e}')
-    print(f'\t Km = {km:.2e}')
+## Your task fit dataset 1: 'enz_(M/s)'
+initial_guess = [..., ...]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['enz_(M/s)'], initial_guess)
+Vmax_enz_fit, K_M_enz_fit = fitted_parameters
+
+## Your task fit dataset 2: 'inhibitor2_(M/s)'
+initial_guess = [..., ...]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['inhibitor2_(M/s)'], initial_guess)
+Vmax_inhib2_fit, K_M_inhib2_fit = fitted_parameters
+
+## Your task fit dataset 3: 'inhibitor2_(M/s)'
+initial_guess = [..., ...]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['inhibitor3_(M/s)'], initial_guess)
+Vmax_inhib3_fit, K_M_inhib3_fit = fitted_parameters
+
+print('Dataset 1: enz_(M/s)')
+print('    V_max', Vmax_enz_fit)
+print('    K_M', K_M_enz_fit)
+print('Dataset 2: inhibitor2_(M/s)')
+print('    V_max', Vmax_inhib2_fit)
+print('    K_M', K_M_inhib2_fit)
+print('Dataset 3: inhibitor3_(M/s)')
+print('    V_max', Vmax_inhib3_fit)
+print('    K_M', K_M_inhib3_fit)
 ```
+
 
 ```{python}
 #| solution: true
 
-def fit_parameters(df, col_name):
-    popt, _ = curve_fit(michaelis_menten, df['[S]_(M)'], df[col_name])
-    vmax, km = popt
-    # Printing
-    print(f'{col_name}:')
-    print(f'\t V_max = {vmax:.2e}')
-    print(f'\t Km = {km:.2e}')
+## Your task fit dataset 1: 'enz_(M/s)'
+initial_guess = [3*10**(-9), 0.25*10**(-5)]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['enz_(M/s)'], initial_guess)
+Vmax_enz_fit, K_M_enz_fit = fitted_parameters
+
+## Your task fit dataset 2: 'inhibitor2_(M/s)'
+initial_guess = [3*10**(-9), 0.25*10**(-5)]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['inhibitor2_(M/s)'], initial_guess)
+Vmax_inhib2_fit, K_M_inhib2_fit = fitted_parameters
+
+## Your task fit dataset 3: 'inhibitor2_(M/s)'
+initial_guess = [3*10**(-9), 0.25*10**(-5)]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['inhibitor3_(M/s)'], initial_guess)
+Vmax_inhib3_fit, K_M_inhib3_fit = fitted_parameters
+
+print('Dataset 1: enz_(M/s)')
+print('    V_max', Vmax_enz_fit)
+print('    K_M', K_M_enz_fit)
+print('Dataset 2: inhibitor2_(M/s)')
+print('    V_max', Vmax_inhib2_fit)
+print('    K_M', K_M_inhib2_fit)
+print('Dataset 3: inhibitor3_(M/s)')
+print('    V_max', Vmax_inhib3_fit)
+print('    K_M', K_M_inhib3_fit)
 ```
 
 ```{python}
-#| exercise: true
-#| eval: false
+#| fig-align: center
+fig, ax = plt.subplots()
 
-for col_name in col_names:
-    fit_parameters(df, col_name)
+## Your task: Evaluate the fits
+S_smooth = np.linspace(0, 2.05*10**(-5), 100)
+V0_enz = michaelis_menten(S_smooth, Vmax_enz_fit, K_M_enz_fit)
+V0_inhib2 = michaelis_menten(S_smooth, Vmax_inhib2_fit, K_M_inhib2_fit)
+V0_inhib3 = michaelis_menten(S_smooth, Vmax_inhib3_fit, K_M_inhib3_fit)
+
+## Plots the fits
+ax.plot(S_smooth, V0_enz)
+ax.plot(S_smooth, V0_inhib2)
+ax.plot(S_smooth, V0_inhib3)
+
+## Plots the data
+ax.plot(df['[S]_(M)'], df['enz_(M/s)'], 'o', label='enz_(M/s)', color='C0')
+ax.plot(df['[S]_(M)'], df['inhibitor2_(M/s)'], 'o', label='inhibitor2_(M/s)', color='C1')
+ax.plot(df['[S]_(M)'], df['inhibitor3_(M/s)'], 'o', label='inhibitor3_(M/s)', color='C2')
+
+## Adds legend and axis labels. 
+ax.legend()
+ax.set_xlabel('Substrate concentration (M)')
+ax.set_ylabel('V0 (M/s)')
+plt.show()
 ```
 
-```{python}
-#| solution: true
-
-for col_name in col_names:
-    fit_parameters(df, col_name)
-```
+If your fits don't closely match the data, go back and change your initial guesses. 
 
 #### (d) Change
 
 In the fits above you will likely see that all the fitted parameters change between the different data sets – some by a little and some by a lot. How big does a change have to be to be considered significant?
 
-#### (e) $K_i$
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+There is a significant change in $V_\mathrm{max}$ between the three datasets, but the changes 
+in $K_M$ are too minute to be considered significant. 
+
+:::
+"""
+print(answer)
+```
+
+#### (e) Inhibitor type
+
+Based on the above, what is the likely inhibition type of inhibitor1 and inhibitor3? 
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+Both are non-competitive as $K_M$ remains roughly unchanged while $V_\mathrm{max}$ changes significantly. 
+
+:::
+"""
+print(answer)
+```
+
+#### (f) $K_i$
 
 Determine the $K_i$ for each of the two inhibitors. 
-
