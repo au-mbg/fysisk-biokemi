@@ -5,6 +5,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.optimize import curve_fit
+import numpy as np
 pd.set_option('display.max_rows', 6)
 ```
 
@@ -47,6 +48,8 @@ Convert the concentrations of substrate and the initial velocities to units give
 ```{python}
 #| exercise: true
 #| eval: false
+
+## Your task: Make new columns with the properties in SI units. 
 df['[S]_(M)'] = ...
 df['V0_no_inhib_(M/s)'] = ...
 ... # This one you'll have to do all on your own.
@@ -55,6 +58,8 @@ display(df)
 
 ```{python}
 #| solution: true
+
+## Your task: Make new columns with the properties in SI units. 
 df['[S]_(M)'] = df['[S]_(mM)'] * 10**(-3)
 df['V0_no_inhib_(M/s)'] = df['V0_no_inhib_(uM/s)'] * 10**(-6)
 df['V0_inhib_(M/s)'] = df['V0_inhib_(uM/s)'] * 10**(-6)
@@ -63,7 +68,7 @@ display(df)
 
 #### (b) Plot 
 
-Plot the initial velocities of both experiments as a function of substrate concentration in one plot. Estimate $k_\mathrm{cat}$ and $V_\mathrm{max}$ in the presence and absence of inhibitor from the plot. 
+Plot the initial velocities of both experiments as a function of substrate concentration in one plot. Estimate $K_M$ and $V_\mathrm{max}$ in the presence and absence of inhibitor from the plot. 
 
 ```{python}
 #| fig-align: center
@@ -71,9 +76,11 @@ Plot the initial velocities of both experiments as a function of substrate conce
 #| eval: false
 fig, ax = plt.subplots(figsize=(6, 4))
 
+## Your task: Plot the initial velocities for both experiments. 
 ... # Your code for plotting here
 ... # and here. 
 
+## Sets the x and y-axis labels and shows the legend.
 ax.set_xlabel('[S] (M)')
 ax.set_ylabel('$V_0$ (M/s)')
 ax.legend()
@@ -84,18 +91,42 @@ ax.legend()
 #| solution: true
 fig, ax = plt.subplots(figsize=(6, 4))
 
+## Your task: Plot the initial velocities for both experiments. 
 ax.plot(df['[S]_(M)'], df['V0_no_inhib_(M/s)'], 'o', label='No inhibitor')
 ax.plot(df['[S]_(M)'], df['V0_inhib_(M/s)'], 'o', label='Inhibitor')
 
+## Sets the x and y-axis labels and shows the legend. 
 ax.set_xlabel('[S] (M)')
 ax.set_ylabel('$V_0$ (M/s)')
 ax.legend()
 ```
----
+
+Use the plots to estimate $K_M$ and $V_\mathrm{max}$ and assign in the cell below 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+K_M_no_inhib_estimate = ...
+Vmax_no_inhib_estimate = ...
+
+K_M_inhib_estimate = ...
+Vmax_inhib_estimate = ...
+```
+
+
+```{python}
+#| solution: true
+K_M_no_inhib_estimate = 0.0025 # Unit: M
+Vmax_no_inhib_estimate = 6 * 10**(-5) # Unit: M/s
+
+K_M_inhib_estimate = 0.01 # Unit: M 
+Vmax_inhib_estimate = 6 * 10**(-5) # Unit: M/s
+```
+
+#### (c) Fit 
 
 The researcher wanted to determine $V_\mathrm{max}$ and $K_M$ values for both experiments in order to correctly conclude on the type of inhibitor. 
-
-#### (c)
 
 Determine $V_\mathrm{max}$ and $K_M$ by fitting. 
 
@@ -104,12 +135,17 @@ Start writing the function to fit with
 ```{python}
 #| exercise: true
 #| eval: false
-def ...
-    ...
+
+## Your task: Implement the Michealis-Menten equation as a function
+def michaelis_menten(S, Vmax, Km):
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
+
+## Your task: Implement the Michealis-Menten equation as a function
 def michaelis_menten(S, Vmax, Km):
     return (Vmax * S) / (S + Km)
 ```
@@ -119,46 +155,142 @@ And use the `curve_fit`-function to find the parameters
 ```{python}
 #| exercise: true
 #| eval: false
-popt, _ = ...
-vmax, km = popt
 
-# With inhibitor
-popt, _ = ...
-vmax_inhib, km_inhib = popt
+## Your task: Make a fit to the Michealies-Menten equation for the data without the inhibitor.
+initial_guess = [Vmax_no_inhib_estimate, K_M_no_inhib_estimate]
+fitted_parameters, trash = ...
+vmax_fit_no_inhib, km_fit_no_inhib = fitted_parameters
 
-# Printing
+## Your task: Make a fit to the Michealies-Menten equation for the data the inhibitor.
+initial_guess = [Vmax_inhib_estimate, K_M_inhib_estimate]
+fitted_parameters, trash = ...
+vmax_fit_inhib, km_fit_inhib = fitted_parameters
+
+## Printing
 print('Without inhibitor:')
-print(f'\t V_max = {vmax:.2e}')
-print(f'\t Km = {km:.2e}')
+print('    V_max:', vmax_fit_no_inhib)
+print('    K_M:', km_fit_no_inhib)
 print('With inhibitor:')
-print(f'\t V_max = {vmax_inhib:.2e}')
-print(f'\t Km = {km_inhib:.2e}')
+print('    V_max:', vmax_fit_inhib)
+print('    K_M:', km_fit_inhib)
 ```
 
 ```{python}
 #| solution: true
-# No inhibitor: 
-popt, _ = curve_fit(michaelis_menten, df['[S]_(M)'], df['V0_no_inhib_(M/s)'])
-vmax, km = popt
 
-# With inhibitor
-popt, _ = curve_fit(michaelis_menten, df['[S]_(M)'], df['V0_inhib_(M/s)'])
-vmax_inhib, km_inhib = popt
+## Your task: Make a fit to the Michealies-Menten equation for the data without the inhibitor.
+initial_guess = [Vmax_no_inhib_estimate, K_M_no_inhib_estimate]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['V0_no_inhib_(M/s)'], initial_guess)
+Vmax_fit_no_inhib, K_M_fit_no_inhib = fitted_parameters
 
-# Printing
+## Your task: Make a fit to the Michealies-Menten equation for the data the inhibitor.
+initial_guess = [Vmax_inhib_estimate, K_M_inhib_estimate]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['V0_inhib_(M/s)'], initial_guess)
+Vmax_fit_inhib, K_M_fit_inhib = fitted_parameters
+
+## Printing
 print('Without inhibitor:')
-print(f'\t V_max = {vmax:.2e}')
-print(f'\t Km = {km:.2e}')
+print('    V_max:', Vmax_fit_no_inhib)
+print('    K_M:', K_M_fit_no_inhib)
 print('With inhibitor:')
-print(f'\t V_max = {vmax_inhib:.2e}')
-print(f'\t Km = {km_inhib:.2e}')
+print('    V_max:', Vmax_fit_inhib)
+print('    K_M:', K_M_fit_inhib)
 ```
 
-#### (d)
+#### (d) Analyze the fit
+
+As per usual, we need to plot the fit to confirm that that it has been done successfully.
+
+We start by evaluating the fit for each set of parameters - those with and those without the inhibitor. 
+
+```{python}
+#| exercise: true
+#| eval: false
+## Your task: Evaluate the fits for both cases
+S_smooth = np.linspace(0.0, 0.055)
+V0_no_inhib_model = ...
+V0_inhib_model = ...
+```
+
+```{python}
+#| solution: true
+## Your task: Evaluate the fits for both cases
+S_smooth = np.linspace(0.0, 0.055)
+V0_no_inhib_model = michaelis_menten(S_smooth, Vmax_fit_no_inhib, K_M_fit_no_inhib)
+V0_inhib_model = michaelis_menten(S_smooth, Vmax_fit_inhib, K_M_fit_inhib)
+```
+
+Then we plot the fit along with the data
+
+```{python}
+#| solution: true
+#| fig-align: center
+fig, ax = plt.subplots()
+
+## Your task: Plot the fits: 
+ax.plot(S_smooth, V0_no_inhib_model)
+ax.plot(S_smooth, V0_inhib_model)
+
+## Plots the data: 
+ax.plot(df['[S]_(M)'], df['V0_no_inhib_(M/s)'], 'o', label='No inhibitor', color='C0')
+ax.plot(df['[S]_(M)'], df['V0_inhib_(M/s)'], 'o', label='Inhibitor', color='C1')
+
+## Sets the x and y-axis labels and shows the legend. 
+ax.set_xlabel('[S] (M)')
+ax.set_ylabel('$V_0$ (M/s)')
+ax.legend()
+```
+
+#### (e) Inhibitor type
 
 What type of inhibitor is inhibitor1?
 
-#### (e)
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
 
-Calculate $K_i$. 
- 
+## Answer
+As $V_\mathrm{max}$ is approximately the same but $K_M$ is significantly increased 
+with the inhibitor that suggests a competitive inhibitor. 
+
+:::
+"""
+print(answer)
+```
+
+#### (f) $K_i$
+
+Calculate $K_i$ for the inhibitor using the relationship:
+
+$$K_M^{\text{app}} = K_M \left(1 + \frac{[\text{I}]}{K_i}\right)$$
+
+where $[\text{I}] = 2.5 \times 10^{-3}$ M is the inhibitor concentration, and $K_M^{\text{app}}$ is 
+the value we obtained by fitting the data with the inhibitor and $K_M$ is the value we obtained by fitting without. 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Set the inhibitor concentration in M.
+I_concentration = ...
+
+## Your task: Calculate K_i from the fitted K_M values
+K_i = ...
+
+print(K_i)
+```
+
+```{python}
+#| solution: true
+
+## Your task: Set the inhibitor concentration in M.
+I_concentration = 2.5e-3  # M
+
+## Your task: Calculate K_i from the fitted K_M values
+K_i = I_concentration / ((K_M_fit_inhib / K_M_fit_no_inhib) - 1)
+
+print(K_i)
+```
