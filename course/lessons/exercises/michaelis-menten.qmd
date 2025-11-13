@@ -14,6 +14,24 @@ $$
 
 Explain what is meant by enzyme saturation.
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+Enzyme saturation simply means the fraction of enzymes in complex with a substrate
+compared to the total enzyme concentration. Complete saturation occurs when all 
+enzymes is occupied with a substrate molecule.
+
+:::
+"""
+print(answer)
+```
+
 #### (b) 
 
 Calculate the level of enzyme saturation, $f_{ES}$, at substrate concentrations of 
@@ -26,23 +44,82 @@ Calculate the level of enzyme saturation, $f_{ES}$, at substrate concentrations 
 
 ```{python}
 #| eval: false
-... # Calculate here
+#| exercise: true
+
+## Your task calculate the degree of enzyme saturation for the prescribed cases
+...
+```
+
+```{python}
+#| solution: true
+
+## Your task calculate the degree of enzyme saturation for the prescribed cases
+f_ES_1 = 0.1 / (1 + 0.1)
+f_ES_2 = 0.5 / (1 + 0.5)
+f_ES_3 = 1 / (1 + 1)
+f_ES_4 = 10 / (1 + 10)
+f_ES_5 = 100 / (1 + 100)
+
+print(f_ES_1, f_ES_2, f_ES_3, f_ES_4, f_ES_5)
+```
+
+```{python}
+#| solution: true
+
+## An alternative solution using a function
+def enzyme_saturation(x):
+    return x / (1 + x)
+
+## Then use the function for each calculation
+f_ES_1 = enzyme_saturation(0.1)
+f_ES_2 = enzyme_saturation(0.5)
+f_ES_3 = enzyme_saturation(1)
+f_ES_4 = enzyme_saturation(10)
+f_ES_5 = enzyme_saturation(100)
+print(f_ES_1, f_ES_2, f_ES_3, f_ES_4, f_ES_5)
+```
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+For the Michealis-Menten kinetics model the following holds true
+
+$$[ES] = \frac{\left([E]_T - [ES]\right)[S]}{K_M}$$
+
+$$[ES] = [E]_T \frac{[S]}{[S]+K_M}$$
+
+$$f_{ES} = \frac{[ES]}{[E]_T} = \frac{[S]}{[S]+K_M}$$
+
+In cases like here where $[S]$ is given in terms of $K_M$, e.g. $[S] = x \cdot K_M$, we can calculate $f(ES)$ as 
+
+$$f_{ES} = \frac{[ES]}{[E]_T} = \frac{xK_M}{x K_M + K_M} = \frac{xK_M}{K_M(1+x)} = \frac{x}{1+x}$$
+
+
+:::
+"""
+print(answer)
 ```
 
 ---
 
-The Michaelis-Menten constant KM is defined as:
+#### (c) Calulate $K_m$
+
+The Michaelis-Menten constant $K_M$ is defined as:
 
 $$
 K_M = \frac{k_{-1}+ k_2}{k_1}
 $$
 
-#### (c) Calulate $K_m$
-
 In a specific reaction, the following rate constants were determined:
 
 - $k_1 = 7 \cdot 10^7 \cdot \mathrm{M}^{-1}\cdot \mathrm{s}^{-1}$, 
-- $k^{-1} = 8 \cdot 10^5 \ \mathrm{s}^{-1}$ 
+- $k_{-1} = 8 \cdot 10^5 \ \mathrm{s}^{-1}$ 
 - $k_2 = 10^3 \ \mathrm{s}^{-1}$
 
 Calculate the value of $K_M$. Does $K_M$ approximate the dissociation constant for the $ES$ complex in
@@ -50,8 +127,38 @@ this case?
 
 ```{python}
 #| eval: false
+#| exercise: true
 ... # Calculate here
 ```
+
+```{python}
+#| solution: true
+
+k1 = 7 * 10**7
+k2 = 10**3
+k_m_1 = 8 * 10**5
+
+K_M = (k_m_1 + k2) / k1
+print(K_M)
+
+```
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+Yes, since $k_{-1} \gg k_2$  it follows that $K_M$ and $K_D$ for the ES complex are almost identical.
+
+:::
+"""
+print(answer)
+```
+
 
 #### (d) Calculate $k_2$
 
@@ -62,9 +169,46 @@ Given this information and with your answers to (b) and (c) in mind, calculate t
 this constant also called?
 
 ```{python}
+#| exercise: true
 #| eval: false
-... # Calculate here
+
+## Your task: Assign known values
+...
+
+## Your task: Once you have figured out how to calculate k2, use Python to calculate it.
+...
+print(k2)
 ```
+
+```{python}
+#| solution: true
+
+## Your task: Assign known values
+V0 = 1 * 10**(-4) # M / min
+E_tot = 1 * 10**(-7) # M 
+
+## Your task: Once you have figured out how to calculate k2, use Python to calculate it.
+Vmax = V0 / f_ES_5
+k2 = Vmax / E_tot
+print(k2)
+```
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+This constant is also known as $k_{cat}$.
+
+:::
+"""
+print(answer)
+```
+
 
 #### (e) Lineweaver-Burk plot
 
@@ -72,3 +216,18 @@ The values of $V_\mathrm{max}$ and $K_M$ have historically been determined from 
 
 How does the x- and y-intercepts in a Lineweaver-Burk plot relate to $V_\mathrm{max}$ and $K_M$?
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Lineweaver-Burke_plot.svg/1920px-Lineweaver-Burke_plot.svg.png)
+
+:::
+"""
+print(answer)
+```
