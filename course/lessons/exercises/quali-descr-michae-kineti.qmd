@@ -36,7 +36,7 @@ What is the biochemical meaning of $K_M$?
 
 Now set $[E]_\mathrm{tot} = 0.0005$, and $K_M = 5$. Change $V_\mathrm{max}$ step-wise from 40 to 900. Describe the changes you observe and how they relate to the MM equation. 
 
-After this, repeat the procedure for $[E]_\mathrm{tot} increasing it 10-fold.  
+After this, repeat the procedure for $[E]_\mathrm{tot}$ increasing it 10-fold.  
 
 :::::: {.cell .markdown}
 
@@ -44,11 +44,11 @@ After this, repeat the procedure for $[E]_\mathrm{tot} increasing it 10-fold.
 
 #### (d) Substrate concentrations way below $K_M
 
-Next, we will explore the regime where [S]>>$K_M. Initially, set $K_M = 10$ and zoom in on the regime from 0 - 1 on the X-axis. What does the MM equation look like in this regime? Use the MM equation and a simplifying assumption to show how this ccurs. 
+Next, we will explore the regime where $[S] \gg K_M$. Initially, set $K_M = 10$ and zoom in on the regime from $0$ to $1$ on the X-axis. What does the MM equation look like in this regime? Use the MM equation and a simplifying assumption to show how this occurs. 
 
-Next, increase $K_M five-fold and try to change $V_\mathrm{max}$ som the curve appearance is unchanged (beware of the autoscaling Y-axis).
+Next, increase $K_M$ five-fold and try to change $V_\mathrm{max}$ som the curve appearance is unchanged (beware of the autoscaling Y-axis).
 
-Imagine an experiment conducted using only [S] values from this range. How would this affect how well you could determine the MM parameters? 
+Imagine an experiment conducted using only $[S]$ values from this range. How would this affect how well you could determine the MM parameters? 
 
 :::::: {.cell .markdown}
 
