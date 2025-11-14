@@ -272,4 +272,62 @@ print(answer)
 
 #### (f) $K_i$
 
-Determine the $K_i$ for each of the two inhibitors. 
+Determine the $K_i$ for each of the two inhibitors. The inhibitor concentration is 5 $\mu\mathrm{M}$.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Assign known value
+I = ...
+
+## Your task: Calculate K_I for both cases. 
+## You should derive the correct expression before doing any coding!
+K_I_inhib2 = ...
+K_I_inhib3 = ...
+
+## Prints the results
+print('Inhibitor 2: ', K_I_inhib2)
+print('Inhibitor 3: ', K_I_inhib3)
+```
+
+```{python}
+#| solution: true
+
+## Your task: Assign known value
+I = 5 * 10**(-6)
+
+## Your task: Calculate K_I for both cases. 
+## You should derive the correct expression before doing any coding!
+K_I_inhib2 = I / (Vmax_enz_fit / Vmax_inhib2_fit - 1)
+K_I_inhib3 = I / (Vmax_enz_fit / Vmax_inhib3_fit - 1)
+
+## Prints the results
+print('Inhibitor 2: ', K_I_inhib2)
+print('Inhibitor 3: ', K_I_inhib3)
+```
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+For a non-competitive inhibitor we have
+
+$$
+V^{app}_\mathrm{max} = \frac{V_\mathrm{max}}{1+\frac{[I]}{K_I}}.
+$$
+
+From which we can isolate $K_I$, doing a bit of algebra we get 
+
+$$
+K_I = \frac{[I]}{\frac{V_\mathrm{max}}{V^{app}_\mathrm{max}} - 1}.
+$$
+
+:::
+"""
+print(answer)
+```
