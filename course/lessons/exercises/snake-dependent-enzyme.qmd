@@ -95,8 +95,8 @@ Calculate the fraction of enzyme:substrate complexes (CVFx:FB:C5) in blood.
 theta_cfv1 = ...
 theta_cfv2 = ...
 
-print(f"{theta_cfv1 = :.3f}")
-print(f"{theta_cfv2 = :.3f}")
+print(theta_cfv1)
+print(theta_cfv2)
 ```
 
 ```{python}
@@ -104,8 +104,8 @@ print(f"{theta_cfv2 = :.3f}")
 theta_cfv1 = C_c5 / (K_m_cvf1 + C_c5)
 theta_cfv2 = C_c5 / (K_m_cvf2 + C_c5)
 
-print(f"{theta_cfv1 = :.3f}")
-print(f"{theta_cfv2 = :.3f}")
+print(theta_cfv1)
+print(theta_cfv2)
 ```
 
 #### (d) Initial velocity
@@ -118,8 +118,8 @@ Calculate the initial velocities of C5 cleavage in blood by the two enzymes.
 v0_cfv1 = ...
 v0_cfv2 = ...
 
-print(f"{v0_cfv1 = :.3e}")
-print(f"{v0_cfv2 = :.3e}")
+print(v0_cfv1)
+print(v0_cfv2)
 ```
 
 ```{python}
@@ -127,8 +127,8 @@ print(f"{v0_cfv2 = :.3e}")
 v0_cfv1 = (V_max_cfv1 * C_c5) / (K_m_cvf1 + C_c5)
 v0_cfv2 = (V_max_cfv2 * C_c5) / (K_m_cvf2 + C_c5)
 
-print(f"{v0_cfv1 = :.3e}")
-print(f"{v0_cfv2 = :.3e}")
+print(v0_cfv1)
+print(v0_cfv2)
 ```
 
 #### (e) Best cleaver

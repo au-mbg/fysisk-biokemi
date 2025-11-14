@@ -193,7 +193,7 @@ print(answer)
 ```
 
 
-#### Hill coefficient 
+#### (g) Regression with Hill equation.
 
 Use regression to determine the Hill coefficient for each of the datasets.
 Recall that the Hill equation is, 
