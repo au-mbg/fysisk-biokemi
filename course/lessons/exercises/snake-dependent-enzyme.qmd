@@ -131,7 +131,7 @@ print(f"{v0_cfv1 = :.3e}")
 print(f"{v0_cfv2 = :.3e}")
 ```
 
-#### (f) Best cleaver
+#### (e) Best cleaver
 
 Which of the two enzymes, CVF1:FB or CVF2:FB, cleaves the most C5 molecules in blood?
 

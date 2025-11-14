@@ -225,7 +225,8 @@ answer=r"""
 
 ## Answer
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Lineweaver-Burke_plot.svg/1920px-Lineweaver-Burke_plot.svg.png)
+![](https://raw.githubusercontent.com/au-mbg/fysisk-biokemi/refs/heads/main/course/lessons/figures/lineweaver_burke.png){.lightbox}
+
 
 :::
 """

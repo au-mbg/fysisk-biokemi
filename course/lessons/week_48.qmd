@@ -87,7 +87,7 @@ format-links:
 
 ---
 
-::: {.content-visible when-format=" typst"}
+::: {.content-visible when-format="typst"}
 
 {{< pagebreak >}}
 
