@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import numpy as np
 import pandas as pd
+from fysisk_biokemi.widgets import DataUploader
+from IPython.display import display
 ```
 
 The enzyme aspartate transcarbamoylase (ATCase) catalyzes the first reaction in the biosynthesis of pyrimidines
@@ -23,8 +25,6 @@ Load the dataset with the widget below
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
 uploader = DataUploader()
 uploader.display()
 ```
@@ -39,58 +39,159 @@ display(df)
 
 ```{python}
 #| solution: true
-from IPython.display import display 
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('atcase') # Load from package for the solution so it doesn't require to interact.
 display(df)
 ```
 
-#### (a) Plot the dataset
+#### (a) Units & Plot
+
+```{python}
+## Your task: Add columns with the properties in SI units.
+df['[aspartate]_(M)'] = df['[aspartate]_(mM)'] * 10**(-3)
+df['rate_(M/s)'] = df['rate_(uM/s)'] * 10**(-6)
+df['rate_ctp_(M/s)'] = df['rate_ctp_(uM/s)'] * 10**(-6)
+```
+
+Make a plot of the `without_ctp` versus the aspartate concentration. 
 
 ```{python}
 #| exercise: true
 #| eval: false
 fig, ax = plt.subplots()
 
-... # Put some code here
-... # And here
+## Your task: Plot the datasets
+...
 
-ax.set_xlabel('[Aspartate] (mM)')
-ax.set_ylabel('Rate of formation')
+## Adds legend and labels.
+ax.set_xlabel('[Aspartate] (M)')
+ax.set_ylabel('Rate of formation (M/s)')
+ax.legend()
 ax.set_yticklabels([]);
 ```
 
 ```{python}
 #| solution: true
+#| fig-align: center
 fig, ax = plt.subplots()
 
-ax.plot(df['aspartate'], df['without_ctp'], label='No CTP')
-ax.plot(df['aspartate'], df['with_ctp'], label='With CTP')
+## Your task: Plot the datasets
+ax.plot(df['[aspartate]_(M)'], df['rate_(M/s)'], label='No CTP')
+ax.plot(df['[aspartate]_(M)'], df['rate_ctp_(M/s)'], label='CTP')
 
-ax.set_xlabel('[Aspartate] (mM)')
-ax.set_ylabel('Rate of formation')
+ax.set_xlabel('[Aspartate] (M)')
+ax.set_ylabel('Rate of formation (M/s)')
+ax.legend()
 ax.set_yticklabels([]);
 ```
 
 #### (b) Kinetic profile
 
-Describe the kinetic profile of ATCase and explain what it tells us about the way ATCase works. (You may find inspiration in the material previously covered on protein-ligand interactions)
+Looking at the curve without CTP, describe the kinetic profile of ATCase and explain what it tells us about the way ATCase works. (You may find inspiration in the material previously covered on protein-ligand interactions)
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+
+The midpoint has a steep increase (large slope), whereas the starting and end 
+points has smaller slopes. In other words, the reaction velocity $V_0$ shows 
+sigmoidity as a function of substrate concentration, [aspartate]. 
+
+This tells us that ATCase works by cooperativity in substrate binding 
+(i.e. does not obey Michaelis-Menten kinetics model), i.e. binding of one 
+susbtrate increases the likelihood that the second substrate will bind 
+(you have already encountered this in the topic of protein-ligand interactions).
+
+:::
+"""
+print(answer)
+```
 
 #### (c) Quarternary structure
 
 What does the figure tell us about the quaternary structure of ATCase?
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+Allosteric enzymes consist of two or more subunits, each able to bind and process
+a substrate molecule. Such enzymes can take at least two different conformational 
+states, which are in equilibrium. 
+
+:::
+"""
+print(answer)
+```
+
+
 #### (d) DNA synthesis
 
 Which other pyrimidine based trinucleotide besides CTP is used to synthesize DNA?
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+Thymidine triphosphate (TTP)
+
+:::
+"""
+print(answer)
+```
 
 #### (e) Effect of CTP
 
 Qualitatively describe the effect of CTP on the rate of N-carbamyolaspartate formation
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+CTP lowers the catalytic rate of ATCase, by binding to it and stabilising ATCase in a low substrate-affinity state.
+
+:::
+"""
+print(answer)
+```
+
 #### (f) Physiological advantage
 
 In fact many enzymes are regulated by certain end products in a fashion similar to the CTP effect on ATCase. Can you explain why this might be a physiological advantage?
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+As seen from the reaction scheme, the reaction catalyzed by ATCase ultimately 
+leads to the formation of CTP. When [CTP] increases the level of CTP formation therefore drops. 
+
+:::
+"""
+print(answer)
+```
+
 
 #### Hill coefficient 
 
@@ -98,108 +199,73 @@ Use regression to determine the Hill coefficient for each of the datasets.
 Recall that the Hill equation is, 
 
 $$
-\theta = \frac{[L]^n}{K_d + [L]^n}
+\theta = \frac{[L]^h}{K + [L]^h}
 $$
 
 As usual start by writing a function implementing this equation
 
 ```{python}
-def hill_eq(L, Kd, n):
-    return L**n / (Kd + L**n)
-```
-
-And then make the fit for each dataset
-
-```{python}
 #| exercise: true
 #| eval: false
-# We start by massaging the data into the right units etc.
-L_M = df['aspartate'] * 10**(-3) # Convert to SI units in M.
-
-# For the dataset with ctp we need to discard the elements that are NaN / not measured.
-indices = np.argwhere(df['with_ctp'].notna()).flatten() # Don't worry too much about how this works - it just finds the indices of the non empty elements. 
-L_M_ctp = L_M[indices]
-theta_ctp = df['with_ctp'][indices]
-
-# Then we're ready to fit
-pcov, _ = ...
-pcov_ctp, _ = ...
-Kd, n = pcov
-Kd_ctp, n_ctp = pcov_ctp
-
-# Print
-print('Without CTP')
-print(f'   K_d = {Kd:.3e}')
-print(f'   n = {n:.3f}')
-print('With CTP')
-print(f'   K_d = {Kd_ctp:.3e}')
-print(f'   n = {n_ctp:.3f}')
+def hill_eq(L, K, h):
+    ## Your task: Implement the equation
+    result = ...
+    return result
 ```
 
 ```{python}
 #| solution: true
-# We start by massaging the data into the right units etc.
-L_M = df['aspartate'] * 10**(-3) # Convert to SI units in M.
+def hill_eq(L, K, h):
+    return L**h / (K + L**h)
+```
+And then make the fit for each dataset
 
-# For the dataset with ctp we need to discard the elements that are NaN / not measured.
-indices = np.argwhere(df['with_ctp'].notna()).flatten()
-L_M_ctp = L_M[indices]
-theta_ctp = df['with_ctp'][indices]
+```{python}
+#| solution: true
+#| eval: true
 
-# Then we're ready to fit
-pcov, _ = curve_fit(hill_eq, L_M, df['without_ctp'])
-pcov_ctp, _ = curve_fit(hill_eq, L_M_ctp, theta_ctp)
+theta = df['rate_(M/s)'] / df['rate_(M/s)'].max()
+theta_ctp = df['rate_ctp_(M/s)'] / df['rate_ctp_(M/s)'].max()
 
-Kd, n = pcov
-Kd_ctp, n_ctp = pcov_ctp
+## Your task: Make the fits
+fitted_parameters_noctp, _ = curve_fit(hill_eq, df['[aspartate]_(M)'], theta)
+fitted_parameters_ctp, _ = curve_fit(hill_eq, df['[aspartate]_(M)'], theta_ctp)
+ 
+K_fit_noctp, h_fit_noctp = fitted_parameters_noctp
+K_fit_ctp, h_fit_ctp = fitted_parameters_ctp
 
 print('Without CTP')
-print(f'   K_d = {Kd:.3e}')
-print(f'   n = {n:.3f}')
+print(f'   K = {K_fit_noctp:.3e}')
+print(f'   h = {h_fit_noctp:.3f}')
 print('With CTP')
-print(f'   K_d = {Kd_ctp:.3e}')
-print(f'   n = {n_ctp:.3f}')
+print(f'   K = {K_fit_ctp:.3e}')
+print(f'   h = {h_fit_ctp:.3f}')
 ```
 
 Then we can plot 
 
 ```{python}
-#| exercise: true
-#| eval: false
-#| fig-align: center
-fig, ax = plt.subplots(figsize=(7, 4))
-
-L_smooth = np.linspace(0, L_M.max())
-theta_fit = hill_eq(L_smooth, Kd, n)
-theta_ctp_fit = hill_eq(L_smooth, Kd_ctp, n_ctp)
-
-ax.plot(L_M, df['without_ctp'], 'o', label='No CTP')
-ax.plot(L_smooth, theta_fit, 'k')
-
-ax.plot(L_M_ctp, theta_ctp, 'o', label='With CTP')
-ax.plot(L_smooth, theta_ctp_fit, 'k')
-
-ax.set_xlabel('[Aspartate] (M)')
-ax.set_ylabel('Rate of formation')
-```
-
-```{python}
 #| solution: true
 #| fig-align: center
-fig, ax = plt.subplots(figsize=(7, 4))
+fig, ax = plt.subplots()
 
-L_smooth = np.linspace(0, L_M.max())
-theta_fit = hill_eq(L_smooth, Kd, n)
-theta_ctp_fit = hill_eq(L_smooth, Kd_ctp, n_ctp)
+## Your task: Calculate the fits
+L_smooth = np.linspace(0, 50*10**(-3))
+theta_fit_noctp = hill_eq(L_smooth, K_fit_noctp, h_fit_noctp)
+theta_fit_ctp = hill_eq(L_smooth, K_fit_ctp, h_fit_ctp)
 
-ax.plot(L_M, df['without_ctp'], 'o', label='No CTP')
-ax.plot(L_smooth, theta_fit, 'k')
+## Your task: Plot the fits:
+ax.plot(L_smooth, theta_fit_noctp)
+ax.plot(L_smooth, theta_fit_ctp)
 
-ax.plot(L_M_ctp, theta_ctp, 'o', label='With CTP')
-ax.plot(L_smooth, theta_ctp_fit, 'k')
+## Plots the datasets
+ax.plot(df['[aspartate]_(M)'], theta, 'o', label='No CTP', color='C0')
+ax.plot(df['[aspartate]_(M)'], theta_ctp, 'o', label='CTP', color='C1')
 
+## Labels & legend
 ax.set_xlabel('[Aspartate] (M)')
-ax.set_ylabel('Rate of formation')
+ax.set_ylabel(r'$\theta$')
+ax.legend()
 ```
 
 
