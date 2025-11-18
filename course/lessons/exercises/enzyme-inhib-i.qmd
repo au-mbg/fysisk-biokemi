@@ -197,6 +197,23 @@ print('    V_max:', Vmax_fit_inhib)
 print('    K_M:', K_M_fit_inhib)
 ```
 
+Which of the kinetic parameters changes substantively in the presence of the inhibitor
+
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+$K_M$
+
+:::
+"""
+print(answer)
+```
+
 #### (d) Analyze the fit
 
 As per usual, we need to plot the fit to confirm that that it has been done successfully.
@@ -220,7 +237,14 @@ V0_no_inhib_model = michaelis_menten(S_smooth, Vmax_fit_no_inhib, K_M_fit_no_inh
 V0_inhib_model = michaelis_menten(S_smooth, Vmax_fit_inhib, K_M_fit_inhib)
 ```
 
-Then we plot the fit along with the data
+Copy your code from above and then we plot the fit along with the data, 
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Copy your plotting code from above and add the two lines to plot the fits.
+```
 
 ```{python}
 #| solution: true
@@ -263,12 +287,7 @@ print(answer)
 
 #### (f) $K_i$
 
-Calculate $K_i$ for the inhibitor using the relationship:
-
-$$K_M^{\text{app}} = K_M \left(1 + \frac{[\text{I}]}{K_i}\right)$$
-
-where $[\text{I}] = 2.5 \times 10^{-3}$ M is the inhibitor concentration, and $K_M^{\text{app}}$ is 
-the value we obtained by fitting the data with the inhibitor and $K_M$ is the value we obtained by fitting without. 
+The experiment was done in the presence of 2.5 mM of the inhibitor. What is the $K_i$ for this inhibitor?
 
 ```{python}
 #| exercise: true

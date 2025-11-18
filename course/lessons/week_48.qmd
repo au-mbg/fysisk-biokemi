@@ -71,7 +71,7 @@ format-links:
 
 ::::::
 
----
+<!-- ---
 
 ::: {.content-visible when-format="typst"}
 
@@ -83,7 +83,7 @@ format-links:
 
 :::::: {.cell .markdown}
 
-::::::
+:::::: -->
 
 ---
 

@@ -57,7 +57,7 @@ datasets:
     description: "Enzyme kinetics experimental design data"
   
   analys-data-set-obeyin.xlsx:
-    week: 47
+    week: 48
     exercise: "analys-data-set-obeyin.qmd"
     original_name: "week49_2.xlsx"
     description: "Data set analysis for enzyme kinetics"

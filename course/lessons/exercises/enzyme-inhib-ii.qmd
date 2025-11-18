@@ -101,17 +101,17 @@ ax.set_ylabel('V0 (M/s)')
 plt.show()
 ```
 
-#### (b) Intuit parameters
+#### (b) Estimate parameters
 
 Based on the appearance of these plots:
 
-- Can you determine the type of inhibition? 
-- Alternatively, can you exclude some mechanisms?
-
-Based on your answers what do you expect for the parameters $K_M$ and $V_\mathrm{max}$? 
-
 - Which dataset would have the highest $V_\mathrm{max}$, which the lowest? 
 - What about $K_M$? 
+
+Based on your answers,
+
+- Can you determine the type of inhibition? 
+- Alternatively, can you exclude some mechanisms?
 
 ```{python}
 #| solution: true
@@ -229,6 +229,34 @@ plt.show()
 ```
 
 If your fits don't closely match the data, go back and change your initial guesses. 
+
+
+#### (d) Type of inhibitor
+
+We call $V_\mathrm{max}$ and $K_\mathrm{M}$ recorded in the presence of the inhibitor for $V_\mathrm{max}^{app}$ and $K_\mathrm{M}^{app}$ ($app = \mathrm{apparent}$).
+
+Calcuate how much each value changes in the presence of the inhibitor by dividing 
+them by the parameters determined in the absence of an inhibitor.
+
+```{python}
+#| solution: true
+
+K_M_ratio2 = K_M_inhib2_fit / K_M_enz_fit
+K_M_ratio3 = K_M_inhib3_fit / K_M_enz_fit
+
+Vmax_ratio2 = Vmax_inhib2_fit / Vmax_enz_fit
+Vmax_ratio3 = Vmax_inhib3_fit / Vmax_enz_fit
+
+print('Inhibitor 2')
+print('K_M', K_M_ratio2)
+print('Vmax', Vmax_ratio2)
+
+print('Inhibitor 3')
+print('K_M', K_M_ratio3)
+print('Vmax', Vmax_ratio3)
+```
+
+Based on the above, what is the likely inhibition type of inhibitor2 and inhibitor3?
 
 #### (d) Change
 

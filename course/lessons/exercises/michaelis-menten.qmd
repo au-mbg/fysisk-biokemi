@@ -32,7 +32,7 @@ enzymes is occupied with a substrate molecule.
 print(answer)
 ```
 
-#### (b) 
+#### (b) Enzyme saturation
 
 Calculate the level of enzyme saturation, $f_{ES}$, at substrate concentrations of 
 
@@ -108,7 +108,7 @@ print(answer)
 
 ---
 
-#### (c) Calulate $K_m$
+#### (c) Compare $K_M$ and $K_D$.
 
 The Michaelis-Menten constant $K_M$ is defined as:
 
@@ -122,13 +122,24 @@ In a specific reaction, the following rate constants were determined:
 - $k_{-1} = 8 \cdot 10^5 \ \mathrm{s}^{-1}$ 
 - $k_2 = 10^3 \ \mathrm{s}^{-1}$
 
-Calculate the value of $K_M$. Does $K_M$ approximate the dissociation constant for the $ES$ complex in
-this case?
+Calculate the values of $K_M$ and $K_D$ (The dissociation constant of the enzyme:substrate complex). 
+
+Does $K_M$ approximate the dissociation constant for the $ES$ complex in
+this case, and how can this be estimated directly from the values of the microscopic rate constants?
 
 ```{python}
 #| eval: false
 #| exercise: true
-... # Calculate here
+
+## Your task: Assign known values
+... 
+
+## Your task: Calculate K_M and K_D
+K_M = ...
+K_D = ...
+
+print(K_M)
+print(K_D)
 ```
 
 ```{python}
@@ -139,8 +150,9 @@ k2 = 10**3
 k_m_1 = 8 * 10**5
 
 K_M = (k_m_1 + k2) / k1
+K_D = k_m_1 / k1
 print(K_M)
-
+print(K_D)
 ```
 
 ```{python}
@@ -163,9 +175,9 @@ print(answer)
 #### (d) Calculate $k_2$
 
 Assume that a solution of an enzyme at a concentration of $1 \cdot 10^{-7} \ \mathrm{M}$  with a substrate concentration of 
-$[S]=100\cdot K_M$ has $V_0=10^{-4} \ \mathrm{M} \cdot \mathrm{min}^{-1}$
+$[S]=100\cdot K_M$ has $V_0=10^{-4} \ \mathrm{M} \cdot \mathrm{s}^{-1}$
 
-Given this information and with your answers to (b) and (c) in mind, calculate the constant $k_2$. What is
+Given this information and with your answers to (b) and (c) in mind, approximate the constant $k_2$. What is
 this constant also called?
 
 ```{python}
@@ -184,7 +196,7 @@ print(k2)
 #| solution: true
 
 ## Your task: Assign known values
-V0 = 1 * 10**(-4) # M / min
+V0 = 1 * 10**(-4) # M / s
 E_tot = 1 * 10**(-7) # M 
 
 ## Your task: Once you have figured out how to calculate k2, use Python to calculate it.
