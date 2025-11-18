@@ -239,14 +239,39 @@ Calcuate how much each value changes in the presence of the inhibitor by dividin
 them by the parameters determined in the absence of an inhibitor.
 
 ```{python}
-#| solution: true
+#| exercise: true
+#| eval: false
 
+## Your task: Calculate the ratio nof K_M^app / K_M
 K_M_ratio2 = K_M_inhib2_fit / K_M_enz_fit
 K_M_ratio3 = K_M_inhib3_fit / K_M_enz_fit
 
+## Your task: Calculate the ratio nof Vmax^app / Vmax
 Vmax_ratio2 = Vmax_inhib2_fit / Vmax_enz_fit
 Vmax_ratio3 = Vmax_inhib3_fit / Vmax_enz_fit
 
+## Prints the ratios
+print('Inhibitor 2')
+print('K_M', K_M_ratio2)
+print('Vmax', Vmax_ratio2)
+
+print('Inhibitor 3')
+print('K_M', K_M_ratio3)
+print('Vmax', Vmax_ratio3)
+```
+
+```{python}
+#| solution: true
+
+## Your task: Calculate the ratio nof K_M^app / K_M
+K_M_ratio2 = K_M_inhib2_fit / K_M_enz_fit
+K_M_ratio3 = K_M_inhib3_fit / K_M_enz_fit
+
+## Your task: Calculate the ratio nof Vmax^app / Vmax
+Vmax_ratio2 = Vmax_inhib2_fit / Vmax_enz_fit
+Vmax_ratio3 = Vmax_inhib3_fit / Vmax_enz_fit
+
+## Prints the ratios
 print('Inhibitor 2')
 print('K_M', K_M_ratio2)
 print('Vmax', Vmax_ratio2)
@@ -258,10 +283,6 @@ print('Vmax', Vmax_ratio3)
 
 Based on the above, what is the likely inhibition type of inhibitor2 and inhibitor3?
 
-#### (d) Change
-
-In the fits above you will likely see that all the fitted parameters change between the different data sets – some by a little and some by a lot. How big does a change have to be to be considered significant?
-
 ```{python}
 #| solution: true
 #| output: asis
@@ -270,35 +291,16 @@ answer=r"""
 ::: {.callout-important}
 
 ## Answer
+For inhibitor2 both $K_M$ and $V_\mathrm{max}$ change significantly, making the likely type of inhibition **uncompetitive**.
 
-There is a significant change in $V_\mathrm{max}$ between the three datasets, but the changes 
-in $K_M$ are too minute to be considered significant. 
-
-:::
-"""
-print(answer)
-```
-
-#### (e) Inhibitor type
-
-Based on the above, what is the likely inhibition type of inhibitor1 and inhibitor3? 
-
-```{python}
-#| solution: true
-#| output: asis
-#| echo: false
-answer=r"""
-::: {.callout-important}
-
-## Answer
-Both are non-competitive as $K_M$ remains roughly unchanged while $V_\mathrm{max}$ changes significantly. 
+For inhibitor3 only $V_\mathrm{max}$ changes significantly, making the likely type of inhibition **non-competiive**.
 
 :::
 """
 print(answer)
 ```
 
-#### (f) $K_i$
+#### (e) $K_i$
 
 Determine the $K_i$ for each of the two inhibitors. The inhibitor concentration is 5 $\mu\mathrm{M}$.
 
@@ -343,7 +345,7 @@ answer=r"""
 ::: {.callout-important}
 
 ## Answer
-For a non-competitive inhibitor we have
+For both (pure) non-competitive and uncompetitive inhibition we have
 
 $$
 V^{app}_\mathrm{max} = \frac{V_\mathrm{max}}{1+\frac{[I]}{K_I}}.

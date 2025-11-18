@@ -47,27 +47,36 @@ display(df)
 #### (a) Units & Plot
 
 ```{python}
+#| exercise: true
+#| eval: false
+## Your task: Add columns with the properties in SI units.
+df['[aspartate]_(M)'] = ...
+df['rate_(M/s)'] = ...
+df['rate_ctp_(M/s)'] = ...
+```
+
+```{python}
+#| solution: true
 ## Your task: Add columns with the properties in SI units.
 df['[aspartate]_(M)'] = df['[aspartate]_(mM)'] * 10**(-3)
 df['rate_(M/s)'] = df['rate_(uM/s)'] * 10**(-6)
 df['rate_ctp_(M/s)'] = df['rate_ctp_(uM/s)'] * 10**(-6)
 ```
 
-Make a plot of the `without_ctp` versus the aspartate concentration. 
+Make a plot of the `rate_(M/s)` dataset versus the aspartate concentration. 
 
 ```{python}
 #| exercise: true
 #| eval: false
 fig, ax = plt.subplots()
 
-## Your task: Plot the datasets
+## Your task: Plot the dataset
 ...
 
 ## Adds legend and labels.
 ax.set_xlabel('[Aspartate] (M)')
 ax.set_ylabel('Rate of formation (M/s)')
 ax.legend()
-ax.set_yticklabels([]);
 ```
 
 ```{python}
@@ -77,12 +86,10 @@ fig, ax = plt.subplots()
 
 ## Your task: Plot the datasets
 ax.plot(df['[aspartate]_(M)'], df['rate_(M/s)'], label='No CTP')
-ax.plot(df['[aspartate]_(M)'], df['rate_ctp_(M/s)'], label='CTP')
 
 ax.set_xlabel('[Aspartate] (M)')
 ax.set_ylabel('Rate of formation (M/s)')
 ax.legend()
-ax.set_yticklabels([]);
 ```
 
 #### (b) Kinetic profile
@@ -133,27 +140,31 @@ states, which are in equilibrium.
 print(answer)
 ```
 
+#### (d) Effect of CTP
 
-#### (d) DNA synthesis
+Copy your plotting code from above and add a line to also plot the `rate_ctp_(M/s)` dataset.
 
-Which other pyrimidine based trinucleotide besides CTP is used to synthesize DNA?
+```{python}
+#| exercise: true
+#| eval: false
+## Your task: Copy your plotting code and add a line to also plot the rate_ctp_(M/s) dataset.
+...
+```
+
 
 ```{python}
 #| solution: true
-#| output: asis
-#| echo: false
-answer=r"""
-::: {.callout-important}
+#| fig-align: center
+fig, ax = plt.subplots()
 
-## Answer
-Thymidine triphosphate (TTP)
+## Your task: Plot the datasets
+ax.plot(df['[aspartate]_(M)'], df['rate_(M/s)'], label='No CTP')
+ax.plot(df['[aspartate]_(M)'], df['rate_ctp_(M/s)'], label='CTP')
 
-:::
-"""
-print(answer)
+ax.set_xlabel('[Aspartate] (M)')
+ax.set_ylabel('Rate of formation (M/s)')
+ax.legend()
 ```
-
-#### (e) Effect of CTP
 
 Qualitatively describe the effect of CTP on the rate of N-carbamyolaspartate formation
 
@@ -172,7 +183,7 @@ CTP lowers the catalytic rate of ATCase, by binding to it and stabilising ATCase
 print(answer)
 ```
 
-#### (f) Physiological advantage
+#### (e) Physiological advantage
 
 In fact many enzymes are regulated by certain end products in a fashion similar to the CTP effect on ATCase. Can you explain why this might be a physiological advantage?
 
@@ -195,54 +206,118 @@ print(answer)
 
 #### (g) Regression with Hill equation.
 
-Use regression to determine the Hill coefficient for each of the datasets.
-Recall that the Hill equation is, 
+There is also a formulation of the Hill equation for the enzyme kinetics, which has the following form:
+$$
+v = \frac{V_\mathrm{max} \cdot S^h}{K_{\frac{1}{2}}^h+S^h}
+$$
 
-$$
-\theta = \frac{[L]^h}{K + [L]^h}
-$$
+Note, that we use a formulation of the Hill equation, where the constant on the denominator is raised to the power of $h$. 
+Therefore, the constant also marks the half-way saturation concentration and we denote it $K_{\frac{1}{2}}$
 
 As usual start by writing a function implementing this equation
 
 ```{python}
 #| exercise: true
 #| eval: false
-def hill_eq(L, K, h):
-    ## Your task: Implement the equation
+def hill_eq(S, Vmax, K, h):
+    ## Your task: Implement the enzyme kinetics Hill equation.
     result = ...
     return result
+
+print(hill_eq(1, 1, 1, 1)) # Should give 0.5 -> (1 * 1^1) / (1**1 + 1**1) = (1 * 1) / (1 + 1) = 1/2
 ```
 
 ```{python}
 #| solution: true
-def hill_eq(L, K, h):
-    return L**h / (K + L**h)
+def hill_eq(S, Vmax, K, h):
+    ## Your task: Implement the enzyme kinetics Hill equation.
+    return (Vmax * S**h) / (K**h + S**h)
+
+print(hill_eq(1, 1, 1, 1)) # Should give 0.5 -> (1 * 1^1) / (1**1 + 1**1) = (1 * 1) / (1 + 1) = 1/2
 ```
-And then make the fit for each dataset
+And then make the fit for each dataset of rates vs. aspartate concentration.
+
+```{python}
+#| exercise: true
+#| eval: false
+
+## Your task: Make the fit for the dataset without CTP
+fitted_parameters_noctp, trash = ...
+Vmax_fit_noctp, K_fit_noctp, h_fit_noctp = fitted_parameters_noctp
+
+## Your task: Make the fit for the dataset with CTP
+fitted_parameters_ctp, trash = ...
+Vmax_fit_ctp, K_fit_ctp, h_fit_ctp = fitted_parameters_ctp
+```
 
 ```{python}
 #| solution: true
 #| eval: true
 
-theta = df['rate_(M/s)'] / df['rate_(M/s)'].max()
-theta_ctp = df['rate_ctp_(M/s)'] / df['rate_ctp_(M/s)'].max()
+## Your task: Make the fit for the dataset without CTP
+fitted_parameters_noctp, _ = curve_fit(hill_eq, df['[aspartate]_(M)'], df['rate_(M/s)'])
+Vmax_fit_noctp, K_fit_noctp, h_fit_noctp = fitted_parameters_noctp
 
-## Your task: Make the fits
-fitted_parameters_noctp, _ = curve_fit(hill_eq, df['[aspartate]_(M)'], theta)
-fitted_parameters_ctp, _ = curve_fit(hill_eq, df['[aspartate]_(M)'], theta_ctp)
- 
-K_fit_noctp, h_fit_noctp = fitted_parameters_noctp
-K_fit_ctp, h_fit_ctp = fitted_parameters_ctp
+## Your task: Make the fit for the dataset with CTP
+fitted_parameters_ctp, _ = curve_fit(hill_eq, df['[aspartate]_(M)'], df['rate_ctp_(M/s)']) 
+Vmax_fit_ctp, K_fit_ctp, h_fit_ctp = fitted_parameters_ctp
+```
 
+The next cell prints the fitted parameters for both cases.
+
+```{python}
+#| exercise: true
+#| eval: false
 print('Without CTP')
-print(f'   K = {K_fit_noctp:.3e}')
-print(f'   h = {h_fit_noctp:.3f}')
+print('    Vmax', Vmax_fit_noctp)
+print('    K1/2', K_fit_noctp)
+print('    h', h_fit_noctp)
+
 print('With CTP')
-print(f'   K = {K_fit_ctp:.3e}')
-print(f'   h = {h_fit_ctp:.3f}')
+print('    Vmax', Vmax_fit_ctp)
+print('    K1/2', K_fit_ctp)
+print('    h', h_fit_ctp)
+```
+
+```{python}
+#| solution: true
+print('Without CTP')
+print('    Vmax', Vmax_fit_noctp)
+print('    K1/2', K_fit_noctp)
+print('    h', h_fit_noctp)
+
+print('With CTP')
+print('    Vmax', Vmax_fit_ctp)
+print('    K1/2', K_fit_ctp)
+print('    h', h_fit_ctp)
 ```
 
 Then we can plot 
+
+```{python}
+#| exercise: true
+#| eval: false
+#| fig-align: center
+fig, ax = plt.subplots()
+
+## Your task: Calculate the fits
+S_smooth = np.linspace(0, 50*10**(-3))
+V_fit_noctp = ...
+V_fit_ctp = ...
+
+## Your task: Plot the fits:
+...
+...
+
+## Plots the datasets
+ax.plot(df['[aspartate]_(M)'], df['rate_(M/s)'], 'o', label='No CTP', color='C0')
+ax.plot(df['[aspartate]_(M)'], df['rate_ctp_(M/s)'], 'o', label='CTP', color='C1')
+
+## Labels & legend
+ax.set_xlabel('[Aspartate] (M)')
+ax.set_ylabel('v (M/s)')
+ax.legend()
+```
 
 ```{python}
 #| solution: true
@@ -250,22 +325,43 @@ Then we can plot
 fig, ax = plt.subplots()
 
 ## Your task: Calculate the fits
-L_smooth = np.linspace(0, 50*10**(-3))
-theta_fit_noctp = hill_eq(L_smooth, K_fit_noctp, h_fit_noctp)
-theta_fit_ctp = hill_eq(L_smooth, K_fit_ctp, h_fit_ctp)
+S_smooth = np.linspace(0, 50*10**(-3))
+V_fit_noctp = hill_eq(S_smooth, Vmax_fit_noctp, K_fit_noctp, h_fit_noctp)
+V_fit_ctp = hill_eq(S_smooth, Vmax_fit_ctp, K_fit_ctp, h_fit_ctp)
 
 ## Your task: Plot the fits:
-ax.plot(L_smooth, theta_fit_noctp)
-ax.plot(L_smooth, theta_fit_ctp)
+ax.plot(S_smooth, V_fit_noctp)
+ax.plot(S_smooth, V_fit_ctp)
 
 ## Plots the datasets
-ax.plot(df['[aspartate]_(M)'], theta, 'o', label='No CTP', color='C0')
-ax.plot(df['[aspartate]_(M)'], theta_ctp, 'o', label='CTP', color='C1')
+ax.plot(df['[aspartate]_(M)'], df['rate_(M/s)'], 'o', label='No CTP', color='C0')
+ax.plot(df['[aspartate]_(M)'], df['rate_ctp_(M/s)'], 'o', label='CTP', color='C1')
 
 ## Labels & legend
 ax.set_xlabel('[Aspartate] (M)')
-ax.set_ylabel(r'$\theta$')
+ax.set_ylabel('Rate of formation (M/s)')
 ax.legend()
 ```
 
+| How do the constants of the Hill equation change in response to the presence of CTP? 
+| Does this match your expectations?
 
+```{python}
+#| solution: true
+#| output: asis
+#| echo: false
+answer=r"""
+::: {.callout-important}
+
+## Answer
+$V_\mathrm{max}$ is basically unchanged. 
+
+$K_{\frac{1}{2}} is increased meaning that a higher aspartate concentration is necessary in order to reach half $V_\mathrm{max}$ - 
+this matches with the curve being shifted to the right.
+
+$h$ increases slightly in the presence of CTP making the curve more sigmoidal, so the switch is sharper.
+
+:::
+"""
+print(answer)
+```
