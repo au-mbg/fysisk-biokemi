@@ -18,6 +18,7 @@ SUFFIX_TO_FUNC = {
     '.csv': Reader(func=pd.read_csv, description='Comma-separated values', name='pd.read_csv'),
     '.xlsx': Reader(func=pd.read_excel, description='Excel spreadsheet', name='pd.read_excel'),
     '.xls': Reader(func=pd.read_excel, description='Excel spreadsheet', name='pd.read_excel'),
+    '.txt': Reader(func=pd.read_csv, description='Text file', name='pd.read_csv'),
 }
 
 
