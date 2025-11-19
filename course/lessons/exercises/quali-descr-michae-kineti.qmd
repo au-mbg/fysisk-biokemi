@@ -44,7 +44,7 @@ After this, repeat the procedure for $[E]_\mathrm{tot}$ increasing it 10-fold.
 
 #### (d) Substrate concentrations way below $K_M
 
-Next, we will explore the regime where $[S] \gg K_M$. Initially, set $K_M = 10$ and zoom in on the regime from $0$ to $1$ on the X-axis. What does the MM equation look like in this regime? Use the MM equation and a simplifying assumption to show how this occurs. 
+Next, we will explore the regime where $[S] \ll K_M$. Initially, set $K_M = 10$ and zoom in on the regime from $0$ to $1$ on the X-axis. What does the MM equation look like in this regime? Use the MM equation and a simplifying assumption to show how this occurs. 
 
 Next, increase $K_M$ five-fold and try to change $V_\mathrm{max}$ som the curve appearance is unchanged (beware of the autoscaling Y-axis).
 

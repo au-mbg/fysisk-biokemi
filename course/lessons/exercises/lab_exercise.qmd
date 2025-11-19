@@ -438,7 +438,7 @@ plt.show()
 #### (f) Turnover number 
 
 Given that the enzyme concentration was $3.33 \frac{\text{mg}}{\text{L}}$ and the molecular weight 
-of the enzyme (alkaline phosphatase) is 496.6 $\frac{\text{g}}{\text{mol}}$, calculate the turnover number $k_{cat}$.
+of the enzyme (alkaline phosphatase) is 86000 $\frac{\text{g}}{\text{mol}}$, calculate the turnover number $k_{cat}$.
 
 Start by converting the enzyme concentration to molar units and then calculate the turnover number.
 
@@ -460,7 +460,7 @@ print(kcat)
 
 ## Your task: Calculate the enzyme concentration and use that and your fit to 
 ## calculate kcat.
-enzyme_conc = (3.33*10**(-3)) / 496.6
+enzyme_conc = (3.33*10**(-3)) / 86000
 kcat = V_max_fit / enzyme_conc
 print(kcat)
 ```
