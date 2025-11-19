@@ -1,6 +1,6 @@
 ---
 title: Week 48
-subtitle: v0.0.1
+subtitle: v1.0.0
 engine: jupyter
 categories: ['regression', 'calculation', 'data', 'plotting']
 format-links:

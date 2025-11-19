@@ -107,9 +107,11 @@ Use the plots to estimate $K_M$ and $V_\mathrm{max}$ and assign in the cell belo
 #| exercise: true
 #| eval: false
 
+## Your task: Estimate parameters without inhibitor.
 K_M_no_inhib_estimate = ...
 Vmax_no_inhib_estimate = ...
 
+## Your task: Estimate parameters with inhibitor.
 K_M_inhib_estimate = ...
 Vmax_inhib_estimate = ...
 ```
@@ -117,9 +119,12 @@ Vmax_inhib_estimate = ...
 
 ```{python}
 #| solution: true
+
+## Your task: Estimate parameters without inhibitor.
 K_M_no_inhib_estimate = 0.0025 # Unit: M
 Vmax_no_inhib_estimate = 6 * 10**(-5) # Unit: M/s
 
+## Your task: Estimate parameters with inhibitor.
 K_M_inhib_estimate = 0.01 # Unit: M 
 Vmax_inhib_estimate = 6 * 10**(-5) # Unit: M/s
 ```
@@ -278,7 +283,7 @@ answer=r"""
 
 ## Answer
 As $V_\mathrm{max}$ is approximately the same but $K_M$ is significantly increased 
-with the inhibitor that suggests a competitive inhibitor. 
+with the inhibitor that suggests a **competitive** inhibitor. 
 
 :::
 """

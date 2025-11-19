@@ -136,7 +136,7 @@ As always, we need the function we're fitting with
 
 ```{python}
 def michaelis_menten(S, Vmax, Km):
-    return (Vmax * S) / (S + Km)
+    return Vmax * S / (S + Km)
 ```
 
 And then we can make the fit
@@ -356,6 +356,25 @@ From which we can isolate $K_I$, doing a bit of algebra we get
 $$
 K_I = \frac{[I]}{\frac{V_\mathrm{max}}{V^{app}_\mathrm{max}} - 1}.
 $$
+
+Also good practice to think about units, note that $V_\mathrm{max}$ and $V^{app}_\mathrm{max}$ have the same units ($\mathrm{M\,s^{-1}}$), so their ratio is dimensionless:
+
+$$
+\frac{V_\mathrm{max}}{V^{app}_\mathrm{max}}
+\quad\text{units:}\quad
+\frac{\mathrm{M\,s^{-1}}}{\mathrm{M\,s^{-1}}} = 1.
+$$
+
+Therefore the units of $K_I$ are
+
+$$
+K_I \quad\text{units:}\quad
+\frac{\mathrm{M}}{(1) - 1}
+\quad\Rightarrow\quad
+\mathrm{M}.
+$$
+
+Which is the expected unit. 
 
 :::
 """
