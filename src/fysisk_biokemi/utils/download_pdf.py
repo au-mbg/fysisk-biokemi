@@ -30,6 +30,7 @@ def _install_dependencies():
             check=False
         )
     
+    
     if not pathlib.Path('/usr/local/bin/quarto').exists():
         subprocess.run(
             "wget -q 'https://quarto.org/download/latest/quarto-linux-amd64.deb' && "
