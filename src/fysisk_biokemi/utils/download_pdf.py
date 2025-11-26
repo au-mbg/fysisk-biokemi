@@ -95,19 +95,9 @@ def colab2pdf():
     # Write notebook
     nbformat.write(nb, (p / f'{n.stem}.ipynb').open('w', encoding='utf-8'))
     
-    # Check Quarto and Typst availability
-    print("🔍 Checking Quarto installation...")
-    quarto_check = subprocess.run('quarto --version', shell=True, capture_output=True, text=True)
-    print(f"   Quarto version: {quarto_check.stdout.strip()}")
-    
-    print("🔍 Checking available Quarto formats...")
-    formats_check = subprocess.run('quarto list formats', shell=True, capture_output=True, text=True)
-    print(f"   Available formats: {formats_check.stdout.strip()}")
-    
     # Render to PDF
     print("🔨 Rendering PDF with Typst...")
-    render_cmd = f'quarto render {p}/{n.stem}.ipynb --to typst -M margin={{top=1in,bottom=1in,left=1in,right=1in}}'
-    print(f"   Command: {render_cmd}")
+    render_cmd = f'quarto render {p}/{n.stem}.ipynb --to typst'
     result = subprocess.run(render_cmd, shell=True, capture_output=True, text=True)
     
     if result.returncode != 0:
