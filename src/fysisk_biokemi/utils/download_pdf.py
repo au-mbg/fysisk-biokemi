@@ -118,7 +118,7 @@ def colab2pdf():
     google.colab.files.download(str(p / f'{n.stem}.pdf'))
     print(f"✅ Done! PDF saved as: {n.stem}.pdf")
     
-    return str(p / f'{n.stem}.pdf')
+    return 
 
 
 def colab2pdf_widget():
