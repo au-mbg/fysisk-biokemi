@@ -95,10 +95,25 @@ def colab2pdf():
     # Write notebook
     nbformat.write(nb, (p / f'{n.stem}.ipynb').open('w', encoding='utf-8'))
     
+    # Create Quarto config with Typst settings
+    with (p / '_quarto.yml').open('w', encoding='utf-8') as f:
+        yaml.dump({
+            'format': {
+                'typst': {
+                    'margin': {
+                        'left': '2cm',
+                        'right': '2cm',
+                        'top': '2.5cm',
+                        'bottom': '2.5cm'
+                    }
+                }
+            }
+        }, f)
+    
     # Render to PDF
     print("🔨 Rendering PDF with Typst...")
     render_cmd = f'quarto render {p}/{n.stem}.ipynb --to typst'
-    result = subprocess.run(render_cmd, shell=True, capture_output=True, text=True)
+    result = subprocess.run(render_cmd, shell=True, capture_output=True, text=True, cwd=str(p))
     
     if result.returncode != 0:
         print("❌ Render failed!")
