@@ -24,6 +24,7 @@ def _install_dependencies():
     # Check if rsvg-convert (from librsvg2-bin) is available
     result = subprocess.run('which rsvg-convert', shell=True, capture_output=True)
     if result.returncode != 0:
+        print("📦 Installing librsvg2-bin...")
         subprocess.run(
             'apt-get install -yqq --no-install-recommends librsvg2-bin>/dev/null',
             shell=True,
@@ -32,6 +33,7 @@ def _install_dependencies():
     
     
     if not pathlib.Path('/usr/local/bin/quarto').exists():
+        print("📦 Installing Quarto and TinyTeX (this may take a few minutes)...")
         subprocess.run(
             "wget -q 'https://quarto.org/download/latest/quarto-linux-amd64.deb' && "
             "dpkg -i quarto-linux-amd64.deb>/dev/null && "
@@ -40,6 +42,7 @@ def _install_dependencies():
             shell=True,
             check=True
         )
+        print("✅ Installation complete!")
 
 
 def colab2pdf():
@@ -51,12 +54,14 @@ def colab2pdf():
         print("⚠️  This function is only available in Google Colab environments.")
         return None
     
+    print("🚀 Starting PDF conversion...")
     _install_dependencies()
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
     warnings.filterwarnings('ignore', category=nbformat.validator.MissingIDFieldWarning)
     IPython.get_ipython().run_line_magic('matplotlib', 'inline')
     
     # Get notebook name
+    print("📓 Retrieving notebook...")
     n = pathlib.Path(werkzeug.utils.secure_filename(urllib.parse.unquote(
         requests.get(f'http://{os.environ["COLAB_JUPYTER_IP"]}:{os.environ["KMP_TARGET_PORT"]}/api/sessions').json()[0]['name']
     )))
@@ -72,6 +77,7 @@ def colab2pdf():
     )
     
     # Validate image URLs
+    print("🔍 Validating images...")
     u = [
         u for c in nb.cells 
         if c.get('cell_type') == 'markdown' 
@@ -82,6 +88,7 @@ def colab2pdf():
         raise Exception(f"Bad Image URLs: {','.join(u)}")
     
     # Remove Colab2PDF cells and prepare notebook
+    print("📝 Preparing notebook...")
     nb.cells = [cell for cell in nb.cells if '--Colab2PDF' not in cell.source]
     nb = nbformat.v4.new_notebook(cells=nb.cells or [nbformat.v4.new_code_cell('#')])
     nbformat.validator.normalize(nb)
@@ -101,6 +108,7 @@ def colab2pdf():
         }, f)
     
     # Render to PDF
+    print("🔨 Rendering PDF (this may take a minute)...")
     subprocess.run(
         f'quarto render {p}/{n.stem}.ipynb --metadata-file={p}/config.yml --to pdf '
         f'-M latex-auto-install -M margin-top=1in -M margin-bottom=1in '
@@ -110,7 +118,9 @@ def colab2pdf():
     )
     
     # Download PDF
+    print("⬇️  Downloading PDF...")
     google.colab.files.download(str(p / f'{n.stem}.pdf'))
+    print(f"✅ Done! PDF saved as: {n.stem}.pdf")
     
     return str(p / f'{n.stem}.pdf')
 
