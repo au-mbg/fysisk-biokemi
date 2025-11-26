@@ -95,14 +95,28 @@ def colab2pdf():
     # Write notebook
     nbformat.write(nb, (p / f'{n.stem}.ipynb').open('w', encoding='utf-8'))
     
+    # Check Quarto and Typst availability
+    print("🔍 Checking Quarto installation...")
+    quarto_check = subprocess.run('quarto --version', shell=True, capture_output=True, text=True)
+    print(f"   Quarto version: {quarto_check.stdout.strip()}")
+    
+    print("🔍 Checking available Quarto formats...")
+    formats_check = subprocess.run('quarto list formats', shell=True, capture_output=True, text=True)
+    print(f"   Available formats: {formats_check.stdout.strip()}")
+    
     # Render to PDF
     print("🔨 Rendering PDF with Typst...")
-    subprocess.run(
-        f'quarto render {p}/{n.stem}.ipynb --to typst '  
-        f'-M margin={{top=1in,bottom=1in,left=1in,right=1in}} --quiet',
-        shell=True,
-        check=True
-    )
+    render_cmd = f'quarto render {p}/{n.stem}.ipynb --to typst -M margin={{top=1in,bottom=1in,left=1in,right=1in}}'
+    print(f"   Command: {render_cmd}")
+    result = subprocess.run(render_cmd, shell=True, capture_output=True, text=True)
+    
+    if result.returncode != 0:
+        print("❌ Render failed!")
+        print(f"   STDOUT: {result.stdout}")
+        print(f"   STDERR: {result.stderr}")
+        raise subprocess.CalledProcessError(result.returncode, render_cmd, result.stdout, result.stderr)
+    
+    print("   ✓ Render successful")
     
     # Download PDF
     print("⬇️  Downloading PDF...")
