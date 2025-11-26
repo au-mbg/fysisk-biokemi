@@ -21,17 +21,6 @@ import yaml
 
 def _install_dependencies():
     """Install required system dependencies for PDF conversion."""
-    # Check if rsvg-convert (from librsvg2-bin) is available
-    result = subprocess.run('which rsvg-convert', shell=True, capture_output=True)
-    if result.returncode != 0:
-        print("📦 Installing librsvg2-bin...")
-        subprocess.run(
-            'apt-get install -yqq --no-install-recommends librsvg2-bin>/dev/null',
-            shell=True,
-            check=False
-        )
-    
-    
     if not pathlib.Path('/usr/local/bin/quarto').exists():
         print("📦 Installing Quarto...")
         subprocess.run(
@@ -42,6 +31,7 @@ def _install_dependencies():
             check=True
         )
         print("✅ Installation complete!")
+
 
 
 def colab2pdf():
