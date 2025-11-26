@@ -33,11 +33,10 @@ def _install_dependencies():
     
     
     if not pathlib.Path('/usr/local/bin/quarto').exists():
-        print("📦 Installing Quarto and TinyTeX (this may take a few minutes)...")
+        print("📦 Installing Quarto...")
         subprocess.run(
             "wget -q 'https://quarto.org/download/latest/quarto-linux-amd64.deb' && "
             "dpkg -i quarto-linux-amd64.deb>/dev/null && "
-            "quarto install tinytex --update-path --quiet && "
             "rm quarto-linux-amd64.deb",
             shell=True,
             check=True
@@ -96,23 +95,11 @@ def colab2pdf():
     # Write notebook
     nbformat.write(nb, (p / f'{n.stem}.ipynb').open('w', encoding='utf-8'))
     
-    # Create Quarto config
-    with (p / 'config.yml').open('w', encoding='utf-8') as f:
-        yaml.dump({
-            'include-in-header': [{
-                'text': r'\usepackage{fvextra}\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaksymbolleft={},showspaces=false,showtabs=false,breaklines,breakanywhere,commandchars=\\\{\}}'
-            }], 
-            'include-before-body': [{
-                'text': r'\DefineVerbatimEnvironment{verbatim}{Verbatim}{breaksymbolleft={},showspaces=false,showtabs=false,breaklines}'
-            }]
-        }, f)
-    
     # Render to PDF
-    print("🔨 Rendering PDF (this may take a minute)...")
+    print("🔨 Rendering PDF with Typst...")
     subprocess.run(
-        f'quarto render {p}/{n.stem}.ipynb --metadata-file={p}/config.yml --to pdf '
-        f'-M latex-auto-install -M margin-top=1in -M margin-bottom=1in '
-        f'-M margin-left=1in -M margin-right=1in --quiet',
+        f'quarto render {p}/{n.stem}.ipynb --to typst '  
+        f'-M margin={{top=1in,bottom=1in,left=1in,right=1in}} --quiet',
         shell=True,
         check=True
     )
