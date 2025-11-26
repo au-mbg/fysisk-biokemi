@@ -156,7 +156,7 @@ def colab2pdf(name: str | None = None) -> str | None:
     
     # Get and validate notebook content
     print("📥 Loading notebook content...")
-    notebook = _get_notebook_content(google.colab)
+    notebook = _get_notebook_content()
     
     print("🔍 Validating images...")
     _validate_image_urls(notebook)
