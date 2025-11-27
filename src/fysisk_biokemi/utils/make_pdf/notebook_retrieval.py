@@ -9,7 +9,6 @@ import urllib
 
 import nbformat
 import requests
-import werkzeug.utils
 
 
 class GetIpynbTimeoutError(TimeoutError):
@@ -18,6 +17,8 @@ class GetIpynbTimeoutError(TimeoutError):
 
 
 def get_notebook_name():
+    import werkzeug.utils
+
     """Retrieve the current notebook name from Colab."""
     response = requests.get(
         f"http://{os.environ['COLAB_JUPYTER_IP']}:{os.environ['KMP_TARGET_PORT']}/api/sessions"

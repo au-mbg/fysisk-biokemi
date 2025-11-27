@@ -90,7 +90,7 @@ def _render_pdf(output_dir, notebook_stem):
         )
 
 
-def colab2pdf(name: str | None = None, retrieval_method: str = 'timeout') -> str | None:
+def colab2pdf(name: str | None = None, retrieval_method: str = 'drive') -> str | None:
     """Convert current Colab notebook to PDF and download it.
     
     Args:
