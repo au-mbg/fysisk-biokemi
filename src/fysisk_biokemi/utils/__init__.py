@@ -1,1 +1,1 @@
-from .download_pdf import colab2pdf
+from .make_pdf import colab2pdf
