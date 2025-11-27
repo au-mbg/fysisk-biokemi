@@ -42,9 +42,9 @@ def _get_notebook_name():
     return pathlib.Path(werkzeug.utils.secure_filename(urllib.parse.unquote(notebook_name)))
 
 
-def _get_notebook_content(google_colab):
+def _get_notebook_content(google_colab, timeout=15):
     """Retrieve the current notebook content from Colab."""
-    ipynb_data = google_colab._message.blocking_request('get_ipynb', timeout_sec=600)['ipynb']
+    ipynb_data = google_colab._message.blocking_request('get_ipynb', timeout_sec=timeout)['ipynb']
     return nbformat.reads(json.dumps(ipynb_data), as_version=4)
 
 def _validate_image_urls(notebook):
