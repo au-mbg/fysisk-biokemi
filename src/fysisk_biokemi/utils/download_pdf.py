@@ -5,8 +5,10 @@ import json
 import locale
 import os
 import pathlib
+import queue
 import re
 import subprocess
+import threading
 import urllib
 import warnings
 
@@ -19,40 +21,94 @@ import werkzeug.utils
 import yaml
 from IPython.core.magic import Magics, line_magic, magics_class
 
+
+class GetIpynbTimeoutError(TimeoutError):
+    pass
+
+
+def get_ipynb_with_hard_timeout(inner_timeout=5, outer_timeout=10):
+    """
+    Try to fetch notebook JSON via get_ipynb, but keep the kernel responsive.
+
+    inner_timeout: passed to blocking_request (Colab's own timeout_sec).
+    outer_timeout: how long *we* wait before giving up.
+
+    Returns:
+        nbformat.NotebookNode
+
+    Raises:
+        GetIpynbTimeoutError if we don't get anything within outer_timeout.
+        Whatever exception blocking_request itself raises, if any.
+    """
+    from google.colab import _message
+
+    q = queue.Queue()
+
+    def worker():
+        try:
+            reply = _message.blocking_request(
+                "get_ipynb",
+                timeout_sec=inner_timeout,
+            )
+            q.put((True, reply))
+        except Exception as e:
+            q.put((False, e))
+
+    t = threading.Thread(target=worker, daemon=True)
+    t.start()
+
+    try:
+        ok, payload = q.get(timeout=outer_timeout)
+    except queue.Empty:
+        # Worker thread is still blocked, but we choose to walk away.
+        raise GetIpynbTimeoutError(f"get_ipynb did not respond within {outer_timeout} seconds")
+
+    if not ok:
+        # Re-raise the exception from blocking_request
+        raise payload
+
+    reply = payload
+    ipynb_data = reply.get("ipynb")
+    if ipynb_data is None:
+        raise RuntimeError("get_ipynb reply missing 'ipynb' field")
+
+    return nbformat.reads(json.dumps(ipynb_data), as_version=4)
+
+
 def _install_dependencies():
     """Install required system dependencies for PDF conversion."""
-    if not pathlib.Path('/usr/local/bin/quarto').exists():
+    if not pathlib.Path("/usr/local/bin/quarto").exists():
         print("📦 Installing Quarto...")
         subprocess.run(
             "wget -q 'https://quarto.org/download/latest/quarto-linux-amd64.deb' && "
             "dpkg -i quarto-linux-amd64.deb>/dev/null && "
             "rm quarto-linux-amd64.deb",
             shell=True,
-            check=True
+            check=True,
         )
         print("✅ Installation complete!")
 
 
 def _get_notebook_name():
     """Retrieve the current notebook name from Colab."""
-    response = requests.get(
-        f'http://{os.environ["COLAB_JUPYTER_IP"]}:{os.environ["KMP_TARGET_PORT"]}/api/sessions'
-    )
-    notebook_name = response.json()[0]['name']
+    response = requests.get(f"http://{os.environ['COLAB_JUPYTER_IP']}:{os.environ['KMP_TARGET_PORT']}/api/sessions")
+    notebook_name = response.json()[0]["name"]
     return pathlib.Path(werkzeug.utils.secure_filename(urllib.parse.unquote(notebook_name)))
 
 
 def _get_notebook_content(google_colab, timeout=15):
     """Retrieve the current notebook content from Colab."""
-    ipynb_data = google_colab._message.blocking_request('get_ipynb', timeout_sec=timeout)['ipynb']
+    ipynb_data = google_colab._message.blocking_request("get_ipynb", timeout_sec=timeout)["ipynb"]
     return nbformat.reads(json.dumps(ipynb_data), as_version=4)
+
 
 def _validate_image_urls(notebook):
     """Validate that all image URLs in markdown cells are accessible."""
     bad_urls = [
-        url for cell in notebook.cells 
-        if cell.get('cell_type') == 'markdown' 
-        for url in re.findall(r'!\[.*?\]\((https?://.*?)\)', cell['source']) 
+        url
+        for cell in notebook.cells
+        if cell.get("cell_type") == "markdown"
+        for url in re.findall(r"!\[.*?\]\((https?://.*?)\)", cell["source"])
         if requests.head(url, timeout=5).status_code != 200
     ]
     if bad_urls:
@@ -61,48 +117,29 @@ def _validate_image_urls(notebook):
 
 def _prepare_notebook(notebook):
     """Remove Colab2PDF cells and normalize notebook structure."""
-    notebook.cells = [cell for cell in notebook.cells if '--Colab2PDF' not in cell.source]
-    prepared_nb = nbformat.v4.new_notebook(cells=notebook.cells or [nbformat.v4.new_code_cell('#')])
+    notebook.cells = [cell for cell in notebook.cells if "--Colab2PDF" not in cell.source]
+    prepared_nb = nbformat.v4.new_notebook(cells=notebook.cells or [nbformat.v4.new_code_cell("#")])
     nbformat.validator.normalize(prepared_nb)
     return prepared_nb
 
 
 def _create_quarto_config(output_dir):
     """Create Quarto configuration file with Typst settings."""
-    config = {
-        'format': {
-            'typst': {
-                'margin': {
-                    'left': '2cm',
-                    'right': '2cm',
-                    'top': '2.5cm',
-                    'bottom': '2.5cm'
-                }
-            }
-        }
-    }
-    with (output_dir / '_quarto.yml').open('w', encoding='utf-8') as f:
+    config = {"format": {"typst": {"margin": {"left": "2cm", "right": "2cm", "top": "2.5cm", "bottom": "2.5cm"}}}}
+    with (output_dir / "_quarto.yml").open("w", encoding="utf-8") as f:
         yaml.dump(config, f)
 
 
 def _render_pdf(output_dir, notebook_stem):
     """Render the notebook to PDF using Quarto and Typst."""
-    render_cmd = f'quarto render {notebook_stem}.ipynb --to typst'
-    result = subprocess.run(
-        render_cmd, 
-        shell=True, 
-        capture_output=True, 
-        text=True, 
-        cwd=str(output_dir)
-    )
-    
+    render_cmd = f"quarto render {notebook_stem}.ipynb --to typst"
+    result = subprocess.run(render_cmd, shell=True, capture_output=True, text=True, cwd=str(output_dir))
+
     if result.returncode != 0:
         print("❌ Render failed!")
         print(f"   STDOUT: {result.stdout}")
         print(f"   STDERR: {result.stderr}")
-        raise subprocess.CalledProcessError(
-            result.returncode, render_cmd, result.stdout, result.stderr
-        )
+        raise subprocess.CalledProcessError(result.returncode, render_cmd, result.stdout, result.stderr)
 
 
 def colab2pdf(name: str | None = None) -> str | None:
@@ -113,66 +150,67 @@ def colab2pdf(name: str | None = None) -> str | None:
     except ImportError:
         print("⚠️  This function is only available in Google Colab environments.")
         return None
-    
+
     print("🚀 Starting PDF conversion...")
     _install_dependencies()
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-    warnings.filterwarnings('ignore', category=nbformat.validator.MissingIDFieldWarning)
-    IPython.get_ipython().run_line_magic('matplotlib', 'inline')
-    
+    locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+    warnings.filterwarnings("ignore", category=nbformat.validator.MissingIDFieldWarning)
+    IPython.get_ipython().run_line_magic("matplotlib", "inline")
+
     # Get notebook name and create output directory
     print("📓 Retrieving notebook...")
 
     notebook_name = _get_notebook_name() if name is None else pathlib.Path(name)
     timestamp = datetime.datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-    output_dir = pathlib.Path('/content/pdfs') / f'{timestamp}_{notebook_name.stem}'
+    output_dir = pathlib.Path("/content/pdfs") / f"{timestamp}_{notebook_name.stem}"
     output_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Get and validate notebook content
     print("📥 Loading notebook content...")
-    notebook = _get_notebook_content(google.colab)
-    
+    # notebook = _get_notebook_content(google.colab)
+    notebook = get_ipynb_with_hard_timeout()
+
     print("🔍 Validating images...")
     _validate_image_urls(notebook)
-    
+
     # Prepare and write notebook
     print("📝 Preparing notebook...")
     prepared_notebook = _prepare_notebook(notebook)
-    notebook_path = output_dir / f'{notebook_name.stem}.ipynb'
-    nbformat.write(prepared_notebook, notebook_path.open('w', encoding='utf-8'))
-    
+    notebook_path = output_dir / f"{notebook_name.stem}.ipynb"
+    nbformat.write(prepared_notebook, notebook_path.open("w", encoding="utf-8"))
+
     # Create config and render
     _create_quarto_config(output_dir)
     print("🔨 Rendering PDF with Typst...")
     _render_pdf(output_dir, notebook_name.stem)
     print("   ✓ Render successful")
-    
+
     # Download PDF
     print("⬇️  Downloading PDF...")
-    pdf_path = output_dir / f'{notebook_name.stem}.pdf'
+    pdf_path = output_dir / f"{notebook_name.stem}.pdf"
     google.colab.files.download(str(pdf_path))
     print(f"✅ Done! PDF saved as: {notebook_name.stem}.pdf")
-    
-    return str(pdf_path) 
+
+    return str(pdf_path)
 
 
 def colab2pdf_widget():
     """Display an interactive widget to convert and download the current notebook as PDF."""
     # @title Download Notebook in PDF Format{display-mode:'form'}
-    
+
     def convert(b):
         try:
-            s.value = '🔄 Converting'
+            s.value = "🔄 Converting"
             b.disabled = True
             pdf_path = colab2pdf()
             if pdf_path:
-                s.value = f'✅ Downloaded: {pathlib.Path(pdf_path).name}'
+                s.value = f"✅ Downloaded: {pathlib.Path(pdf_path).name}"
         except Exception as e:
-            s.value = f'❌ {str(e)}'
+            s.value = f"❌ {str(e)}"
         finally:
             b.disabled = False
-    
-    b = ipywidgets.widgets.Button(description='⬇️ Download')
+
+    b = ipywidgets.widgets.Button(description="⬇️ Download")
     s = ipywidgets.widgets.Label()
     b.on_click(lambda b: convert(b))
     IPython.display.display(ipywidgets.widgets.HBox([b, s]))
@@ -181,11 +219,11 @@ def colab2pdf_widget():
 @magics_class
 class Colab2PDFMagics(Magics):
     """IPython magic commands for PDF conversion."""
-    
+
     @line_magic
     def colab2pdf(self, line):
         """Convert current notebook to PDF.
-        
+
         Usage:
             %colab2pdf              # Use automatic notebook name
             %colab2pdf myfile.pdf   # Use custom name
