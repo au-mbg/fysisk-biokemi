@@ -42,36 +42,10 @@ def _get_notebook_name():
     return pathlib.Path(werkzeug.utils.secure_filename(urllib.parse.unquote(notebook_name)))
 
 
-# def _get_notebook_content(google_colab):
-#     """Retrieve the current notebook content from Colab."""
-#     ipynb_data = google_colab._message.blocking_request('get_ipynb', timeout_sec=600)['ipynb']
-#     return nbformat.reads(json.dumps(ipynb_data), as_version=4)
-
-def _get_notebook_content():
-    """Retrieve the current notebook content using IPython's connection file."""
-    # Get the connection file path
-    ipython = IPython.get_ipython()
-    connection_file = ipython.config['IPKernelApp']['connection_file']
-    
-    # Extract session info to get notebook path
-    response = requests.get(
-        f'http://{os.environ["COLAB_JUPYTER_IP"]}:{os.environ["KMP_TARGET_PORT"]}/api/sessions'
-    )
-    session_info = response.json()[0]
-    notebook_path = session_info['notebook']['path']
-    
-    # Get notebook content via Jupyter API
-    response = requests.get(
-        f'http://{os.environ["COLAB_JUPYTER_IP"]}:{os.environ["KMP_TARGET_PORT"]}/api/contents/{notebook_path}'
-    )
-    
-    if response.status_code != 200:
-        raise Exception(f"Failed to retrieve notebook: {response.status_code}")
-    
-    notebook_data = response.json()
-    return nbformat.reads(json.dumps(notebook_data['content']), as_version=4)
-
-
+def _get_notebook_content(google_colab):
+    """Retrieve the current notebook content from Colab."""
+    ipynb_data = google_colab._message.blocking_request('get_ipynb', timeout_sec=600)['ipynb']
+    return nbformat.reads(json.dumps(ipynb_data), as_version=4)
 
 def _validate_image_urls(notebook):
     """Validate that all image URLs in markdown cells are accessible."""
@@ -156,7 +130,7 @@ def colab2pdf(name: str | None = None) -> str | None:
     
     # Get and validate notebook content
     print("📥 Loading notebook content...")
-    notebook = _get_notebook_content()
+    notebook = _get_notebook_content(google.colab)
     
     print("🔍 Validating images...")
     _validate_image_urls(notebook)
