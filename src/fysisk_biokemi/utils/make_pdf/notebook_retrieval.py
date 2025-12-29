@@ -140,6 +140,12 @@ def get_notebook_content_from_drive():
             print(f"   📖 Reading notebook from: {path}")
             with path.open('r', encoding='utf-8') as f:
                 return nbformat.read(f, as_version=4)
+            
+    paths = pathlib.Path('/content/drive/').glob(f'**/{notebook_name}.ipynb')
+    for path in paths:
+      print(f"   📖 Reading notebook from: {path}")
+      with path.open('r', encoding='utf-8') as f:
+          return nbformat.read(f, as_version=4)
     
     raise FileNotFoundError(
         f"Could not find notebook '{notebook_name}' in Google Drive after saving. "
