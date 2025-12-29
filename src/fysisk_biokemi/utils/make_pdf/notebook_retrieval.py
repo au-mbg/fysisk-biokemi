@@ -141,7 +141,7 @@ def get_notebook_content_from_drive():
             with path.open('r', encoding='utf-8') as f:
                 return nbformat.read(f, as_version=4)
     
-    notebook_name = notebook_name.replace('.ipynb', '')
+    notebook_name = str(notebook_name).replace('.ipynb', '')
     paths = pathlib.Path('/content/drive/').glob(f'**/{notebook_name}.ipynb')
     for path in paths:
       print(f"   📖 Reading notebook from: {path}")
