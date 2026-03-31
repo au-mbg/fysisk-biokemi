@@ -21,3 +21,6 @@ _site-combined/
 
 .github/copilot-instructions.md
 scripts/
+# pixi environments
+.pixi/*
+!.pixi/config.toml

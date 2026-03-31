@@ -16,25 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-
-      - uses: astral-sh/setup-uv@v6
+      - uses: prefix-dev/setup-pixi@v0.9.4
         with:
-          version: "0.8.18"
+          pixi-version: v0.66.0
+          cache: true
+      - run: pixi run render-all
 
-      # Quarto CLI (no manual apt/wget needed)
-      - uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: uv sync
-        shell: bash
-        run: uv sync --extra standard
-
-      # Build your site (adjust if your Makefile target differs)
-      - name: Build site
-        shell: bash
-        run: |
-          source .venv/bin/activate
-          cd course
-          make website
           
       # Upload the built site folder
       - uses: actions/upload-pages-artifact@v3

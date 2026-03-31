@@ -54,3 +54,46 @@ dev = [
     "nbformat>=5.10.4",
 ]
 
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+fysisk-biokemi = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+colab = { features = ["colab"], solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+standard = { features = ["standard"], solve-group = "default" }
+
+[tool.pixi.tasks.preview]
+args = [{ "arg" = "mode", default = "master", choices=["student", "master"]}]
+cmd = "quarto preview --profile site-{{mode}}"
+cwd = "course"
+description = "Preview the course notes in either student or master mode"
+default-environment = "standard"
+
+[tool.pixi.tasks.render]
+args = [{ "arg" = "mode", default = "master", choices=["student", "master"]}]
+cmd = "quarto render --profile site-{{mode}}"
+cwd = "course"
+description = "Render the course notes in either student or master mode"
+default-environment = "standard"
+
+[tool.pixi.tasks.render-all]
+depends-on = ["_clean",
+            {task = "render", args=["student"]},
+            {task = "render", args=["master"]}, 
+            "_move-index"]
+description = "Clean and render the course notes in both student and master mode"
+
+[tool.pixi.tasks]
+_clean = { cmd = ["rm", "-rf", "course_notes/_site"], description = "Clean the rendered course notes"}
+_move-index = { cmd = "cp redirect/index.html _site-combined/index.html", cwd = "course", description = "Move the index.html to the combined site"}
+
+[tool.pixi.dependencies]
+quarto = ">=1.8.27,<2"
+python = "3.12.*"
+
