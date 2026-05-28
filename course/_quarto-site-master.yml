@@ -1,67 +1,6 @@
 project:
   type: website
   output-dir: _site-combined/master/
-  render:
-    - index.qmd
-    - datasets.qmd
-    - lessons/*.qmd   # only build the exercises, not other misc files
 
-filters:
-  - filters/strip-exercise.lua
-
-resource-path:
-  - lessons/figures/
-
-resources:
-  - src/fysisk_biokemi/datasets/files/**
-
-website:
-  title: "Fysisk Biokemi & Dataanalyse"
-  search: true
-  favicon: other/favicon.svg
-  navbar:
-    left:
-      - text: Exercises
-        href: index.qmd
-      - text: Datasets
-        href: datasets.qmd
-    right:
-      - icon: github
-        href: https://github.com/au-mbg/fysisk-biokemi
-  sidebar:
-    style: floating
-    contents:
-      - section: "Exercises"
-        contents: lessons/*.qmd
-
-format:
-  html:
-    toc: true
-    toc-depth: 4
-    number-sections: true
-    number-depth: 2
-    code-tools: true
-    theme: cosmo
-  ipynb: 
-    number-sections: true
-    number-depth: 2
-  typst: 
-    number-sections: true
-    number-depth: 2
-    toc: true
-    toc-depth: 2
-    margin: {left: 2cm, right: 2cm, top: 2.5cm, bottom: 2.5cm}
-
-format-links:
-  - format: typst
-    text: PDF
-    icon: file-pdf
-  - format: ipynb
-    text: Notebook
-    icon: journal-code        
-
-execute:
-  echo: true
-  warning: false
-  error: false
-  cache: true
+teaching:
+  show-solutions: true

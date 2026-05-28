@@ -3,10 +3,7 @@ title: Week 48
 subtitle: v1.0.0
 engine: jupyter
 categories: ['regression', 'calculation', 'data', 'plotting']
-format-links:
-    - text: "Open in Google Colab"
-      href: "https://colab.research.google.com/github/au-mbg/fysisk-biokemi/blob/built-notebooks/built_notebooks/student/week_48.ipynb"
-      icon: box-arrow-up-right
+colab: true
 ---
 
 {{< include tidbits/_install_import.qmd >}}

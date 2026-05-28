@@ -62,11 +62,15 @@ platforms = ["osx-arm64", "osx-64", "linux-64", "win-64"]
 [tool.pixi.pypi-dependencies]
 fysisk-biokemi = { path = ".", editable = true }
 
+
 [tool.pixi.environments]
 default = { solve-group = "default" }
 colab = { features = ["colab"], solve-group = "default" }
 dev = { features = ["dev"], solve-group = "default" }
 standard = { features = ["standard"], solve-group = "default" }
+
+[tool.pixi.activation]
+env = { TYPST_FONT_PATHS = "$PIXI_PROJECT_ROOT/fonts" }
 
 [tool.pixi.tasks.preview]
 args = [{ "arg" = "mode", default = "master", choices=["student", "master"]}]
@@ -77,10 +81,11 @@ default-environment = "standard"
 
 [tool.pixi.tasks.render]
 args = [{ "arg" = "mode", default = "master", choices=["student", "master"]}]
-cmd = "quarto render --profile site-{{mode}}"
+cmd = "quarto render --profile site-{{mode}} --profile typst"
 cwd = "course"
 description = "Render the course notes in either student or master mode"
 default-environment = "standard"
+depends-on = ["fetch-fonts"]
 
 [tool.pixi.tasks.render-all]
 depends-on = ["_clean",
@@ -89,9 +94,27 @@ depends-on = ["_clean",
             "_move-index"]
 description = "Clean and render the course notes in both student and master mode"
 
+[tool.pixi.tasks._clean]
+cmd = """
+  rm -rf _site-combined &&
+  echo "Cleaning up old build artifacts...";
+  rm -rf **/*.pdf;
+  rm -rf *.html;
+  rm -rf lessons/*html lessons/*.ipynb lessons/*_files lessons/.ipynb_checkpoints;
+  rm -rf dataset_files/ index_files/
+  """
+cwd = "course"
+description = "Clean up old build artifacts before rendering"
+
 [tool.pixi.tasks]
-_clean = { cmd = ["rm", "-rf", "course_notes/_site"], description = "Clean the rendered course notes"}
 _move-index = { cmd = "cp redirect/index.html _site-combined/index.html", cwd = "course", description = "Move the index.html to the combined site"}
+fetch-fonts = { cmd = """
+  echo "Checking for Font Awesome 6 fonts..." &&
+  mkdir -p fonts &&
+  curl -fsSL -o 'fonts/Font Awesome 6 Free-Regular-400.otf'   'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/otfs/Font%20Awesome%206%20Free-Regular-400.otf' &&  curl -fsSL -o 'fonts/Font Awesome 6 Free-Solid-900.otf'     'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/otfs/Font%20Awesome%206%20Free-Solid-900.otf' &&
+  curl -fsSL -o 'fonts/Font Awesome 6 Brands-Regular-400.otf' 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/otfs/Font%20Awesome%206%20Brands-Regular-400.otf'
+  """, description = "Download Font Awesome 6 fonts for Typst rendering (skipped if already present)", outputs=["fonts/Font Awesome 6 Free-Regular-400.otf", "fonts/Font Awesome 6 Free-Solid-900.otf", "fonts/Font Awesome 6 Brands-Regular-400.otf"]}
+
 
 [tool.pixi.dependencies]
 quarto = ">=1.8.27,<2"

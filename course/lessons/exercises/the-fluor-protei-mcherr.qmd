@@ -231,7 +231,6 @@ The cell below shows how this could calculated using Python
 ```{python}
 #| exercise: true
 #| eval: false
-#| solution: true
 import numpy as np
 # Start by extracting the wavelengths from the DataFrame
 wavelengths = df['wavelength']

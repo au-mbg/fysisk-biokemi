@@ -1,13 +1,68 @@
 project:
   type: default
+  render:
+    - index.qmd
+    - datasets.qmd
+    - lessons/*.qmd   # only build the exercises, not other misc files
+
+filters:
+  - strip-solution
+  - colab-link  
 
 resources:
   - src/fysisk_biokemi/datasets/files/**
 
+resource-path:
+  - lessons/figures/
+
+website:
+  title: "Fysisk Biokemi & Dataanalyse"
+  search: true
+  favicon: other/favicon.svg
+  navbar:
+    left:
+      - text: Exercises
+        href: index.qmd
+      - text: Datasets
+        href: datasets.qmd
+    right:
+      - icon: github
+        href: https://github.com/au-mbg/fysisk-biokemi
+  sidebar:
+    style: floating
+    contents:
+      - section: "Exercises"
+        contents: lessons/*.qmd
+
 format:
-  ipynb: default  
+  html:
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    number-depth: 2
+    code-tools: true
+    theme: cosmo
+  ipynb: 
+    number-sections: true
+    number-depth: 2
+
+format-links:
+  - format: typst
+    text: PDF
+    icon: file-pdf
+  - format: ipynb
+    text: Notebook
+    icon: journal-code        
 
 execute:
   echo: true
   warning: false
   error: false
+
+
+teaching:
+  colab:
+    repo: au-mbg/fysisk-biokemi
+    branch: built-notebooks
+    root: built_notebooks
+    notebook-profile: student

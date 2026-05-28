@@ -1,4 +1,7 @@
-## Introduction to Google Colaboratory
+---
+title: Introduction to Google Colab
+categories: []
+---
 
 Through the course we will use Google Colab as it makes working with Python a little bit 
 easier - as we can skip the step of installing and managing Python on our local machines. 
