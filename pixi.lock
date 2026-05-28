@@ -3150,7 +3150,7 @@ packages:
 - pypi: ./
   name: fysisk-biokemi
   version: 0.1.0
-  sha256: 1aab67349200f150a64f742cc8dbe76ca5597ced9867d54ba76adfd843c9fac7
+  sha256: 9bc4895e326d2f133ea1a074dc57fe0b2c7fc20666061255038362afeaa322c6
   requires_dist:
   - anywidget>=0.9.18
   - biopython>=1.85

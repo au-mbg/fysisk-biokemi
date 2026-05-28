@@ -81,7 +81,7 @@ default-environment = "standard"
 
 [tool.pixi.tasks.render]
 args = [{ "arg" = "mode", default = "master", choices=["student", "master"]}]
-cmd = "quarto render --profile typst --profile site-{{mode}}"
+cmd = "quarto render --profile site-{{mode}},typst"
 cwd = "course"
 description = "Render the course notes in either student or master mode"
 default-environment = "standard"
