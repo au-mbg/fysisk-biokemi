@@ -97,11 +97,11 @@ description = "Clean and render the course notes in both student and master mode
 [tool.pixi.tasks._clean]
 cmd = """
   rm -rf _site-combined &&
-  echo "Cleaning up old build artifacts...";
   rm -rf **/*.pdf;
   rm -rf *.html;
   rm -rf lessons/*html lessons/*.ipynb lessons/*_files lessons/.ipynb_checkpoints;
-  rm -rf dataset_files/ index_files/
+  rm -rf datasets_files/ index_files/
+  rm *.ipynb
   """
 cwd = "course"
 description = "Clean up old build artifacts before rendering"
