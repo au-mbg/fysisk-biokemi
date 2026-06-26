@@ -106,7 +106,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e0/07/a000fe835f76b7e1143242ab1122e6362ef1c03f23f83a045c38859c2ae0/jupyterlab_server-2.28.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/c4/13/680c54afe3e65767bed7ec1a15571e1a2f1257128733851ade24abcefbcc/kiwisolver-1.5.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3c/2e/8d0c2ab90a8c1d9a24f0399058ab8519a3279d1bd4289511d74e909f060e/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
@@ -263,7 +262,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e0/07/a000fe835f76b7e1143242ab1122e6362ef1c03f23f83a045c38859c2ae0/jupyterlab_server-2.28.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/bf/d9/405320f8077e8e1c5c4bd6adc45e1e6edf6d727b6da7f2e2533cf58bff71/kiwisolver-1.5.0-cp312-cp312-macosx_10_13_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/72/147da192e38635ada20e0a2e1a51cf8823d2119ce8883f7053879c2199b5/markupsafe-3.0.3-cp312-cp312-macosx_10_13_x86_64.whl
@@ -409,7 +407,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e0/07/a000fe835f76b7e1143242ab1122e6362ef1c03f23f83a045c38859c2ae0/jupyterlab_server-2.28.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/99/9f/795fedf35634f746151ca8839d05681ceb6287fbed6cc1c9bf235f7887c2/kiwisolver-1.5.0-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/9a/81/7e4e08678a1f98521201c3079f77db69fb552acd56067661f8c2f534a718/markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl
@@ -558,7 +555,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e0/07/a000fe835f76b7e1143242ab1122e6362ef1c03f23f83a045c38859c2ae0/jupyterlab_server-2.28.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ad/cf/0348374369ca588f8fe9c338fae49fa4e16eeb10ffb3d012f23a54578a9e/kiwisolver-1.5.0-cp312-cp312-win_amd64.whl
       - pypi: https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/aa/5b/bec5aa9bbbb2c946ca2733ef9c4ca91c91b6a24580193e891b5f7dbe8e1e/markupsafe-3.0.3-cp312-cp312-win_amd64.whl
@@ -1821,7 +1817,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e0/07/a000fe835f76b7e1143242ab1122e6362ef1c03f23f83a045c38859c2ae0/jupyterlab_server-2.28.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/c4/13/680c54afe3e65767bed7ec1a15571e1a2f1257128733851ade24abcefbcc/kiwisolver-1.5.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3c/2e/8d0c2ab90a8c1d9a24f0399058ab8519a3279d1bd4289511d74e909f060e/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
@@ -1978,7 +1973,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e0/07/a000fe835f76b7e1143242ab1122e6362ef1c03f23f83a045c38859c2ae0/jupyterlab_server-2.28.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/bf/d9/405320f8077e8e1c5c4bd6adc45e1e6edf6d727b6da7f2e2533cf58bff71/kiwisolver-1.5.0-cp312-cp312-macosx_10_13_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/72/147da192e38635ada20e0a2e1a51cf8823d2119ce8883f7053879c2199b5/markupsafe-3.0.3-cp312-cp312-macosx_10_13_x86_64.whl
@@ -2124,7 +2118,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e0/07/a000fe835f76b7e1143242ab1122e6362ef1c03f23f83a045c38859c2ae0/jupyterlab_server-2.28.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/99/9f/795fedf35634f746151ca8839d05681ceb6287fbed6cc1c9bf235f7887c2/kiwisolver-1.5.0-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/9a/81/7e4e08678a1f98521201c3079f77db69fb552acd56067661f8c2f534a718/markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl
@@ -2273,7 +2266,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e0/07/a000fe835f76b7e1143242ab1122e6362ef1c03f23f83a045c38859c2ae0/jupyterlab_server-2.28.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ad/cf/0348374369ca588f8fe9c338fae49fa4e16eeb10ffb3d012f23a54578a9e/kiwisolver-1.5.0-cp312-cp312-win_amd64.whl
       - pypi: https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/aa/5b/bec5aa9bbbb2c946ca2733ef9c4ca91c91b6a24580193e891b5f7dbe8e1e/markupsafe-3.0.3-cp312-cp312-win_amd64.whl
@@ -3154,7 +3146,7 @@ packages:
 - pypi: ./
   name: fysisk-biokemi
   version: 0.1.0
-  sha256: db7909647afa4e08724fafcc8f39b3931b90e7e16f02e403e4e5867c13d4af7f
+  sha256: 5eeeb83626bd6a2efbe0c12afaf48ca87737cf477d79a3b3ed8e32d2def0e94d
   requires_dist:
   - anywidget>=0.9.18
   - biopython>=1.85
@@ -3162,7 +3154,6 @@ packages:
   - scipy>=1.16.2
   - jupyter>=1.1.1 ; extra == 'standard'
   - jupyter-cache>=1.0.1 ; extra == 'standard'
-  - jupyterquiz>=2.9.6.2 ; extra == 'standard'
   - matplotlib>=3.10.6 ; extra == 'standard'
   - numpy>=2.3.3 ; extra == 'standard'
   - openpyxl>=3.1.5 ; extra == 'standard'
@@ -3172,7 +3163,6 @@ packages:
   - plotly>=6.3.0 ; extra == 'standard'
   - jupyter ; extra == 'colab'
   - jupyter-cache ; extra == 'colab'
-  - jupyterquiz ; extra == 'colab'
   - matplotlib ; extra == 'colab'
   - numpy ; extra == 'colab'
   - openpyxl ; extra == 'colab'
@@ -3852,10 +3842,6 @@ packages:
   version: 3.0.16
   sha256: 45fa36d9c6422cf2559198e4db481aa243c7a32d9926b500781c830c80f7ecf8
   requires_python: '>=3.7'
-- pypi: https://files.pythonhosted.org/packages/b3/52/bc858b1665d0dec3a2511f4e6f5c18ea85c0977563d624d597c95d6d0fd7/jupyterquiz-2.9.6.4-py2.py3-none-any.whl
-  name: jupyterquiz
-  version: 2.9.6.4
-  sha256: f8c4418f6c827454523fc882a30d744b585cb58ac1ae277769c3059d04fc272b
 - pypi: https://files.pythonhosted.org/packages/99/9f/795fedf35634f746151ca8839d05681ceb6287fbed6cc1c9bf235f7887c2/kiwisolver-1.5.0-cp312-cp312-macosx_11_0_arm64.whl
   name: kiwisolver
   version: 1.5.0
