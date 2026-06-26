@@ -20,8 +20,11 @@ jobs:
         with:
           pixi-version: v0.66.0
           cache: true
-      - run: pixi run render-all
-
+      - run: |
+          pixi run render-all
+          pixi run -e dev uv build
+          mkdir -p course/_site-combined/wheels/
+          mv dist/*.whl course/_site-combined/wheels/
           
       # Upload the built site folder
       - uses: actions/upload-pages-artifact@v3
@@ -33,13 +36,6 @@ jobs:
           ref: built-notebooks
           clean: false
     
-      - name: build wheel
-        shell: bash
-        run: |
-          pixi r uv build
-          mkdir -p course/_site-combined/wheels
-          mv dist/*.whl course/_site-combined/wheels/
-      
       - name: gather notebooks
         shell: bash
         run: |
