@@ -32,7 +32,14 @@ jobs:
         with:
           ref: built-notebooks
           clean: false
-
+    
+      - name: build wheel
+        shell: bash
+        run: |
+          pixi r uv build
+          mkdir -p course/_site-combined/wheels
+          mv dist/*.whl course/_site-combined/wheels/
+      
       - name: gather notebooks
         shell: bash
         run: |

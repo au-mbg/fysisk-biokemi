@@ -52,6 +52,7 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "nbformat>=5.10.4",
+    "uv"
 ]
 
 
