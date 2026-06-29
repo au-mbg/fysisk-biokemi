@@ -346,7 +346,7 @@
     "href": "lessons/week_43.html#kommaer-punktumer-commas-og-dots.",
     "title": "Week 43",
     "section": "1 Kommaer, punktumer, commas og dots.",
-    "text": "1 Kommaer, punktumer, commas og dots.\nPå dansk skriver vi et decimaltal som “3,14”, derfor også navnet et kommatal, men på engelsk bruges der punktum til at decimal seperator så “3.14”. Forskellige programmer udnytter kommaer på forskellige måder, f.eks:\n\nI Python bruges komma til at seperare elementer, så 3,14 vil Python forstå som en tuple (som er en slags beholder) med to elementer 3 og 14.\nI en csv-fil bruges kommaer på en lignende facon til at separere indgange, så i en csv-fil med 3,14 på en række vil give to søjler.\n\nPrøv følgende i celle nednefor\n\n3,14 + 6\n3.14 + 6\n\n\n# Prøv beregningerne her! \n...\n\nVi vil bruge “.” (punktum) som decimalseperator fremover.",
+    "text": "1 Kommaer, punktumer, commas og dots.\nPå dansk skriver vi et decimaltal som “3,14”, derfor også navnet et kommatal, men på engelsk bruges der punktum til at decimal seperator så “3.14”. Forskellige programmer udnytter kommaer på forskellige måder, f.eks:\n\nI Python bruges komma til at seperare elementer, så 3,14 vil Python forstå som en tuple (som er en slags beholder) med to elementer 3 og 14.\nI en csv-fil bruges kommaer på en lignende facon til at separere indgange, så i en csv-fil med 3,14 på en række vil give to søjler.\n\nPrøv følgende i celle nednefor\n\n3,14 + 6\n3.14 + 6\n\n\n# Prøv beregningerne her!!\n...\n\nVi vil bruge “.” (punktum) som decimalseperator fremover.",
     "crumbs": [
       "Exercises",
       "Week 43"
