@@ -58,6 +58,7 @@ execute:
   echo: true
   warning: false
   error: false
+  freeze: auto
 
 
 teaching:

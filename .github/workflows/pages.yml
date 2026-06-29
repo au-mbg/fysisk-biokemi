@@ -10,6 +10,12 @@ on:
       - "course-utils/src/fysisk_biokemi/datasets/**"
       - "fonts/**"
   workflow_dispatch:
+    inputs:
+      refresh-freeze:
+        description: "Refresh Quarto freeze state instead of restoring the cached freeze directory"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -29,8 +35,63 @@ jobs:
           pixi-version: v0.66.0
           cache: true
 
+      - name: Restore Quarto freeze cache
+        id: freeze-cache
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs['refresh-freeze']) }}
+        uses: actions/cache/restore@v4
+        with:
+          path: course/_freeze
+          key: quarto-freeze-${{ runner.os }}-${{ hashFiles('course/**/*.qmd', 'course/_quarto*.yml', 'course/_extensions/**', 'course-utils/**', 'pixi.toml', 'pixi.lock', 'uv.lock') }}
+          restore-keys: |
+            quarto-freeze-${{ runner.os }}-
+
+      - name: Clear Quarto freeze cache
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs['refresh-freeze'] }}
+        run: rm -rf course/_freeze
+
       - name: Render course site
+        id: render-course
         run: pixi run render-all
+
+      - name: Check rendered outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d course/_freeze
+          echo "Freeze size: $(du -sh course/_freeze | cut -f1)"
+          echo "Freeze files: $(find course/_freeze -type f | wc -l | tr -d ' ')"
+
+          test -d course/_site-combined/student
+          test -d course/_site-combined/master
+          test -f course/_site-combined/index.html
+
+          shopt -s nullglob
+          student_notebooks=(course/_site-combined/student/lessons/*.ipynb)
+          master_notebooks=(course/_site-combined/master/lessons/*.ipynb)
+          if [ "${#student_notebooks[@]}" -eq 0 ]; then
+            echo "No student notebooks were generated." >&2
+            exit 1
+          fi
+          if [ "${#master_notebooks[@]}" -eq 0 ]; then
+            echo "No master notebooks were generated." >&2
+            exit 1
+          fi
+          echo "Student notebooks: ${#student_notebooks[@]}"
+          echo "Master notebooks: ${#master_notebooks[@]}"
+
+      - name: Save Quarto freeze cache
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs['refresh-freeze']) && steps.freeze-cache.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@v4
+        with:
+          path: course/_freeze
+          key: quarto-freeze-${{ runner.os }}-${{ hashFiles('course/**/*.qmd', 'course/_quarto*.yml', 'course/_extensions/**', 'course-utils/**', 'pixi.toml', 'pixi.lock', 'uv.lock') }}
+
+      - name: Save refreshed Quarto freeze cache
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs['refresh-freeze'] }}
+        uses: actions/cache/save@v4
+        with:
+          path: course/_freeze
+          key: quarto-freeze-${{ runner.os }}-${{ hashFiles('course/**/*.qmd', 'course/_quarto*.yml', 'course/_extensions/**', 'course-utils/**', 'pixi.toml', 'pixi.lock', 'uv.lock') }}-${{ github.run_id }}
 
       - name: Upload rendered site
         uses: actions/upload-artifact@v4
