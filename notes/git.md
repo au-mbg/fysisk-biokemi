@@ -39,8 +39,9 @@ to the remote
 ```bash
 git push
 ```
-If there are no conflicting commits on the remote then this is all good and the CI 
-will automatically build the new material including the website, PDF's and the notebooks.
+If there are no conflicting commits on the remote then this is all good. For course
+material changes, the CI will automatically build the new material including the
+website, PDF's and the notebooks.
 
 ### Conflicts
 
@@ -133,7 +134,15 @@ CI stands for "Continuous Integration" - an automated system that runs whenever 
 
 ### How Our CI Works
 
-When commits are pushed to the repository, GitHub automatically:
+When commits are pushed to the repository, GitHub automatically chooses the
+relevant build:
+
+- Changes to course files, datasets, and the site workflow render the course
+  site and update the generated notebooks.
+- Changes to the accompanying Python package build a new wheel and publish it
+  without re-rendering the course material.
+
+For course material changes, GitHub:
 
 1. **Detects the changes** - GitHub notices new commits have been pushed
 2. **Starts a virtual computer** - GitHub spins up a clean Linux machine in the cloud
@@ -144,13 +153,26 @@ When commits are pushed to the repository, GitHub automatically:
 
 ### What Gets Built Automatically
 
-Every push triggers the CI system to build:
+Course material changes trigger the CI system to build:
 
 - **Student website** - The version with exercises only (solutions stripped out)
 - **Master website** - The version with both exercises and solutions  
 - **PDF versions** - Downloadable PDF files of the course materials
 - **Jupyter notebooks** - `.ipynb` files that work with Google Colab
 - **Datasets** - Aggregates the datasets and makes them downloadable.
+
+Python package changes trigger a smaller workflow:
+
+- **Python wheel** - A `.whl` file for the accompanying `fysisk_biokemi`
+  package is built and published under `wheels/` on the website.
+
+The website is served from the generated `gh-pages` branch. The generated
+notebooks are kept on the existing `built-notebooks` branch, which is what the
+Google Colab links use.
+
+If a Python package change should also update rendered figures, outputs, or
+notebooks in the course material, run the **Course site** workflow manually from
+the Actions tab.
 
 ### Checking Build Status
 

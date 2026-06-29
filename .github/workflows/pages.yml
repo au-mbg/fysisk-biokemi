@@ -1,17 +1,24 @@
-# .github/workflows/pages.yml
-name: Quarto → Pages
+name: Course site
 
 on:
   push:
-    branches: [ "main" ]   # change if your default branch differs
+    branches: ["main"]
+    paths:
+      - ".github/workflows/pages.yml"
+      - "course/**"
+      - "src/fysisk_biokemi/datasets/**"
+      - "fonts/**"
+  workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
+
+concurrency:
+  group: pages-publish
+  cancel-in-progress: false
 
 jobs:
-  build:
+  render:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,43 +27,102 @@ jobs:
         with:
           pixi-version: v0.66.0
           cache: true
-      - run: |
-          pixi run render-all
-          pixi run -e dev uv build
-          mkdir -p course/_site-combined/wheels/
-          mv dist/*.whl course/_site-combined/wheels/
-          
-      # Upload the built site folder
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: course/_site-combined
 
-      - uses: actions/checkout@v5
+      - name: Render course site
+        run: pixi run render-all
+
+      - name: Upload rendered site
+        uses: actions/upload-artifact@v4
         with:
-          ref: built-notebooks
-          clean: false
-    
-      - name: gather notebooks
+          name: course-site
+          path: course/_site-combined
+          if-no-files-found: error
+
+  publish-site:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download rendered site
+        uses: actions/download-artifact@v4
+        with:
+          name: course-site
+          path: site
+
+      - name: Publish site to gh-pages
         shell: bash
         run: |
-          mkdir -p built_notebooks
-          mkdir -p built_notebooks/student
-          mkdir -p built_notebooks/master
-          cp course/_site-combined/student/lessons/*.ipynb built_notebooks/student/.
-          cp course/_site-combined/master/lessons/*.ipynb built_notebooks/master/.
+          set -euo pipefail
 
-      - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
-        with:
-          add: 'built_notebooks/*'
-          default_author: github_actor
-          message: 'Update notebooks'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-  deploy:
-    needs: build
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages:gh-pages
+            git worktree add gh-pages-worktree gh-pages
+          else
+            git worktree add --detach gh-pages-worktree
+            git -C gh-pages-worktree checkout --orphan gh-pages
+            git -C gh-pages-worktree rm -rf . >/dev/null 2>&1 || true
+          fi
+
+          mkdir preserved
+          if [ -d gh-pages-worktree/wheels ]; then
+            cp -a gh-pages-worktree/wheels preserved/wheels
+          fi
+          if [ -f gh-pages-worktree/CNAME ]; then
+            cp gh-pages-worktree/CNAME preserved/CNAME
+          fi
+
+          find gh-pages-worktree -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a site/. gh-pages-worktree/
+          touch gh-pages-worktree/.nojekyll
+
+          if [ -d preserved/wheels ]; then
+            rm -rf gh-pages-worktree/wheels
+            cp -a preserved/wheels gh-pages-worktree/wheels
+          fi
+          if [ -f preserved/CNAME ]; then
+            cp preserved/CNAME gh-pages-worktree/CNAME
+          fi
+
+          git -C gh-pages-worktree add -A
+          if git -C gh-pages-worktree diff --cached --quiet; then
+            echo "No site changes to publish."
+          else
+            git -C gh-pages-worktree commit -m "Update course site"
+            git -C gh-pages-worktree push origin HEAD:gh-pages
+          fi
+
+  publish-notebooks:
+    needs: render
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: built-notebooks
+          fetch-depth: 0
+
+      - name: Download rendered site
+        uses: actions/download-artifact@v4
+        with:
+          name: course-site
+          path: site
+
+      - name: Gather notebooks
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p built_notebooks/student built_notebooks/master
+          rm -f built_notebooks/student/*.ipynb built_notebooks/master/*.ipynb
+          cp site/student/lessons/*.ipynb built_notebooks/student/
+          cp site/master/lessons/*.ipynb built_notebooks/master/
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: "built_notebooks/"
+          default_author: github_actor
+          message: "Update notebooks"
