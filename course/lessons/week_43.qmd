@@ -27,7 +27,7 @@ Prøv følgende i celle nednefor
 
 ```{python}
 #| eval: false
-# Prøv beregningerne her! 
+# Prøv beregningerne her!!
 ...
 ```
 
