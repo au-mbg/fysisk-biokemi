@@ -30,7 +30,9 @@ jobs:
           cache: true
 
       - name: Build wheel
-        run: pixi run -e dev uv build
+        run: |
+          pixi run -e dev uv build
+          pixi run -e dev uvx pkginfo dist/*whl
 
       - name: Upload wheel
         uses: actions/upload-artifact@v4
