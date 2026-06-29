@@ -435,20 +435,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="286db1c7" class="cell" data-execution_count="1">
+<div id="9afb3271" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> fysisk_biokemi</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Already installed"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install <span class="op">-</span>q <span class="st">"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install <span class="op">-</span>q <span class="st">"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <hr>
 <section id="python-introduction-to-curve-fitting" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="python-introduction-to-curve-fitting"><span class="header-section-number">1</span> Python: Introduction to curve fitting</h2>
-<div id="241c8661" class="cell" data-execution_count="2">
+<div id="f3e427b2" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="a-understanding-the-problem" class="level4">
 <h4 class="anchored" data-anchor-id="a-understanding-the-problem">(a) Understanding the problem</h4>
 <p>Real biochemical data is often requires complex fitting functions. Therefore, we will start out with a simpler data that follows a linear relationship. The data below represents a theoretical experiment where we measure some output <span class="math inline">\(y\)</span> at different input values <span class="math inline">\(x\)</span>:</p>
-<div id="6b3591eb" class="cell" data-execution_count="3">
+<div id="68c8e9aa" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This makes two arrays (columns) ##</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">## One with the x coordinates ##</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">## One with the y coordinates ##</span></span>
@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>y_data <span class="op">=</span> np.array([<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">6.0</span>, <span class="fl">7.8</span>, <span class="fl">10.1</span>, <span class="fl">12.2</span>, <span class="fl">13.9</span>, <span class="fl">16.1</span>, <span class="fl">18.0</span>, <span class="fl">20.2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The functions above simply make two arrays - i.e.&nbsp;columns of data - containing the number. You can view the content of these colmns by with <code>print(x_data)</code> or <code>print(y_data)</code>.</p>
-<div id="72f7b865" class="cell" data-exercise="true" data-execution_count="4">
+<div id="7a7c58df" class="cell" data-exercise="true" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the data as a scatter plot ##</span></span>
@@ -489,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <li>The remaining arguments are the parameters to be fitted</li>
 </ul>
 <p>Define a linear function for fitting:</p>
-<div id="ed8937fe" class="cell" data-exercise="true" data-execution_count="6">
+<div id="59389985" class="cell" data-exercise="true" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_function(x, a, b):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Calculate the linear function ##</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <p>Always a good idea to check that your function works as expected</p>
 <p>As a test we are adding 1 in the place of x, 2 in the place of a and 0 in the place of b. In other words: <span class="math inline">\(1 \cdot 2 + 0 = 2\)</span></p>
-<div id="457cafe8" class="cell" data-execution_count="8">
+<div id="754d8f78" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>linear_function(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>) <span class="co"># Should give 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When in doubt it is a good idea to do sanity checks like this.</p>
@@ -515,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><code>trash</code>: Don’t worry about this.</li>
 </ul>
 <p>Finish the cell below to perform the curve fit by adding the three missing arguments to the call to <code>curve_fit</code>.</p>
-<div id="20289868" class="cell" data-exercise="true" data-execution_count="9">
+<div id="aff0f796" class="cell" data-exercise="true" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial guess: a=2, b=0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -537,7 +537,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="d-visualizing-the-fit" class="level4">
 <h4 class="anchored" data-anchor-id="d-visualizing-the-fit">(d) Visualizing the fit</h4>
 <p>It’s crucial to always plot your fit to see how well it describes the data. To do this we evaluate the function with the fitted parameters and a densely sampled independent variable.</p>
-<div id="641f41a7" class="cell" data-exercise="true" data-execution_count="11">
+<div id="57949cc1" class="cell" data-exercise="true" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This makes an array with 100 equally spaced points between 0 and 11. ##</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">100</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -545,7 +545,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>y_fit <span class="op">=</span> ... </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then we can plot it</p>
-<div id="63ace0b7" class="cell" data-exercise="true" data-execution_count="13">
+<div id="d095bd30" class="cell" data-exercise="true" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the fitted function using x_smooth and y_fit ##</span></span>
@@ -559,19 +559,19 @@ document.addEventListener('DOMContentLoaded', function () {
 <h4 class="anchored" data-anchor-id="e-nonlinear-fitting-exponential-decay">(e) Nonlinear fitting: Exponential decay</h4>
 <p>Many biological processes follow nonlinear relationships. Let’s work with exponential decay, which is common in biochemistry (e.g., radioactive decay or unimolecular chemical reactions).</p>
 <p>You can load the dataset from the <code>exp_decay_data.xlsx</code>-file with the widget below</p>
-<div id="ef91b315" class="cell" data-execution_count="15">
+<div id="7c565ffa" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> DataUploader</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="2895c93d" class="cell" data-execution_count="16">
+<div id="01ba156e" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now make a plot of the data</p>
-<div id="3b7b81c5" class="cell" data-exercise="true" data-execution_count="18">
+<div id="90d9e6c8" class="cell" data-exercise="true" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate exponential decay data</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -582,7 +582,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <p>The model we want to fit is: <span class="math display">\[\text{signal} = A e^{-kt}\]</span></p>
 <p>Define the exponential decay function:</p>
-<div id="e21ef07e" class="cell" data-exercise="true" data-execution_count="20">
+<div id="d58cf8d7" class="cell" data-exercise="true" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> exponential_decay(t, A, k):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Calculate the exponential function ##</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Remember that np.exp calculates the exponential function ##</span></span>
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test_result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now fit the exponential function to the data:</p>
-<div id="d652bfb2" class="cell" data-exercise="true" data-execution_count="22">
+<div id="819fc763" class="cell" data-exercise="true" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">## We set the initial guess as A=8 and k=1 ##</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">1</span>]</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(k_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Again we should plot to check that it looks as expected</p>
-<div id="b93b36aa" class="cell" data-exercise="true" data-execution_count="24">
+<div id="baa30b8a" class="cell" data-exercise="true" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This makes 100 linearly spaced points between 0 and 5.</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>t_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -618,7 +618,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>signal_fit <span class="op">=</span> ... <span class="co"># Evaluate using the exponential_decay funciton</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can plot the fit along with the data.</p>
-<div id="3979d8f8" class="cell" data-exercise="true" data-execution_count="26">
+<div id="e102ac21" class="cell" data-exercise="true" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the observations - you can copy this line from the ## </span></span>
@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="a-train-estimation-skills" class="level4">
 <h4 class="anchored" data-anchor-id="a-train-estimation-skills">(a) Train estimation skills</h4>
 <p>Train your estimation skills using the widget below.</p>
-<div id="28b1ed44" class="cell" data-execution_count="28">
+<div id="9a289184" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.utils.colab <span class="im">import</span> enable_custom_widget_colab</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> estimate_kd</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -694,7 +694,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="b-compare-to-quadratic" class="level4">
 <h4 class="anchored" data-anchor-id="b-compare-to-quadratic">(b) Compare to quadratic</h4>
 <p>The widget below shows the curves for <span class="math inline">\(\theta\)</span> using both the simple expression assuming that <span class="math inline">\(L = L_{tot}\)</span> and the quadratic binding expression. Vary <span class="math inline">\(K_D\)</span> and <span class="math inline">\(P_{total}\)</span> to work out a rule of thumb for when the two equations give a similar curve.</p>
-<div id="8aa57387" class="cell" data-execution_count="29">
+<div id="44c24ef8" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.utils.colab <span class="im">import</span> enable_custom_widget_colab</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> visualize_simple_vs_quadratic</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -706,7 +706,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 <section id="dialysis-experiment" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="dialysis-experiment"><span class="header-section-number">3</span> Dialysis experiment</h2>
-<div id="e9169b3c" class="cell" data-execution_count="31">
+<div id="987a4d9c" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -718,14 +718,14 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>A dialysis experiment was set up where equal amounts of a protein were separately dialyzing against buffers containing different concentrations of a ligand – each measurement was done in triplicate. The average number of ligands bound per protein molecule, <span class="math inline">\(\bar{n}\)</span> were obtained from these experiments. The corresponding concentrations of free ligand and values are given in dataset <code>dialys-exper.xlsx</code>.</p>
 <section id="a-load-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-dataset">(a) Load the dataset</h4>
-<div id="963b3d12" class="cell" data-execution_count="32">
+<div id="5c22cb6c" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> DataUploader</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="fb864aae" class="cell" data-execution_count="33">
+<div id="a6b41b91" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -737,7 +737,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="c-molar-concentrations" class="level4">
 <h4 class="anchored" data-anchor-id="c-molar-concentrations">(c) Molar concentrations</h4>
 <p>Convert the concentrations of free ligand to SI-units given in M, add it as a row to the <code>DataFrame</code>.</p>
-<div id="79d1f2f1" class="cell" data-exercise="true" data-execution_count="36">
+<div id="195d1381" class="cell" data-exercise="true" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Convert the concentration to SI units (from uM to M). </span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">## The column containing the data in uM can be indexed with: df['Free_ligand_(uM)']</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Free_ligand_(M)'</span>] <span class="op">=</span> ...</span>
@@ -746,7 +746,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 <section id="d-plot-the-data" class="level4">
 <h4 class="anchored" data-anchor-id="d-plot-the-data">(d) Plot the data</h4>
-<div id="aaabc29c" class="cell" data-exercise="true" data-execution_count="38">
+<div id="53ee5f4c" class="cell" data-exercise="true" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the raw data </span></span>
@@ -762,7 +762,7 @@ document.addEventListener('DOMContentLoaded', function () {
 \bar{n}([L_{\text{free}}]) = N \frac{[L_{\text{free}}]}{K_D + [L_{\text{free}}]}
 \]</span></p>
 <p>To do so we need to implmenet it as a Python function</p>
-<div id="3bf875d0" class="cell" data-exercise="true" data-execution_count="40">
+<div id="9ac035a6" class="cell" data-exercise="true" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nbar(L, N, K_D):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Calculate n-bar using the equation from above.</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ... </span>
@@ -776,7 +776,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="f-actually-fitting" class="level4">
 <h4 class="anchored" data-anchor-id="f-actually-fitting">(f) Actually fitting</h4>
 <p>Finish the code to perform the fitting in the cell below.</p>
-<div id="07dc8488" class="cell" data-exercise="true" data-execution_count="42">
+<div id="57859e89" class="cell" data-exercise="true" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose the variables from the dataframe</span></span>
@@ -803,7 +803,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="g-plot-with-fit" class="level4">
 <h4 class="anchored" data-anchor-id="g-plot-with-fit">(g) Plot with fit</h4>
 <p>When we have the fitted parameters we can calculate and plot the function. To do so we make an array of values for the independent variable and use our function to calculate the dependent variable</p>
-<div id="a6b5627f" class="cell" data-exercise="true" data-execution_count="44">
+<div id="7e14442c" class="cell" data-exercise="true" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This makes 50 equally spaced points ##</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>L_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, x.<span class="bu">max</span>()<span class="op">*</span><span class="fl">1.2</span>, <span class="dv">50</span>) </span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -811,7 +811,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>nbar_calc <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we calculated the dependent variable we can plot the fit along with the data.</p>
-<div id="782aee3e" class="cell" data-exercise="true" data-execution_count="46">
+<div id="496ee666" class="cell" data-exercise="true" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the fitted function ##</span></span>
@@ -825,7 +825,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 <section id="interpretation-of-binding-data." class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="interpretation-of-binding-data."><span class="header-section-number">4</span> Interpretation of binding data.</h2>
-<div id="23f509e0" class="cell" data-execution_count="48">
+<div id="6774d2b6" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> DataUploader</span>
@@ -838,12 +838,12 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="a-load-the-dataset-1" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-dataset-1">(a) Load the dataset</h4>
 <p>Load the dataset using the widget below</p>
-<div id="b675187c" class="cell" data-execution_count="49">
+<div id="74c09566" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="e1d92f0c" class="cell" data-execution_count="50">
+<div id="c3cffb8c" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -851,7 +851,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="b-si-units" class="level4">
 <h4 class="anchored" data-anchor-id="b-si-units">(b) SI Units</h4>
 <p>Add a new column to the <code>DataFrame</code> with the ligand concentration in SI units.</p>
-<div id="094496ad" class="cell" data-exercise="true" data-execution_count="52">
+<div id="23eef0ae" class="cell" data-exercise="true" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add a column with the concentration in M ##</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Call this column df['[L]_(M)'] ##</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Recall that you can say df['[L]_(M)'] = df["[L]_(uM)"] * XXX ##</span></span>
@@ -864,7 +864,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <h4 class="anchored" data-anchor-id="c-plot-the-data">(c) Plot the data</h4>
 <p>Make plots of the binding data directly with a linear and logarithmic x-axis.</p>
 <p>Estimate <span class="math inline">\(K_D\)</span> by visual inspection of these plots!</p>
-<div id="50407cfe" class="cell" data-exercise="true" data-execution_count="54">
+<div id="2d807380" class="cell" data-exercise="true" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This makes a figure with two axes.</span></span>
@@ -904,14 +904,14 @@ Note
 <p>Ths command <code>ax.set_xscale('log')</code> tells <code>matplotlib</code> that we want the x-axis to use a log-scale.</p>
 </div>
 </div>
-<div id="b96a40ed" class="cell" data-exercise="true" data-execution_count="56">
+<div id="60bdb0cc" class="cell" data-exercise="true" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>K_D_estimate <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="d-make-a-fit" class="level4">
 <h4 class="anchored" data-anchor-id="d-make-a-fit">(d) Make a fit</h4>
 <p>Make a fit to determine <span class="math inline">\(K_D\)</span>, as always we start by implementing the function to fit with</p>
-<div id="cb0b5c5f" class="cell" data-exercise="true" data-execution_count="58">
+<div id="138b6216" class="cell" data-exercise="true" data-execution_count="58">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nbar(L, K_D):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the function to fit with</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Use your biochemical knowledge to decide which function that is. </span></span>
@@ -919,7 +919,7 @@ Note
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And then we can make the fit</p>
-<div id="7261a84a" class="cell" data-exercise="true" data-execution_count="60">
+<div id="5e36690a" class="cell" data-exercise="true" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Choose the variables from the dataframe ## </span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> ... <span class="co"># Choose x-data from the dataframe</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> ... <span class="co"># Choose y-data from the dataframe</span></span>
@@ -938,7 +938,7 @@ Note
 <section id="e-compare" class="level4">
 <h4 class="anchored" data-anchor-id="e-compare">(e) Compare</h4>
 <p>Compare the fitted values with your guess.</p>
-<div id="f87a55af" class="cell" data-exercise="true" data-execution_count="62">
+<div id="d9f35ea3" class="cell" data-exercise="true" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">## These lines make equally spaced points on a normal linear axis ##</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">## And on a logarithmic axis. ##</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>L_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, df[<span class="st">'[L]_(M)'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
@@ -949,7 +949,7 @@ Note
 <span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>nbar_fit_log <span class="op">=</span> n_bar(..., K_D_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can make a plot.</p>
-<div id="12614c04" class="cell" data-exercise="true" data-execution_count="64">
+<div id="8437f698" class="cell" data-exercise="true" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This plot uses some extra commands to make it look nice, don't worry </span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">## about it -  you don't need to understand all the details. </span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -995,7 +995,7 @@ Note
 </section>
 <section id="determination-of-type-and-strength-of-cooperativity" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="determination-of-type-and-strength-of-cooperativity"><span class="header-section-number">5</span> Determination of type and strength of cooperativity</h2>
-<div id="afdc31a5" class="cell" data-execution_count="67">
+<div id="63afb554" class="cell" data-execution_count="67">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1010,12 +1010,12 @@ Note
 <section id="a-load-the-dataset-2" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-dataset-2">(a) Load the dataset</h4>
 <p>Load the dataset using the widget below</p>
-<div id="863cf7d4" class="cell" data-execution_count="68">
+<div id="c111dec3" class="cell" data-execution_count="68">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="5c61588f" class="cell" data-execution_count="69">
+<div id="2e576d5c" class="cell" data-execution_count="69">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1037,20 +1037,20 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'new_col'</span>] <span class="op">=</span> df[<span class="st">'col1'</span>] <span class="op">+</span> df[<span class="st">'col2'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div id="5d7a76b8" class="cell" data-exercise="true" data-execution_count="71">
+<div id="0da74343" class="cell" data-exercise="true" data-execution_count="71">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the of the values in the three columns ##</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">## nbar1, nbar2, nbar3 ##</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'nbar_avg'</span>] <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now also add a column with the ligand concentration in SI units with the column-name <code>[NAD+free]_(M)</code>.</p>
-<div id="13c2d5d6" class="cell" data-exercise="true" data-execution_count="73">
+<div id="1ed8803e" class="cell" data-exercise="true" data-execution_count="73">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Task: Calculate the ligand concentration in M and ##</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">## set it as a new column with the name '[NAD+free]_(M)'</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>... <span class="co"># Your code here. </span></span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finally, set the concentration of the GADPH in SI units</p>
-<div id="d3554d53" class="cell" data-exercise="true" data-execution_count="75">
+<div id="f181c548" class="cell" data-exercise="true" data-execution_count="75">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Task: Convert the GADPH concentration to M  ## </span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Set it to the variable c_gadph ## </span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Add a comment about the unit ##</span></span>
@@ -1060,7 +1060,7 @@ Tip
 <section id="c-plot" class="level4">
 <h4 class="anchored" data-anchor-id="c-plot">(c) Plot</h4>
 <p>Make a plot of the average <span class="math inline">\(\bar{n}\)</span> as a function of <span class="math inline">\([\text{NAD}^{+}_\text{free}]\)</span>.</p>
-<div id="29ce5064" class="cell" data-exercise="true" data-execution_count="77">
+<div id="d17f793d" class="cell" data-exercise="true" data-execution_count="77">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add plot of nbar vs [NAD+_free]_(M)</span></span>
@@ -1070,7 +1070,7 @@ Tip
 <section id="d-scatchard-plot" class="level4">
 <h4 class="anchored" data-anchor-id="d-scatchard-plot">(d) Scatchard plot</h4>
 <p>Make a Scatchard plot based on the average <span class="math inline">\(\bar{n}\)</span>.</p>
-<div id="d4473dd4" class="cell" data-exercise="true" data-execution_count="79">
+<div id="6414bee1" class="cell" data-exercise="true" data-execution_count="79">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Calculate nbar / L </span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>nbar_over_L <span class="op">=</span> ...</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1095,7 +1095,7 @@ Tip
 \bar{n} = N \frac{[L]^h}{K + [L]^h}
 \]</span></p>
 <p>As usual, start by defining the function in Python</p>
-<div id="2e738518" class="cell" data-exercise="true" data-execution_count="83">
+<div id="5a1a4f22" class="cell" data-exercise="true" data-execution_count="83">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> n_bar(L, N, K, h):</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the function</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Be careful with parentheses!</span></span>
@@ -1103,7 +1103,7 @@ Tip
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can fit</p>
-<div id="68f8d249" class="cell" data-exercise="true" data-execution_count="85">
+<div id="c414bc38" class="cell" data-exercise="true" data-execution_count="85">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">## We want to use all the data for the fit, but it was given in three different columns. </span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co">## We stitch it together to make a column containing all x-coordinates </span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">## And another column containing all y-coordinates</span></span>
@@ -1206,7 +1206,7 @@ Note
 <h4 class="anchored" data-anchor-id="b-ligand-degree-of-saturation">(b) Ligand degree of saturation</h4>
 <p>Calculate the degree of saturation of the protein with ligand <span class="math inline">\(L\)</span> in the four situations.</p>
 <p>Start by writing a Python function that calculates the degree of saturation <span class="math inline">\(\theta\)</span>.</p>
-<div id="f0ee38ac" class="cell" data-exercise="true" data-execution_count="88">
+<div id="24a4206d" class="cell" data-exercise="true" data-execution_count="88">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bound_fraction(L, C, Kd, Kc):    </span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Write the equation for binding saturation. </span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Be careful with parentheses!</span></span>
@@ -1214,7 +1214,7 @@ Note
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> theta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then use that function to calculate <span class="math inline">\(\theta_L\)</span> for each situation.</p>
-<div id="935a0786" class="cell" data-exercise="true" data-execution_count="90">
+<div id="acff4fd1" class="cell" data-exercise="true" data-execution_count="90">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the degree of saturation for each set of parameters ##</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>theta_L_1 <span class="op">=</span> bound_fraction(..., ..., ..., ...)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>theta_L_2 <span class="op">=</span> ...</span>
@@ -1229,7 +1229,7 @@ Note
 <section id="c-competitor-degree-of-saturation" class="level4">
 <h4 class="anchored" data-anchor-id="c-competitor-degree-of-saturation">(c) Competitor degree of saturation</h4>
 <p>What is the degree of saturation with respect to the competitor <span class="math inline">\(C\)</span> in #1, #2, #3 and #4?</p>
-<div id="a8134fa7" class="cell" data-exercise="true" data-execution_count="92">
+<div id="f82e6228" class="cell" data-exercise="true" data-execution_count="92">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the degree of saturation for each set of parameters ##</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Note: Now you are calculating it for the competitor!</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>theta_C_1 <span class="op">=</span> ...</span>
@@ -1260,7 +1260,7 @@ Tip
 <p>Consider how to express the fraction of <span class="math inline">\([P_{\mathrm{free}}]\)</span> in terms of <code>theta_L_X</code> and <code>theta_C_X</code>.</p>
 </div>
 </div>
-<div id="05452b65" class="cell" data-exercise="true" data-execution_count="94">
+<div id="2357ede3" class="cell" data-exercise="true" data-execution_count="94">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the P_free. </span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Hint: Do not use the function from before - figure out another way. </span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>theta_free_1 <span class="op">=</span> ...</span>
@@ -1283,7 +1283,7 @@ Tip
 </section>
 <section id="difference-between-q-and-k_eq" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="difference-between-q-and-k_eq"><span class="header-section-number">7</span> Difference between <span class="math inline">\(Q\)</span> and <span class="math inline">\(K_{eq}\)</span></h2>
-<div id="4a349c06" class="cell" data-execution_count="97">
+<div id="7613be26" class="cell" data-execution_count="97">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1301,17 +1301,17 @@ A \rightleftarrows B
 <section id="a-load-convert" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-convert">(a) Load &amp; convert</h4>
 <p>The data is contained in the <code>diff_q_keq_data.xlsx</code> file.</p>
-<div id="f2a6ac85" class="cell" data-execution_count="98">
+<div id="3e61e243" class="cell" data-execution_count="98">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="92d12400" class="cell" data-execution_count="99">
+<div id="41784e4e" class="cell" data-execution_count="99">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Convert the measured concentrations of <span class="math inline">\(B\)</span>, <span class="math inline">\([B]\)</span>, to concentrations in the SI-unit <span class="math inline">\(\mathrm{M} \ (\mathrm{mol/L})\)</span>. Repeat for the starting concentration of <span class="math inline">\(A\)</span>, <span class="math inline">\([A_0]\)</span>.</p>
-<div id="926b0d5e" class="cell" data-exercise="true" data-execution_count="101">
+<div id="16d94565" class="cell" data-exercise="true" data-execution_count="101">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Convert the concentration of B to M and set in new column ##</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'[B]_(M)'</span>] <span class="op">=</span> ...</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1323,13 +1323,13 @@ A \rightleftarrows B
 <section id="b-law-of-mass-balance" class="level4">
 <h4 class="anchored" data-anchor-id="b-law-of-mass-balance">(b) Law of mass balance</h4>
 <p>Use the laws of mass balance to calculate <span class="math inline">\([A]\)</span> as a function of time in the unit <span class="math inline">\(\mathrm{M}\)</span>, add it as a column to the <code>DataFrame</code></p>
-<div id="71530f7a" class="cell" data-exercise="true" data-execution_count="103">
+<div id="450f2cd1" class="cell" data-exercise="true" data-execution_count="103">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Calculate the concentration of A for each time-point</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Add it as a column to the dataframe called '[A]_(M)'.</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>... <span class="co"># Your code here.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Make a plot of the time vs.&nbsp;the concentration of <span class="math inline">\(A\)</span> and of time versus the concentration of <span class="math inline">\(B\)</span>.</p>
-<div id="2143cbb0" class="cell" data-exercise="true" data-execution_count="105">
+<div id="1d009254" class="cell" data-exercise="true" data-execution_count="105">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot time vs. concentrations. ##</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>ax.plot(..., ..., label<span class="op">=</span><span class="st">'[A]'</span>) <span class="co"># Time vs. concentration of A</span></span>
@@ -1342,12 +1342,12 @@ A \rightleftarrows B
 <section id="c-mass-action-ratio" class="level4">
 <h4 class="anchored" data-anchor-id="c-mass-action-ratio">(c) Mass action ratio</h4>
 <p>Calculate and plot the mass action ratio <span class="math inline">\(Q\)</span> as a function of time.</p>
-<div id="d430f830" class="cell" data-exercise="true" data-execution_count="107">
+<div id="b115ed09" class="cell" data-exercise="true" data-execution_count="107">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the mass action ratio</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> ... <span class="co"># calculate Q </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now plot the mass action ratio versus time.</p>
-<div id="8401ae9c" class="cell" data-exercise="true" data-execution_count="109">
+<div id="28d41ff8" class="cell" data-exercise="true" data-execution_count="109">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a plot of the axis from the dataframe df['Time_(min)'] vs Q</span></span>
@@ -1370,7 +1370,7 @@ A \rightleftarrows B
 </section>
 <section id="determination-of-δh-for-a-reaction-from-the-vant-hoff-plot." class="level2" data-number="8">
 <h2 data-number="8" class="anchored" data-anchor-id="determination-of-δh-for-a-reaction-from-the-vant-hoff-plot."><span class="header-section-number">8</span> Determination of ΔH° for a reaction from the van’t Hoff plot.</h2>
-<div id="f4aa7e52" class="cell" data-execution_count="114">
+<div id="838efd0e" class="cell" data-execution_count="114">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1382,12 +1382,12 @@ A \rightleftarrows B
 </div>
 <p>The equilibrium constant for a reversible reaction going from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> was measured as a function of temperature.</p>
 <p>The data obtained is given in the Excel document <code>deter_delta_h_data.xlsx</code> - load the data with the widget</p>
-<div id="e6e1bc4d" class="cell" data-execution_count="115">
+<div id="42ee1ff1" class="cell" data-execution_count="115">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="0b117ce1" class="cell" data-execution_count="116">
+<div id="85ddcb55" class="cell" data-execution_count="116">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1407,13 +1407,13 @@ Tip
 </div>
 </div>
 <p>Add new columns to the <code>DataFrame</code> containing <span class="math inline">\(\ln(K_{eq})\)</span> and <span class="math inline">\(1/T\)</span> and make a plot with <span class="math inline">\(1/T\)</span> on the x-axis and <span class="math inline">\(\ln(K_{eq})\)</span> on the y-axis.</p>
-<div id="7ac083b5" class="cell" data-exercise="true" data-execution_count="118">
+<div id="4031dd04" class="cell" data-exercise="true" data-execution_count="118">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add a column containing 1/T and one containing ln(Keq) ##</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'1/T'</span>] <span class="op">=</span> ...</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'ln_Keq'</span>] <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now you can make the plot in the cell below</p>
-<div id="e6f7b9f1" class="cell" data-exercise="true" data-execution_count="120">
+<div id="b5e128aa" class="cell" data-exercise="true" data-execution_count="120">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a plot of 1/T vs ln(Keq)</span></span>
@@ -1429,14 +1429,14 @@ Tip
 <h4 class="anchored" data-anchor-id="b-fit-trendline">(b) Fit trendline</h4>
 <p>Make a linear trendline by fitting a linear function to the data.</p>
 <p>Start by defining a linear function</p>
-<div id="23bb7d29" class="cell" data-exercise="true" data-execution_count="122">
+<div id="71154eb2" class="cell" data-exercise="true" data-execution_count="122">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vant_hoff(T, a, b):</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement a linear function</span></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
 <span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can use regression to find the parameters</p>
-<div id="6037314c" class="cell" data-exercise="true" data-execution_count="124">
+<div id="39568f46" class="cell" data-exercise="true" data-execution_count="124">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a fit with curve_fit to find the parameters ##</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> ...</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>a_fit, b_fit <span class="op">=</span> fitted_parameters</span>
@@ -1446,7 +1446,7 @@ Tip
 <span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then make a plot with the trendline added</p>
-<div id="bed6ac90" class="cell" data-exercise="true" data-execution_count="126">
+<div id="86a0687e" class="cell" data-exercise="true" data-execution_count="126">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Choose points to evaluate the fit</span></span>
@@ -1472,7 +1472,7 @@ Tip
 <section id="c-reaction-type" class="level4">
 <h4 class="anchored" data-anchor-id="c-reaction-type">(c) Reaction type</h4>
 <p>Calculate the reaction enthalpy and entropy, at <span class="math inline">\(T = 298 \ \mathrm{K}\)</span>, assuming that <span class="math inline">\(R = 8.314472 \times 10^{-3} \ \frac{\mathrm{kJ}}{\mathrm{mol}\cdot\mathrm{K}}\)</span>. Is the reaction endo- or exothermic?</p>
-<div id="45d5319f" class="cell" data-exercise="true" data-execution_count="129">
+<div id="b8be70cc" class="cell" data-exercise="true" data-execution_count="129">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set known values and add units as comments e.g. # kJ/(mol K) ##</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> ... </span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> ...</span>
@@ -1503,7 +1503,7 @@ Tip
 <section id="d-free-energy-change" class="level4">
 <h4 class="anchored" data-anchor-id="d-free-energy-change">(d) Free energy change</h4>
 <p>Calculate the free energy change, <span class="math inline">\(\Delta G^\circ\)</span>, at <span class="math inline">\(T = 298 \ \mathrm{K}\)</span>, assuming that <span class="math inline">\(R = 8.314472 \times 10^{-3} \ \frac{\mathrm{kJ}}{\mathrm{mol}\cdot\mathrm{K}}\)</span></p>
-<div id="0b496ef7" class="cell" data-exercise="true" data-execution_count="130">
+<div id="6fc8b4e0" class="cell" data-exercise="true" data-execution_count="130">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate ΔG</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>dG <span class="op">=</span> ...</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1514,7 +1514,7 @@ Tip
 </section>
 <section id="atp-hydrolysis" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="atp-hydrolysis"><span class="header-section-number">9</span> ATP hydrolysis</h2>
-<div id="e253d5e2" class="cell" data-execution_count="132">
+<div id="ce036e95" class="cell" data-execution_count="132">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1526,7 +1526,7 @@ Tip
 <section id="a-delta-g" class="level4">
 <h4 class="anchored" data-anchor-id="a-delta-g">(a) <span class="math inline">\(\Delta G\)</span></h4>
 <p>In cells at <span class="math inline">\(298 \ \mathrm{K}\)</span> the steady state concentrations of ATP, ADP og Pi resulted in a value for the reaction quotient <span class="math inline">\(Q = \frac{\mathrm{[ADP]}[\mathrm{Pi}]}{[\mathrm{ATP}]} = 0.002\)</span>. Calculate ΔG’ under these conditions.</p>
-<div id="1d4c9df8" class="cell" data-exercise="true" data-execution_count="133">
+<div id="8e525a94" class="cell" data-exercise="true" data-execution_count="133">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Define known values</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Add units as comments! E.g. # kJ / mol</span></span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>dG_std <span class="op">=</span> ... <span class="co"># kJ / mol</span></span>
@@ -1542,7 +1542,7 @@ Tip
 <section id="b-equilibrium-or-not" class="level4">
 <h4 class="anchored" data-anchor-id="b-equilibrium-or-not">(b) Equilibrium or not?</h4>
 <p>Assuming that the temperature within these cells is <span class="math inline">\(298 \ \mathrm{K}\)</span>, are these cells in equilibrium with respect to the hydrolysis of ATP?</p>
-<div id="026f109f" class="cell" data-exercise="true" data-execution_count="135">
+<div id="ffb03f1c" class="cell" data-exercise="true" data-execution_count="135">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate K_eq.</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1550,7 +1550,7 @@ Tip
 <section id="c-atp-synthesized" class="level4">
 <h4 class="anchored" data-anchor-id="c-atp-synthesized">(c) ATP synthesized</h4>
 <p>Calculate the number of moles of ATP synthesized by a resting person in a period of 24 hours, assuming that the energy consumption by this person is <span class="math inline">\(8368 \ \mathrm{kJ}\)</span> per 24 hours and that 40% of this energy is converted directly into ATP without loss of energy. Use the ΔG’ value calculated in question a, and assume that <span class="math inline">\(298 \ \mathrm{K}\)</span>.</p>
-<div id="d4d92be2" class="cell" data-exercise="true" data-execution_count="138">
+<div id="022136c7" class="cell" data-exercise="true" data-execution_count="138">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Set the known value of the energy spent for ATP.</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>energy_atp <span class="op">=</span> ...</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1575,7 +1575,7 @@ Tip
 <section id="d-turnover" class="level4">
 <h4 class="anchored" data-anchor-id="d-turnover">(d) Turnover</h4>
 <p>Next, calculate the average number of times each ATP molecule is turned over (synthesis followed by hydrolysis) in 24 hours when the total amount of ATP in the body equals <span class="math inline">\(0.2 \ \mathrm{mol}\)</span>.</p>
-<div id="3d04bc71" class="cell" data-exercise="true" data-execution_count="140">
+<div id="881e5207" class="cell" data-exercise="true" data-execution_count="140">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set the known total_atp value</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Remember unit</span></span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>...</span>

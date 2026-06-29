@@ -328,34 +328,34 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="730c208b" class="cell" data-execution_count="1">
+<div id="85f6a4a5" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> fysisk_biokemi</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Already installed"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install <span class="op">-</span>q <span class="st">"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install <span class="op">-</span>q <span class="st">"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="21916f82" class="cell" data-execution_count="2">
+<div id="dd5da369" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fysisk_biokemi.widgets <span class="im">as</span> fsb_widgets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="sekvens-egenskaber" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="sekvens-egenskaber"><span class="header-section-number">1</span> Sekvens egenskaber</h2>
-<div id="5aef7ef3" class="cell" data-execution_count="3">
+<div id="7d372fb9" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fsb_widgets.sequence_properties()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fasta-til-dataframe" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="fasta-til-dataframe"><span class="header-section-number">2</span> Fasta til <code>DataFrame</code></h2>
-<div id="8f91b47f" class="cell" data-execution_count="4">
+<div id="57d28d83" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.sequence_properties <span class="im">import</span> sequence_dataframe</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>DataFrame</code>’en ved den valgte pH kan trækkes ud</p>
-<div id="105fac9a" class="cell" data-execution_count="5">
+<div id="53f2a2ea" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> widget.get_dataframe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 

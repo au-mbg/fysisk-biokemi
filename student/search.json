@@ -4,7 +4,7 @@
     "href": "lessons/week_48.html",
     "title": "Week 48",
     "section": "",
-    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git\"",
+    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils\"",
     "crumbs": [
       "Exercises",
       "Week 48"
@@ -70,7 +70,7 @@
     "href": "lessons/week_46.html",
     "title": "Week 46",
     "section": "",
-    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git\"",
+    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils\"",
     "crumbs": [
       "Exercises",
       "Week 46"
@@ -180,7 +180,7 @@
     "href": "lessons/week_44.html",
     "title": "Week 44",
     "section": "",
-    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git\"\nimport fysisk_biokemi.widgets as fsb_widgets",
+    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils\"\nimport fysisk_biokemi.widgets as fsb_widgets",
     "crumbs": [
       "Exercises",
       "Week 44"
@@ -213,7 +213,7 @@
     "href": "lessons/self_study_1.html",
     "title": "Self-study",
     "section": "",
-    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git\"\nCode\nimport numpy as np",
+    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils\"\nCode\nimport numpy as np",
     "crumbs": [
       "Exercises",
       "Self-study"
@@ -335,7 +335,7 @@
     "href": "lessons/week_43.html",
     "title": "Week 43",
     "section": "",
-    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git\"\nimport fysisk_biokemi.widgets as fsb_widgets\nfrom fysisk_biokemi.widgets.utils import disable_custom_widget_colab, enable_custom_widget_colab",
+    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils\"\nimport fysisk_biokemi.widgets as fsb_widgets\nfrom fysisk_biokemi.widgets.utils import disable_custom_widget_colab, enable_custom_widget_colab",
     "crumbs": [
       "Exercises",
       "Week 43"
@@ -456,7 +456,7 @@
     "href": "lessons/week_45.html",
     "title": "Week 45",
     "section": "",
-    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git\"",
+    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils\"",
     "crumbs": [
       "Exercises",
       "Week 45"
@@ -555,7 +555,7 @@
     "href": "lessons/week_47.html",
     "title": "Week 47",
     "section": "",
-    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git\"",
+    "text": "Code\ntry:\n    import fysisk_biokemi\n    print(\"Already installed\")\nexcept ImportError:\n    %pip install -q \"fysisk_biokemi[colab] @ git+https://github.com/au-mbg/fysisk-biokemi.git#subdirectory=course-utils\"",
     "crumbs": [
       "Exercises",
       "Week 47"
