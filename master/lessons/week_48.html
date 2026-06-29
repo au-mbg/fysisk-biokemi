@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="4766f9cf" class="cell" data-execution_count="1">
+<div id="d7571749" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <hr>
 <section id="analysis-of-a-data-set-obeying-michaelis-menten-kinetics" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="analysis-of-a-data-set-obeying-michaelis-menten-kinetics"><span class="header-section-number">1</span> Analysis of a data set obeying Michaelis-Menten kinetics</h2>
-<div id="076f36cb" class="cell" data-execution_count="2">
+<div id="58fb1a3e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -435,16 +435,16 @@ document.addEventListener('DOMContentLoaded', function () {
 </details>
 </div>
 <p>The kinetics for an enzyme were investigated using the absorbance of the product to calculate the initial velocities for a range of different initial concentrations of the substrate. The data given in the dataset <code>analys-data-set-obeyin.xlsx</code> was obtained. Use these data to answer the following questions.</p>
-<div id="c1ccacf0" class="cell" data-execution_count="3">
+<div id="30ae8008" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="2b679c9c" class="cell" data-execution_count="4">
+<div id="267b47c9" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="68080edf" class="cell" data-solution="true" data-execution_count="5">
+<div id="e75e974b" class="cell" data-solution="true" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'week49_2'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="a-si-units" class="level4">
 <h4 class="anchored" data-anchor-id="a-si-units">(a) SI Units</h4>
 <p>Convert the concentrations of substrate and the velocities to the SI units <span class="math inline">\(\text{M}\)</span> and <span class="math inline">\(\text{M}\cdot\text{s}^{-1}\)</span>, respectively.</p>
-<div id="e1c65174" class="cell" data-solution="true" data-execution_count="7">
+<div id="da513438" class="cell" data-solution="true" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add new columns with both properties in proper SI units. </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Use the column names: '[S]_(M)' and 'V0_(M/s)'</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'[S]_(M)'</span>] <span class="op">=</span> df[<span class="st">'[S]_(mM)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">3</span>)</span>
@@ -587,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="b-plot-estimate" class="level4">
 <h4 class="anchored" data-anchor-id="b-plot-estimate">(b) Plot &amp; estimate</h4>
 <p>Plot the initial velocities, <span class="math inline">\(V_0\)</span>, as a function of substrate concentrations, <span class="math inline">\([S]\)</span>. Estimate <span class="math inline">\(K_M\)</span> and <span class="math inline">\(V_\mathrm{max}\)</span> from this plot.</p>
-<div id="12ebfcbc" class="cell" data-solution="true" data-execution_count="9">
+<div id="a68c33ed" class="cell" data-solution="true" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot '[S]_(M)' vs 'V0_(M/s)'.</span></span>
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 </div>
 <p>Put your estimate of <span class="math inline">\(K_M\)</span> and <span class="math inline">\(V_\text{max}\)</span> in the cell below:</p>
-<div id="1e4dea2d" class="cell" data-solution="true" data-execution_count="11">
+<div id="9e08ced6" class="cell" data-solution="true" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Task: Put your estimate of the two parameters.</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Vmax_estimate <span class="op">=</span> <span class="fl">0.0005</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>K_M_estimate <span class="op">=</span> <span class="fl">0.005</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="c-fit" class="level4">
 <h4 class="anchored" data-anchor-id="c-fit">(c) Fit</h4>
 <p>Now we want to fit using the Michaelis-Menten equation, as per usual when the task is fitting we have to define the function we are fitting with</p>
-<div id="36df053d" class="cell" data-solution="true" data-execution_count="13">
+<div id="75213a84" class="cell" data-solution="true" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> michaelis_menten(S, K_M, Vmax):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the Michaelis-Menten equation.</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Be careful with parentheses.</span></span>
@@ -625,7 +625,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And then we can follow our usual procedure to make the fit</p>
-<div id="9ee48884" class="cell" data-solution="true" data-execution_count="15">
+<div id="21f7c7dc" class="cell" data-solution="true" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [K_M_estimate, Vmax_estimate]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Use curve_fit</span></span>
@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="d-plot-fit-data" class="level4">
 <h4 class="anchored" data-anchor-id="d-plot-fit-data">(d) Plot fit &amp; data</h4>
 <p>Plot the fit alongside the data.</p>
-<div id="29ae2ec2" class="cell" data-solution="true" data-execution_count="17">
+<div id="e42b072b" class="cell" data-solution="true" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Evaluate the fit</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>S_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">0.055</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>V0_fit <span class="op">=</span> michaelis_menten(S_smooth, K_M_fit, Vmax_estimate)</span>
@@ -677,7 +677,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="e-k_cat" class="level4">
 <h4 class="anchored" data-anchor-id="e-k_cat">(e) <span class="math inline">\(k_{cat}\)</span></h4>
 <p>The enzyme concentration was <span class="math inline">\(100 \ \mathrm{nM}\)</span> use that and your fit to determine <span class="math inline">\(k_{cat}\)</span>.</p>
-<div id="3d005370" class="cell" data-solution="true" data-execution_count="19">
+<div id="e7fdaba5" class="cell" data-solution="true" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set the enzyme concentration in proper units.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>enzyme_concentration <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">9</span>) <span class="co"># nM</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -706,7 +706,7 @@ V_0 = V_{\mathrm{max}} \frac{[S]}{[S] + K_M}
 <section id="a-enzyme-saturation" class="level4">
 <h4 class="anchored" data-anchor-id="a-enzyme-saturation">(a) Enzyme saturation</h4>
 <p>Explain what is meant by enzyme saturation.</p>
-<div id="3cd71692" class="cell" data-solution="true" data-execution_count="20">
+<div id="63ed21ad" class="cell" data-solution="true" data-execution_count="20">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -732,7 +732,7 @@ V_0 = V_{\mathrm{max}} \frac{[S]}{[S] + K_M}
 <li><span class="math inline">\([S] = 10 \cdot K_M\)</span></li>
 <li><span class="math inline">\([S] = 100 \cdot K_M\)</span></li>
 </ul>
-<div id="9f64327a" class="cell" data-solution="true" data-execution_count="22">
+<div id="ae4d8094" class="cell" data-solution="true" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task calculate the degree of enzyme saturation for the prescribed cases</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>f_ES_1 <span class="op">=</span> <span class="fl">0.1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.1</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>f_ES_2 <span class="op">=</span> <span class="fl">0.5</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.5</span>)</span>
@@ -745,7 +745,7 @@ V_0 = V_{\mathrm{max}} \frac{[S]}{[S] + K_M}
 <pre><code>0.09090909090909091 0.3333333333333333 0.5 0.9090909090909091 0.9900990099009901</code></pre>
 </div>
 </div>
-<div id="05ef4781" class="cell" data-solution="true" data-execution_count="23">
+<div id="3bc73d28" class="cell" data-solution="true" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">## An alternative solution using a function</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> enzyme_saturation(x):</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> x)</span>
@@ -761,7 +761,7 @@ V_0 = V_{\mathrm{max}} \frac{[S]}{[S] + K_M}
 <pre><code>0.09090909090909091 0.3333333333333333 0.5 0.9090909090909091 0.9900990099009901</code></pre>
 </div>
 </div>
-<div id="a1c6ac10" class="cell" data-solution="true" data-execution_count="24">
+<div id="be145fa3" class="cell" data-solution="true" data-execution_count="24">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -797,7 +797,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 </ul>
 <p>Calculate the values of <span class="math inline">\(K_M\)</span> and <span class="math inline">\(K_D\)</span> (The dissociation constant of the enzyme:substrate complex).</p>
 <p>Does <span class="math inline">\(K_M\)</span> approximate the dissociation constant for the <span class="math inline">\(ES\)</span> complex in this case, and how can this be estimated directly from the values of the microscopic rate constants?</p>
-<div id="5070e660" class="cell" data-solution="true" data-execution_count="26">
+<div id="6225370c" class="cell" data-solution="true" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>k1 <span class="op">=</span> <span class="dv">7</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span><span class="dv">7</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>k2 <span class="op">=</span> <span class="dv">10</span><span class="op">**</span><span class="dv">3</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>k_m_1 <span class="op">=</span> <span class="dv">8</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span><span class="dv">5</span></span>
@@ -811,7 +811,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 0.011428571428571429</code></pre>
 </div>
 </div>
-<div id="ca17c01d" class="cell" data-solution="true" data-execution_count="27">
+<div id="70ec7471" class="cell" data-solution="true" data-execution_count="27">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -831,7 +831,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 <h4 class="anchored" data-anchor-id="d-calculate-k_2">(d) Calculate <span class="math inline">\(k_2\)</span></h4>
 <p>Assume that a solution of an enzyme at a concentration of <span class="math inline">\(1 \cdot 10^{-7} \ \mathrm{M}\)</span> with a substrate concentration of <span class="math inline">\([S]=100\cdot K_M\)</span> has <span class="math inline">\(V_0=10^{-4} \ \mathrm{M} \cdot \mathrm{s}^{-1}\)</span></p>
 <p>Given this information and with your answers to (b) and (c) in mind, approximate the constant <span class="math inline">\(k_2\)</span>. What is this constant also called?</p>
-<div id="731c2fbc" class="cell" data-solution="true" data-execution_count="29">
+<div id="17c83103" class="cell" data-solution="true" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known values</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>V0 <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">4</span>) <span class="co"># M / s</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>E_tot <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">7</span>) <span class="co"># M </span></span>
@@ -844,7 +844,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 <pre><code>1010.0000000000001</code></pre>
 </div>
 </div>
-<div id="eb6d42f1" class="cell" data-solution="true" data-execution_count="30">
+<div id="beca530f" class="cell" data-solution="true" data-execution_count="30">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -864,7 +864,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 <h4 class="anchored" data-anchor-id="e-lineweaver-burk-plot">(e) Lineweaver-Burk plot</h4>
 <p>The values of <span class="math inline">\(V_\mathrm{max}\)</span> and <span class="math inline">\(K_M\)</span> have historically been determined from a Lineweaver-Burk plot.</p>
 <p>How does the x- and y-intercepts in a Lineweaver-Burk plot relate to <span class="math inline">\(V_\mathrm{max}\)</span> and <span class="math inline">\(K_M\)</span>?</p>
-<div id="9756df8e" class="cell" data-solution="true" data-execution_count="31">
+<div id="02b46846" class="cell" data-solution="true" data-execution_count="31">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -887,7 +887,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 </section>
 <section id="enzyme-inhibitors-i" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="enzyme-inhibitors-i"><span class="header-section-number">3</span> Enzyme inhibitors (I)</h2>
-<div id="da1b807b" class="cell" data-execution_count="32">
+<div id="5aa8acd8" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -899,18 +899,18 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 </div>
 <p>An enzyme obeying the Michaelis-Menten kinetics model was tested for substrate conversion in the absence and presence of an inhibitor, called inhibitor1 at a concentration of <span class="math inline">\([\textrm{I}] = 2.5 \cdot 10^{-3} \ \textrm{M}\)</span>. The data set is contained in the file <code>enzyme-inhib-i.xlsx</code>. Using this data a researcher wanted to determine the type of inhibition.</p>
 <p>Start by loading the dataset</p>
-<div id="f261ec52" class="cell" data-execution_count="33">
+<div id="e4aafa4c" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> DataUploader</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="129df398" class="cell" data-execution_count="34">
+<div id="061c785b" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="75deef3a" class="cell" data-solution="true" data-execution_count="35">
+<div id="899c1ba2" class="cell" data-solution="true" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'week49_6'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
@@ -981,7 +981,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 <section id="a-convert-units" class="level4">
 <h4 class="anchored" data-anchor-id="a-convert-units">(a) Convert units</h4>
 <p>Convert the concentrations of substrate and the initial velocities to units given in M and <span class="math inline">\(\mathrm{M}\cdot \mathrm{s}^{-1}\)</span>, respectively.</p>
-<div id="2b6b006e" class="cell" data-solution="true" data-execution_count="37">
+<div id="d0dc47b8" class="cell" data-solution="true" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make new columns with the properties in SI units. </span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'[S]_(M)'</span>] <span class="op">=</span> df[<span class="st">'[S]_(mM)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">3</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'V0_no_inhib_(M/s)'</span>] <span class="op">=</span> df[<span class="st">'V0_no_inhib_(uM/s)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>)</span>
@@ -1078,7 +1078,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 <section id="b-plot" class="level4">
 <h4 class="anchored" data-anchor-id="b-plot">(b) Plot</h4>
 <p>Plot the initial velocities of both experiments as a function of substrate concentration in one plot. Estimate <span class="math inline">\(K_M\)</span> and <span class="math inline">\(V_\mathrm{max}\)</span> in the presence and absence of inhibitor from the plot.</p>
-<div id="a3a63158" class="cell" data-solution="true" data-execution_count="39">
+<div id="18fe8feb" class="cell" data-solution="true" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the initial velocities for both experiments. </span></span>
@@ -1098,7 +1098,7 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 </div>
 </div>
 <p>Use the plots to estimate <span class="math inline">\(K_M\)</span> and <span class="math inline">\(V_\mathrm{max}\)</span> and assign in the cell below</p>
-<div id="4a67ec93" class="cell" data-solution="true" data-execution_count="41">
+<div id="ca0d4854" class="cell" data-solution="true" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Estimate parameters without inhibitor.</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>K_M_no_inhib_estimate <span class="op">=</span> <span class="fl">0.0025</span> <span class="co"># Unit: M</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Vmax_no_inhib_estimate <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">5</span>) <span class="co"># Unit: M/s</span></span>
@@ -1113,13 +1113,13 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 <p>The researcher wanted to determine <span class="math inline">\(V_\mathrm{max}\)</span> and <span class="math inline">\(K_M\)</span> values for both experiments in order to correctly conclude on the type of inhibitor.</p>
 <p>Determine <span class="math inline">\(V_\mathrm{max}\)</span> and <span class="math inline">\(K_M\)</span> by fitting.</p>
 <p>Start writing the function to fit with</p>
-<div id="9db9dc68" class="cell" data-solution="true" data-execution_count="43">
+<div id="c9156f3a" class="cell" data-solution="true" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Implement the Michealis-Menten equation as a function</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> michaelis_menten(S, Vmax, Km):</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (Vmax <span class="op">*</span> S) <span class="op">/</span> (S <span class="op">+</span> Km)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And use the <code>curve_fit</code>-function to find the parameters</p>
-<div id="22eb9866" class="cell" data-solution="true" data-execution_count="45">
+<div id="d3d1161a" class="cell" data-solution="true" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a fit to the Michealies-Menten equation for the data without the inhibitor.</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [Vmax_no_inhib_estimate, K_M_no_inhib_estimate]</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> curve_fit(michaelis_menten, df[<span class="st">'[S]_(M)'</span>], df[<span class="st">'V0_no_inhib_(M/s)'</span>], initial_guess)</span>
@@ -1147,7 +1147,7 @@ With inhibitor:
 </div>
 </div>
 <p>Which of the kinetic parameters changes substantively in the presence of the inhibitor</p>
-<div id="7a9aaecd" class="cell" data-solution="true" data-execution_count="46">
+<div id="3d572bf9" class="cell" data-solution="true" data-execution_count="46">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1167,14 +1167,14 @@ With inhibitor:
 <h4 class="anchored" data-anchor-id="d-analyze-the-fit">(d) Analyze the fit</h4>
 <p>As per usual, we need to plot the fit to confirm that that it has been done successfully.</p>
 <p>We start by evaluating the fit for each set of parameters - those with and those without the inhibitor.</p>
-<div id="708b0817" class="cell" data-solution="true" data-execution_count="48">
+<div id="555cb50c" class="cell" data-solution="true" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Evaluate the fits for both cases</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>S_smooth <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, <span class="fl">0.055</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>V0_no_inhib_model <span class="op">=</span> michaelis_menten(S_smooth, Vmax_fit_no_inhib, K_M_fit_no_inhib)</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>V0_inhib_model <span class="op">=</span> michaelis_menten(S_smooth, Vmax_fit_inhib, K_M_fit_inhib)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Copy your code from above and then we plot the fit along with the data,</p>
-<div id="59d89c4f" class="cell" data-solution="true" data-execution_count="50">
+<div id="83d726c9" class="cell" data-solution="true" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the fits: </span></span>
@@ -1201,7 +1201,7 @@ With inhibitor:
 <section id="e-inhibitor-type" class="level4">
 <h4 class="anchored" data-anchor-id="e-inhibitor-type">(e) Inhibitor type</h4>
 <p>What type of inhibitor is inhibitor1?</p>
-<div id="f5b117bb" class="cell" data-solution="true" data-execution_count="51">
+<div id="6f40bde9" class="cell" data-solution="true" data-execution_count="51">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1220,7 +1220,7 @@ With inhibitor:
 <section id="f-k_i" class="level4">
 <h4 class="anchored" data-anchor-id="f-k_i">(f) <span class="math inline">\(K_i\)</span></h4>
 <p>The experiment was done in the presence of 2.5 mM of the inhibitor. What is the <span class="math inline">\(K_i\)</span> for this inhibitor?</p>
-<div id="05672092" class="cell" data-solution="true" data-execution_count="53">
+<div id="fa027f3c" class="cell" data-solution="true" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set the inhibitor concentration in M.</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>I_concentration <span class="op">=</span> <span class="fl">2.5e-3</span>  <span class="co"># M</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1240,7 +1240,7 @@ With inhibitor:
 </section>
 <section id="enzyme-inhibitors-ii" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="enzyme-inhibitors-ii"><span class="header-section-number">4</span> Enzyme inhibitors (II)</h2>
-<div id="f7140410" class="cell" data-execution_count="54">
+<div id="dc63d849" class="cell" data-execution_count="54">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1254,16 +1254,16 @@ With inhibitor:
 </div>
 <p>Two enzyme inhibitors were identified as part of a drug discovery program. To characterize the mechanism of action, the reaction kinetics were analysed for the enzyme alone and in the presence of 5 <span class="math inline">\(\mu\)</span>M of each of the inhibitors as a function of substrate concentration resulting in the data in the file <code>enzyme-inhib-ii.xlsx</code></p>
 <p>Load the dataset</p>
-<div id="bbbbc3b2" class="cell" data-execution_count="55">
+<div id="04bb3198" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="c9b26d50" class="cell" data-execution_count="56">
+<div id="59a16320" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ab903efe" class="cell" data-solution="true" data-execution_count="57">
+<div id="bf49852a" class="cell" data-solution="true" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'week49_7'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
@@ -1343,7 +1343,7 @@ With inhibitor:
 <h4 class="anchored" data-anchor-id="a-convert-plot">(a) Convert &amp; plot</h4>
 <p>Convert the measurements to SI units and plot the initial reaction velocity versus substrate concentration for all three reactions.</p>
 <p>Start by converting the units</p>
-<div id="384647fd" class="cell" data-solution="true" data-execution_count="59">
+<div id="7e49428b" class="cell" data-solution="true" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add new columns with the properties in the correct SI units. </span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">## There are 4 properties, so you should add 4 columns. </span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'[S]_(M)'</span>] <span class="op">=</span> df[<span class="st">'[S]_(uM)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>)</span>
@@ -1352,7 +1352,7 @@ With inhibitor:
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'inhibitor3_(M/s)'</span>] <span class="op">=</span> df[<span class="st">'inhibitor3_(nM/s)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And then plot to visualize the data</p>
-<div id="6ab82246" class="cell" data-solution="true" data-execution_count="61">
+<div id="e12e50a0" class="cell" data-solution="true" data-execution_count="61">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task plot each data vs. [S]_(M).</span></span>
@@ -1386,7 +1386,7 @@ With inhibitor:
 <li>Can you determine the type of inhibition?</li>
 <li>Alternatively, can you exclude some mechanisms?</li>
 </ul>
-<div id="e29f3e93" class="cell" data-solution="true" data-execution_count="62">
+<div id="64d479f3" class="cell" data-solution="true" data-execution_count="62">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1405,12 +1405,12 @@ With inhibitor:
 <section id="c-fit-2" class="level4">
 <h4 class="anchored" data-anchor-id="c-fit-2">(c) Fit</h4>
 <p>As always, we need the function we’re fitting with</p>
-<div id="b67fd66e" class="cell" data-execution_count="63">
+<div id="27926bea" class="cell" data-execution_count="63">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> michaelis_menten(S, Vmax, Km):</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Vmax <span class="op">*</span> S <span class="op">/</span> (S <span class="op">+</span> Km)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And then we can make the fit</p>
-<div id="7b6bdca3" class="cell" data-solution="true" data-execution_count="65">
+<div id="f58b46f6" class="cell" data-solution="true" data-execution_count="65">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task fit dataset 1: 'enz_(M/s)'</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [<span class="dv">3</span><span class="op">*</span><span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">9</span>), <span class="fl">0.25</span><span class="op">*</span><span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">5</span>)]</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> curve_fit(michaelis_menten, df[<span class="st">'[S]_(M)'</span>], df[<span class="st">'enz_(M/s)'</span>], initial_guess)</span>
@@ -1447,7 +1447,7 @@ Dataset 3: inhibitor3_(M/s)
     K_M 7.913115764963332e-07</code></pre>
 </div>
 </div>
-<div id="aba4ae18" class="cell" data-execution_count="66">
+<div id="48401978" class="cell" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Evaluate the fits</span></span>
@@ -1485,7 +1485,7 @@ Dataset 3: inhibitor3_(M/s)
 <h4 class="anchored" data-anchor-id="d-type-of-inhibitor">(d) Type of inhibitor</h4>
 <p>We call <span class="math inline">\(V_\mathrm{max}\)</span> and <span class="math inline">\(K_\mathrm{M}\)</span> recorded in the presence of the inhibitor for <span class="math inline">\(V_\mathrm{max}^{app}\)</span> and <span class="math inline">\(K_\mathrm{M}^{app}\)</span> (<span class="math inline">\(app = \mathrm{apparent}\)</span>).</p>
 <p>Calcuate how much each value changes in the presence of the inhibitor by dividing them by the parameters determined in the absence of an inhibitor.</p>
-<div id="204017f8" class="cell" data-solution="true" data-execution_count="68">
+<div id="12fbd35e" class="cell" data-solution="true" data-execution_count="68">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the ratio nof K_M^app / K_M</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>K_M_ratio2 <span class="op">=</span> K_M_inhib2_fit <span class="op">/</span> K_M_enz_fit</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>K_M_ratio3 <span class="op">=</span> K_M_inhib3_fit <span class="op">/</span> K_M_enz_fit</span>
@@ -1512,7 +1512,7 @@ Vmax 0.3825518811308258</code></pre>
 </div>
 </div>
 <p>Based on the above, what is the likely inhibition type of inhibitor2 and inhibitor3?</p>
-<div id="f1ff91f3" class="cell" data-solution="true" data-execution_count="69">
+<div id="9b66ce6c" class="cell" data-solution="true" data-execution_count="69">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1532,7 +1532,7 @@ Vmax 0.3825518811308258</code></pre>
 <section id="e-k_i" class="level4">
 <h4 class="anchored" data-anchor-id="e-k_i">(e) <span class="math inline">\(K_i\)</span></h4>
 <p>Determine the <span class="math inline">\(K_i\)</span> for each of the two inhibitors. The inhibitor concentration is 5 <span class="math inline">\(\mu\mathrm{M}\)</span>.</p>
-<div id="80276e06" class="cell" data-solution="true" data-execution_count="71">
+<div id="fa403b56" class="cell" data-solution="true" data-execution_count="71">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known value</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1549,7 +1549,7 @@ Vmax 0.3825518811308258</code></pre>
 Inhibitor 3:  3.0978463569655915e-06</code></pre>
 </div>
 </div>
-<div id="add74a45" class="cell" data-solution="true" data-execution_count="72">
+<div id="b38d9338" class="cell" data-solution="true" data-execution_count="72">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1622,7 +1622,7 @@ The concentration of C5 in blood is $0.37 \ \mu\mathrm{M}$.
 Convert the given $K_M$ and the C5 concentration to SI-units given in $\mathrm{M}$ 
 and assign to variables. Also assign the given values of $k_{cat}$ to variables. 
 
-::: {#ba3d0cb9 .cell exercise='true' execution_count=73}
+::: {#6e050cd2 .cell exercise='true' execution_count=73}
 ``` {.python .cell-code}
 ## Your task: Assign the known values for CVF1
 K_m_cvf1 = ...
@@ -1638,7 +1638,7 @@ C_c5 = ...
 :::
 
 
-::: {#4870f857 .cell solution='true' execution_count=74}
+::: {#3ace536a .cell solution='true' execution_count=74}
 ``` {.python .cell-code}
 ## Your task: Assign the known values for CVF1
 K_m_cvf1 = 0.036 * 10**(-6) # Unit: M
@@ -1658,7 +1658,7 @@ C_c5 = 0.37 * 10**(-6)      # Unit: M
 
 Assuming that [CVF1:FB] $=$ [CVF2:FB] $= 0.1\cdot 10^{-6} \ \mathrm{M}$, calculate $V_\mathrm{max}$ of both enzymes.
 
-::: {#71b8e099 .cell exercise='true' execution_count=75}
+::: {#2fa6c65e .cell exercise='true' execution_count=75}
 ``` {.python .cell-code}
 ## Your task: Calculate Vmax of both enzymes 
 V_max_cfv1 = ...
@@ -1671,7 +1671,7 @@ print(V_max_cfv2)
 :::
 
 
-::: {#9c36b4ce .cell solution='true' execution_count=76}
+::: {#72536cef .cell solution='true' execution_count=76}
 ``` {.python .cell-code}
 ## Your task: Calculate Vmax of both enzymes 
 V_max_cfv1 = k_cat_cvf1 * 0.1 * 10**(-6)
@@ -1695,7 +1695,7 @@ print(V_max_cfv2)
 
 Calculate the fraction of enzyme:substrate complexes (CVFx:FB:C5) in blood.
 
-::: {#eeafc08b .cell exercise='true' execution_count=77}
+::: {#bfa79ecd .cell exercise='true' execution_count=77}
 ``` {.python .cell-code}
 theta_cfv1 = ...
 theta_cfv2 = ...
@@ -1706,7 +1706,7 @@ print(theta_cfv2)
 :::
 
 
-::: {#7cf3fb42 .cell solution='true' execution_count=78}
+::: {#a85f284a .cell solution='true' execution_count=78}
 ``` {.python .cell-code}
 theta_cfv1 = C_c5 / (K_m_cvf1 + C_c5)
 theta_cfv2 = C_c5 / (K_m_cvf2 + C_c5)
@@ -1728,7 +1728,7 @@ print(theta_cfv2)
  
 Calculate the initial velocities of C5 cleavage in blood by the two enzymes.
 
-::: {#17084763 .cell exercise='true' execution_count=79}
+::: {#b07d424f .cell exercise='true' execution_count=79}
 ``` {.python .cell-code}
 v0_cfv1 = ...
 v0_cfv2 = ...
@@ -1739,7 +1739,7 @@ print(v0_cfv2)
 :::
 
 
-::: {#3aa52ab0 .cell solution='true' execution_count=80}
+::: {#b428e182 .cell solution='true' execution_count=80}
 ``` {.python .cell-code}
 v0_cfv1 = (V_max_cfv1 * C_c5) / (K_m_cvf1 + C_c5)
 v0_cfv2 = (V_max_cfv2 * C_c5) / (K_m_cvf2 + C_c5)
@@ -1761,7 +1761,7 @@ print(v0_cfv2)
 
 Which of the two enzymes, CVF1:FB or CVF2:FB, cleaves the most C5 molecules in blood?
 
-::: {#8cff2a5a .cell solution='true' execution_count=81}
+::: {#6c9e2b8d .cell solution='true' execution_count=81}
 
 ::: {.callout-important}
 
@@ -1781,7 +1781,7 @@ CVF1:FB cleaves approximately 21 times more C5 compared to CVF2:FB.
 </section>
 <section id="enzymatic-behaviour-of-the-enzyme-atcase" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="enzymatic-behaviour-of-the-enzyme-atcase"><span class="header-section-number">5</span> Enzymatic behaviour of the enzyme ATCase</h2>
-<div id="c99ec0aa" class="cell" data-execution_count="82">
+<div id="1b36aa73" class="cell" data-execution_count="82">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1797,16 +1797,16 @@ CVF1:FB cleaves approximately 21 times more C5 compared to CVF2:FB.
 <p>ATCase does not obey the Michaelis-Menten kinetics model but instead shows the behaviour recorded in the <code>enzyme-behav-atcase.csv</code> dataset.</p>
 <p>The dataset consists of three columns; the aspartate concentration in mM and the rate of formation of N-carbamyolaspartate with and without the presence of CTP.</p>
 <p>Load the dataset with the widget below</p>
-<div id="2e222ce2" class="cell" data-execution_count="83">
+<div id="181aaf18" class="cell" data-execution_count="83">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="f7ad98e3" class="cell" data-execution_count="84">
+<div id="8c7bfd85" class="cell" data-execution_count="84">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="8450d244" class="cell" data-solution="true" data-execution_count="85">
+<div id="af8a1dbd" class="cell" data-solution="true" data-execution_count="85">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'atcase'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1875,14 +1875,14 @@ CVF1:FB cleaves approximately 21 times more C5 compared to CVF2:FB.
 </div>
 <section id="a-units-plot" class="level4">
 <h4 class="anchored" data-anchor-id="a-units-plot">(a) Units &amp; Plot</h4>
-<div id="63ce33e9" class="cell" data-solution="true" data-execution_count="87">
+<div id="e248d4ab" class="cell" data-solution="true" data-execution_count="87">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add columns with the properties in SI units.</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'[aspartate]_(M)'</span>] <span class="op">=</span> df[<span class="st">'[aspartate]_(mM)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">3</span>)</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'rate_(M/s)'</span>] <span class="op">=</span> df[<span class="st">'rate_(uM/s)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>)</span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'rate_ctp_(M/s)'</span>] <span class="op">=</span> df[<span class="st">'rate_ctp_(uM/s)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Make a plot of the <code>rate_(M/s)</code> dataset versus the aspartate concentration.</p>
-<div id="b4b04c77" class="cell" data-solution="true" data-execution_count="89">
+<div id="e7a31b68" class="cell" data-solution="true" data-execution_count="89">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the datasets</span></span>
@@ -1903,7 +1903,7 @@ CVF1:FB cleaves approximately 21 times more C5 compared to CVF2:FB.
 <section id="b-kinetic-profile" class="level4">
 <h4 class="anchored" data-anchor-id="b-kinetic-profile">(b) Kinetic profile</h4>
 <p>Looking at the curve without CTP, describe the kinetic profile of ATCase and explain what it tells us about the way ATCase works. (You may find inspiration in the material previously covered on protein-ligand interactions)</p>
-<div id="d93b2efb" class="cell" data-solution="true" data-execution_count="90">
+<div id="b1ab8cd2" class="cell" data-solution="true" data-execution_count="90">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1923,7 +1923,7 @@ CVF1:FB cleaves approximately 21 times more C5 compared to CVF2:FB.
 <section id="c-quarternary-structure" class="level4">
 <h4 class="anchored" data-anchor-id="c-quarternary-structure">(c) Quarternary structure</h4>
 <p>What does the figure tell us about the quaternary structure of ATCase?</p>
-<div id="a82048b6" class="cell" data-solution="true" data-execution_count="91">
+<div id="df689934" class="cell" data-solution="true" data-execution_count="91">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1942,7 +1942,7 @@ CVF1:FB cleaves approximately 21 times more C5 compared to CVF2:FB.
 <section id="d-effect-of-ctp" class="level4">
 <h4 class="anchored" data-anchor-id="d-effect-of-ctp">(d) Effect of CTP</h4>
 <p>Copy your plotting code from above and add a line to also plot the <code>rate_ctp_(M/s)</code> dataset.</p>
-<div id="cf88f9c7" class="cell" data-solution="true" data-execution_count="93">
+<div id="0dfd3ece" class="cell" data-solution="true" data-execution_count="93">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the datasets</span></span>
@@ -1961,7 +1961,7 @@ CVF1:FB cleaves approximately 21 times more C5 compared to CVF2:FB.
 </div>
 </div>
 <p>Qualitatively describe the effect of CTP on the rate of N-carbamyolaspartate formation</p>
-<div id="996f5033" class="cell" data-solution="true" data-execution_count="94">
+<div id="36c501da" class="cell" data-solution="true" data-execution_count="94">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1980,7 +1980,7 @@ CVF1:FB cleaves approximately 21 times more C5 compared to CVF2:FB.
 <section id="e-physiological-advantage" class="level4">
 <h4 class="anchored" data-anchor-id="e-physiological-advantage">(e) Physiological advantage</h4>
 <p>In fact many enzymes are regulated by certain end products in a fashion similar to the CTP effect on ATCase. Can you explain why this might be a physiological advantage?</p>
-<div id="2cf9a10f" class="cell" data-solution="true" data-execution_count="95">
+<div id="148b5b42" class="cell" data-solution="true" data-execution_count="95">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2003,7 +2003,7 @@ v = \frac{V_\mathrm{max} \cdot S^h}{K_{\frac{1}{2}}^h+S^h}
 \]</span></p>
 <p>Note, that we use a formulation of the Hill equation, where the constant on the denominator is raised to the power of <span class="math inline">\(h\)</span>. Therefore, the constant also marks the half-way saturation concentration and we denote it <span class="math inline">\(K_{\frac{1}{2}}\)</span></p>
 <p>As usual start by writing a function implementing this equation</p>
-<div id="ec1f6c99" class="cell" data-solution="true" data-execution_count="97">
+<div id="67b43b87" class="cell" data-solution="true" data-execution_count="97">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hill_eq(S, Vmax, K, h):</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the enzyme kinetics Hill equation.</span></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (Vmax <span class="op">*</span> S<span class="op">**</span>h) <span class="op">/</span> (K<span class="op">**</span>h <span class="op">+</span> S<span class="op">**</span>h)</span>
@@ -2014,7 +2014,7 @@ v = \frac{V_\mathrm{max} \cdot S^h}{K_{\frac{1}{2}}^h+S^h}
 </div>
 </div>
 <p>And then make the fit for each dataset of rates vs.&nbsp;aspartate concentration.</p>
-<div id="47fdd26e" class="cell" data-solution="true" data-execution_count="99">
+<div id="af0c17a3" class="cell" data-solution="true" data-execution_count="99">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make the fit for the dataset without CTP</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>fitted_parameters_noctp, _ <span class="op">=</span> curve_fit(hill_eq, df[<span class="st">'[aspartate]_(M)'</span>], df[<span class="st">'rate_(M/s)'</span>])</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>Vmax_fit_noctp, K_fit_noctp, h_fit_noctp <span class="op">=</span> fitted_parameters_noctp</span>
@@ -2024,7 +2024,7 @@ v = \frac{V_\mathrm{max} \cdot S^h}{K_{\frac{1}{2}}^h+S^h}
 <span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>Vmax_fit_ctp, K_fit_ctp, h_fit_ctp <span class="op">=</span> fitted_parameters_ctp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The next cell prints the fitted parameters for both cases.</p>
-<div id="dd55bcd5" class="cell" data-solution="true" data-execution_count="101">
+<div id="ddaa2764" class="cell" data-solution="true" data-execution_count="101">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Without CTP'</span>)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'    Vmax'</span>, Vmax_fit_noctp)</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'    K1/2'</span>, K_fit_noctp)</span>
@@ -2046,7 +2046,7 @@ With CTP
 </div>
 </div>
 <p>Then we can plot</p>
-<div id="1ec90e75" class="cell" data-solution="true" data-execution_count="103">
+<div id="80aafcec" class="cell" data-solution="true" data-execution_count="103">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the fits</span></span>
@@ -2076,7 +2076,7 @@ With CTP
 </div>
 <div class="line-block">How do the constants of the Hill equation change in response to the presence of CTP?<br>
 Does this match your expectations?</div>
-<div id="33f73d6f" class="cell" data-solution="true" data-execution_count="104">
+<div id="93c8d1a2" class="cell" data-solution="true" data-execution_count="104">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
