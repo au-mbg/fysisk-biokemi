@@ -1,6 +1,6 @@
 [project]
 name = "fysisk-biokemi"
-version = "0.2.0"
+version = "0.2.1"
 description = "Add your description here"
 readme = "README.md"
 authors = [
@@ -39,8 +39,6 @@ colab = [
 ]
 
 pyodide = [
-    "jupyter",
-    "jupyter-cache",
     "matplotlib",
     "numpy",
     "openpyxl",
