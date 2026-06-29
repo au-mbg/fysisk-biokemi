@@ -2357,8 +2357,8 @@ packages:
   requires_python: '>=2.7,!=3.0,!=3.1,!=3.2,!=3.3,!=3.4,<4'
 - pypi: ./
   name: fysisk-biokemi
-  version: 0.1.0
-  sha256: b29cab0467e02af02afce11a8d18e9f1543f4b279edf025b15fc6b931aece4bc
+  version: 0.2.0
+  sha256: 860ecd6d24cb7bd46a4eaf8b55fde383665ab31b0e3d40de7566214088771396
   requires_dist:
   - biopython ; extra == 'standard'
   - scipy ; extra == 'standard'
