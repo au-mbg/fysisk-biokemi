@@ -1,0 +1,63 @@
+[project]
+name = "fysisk-biokemi"
+version = "0.2.1"
+description = "Utilities for the Fysisk Biokemi course exercises"
+readme = "README.md"
+authors = [
+    { name = "Mads-Peter", email = "machri@phys.au.dk" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+standard = [
+    "biopython",
+    "scipy",
+    "jupyter>=1.1.1",
+    "jupyter-cache>=1.0.1",
+    "matplotlib>=3.10.6",
+    "numpy>=2.3.3",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.2",
+    "ipywidgets>=7.7.1",
+    "anywidget>=0.9.18",
+    "plotly>=6.3.0",
+]
+colab = [
+    "jupyter",
+    "jupyter-cache",
+    "matplotlib",
+    "numpy",
+    "openpyxl",
+    "pandas",
+    "ipywidgets",
+    "anywidget",
+    "plotly",
+    "scipy",
+]
+pyodide = [
+    "matplotlib",
+    "numpy",
+    "openpyxl",
+    "pandas",
+    "ipywidgets",
+    "anywidget",
+    "plotly",
+    "scipy",
+]
+
+[project.scripts]
+fysisk-biokemi = "fysisk_biokemi:main"
+
+[build-system]
+requires = ["uv_build>=0.8.10,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+source-exclude = [".DS_Store"]
+
+[dependency-groups]
+dev = [
+    "nbformat>=5.10.4",
+    "uv",
+]

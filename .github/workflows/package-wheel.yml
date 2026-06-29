@@ -5,8 +5,8 @@ on:
     branches: ["main"]
     paths:
       - ".github/workflows/package-wheel.yml"
-      - "src/**"
-      - "pyproject.toml"
+      - "pixi.toml"
+      - "course-utils/**"
       - "uv.lock"
       - "pixi.lock"
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Build wheel
         run: |
-          pixi run -e dev uv build
+          pixi run build-wheel
           pixi run -e dev uvx pkginfo dist/*whl
 
       - name: Upload wheel

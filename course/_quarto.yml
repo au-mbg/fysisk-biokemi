@@ -10,7 +10,7 @@ filters:
   - colab-link  
 
 resources:
-  - src/fysisk_biokemi/datasets/files/**
+  - ../course-utils/src/fysisk_biokemi/datasets/files/**
 
 resource-path:
   - lessons/figures/

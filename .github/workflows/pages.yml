@@ -5,8 +5,9 @@ on:
     branches: ["main"]
     paths:
       - ".github/workflows/pages.yml"
+      - "pixi.toml"
       - "course/**"
-      - "src/fysisk_biokemi/datasets/**"
+      - "course-utils/src/fysisk_biokemi/datasets/**"
       - "fonts/**"
   workflow_dispatch:
 

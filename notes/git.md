@@ -139,8 +139,8 @@ relevant build:
 
 - Changes to course files, datasets, and the site workflow render the course
   site and update the generated notebooks.
-- Changes to the accompanying Python package build a new wheel and publish it
-  without re-rendering the course material.
+- Changes to the accompanying Python package in `course-utils/` build a new
+  wheel and publish it without re-rendering the course material.
 
 For course material changes, GitHub:
 

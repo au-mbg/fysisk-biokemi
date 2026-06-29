@@ -2,8 +2,8 @@
 
 ## Files and folders
 - `course/`: Contains all the files for the exercises and for making the different document types. 
-- `source/`: Contains a small Python package, mainly used for the widgets and the datasets. 
-- `pyproject.toml`: Dependencies of the Python package (and therefore also controls dependencies for the exercises.)
+- `course-utils/`: Contains the Python package used for widgets, datasets, and helper utilities.
+- `pixi.toml`: Defines the repository environments and tasks used to render the course and build the utility package.
 - `.github/workflows/`: Github workflow for making and hosting the static website.
 
 ## Using Pixi 
@@ -18,6 +18,7 @@ The simplest way is by using the tasks:
 | preview | Preview the course notes in either student or master mode |
 | render | Render the course notes in either student or master mode |
 | render-all | Render the course notes in both student and master mode |
+| build-wheel | Build the accompanying Python package wheel |
 
 For example, the preview task can be invoked as
 
@@ -29,6 +30,5 @@ pixi run preview
 
 - For authoring or updating exercises see [authoring.md](notes/authoring.md).
 - For things related to `git`, including how the website is build and hosted, see [git.md](notes/git.md)
-
 
 

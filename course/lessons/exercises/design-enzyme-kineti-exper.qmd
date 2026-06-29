@@ -311,7 +311,7 @@ slopes, concentrations = make_fits_and_plots(df, n_points)
 ## Information on 'make_fits_and_plot'
 
 The function 'make_fits_and_plots' is beyond what is expected for this course, however if you are 
-interested you can see the source code for it on [github](https://github.com/au-mbg/fysisk-biokemi/blob/main/src/fysisk_biokemi/utils/design_enzyme_kineti_exper.py).
+interested you can see the source code for it on [github](https://github.com/au-mbg/fysisk-biokemi/blob/main/course-utils/src/fysisk_biokemi/utils/design_enzyme_kineti_exper.py).
 
 :::
 
@@ -489,4 +489,3 @@ ax.plot(V0_df['[S]_(M)'], V0_df['V0_(M/s)'], 'o')
 ax.set_xlabel('[S] (M)')
 ax.set_ylabel('$V_0$ (M/s)');
 ```
-
