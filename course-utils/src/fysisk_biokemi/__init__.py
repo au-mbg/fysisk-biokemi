@@ -1,2 +1,1 @@
 from .datasets import load_dataset, get_dataset_path
-from .utils.make_pdf import colab2pdf

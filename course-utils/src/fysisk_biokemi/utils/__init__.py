@@ -1,1 +1,0 @@
-from .make_pdf import colab2pdf
