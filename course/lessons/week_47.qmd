@@ -3,7 +3,6 @@ title: Week 47
 subtitle: v1.0.1
 engine: jupyter
 categories: ['regression', 'calculation', 'data', 'plotting']
-colab: true
 ---
 
 {{< include tidbits/_install_import.qmd >}}

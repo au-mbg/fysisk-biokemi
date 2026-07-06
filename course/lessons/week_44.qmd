@@ -2,7 +2,6 @@
 title: Week 44
 engine: jupyter
 categories: ['units', 'widgets']
-colab: true
 ---
 
 {{< include tidbits/_install_import.qmd >}}
