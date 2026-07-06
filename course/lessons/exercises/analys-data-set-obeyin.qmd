@@ -6,7 +6,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
@@ -18,15 +17,7 @@ Use these data to answer the following questions.
 
 ```{python}
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+df = pd.read_excel(...) # Load the dataset
 display(df)
 ```
 

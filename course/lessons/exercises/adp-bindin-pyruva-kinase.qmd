@@ -4,7 +4,6 @@
 #| code-fold: true
 import matplotlib.pyplot as plt
 import numpy as np
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display 
 import pandas as pd
 from scipy.optimize import curve_fit
@@ -25,22 +24,16 @@ As always, use the widget to load the dataset
 
 ```{python}
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+df = pd.read_csv(...) # Load the dataset into a dataframe.
 display(df)
 ```
+
 
 ```{python}
 #| solution: true
 from fysisk_biokemi.datasets import load_dataset
 df = load_dataset('adp_pyruvate') # Load from package for the solution so it doesn't require to interact.
+# df = pd.read_csv('adp-bindin-pyruva-kinase.csv')
 display(df)
 ```
 

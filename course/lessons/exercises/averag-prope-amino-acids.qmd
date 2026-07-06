@@ -9,21 +9,18 @@ In the accompanying Excel file (`averag-prope-amino-acids.xlsx`), you will find 
 
 #### (a) Load the data file.
 
-Use the widget below to load the `averag-prope-amino-acids.xlsx` file.
+Load the `averag-prope-amino-acids.xlsx` dataset
 
 ```{python}
 #| eval: true
 from IPython.display import display 
-from fysisk_biokemi.widgets import DataUploader
-uploader = DataUploader()
-uploader.display()
 ```
 
-The command below will display the table as a `DataFrame`.
+Use the cell below to load and display the dataset.
 
 ```{python}
 #| eval: false
-df = uploader.get_dataframe()
+df = pd.read_excel(...)
 display(df)
 ```
 
