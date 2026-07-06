@@ -5,7 +5,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
@@ -14,21 +13,13 @@ You have carried out a kinetic experiment investigating the turnover of two meta
 
 #### (a) Load the dataset
 
-Load the dataset `reaction-orders.xlsx` using the widget below
+Load the dataset `reaction-orders.xlsx` with pandas. Set `data_file_path` to the path of the dataset file.
 
 ```{python}
-#| eval: false
 #| exercise: true
-#|
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
 #| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 

@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import numpy as np
 import pandas as pd
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display
 ```
 
@@ -21,19 +20,12 @@ ATCase does not obey the Michaelis-Menten kinetics model but instead shows the b
 The dataset consists of three columns; the aspartate concentration in mM and the rate of formation of N-carbamyolaspartate
 with and without the presence of CTP. 
 
-Load the dataset with the widget below
+Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_csv(data_file_path)
 display(df)
 ```
 

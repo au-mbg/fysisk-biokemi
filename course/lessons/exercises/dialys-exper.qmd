@@ -5,6 +5,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from IPython.display import display
 pd.set_option('display.max_rows', 6)
 ```
 
@@ -14,17 +15,8 @@ A dialysis experiment was set up where equal amounts of a protein were separatel
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 
@@ -259,4 +251,3 @@ ax.set_xlabel('Free ligand [L] (M)', fontsize=16)
 ax.set_ylabel(r'$\bar{n}$', fontsize=16)
 ax.legend(fontsize=16)
 ```
-

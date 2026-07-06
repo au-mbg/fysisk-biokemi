@@ -1,5 +1,11 @@
 ## Proteins in blood plasma.
 
+```{python}
+#| code-fold: true
+import pandas as pd
+from IPython.display import display
+```
+
 In this exercise we will learn how Python is excellent for handling datasets with many data points and 
 how it can be used to apply the same procedure to all the data points at once.
 
@@ -14,19 +20,12 @@ A researcher wants to determine the concentration of two proteins in blood plasm
 
 #### (a) Load the dataset
 
-Use the widget to load the dataset as a dataframe from the file `protei-blood-plasma.xlsx`
+Load the dataset as a dataframe from the file `protei-blood-plasma.xlsx` with pandas. Set `data_file_path` to the path of the dataset file.
 
 ```{python}
 #| eval: false
-from IPython.display import display 
-from fysisk_biokemi.widgets import DataUploader
-uploader = DataUploader()
-uploader.display()
-```
-Run this cell **after** having uploaded the file in the cell above.
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 

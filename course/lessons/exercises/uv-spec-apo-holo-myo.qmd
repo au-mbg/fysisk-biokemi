@@ -3,6 +3,8 @@
 ```{python}
 #| code-fold: true
 import matplotlib.pyplot as plt
+import pandas as pd
+from IPython.display import display
 ```
 
 In this exercise we will analyze the spectra of apo- and holo-myoglobin. 
@@ -10,19 +12,12 @@ The dataset is given in `uv-spec-apo-holo-myo.csv`.
 
 #### (a) Load the dataset
 
-Use the widget to load the dataset.
+Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
 #| eval: false
-from IPython.display import display 
-from fysisk_biokemi.widgets import DataUploader
-uploader = DataUploader()
-uploader.display()
-```
-Run this cell **after** having uploaded the file in the cell above.
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_csv(data_file_path)
 display(df)
 ```
 

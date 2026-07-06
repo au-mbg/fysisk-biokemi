@@ -1,5 +1,11 @@
 ## The fluorescent protein "mCherry".
 
+```{python}
+#| code-fold: true
+import pandas as pd
+from IPython.display import display
+```
+
 The spectra of many fluorescent proteins can be found at the website: [www.fpbase.org](https://www.fpbase.org/). Go to FPbase and search for “mCherry”. 
 
 #### (a) Find parameters. 
@@ -156,21 +162,12 @@ Screenshot of the download button on fpbase
 Go to [www.fpbase.org](https://www.fpbase.org/) and download the spectrum as described 
 above. 
 
-Use the widget below to load the dataset as a `DataFrame`
+Load the dataset as a `DataFrame` with pandas. Set `data_file_path` to the path of the downloaded dataset file.
 
 ```{python}
 #| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_csv(data_file_path)
 display(df)
 ```
 

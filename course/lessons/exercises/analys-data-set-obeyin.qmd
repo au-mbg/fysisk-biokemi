@@ -17,7 +17,8 @@ Use these data to answer the following questions.
 
 ```{python}
 #| eval: false
-df = pd.read_excel(...) # Load the dataset
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 
@@ -245,4 +246,3 @@ enzyme_concentration = 100 * 10**(-9) # nM
 kcat = Vmax_fit / enzyme_concentration # (nM/s) / nM  -> 1/s
 print(kcat)
 ```
-

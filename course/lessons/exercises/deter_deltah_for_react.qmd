@@ -1,29 +1,22 @@
 ## Determination of ΔH° for a reaction from the van’t Hoff plot.
 ```{python}
 #| code-fold: true
+import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import numpy as np
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display 
 ```
 
 
 The equilibrium constant for a reversible reaction going from $A$ to $B$ was measured as a function of temperature.
  
-The data obtained is given in the Excel document `deter_delta_h_data.xlsx` - load the data with the widget 
+The data obtained is given in the Excel document `deter_delta_h_data.xlsx`. Load the data with pandas.
 
 ```{python}
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 

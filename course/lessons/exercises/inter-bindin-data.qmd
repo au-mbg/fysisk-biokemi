@@ -3,7 +3,6 @@
 ```{python}
 import numpy as np
 import pandas as pd
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
@@ -14,19 +13,12 @@ The `inter-bindin-data.xlsx` contains a protein binding dataset.
 
 #### (a) Load the dataset
 
-Load the dataset using the widget below
+Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 

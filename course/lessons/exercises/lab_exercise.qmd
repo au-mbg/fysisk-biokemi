@@ -6,7 +6,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display
 ```
 
@@ -17,19 +16,12 @@ into p-nitrophenol when the enzyme (alkaline phosphatase) acts on it.
 
 If you do not have data, or you find that your data set is not of sufficient quality, you can use the following `kinetics_data.xlsx`.
 
-Load your dataset using the widget below
+Load your dataset with pandas. Set `data_file_path` to the path of your dataset file.
 
 ```{python}
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 

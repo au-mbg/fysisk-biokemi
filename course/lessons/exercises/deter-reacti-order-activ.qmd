@@ -5,7 +5,6 @@
 import numpy as np  
 import matplotlib.pyplot as plt
 import pandas as pd
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
@@ -39,19 +38,12 @@ T2 = 40 + 273.15
 
 #### (b) Load the dataset
 
-Load the dataset using the widget below
+Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_csv(data_file_path)
 display(df)
 ```
 

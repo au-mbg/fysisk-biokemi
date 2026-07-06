@@ -4,7 +4,6 @@
 #| code-fold: true
 import matplotlib.pyplot as plt
 import pandas as pd
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
@@ -23,15 +22,8 @@ The data is contained in the `diff_q_keq_data.xlsx` file.
 
 ```{python}
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-```{python}
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 

@@ -6,32 +6,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.optimize import curve_fit
-from fysisk_biokemi.widgets import DataUploader
 from IPython.display import display 
 pd.set_option('display.max_rows', 6)
 ```
 
 Here, we will analyse the results from an experiment used to quantify affinity of a protein:lignd interaction. The data in `binding_data_sq.xlsx` is in the form of saturation (theta) as a function of the total ligand concentration L_tot. This is the type of data you typically get from e.g. a fluorescence titration experiment. Each measure-ment has been repeated three times.
 
-Load the dataset as usual using the widget below
+Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
 #| exercise: true
 #| eval: false
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
-
-::: {.callout-tip}
-The command `display(df)` shows the dataframe that you've loaded. 
-:::
-
-```{python}
-#| exercise: true
-#| eval: false
-df = uploader.get_dataframe()
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_path)
 display(df)
 ```
 

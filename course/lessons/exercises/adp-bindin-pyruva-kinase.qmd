@@ -20,11 +20,12 @@ When downloading the `.csv`-file you can right click and choose "Save link as".
 
 #### (a) Load the dataset
 
-As always, use the widget to load the dataset
+Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
 #| eval: false
-df = pd.read_csv(...) # Load the dataset into a dataframe.
+data_file_path = ... # Write the path to the dataset file
+df = pd.read_csv(data_file_path)
 display(df)
 ```
 
