@@ -42,8 +42,6 @@ jobs:
         with:
           path: course/_freeze
           key: quarto-freeze-${{ runner.os }}-${{ hashFiles('course/**/*.qmd', 'course/_quarto*.yml', 'course/_extensions/**', 'course-utils/**', 'pixi.toml', 'pixi.lock', 'uv.lock') }}
-          restore-keys: |
-            quarto-freeze-${{ runner.os }}-
 
       - name: Clear Quarto freeze cache
         if: ${{ github.event_name == 'workflow_dispatch' && inputs['refresh-freeze'] }}
