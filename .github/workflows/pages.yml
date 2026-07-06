@@ -47,37 +47,17 @@ jobs:
 
       - name: Clear Quarto freeze cache
         if: ${{ github.event_name == 'workflow_dispatch' && inputs['refresh-freeze'] }}
-        run: rm -rf course/_freeze
+        run: pixi run clear-freeze
 
       - name: Render course site
         id: render-course
         run: pixi run render-all
 
       - name: Check rendered outputs
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -d course/_freeze
-          echo "Freeze size: $(du -sh course/_freeze | cut -f1)"
-          echo "Freeze files: $(find course/_freeze -type f | wc -l | tr -d ' ')"
+        run: pixi run prepare-site-artifact
 
-          test -d course/_site-combined/student
-          test -d course/_site-combined/master
-          test -f course/_site-combined/index.html
-
-          shopt -s nullglob
-          student_notebooks=(course/_site-combined/student/lessons/*.ipynb)
-          master_notebooks=(course/_site-combined/master/lessons/*.ipynb)
-          if [ "${#student_notebooks[@]}" -eq 0 ]; then
-            echo "No student notebooks were generated." >&2
-            exit 1
-          fi
-          if [ "${#master_notebooks[@]}" -eq 0 ]; then
-            echo "No master notebooks were generated." >&2
-            exit 1
-          fi
-          echo "Student notebooks: ${#student_notebooks[@]}"
-          echo "Master notebooks: ${#master_notebooks[@]}"
+      - name: Stage notebooks
+        run: pixi run stage-notebooks
 
       - name: Save Quarto freeze cache
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs['refresh-freeze']) && steps.freeze-cache.outputs.cache-hit != 'true' }}
@@ -99,14 +79,26 @@ jobs:
           name: course-site
           path: course/_site-combined
           if-no-files-found: error
+          include-hidden-files: true
+
+      - name: Upload staged notebooks
+        uses: actions/upload-artifact@v4
+        with:
+          name: course-notebooks
+          path: build/notebooks
+          if-no-files-found: error
 
   publish-site:
     needs: render
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Require gh-pages branch
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: gh-pages
+          path: .branch-check/gh-pages
 
       - name: Download rendered site
         uses: actions/download-artifact@v4
@@ -115,76 +107,40 @@ jobs:
           path: site
 
       - name: Publish site to gh-pages
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
-            git fetch origin gh-pages:gh-pages
-            git worktree add gh-pages-worktree gh-pages
-          else
-            git worktree add --detach gh-pages-worktree
-            git -C gh-pages-worktree checkout --orphan gh-pages
-            git -C gh-pages-worktree rm -rf . >/dev/null 2>&1 || true
-          fi
-
-          mkdir preserved
-          if [ -d gh-pages-worktree/wheels ]; then
-            cp -a gh-pages-worktree/wheels preserved/wheels
-          fi
-          if [ -f gh-pages-worktree/CNAME ]; then
-            cp gh-pages-worktree/CNAME preserved/CNAME
-          fi
-
-          find gh-pages-worktree -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-          cp -a site/. gh-pages-worktree/
-          touch gh-pages-worktree/.nojekyll
-
-          if [ -d preserved/wheels ]; then
-            rm -rf gh-pages-worktree/wheels
-            cp -a preserved/wheels gh-pages-worktree/wheels
-          fi
-          if [ -f preserved/CNAME ]; then
-            cp preserved/CNAME gh-pages-worktree/CNAME
-          fi
-
-          git -C gh-pages-worktree add -A
-          if git -C gh-pages-worktree diff --cached --quiet; then
-            echo "No site changes to publish."
-          else
-            git -C gh-pages-worktree commit -m "Update course site"
-            git -C gh-pages-worktree push origin HEAD:gh-pages
-          fi
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: site
+          clean: true
+          clean-exclude: |
+            wheels
+            wheels/**
+            CNAME
+          commit-message: Update course site
 
   publish-notebooks:
     needs: render
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Require built-notebooks branch
+        uses: actions/checkout@v4
         with:
           ref: built-notebooks
-          fetch-depth: 0
+          path: .branch-check/built-notebooks
 
-      - name: Download rendered site
+      - name: Download staged notebooks
         uses: actions/download-artifact@v4
         with:
-          name: course-site
-          path: site
+          name: course-notebooks
+          path: notebooks
 
-      - name: Gather notebooks
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p built_notebooks/student built_notebooks/master
-          rm -f built_notebooks/student/*.ipynb built_notebooks/master/*.ipynb
-          cp site/student/lessons/*.ipynb built_notebooks/student/
-          cp site/master/lessons/*.ipynb built_notebooks/master/
-
-      - uses: EndBug/add-and-commit@v9
+      - name: Publish notebooks to built-notebooks
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          add: "built_notebooks/"
-          default_author: github_actor
-          message: "Update notebooks"
+          branch: built-notebooks
+          folder: notebooks
+          target-folder: built_notebooks
+          clean: true
+          commit-message: Update notebooks

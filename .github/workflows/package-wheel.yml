@@ -30,9 +30,10 @@ jobs:
           cache: true
 
       - name: Build wheel
-        run: |
-          pixi run build-wheel
-          pixi run -e dev uvx pkginfo dist/*whl
+        run: pixi run build-wheel
+
+      - name: Check wheel
+        run: pixi run check-wheel
 
       - name: Upload wheel
         uses: actions/upload-artifact@v4
@@ -46,8 +47,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Require gh-pages branch
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: gh-pages
+          path: .branch-check/gh-pages
 
       - name: Download wheel
         uses: actions/download-artifact@v4
@@ -56,31 +61,10 @@ jobs:
           path: wheel-dist
 
       - name: Publish wheel to gh-pages
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
-            git fetch origin gh-pages:gh-pages
-            git worktree add gh-pages-worktree gh-pages
-          else
-            git worktree add --detach gh-pages-worktree
-            git -C gh-pages-worktree checkout --orphan gh-pages
-            git -C gh-pages-worktree rm -rf . >/dev/null 2>&1 || true
-          fi
-
-          rm -rf gh-pages-worktree/wheels
-          mkdir -p gh-pages-worktree/wheels
-          cp wheel-dist/*.whl gh-pages-worktree/wheels/
-          touch gh-pages-worktree/.nojekyll
-
-          git -C gh-pages-worktree add -A
-          if git -C gh-pages-worktree diff --cached --quiet; then
-            echo "No wheel changes to publish."
-          else
-            git -C gh-pages-worktree commit -m "Update package wheel"
-            git -C gh-pages-worktree push origin HEAD:gh-pages
-          fi
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: wheel-dist
+          target-folder: wheels
+          clean: true
+          commit-message: Update package wheel

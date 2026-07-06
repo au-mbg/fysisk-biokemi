@@ -61,7 +61,58 @@ cmd = "cp redirect/index.html _site-combined/index.html"
 cwd = "course"
 description = "Move the index.html to the combined site"
 
+[tasks.clear-freeze]
+cmd = "rm -rf course/_freeze"
+description = "Clear Quarto freeze state before a forced refresh render"
+
+[tasks.prepare-site-artifact]
+cmd = """
+  set -eu
+
+  test -d course/_freeze
+  echo "Freeze size: $(du -sh course/_freeze | cut -f1)"
+  echo "Freeze files: $(find course/_freeze -type f | wc -l | tr -d ' ')"
+
+  test -d course/_site-combined/student
+  test -d course/_site-combined/master
+  test -f course/_site-combined/index.html
+  touch course/_site-combined/.nojekyll
+
+  student_notebooks=$(find course/_site-combined/student/lessons -maxdepth 1 -name '*.ipynb' | wc -l | tr -d ' ')
+  master_notebooks=$(find course/_site-combined/master/lessons -maxdepth 1 -name '*.ipynb' | wc -l | tr -d ' ')
+  if [ "$student_notebooks" -eq 0 ]; then
+    echo "No student notebooks were generated." >&2
+    exit 1
+  fi
+  if [ "$master_notebooks" -eq 0 ]; then
+    echo "No master notebooks were generated." >&2
+    exit 1
+  fi
+  echo "Student notebooks: $student_notebooks"
+  echo "Master notebooks: $master_notebooks"
+  """
+description = "Validate rendered site outputs and prepare the site artifact"
+
+[tasks.stage-notebooks]
+cmd = """
+  set -eu
+
+  rm -rf build/notebooks
+  mkdir -p build/notebooks/student build/notebooks/master
+  cp course/_site-combined/student/lessons/*.ipynb build/notebooks/student/
+  cp course/_site-combined/master/lessons/*.ipynb build/notebooks/master/
+
+  echo "Staged student notebooks: $(find build/notebooks/student -maxdepth 1 -name '*.ipynb' | wc -l | tr -d ' ')"
+  echo "Staged master notebooks: $(find build/notebooks/master -maxdepth 1 -name '*.ipynb' | wc -l | tr -d ' ')"
+  """
+description = "Stage generated notebooks for the built-notebooks branch"
+
 [tasks.build-wheel]
 cmd = "rm -rf dist && uv build course-utils --out-dir dist"
 description = "Build the course utility package wheel"
+default-environment = "dev"
+
+[tasks.check-wheel]
+cmd = "uvx pkginfo dist/*.whl"
+description = "Inspect built wheel metadata"
 default-environment = "dev"
