@@ -47,6 +47,7 @@ format:
     number-depth: 2
 
 format-links:
+  - html
   - format: typst
     text: PDF
     icon: file-pdf
