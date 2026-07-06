@@ -1,6 +1,6 @@
 [project]
 name = "fysisk-biokemi"
-version = "0.2.1"
+version = "0.2.2"
 description = "Utilities for the Fysisk Biokemi course exercises"
 readme = "README.md"
 authors = [
@@ -11,10 +11,6 @@ dependencies = []
 
 [project.optional-dependencies]
 standard = [
-    "biopython",
-    "scipy",
-    "jupyter>=1.1.1",
-    "jupyter-cache>=1.0.1",
     "matplotlib>=3.10.6",
     "numpy>=2.3.3",
     "openpyxl>=3.1.5",
@@ -22,19 +18,10 @@ standard = [
     "ipywidgets>=7.7.1",
     "anywidget>=0.9.18",
     "plotly>=6.3.0",
-]
-colab = [
-    "jupyter",
-    "jupyter-cache",
-    "matplotlib",
-    "numpy",
-    "openpyxl",
-    "pandas",
-    "ipywidgets",
-    "anywidget",
-    "plotly",
     "scipy",
+
 ]
+
 pyodide = [
     "matplotlib",
     "numpy",
@@ -57,7 +44,4 @@ build-backend = "uv_build"
 source-exclude = [".DS_Store"]
 
 [dependency-groups]
-dev = [
-    "nbformat>=5.10.4",
-    "uv",
-]
+dev = []
