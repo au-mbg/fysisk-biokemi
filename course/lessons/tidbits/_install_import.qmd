@@ -5,5 +5,5 @@ try:
     import fysisk_biokemi
     print("Already installed")
 except ImportError:
-    %pip install -q "fysisk_biokemi[pyodide] @ https://au-mbg.github.io/fysisk-biokemi/wheels/  fysisk_biokemi-0.2.2-py3-none-any.whl
+    %pip install -q "fysisk_biokemi[pyodide] @ https://au-mbg.github.io/fysisk-biokemi/wheels/fysisk_biokemi-0.2.2-py3-none-any.whl"
 ```
