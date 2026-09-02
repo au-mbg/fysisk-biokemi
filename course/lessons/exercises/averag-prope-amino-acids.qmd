@@ -21,6 +21,7 @@ from IPython.display import display
 Use the cell below to load and display the dataset.
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_excel(data_file_path)

@@ -41,6 +41,7 @@ T2 = 40 + 273.15
 Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_csv(data_file_path)
@@ -269,6 +270,7 @@ Based on these plots
 What is the half-life of the reaction at these temperatures and is it constant through-out the reaction?
 
 ```{python}
+#| exercise: true
 #| eval: false
 ... 
 ```
@@ -281,6 +283,7 @@ of the compound A.
 
 Perform the calculation in the cell below.
 ```{python}
+#| exercise: true
 #| eval: false
 ...
 ```

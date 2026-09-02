@@ -15,6 +15,7 @@ The dataset is given in `uv-spec-apo-holo-myo.csv`.
 Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_csv(data_file_path)

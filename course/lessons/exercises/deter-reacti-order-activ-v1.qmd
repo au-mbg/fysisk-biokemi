@@ -42,6 +42,7 @@ T2 = 40 + 273.15
 Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_csv(data_file_path)

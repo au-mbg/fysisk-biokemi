@@ -14,6 +14,7 @@ The equilibrium constant for a reversible reaction going from $A$ to $B$ was mea
 The data obtained is given in the Excel document `deter_delta_h_data.xlsx`. Load the data with pandas.
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_excel(data_file_path)

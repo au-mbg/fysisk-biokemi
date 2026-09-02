@@ -21,6 +21,7 @@ The time course of the reaction was followed monitoring formation of the product
 The data is contained in the `diff_q_keq_data.xlsx` file.
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_excel(data_file_path)

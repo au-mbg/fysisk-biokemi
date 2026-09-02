@@ -16,6 +16,7 @@ The `inter-bindin-data.xlsx` contains a protein binding dataset.
 Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_excel(data_file_path)

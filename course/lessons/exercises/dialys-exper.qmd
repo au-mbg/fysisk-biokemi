@@ -14,6 +14,7 @@ A dialysis experiment was set up where equal amounts of a protein were separatel
 #### (a)    Load the dataset
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_excel(data_file_path)

@@ -15,6 +15,7 @@ Two enzyme inhibitors were identified as part of a drug discovery program. To ch
 Load the dataset
 
 ```{python}
+#| exercise: true
 #| eval: false
 data_file_path = ... # Write the path to the dataset file
 df = pd.read_excel(data_file_path)

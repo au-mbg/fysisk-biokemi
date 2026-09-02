@@ -67,20 +67,6 @@ categories: ['regression', 'calculation', 'data', 'plotting']
 
 ::::::
 
-<!-- ---
-
-::: {.content-visible when-format="typst"}
-
-{{< pagebreak >}}
-
-:::
-
-{{< include exercises/snake-dependent-enzyme.qmd >}}
-
-:::::: {.cell .markdown}
-
-:::::: -->
-
 ---
 
 ::: {.content-visible when-format="typst"}
