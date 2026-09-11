@@ -56,7 +56,7 @@ cmd = """
   rm -rf *.html;
   rm -rf lessons/*html lessons/*.ipynb lessons/*_files lessons/.ipynb_checkpoints;
   rm -rf datasets_files/ index_files/
-  rm *.ipynb
+  rm -f *.ipynb
   """
 cwd = "course"
 description = "Clean up old build artifacts before rendering"
