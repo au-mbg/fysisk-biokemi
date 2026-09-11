@@ -9,7 +9,6 @@ jupyterlite: true
 
 ```{python}
 import fysisk_biokemi.widgets as fsb_widgets
-from fysisk_biokemi.widgets.utils import disable_custom_widget_colab, enable_custom_widget_colab
 ```
 
 ## Kommaer, punktumer, commas og dots. 
@@ -196,6 +195,5 @@ af syre og base som funktionen af pH.
 
 ```{python}
 #| eval: true
-enable_custom_widget_colab() # Gør ingenting udenfor Google Colab, men nødvendigt i Colab.
 fsb_widgets.buffer_visualization()
 ```
