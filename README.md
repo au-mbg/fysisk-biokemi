@@ -19,6 +19,8 @@ The simplest way is by using the tasks:
 | render | Render the course notes in either student or master mode |
 | render-all | Render the course notes in both student and master mode |
 | build-wheel | Build the accompanying Python package wheel |
+| install-pyodide-test-browser | Install Chromium for local Pyodide notebook tests |
+| test-pyodide-notebook | Run one notebook in the deployed JupyterLite/Pyodide environment |
 
 For example, the preview task can be invoked as
 
@@ -26,9 +28,23 @@ For example, the preview task can be invoked as
 pixi run preview
 ```
 
+## Test a notebook in Pyodide
+
+Install the test browser once, then pass one notebook to the runner:
+
+```sh
+pixi run install-pyodide-test-browser
+pixi run test-pyodide-notebook -- tests/pyodide/known_good.ipynb
+```
+
+The runner uses the exact `jupyterlite-playground` revision behind the deployed
+course playground. Use `--headed` to watch the browser, or
+`--playground-source ../jupyterlite-playground` to test a local playground
+checkout. A notebook error stops execution and writes diagnostics under
+`build/pyodide-test-results/`.
+
 ## More
 
 - For authoring or updating exercises see [authoring.md](notes/authoring.md).
 - For things related to `git`, including how the website is build and hosted, see [git.md](notes/git.md)
-
 

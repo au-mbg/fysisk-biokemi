@@ -2,6 +2,7 @@
 title: Week 46
 engine: jupyter
 categories: ['regression', 'calculation', 'data', 'plotting']
+jupyterlite: true
 ---
 
 {{< include tidbits/_install_import.qmd >}}

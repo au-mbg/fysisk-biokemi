@@ -2,6 +2,7 @@
 title: Week 45
 engine: jupyter
 categories: ['calculation', 'data', 'plotting']
+jupyterlite: true
 ---
 
 {{< include tidbits/_install_import.qmd >}}

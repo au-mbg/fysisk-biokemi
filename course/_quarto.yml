@@ -8,6 +8,7 @@ project:
 filters:
   - strip-solution
   - colab-link  
+  - jupyterlite-link
 
 resources:
   - ../course-utils/src/fysisk_biokemi/datasets/files/**
@@ -68,3 +69,10 @@ teaching:
     branch: built-notebooks
     root: built_notebooks
     notebook-profile: student
+  jupyterlite:
+    url: https://au-mbg.github.io/jupyterlite-playground/lab/index.html
+    repo: au-mbg/fysisk-biokemi
+    branch: built-notebooks
+    root: built_notebooks
+    notebook-profile: student
+    course-directory: fysisk-biokemi
