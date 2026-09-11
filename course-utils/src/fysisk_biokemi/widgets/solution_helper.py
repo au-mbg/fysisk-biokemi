@@ -46,7 +46,7 @@ class ValueWithUnit:
         return rep
     @property
     def repru(self):
-        return f"{self.repr} \ {self.unit_repr}"
+        return rf"{self.repr} \ {self.unit_repr}"
 
     @property    
     def unit_repr(self):
@@ -54,7 +54,7 @@ class ValueWithUnit:
             num, denom = self.unit.split("/")
             return rf"\frac{{\mathrm{{{num}}}}}{{\mathrm{{{denom}}}}}"
 
-        return f"\mathrm{{{self.unit}}}"
+        return rf"\mathrm{{{self.unit}}}"
     
     def __mul__(self, other):
         if isinstance(other, (int, float)):

@@ -142,7 +142,7 @@ class FastaToDataFrame:
         from Bio.SeqIO.FastaIO import SimpleFastaParser
 
         sequences = []
-        raw_content = next(iter(self.uploader.value.values()))['content']
+        raw_content = self.uploader.value[0].content.tobytes()
         raw_content = io.StringIO(raw_content.decode('utf-8'))
 
         for _, seq in SimpleFastaParser(raw_content):

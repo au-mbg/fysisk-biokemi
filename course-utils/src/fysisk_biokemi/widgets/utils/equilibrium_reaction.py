@@ -137,7 +137,7 @@ class Reaction:
                 if value is not None or value is not np.nan:
                     eq += f" = {number_to_scientific_latex(value)}"
         except:
-            eq = "\mathrm{Fejl}"
+            eq = r"\mathrm{Fejl}"
 
         return eq
     

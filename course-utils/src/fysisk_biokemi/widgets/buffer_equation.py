@@ -93,7 +93,7 @@ class BufferEquation:
                         + rf"\underline{{{number_to_scientific_latex(acid_conc)}}} \, \text{{M}}"
                     ]
                 except Exception as e:
-                    derivation = ["\mathrm{Fejl}"]
+                    derivation = [r"\mathrm{Fejl}"]
 
                 for line in derivation:
                     display(Math(line))
