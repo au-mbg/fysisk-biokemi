@@ -13,15 +13,10 @@ fysisk-biokemi = { path = "course-utils", editable = true, extras = ["standard"]
 nbformat = ">=5.10.4"
 uv = "*"
 
-[feature.pyodide-test.pypi-dependencies]
-nbformat = ">=5.10.4,<6"
-playwright = ">=1.55,<2"
-
 [environments]
 default = { features = ["standard"], solve-group = "default" }
 dev = { features = ["standard", "dev"], solve-group = "default" }
 standard = { features = ["standard"], solve-group = "default" }
-pyodide-test = { features = ["pyodide-test"], solve-group = "pyodide-test" }
 
 [activation]
 env = { TYPST_FONT_PATHS = "$PIXI_PROJECT_ROOT/course/other/fonts" }
@@ -111,12 +106,5 @@ cmd = "uvx pkginfo dist/*.whl"
 description = "Inspect built wheel metadata"
 default-environment = "dev"
 
-[tasks.install-pyodide-test-browser]
-cmd = "python -m playwright install chromium"
-description = "Install Chromium for local Pyodide notebook tests"
-default-environment = "pyodide-test"
-
-[tasks.test-pyodide-notebook]
-cmd = "python -m tools.pyodide_notebook_runner"
-description = "Run one notebook in the pinned JupyterLite Pyodide environment"
-default-environment = "pyodide-test"
+[pypi-dependencies]
+jupyter = ">=1.1.1, <2"

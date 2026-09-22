@@ -19,7 +19,8 @@ standard = [
     "anywidget>=0.9.18",
     "plotly>=6.3.0",
     "scipy",
-    "biopython"
+    "biopython",
+    "jupyter"
 
 ]
 
@@ -32,7 +33,7 @@ pyodide = [
     "anywidget",
     "plotly",
     "scipy",
-    "biopython"
+    "biopython",
 ]
 
 [project.scripts]

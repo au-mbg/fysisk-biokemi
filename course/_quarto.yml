@@ -31,9 +31,20 @@ website:
         href: https://github.com/au-mbg/fysisk-biokemi
   sidebar:
     style: floating
+    expand: true
     contents:
+      - section: "Start"
+      - lessons/jupyterlite_intro.qmd
       - section: "Exercises"
-        contents: lessons/*.qmd
+      - lessons/week_43.qmd
+      - lessons/week_44.qmd
+      - lessons/week_45.qmd
+      - lessons/week_46.qmd
+      - lessons/week_47.qmd
+      - lessons/week_48.qmd
+
+
+
 
 format:
   html:
