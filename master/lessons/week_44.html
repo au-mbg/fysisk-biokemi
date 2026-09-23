@@ -262,6 +262,11 @@ window.Quarto = {
   <li><a href="#d-parentheses" id="toc-d-parentheses" class="nav-link" data-scroll-target="#d-parentheses">(d) Parentheses</a></li>
   <li><a href="#f-functions" id="toc-f-functions" class="nav-link" data-scroll-target="#f-functions">(f) Functions</a></li>
   </ul></li>
+  <li><a href="#self-study-calculations-in-python-1" id="toc-self-study-calculations-in-python-1" class="nav-link" data-scroll-target="#self-study-calculations-in-python-1"><span class="header-section-number">4</span> Self-study: Calculations in python</a>
+  <ul>
+  <li><a href="#a-unit-as-a-string---examples" id="toc-a-unit-as-a-string---examples" class="nav-link" data-scroll-target="#a-unit-as-a-string---examples">(a) Unit as a string - examples</a></li>
+  <li><a href="#b-unit-as-a-string---exercises" id="toc-b-unit-as-a-string---exercises" class="nav-link" data-scroll-target="#b-unit-as-a-string---exercises">(b) Unit as a string - exercises</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="week_44.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="week_44.ipynb" download="week_44.ipynb"><i class="bi bi-journal-code"></i>Notebook</a></li></ul></div></nav>
     </div>
@@ -356,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="acb72fe8" class="cell" data-execution_count="1">
+<div id="34e2a764" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -366,30 +371,31 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install <span class="op">-</span>q <span class="st">"fysisk_biokemi[pyodide] @ https://au-mbg.github.io/fysisk-biokemi/wheels/fysisk_biokemi-0.2.2-py3-none-any.whl"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="182d697c" class="cell" data-execution_count="2">
+<div id="790f48b3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fysisk_biokemi.widgets <span class="im">as</span> fsb_widgets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="sekvens-egenskaber" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="sekvens-egenskaber"><span class="header-section-number">1</span> Sekvens egenskaber</h2>
-<div id="ce7f1377" class="cell" data-execution_count="3">
+<div id="7838ea8d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fsb_widgets.sequence_properties()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fasta-til-dataframe" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="fasta-til-dataframe"><span class="header-section-number">2</span> Fasta til <code>DataFrame</code></h2>
-<div id="ba2fa499" class="cell" data-execution_count="4">
+<div id="506a14f7" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.sequence_properties <span class="im">import</span> sequence_dataframe</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>DataFrame</code>’en ved den valgte pH kan trækkes ud</p>
-<div id="0512b419" class="cell" data-execution_count="5">
+<div id="66083083" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> widget.get_dataframe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<hr>
 </section>
 <section id="self-study-calculations-in-python" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="self-study-calculations-in-python"><span class="header-section-number">3</span> Self-study: Calculations in python</h2>
-<div id="83f7bfae" class="cell" data-execution_count="6">
+<div id="6e7f4d83" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -425,7 +431,7 @@ Tip
 </ul>
 </div>
 </div>
-<div id="49c63a86" class="cell" data-solution="true" data-execution_count="8">
+<div id="42ee3d51" class="cell" data-solution="true" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fl">10.5</span> <span class="op">*</span> <span class="dv">4</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">+</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">+</span> <span class="dv">12</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dv">70</span> <span class="op">-</span> <span class="dv">30</span> <span class="op">+</span> <span class="dv">2</span> </span>
@@ -440,10 +446,10 @@ Tip
 <p>The ability to perform operations on all elements (or data points) is incredibly useful when doing data analysis, for example when converting units. This is enabled my array calculations.</p>
 <p>The cell below defines an array <span class="math inline">\(a\)</span> with all the numbers from 0 to 9.</p>
 <p>For each entry <span class="math inline">\(a_i\)</span> in the array calculate the expression <span class="math inline">\(b_i = a_i / 3 + a_i^2\)</span> and assign that to a new array <span class="math inline">\(b\)</span>. use the fact that you can do elementwise operations with an array - do not calculate it seperately for every element of the array.</p>
-<div id="94f42b73" class="cell" data-execution_count="9">
+<div id="10c8c818" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="fe625f78" class="cell" data-solution="true" data-execution_count="11">
+<div id="c0b5cf12" class="cell" data-solution="true" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a <span class="op">/</span> <span class="dv">3</span> <span class="op">+</span> a<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -479,7 +485,7 @@ b &amp;= a + 9 \\
 c &amp;= \frac{4}{3}a + b - 2
 \end{aligned}
 \]</span></p>
-<div id="7869718d" class="cell" data-solution="true" data-execution_count="13">
+<div id="0fadbe6f" class="cell" data-solution="true" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">3</span>      </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a <span class="op">+</span> <span class="dv">9</span>      </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">4</span><span class="op">/</span><span class="dv">3</span><span class="op">*</span>a <span class="op">+</span> b <span class="op">-</span> <span class="dv">2</span></span>
@@ -501,7 +507,7 @@ c &amp;= \frac{4}{3}a + b - 2
 <li><span class="math inline">\((b - a)(\frac{1}{c} + 1)\)</span></li>
 <li><span class="math inline">\((b - a)(\frac{1}{c+1} + 1)\)</span></li>
 </ul>
-<div id="f4333851" class="cell" data-solution="true" data-execution_count="15">
+<div id="eae5f512" class="cell" data-solution="true" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> a <span class="op">*</span> (b <span class="op">+</span> c)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>q2 <span class="op">=</span> a <span class="op">*</span> b <span class="op">+</span> c</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> (a <span class="op">+</span> b <span class="op">+</span> c) <span class="op">/</span> (b <span class="op">+</span> c)</span>
@@ -535,12 +541,12 @@ Tip
 f(x) = \frac{Ax + B + C}{A + B}
 \]</span></p>
 <p>Where <span class="math inline">\(A = 10\)</span>, <span class="math inline">\(B=5\)</span>, <span class="math inline">\(C=2.5\)</span></p>
-<div id="d946f6d5" class="cell" data-solution="true" data-execution_count="17">
+<div id="00beb18e" class="cell" data-solution="true" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fun_function(x):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (<span class="dv">10</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">5</span> <span class="op">+</span> <span class="fl">2.5</span>) <span class="op">/</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now evaluate the function for <span class="math inline">\(x = 62.5\)</span>, <span class="math inline">\(x = 629.25\)</span>, <span class="math inline">\(x=42\)</span> and <span class="math inline">\(x = 2025\)</span></p>
-<div id="edf77642" class="cell" data-solution="true" data-execution_count="19">
+<div id="26d9211d" class="cell" data-solution="true" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fun_output_1 <span class="op">=</span> fun_function(<span class="fl">62.25</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fun_output_2 <span class="op">=</span> fun_function(<span class="fl">629.25</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>fun_output_3 <span class="op">=</span> fun_function(<span class="dv">42</span>)</span>
@@ -569,6 +575,63 @@ Tip
 <div class="callout-body-container callout-body">
 <p>The input of a function will often be the independent variable and the functions calculates the independent variable.</p>
 <p>Later when we get to regression/fitting this will be the case.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="self-study-calculations-in-python-1" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="self-study-calculations-in-python-1"><span class="header-section-number">4</span> Self-study: Calculations in python</h2>
+<div id="8b1f202d" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>As you may have noticed, numbers do not have a units in python. In science, all quantities need to be reported with and associated unit - ideally SI or with an appropriate prefix. In this course, we will represent units as a separate string variable that can be printed with the answer as shown below. This is also the format you should use for the exam.</p>
+<section id="a-unit-as-a-string---examples" class="level4">
+<h4 class="anchored" data-anchor-id="a-unit-as-a-string---examples">(a) Unit as a string - examples</h4>
+<p>Length of an ideal H-bond:</p>
+<div id="0df69815" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>len_Hbond <span class="op">=</span> <span class="fl">0.28</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>unit_len_Hbond <span class="op">=</span> <span class="st">"nm"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"An ideal H-bond is"</span>, len_Hbond, unit_len_Hbond) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>An ideal H-bond is 0.28 nm</code></pre>
+</div>
+</div>
+<p>Molecular weight of human alcohol dehydrogenase:</p>
+<div id="8a33d714" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>MW_ADH <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>unit_MW_ADH <span class="op">=</span> <span class="st">"kDa"</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MW of ADH is"</span>, MW_ADH, unit_MW_ADH) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MW of ADH is 42 kDa</code></pre>
+</div>
+</div>
+<p>Approximate diameter of human liver cell:</p>
+<div id="e93f749a" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>diam_hlc <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>unit_diam_hlc <span class="op">=</span> <span class="st">"µm"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"An typical liver cell is "</span>, diam_hlc, unit_diam_hlc, <span class="st">"wide"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>An typical liver cell is  30 µm wide</code></pre>
+</div>
+</div>
+</section>
+<section id="b-unit-as-a-string---exercises" class="level4">
+<h4 class="anchored" data-anchor-id="b-unit-as-a-string---exercises">(b) Unit as a string - exercises</h4>
+<p>Convert to millimolar: 0.15 M</p>
+<div id="ed48ddb6" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>conc <span class="op">=</span> ...      <span class="co"># Replace ... with your code</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>unit_conc <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The concentration is "</span>, conc, unit_conc) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The concentration is  Ellipsis ...</code></pre>
 </div>
 </div>
 <hr>
@@ -1031,45 +1094,50 @@ Tip
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Week 44</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> jupyter</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ['units', 'widgets']</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="an">jupyterlite:</span><span class="co"> true</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>{{&lt; include tidbits/_install_import.qmd &gt;}}</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fysisk_biokemi.widgets <span class="im">as</span> fsb_widgets</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sekvens egenskaber</span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>fsb_widgets.sequence_properties()</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fasta til `DataFrame`</span></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.sequence_properties <span class="im">import</span> sequence_dataframe</span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe()</span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a><span class="in">`DataFrame`</span>'en ved den valgte pH kan trækkes ud</span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> widget.get_dataframe()</span>
-<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>{{&lt; include intros/calculation_intro.qmd &gt;}}</span>
-<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>---</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Week 44</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> jupyter</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ['units', 'widgets']</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="an">jupyterlite:</span><span class="co"> true</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>{{&lt; include tidbits/_install_import.qmd &gt;}}</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fysisk_biokemi.widgets <span class="im">as</span> fsb_widgets</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sekvens egenskaber</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>fsb_widgets.sequence_properties()</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fasta til `DataFrame`</span></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.sequence_properties <span class="im">import</span> sequence_dataframe</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe()</span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a><span class="in">`DataFrame`</span>'en ved den valgte pH kan trækkes ud</span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> widget.get_dataframe()</span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a>{{&lt; include intros/calculation_intro.qmd &gt;}}</span>
+<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a>{{&lt; include intros/units_in_python.qmd &gt;}}</span>
+<span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-52"><a href="#cb30-52" aria-hidden="true" tabindex="-1"></a>---</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
