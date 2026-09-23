@@ -1,9 +1,10 @@
-## Python: Calculations
+## Self-study: Calculations in python
 
 ```{python}
 #| code-fold: true
 import numpy as np
 ```
+In the following, we will go through the some common mathematical manupulations of number, arrays and data frames using python. You should have covered most of these in "Introduction to the Molecules of Life", so we will not go through them in class. 
 
 #### (a) Simple calculations
 
