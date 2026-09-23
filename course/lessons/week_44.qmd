@@ -33,11 +33,13 @@ widget = sequence_dataframe()
 #| eval: false
 df = widget.get_dataframe()
 ```
+
 ---
 
 {{< include intros/calculation_intro.qmd >}}
 
 ---
+
 {{< include intros/units_in_python.qmd >}}
 
 ---

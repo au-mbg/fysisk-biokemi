@@ -3,8 +3,8 @@
 ```{python}
 #| code-fold: true
 import numpy as np
-
 ```
+
 As you may have noticed, numbers do not have a units in python. In science, all quantities need to be reported with and associated unit - ideally SI or with an appropriate prefix. In this course, we will represent units as a separate string variable that can be printed with the answer as shown below. This is also the format you should use for the exam.
 
 #### (a) Unit as a string - examples
