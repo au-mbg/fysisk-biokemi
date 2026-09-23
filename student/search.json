@@ -209,11 +209,11 @@
     ]
   },
   {
-    "objectID": "lessons/week_44.html#self-study-calculations-in-python-1",
-    "href": "lessons/week_44.html#self-study-calculations-in-python-1",
+    "objectID": "lessons/week_44.html#self-study-units-in-python",
+    "href": "lessons/week_44.html#self-study-units-in-python",
     "title": "Week 44",
-    "section": "4 Self-study: Calculations in python",
-    "text": "4 Self-study: Calculations in python\n\n\nCode\nimport numpy as np\n\n\nAs you may have noticed, numbers do not have a units in python. In science, all quantities need to be reported with and associated unit - ideally SI or with an appropriate prefix. In this course, we will represent units as a separate string variable that can be printed with the answer as shown below. This is also the format you should use for the exam.\n\n(a) Unit as a string - examples\nLength of an ideal H-bond:\n\nlen_Hbond = 0.28\nunit_len_Hbond = \"nm\"\n\nprint(\"An ideal H-bond is\", len_Hbond, unit_len_Hbond) \n\nAn ideal H-bond is 0.28 nm\n\n\nMolecular weight of human alcohol dehydrogenase:\n\nMW_ADH = 42\nunit_MW_ADH = \"kDa\"\n\nprint(\"MW of ADH is\", MW_ADH, unit_MW_ADH) \n\nMW of ADH is 42 kDa\n\n\nApproximate diameter of human liver cell:\n\ndiam_hlc = 30\nunit_diam_hlc = \"µm\"\n\nprint(\"An typical liver cell is \", diam_hlc, unit_diam_hlc, \"wide\") \n\nAn typical liver cell is  30 µm wide\n\n\n\n\n(b) Unit as a string - exercises\nConvert to millimolar: 0.15 M\n\nconc = ...      # Replace ... with your code\nunit_conc = \"...\"\n\nprint(\"The concentration is \", conc, unit_conc) \n\nThe concentration is  Ellipsis ...",
+    "section": "4 Self-study: Units in python",
+    "text": "4 Self-study: Units in python\nAs you may have noticed, numbers do not have a units in python. In science, all quantities need to be reported with and associated unit - ideally SI or with an appropriate prefix. In this course, we will represent units as a separate string variable that can be printed with the answer as shown below. This is also the format you should use for the exam.\n\n(a) Unit as a string - examples\nLength of an ideal H-bond:\n\nlen_Hbond = 0.28\nunit_len_Hbond = \"nm\"\n\nprint(\"An ideal H-bond is\", len_Hbond, unit_len_Hbond) \n\nAn ideal H-bond is 0.28 nm\n\n\nMolecular weight of human alcohol dehydrogenase:\n\nMW_ADH = 42\nunit_MW_ADH = \"kDa\"\n\nprint(\"MW of ADH is\", MW_ADH, unit_MW_ADH) \n\nMW of ADH is 42 kDa\n\n\nApproximate diameter of human liver cell:\n\ndiam_hlc = 30\nunit_diam_hlc = \"µm\"\n\nprint(\"An typical liver cell is\", diam_hlc, unit_diam_hlc, \"wide\") \n\nAn typical liver cell is 30 µm wide\n\n\n\n\n(b) Unit as a string - exercises\nConvert to millimolar: 0.15 M\n\nconc = ...      # Replace ... with your code\nunit_conc = \"...\"\n\nprint(\"The concentration is\", conc, unit_conc) \n\nThe concentration is Ellipsis ...\n\n\nConvert to Å: 13.2 nm\n\nlength = ...      # Replace ... with your code\nunit_length = \"...\"\n\nprint(\"13.2 nm corresponds to\", length, unit_length) \n\n13.2 nm corresponds to Ellipsis ...",
     "crumbs": [
       "Exercises",
       "Week 44"
