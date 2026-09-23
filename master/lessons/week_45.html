@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="8900a9f1" class="cell" data-execution_count="1">
+<div id="40b5ef48" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <hr>
 <section id="python-introduction-to-plotting" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="python-introduction-to-plotting"><span class="header-section-number">1</span> Python: Introduction to plotting</h2>
-<div id="ee4d6921" class="cell" data-execution_count="2">
+<div id="becaad97" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <p>There are many ways to plot, we will be using the <code>matplotlib</code> library - but the concepts are similar across most ways of plotting.</p>
 <p>We can make a plot of a straight line between two points <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span> like so;</p>
-<div id="78e908a2" class="cell" data-execution_count="3">
+<div id="4a287b4e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>]) <span class="co"># This array contains all the x-coordinates</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>]) <span class="co"># And this contains all the y-coordinates.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
@@ -478,7 +478,7 @@ Note
 </div>
 </div>
 <p>If we want to connect to a third point <span class="math inline">\((x_3, y_3)\)</span> we would instead write</p>
-<div id="37fa9bb3" class="cell" data-execution_count="4">
+<div id="b992b378" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">2.5</span>])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
@@ -502,12 +502,12 @@ Note
 <li><span class="math inline">\(P_4 = (0, 1)\)</span></li>
 </ul>
 <p>Start by defining an array for both <code>x</code> and <code>y</code></p>
-<div id="a22495ab" class="cell" data-solution="true" data-execution_count="6">
+<div id="f34ee612" class="cell" data-solution="true" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now use <code>ax.plot</code> to make the plot</p>
-<div id="b387779f" class="cell" data-solution="true" data-execution_count="8">
+<div id="0b9a290a" class="cell" data-solution="true" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'equal'</span>)</span>
@@ -531,12 +531,12 @@ Note
 <section id="b-actually-plotting-a-square" class="level4">
 <h4 class="anchored" data-anchor-id="b-actually-plotting-a-square">(b) Actually plotting a square</h4>
 <p>In order to actually plot a square you will need to update <code>x</code> and <code>y</code>, they both need to contain five numbers such that four line segments are plotted.</p>
-<div id="ee1dfc56" class="cell" data-solution="true" data-execution_count="10">
+<div id="59ed5d63" class="cell" data-solution="true" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>])</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Copy your code for making the plot from the previous exercise to the cell below</p>
-<div id="d06cc91d" class="cell" data-solution="true" data-execution_count="12">
+<div id="05586d7d" class="cell" data-solution="true" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'equal'</span>)</span>
@@ -575,7 +575,7 @@ Note
 <p>The exponential function can be calculated using <code>np.exp</code> - likewise with the logarithm <code>np.log</code>.</p>
 </div>
 </div>
-<div id="a95d085b" class="cell" data-solution="true" data-execution_count="14">
+<div id="47a245bf" class="cell" data-solution="true" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">50</span>) <span class="co"># Make 50 points uniformly between 0 and 5. </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.exp(x) <span class="co"># Calculate y from x.</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -615,7 +615,7 @@ Tip
 y = \mathrm{e}^{ax}
 \]</span></p>
 <p>With <span class="math inline">\(a = \left[1, \cfrac{1}{2}, 1.2\right]\)</span> in the same plot producing three curves.</p>
-<div id="856b50b6" class="cell" data-solution="true" data-execution_count="16">
+<div id="55f3a399" class="cell" data-solution="true" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">50</span>) <span class="co"># Make 50 points uniformly between 0 and 5. </span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> np.exp(<span class="dv">1</span><span class="op">*</span>x)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> np.exp(<span class="fl">0.5</span><span class="op">*</span>x)</span>
@@ -663,13 +663,13 @@ y = \mathrm{e}^{ax}
 </dd>
 </dl>
 <p>Copy your code from the previous exercise and add labels for both the x and y axis aswell as each curve, for example you can label them according to the value of the the parameter <span class="math inline">\(a\)</span> like <code>a = 1</code> etc.</p>
-<div id="1bb3fb86" class="cell" data-execution_count="17">
+<div id="ffa18305" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>... <span class="co"># Put some code here and try customizing it.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>Ellipsis</code></pre>
 </div>
 </div>
-<div id="8fe042a7" class="cell" data-solution="true" data-execution_count="18">
+<div id="8908a52b" class="cell" data-solution="true" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">50</span>) <span class="co"># Make 50 points uniformly between 0 and 5. </span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> np.exp(<span class="dv">1</span><span class="op">*</span>x)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> np.exp(<span class="fl">0.5</span><span class="op">*</span>x)</span>
@@ -723,12 +723,12 @@ Note
 <h4 class="anchored" data-anchor-id="f-other-types-of-plots-scatter">(f) Other types of plots: Scatter</h4>
 <p>Sometimes we don’t want to connect each point with a line segment but just show the points in a <em>scatter</em> plot.</p>
 <p>The next cell makes some data</p>
-<div id="08c6a2b1" class="cell" data-execution_count="19">
+<div id="5decffdb" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(low<span class="op">=</span><span class="dv">0</span>, high<span class="op">=</span><span class="dv">10</span>, size<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> np.random.normal(scale<span class="op">=</span><span class="dv">2</span>, size<span class="op">=</span><span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Try plotting it like for the previous exercises</p>
-<div id="42962f25" class="cell" data-solution="true" data-execution_count="21">
+<div id="554ad99a" class="cell" data-solution="true" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -745,7 +745,7 @@ Note
 <li><code>ax.scatter(x, y)</code>: Function specifically for making these types of plots - with its own set of customization arguments.</li>
 </ul>
 <p>Try either, or both, of these ways in the cell below</p>
-<div id="291144ac" class="cell" data-solution="true" data-execution_count="23">
+<div id="d27b5060" class="cell" data-solution="true" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y, s<span class="op">=</span><span class="dv">100</span>, label<span class="op">=</span><span class="st">'ax.scatter'</span>, facecolor<span class="op">=</span><span class="st">'orange'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
@@ -768,7 +768,7 @@ Note
 </section>
 <section id="average-properties-of-amino-acids-and-proteins." class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="average-properties-of-amino-acids-and-proteins."><span class="header-section-number">2</span> Average properties of amino acids and proteins.</h2>
-<div id="54567fcf" class="cell" data-execution_count="24">
+<div id="cbd399ad" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -780,11 +780,11 @@ Note
 <section id="a-load-the-data-file." class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-data-file.">(a) Load the data file.</h4>
 <p>Load the <code>averag-prope-amino-acids.xlsx</code> dataset</p>
-<div id="b6897d91" class="cell" data-execution_count="25">
+<div id="220fdde6" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Use the cell below to load and display the dataset.</p>
-<div id="ee193a77" class="cell" data-solution="true" data-execution_count="27">
+<div id="5feafbcc" class="cell" data-solution="true" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'AA_frequency'</span>)</span>
@@ -954,7 +954,7 @@ Tip
 <p><img src="https://numpy.org/doc/stable/_images/np_array_dataones.png" class="img-fluid"> <img src="https://numpy.org/doc/stable/_images/np_sub_mult_divide.png" class="img-fluid"></p>
 </div>
 </div>
-<div id="14008380" class="cell" data-solution="true" data-execution_count="29">
+<div id="464043d1" class="cell" data-solution="true" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>weight_times_freq <span class="op">=</span> df[<span class="st">'MW of AA residue'</span>] <span class="op">*</span> df[<span class="st">'Frequency in proteins'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -972,7 +972,7 @@ Tip
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sum_of_array <span class="op">=</span> np.<span class="bu">sum</span>(array) <span class="co"># Gives 15 </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div id="8e960db9" class="cell" data-solution="true" data-execution_count="31">
+<div id="72838f06" class="cell" data-solution="true" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>average_mw <span class="op">=</span> np.<span class="bu">sum</span>(weight_times_freq)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>average_mw <span class="op">=</span> <span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -996,7 +996,7 @@ Note
 <section id="c-weight-of-300-residue-protein" class="level4">
 <h4 class="anchored" data-anchor-id="c-weight-of-300-residue-protein">(c) Weight of 300-residue protein</h4>
 <p>What would the molecular weight of a 300-residue protein most likely be, if you did not know its sequence?</p>
-<div id="4d5ca1a0" class="cell" data-solution="true" data-execution_count="33">
+<div id="e4a3e541" class="cell" data-solution="true" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mw_300 <span class="op">=</span> average_mw <span class="op">*</span> <span class="dv">300</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>mw_300 <span class="op">=</span> <span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1011,7 +1011,7 @@ Note
 <h4 class="anchored" data-anchor-id="d-average-concentration-of-residues">(d) Average concentration of residues</h4>
 <p>In many cases, we work with mixtures of proteins that do not have a defined molar extinctio coefficient. Instead, we work with an average ‘mass extinction coefficient’, which we will deduce here.</p>
 <p>Calculate the average concentration of amino acid residues in a protein mixture at 1 mg/mL.</p>
-<div id="1bb19747" class="cell" data-solution="true" data-execution_count="35">
+<div id="5a49bf0a" class="cell" data-solution="true" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>c_residue_avg <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> average_mw</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>c_residue_avg <span class="op">=</span> <span class="sc">:3.3f}</span><span class="ss"> M"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1022,7 +1022,7 @@ Note
 <section id="e-absorbance-of-an-average-mixture-of-residues" class="level4">
 <h4 class="anchored" data-anchor-id="e-absorbance-of-an-average-mixture-of-residues">(e) Absorbance of an average mixture of residues</h4>
 <p>Calculate the absorbance from such a mixture under the assumption that only Trp and Tyr contribute.</p>
-<div id="5f9e568c" class="cell" data-solution="true" data-execution_count="37">
+<div id="9d23e9e6" class="cell" data-solution="true" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> df.set_index(<span class="st">"Name"</span>)[<span class="st">"Frequency in proteins"</span>]</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>f_trp <span class="op">=</span> freq[<span class="st">"Tryptophan (Trp/W)"</span>]</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>f_tyr <span class="op">=</span> freq[<span class="st">"Tyrosine (Tyr/Y)"</span>]</span>
@@ -1036,7 +1036,7 @@ Note
 c_tyr = 0.00030</code></pre>
 </div>
 </div>
-<div id="60578c0b" class="cell" data-solution="true" data-execution_count="39">
+<div id="acf5bda7" class="cell" data-solution="true" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">1</span> <span class="co"># Path length</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>A280_1mg_pr_ml <span class="op">=</span> L <span class="op">*</span> (<span class="dv">5500</span> <span class="op">*</span> c_trp <span class="op">+</span> <span class="dv">1490</span> <span class="op">*</span> c_tyr)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>A280_1mg_pr_ml <span class="op">=</span> <span class="sc">:3.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1049,7 +1049,7 @@ c_tyr = 0.00030</code></pre>
 <section id="f-absorbance-rightarrow-concentration" class="level4">
 <h4 class="anchored" data-anchor-id="f-absorbance-rightarrow-concentration">(f) Absorbance <span class="math inline">\(\rightarrow\)</span> concentration</h4>
 <p>For a cell lysate, you measure and absorbance of 0.78 at a path length of 0.5 cm. What is the protein concentration?</p>
-<div id="737de50b" class="cell" data-solution="true" data-execution_count="41">
+<div id="13618823" class="cell" data-solution="true" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set known values:</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fl">0.78</span> <span class="co"># Unitless</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="fl">0.5</span> <span class="co"># cm</span></span>
@@ -1066,7 +1066,7 @@ c_tyr = 0.00030</code></pre>
 </section>
 <section id="uv-spectrum-of-apo--and-holo-myoglobin" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="uv-spectrum-of-apo--and-holo-myoglobin"><span class="header-section-number">3</span> UV spectrum of apo- and holo-myoglobin</h2>
-<div id="b82a76f5" class="cell" data-execution_count="42">
+<div id="ff2c4298" class="cell" data-execution_count="42">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1078,7 +1078,7 @@ c_tyr = 0.00030</code></pre>
 <section id="a-load-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-dataset">(a) Load the dataset</h4>
 <p>Load the dataset with pandas. Set <code>data_file_path</code> to the path of the dataset file named above.</p>
-<div id="ac835ac8" class="cell" data-solution="true" data-execution_count="44">
+<div id="ba6f7b00" class="cell" data-solution="true" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'apo_holo'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
@@ -1214,7 +1214,7 @@ Tip
 </div>
 </div>
 <p>Using <code>matplotlib</code> plot each spectrum in the same figure as line plots.</p>
-<div id="79c9c1f5" class="cell" data-solution="true" data-execution_count="46">
+<div id="1a2804c5" class="cell" data-solution="true" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots() </span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">'wavelength'</span>], df[<span class="st">'holo_absorbance'</span>], label<span class="op">=</span><span class="st">'Holo'</span>)</span>
@@ -1235,7 +1235,7 @@ Tip
 <section id="c-apo-holo" class="level4">
 <h4 class="anchored" data-anchor-id="c-apo-holo">(c) Apo &amp; Holo</h4>
 <p>Based on the spectra explain what ApoMb and HoloMb represent?</p>
-<div id="993cf996" class="cell" data-solution="true" data-execution_count="47">
+<div id="93370d9a" class="cell" data-solution="true" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">ApoMb (Apo-myoglobin): Myoglobin without its heme prosthetic group. </span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">"Apo" means the protein portion lacking its cofactor.</span></span>
@@ -1254,7 +1254,7 @@ Tip
 <section id="d-absorption-above-320-nm." class="level4">
 <h4 class="anchored" data-anchor-id="d-absorption-above-320-nm.">(d) Absorption above 320 nm.</h4>
 <p>Explain why ApoMb in the spectrum above absorbs light at λ&gt;320 nm.</p>
-<div id="9fd767ca" class="cell" data-solution="true" data-execution_count="48">
+<div id="dabf22fe" class="cell" data-solution="true" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">As ApoMb was generated from HoloMb, the ApoMb sample might still be contaminated</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">with some HoloMb</span></span>
@@ -1264,7 +1264,7 @@ Tip
 <section id="e-efficiency-estimate." class="level4">
 <h4 class="anchored" data-anchor-id="e-efficiency-estimate.">(e) Efficiency estimate.</h4>
 <p>Give a rough estimate of the efficiency of the chosen procedure of heme-group removal. You may wish to look at the numerical values in the <code>DataFrame</code>.</p>
-<div id="215842fb" class="cell" data-solution="true" data-execution_count="49">
+<div id="d14b1514" class="cell" data-solution="true" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">Compare the percentage by which the absorbance decreases at 410 nm ~94% removal efficiency. </span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1273,7 +1273,7 @@ Tip
 <section id="f-isobestic-points" class="level4">
 <h4 class="anchored" data-anchor-id="f-isobestic-points">(f) Isobestic points</h4>
 <p>Are there any isobestic points between the two spectra?</p>
-<div id="63a2d90f" class="cell" data-solution="true" data-execution_count="50">
+<div id="156be725" class="cell" data-solution="true" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">Yes at around 300-310 nm.</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1299,7 +1299,7 @@ Tip
 <section id="g-aged-myoglobin" class="level4">
 <h4 class="anchored" data-anchor-id="g-aged-myoglobin">(g) Aged myoglobin</h4>
 <p>metMb <span class="math inline">\((\mathrm{MbFe(III)})\)</span> is normally described as ‘aged’ myoglobin. What does this mean in terms of the bound iron?</p>
-<div id="a06cc843" class="cell" data-solution="true" data-execution_count="51">
+<div id="3714399e" class="cell" data-solution="true" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""In the aged state, the oxidation number of the iron is +3. The change in </span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">oxidation number of iron (+2 vs +3) in fresh vs aged myoglobin means that the </span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">electron configuration in the d- orbitals are different, which will affect the </span></span>
@@ -1309,7 +1309,7 @@ Tip
 <section id="h-change-in-absorbance" class="level4">
 <h4 class="anchored" data-anchor-id="h-change-in-absorbance">(h) Change in absorbance</h4>
 <p>Give a qualitative explanation to the observed change in absorbance of metMb compared to fresh oxy-/deoxyMb?</p>
-<div id="8d2a658c" class="cell" data-solution="true" data-execution_count="52">
+<div id="58b177a2" class="cell" data-solution="true" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">The changed in electronic configuration and the difference this causes to how </span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">iron is bound in the hemegroup influences the absorption.Moreover binding of </span></span>
@@ -1321,7 +1321,7 @@ Tip
 <section id="i-type-of-shift" class="level4">
 <h4 class="anchored" data-anchor-id="i-type-of-shift">(i) Type of shift</h4>
 <p>Is the spectral difference from deoxyMb to metMb a redshift or a blueshift?</p>
-<div id="2e2e86c6" class="cell" data-solution="true" data-execution_count="53">
+<div id="5759c5ef" class="cell" data-solution="true" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">The absorbance peak in metMb is at lower wavelength (higher energy) as compared </span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">to deoxyMb, and is therefore described as a blueshift.</span></span>
@@ -1336,7 +1336,7 @@ Tip
 </section>
 <section id="proteins-in-blood-plasma." class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="proteins-in-blood-plasma."><span class="header-section-number">4</span> Proteins in blood plasma.</h2>
-<div id="24f9be05" class="cell" data-execution_count="54">
+<div id="615eb199" class="cell" data-execution_count="54">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1375,7 +1375,7 @@ Tip
 <section id="a-load-the-dataset-1" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-dataset-1">(a) Load the dataset</h4>
 <p>Load the dataset as a dataframe from the file <code>protei-blood-plasma.xlsx</code> with pandas. Set <code>data_file_path</code> to the path of the dataset file.</p>
-<div id="fea24500" class="cell" data-solution="true" data-execution_count="56">
+<div id="f20ebf83" class="cell" data-solution="true" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'protein_blood_plasma'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
@@ -1484,7 +1484,7 @@ Tip
 <h4 class="anchored" data-anchor-id="b-calculate-concentrations">(b) Calculate concentrations</h4>
 <p>Calculate the molar concentration of the two proteins in all samples, the light path for every measurement is 0.1 cm.</p>
 <p>Always a good idea to assign known values to variables</p>
-<div id="596b2611" class="cell" data-execution_count="57">
+<div id="8287b7c4" class="cell" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>protein_1_ext_coeff <span class="op">=</span> <span class="dv">180000</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>protein_2_ext_coeff <span class="op">=</span> <span class="dv">80000</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="fl">0.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1505,7 +1505,7 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'new_column'</span>] <span class="op">=</span> df[<span class="st">'current_column'</span>] <span class="op">/</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div id="65a5c6a3" class="cell" data-solution="true" data-execution_count="59">
+<div id="db75fbd9" class="cell" data-solution="true" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'protein1_healthy_molar_conc'</span>] <span class="op">=</span> df[<span class="st">'A280_protein1_healthy'</span>] <span class="op">/</span> (protein_1_ext_coeff <span class="op">*</span> l)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'protein1_patient_molar_conc'</span>] <span class="op">=</span> df[<span class="st">'A280_protein1_patient'</span>] <span class="op">/</span> (protein_1_ext_coeff <span class="op">*</span> l)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'protein2_healthy_molar_conc'</span>] <span class="op">=</span> df[<span class="st">'A280_protein2_healthy'</span>] <span class="op">/</span> (protein_2_ext_coeff <span class="op">*</span> l)</span>
@@ -1662,11 +1662,11 @@ Tip
 <section id="c.-concentrations-in-mgml" class="level4">
 <h4 class="anchored" data-anchor-id="c.-concentrations-in-mgml">(c). Concentrations in mg/mL</h4>
 <p>Add another set of four columns containing the concentrations in mg/mL.</p>
-<div id="7b363359" class="cell" data-execution_count="60">
+<div id="8d697376" class="cell" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>protein_1_mw <span class="op">=</span> <span class="dv">130</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span><span class="dv">3</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>protein_2_mw <span class="op">=</span> <span class="dv">57</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span><span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="2bef64b1" class="cell" data-solution="true" data-execution_count="62">
+<div id="7c5f3d8a" class="cell" data-solution="true" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'protein1_healthy_conc'</span>] <span class="op">=</span> df[<span class="st">'protein1_healthy_molar_conc'</span>] <span class="op">*</span> protein_1_mw</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'protein1_patient_conc'</span>] <span class="op">=</span> df[<span class="st">'protein1_patient_molar_conc'</span>] <span class="op">*</span> protein_1_mw</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'protein2_healthy_conc'</span>] <span class="op">=</span> df[<span class="st">'protein2_healthy_molar_conc'</span>] <span class="op">*</span> protein_2_mw</span>
@@ -1794,7 +1794,7 @@ Tip
 <p><img src="https://numpy.org/doc/stable/_images/np_matrix_aggregation_row.png" class="img-fluid"></p>
 </div>
 </div>
-<div id="03a7453e" class="cell" data-solution="true" data-execution_count="64">
+<div id="88ed4074" class="cell" data-solution="true" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> df[names].mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>display(mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1822,7 +1822,7 @@ Tip
 <p>The standard deviation can be calculated using the <code>.std</code>-method that works in the same way as the <code>.mean</code>-method we used above.</p>
 </div>
 </div>
-<div id="6a73813c" class="cell" data-solution="true" data-execution_count="66">
+<div id="edbc4e8c" class="cell" data-solution="true" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> df[names].std(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>display(std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1840,7 +1840,7 @@ dtype: float64</code></pre>
 <ul>
 <li>By comparing healthy individuals with patients, could any of the two proteins would be involved in disease development or be used as a biomarker for diagnosing the disease?</li>
 </ul>
-<div id="9d8a06d9" class="cell" data-solution="true" data-execution_count="67">
+<div id="ba5c3c6e" class="cell" data-solution="true" data-execution_count="67">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""The concentration of protein1 is much lower in patients compared to the healthy</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">individuals, whereas protein2 is basically the same. This suggests that the loss of</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">protein1 was some how involved in the disease, although you cannot conclude causality </span></span>
@@ -1855,7 +1855,7 @@ dtype: float64</code></pre>
 <ul>
 <li>What additional information does the standard deviation provide in addition to the average value of the protein concentration?</li>
 </ul>
-<div id="707d809d" class="cell" data-solution="true" data-execution_count="68">
+<div id="6168f0c1" class="cell" data-solution="true" data-execution_count="68">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""The standard deviations provide information about the natural variation in protein </span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co">levels. This will be important for deciding whether a difference between the two </span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co">groups compared is reliable. For a larger natural variation, tyou will need a </span></span>
@@ -1872,7 +1872,7 @@ dtype: float64</code></pre>
 <section id="extinction-coefficient-of-human-myoglobin" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="extinction-coefficient-of-human-myoglobin"><span class="header-section-number">5</span> Extinction coefficient of human myoglobin</h2>
 <p>The protein of human myoglobin is given below</p>
-<div id="8043b79e" class="cell" data-execution_count="69">
+<div id="1eaffad9" class="cell" data-execution_count="69">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>sequence <span class="op">=</span> <span class="st">"""GLSDGEWQLVLNVWGKVEADIPGHGQEVLIRLFKGHPETLEKFDKFKHLKSEDEMKASEDLKKHGA</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="st">TVLTALGGILKKKGHHEAEIKPLAQSHATKHKIPVKYLEFISECIIQVLQSKHPGDFGADAQGAMNKALELFRKDMASNY</span></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="st">KELGFQG"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1890,18 +1890,18 @@ dtype: float64</code></pre>
 \end{align}
 \]</span></p>
 <p>In order to calculate the formula we need to know the count of the relevant residues, we can use Python to get that - for example we can count the number of Tryptophan like so;</p>
-<div id="2a6273a6" class="cell" data-execution_count="70">
+<div id="1f2fd3b2" class="cell" data-execution_count="70">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>N_trp <span class="op">=</span> sequence.count(<span class="st">"W"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="a-determine-the-number-of-residues" class="level4">
 <h4 class="anchored" data-anchor-id="a-determine-the-number-of-residues">(a) Determine the number of residues</h4>
 <p>In the cell below find the number of residues</p>
-<div id="411750b3" class="cell" data-solution="true" data-execution_count="71">
+<div id="57d3a0a0" class="cell" data-solution="true" data-execution_count="71">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>N_tyr <span class="op">=</span> sequence.count(<span class="st">"Y"</span>)</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>N_cys <span class="op">=</span> sequence.count(<span class="st">"C"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You can check what Python has stored each variable by using <code>print</code></p>
-<div id="306c34fe" class="cell" data-execution_count="73">
+<div id="d229c8fa" class="cell" data-execution_count="73">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(N_trp)</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>N_tyr <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>) <span class="co"># This is just a way of make a string that looks nice.</span></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>N_cys <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1915,12 +1915,12 @@ N_cys = 1</code></pre>
 <section id="b-calculate-the-extinction-coefficient" class="level4">
 <h4 class="anchored" data-anchor-id="b-calculate-the-extinction-coefficient">(b) Calculate the extinction coefficient</h4>
 <p>Use equation (<a href="#eq-extinction" class="quarto-xref">Equation&nbsp;1</a>) to calculate the extinction coefficient of human myoglobin.</p>
-<div id="88b1175c" class="cell" data-execution_count="74">
+<div id="dc9f4248" class="cell" data-execution_count="74">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>eps_trp <span class="op">=</span> <span class="dv">5500</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>eps_tyr <span class="op">=</span> <span class="dv">1490</span></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>eps_cys <span class="op">=</span> <span class="dv">125</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="0e269f1a" class="cell" data-solution="true" data-execution_count="76">
+<div id="5a6ccf60" class="cell" data-solution="true" data-execution_count="76">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> eps_trp <span class="op">*</span> N_trp <span class="op">+</span> eps_tyr <span class="op">*</span> N_tyr <span class="op">+</span> eps_cys<span class="op">*</span>N_cys</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(epsilon)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1950,13 +1950,13 @@ N_cys = 1</code></pre>
 <section id="d-calculate-the-absorbance" class="level4">
 <h4 class="anchored" data-anchor-id="d-calculate-the-absorbance">(d) Calculate the absorbance</h4>
 <p>Using the extinction coefficient and the molecular weight given by ProtParam, calculate the absorbance at 280 nm of a myoglobin solution at a concentration of 1 mg/mL in a cuvette with a light path of 1 cm.</p>
-<div id="f8a0e1c8" class="cell" data-solution="true" data-execution_count="77">
+<div id="95287361" class="cell" data-solution="true" data-execution_count="77">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>molecular_weight <span class="op">=</span> <span class="fl">17052.61</span> </span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>path_length <span class="op">=</span> <span class="dv">1</span> <span class="co"># cm </span></span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>concentration <span class="op">=</span> <span class="dv">1</span> <span class="co"># mg/mL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Remember to convert the concentration to <span class="math inline">\(\mathrm{mol/L}\)</span>.</p>
-<div id="c3a7f177" class="cell" data-solution="true" data-execution_count="80">
+<div id="192a3e1c" class="cell" data-solution="true" data-execution_count="80">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>A280 <span class="op">=</span> concentration <span class="op">/</span> molecular_weight <span class="op">*</span> path_length <span class="op">*</span> epsilon</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A280)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -2005,7 +2005,7 @@ Note
 </div>
 <p>The way of doing so is by defining a function that does the necessary operations for a given sequence. In this way the code can be reused for any sequence.</p>
 <p>Finish implementing the body of the function below, note that you have already written all the required code - you just need to copy it into the function.</p>
-<div id="5ca63a0f" class="cell" data-solution="true" data-execution_count="82">
+<div id="7cd95481" class="cell" data-solution="true" data-execution_count="82">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extinction_coefficient(sequence):</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Start by counting: </span></span>
@@ -2024,7 +2024,7 @@ Note
 <span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> epsilon</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>It’s always a good idea to check that functions do what we expect, so we can confirm that it gives the same result for human myoglobin as we calculated before</p>
-<div id="7f000677" class="cell" data-solution="true" data-execution_count="84">
+<div id="a85cdd3c" class="cell" data-solution="true" data-execution_count="84">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>epsilon_func <span class="op">=</span> extinction_coefficient(sequence)</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Epsilon: </span><span class="sc">{</span>epsilon<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Epsilon from function: </span><span class="sc">{</span>epsilon_func<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2034,7 +2034,7 @@ Epsilon from function: 14105</code></pre>
 </div>
 </div>
 <p>The largest known protein is Titin, the cell below loads the sequence of titin and prints a few bits of information about it. (You can also find the full sequence in the dataset <code>extin-coeff-human-myogl.txt</code>.)</p>
-<div id="0bcf4ab6" class="cell" data-solution="true" data-execution_count="86">
+<div id="09bb70f0" class="cell" data-solution="true" data-execution_count="86">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>titin_sequence <span class="op">=</span> load_dataset(<span class="st">'titin'</span>)</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2049,7 +2049,7 @@ GRAKLTIPAVTKANSGRYSLKATNGSGQATSTAELLVKA</code></pre>
 </div>
 </div>
 <p>Use your function to calculate the extinction coefficient of titin.</p>
-<div id="d19d61b9" class="cell" data-solution="true" data-execution_count="88">
+<div id="f134705c" class="cell" data-solution="true" data-execution_count="88">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>titin_eps <span class="op">=</span> extinction_coefficient(titin_sequence)</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(titin_eps)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -2071,7 +2071,7 @@ Tip
 </div>
 </div>
 <p>In general Python is very powerful at letting us explore properties of sequences, for example the cell below calculates number of residues between each Tryptophan in the Titin sequence and plot the distribution.</p>
-<div id="15d31579" class="cell" data-execution_count="89">
+<div id="29bdd60e" class="cell" data-execution_count="89">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2106,7 +2106,7 @@ Tip
 </section>
 <section id="tryptophan-absorption-and-fluorescence" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="tryptophan-absorption-and-fluorescence"><span class="header-section-number">6</span> Tryptophan absorption and fluorescence</h2>
-<div id="3c45d40b" class="cell" data-execution_count="90">
+<div id="943b6640" class="cell" data-execution_count="90">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -2126,7 +2126,7 @@ Tip
 <section id="c-plot-the-spectra" class="level4">
 <h4 class="anchored" data-anchor-id="c-plot-the-spectra">(c) Plot the spectra</h4>
 <p>The cell below loads extinction and emission spectra for tryptophan in aqueous buffer. (The data files are <code>trypt-absor-fluor-emission.xlsx</code> and <code>trypt-absor-fluor-extinction.xlsx</code>)</p>
-<div id="1d1e158f" class="cell" data-execution_count="93">
+<div id="ec05374a" class="cell" data-execution_count="93">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>df_emission <span class="op">=</span> load_dataset(<span class="st">'week47_1_emi'</span>)</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>df_extinction <span class="op">=</span> load_dataset(<span class="st">'week47_1_ext'</span>)</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>display(df_emission)</span>
@@ -2241,7 +2241,7 @@ Tip
 </div>
 </div>
 <p>Make plot showing the two spectra</p>
-<div id="27f45b61" class="cell" data-solution="true" data-execution_count="95">
+<div id="aede0b3c" class="cell" data-solution="true" data-execution_count="95">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>), layout<span class="op">=</span><span class="st">'constrained'</span>)</span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Emission </span></span>
@@ -2272,11 +2272,11 @@ Tip
 <section id="d-stokes-shift" class="level4">
 <h4 class="anchored" data-anchor-id="d-stokes-shift">(d) Stokes shift</h4>
 <p>From the plot estimate the Stokes shift</p>
-<div id="928b09e6" class="cell" data-solution="true" data-execution_count="97">
+<div id="86e762c8" class="cell" data-solution="true" data-execution_count="97">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>estimated_stokes_shift <span class="op">=</span> <span class="dv">30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Compare your estimated Stokes shift to the output of the cell below that computes the stokes shift.</p>
-<div id="f9945304" class="cell" data-solution="true" data-execution_count="99">
+<div id="65ec0607" class="cell" data-solution="true" data-execution_count="99">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>max_index <span class="op">=</span> np.argmax(df_emission[<span class="st">'emission_(AU)'</span>])</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>emission_wavelength_max <span class="op">=</span> df_emission[<span class="st">'wavelength_(nm)'</span>][max_index]</span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2303,7 +2303,7 @@ estimated_stokes_shift = 30.0 nm</code></pre>
 <div class="{callout-tip}">
 <p>The datasets are loaded in a different way than you’ve seen before - as help to you as this exercise deals with multiple datasets. The datasets could also be loaded with the widget you’ve seen before</p>
 </div>
-<div id="c679201f" class="cell" data-execution_count="100">
+<div id="ce105bfd" class="cell" data-execution_count="100">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>df_ph2 <span class="op">=</span> load_dataset(<span class="st">'week47_1_ph2'</span>)</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>df_ph7 <span class="op">=</span> load_dataset(<span class="st">'week47_1_ph7'</span>)</span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>display(df_ph2, df_ph2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2417,7 +2417,7 @@ estimated_stokes_shift = 30.0 nm</code></pre>
 </div>
 </div>
 <p>Make a plot comparing the two emission spectra. Which resembles the spectrum of tryptophan in water most?</p>
-<div id="bed5c713" class="cell" data-solution="true" data-execution_count="102">
+<div id="831642af" class="cell" data-solution="true" data-execution_count="102">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>ax.plot(df_ph2[<span class="st">'Wavelength(nm)'</span>], df_ph2[<span class="st">'Fluo_Int'</span>], label<span class="op">=</span><span class="st">'pH = 2'</span>)</span>
@@ -2439,7 +2439,7 @@ estimated_stokes_shift = 30.0 nm</code></pre>
 <section id="f-for-explain." class="level4">
 <h4 class="anchored" data-anchor-id="f-for-explain.">(f) for explain.</h4>
 <p>Explain why the same protein gives such different spectra at pH 2 and pH 7.</p>
-<div id="8f0f40a2" class="cell" data-solution="true" data-execution_count="103">
+<div id="989f2dfb" class="cell" data-solution="true" data-execution_count="103">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co">The protein unfolds at acidic pH. Therefore the Trp residues are exposed to water </span></span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="co">at pH 2, but buried in the hydrophobic core (and thus blue-shifted) at pH 7</span></span>
@@ -2450,7 +2450,7 @@ estimated_stokes_shift = 30.0 nm</code></pre>
 </section>
 <section id="the-fluorescent-protein-mcherry." class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="the-fluorescent-protein-mcherry."><span class="header-section-number">7</span> The fluorescent protein “mCherry”.</h2>
-<div id="d8cfed23" class="cell" data-execution_count="104">
+<div id="49bbc2b8" class="cell" data-execution_count="104">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -2468,7 +2468,7 @@ estimated_stokes_shift = 30.0 nm</code></pre>
 <li>Molecular weight</li>
 </ul>
 <p>Save them to seperate variables in the cell below.</p>
-<div id="38958ef9" class="cell" data-solution="true" data-execution_count="105">
+<div id="9c74b1ab" class="cell" data-solution="true" data-execution_count="105">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>QY <span class="op">=</span> <span class="fl">0.22</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>EC <span class="op">=</span> <span class="dv">72000</span> <span class="co"># [1/(M cm)]</span></span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>organism <span class="op">=</span> <span class="st">"Discosoma sp."</span></span>
@@ -2478,7 +2478,7 @@ estimated_stokes_shift = 30.0 nm</code></pre>
 <section id="b-absorbance" class="level4">
 <h4 class="anchored" data-anchor-id="b-absorbance">(b) Absorbance</h4>
 <p>What is the absorbance of a 1 µM solution of mCherry at its absorption maximum at a path length of <span class="math inline">\(1 \ \mathrm{cm}\)</span>?</p>
-<div id="ec780cb6" class="cell" data-solution="true" data-execution_count="108">
+<div id="d02b6909" class="cell" data-solution="true" data-execution_count="108">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>) <span class="co"># [M]</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="dv">1</span> <span class="co"># [cm]</span></span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>A_max <span class="op">=</span> EC <span class="op">*</span> c <span class="op">*</span> l</span>
@@ -2501,11 +2501,11 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>We will treat the sequence as a <code>str</code>, like any other text, <code>str</code>’s are defined like</p>
-<div id="2c3b9121" class="cell" data-execution_count="109">
+<div id="0dce5329" class="cell" data-execution_count="109">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>one_line_string <span class="op">=</span> <span class="st">"This is some text, that makes up my string."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Which uses <code>"</code>-quotation marks around the text, for longer strings it can be useful to instead use</p>
-<div id="185e72ed" class="cell" data-execution_count="110">
+<div id="4b3a908c" class="cell" data-execution_count="110">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>multi_line_string <span class="op">=</span> <span class="st">"""This is a very long text, so long in fact that it </span></span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="st">takes up multiple lines and I therefore use a slightly different syntax. </span></span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="st">To make the string longer I will confess that I am hungry right now.</span></span>
@@ -2515,11 +2515,11 @@ Note
 </div>
 <p>The sequence of the protein is also given. From this determine the extinction coefficient at 280 nm.</p>
 <p>Start by taking the sequence from the website and assigning it to the variable <code>sequence</code> in the cell below.</p>
-<div id="111ea141" class="cell" data-solution="true" data-execution_count="112">
+<div id="1b90c954" class="cell" data-solution="true" data-execution_count="112">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>sequence<span class="op">=</span><span class="st">"""MVSKGEEDNM AIIKEFMRFK VHMEGSVNGH EFEIEGEGEG RPYEGTQTAK LKVTKGGPLP FAWDILSPQF MYGSKAYVKH PADIPDYLKL SFPEGFKWER VMNFEDGGVV TVTQDSSLQD GEFIYKVKLR GTNFPSDGPV MQKKTMGWEA SSERMYPEDG ALKGEIKQRL KLKDGGHYDA EVKTTYKAKK PVQLPGAYNV NIKLDITSHN EDYTIVEQYE RAEGRHSTGG MDELYK"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now use the sequence to calculate the extinction coefficient, finish the code below (or take the function you implemented in a previous exercise!)</p>
-<div id="e545952f" class="cell" data-solution="true" data-execution_count="114">
+<div id="a64f28dc" class="cell" data-solution="true" data-execution_count="114">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is 'dictionary' with the extinction coefficients of the relevant </span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co"># amino acid residues. Dictionaries are indexed with 'keys', so you can retrieve</span></span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the value for W as: ext_residue["W"].</span></span>
@@ -2542,7 +2542,7 @@ Note
 <section id="d-concentration-from-a280nm" class="level4">
 <h4 class="anchored" data-anchor-id="d-concentration-from-a280nm">(d) Concentration from A280nm</h4>
 <p>What is the molar concentration of solution of mCherry with an A_280nm of 0.45</p>
-<div id="31d0795a" class="cell" data-solution="true" data-execution_count="116">
+<div id="98c89c9e" class="cell" data-solution="true" data-execution_count="116">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>A280 <span class="op">=</span> <span class="fl">0.45</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>c_mol <span class="op">=</span> A280 <span class="op">/</span> (ext_coeff)</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(c_mol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2568,7 +2568,7 @@ Figure&nbsp;1: Screenshot of the download button on fpbase
 <h4 class="anchored" data-anchor-id="e-load-the-dataset">(e) Load the dataset</h4>
 <p>Go to <a href="https://www.fpbase.org/">www.fpbase.org</a> and download the spectrum as described above.</p>
 <p>Load the dataset as a <code>DataFrame</code> with pandas. Set <code>data_file_path</code> to the path of the downloaded dataset file.</p>
-<div id="d8761f3b" class="cell" data-solution="true" data-execution_count="118">
+<div id="c954cd09" class="cell" data-solution="true" data-execution_count="118">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'mCherry'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
@@ -2648,7 +2648,7 @@ Figure&nbsp;1: Screenshot of the download button on fpbase
 <section id="f-plot-spectra" class="level4">
 <h4 class="anchored" data-anchor-id="f-plot-spectra">(f) Plot spectra</h4>
 <p>Make your own plot showing the excitation and emission spectra of “mCherry” using the above data.</p>
-<div id="498e2c96" class="cell" data-solution="true" data-execution_count="120">
+<div id="eea3df8f" class="cell" data-solution="true" data-execution_count="120">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">'wavelength'</span>], df[<span class="st">'mCherry ex'</span>], label<span class="op">=</span><span class="st">'Excitation'</span>)</span>
@@ -2669,11 +2669,11 @@ Figure&nbsp;1: Screenshot of the download button on fpbase
 <section id="g-stokes-shift" class="level4">
 <h4 class="anchored" data-anchor-id="g-stokes-shift">(g) Stokes shift</h4>
 <p>Estimate the Stokes shift of mCherry from the plot.</p>
-<div id="f7e7fb5f" class="cell" data-solution="true" data-execution_count="121">
+<div id="4b4a63fd" class="cell" data-solution="true" data-execution_count="121">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>estimated_stokes_shift <span class="op">=</span> <span class="dv">30</span> <span class="co"># Your estimation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The cell below shows how this could calculated using Python</p>
-<div id="3beb90e0" class="cell" data-solution="true" data-execution_count="124">
+<div id="5b48c259" class="cell" data-solution="true" data-execution_count="124">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Start by extracting the wavelengths from the DataFrame</span></span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>wavelengths <span class="op">=</span> df[<span class="st">'wavelength'</span>]</span>
@@ -2734,7 +2734,7 @@ Figure&nbsp;2: Illustration of argmax
 </section>
 <section id="python-introduction-to-curve-fitting" class="level2" data-number="8">
 <h2 data-number="8" class="anchored" data-anchor-id="python-introduction-to-curve-fitting"><span class="header-section-number">8</span> Python: Introduction to curve fitting</h2>
-<div id="b86be30b" class="cell" data-execution_count="125">
+<div id="c3ba987e" class="cell" data-execution_count="125">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -2747,7 +2747,7 @@ Figure&nbsp;2: Illustration of argmax
 <section id="a-understanding-the-problem" class="level4">
 <h4 class="anchored" data-anchor-id="a-understanding-the-problem">(a) Understanding the problem</h4>
 <p>Real biochemical data is often requires complex fitting functions. Therefore, we will start out with a simpler data that follows a linear relationship. The data below represents a theoretical experiment where we measure some output <span class="math inline">\(y\)</span> at different input values <span class="math inline">\(x\)</span>:</p>
-<div id="8436d083" class="cell" data-execution_count="126">
+<div id="9306d94a" class="cell" data-execution_count="126">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This makes two arrays (columns) ##</span></span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co">## One with the x coordinates ##</span></span>
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co">## One with the y coordinates ##</span></span>
@@ -2755,7 +2755,7 @@ Figure&nbsp;2: Illustration of argmax
 <span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a>y_data <span class="op">=</span> np.array([<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">6.0</span>, <span class="fl">7.8</span>, <span class="fl">10.1</span>, <span class="fl">12.2</span>, <span class="fl">13.9</span>, <span class="fl">16.1</span>, <span class="fl">18.0</span>, <span class="fl">20.2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The functions above simply make two arrays - i.e.&nbsp;columns of data - containing the number. You can view the content of these colmns by with <code>print(x_data)</code> or <code>print(y_data)</code>.</p>
-<div id="52896dca" class="cell" data-solution="true" data-execution_count="128">
+<div id="2403c8cc" class="cell" data-solution="true" data-execution_count="128">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2789,7 +2789,7 @@ Figure&nbsp;2: Illustration of argmax
 <li>The remaining arguments are the parameters to be fitted</li>
 </ul>
 <p>Define a linear function for fitting:</p>
-<div id="773413dc" class="cell" data-solution="true" data-execution_count="130">
+<div id="74d493b1" class="cell" data-solution="true" data-execution_count="130">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_function(x, a, b):</span>
 <span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Calculate the linear function ##</span></span>
 <span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> a <span class="op">*</span> x <span class="op">+</span> b</span>
@@ -2797,7 +2797,7 @@ Figure&nbsp;2: Illustration of argmax
 </div>
 <p>Always a good idea to check that your function works as expected</p>
 <p>As a test we are adding 1 in the place of x, 2 in the place of a and 0 in the place of b. In other words: <span class="math inline">\(1 \cdot 2 + 0 = 2\)</span></p>
-<div id="1c42dae3" class="cell" data-execution_count="131">
+<div id="da44c3a9" class="cell" data-execution_count="131">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>linear_function(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>) <span class="co"># Should give 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When in doubt it is a good idea to do sanity checks like this.</p>
@@ -2815,7 +2815,7 @@ Figure&nbsp;2: Illustration of argmax
 <li><code>trash</code>: Don’t worry about this.</li>
 </ul>
 <p>Finish the cell below to perform the curve fit by adding the three missing arguments to the call to <code>curve_fit</code>.</p>
-<div id="30a86773" class="cell" data-solution="true" data-execution_count="133">
+<div id="3bac680a" class="cell" data-solution="true" data-execution_count="133">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial guess: a=2, b=0</span></span>
 <span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>]</span>
 <span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2838,12 +2838,12 @@ Figure&nbsp;2: Illustration of argmax
 <section id="d-visualizing-the-fit" class="level4">
 <h4 class="anchored" data-anchor-id="d-visualizing-the-fit">(d) Visualizing the fit</h4>
 <p>It’s crucial to always plot your fit to see how well it describes the data. To do this we evaluate the function with the fitted parameters and a densely sampled independent variable.</p>
-<div id="9183d0be" class="cell" data-solution="true" data-execution_count="135">
+<div id="202e3e04" class="cell" data-solution="true" data-execution_count="135">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>x_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">100</span>) <span class="co"># Makes 100 equally spaced points between 0 and 11. </span></span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>y_fit <span class="op">=</span> linear_function(x_smooth, a_fit, b_fit) <span class="co"># Call the linear function using x_smooth, a_fit and b_fit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then we can plot it</p>
-<div id="c5e0978e" class="cell" data-solution="true" data-execution_count="137">
+<div id="4ad93257" class="cell" data-solution="true" data-execution_count="137">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the fitted function using x_smooth and y_fit ##</span></span>
@@ -2874,18 +2874,18 @@ Figure&nbsp;2: Illustration of argmax
 <h4 class="anchored" data-anchor-id="e-nonlinear-fitting-exponential-decay">(e) Nonlinear fitting: Exponential decay</h4>
 <p>Many biological processes follow nonlinear relationships. Let’s work with exponential decay, which is common in biochemistry (e.g., radioactive decay or unimolecular chemical reactions).</p>
 <p>You can load the dataset from the <code>exp_decay_data.xlsx</code>-file with the widget below</p>
-<div id="73349632" class="cell" data-execution_count="138">
+<div id="eb1188e7" class="cell" data-execution_count="138">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> DataUploader</span>
 <span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> DataUploader()</span>
 <span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>uploader.display()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run the next cell <strong>after</strong> uploading the file</p>
-<div id="b82041a5" class="cell" data-execution_count="139">
+<div id="c14d1b27" class="cell" data-execution_count="139">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> uploader.get_dataframe()</span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="d62b8099" class="cell" data-solution="true" data-execution_count="140">
+<div id="a737ad07" class="cell" data-solution="true" data-execution_count="140">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'exp_decay_data'</span>)</span>
@@ -2946,7 +2946,7 @@ Figure&nbsp;2: Illustration of argmax
 </div>
 </div>
 <p>Now make a plot of the data</p>
-<div id="496be727" class="cell" data-solution="true" data-execution_count="142">
+<div id="e4a3426e" class="cell" data-solution="true" data-execution_count="142">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the data from the dataframe ´df´. ##</span></span>
 <span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Recall that your get the time-column as df['time'] ##</span></span>
 <span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Similarly you get the signal-column  as df['signal'] ##</span></span>
@@ -2962,7 +2962,7 @@ Figure&nbsp;2: Illustration of argmax
 </div>
 <p>The model we want to fit is: <span class="math display">\[\text{signal} = A e^{-kt}\]</span></p>
 <p>Define the exponential decay function:</p>
-<div id="bba2b352" class="cell" data-solution="true" data-execution_count="144">
+<div id="dd126504" class="cell" data-solution="true" data-execution_count="144">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> exponential_decay(t, A, k):</span>
 <span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Calculate the exponential function ##</span></span>
 <span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Remember that np.exp calculates the exponential function ##</span></span>
@@ -2978,7 +2978,7 @@ Figure&nbsp;2: Illustration of argmax
 </div>
 </div>
 <p>Now fit the exponential function to the data:</p>
-<div id="0752f96e" class="cell" data-solution="true" data-execution_count="146">
+<div id="11de3cef" class="cell" data-solution="true" data-execution_count="146">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial guess: A=8, k=1</span></span>
 <span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">1</span>]</span>
 <span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2996,7 +2996,7 @@ Figure&nbsp;2: Illustration of argmax
 </div>
 </div>
 <p>Again we should plot to check that it looks as expected</p>
-<div id="30faf351" class="cell" data-solution="true" data-execution_count="148">
+<div id="d1d226c3" class="cell" data-solution="true" data-execution_count="148">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This makes 100 linearly spaced points between 0 and 5 ##</span></span>
 <span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>t_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
 <span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3004,7 +3004,7 @@ Figure&nbsp;2: Illustration of argmax
 <span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a>signal_fit <span class="op">=</span> exponential_decay(t_smooth, A_fit, k_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can plot the fit along with the data.</p>
-<div id="7a9c76e8" class="cell" data-solution="true" data-execution_count="150">
+<div id="4139a3b2" class="cell" data-solution="true" data-execution_count="150">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the observations - you can copy this line from the ## </span></span>

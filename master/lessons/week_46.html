@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="9b12df6f" class="cell" data-execution_count="1">
+<div id="91a52621" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -434,7 +434,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="a-train-estimation-skills" class="level4">
 <h4 class="anchored" data-anchor-id="a-train-estimation-skills">(a) Train estimation skills</h4>
 <p>Train your estimation skills using the widget below.</p>
-<div id="0acf3670" class="cell" data-execution_count="2">
+<div id="d367df6e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.utils.colab <span class="im">import</span> enable_custom_widget_colab</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> estimate_kd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -445,14 +445,14 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="b-compare-to-quadratic" class="level4">
 <h4 class="anchored" data-anchor-id="b-compare-to-quadratic">(b) Compare to quadratic</h4>
 <p>The widget below shows the curves for <span class="math inline">\(\theta\)</span> using both the simple expression assuming that <span class="math inline">\(L = L_{tot}\)</span> and the quadratic binding expression. Vary <span class="math inline">\(K_D\)</span> and <span class="math inline">\(P_{total}\)</span> to work out a rule of thumb for when the two equations give a similar curve.</p>
-<div id="10df2953" class="cell" data-execution_count="3">
+<div id="3567022c" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.utils.colab <span class="im">import</span> enable_custom_widget_colab</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets <span class="im">import</span> visualize_simple_vs_quadratic</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>enable_custom_widget_colab()</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>visualize_simple_vs_quadratic()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="360d5006" class="cell" data-solution="true" data-execution_count="4">
+<div id="ebd6958a" class="cell" data-solution="true" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> <span class="st">"They are equal when P_tot &lt;&lt; K_D"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 <section id="dialysis-experiment" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="dialysis-experiment"><span class="header-section-number">2</span> Dialysis experiment</h2>
-<div id="0505018e" class="cell" data-execution_count="5">
+<div id="73efe3eb" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>A dialysis experiment was set up where equal amounts of a protein were separately dialyzing against buffers containing different concentrations of a ligand – each measurement was done in triplicate. The average number of ligands bound per protein molecule, <span class="math inline">\(\bar{n}\)</span> were obtained from these experiments. The corresponding concentrations of free ligand and values are given in dataset <code>dialys-exper.xlsx</code>.</p>
 <section id="a-load-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-dataset">(a) Load the dataset</h4>
-<div id="bd18bf59" class="cell" data-solution="true" data-execution_count="7">
+<div id="4fcef6ea" class="cell" data-solution="true" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'dialysis_experiment'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
@@ -537,7 +537,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="b-explain-calculation-of-barn" class="level4">
 <h4 class="anchored" data-anchor-id="b-explain-calculation-of-barn">(b) Explain calculation of <span class="math inline">\(\bar{n}\)</span></h4>
 <p>Explain how the values of <span class="math inline">\(\bar{n}\)</span> is calculated when knowing the concentrations of ligand inside and outside the dialysis bag, as well as the total concentration of the protein, [<span class="math inline">\(\text{P}_{\text{tot}}\)</span>].</p>
-<div id="2268395e" class="cell" data-solution="true" data-execution_count="8">
+<div id="b95fd610" class="cell" data-solution="true" data-execution_count="8">
 <div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="c-molar-concentrations" class="level4">
 <h4 class="anchored" data-anchor-id="c-molar-concentrations">(c) Molar concentrations</h4>
 <p>Convert the concentrations of free ligand to SI-units given in M, add it as a row to the <code>DataFrame</code>.</p>
-<div id="5a1d4503" class="cell" data-solution="true" data-execution_count="10">
+<div id="4ec08501" class="cell" data-solution="true" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Free_ligand_(M)'</span>] <span class="op">=</span> df[<span class="st">'Free_ligand_(uM)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -631,7 +631,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 <section id="d-plot-the-data" class="level4">
 <h4 class="anchored" data-anchor-id="d-plot-the-data">(d) Plot the data</h4>
-<div id="8bd7d0e1" class="cell" data-solution="true" data-execution_count="12">
+<div id="8364b6d1" class="cell" data-solution="true" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the raw data </span></span>
@@ -659,7 +659,7 @@ document.addEventListener('DOMContentLoaded', function () {
 \bar{n}([L_{\text{free}}]) = N \frac{[L_{\text{free}}]}{K_D + [L_{\text{free}}]}
 \]</span></p>
 <p>To do so we need to implmenet it as a Python function</p>
-<div id="2c06df2e" class="cell" data-solution="true" data-execution_count="14">
+<div id="e3f67f66" class="cell" data-solution="true" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nbar(L, N, K_D):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> N <span class="op">*</span> L <span class="op">/</span> (K_D <span class="op">+</span> L)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -675,7 +675,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="f-actually-fitting" class="level4">
 <h4 class="anchored" data-anchor-id="f-actually-fitting">(f) Actually fitting</h4>
 <p>Finish the code to perform the fitting in the cell below.</p>
-<div id="ea412e7e" class="cell" data-solution="true" data-execution_count="16">
+<div id="42efd3ea" class="cell" data-solution="true" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose the variables from the dataframe</span></span>
@@ -707,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="g-plot-with-fit" class="level4">
 <h4 class="anchored" data-anchor-id="g-plot-with-fit">(g) Plot with fit</h4>
 <p>When we have the fitted parameters we can calculate and plot the function. To do so we make an array of values for the independent variable and use our function to calculate the dependent variable</p>
-<div id="0d46fb59" class="cell" data-solution="true" data-execution_count="18">
+<div id="74e64657" class="cell" data-solution="true" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This makes 50 equally spaced points ##</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>L_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, x.<span class="bu">max</span>()<span class="op">*</span><span class="fl">1.2</span>, <span class="dv">50</span>) </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -715,7 +715,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>nbar_calc <span class="op">=</span> nbar(L_smooth, N_fit, K_D_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we calculated the dependent variable we can plot the fit along with the data.</p>
-<div id="5d724aa2" class="cell" data-solution="true" data-execution_count="20">
+<div id="5e5df7b6" class="cell" data-solution="true" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the fitted function ##</span></span>
@@ -745,7 +745,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 <section id="interpretation-of-binding-data." class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="interpretation-of-binding-data."><span class="header-section-number">3</span> Interpretation of binding data.</h2>
-<div id="954653de" class="cell" data-execution_count="21">
+<div id="63b16a42" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
@@ -757,7 +757,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="a-load-the-dataset-1" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-dataset-1">(a) Load the dataset</h4>
 <p>Load the dataset with pandas. Set <code>data_file_path</code> to the path of the dataset file named above.</p>
-<div id="349c2c20" class="cell" data-solution="true" data-execution_count="23">
+<div id="d7949af1" class="cell" data-solution="true" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'interpret_week48'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
@@ -821,7 +821,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="b-si-units" class="level4">
 <h4 class="anchored" data-anchor-id="b-si-units">(b) SI Units</h4>
 <p>Add a new column to the <code>DataFrame</code> with the ligand concentration in SI units.</p>
-<div id="07e6252f" class="cell" data-solution="true" data-execution_count="25">
+<div id="5b0bc977" class="cell" data-solution="true" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add a column with the concentration in M ##</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Call this column df['[L]_(M)'] ##</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Recall that you can say df['[L]_(M)'] = df["[L]_(uM)"] * XXX ##</span></span>
@@ -896,7 +896,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <h4 class="anchored" data-anchor-id="c-plot-the-data">(c) Plot the data</h4>
 <p>Make plots of the binding data directly with a linear and logarithmic x-axis.</p>
 <p>Estimate <span class="math inline">\(K_D\)</span> by visual inspection of these plots!</p>
-<div id="7d127fb0" class="cell" data-solution="true" data-execution_count="27">
+<div id="7dee5729" class="cell" data-solution="true" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This makes a figure with two axes.</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -950,21 +950,21 @@ Note
 <p>Ths command <code>ax.set_xscale('log')</code> tells <code>matplotlib</code> that we want the x-axis to use a log-scale.</p>
 </div>
 </div>
-<div id="5ee3bb2d" class="cell" data-solution="true" data-execution_count="29">
+<div id="15b8c8d4" class="cell" data-solution="true" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>K_D_estimate <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="d-make-a-fit" class="level4">
 <h4 class="anchored" data-anchor-id="d-make-a-fit">(d) Make a fit</h4>
 <p>Make a fit to determine <span class="math inline">\(K_D\)</span>, as always we start by implementing the function to fit with</p>
-<div id="7323eb6e" class="cell" data-solution="true" data-execution_count="31">
+<div id="2319480c" class="cell" data-solution="true" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> n_bar(L, K_D):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the function to fit with</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Use your biochemical knowledge to decide which function that is. </span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L <span class="op">/</span> (L <span class="op">+</span> K_D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And then we can make the fit</p>
-<div id="a214c395" class="cell" data-solution="true" data-execution_count="33">
+<div id="60f678cd" class="cell" data-solution="true" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Choose the variables from the dataframe ## </span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> df[<span class="st">'[L]_(M)'</span>]</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'nbar'</span>]</span>
@@ -986,7 +986,7 @@ Note
 <section id="e-compare" class="level4">
 <h4 class="anchored" data-anchor-id="e-compare">(e) Compare</h4>
 <p>Compare the fitted values with your guess.</p>
-<div id="c5b68688" class="cell" data-solution="true" data-execution_count="35">
+<div id="61761ede" class="cell" data-solution="true" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">## These lines make equally spaced points on a normal linear axis ##</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">## And on a logarithmic axis. ##</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>L_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, df[<span class="st">'[L]_(M)'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
@@ -997,7 +997,7 @@ Note
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>nbar_fit_log <span class="op">=</span> n_bar(L_smooth_log, K_D_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can make a plot.</p>
-<div id="3e11c134" class="cell" data-solution="true" data-execution_count="37">
+<div id="cd56060c" class="cell" data-solution="true" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This makes a figure with two axes.</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1039,7 +1039,7 @@ Note
 <li>At which concentration do you expect 10% saturation?</li>
 <li>At which concentration do you expect 90% saturation?</li>
 </ul>
-<div id="880caf73" class="cell" data-solution="true" data-execution_count="38">
+<div id="cf58ae03" class="cell" data-solution="true" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">At K_D/9 and 9*K_D.</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1052,7 +1052,7 @@ Note
 </section>
 <section id="determination-of-type-and-strength-of-cooperativity" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="determination-of-type-and-strength-of-cooperativity"><span class="header-section-number">4</span> Determination of type and strength of cooperativity</h2>
-<div id="963a6dcb" class="cell" data-execution_count="39">
+<div id="a90d0e2d" class="cell" data-execution_count="39">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1067,7 +1067,7 @@ Note
 <section id="a-load-the-dataset-2" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-the-dataset-2">(a) Load the dataset</h4>
 <p>Load the dataset with pandas. Set <code>data_file_path</code> to the path of the dataset file named above.</p>
-<div id="36ec32f0" class="cell" data-solution="true" data-execution_count="41">
+<div id="8e409362" class="cell" data-solution="true" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'determination_coop_week48'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1160,13 +1160,13 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'new_col'</span>] <span class="op">=</span> df[<span class="st">'col1'</span>] <span class="op">+</span> df[<span class="st">'col2'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div id="e398d15b" class="cell" data-solution="true" data-execution_count="43">
+<div id="9bde087b" class="cell" data-solution="true" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the of the values in the three columns ##</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">## nbar1, nbar2, nbar3 ##</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'nbar_avg'</span>] <span class="op">=</span> (df[<span class="st">'nbar1'</span>] <span class="op">+</span> df[<span class="st">'nbar2'</span>] <span class="op">+</span> df[<span class="st">'nbar3'</span>]) <span class="op">/</span> <span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now also add a column with the ligand concentration in SI units with the column-name <code>[NAD+free]_(M)</code>.</p>
-<div id="a0dbe0e3" class="cell" data-solution="true" data-execution_count="45">
+<div id="f52d4e8a" class="cell" data-solution="true" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Task: Calculate the ligand concentration in M and ##</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">## set it as a new column with the name '[NAD+free]_(M)'</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'[NAD+free]_(M)'</span>] <span class="op">=</span> df[<span class="st">'[NAD+free]_(uM)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>)</span>
@@ -1259,7 +1259,7 @@ Tip
 </div>
 </div>
 <p>Finally, set the concentration of the GADPH in SI units</p>
-<div id="0cce0b89" class="cell" data-solution="true" data-execution_count="47">
+<div id="e732f8af" class="cell" data-solution="true" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Task: Convert the GADPH concentration to M  ## </span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Set it to the variable c_gadph ## </span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Add a comment about the unit ##</span></span>
@@ -1269,7 +1269,7 @@ Tip
 <section id="c-plot" class="level4">
 <h4 class="anchored" data-anchor-id="c-plot">(c) Plot</h4>
 <p>Make a plot of the average <span class="math inline">\(\bar{n}\)</span> as a function of <span class="math inline">\([\text{NAD}^{+}_\text{free}]\)</span>.</p>
-<div id="4dc85c5e" class="cell" data-solution="true" data-execution_count="49">
+<div id="5114bb85" class="cell" data-solution="true" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add plot of nbar vs [NAD+_free]_(M)</span></span>
@@ -1292,7 +1292,7 @@ Tip
 <section id="d-scatchard-plot" class="level4">
 <h4 class="anchored" data-anchor-id="d-scatchard-plot">(d) Scatchard plot</h4>
 <p>Make a Scatchard plot based on the average <span class="math inline">\(\bar{n}\)</span>.</p>
-<div id="fa18aae8" class="cell" data-solution="true" data-execution_count="51">
+<div id="55db48f2" class="cell" data-solution="true" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Calculate nbar / L </span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>nbar_over_L <span class="op">=</span> df[<span class="st">'nbar_avg'</span>] <span class="op">/</span> df[<span class="st">'[NAD+free]_(M)'</span>]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1319,7 +1319,7 @@ Tip
 <section id="e-binding-sites" class="level4">
 <h4 class="anchored" data-anchor-id="e-binding-sites">(e) Binding sites</h4>
 <p>Estimate by eye how many bindings sites GAPDH contains for <span class="math inline">\(\text{NAD}^{+}\)</span>?</p>
-<div id="a3b1cba5" class="cell" data-solution="true" data-execution_count="52">
+<div id="22097996" class="cell" data-solution="true" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">Saturation suggest assumptotic approximation to 4, which seems like the like </span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">intercept of the non-linear scatchard plot.</span></span>
@@ -1329,7 +1329,7 @@ Tip
 <section id="f-cooperativity" class="level4">
 <h4 class="anchored" data-anchor-id="f-cooperativity">(f) Cooperativity</h4>
 <p>Based on a visual inspection of the plot above, are there in signs of cooperativity? If so, which kind?</p>
-<div id="2853ba05" class="cell" data-solution="true" data-execution_count="53">
+<div id="d1bda217" class="cell" data-solution="true" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">Positive cooperativity as witnessed e.g. by the increasing slope in the early </span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">part of the lienar plot</span></span>
@@ -1343,7 +1343,7 @@ Tip
 \bar{n} = N \frac{[L]^h}{K + [L]^h}
 \]</span></p>
 <p>As usual, start by defining the function in Python</p>
-<div id="ff20b20f" class="cell" data-solution="true" data-execution_count="55">
+<div id="f51f35e0" class="cell" data-solution="true" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> n_bar(L, N, K, h):</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the function</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Be careful with parentheses!</span></span>
@@ -1351,7 +1351,7 @@ Tip
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can fit</p>
-<div id="c1d23ddf" class="cell" data-solution="true" data-execution_count="57">
+<div id="4d8d742c" class="cell" data-solution="true" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">## We want to use all the data for the fit, but it was given in three different columns. </span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">## We stitch it together to make a column containing all x-coordinates </span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">## And another column containing all y-coordinates</span></span>
@@ -1454,7 +1454,7 @@ Note
 <section id="a-explain-simplification" class="level5">
 <h5 class="anchored" data-anchor-id="a-explain-simplification">(a) Explain simplification</h5>
 <p>Explain how the fact that <span class="math inline">\([P_T]\)</span> is much smaller than <span class="math inline">\([L_T]\)</span> and <span class="math inline">\([C_T]\)</span> simplifies the calculations using the above equation.</p>
-<div id="d7c8ff55" class="cell" data-solution="true" data-execution_count="58">
+<div id="a1476a06" class="cell" data-solution="true" data-execution_count="58">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">When P(total) is &lt;&lt; L(total) and C(total), we can assume that L(total) =[L] and C(total) = [C].</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1464,7 +1464,7 @@ Note
 <h4 class="anchored" data-anchor-id="b-ligand-degree-of-saturation">(b) Ligand degree of saturation</h4>
 <p>Calculate the degree of saturation of the protein with ligand <span class="math inline">\(L\)</span> in the four situations.</p>
 <p>Start by writing a Python function that calculates the degree of saturation <span class="math inline">\(\theta\)</span>.</p>
-<div id="ed871f79" class="cell" data-solution="true" data-execution_count="60">
+<div id="492149f1" class="cell" data-solution="true" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bound_fraction(L, C, Kd, Kc):</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Write the equation for binding saturation. </span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Be careful with parentheses!</span></span>
@@ -1472,7 +1472,7 @@ Note
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> theta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then use that function to calculate <span class="math inline">\(\theta_L\)</span> for each situation.</p>
-<div id="2b0c7309" class="cell" data-solution="true" data-execution_count="62">
+<div id="98ac6dae" class="cell" data-solution="true" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the degree of saturation for each set of parameters ##</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>theta_L_1 <span class="op">=</span> bound_fraction(<span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">3</span>), <span class="dv">0</span>, <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">5</span>), <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">18</span>))</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>theta_L_2 <span class="op">=</span> bound_fraction(<span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">3</span>), <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">2</span>), <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">5</span>), <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>))</span>
@@ -1495,7 +1495,7 @@ Situation 4 0.3333333333333333</code></pre>
 <section id="c-competitor-degree-of-saturation" class="level4">
 <h4 class="anchored" data-anchor-id="c-competitor-degree-of-saturation">(c) Competitor degree of saturation</h4>
 <p>What is the degree of saturation with respect to the competitor <span class="math inline">\(C\)</span> in #1, #2, #3 and #4?</p>
-<div id="a9f1760c" class="cell" data-solution="true" data-execution_count="64">
+<div id="3f281f9c" class="cell" data-solution="true" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the degree of saturation for each set of parameters ##</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Note: Now you are calculating it for the competitor!</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>theta_C_1 <span class="op">=</span> <span class="dv">0</span> <span class="co"># [C] = 0</span></span>
@@ -1532,7 +1532,7 @@ Tip
 <p>Consider how to express the fraction of <span class="math inline">\([P_{\mathrm{free}}]\)</span> in terms of <code>theta_L_X</code> and <code>theta_C_X</code>.</p>
 </div>
 </div>
-<div id="fd0ee078" class="cell" data-solution="true" data-execution_count="66">
+<div id="758f49b1" class="cell" data-solution="true" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>theta_free_1 <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (theta_L_1 <span class="op">+</span> theta_C_1)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>theta_free_2 <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (theta_L_2 <span class="op">+</span> theta_C_2)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>theta_free_3 <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (theta_L_3 <span class="op">+</span> theta_C_3)</span>
@@ -1554,7 +1554,7 @@ Situation 4 0.33333333333333337</code></pre>
 <section id="e-qualitative-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="e-qualitative-analysis">(e) Qualitative analysis</h4>
 <p>Describe in your own words why these four competitive situations end up with their respective binding patterns. Consider the relative concentrations and affinities of ligands L and C.</p>
-<div id="e9dd820f" class="cell" data-solution="true" data-execution_count="67">
+<div id="178a6e63" class="cell" data-solution="true" data-execution_count="67">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co">1. The competitor concentration is zero, so only the ligand L binds. Affinity/concentration is such that nearly all proteins have an L-ligand bound.</span></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1571,7 +1571,7 @@ Situation 4 0.33333333333333337</code></pre>
 </section>
 <section id="difference-between-q-and-k_eq" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="difference-between-q-and-k_eq"><span class="header-section-number">6</span> Difference between <span class="math inline">\(Q\)</span> and <span class="math inline">\(K_{eq}\)</span></h2>
-<div id="f060c6e9" class="cell" data-execution_count="68">
+<div id="6b755bb9" class="cell" data-execution_count="68">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1588,7 +1588,7 @@ A \rightleftarrows B
 <section id="a-load-convert" class="level4">
 <h4 class="anchored" data-anchor-id="a-load-convert">(a) Load &amp; convert</h4>
 <p>The data is contained in the <code>diff_q_keq_data.xlsx</code> file.</p>
-<div id="1729fa58" class="cell" data-solution="true" data-execution_count="70">
+<div id="038edf17" class="cell" data-solution="true" data-execution_count="70">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'diff_q_keq'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1648,7 +1648,7 @@ A \rightleftarrows B
 </div>
 </div>
 <p>Convert the measured concentrations of <span class="math inline">\(B\)</span>, <span class="math inline">\([B]\)</span>, to concentrations in the SI-unit <span class="math inline">\(\mathrm{M} \ (\mathrm{mol/L})\)</span>. Repeat for the starting concentration of <span class="math inline">\(A\)</span>, <span class="math inline">\([A_0]\)</span>.</p>
-<div id="427c5f2f" class="cell" data-solution="true" data-execution_count="72">
+<div id="3b460cda" class="cell" data-solution="true" data-execution_count="72">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Convert the concentration of B to M and set in new column ##</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'[B]_(M)'</span>] <span class="op">=</span> df[<span class="st">'[B]_(uM)'</span>] <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">6</span>) <span class="co"># Unit: M</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1660,11 +1660,11 @@ A \rightleftarrows B
 <section id="b-law-of-mass-balance" class="level4">
 <h4 class="anchored" data-anchor-id="b-law-of-mass-balance">(b) Law of mass balance</h4>
 <p>Use the laws of mass balance to calculate <span class="math inline">\([A]\)</span> as a function of time in the unit <span class="math inline">\(\mathrm{M}\)</span>, add it as a column to the <code>DataFrame</code></p>
-<div id="28d928fc" class="cell" data-solution="true" data-execution_count="74">
+<div id="45322240" class="cell" data-solution="true" data-execution_count="74">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'[A]_(M)'</span>] <span class="op">=</span> A0 <span class="op">-</span> df[<span class="st">'[B]_(M)'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Make a plot of the time vs.&nbsp;the concentration of <span class="math inline">\(A\)</span> and of time versus the concentration of <span class="math inline">\(B\)</span>.</p>
-<div id="152e2d40" class="cell" data-solution="true" data-execution_count="76">
+<div id="d3152536" class="cell" data-solution="true" data-execution_count="76">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot time vs. concentrations.</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">'Time_(min)'</span>], df[<span class="st">'[A]_(M)'</span>], label<span class="op">=</span><span class="st">'[A]'</span>) <span class="co"># Time vs. concentration of A</span></span>
@@ -1691,12 +1691,12 @@ A \rightleftarrows B
 <section id="c-mass-action-ratio" class="level4">
 <h4 class="anchored" data-anchor-id="c-mass-action-ratio">(c) Mass action ratio</h4>
 <p>Calculate and plot the mass action ratio <span class="math inline">\(Q\)</span> as a function of time.</p>
-<div id="1eabd55f" class="cell" data-solution="true" data-execution_count="78">
+<div id="07fb3289" class="cell" data-solution="true" data-execution_count="78">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the mass action ratio</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> df[<span class="st">'[B]_(M)'</span>] <span class="op">/</span> df[<span class="st">'[A]_(M)'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now plot the mass action ratio versus time.</p>
-<div id="c383d5cd" class="cell" data-solution="true" data-execution_count="80">
+<div id="593261e3" class="cell" data-solution="true" data-execution_count="80">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a plot of the axis from the dataframe df['Time_(min)'] vs Q</span></span>
@@ -1721,7 +1721,7 @@ A \rightleftarrows B
 <section id="d-q-vs-k_eq" class="level4">
 <h4 class="anchored" data-anchor-id="d-q-vs-k_eq">(d) <span class="math inline">\(Q\)</span> vs <span class="math inline">\(K_{eq}\)</span></h4>
 <p>What is the difference between <span class="math inline">\(Q\)</span> and <span class="math inline">\(K_{eq}\)</span>?</p>
-<div id="8bb158c3" class="cell" data-solution="true" data-execution_count="81">
+<div id="0f849f71" class="cell" data-solution="true" data-execution_count="81">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co">Q is the mass action ratio at any time throughout the reaction. Keq is the mass </span></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co">action ratio at equilibrium only, and tells about the energetic favorisation of </span></span>
@@ -1732,7 +1732,7 @@ A \rightleftarrows B
 <section id="e-favoured-compound" class="level4">
 <h4 class="anchored" data-anchor-id="e-favoured-compound">(e) Favoured compound</h4>
 <p>Which of the two compounds <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is favored at equilibrium? (Favored: highest concentration)</p>
-<div id="0eb166f5" class="cell" data-solution="true" data-execution_count="82">
+<div id="5e0d708a" class="cell" data-solution="true" data-execution_count="82">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co">When the reaction reaches close to equilibrium, more B is present as compared to A, telling that B is favored. </span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co">Keq &gt; 1 --&gt; B is favored</span></span>
@@ -1742,7 +1742,7 @@ A \rightleftarrows B
 <section id="f-equilibrium-constant" class="level4">
 <h4 class="anchored" data-anchor-id="f-equilibrium-constant">(f) Equilibrium constant</h4>
 <p>What is the equilibrium constant of this reaction?</p>
-<div id="7bd2095d" class="cell" data-solution="true" data-execution_count="83">
+<div id="8bf38a35" class="cell" data-solution="true" data-execution_count="83">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">Can also just read the concentrations values at eq from the graph and calculate K_eq from those. </span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">But it can of course also just be calculated.</span></span>
@@ -1758,7 +1758,7 @@ A \rightleftarrows B
 </section>
 <section id="determination-of-δh-for-a-reaction-from-the-vant-hoff-plot." class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="determination-of-δh-for-a-reaction-from-the-vant-hoff-plot."><span class="header-section-number">7</span> Determination of ΔH° for a reaction from the van’t Hoff plot.</h2>
-<div id="70454bc3" class="cell" data-execution_count="84">
+<div id="16c9ca90" class="cell" data-execution_count="84">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1770,7 +1770,7 @@ A \rightleftarrows B
 </div>
 <p>The equilibrium constant for a reversible reaction going from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> was measured as a function of temperature.</p>
 <p>The data obtained is given in the Excel document <code>deter_delta_h_data.xlsx</code>. Load the data with pandas.</p>
-<div id="b0fec947" class="cell" data-solution="true" data-execution_count="86">
+<div id="463dd013" class="cell" data-solution="true" data-execution_count="86">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.datasets <span class="im">import</span> load_dataset</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_dataset(<span class="st">'deter_delta_h'</span>) <span class="co"># Load from package for the solution so it doesn't require to interact.</span></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1839,13 +1839,13 @@ Tip
 </div>
 </div>
 <p>Add new columns to the <code>DataFrame</code> containing <span class="math inline">\(\ln(K_{eq})\)</span> and <span class="math inline">\(1/T\)</span> and make a plot with <span class="math inline">\(1/T\)</span> on the x-axis and <span class="math inline">\(\ln(K_{eq})\)</span> on the y-axis.</p>
-<div id="d6ee4fb1" class="cell" data-solution="true" data-execution_count="88">
+<div id="2a9b6fce" class="cell" data-solution="true" data-execution_count="88">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add a column containing 1/T and one containing ln(Keq) ##</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'1/T'</span>] <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>df[<span class="st">'T_(K)'</span>]</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'ln(Keq)'</span>] <span class="op">=</span> np.log(df[<span class="st">'Keq'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now you can make the plot in the cell below</p>
-<div id="1a95d0f5" class="cell" data-solution="true" data-execution_count="90">
+<div id="d1647a7d" class="cell" data-solution="true" data-execution_count="90">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a plot of 1/T vs ln(Keq)</span></span>
@@ -1868,14 +1868,14 @@ Tip
 <h4 class="anchored" data-anchor-id="b-fit-trendline">(b) Fit trendline</h4>
 <p>Make a linear trendline by fitting a linear function to the data.</p>
 <p>Start by defining a linear function</p>
-<div id="45fa4c47" class="cell" data-solution="true" data-execution_count="92">
+<div id="33d1ec87" class="cell" data-solution="true" data-execution_count="92">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vant_hoff(T, a, b):</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement a linear function</span></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> a <span class="op">*</span> T <span class="op">+</span> b</span>
 <span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can use regression to find the parameters</p>
-<div id="4885c8a1" class="cell" data-solution="true" data-execution_count="94">
+<div id="e7b54ac8" class="cell" data-solution="true" data-execution_count="94">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a fit with curve_fit to find the parameters ##</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> curve_fit(vant_hoff, df[<span class="st">'1/T'</span>], df[<span class="st">'ln(Keq)'</span>])</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>a_fit, b_fit <span class="op">=</span> fitted_parameters</span>
@@ -1889,7 +1889,7 @@ Tip
 </div>
 </div>
 <p>Then make a plot with the trendline added</p>
-<div id="dac00281" class="cell" data-solution="true" data-execution_count="96">
+<div id="e8ae6c9b" class="cell" data-solution="true" data-execution_count="96">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Choose points to evaluate the fit</span></span>
@@ -1922,7 +1922,7 @@ Tip
 <section id="c-reaction-type" class="level4">
 <h4 class="anchored" data-anchor-id="c-reaction-type">(c) Reaction type</h4>
 <p>Calculate the reaction enthalpy and entropy, at <span class="math inline">\(T = 298 \ \mathrm{K}\)</span>, assuming that <span class="math inline">\(R = 8.314472 \times 10^{-3} \ \frac{\mathrm{kJ}}{\mathrm{mol}\cdot\mathrm{K}}\)</span>. Is the reaction endo- or exothermic?</p>
-<div id="100819f9" class="cell" data-solution="true" data-execution_count="97">
+<div id="9e8fee05" class="cell" data-solution="true" data-execution_count="97">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set known values and add units as comments e.g. # kJ/(mol K) ##</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">8.314472</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">3</span>) <span class="co"># Unit: # kJ/(mol K)</span></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">298</span> <span class="co"># Unit: K </span></span>
@@ -1958,7 +1958,7 @@ Tip
 <section id="d-free-energy-change" class="level4">
 <h4 class="anchored" data-anchor-id="d-free-energy-change">(d) Free energy change</h4>
 <p>Calculate the free energy change, <span class="math inline">\(\Delta G^\circ\)</span>, at <span class="math inline">\(T = 298 \ \mathrm{K}\)</span>, assuming that <span class="math inline">\(R = 8.314472 \times 10^{-3} \ \frac{\mathrm{kJ}}{\mathrm{mol}\cdot\mathrm{K}}\)</span></p>
-<div id="b736a067" class="cell" data-solution="true" data-execution_count="100">
+<div id="66b58ac5" class="cell" data-solution="true" data-execution_count="100">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate ΔG</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>dG <span class="op">=</span> dH <span class="op">-</span> T <span class="op">*</span> dS</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1972,7 +1972,7 @@ Tip
 </section>
 <section id="atp-hydrolysis" class="level2" data-number="8">
 <h2 data-number="8" class="anchored" data-anchor-id="atp-hydrolysis"><span class="header-section-number">8</span> ATP hydrolysis</h2>
-<div id="5645f278" class="cell" data-execution_count="101">
+<div id="200525f0" class="cell" data-execution_count="101">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1984,7 +1984,7 @@ Tip
 <section id="a-delta-g" class="level4">
 <h4 class="anchored" data-anchor-id="a-delta-g">(a) <span class="math inline">\(\Delta G\)</span></h4>
 <p>In cells at <span class="math inline">\(298 \ \mathrm{K}\)</span> the steady state concentrations of ATP, ADP og Pi resulted in a value for the reaction quotient <span class="math inline">\(Q = \frac{\mathrm{[ADP]}[\mathrm{Pi}]}{[\mathrm{ATP}]} = 0.002\)</span>. Calculate ΔG’ under these conditions.</p>
-<div id="eb5523f0" class="cell" data-solution="true" data-execution_count="103">
+<div id="6c59ca52" class="cell" data-solution="true" data-execution_count="103">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Define known values</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Add units as comments! E.g. # kJ / mol</span></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="fl">0.002</span></span>
@@ -2003,14 +2003,14 @@ Tip
 <section id="b-equilibrium-or-not" class="level4">
 <h4 class="anchored" data-anchor-id="b-equilibrium-or-not">(b) Equilibrium or not?</h4>
 <p>Assuming that the temperature within these cells is <span class="math inline">\(298 \ \mathrm{K}\)</span>, are these cells in equilibrium with respect to the hydrolysis of ATP?</p>
-<div id="e25e5dc4" class="cell" data-solution="true" data-execution_count="105">
+<div id="1edc9ff8" class="cell" data-solution="true" data-execution_count="105">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>K_eq <span class="op">=</span> np.exp(<span class="op">-</span>dG_std<span class="op">/</span>(R<span class="op">*</span>T))</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_eq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>222001.499219259</code></pre>
 </div>
 </div>
-<div id="9341fc2b" class="cell" data-solution="true" data-execution_count="106">
+<div id="b285d475" class="cell" data-solution="true" data-execution_count="106">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="co">Q is very different from this value, and therefore these cells are very far from </span></span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="co">equilibrium with respect to hydrolysis of ATP. This value of Q further favors the </span></span>
@@ -2021,7 +2021,7 @@ Tip
 <section id="c-atp-synthesized" class="level4">
 <h4 class="anchored" data-anchor-id="c-atp-synthesized">(c) ATP synthesized</h4>
 <p>Calculate the number of moles of ATP synthesized by a resting person in a period of 24 hours, assuming that the energy consumption by this person is <span class="math inline">\(8368 \ \mathrm{kJ}\)</span> per 24 hours and that 40% of this energy is converted directly into ATP without loss of energy. Use the ΔG’ value calculated in question a, and assume that <span class="math inline">\(298 \ \mathrm{K}\)</span>.</p>
-<div id="435a95af" class="cell" data-solution="true" data-execution_count="108">
+<div id="d3df72d9" class="cell" data-solution="true" data-execution_count="108">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Set the known value of the energy spent for ATP.</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>energy_atp <span class="op">=</span> <span class="fl">0.4</span> <span class="op">*</span> <span class="dv">8368</span> <span class="co"># kJ</span></span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2049,7 +2049,7 @@ Tip
 <section id="d-turnover" class="level4">
 <h4 class="anchored" data-anchor-id="d-turnover">(d) Turnover</h4>
 <p>Next, calculate the average number of times each ATP molecule is turned over (synthesis followed by hydrolysis) in 24 hours when the total amount of ATP in the body equals <span class="math inline">\(0.2 \ \mathrm{mol}\)</span>.</p>
-<div id="aaa9f8d4" class="cell" data-solution="true" data-execution_count="110">
+<div id="eebfa368" class="cell" data-solution="true" data-execution_count="110">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set the known total_atp value</span></span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>total_atp <span class="op">=</span> <span class="fl">0.2</span> <span class="co"># Unit: mol</span></span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a></span>
