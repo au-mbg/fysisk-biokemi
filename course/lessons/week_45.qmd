@@ -34,3 +34,7 @@ jupyterlite: true
 ---
 
 {{< include exercises/the-fluor-protei-mcherr.qmd >}}
+
+---
+
+{{< include intros/regression_intro.qmd >}}
