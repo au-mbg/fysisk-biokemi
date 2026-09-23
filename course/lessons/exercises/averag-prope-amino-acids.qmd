@@ -88,7 +88,8 @@ sum_of_array = np.sum(array) # Gives 15
 #| exercise: true
 #| eval: false
 average_mw = ...
-print(f"{average_mw = :.3f}")
+unit_average_mw = ...
+print(f"{average_mw = :.3f}", unit_average_mw)
 ```
 
 ```{python}
