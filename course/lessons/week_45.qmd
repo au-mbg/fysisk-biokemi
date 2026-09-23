@@ -9,10 +9,6 @@ jupyterlite: true
 
 ---
 
-{{< include intros/calculation_intro.qmd >}}
-
----
-
 {{< include intros/plotting_intro.qmd >}}
 
 ---
