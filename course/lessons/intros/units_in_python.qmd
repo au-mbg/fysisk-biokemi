@@ -47,8 +47,8 @@ Convert to millimolar: 0.15 M
 
 ```{python}
 
-conc = 
-unit_conc = ""
+conc = ...      # Replace ... with your code
+unit_conc = "..."
 
 print("The concentration is ", conc, unit_conc) 
 
