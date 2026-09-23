@@ -3095,6 +3095,7 @@ packages:
 - pypi: ./course-utils
   name: fysisk-biokemi
   requires_dist:
+  - pyyaml>=6.0
   - matplotlib>=3.10.6 ; extra == 'standard'
   - numpy>=2.3.3 ; extra == 'standard'
   - openpyxl>=3.1.5 ; extra == 'standard'
