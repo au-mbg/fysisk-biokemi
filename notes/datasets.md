@@ -54,12 +54,6 @@ strings.
 From the repository root, run:
 
 ```bash
-pixi run python -m unittest discover -s course-utils/tests
-pixi run build-wheel
 pixi run render master
 ```
-
-The tests check that shortnames are unique, metadata and active files match,
-and every API name resolves to an existing dataset. The wheel build verifies
-the package can include the metadata and data files, while the render checks
-the datasets page still uses the same metadata successfully.
+The render checks the datasets page still uses the same metadata successfully.
