@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4a7cb658c1d9cf25cbb76ae52cfc0617.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5dc108e58bda17100f7b77123e95c8f2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -254,7 +254,7 @@ window.Quarto = {
   <ul>
   <li><a href="#sekvens-egenskaber" id="toc-sekvens-egenskaber" class="nav-link active" data-scroll-target="#sekvens-egenskaber"><span class="header-section-number">1</span> Sekvens egenskaber</a></li>
   <li><a href="#fasta-til-dataframe" id="toc-fasta-til-dataframe" class="nav-link" data-scroll-target="#fasta-til-dataframe"><span class="header-section-number">2</span> Fasta til <code>DataFrame</code></a></li>
-  <li><a href="#python-calculations" id="toc-python-calculations" class="nav-link" data-scroll-target="#python-calculations"><span class="header-section-number">3</span> Python: Calculations</a>
+  <li><a href="#self-study-calculations-in-python" id="toc-self-study-calculations-in-python" class="nav-link" data-scroll-target="#self-study-calculations-in-python"><span class="header-section-number">3</span> Self-study: Calculations in python</a>
   <ul>
   <li><a href="#a-simple-calculations" id="toc-a-simple-calculations" class="nav-link" data-scroll-target="#a-simple-calculations">(a) Simple calculations</a></li>
   <li><a href="#b-array-calculations" id="toc-b-array-calculations" class="nav-link" data-scroll-target="#b-array-calculations">(b) Array calculations</a></li>
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="44cd0619" class="cell" data-execution_count="1">
+<div id="492b366d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -366,35 +366,36 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install <span class="op">-</span>q <span class="st">"fysisk_biokemi[pyodide] @ https://au-mbg.github.io/fysisk-biokemi/wheels/fysisk_biokemi-0.2.2-py3-none-any.whl"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="92ba4561" class="cell" data-execution_count="2">
+<div id="5b675f7c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fysisk_biokemi.widgets <span class="im">as</span> fsb_widgets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="sekvens-egenskaber" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="sekvens-egenskaber"><span class="header-section-number">1</span> Sekvens egenskaber</h2>
-<div id="f6baece4" class="cell" data-execution_count="3">
+<div id="e2d61aba" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fsb_widgets.sequence_properties()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fasta-til-dataframe" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="fasta-til-dataframe"><span class="header-section-number">2</span> Fasta til <code>DataFrame</code></h2>
-<div id="d3541db7" class="cell" data-execution_count="4">
+<div id="fecd2b6a" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.sequence_properties <span class="im">import</span> sequence_dataframe</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>DataFrame</code>’en ved den valgte pH kan trækkes ud</p>
-<div id="d40a0208" class="cell" data-execution_count="5">
+<div id="fbd491cd" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> widget.get_dataframe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="python-calculations" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="python-calculations"><span class="header-section-number">3</span> Python: Calculations</h2>
-<div id="3e61d016" class="cell" data-execution_count="6">
+<section id="self-study-calculations-in-python" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="self-study-calculations-in-python"><span class="header-section-number">3</span> Self-study: Calculations in python</h2>
+<div id="0ed561f5" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+<p>In the following, we will go through the some common mathematical manupulations of number, arrays and data frames using python. You should have covered most of these in “Introduction to the Molecules of Life”, so we will not go through them in class.</p>
 <section id="a-simple-calculations" class="level4">
 <h4 class="anchored" data-anchor-id="a-simple-calculations">(a) Simple calculations</h4>
 <p>Evaluate the following expressions using Python</p>
@@ -404,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><span class="math inline">\(70 - 30 + 2\)</span></li>
 <li><span class="math inline">\(420 / 10\)</span></li>
 </ul>
-<div id="4dba6a7b" class="cell" data-exercise="true" data-execution_count="7">
+<div id="0844e2c1" class="cell" data-exercise="true" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>... <span class="co"># Replace ... with your code</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>...</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>...</span>
@@ -436,10 +437,10 @@ Tip
 <p>The ability to perform operations on all elements (or data points) is incredibly useful when doing data analysis, for example when converting units. This is enabled my array calculations.</p>
 <p>The cell below defines an array <span class="math inline">\(a\)</span> with all the numbers from 0 to 9.</p>
 <p>For each entry <span class="math inline">\(a_i\)</span> in the array calculate the expression <span class="math inline">\(b_i = a_i / 3 + a_i^2\)</span> and assign that to a new array <span class="math inline">\(b\)</span>. use the fact that you can do elementwise operations with an array - do not calculate it seperately for every element of the array.</p>
-<div id="15ce83d5" class="cell" data-execution_count="9">
+<div id="3961c4b9" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="4cc43b65" class="cell" data-exercise="true" data-execution_count="10">
+<div id="8fb9b7b3" class="cell" data-exercise="true" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> ...</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -471,7 +472,7 @@ b &amp;= a + 9 \\
 c &amp;= \frac{4}{3}a + b - 2
 \end{aligned}
 \]</span></p>
-<div id="65c62eb0" class="cell" data-exercise="true" data-execution_count="12">
+<div id="be7b64e5" class="cell" data-exercise="true" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> ...</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> ...</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>... </span>
@@ -490,7 +491,7 @@ c &amp;= \frac{4}{3}a + b - 2
 <li><span class="math inline">\((b - a)(\frac{1}{c} + 1)\)</span></li>
 <li><span class="math inline">\((b - a)(\frac{1}{c+1} + 1)\)</span></li>
 </ul>
-<div id="9da70743" class="cell" data-exercise="true" data-execution_count="14">
+<div id="61c4790d" class="cell" data-exercise="true" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> ...</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>q2 <span class="op">=</span> ...</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> ...</span>
@@ -520,13 +521,13 @@ Tip
 f(x) = \frac{Ax + B + C}{A + B}
 \]</span></p>
 <p>Where <span class="math inline">\(A = 10\)</span>, <span class="math inline">\(B=5\)</span>, <span class="math inline">\(C=2.5\)</span></p>
-<div id="a3a27538" class="cell" data-exercise="true" data-execution_count="16">
+<div id="2b5355d8" class="cell" data-exercise="true" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fun_function(x):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now evaluate the function for <span class="math inline">\(x = 62.5\)</span>, <span class="math inline">\(x = 629.25\)</span>, <span class="math inline">\(x=42\)</span> and <span class="math inline">\(x = 2025\)</span></p>
-<div id="72ac4ce8" class="cell" data-exercise="true" data-execution_count="18">
+<div id="90218963" class="cell" data-exercise="true" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fun_output_1 <span class="op">=</span> fun_function(...) <span class="co"># Your code replaces ...</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fun_output_2 <span class="op">=</span> ... <span class="co"># Same here</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>fun_output_3 <span class="op">=</span> ... <span class="co"># And here</span></span>
