@@ -158,20 +158,6 @@ datasets:
     original_name: "reverse_reaction.xlsx"
     description: "Reversible reaction kinetics data (Excel format)"
 
-  deter_delta_h_data.xlsx:
-    shortnames: ["deter_delta_h"]
-    week: 46
-    exercise: deter_deltah_for_react.qmd
-    original_name: "deter_delta_h_data.xlsx"
-    description: "Determination of ΔH° for a reaction dataset (Excel format)"
-
-  diff_q_keq_data.xlsx:
-    shortnames: ["diff_q_keq"]
-    week: 46
-    exercise: diff_q_keq.qmd
-    original_name: "diff_q_keq_data.xlsx"
-    description: "Dataset of time and product concentrations."
-
   binding_data_sq.xlsx:
     shortnames: ["binding_data_sq"]
     week: 47
@@ -192,3 +178,19 @@ datasets:
     exercise: lab_exercise.qmd
     original_name: "kinetics_data.xlsx"
     description: "Use your own data if you have it, use this dataset if you don't or your data is of poor quality."
+
+    # Week 49 exercises
+
+  deter_delta_h_data.xlsx:
+    shortnames: ["deter_delta_h"]
+    week: 49
+    exercise: deter_deltah_for_react.qmd
+    original_name: "deter_delta_h_data.xlsx"
+    description: "Determination of ΔH° for a reaction dataset (Excel format)"
+
+  diff_q_keq_data.xlsx:
+    shortnames: ["diff_q_keq"]
+    week: 49
+    exercise: diff_q_keq.qmd
+    original_name: "diff_q_keq_data.xlsx"
+    description: "Dataset of time and product concentrations."
