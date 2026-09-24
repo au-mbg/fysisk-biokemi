@@ -370,7 +370,7 @@
     "href": "datasets.html#week-46",
     "title": "Datasets",
     "section": "2 Week 46",
-    "text": "2 Week 46\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\ndialys-exper.xlsx\nDialysis experiment\nDialysis experiment data\n\n\nadp-bindin-pyruva-kinase.csv\nADP binding to pyruvate kinase.\nADP binding to pyruvate kinase data\n\n\ninter-bindin-data.xlsx\nInterpretation of binding data.\nBinding data for interpretation\n\n\ndeter-type-streng-coope.xlsx\nDetermination of type and strength of cooperativity\nCooperativity determination data\n\n\ndeter_delta_h_data.xlsx\nDetermination of ΔH° for a reaction from the van’t Hoff plot.\nDetermination of ΔH° for a reaction dataset (Excel format)\n\n\ndiff_q_keq_data.xlsx\nDifference between \\(Q\\) and \\(K_{eq}\\)\nDataset of time and product concentrations.\n\n\nexp_decay_data.xlsx\n—\nExponential decay data for regression exercises."
+    "text": "2 Week 46\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\ndialys-exper.xlsx\nDialysis experiment\nDialysis experiment data\n\n\nadp-bindin-pyruva-kinase.csv\nADP binding to pyruvate kinase.\nADP binding to pyruvate kinase data\n\n\ninter-bindin-data.xlsx\nInterpretation of binding data.\nBinding data for interpretation\n\n\ndeter-type-streng-coope.xlsx\nDetermination of type and strength of cooperativity\nCooperativity determination data\n\n\nexp_decay_data.xlsx\n—\nExponential decay data for regression exercises."
   },
   {
     "objectID": "datasets.html#week-47",
@@ -387,11 +387,18 @@
     "text": "4 Week 48\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\nanalys-data-set-obeyin.xlsx\nAnalysis of a data set obeying Michaelis-Menten kinetics\nData set analysis for enzyme kinetics\n\n\nenzyme-inhib-i.xlsx\nEnzyme inhibitors (I)\nEnzyme inhibition data (part I)\n\n\nenzyme-inhib-ii.xlsx\nEnzyme inhibitors (II)\nEnzyme inhibition data (part II)\n\n\nenzyme-behav-atcase.csv\nEnzymatic behaviour of the enzyme ATCase\nAspartate transcarbamoylase enzyme behavior data"
   },
   {
+    "objectID": "datasets.html#week-49",
+    "href": "datasets.html#week-49",
+    "title": "Datasets",
+    "section": "5 Week 49",
+    "text": "5 Week 49\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\ndeter_delta_h_data.xlsx\nDetermination of ΔH° for a reaction from the van’t Hoff plot.\nDetermination of ΔH° for a reaction dataset (Excel format)\n\n\ndiff_q_keq_data.xlsx\nDifference between \\(Q\\) and \\(K_{eq}\\)\nDataset of time and product concentrations."
+  },
+  {
     "objectID": "datasets.html#additional-datasets",
     "href": "datasets.html#additional-datasets",
     "title": "Datasets",
-    "section": "5 Additional Datasets",
-    "text": "5 Additional Datasets\nThese datasets are available but not yet assigned to specific weeks.\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\nchlorophyll_adsorption.xlsx\n—\nChlorophyll absorption data (Excel format)\n\n\nreverse_reaction.xlsx\n—\nReversible reaction kinetics data (Excel format)"
+    "section": "6 Additional Datasets",
+    "text": "6 Additional Datasets\nThese datasets are available but not yet assigned to specific weeks.\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\nchlorophyll_adsorption.xlsx\n—\nChlorophyll absorption data (Excel format)\n\n\nreverse_reaction.xlsx\n—\nReversible reaction kinetics data (Excel format)"
   },
   {
     "objectID": "index.html#weeks",
