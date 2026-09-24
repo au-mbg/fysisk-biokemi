@@ -370,21 +370,21 @@
     "href": "datasets.html#week-46",
     "title": "Datasets",
     "section": "2 Week 46",
-    "text": "2 Week 46\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\ndialys-exper.xlsx\nDialysis experiment\nDialysis experiment data\n\n\nadp-bindin-pyruva-kinase.csv\nADP binding to pyruvate kinase.\nADP binding to pyruvate kinase data\n\n\ninter-bindin-data.xlsx\nInterpretation of binding data.\nBinding data for interpretation\n\n\ndeter-type-streng-coope.xlsx\nDetermination of type and strength of cooperativity\nCooperativity determination data\n\n\nexp_decay_data.xlsx\n—\nExponential decay data for regression exercises."
+    "text": "2 Week 46\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\ndialys-exper.xlsx\nDialysis experiment\nDialysis experiment data\n\n\nadp-bindin-pyruva-kinase.csv\nADP binding to pyruvate kinase.\nADP binding to pyruvate kinase data\n\n\ninter-bindin-data.xlsx\nInterpretation of binding data.\nBinding data for interpretation\n\n\ndeter-type-streng-coope.xlsx\nDetermination of type and strength of cooperativity\nCooperativity determination data\n\n\nreaction-orders.xlsx\nDetermination of reaction orders.\nReaction order determination data\n\n\nbinding_data_sq.xlsx\nA tricky protein binding.\nBinding data for a tricky protein.\n\n\nexp_decay_data.xlsx\n—\nExponential decay data for regression exercises."
   },
   {
     "objectID": "datasets.html#week-47",
     "href": "datasets.html#week-47",
     "title": "Datasets",
     "section": "3 Week 47",
-    "text": "3 Week 47\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\nreaction-orders.xlsx\nDetermination of reaction orders.\nReaction order determination data\n\n\ndeter-reacti-order-activ.csv\nDetermination of reaction order and activation energy\nReaction order and activation energy data\n\n\ndesign-enzyme-kineti-exper.xlsx\nDesign of an enzyme kinetics experiment\nEnzyme kinetics experimental design data\n\n\nbinding_data_sq.xlsx\nA tricky protein binding.\nBinding data for a tricky protein.\n\n\nkinetics_data.xlsx\nLab Exercise Analysis: Michaelis Menten\nUse your own data if you have it, use this dataset if you don’t or your data is of poor quality."
+    "text": "3 Week 47\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\ndeter-reacti-order-activ.csv\nDetermination of reaction order and activation energy\nReaction order and activation energy data\n\n\ndesign-enzyme-kineti-exper.xlsx\nDesign of an enzyme kinetics experiment\nEnzyme kinetics experimental design data\n\n\nanalys-data-set-obeyin.xlsx\nAnalysis of a data set obeying Michaelis-Menten kinetics\nData set analysis for enzyme kinetics\n\n\nkinetics_data.xlsx\nLab Exercise Analysis: Michaelis Menten\nUse your own data if you have it, use this dataset if you don’t or your data is of poor quality."
   },
   {
     "objectID": "datasets.html#week-48",
     "href": "datasets.html#week-48",
     "title": "Datasets",
     "section": "4 Week 48",
-    "text": "4 Week 48\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\nanalys-data-set-obeyin.xlsx\nAnalysis of a data set obeying Michaelis-Menten kinetics\nData set analysis for enzyme kinetics\n\n\nenzyme-inhib-i.xlsx\nEnzyme inhibitors (I)\nEnzyme inhibition data (part I)\n\n\nenzyme-inhib-ii.xlsx\nEnzyme inhibitors (II)\nEnzyme inhibition data (part II)\n\n\nenzyme-behav-atcase.csv\nEnzymatic behaviour of the enzyme ATCase\nAspartate transcarbamoylase enzyme behavior data"
+    "text": "4 Week 48\n\n\n\nDataset\nExercise\nDescription\n\n\n\n\nenzyme-inhib-i.xlsx\nEnzyme inhibitors (I)\nEnzyme inhibition data (part I)\n\n\nenzyme-inhib-ii.xlsx\nEnzyme inhibitors (II)\nEnzyme inhibition data (part II)\n\n\nenzyme-behav-atcase.csv\nEnzymatic behaviour of the enzyme ATCase\nAspartate transcarbamoylase enzyme behavior data"
   },
   {
     "objectID": "datasets.html#week-49",
