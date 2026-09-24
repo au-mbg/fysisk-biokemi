@@ -20,34 +20,6 @@ jupyterlite: true
 
 :::
 
-{{< include exercises/analys-data-set-obeyin.qmd >}}
-
-:::::: {.cell .markdown}
-
-::::::
-
----
-
-::: {.content-visible when-format="typst"}
-
-{{< pagebreak >}}
-
-:::
-
-{{< include exercises/michaelis-menten.qmd >}}
-
-:::::: {.cell .markdown}
-
-::::::
-
----
-
-::: {.content-visible when-format="typst"}
-
-{{< pagebreak >}}
-
-:::
-
 {{< include exercises/enzyme-inhib-i.qmd >}}
 
 :::::: {.cell .markdown}
