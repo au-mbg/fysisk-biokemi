@@ -36,6 +36,7 @@ jupyterlite: true
 {{< include exercises/tricky-binding.qmd >}}
 
 ---
+
 {{< include exercises/deter-reacti-orders-v1.qmd >}}
 
 ---
