@@ -1,0 +1,27 @@
+---
+title: Week 49
+engine: jupyter
+categories: ['regression', 'calculation', 'data', 'plotting']
+jupyterlite: true
+---
+
+{{< include tidbits/_install_import.qmd >}}
+
+
+---
+
+{{< include exercises/diff_q_keq.qmd >}}
+
+---
+
+{{< include exercises/deter_deltah_for_react.qmd >}}
+
+---
+
+{{< include exercises/atp_hydrolysis.qmd >}}
+
+
+
+
+
+
