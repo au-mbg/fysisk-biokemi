@@ -33,15 +33,14 @@ jupyterlite: true
 
 ---
 
-{{< include exercises/diff_q_keq.qmd >}}
+{{< include exercises/tricky-binding.qmd >}}
+
+---
+{{< include exercises/deter-reacti-orders-v1.qmd >}}
 
 ---
 
-{{< include exercises/deter_deltah_for_react.qmd >}}
-
----
-
-{{< include exercises/atp_hydrolysis.qmd >}}
+{{< include exercises/analys-rever-reacti.qmd >}}
 
 
 
