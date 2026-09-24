@@ -43,13 +43,21 @@ datasets:
     original_name: "week48_2_determination_coop.xlsx"
     description: "Cooperativity determination data"
 
-  # Week 47 exercises
   reaction-orders.xlsx:
     shortnames: ["reaction_order_week48"]
-    week: 47
+    week: 46
     exercise: "deter-reacti-orders.qmd"
     original_name: "week48_4_reaction_order.xlsx"
     description: "Reaction order determination data"
+
+  binding_data_sq.xlsx:
+    shortnames: ["binding_data_sq"]
+    week: 46
+    exercise: tricky-binding.qmd
+    original_name: "binding_data_sq.xlsx"
+    description: "Binding data for a tricky protein."
+    
+  # Week 47 exercises
   
   deter-reacti-order-activ.csv:
     shortnames: ["reaction_order_activation_week48"]
@@ -67,7 +75,7 @@ datasets:
   
   analys-data-set-obeyin.xlsx:
     shortnames: ["week49_2"]
-    week: 48
+    week: 47
     exercise: "analys-data-set-obeyin.qmd"
     original_name: "week49_2.xlsx"
     description: "Data set analysis for enzyme kinetics"
@@ -157,13 +165,6 @@ datasets:
     exercise: null
     original_name: "reverse_reaction.xlsx"
     description: "Reversible reaction kinetics data (Excel format)"
-
-  binding_data_sq.xlsx:
-    shortnames: ["binding_data_sq"]
-    week: 47
-    exercise: tricky-binding.qmd
-    original_name: "binding_data_sq.xlsx"
-    description: "Binding data for a tricky protein."
 
   exp_decay_data.xlsx:
     shortnames: ["exp_decay_data"]
