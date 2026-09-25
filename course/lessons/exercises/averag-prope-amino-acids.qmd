@@ -20,6 +20,16 @@ from IPython.display import display
 
 Use the cell below to load and display the dataset.
 
+::: {.callout-tip title="Need help loading the data?" collapse="true"}
+
+The correct pandas function is already provided. You only need to set `data_file_path`:
+
+1. Download the file named above from the [Datasets page](../datasets.html).
+2. [Upload the file to JupyterLite](jupyterlite_intro.html#data-files).
+3. Replace `...` with the file's path in quotation marks. See [Working with file paths](jupyterlite_intro.html#working-with-file-paths) for examples.
+
+:::
+
 ```{python}
 #| exercise: true
 #| eval: false

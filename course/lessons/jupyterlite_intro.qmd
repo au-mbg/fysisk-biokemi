@@ -136,7 +136,7 @@ JupyterLite has its own file system in your browser. Uploading a file creates a 
 
 It is generally easiest to keep the notebook and its data files in the same folder in JupyterLite. A file in the same folder as the notebook can be referred to by its filename, for example `experiment.xlsx`. If you organize your data in a subfolder called `data`, the corresponding relative path is `data/experiment.xlsx`.
 
-## Working with file paths.
+## Working with file paths. {#working-with-file-paths}
 
 When you want a program to read file it needs to know where the file is this is called a "file path" (en fil sti in danish). There is no wiggle-room with these file paths, they need to be exactly correct, computers are not smart enough to know that if you asked for `dataa/abc.csv` but only `data/abc.csv` exists you probably meant that.
 

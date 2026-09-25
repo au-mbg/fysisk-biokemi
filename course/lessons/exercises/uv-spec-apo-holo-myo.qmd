@@ -14,6 +14,16 @@ The dataset is given in `uv-spec-apo-holo-myo.csv`.
 
 Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
 
+::: {.callout-tip title="Need help loading the data?" collapse="true"}
+
+The correct pandas function is already provided. You only need to set `data_file_path`:
+
+1. Download the file named above from the [Datasets page](../datasets.html).
+2. [Upload the file to JupyterLite](jupyterlite_intro.html#data-files).
+3. Replace `...` with the file's path in quotation marks. See [Working with file paths](jupyterlite_intro.html#working-with-file-paths) for examples.
+
+:::
+
 ```{python}
 #| exercise: true
 #| eval: false
