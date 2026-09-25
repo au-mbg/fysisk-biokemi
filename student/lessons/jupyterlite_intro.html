@@ -77,6 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-4a7cb658c1d9cf25cbb76ae52cfc0617.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/kbd/kbd.js"></script>
 <link href="../site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -109,6 +111,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 </head>
@@ -243,8 +247,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#persistent-storage-in-jupyterlite" id="toc-persistent-storage-in-jupyterlite" class="nav-link" data-scroll-target="#persistent-storage-in-jupyterlite">Persistent storage in JupyterLite</a></li>
   </ul></li>
   <li><a href="#data-files" id="toc-data-files" class="nav-link" data-scroll-target="#data-files"><span class="header-section-number">5</span> Data files</a></li>
+  <li><a href="#working-with-file-paths" id="toc-working-with-file-paths" class="nav-link" data-scroll-target="#working-with-file-paths"><span class="header-section-number">6</span> Working with file paths.</a>
+  <ul>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a></li>
+  <li><a href="#summary-and-tips-for-working-with-notebooks" id="toc-summary-and-tips-for-working-with-notebooks" class="nav-link" data-scroll-target="#summary-and-tips-for-working-with-notebooks">Summary and tips for working with notebooks</a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="jupyterlite_intro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="jupyterlite_intro.ipynb" download="jupyterlite_intro.ipynb"><i class="bi bi-journal-code"></i>Notebook</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -273,44 +282,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="jupyterlite-introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="jupyterlite-introduction"><span class="header-section-number">1</span> JupyterLite Introduction</h2>
 <p>JupyterLite can be accessed at this webpage: <a href="https://au-mbg.github.io/jupyterlite-playground/lab/index.html">https://au-mbg.github.io/jupyterlite-playground/lab/index.html</a></p>
-<p>When you first access the page, you should see something like what is shown below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/startup_page.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The JupyterLite Homepage"><img src="figures/jupyterlite/startup_page.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="The JupyterLite Homepage"></a></p>
-</figure>
+<p>When you first access the page, you should see something like what is shown in <a href="#fig-jupyterlite-frontpage" class="quarto-xref">Figure&nbsp;1</a></p>
+<div id="fig-jupyterlite-frontpage" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jupyterlite-frontpage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/startup_page.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: The JupyterLite Homepage"><img src="figures/jupyterlite/startup_page.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
 </div>
-<figcaption>The JupyterLite Homepage</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jupyterlite-frontpage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The JupyterLite Homepage
+</figcaption>
 </figure>
 </div>
 <p>JupyterLite is a JupyterLab distribution that runs in the browser. This means you can run Python programs and notebooks in JupyterLite without having to install anything.</p>
 </section>
 <section id="working-with-notebooks-in-jupyterlite" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="working-with-notebooks-in-jupyterlite"><span class="header-section-number">2</span> Working with notebooks in JupyterLite</h2>
-<p>On the home page of JupyterLite, also called the <em>launcher</em>, you can click the button that says <code>Python (Pyodide)</code> to create a new notebook. You will then arrive at a page like the one shown below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/new_notebook.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="New notebook on JupyterLite"><img src="figures/jupyterlite/new_notebook.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="New notebook on JupyterLite"></a></p>
+<p>On the home page of JupyterLite, also called the <em>launcher</em>, you can click the button that says <code>Python (Pyodide)</code> to create a new notebook. You will then arrive at a page like the one shown in <a href="#fig-new-notebook" class="quarto-xref">Figure&nbsp;2</a>.</p>
+<div id="fig-new-notebook" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-new-notebook-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/new_notebook.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: New notebook on JupyterLite"><img src="figures/jupyterlite/new_notebook.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-new-notebook-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: New notebook on JupyterLite
+</figcaption>
 </figure>
 </div>
-<figcaption>New notebook on JupyterLite</figcaption>
+<p>This notebook is a document that can contain both code and text, with the two types separated into different cells, see <a href="#fig-cell-types" class="quarto-xref">Figure&nbsp;3</a>. The Python you worked with in IMOL is very similar to one of these code cells.</p>
+<div id="fig-cell-types" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cell-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/example_cells.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Notebook with a Markdown cell and a Code cell"><img src="figures/jupyterlite/example_cells.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cell-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Notebook with a Markdown cell and a Code cell
+</figcaption>
 </figure>
 </div>
-<p>This notebook is a document that can contain both code and text, with the two types separated into different cells. The Python you worked with in IMOL is very similar to one of these code cells.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/example_cells.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Notebook with a Markdown cell and a Code cell"><img src="figures/jupyterlite/example_cells.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Notebook with a Markdown cell and a Code cell"></a></p>
-</figure>
-</div>
-<figcaption>Notebook with a Markdown cell and a Code cell</figcaption>
-</figure>
-</div>
-<p>To see the output produced by code in a notebook, we need to <em>run</em> or <em>execute</em> its code cells. There are several ways to control cell execution:</p>
+<p>To see the output produced by code in a notebook, we need to <em>run</em> or <em>execute</em> its code cells. There are several ways to control cell execution, see <a href="#fig-run-options" class="quarto-xref">Figure&nbsp;4</a> and the list below:</p>
 <ul>
 <li><code>▶</code>: Runs the currently selected cell. You can also use the keyboard shortcut <kbd title="mac: Shift-Enter, windows: Shift-Enter" aria-hidden="true" data-mac="Shift-Enter" data-windows="Shift-Enter"></kbd><span class="visually-hidden"></span>.</li>
 <li><code>▶▶</code>: Restarts the notebook and runs all cells from top to bottom.</li>
@@ -318,14 +327,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>↻</code>: Restarts the notebook without running the cells again.</li>
 <li><code>Run</code>: Opens a menu with additional options for running cells.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/run_options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Options for running Code cells"><img src="figures/jupyterlite/run_options.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Options for running Code cells"></a></p>
-</figure>
+<div id="fig-run-options" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-run-options-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/run_options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Options for running Code cells"><img src="figures/jupyterlite/run_options.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
 </div>
-<figcaption>Options for running Code cells</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-run-options-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Options for running Code cells
+</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Run cells in order">
@@ -344,15 +353,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="opening-course-notebooks" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="opening-course-notebooks"><span class="header-section-number">3</span> Opening course notebooks</h2>
-<p>The exercises in this course are provided as notebooks that can be opened directly in JupyterLite. On the course website, open the exercise you want to work on and click <code>Open in JupyterLite</code> under <strong>Other Formats</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/open_course_notebook.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Options for opening or download course notebooks"><img src="figures/jupyterlite/open_course_notebook.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Options for opening or download course notebooks"></a></p>
-</figure>
+<p>The exercises in this course are provided as notebooks that can be opened directly in JupyterLite. On the course website, open the exercise you want to work on and click <code>Open in JupyterLite</code> under <strong>Other Formats</strong>, see <a href="#fig-opening-notebook" class="quarto-xref">Figure&nbsp;5</a></p>
+<div id="fig-opening-notebook" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-opening-notebook-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/open_course_notebook.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Options for opening or download course notebooks"><img src="figures/jupyterlite/open_course_notebook.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
 </div>
-<figcaption>Options for opening or download course notebooks</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-opening-notebook-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Options for opening or download course notebooks
+</figcaption>
 </figure>
 </div>
 <p>JupyterLite will open and import a copy of the exercise notebook. If the notebook does not open automatically, locate it in the JupyterLite file browser and double-click it.</p>
@@ -396,39 +405,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You should therefore create a folder (also called a directory) on your computer in a location that you can find, perhaps in your Documents folder or in a cloud storage folder such as Dropbox, iCloud, or OneDrive. This folder could be called <code>fysisk_biokemi</code> or another name that clearly communicates its purpose.</p>
-<p>Once you’ve finished working on a notebook in JupyterLite, you should export a backup to this folder. To download the notebook to your computer, select <code>File &gt; Save and Export Notebook As &gt; Notebook (ipynb)</code>, as shown in the screenshot below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/save_notebook.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Menu to save a notebook to the local machine"><img src="figures/jupyterlite/save_notebook.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Menu to save a notebook to the local machine"></a></p>
+<p>Once you’ve finished working on a notebook in JupyterLite, you should export a backup to this folder. To download the notebook to your computer, select <code>File &gt; Save and Export Notebook As &gt; Notebook (ipynb)</code>, as shown in <a href="#fig-save-menu" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<div id="fig-save-menu" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-save-menu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/save_notebook.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Menu to save a notebook to the local machine"><img src="figures/jupyterlite/save_notebook.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-save-menu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Menu to save a notebook to the local machine
+</figcaption>
 </figure>
 </div>
-<figcaption>Menu to save a notebook to the local machine</figcaption>
-</figure>
+<p>Once you’ve downloaded the notebook, you should move it to the <code>fysisk_biokemi</code> directory on your computer. For example, the folder might look <a href="#fig-directory-example" class="quarto-xref">Figure&nbsp;7</a>.</p>
+<div id="fig-directory-example" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-directory-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/directory.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: File browser on a Mac (Finder) showing a notebook in an appropriately named directory"><img src="figures/jupyterlite/directory.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
 </div>
-<p>Once you’ve downloaded the notebook, you should move it to the <code>fysisk_biokemi</code> directory on your computer. For example, the folder might look like this:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/directory.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="File browser on a Mac (Finder) showing a notebook in an appropriately named directory"><img src="figures/jupyterlite/directory.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="File browser on a Mac (Finder) showing a notebook in an appropriately named directory"></a></p>
-</figure>
-</div>
-<figcaption>File browser on a Mac (Finder) showing a notebook in an appropriately named directory</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-directory-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: File browser on a Mac (Finder) showing a notebook in an appropriately named directory
+</figcaption>
 </figure>
 </div>
 <section id="opening-a-saved-notebook" class="level3">
 <h3 class="anchored" data-anchor-id="opening-a-saved-notebook">Opening a saved notebook</h3>
-<p>To continue working on a notebook that is stored on your computer, upload the <code>.ipynb</code> file to JupyterLite. Click the <code>⬆</code> button in the JupyterLite file browser and select the notebook using your computer’s file browser. Once the notebook appears in the JupyterLite file browser, double-click it to open it.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/upload_data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Upload a file from your computer to JupyterLite"><img src="figures/jupyterlite/upload_data.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Upload a file from your computer to JupyterLite"></a></p>
-</figure>
+<p>To continue working on a notebook that is stored on your computer, upload the <code>.ipynb</code> file to JupyterLite. Click the <code>⬆</code> button in the JupyterLite file browser and select the notebook using your computer’s file browser. Once the notebook appears in the JupyterLite file browser, double-click it to open it. This is shown in <a href="#fig-upload" class="quarto-xref">Figure&nbsp;8</a>.</p>
+<div id="fig-upload" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-upload-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/upload_data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Upload a file from your computer to JupyterLite"><img src="figures/jupyterlite/upload_data.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
 </div>
-<figcaption>Upload a file from your computer to JupyterLite</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-upload-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Upload a file from your computer to JupyterLite
+</figcaption>
 </figure>
 </div>
 </section>
@@ -441,14 +450,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5" class="anchored" data-anchor-id="data-files"><span class="header-section-number">5</span> Data files</h2>
 <p>Many of the exercises we will work on in the course are about analyzing data and often this data will come in the form of files, such as <code>.csv</code> or <code>.xlsx</code>.</p>
 <p>You should also store these data files on your machine in the same folder (or a subfolder) as you store the notebooks. The screenshot below illustrates one way of managing this.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figures/jupyterlite/data_directory.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="File browser on a Mac (Finder) showing fysisk_biokemi-folder with a subfolder for data containing several data files."><img src="figures/jupyterlite/data_directory.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="File browser on a Mac (Finder) showing fysisk_biokemi-folder with a subfolder for data containing several data files."></a></p>
-</figure>
+<div id="fig-directory" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-directory-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/jupyterlite/data_directory.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: File browser on a Mac (Finder) showing fysisk_biokemi-folder with a subfolder for data containing several data files."><img src="figures/jupyterlite/data_directory.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></a>
 </div>
-<figcaption>File browser on a Mac (Finder) showing <code>fysisk_biokemi</code>-folder with a subfolder for data containing several data files.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-directory-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: File browser on a Mac (Finder) showing <code>fysisk_biokemi</code>-folder with a subfolder for data containing several data files.
+</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -467,32 +476,306 @@ Warning
 <p>You will need to upload these files to JupyterLite to work with them. Use the same <code>⬆</code> button described above for uploading a saved notebook, then select the data file using your computer’s file browser.</p>
 <p>JupyterLite has its own file system in your browser. Uploading a file creates a separate copy in this file system; it does not create a live connection to the original file on your computer. If you change the original file, you will need to upload it again for those changes to become available in JupyterLite.</p>
 <p>It is generally easiest to keep the notebook and its data files in the same folder in JupyterLite. A file in the same folder as the notebook can be referred to by its filename, for example <code>experiment.xlsx</code>. If you organize your data in a subfolder called <code>data</code>, the corresponding relative path is <code>data/experiment.xlsx</code>.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="If something goes wrong">
-<div class="callout-header d-flex align-content-center">
+</section>
+<section id="working-with-file-paths" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="working-with-file-paths"><span class="header-section-number">6</span> Working with file paths.</h2>
+<p>When you want a program to read file it needs to know where the file is this is called a “file path” (en fil sti in danish). There is no wiggle-room with these file paths, they need to be exactly correct, computers are not smart enough to know that if you asked for <code>dataa/abc.csv</code> but only <code>data/abc.csv</code> exists you probably meant that.</p>
+<p>The file system on a computer can be represented by a tree-structure, similar to a family tree. For example, the files in <a href="#fig-directory" class="quarto-xref">Figure&nbsp;9</a> can be represented by a tree like so</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fysisk_biokemi</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>├── data</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>│  ├── averag-prope-amino-acids.xlsx</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>│  ├── trypt-absor-fluor-emission.xlsx</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>│  └── trypt-absor-fluor-extinction.xlsx</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>└── jupyterlite_intro.ipynb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We see that <code>fysisk_biokemi</code> is a directory, that directory contains another directory <code>data</code> and a file <code>jupyterlite_intro.ipynb</code>, the <code>data</code> folder contains three files.</p>
+<p>When working in a notebook, we specify paths <em>relative</em> to the folder containing the notebook. You can think of the notebook as the program that is reading the file. The examples below show how the path changes when the notebook is placed in different folders.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="The notebook is inside the `fysisk_biokemi` folder">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>If something goes wrong
+<span class="screen-reader-only">Note</span>The notebook is inside the <code>fysisk_biokemi</code> folder
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
+<p>Consider the same tree with the notebook inside the <code>fysisk_biokemi</code> folder:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fysisk_biokemi</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>├── data</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>│  ├── averag-prope-amino-acids.xlsx</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>│  ├── trypt-absor-fluor-emission.xlsx</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>│  └── trypt-absor-fluor-extinction.xlsx</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>└── jupyterlite_intro.ipynb  ← notebook running from here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The relative path to one of the data files would then be <code>data/averag-prope-amino-acids.xlsx</code>. Starting from the folder containing the notebook, we first enter the <code>data</code> folder and then find the file <code>averag-prope-amino-acids.xlsx</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="The notebook is outside the `fysisk_biokemi` folder">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The notebook is outside the <code>fysisk_biokemi</code> folder
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If instead the notebook were located outside the <code>fysisk_biokemi</code> folder, the tree would look like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>.</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>├── jupyterlite_intro.ipynb  ← notebook running from here</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>└── fysisk_biokemi</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   └── data</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      ├── averag-prope-amino-acids.xlsx</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      ├── trypt-absor-fluor-emission.xlsx</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      └── trypt-absor-fluor-extinction.xlsx</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The relative path to the same data file would then be <code>fysisk_biokemi/data/averag-prope-amino-acids.xlsx</code>. Starting from the notebook, we first enter the <code>fysisk_biokemi</code> folder, then the <code>data</code> folder, and finally find the file.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="The notebook is in another folder inside `fysisk_biokemi`">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The notebook is in another folder inside <code>fysisk_biokemi</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Finally, the notebook could be located in a separate folder inside <code>fysisk_biokemi</code>, as illustrated by this tree:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fysisk_biokemi</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>├── data</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>│  ├── averag-prope-amino-acids.xlsx</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>│  ├── trypt-absor-fluor-emission.xlsx</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>│  └── trypt-absor-fluor-extinction.xlsx</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>└── program</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>   └── jupyterlite_intro.ipynb  ← notebook running from here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In this case, the relative path to the data file is <code>../data/averag-prope-amino-acids.xlsx</code>. Here, <code>../</code> means “go up one folder.” Starting from the <code>program</code> folder, we first go up to <code>fysisk_biokemi</code>, then enter the <code>data</code> folder and find the file.</p>
+</div>
+</div>
+</div>
+<p>Throughout the course we will be using the <a href="https://pandas.pydata.org/docs/index.html"><code>pandas</code></a> specifically we will be using the functions</p>
 <ul>
-<li>Make sure that you have run all earlier cells in the notebook, then try the cell again.</li>
-<li>If necessary, restart the notebook and run all cells from the top.</li>
-<li>Check that the required data files are visible in the JupyterLite file browser and that the path in the notebook matches their location.</li>
-<li>If work stored in the browser is unavailable, upload your latest exported <code>.ipynb</code> file.</li>
-<li>Before closing JupyterLite or clearing browser data, export a fresh <code>.ipynb</code> backup to your computer.</li>
+<li><code>pd.read_csv</code>: To read <code>.csv</code> files</li>
+<li><code>pd.read_excel</code>: To read <code>.xlsx</code> files.</li>
 </ul>
+<p>The syntax for <code>pd.read_csv</code> is</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'path/to/file.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>And equivalent for <code>pd.read_excel</code>.</p>
+<section id="try-it-yourself" class="level3">
+<h3 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h3>
+<p>The exercises below start with a file in the same folder as the notebook and gradually introduce more complex paths.</p>
+<script type="exercise-setup-file-path-same-folder-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjpbImZpbGUtcGF0aC1zYW1lLWZvbGRlciIsImZpbGUtcGF0aC1jaGlsZC1mb2xkZXIiLCJmaWxlLXBhdGgtbmVzdGVkLWZvbGRlciIsImZpbGUtcGF0aC1zaWJsaW5nLWZvbGRlciJdLCJzZXR1cCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgcGFuZGFzIGFzIF9wYW5kYXNcbmltcG9ydCBwb3NpeHBhdGhcblxuIyBFeHBlY3RlZCBjYWxscyBhbmQgZmVlZGJhY2sgdXNlZCBieSB0aGUgc2hhcmVkIGNoZWNrZXIuXG5FWFBFQ1RFRF9DQUxMUyA9IHtcbiAgICBcImZpbGUtcGF0aC1zYW1lLWZvbGRlclwiOiAoXCJyZWFkX2NzdlwiLCBcImV4cGVyaW1lbnQuY3N2XCIpLFxuICAgIFwiZmlsZS1wYXRoLWNoaWxkLWZvbGRlclwiOiAoXCJyZWFkX2V4Y2VsXCIsIFwiZGF0YS9wcm90ZWluX3NhbXBsZXMueGxzeFwiKSxcbiAgICBcImZpbGUtcGF0aC1uZXN0ZWQtZm9sZGVyXCI6IChcInJlYWRfY3N2XCIsIFwiZGF0YS9wcm9jZXNzZWQvZmx1b3Jlc2NlbmNlLmNzdlwiKSxcbiAgICBcImZpbGUtcGF0aC1zaWJsaW5nLWZvbGRlclwiOiAoXCJyZWFkX2V4Y2VsXCIsIFwiLi4vZGF0YS9lbnp5bWVfYWN0aXZpdHkueGxzeFwiKSxcbn1cblxuUEFUSF9ISU5UUyA9IHtcbiAgICBcImZpbGUtcGF0aC1zYW1lLWZvbGRlclwiOiBcIlRoZSBmaWxlIGlzIGluIHRoZSBzYW1lIGZvbGRlciBhcyB0aGUgbm90ZWJvb2ssIHNvIG5vIGZvbGRlciBuYW1lIGlzIG5lZWRlZC5cIixcbiAgICBcImZpbGUtcGF0aC1jaGlsZC1mb2xkZXJcIjogXCJTdGFydGluZyBmcm9tIHRoZSBub3RlYm9vaywgZW50ZXIgdGhlIDxjb2RlPmRhdGE8L2NvZGU+IGZvbGRlci5cIixcbiAgICBcImZpbGUtcGF0aC1uZXN0ZWQtZm9sZGVyXCI6IFwiU3RhcnRpbmcgZnJvbSB0aGUgbm90ZWJvb2ssIGVudGVyIDxjb2RlPmRhdGE8L2NvZGU+IGFuZCB0aGVuIDxjb2RlPnByb2Nlc3NlZDwvY29kZT4uXCIsXG4gICAgXCJmaWxlLXBhdGgtc2libGluZy1mb2xkZXJcIjogXCJHbyB1cCBvbmUgZm9sZGVyIHdpdGggPGNvZGU+Li4vPC9jb2RlPiwgdGhlbiBlbnRlciB0aGUgPGNvZGU+ZGF0YTwvY29kZT4gZm9sZGVyLlwiLFxufVxuXG4jIEVhY2ggdmFsaWQgcmVhZGVyL3BhdGggY29tYmluYXRpb24gcmV0dXJucyBhIHNtYWxsIGZpY3Rpb25hbCBkYXRhc2V0LlxuTU9DS19EQVRBID0ge1xuICAgIChcInJlYWRfY3N2XCIsIFwiZXhwZXJpbWVudC5jc3ZcIik6IHtcbiAgICAgICAgXCJzYW1wbGVcIjogW1wiQVwiLCBcIkJcIiwgXCJDXCJdLFxuICAgICAgICBcInBIXCI6IFsyLjAsIDcuMCwgMTAuMF0sXG4gICAgICAgIFwiYWJzb3JiYW5jZVwiOiBbMC4xOCwgMC43MywgMC40MV0sXG4gICAgfSxcbiAgICAoXCJyZWFkX2V4Y2VsXCIsIFwiZGF0YS9wcm90ZWluX3NhbXBsZXMueGxzeFwiKToge1xuICAgICAgICBcInNhbXBsZVwiOiBbXCJseXNhdGVcIiwgXCJ3YXNoXCIsIFwiZWx1YXRlXCJdLFxuICAgICAgICBcInByb3RlaW4gY29uY2VudHJhdGlvbiAobWcvbUwpXCI6IFs4LjQsIDAuNiwgMy4yXSxcbiAgICAgICAgXCJwdXJpdHkgKCUpXCI6IFs0MiwgMTgsIDkxXSxcbiAgICB9LFxuICAgIChcInJlYWRfY3N2XCIsIFwiZGF0YS9wcm9jZXNzZWQvZmx1b3Jlc2NlbmNlLmNzdlwiKToge1xuICAgICAgICBcIndhdmVsZW5ndGggKG5tKVwiOiBbMzIwLCAzNDAsIDM2MF0sXG4gICAgICAgIFwiZmx1b3Jlc2NlbmNlIChhLnUuKVwiOiBbMTQuMiwgNDguNywgMjIuNV0sXG4gICAgfSxcbiAgICAoXCJyZWFkX2V4Y2VsXCIsIFwiLi4vZGF0YS9lbnp5bWVfYWN0aXZpdHkueGxzeFwiKToge1xuICAgICAgICBcInN1YnN0cmF0ZSAobU0pXCI6IFswLjUsIDEuMCwgMi4wXSxcbiAgICAgICAgXCJyYXRlICjCtW1vbC9taW4pXCI6IFswLjgyLCAxLjMxLCAxLjY4XSxcbiAgICB9LFxufVxuXG5cbmNsYXNzIE1vY2tQYW5kYXM6XG4gICAgXCJcIlwiU21hbGwgc3RhbmQtaW4gZm9yIHRoZSB0d28gcGFuZGFzIHJlYWRlcnMgdXNlZCBpbiB0aGVzZSBleGVyY2lzZXMuXCJcIlwiXG5cbiAgICBkZWYgX19pbml0X18oc2VsZik6XG4gICAgICAgIHNlbGYuYXR0ZW1wdGVkX2NhbGxzID0gW11cblxuICAgIGRlZiBfcmVhZChzZWxmLCByZWFkZXIsIHBhdGgpOlxuICAgICAgICBzZWxmLmF0dGVtcHRlZF9jYWxscy5hcHBlbmQoKHJlYWRlciwgcGF0aCkpXG5cbiAgICAgICAgaWYgbm90IGlzaW5zdGFuY2UocGF0aCwgc3RyKTpcbiAgICAgICAgICAgIHJhaXNlIFR5cGVFcnJvcihcIlRoZSBmaWxlIHBhdGggbXVzdCBiZSB0ZXh0IGluIHF1b3RhdGlvbiBtYXJrcy5cIilcblxuICAgICAgICBrZXkgPSAocmVhZGVyLCBwb3NpeHBhdGgubm9ybXBhdGgocGF0aCkpXG4gICAgICAgIGlmIGtleSBub3QgaW4gTU9DS19EQVRBOlxuICAgICAgICAgICAgcmFpc2UgRmlsZU5vdEZvdW5kRXJyb3IoZlwiTm8gZmlsZSB3YXMgZm91bmQgYXQge3BhdGghcn0uXCIpXG5cbiAgICAgICAgcmV0dXJuIF9wYW5kYXMuRGF0YUZyYW1lKE1PQ0tfREFUQVtrZXldKVxuXG4gICAgZGVmIHJlYWRfY3N2KHNlbGYsIHBhdGgpOlxuICAgICAgICByZXR1cm4gc2VsZi5fcmVhZChcInJlYWRfY3N2XCIsIHBhdGgpXG5cbiAgICBkZWYgcmVhZF9leGNlbChzZWxmLCBwYXRoKTpcbiAgICAgICAgcmV0dXJuIHNlbGYuX3JlYWQoXCJyZWFkX2V4Y2VsXCIsIHBhdGgpXG5cblxucGQgPSBNb2NrUGFuZGFzKCkifQ==
+</script>
+<script type="exercise-setup-file-path-child-folder-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjpbImZpbGUtcGF0aC1zYW1lLWZvbGRlciIsImZpbGUtcGF0aC1jaGlsZC1mb2xkZXIiLCJmaWxlLXBhdGgtbmVzdGVkLWZvbGRlciIsImZpbGUtcGF0aC1zaWJsaW5nLWZvbGRlciJdLCJzZXR1cCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgcGFuZGFzIGFzIF9wYW5kYXNcbmltcG9ydCBwb3NpeHBhdGhcblxuIyBFeHBlY3RlZCBjYWxscyBhbmQgZmVlZGJhY2sgdXNlZCBieSB0aGUgc2hhcmVkIGNoZWNrZXIuXG5FWFBFQ1RFRF9DQUxMUyA9IHtcbiAgICBcImZpbGUtcGF0aC1zYW1lLWZvbGRlclwiOiAoXCJyZWFkX2NzdlwiLCBcImV4cGVyaW1lbnQuY3N2XCIpLFxuICAgIFwiZmlsZS1wYXRoLWNoaWxkLWZvbGRlclwiOiAoXCJyZWFkX2V4Y2VsXCIsIFwiZGF0YS9wcm90ZWluX3NhbXBsZXMueGxzeFwiKSxcbiAgICBcImZpbGUtcGF0aC1uZXN0ZWQtZm9sZGVyXCI6IChcInJlYWRfY3N2XCIsIFwiZGF0YS9wcm9jZXNzZWQvZmx1b3Jlc2NlbmNlLmNzdlwiKSxcbiAgICBcImZpbGUtcGF0aC1zaWJsaW5nLWZvbGRlclwiOiAoXCJyZWFkX2V4Y2VsXCIsIFwiLi4vZGF0YS9lbnp5bWVfYWN0aXZpdHkueGxzeFwiKSxcbn1cblxuUEFUSF9ISU5UUyA9IHtcbiAgICBcImZpbGUtcGF0aC1zYW1lLWZvbGRlclwiOiBcIlRoZSBmaWxlIGlzIGluIHRoZSBzYW1lIGZvbGRlciBhcyB0aGUgbm90ZWJvb2ssIHNvIG5vIGZvbGRlciBuYW1lIGlzIG5lZWRlZC5cIixcbiAgICBcImZpbGUtcGF0aC1jaGlsZC1mb2xkZXJcIjogXCJTdGFydGluZyBmcm9tIHRoZSBub3RlYm9vaywgZW50ZXIgdGhlIDxjb2RlPmRhdGE8L2NvZGU+IGZvbGRlci5cIixcbiAgICBcImZpbGUtcGF0aC1uZXN0ZWQtZm9sZGVyXCI6IFwiU3RhcnRpbmcgZnJvbSB0aGUgbm90ZWJvb2ssIGVudGVyIDxjb2RlPmRhdGE8L2NvZGU+IGFuZCB0aGVuIDxjb2RlPnByb2Nlc3NlZDwvY29kZT4uXCIsXG4gICAgXCJmaWxlLXBhdGgtc2libGluZy1mb2xkZXJcIjogXCJHbyB1cCBvbmUgZm9sZGVyIHdpdGggPGNvZGU+Li4vPC9jb2RlPiwgdGhlbiBlbnRlciB0aGUgPGNvZGU+ZGF0YTwvY29kZT4gZm9sZGVyLlwiLFxufVxuXG4jIEVhY2ggdmFsaWQgcmVhZGVyL3BhdGggY29tYmluYXRpb24gcmV0dXJucyBhIHNtYWxsIGZpY3Rpb25hbCBkYXRhc2V0LlxuTU9DS19EQVRBID0ge1xuICAgIChcInJlYWRfY3N2XCIsIFwiZXhwZXJpbWVudC5jc3ZcIik6IHtcbiAgICAgICAgXCJzYW1wbGVcIjogW1wiQVwiLCBcIkJcIiwgXCJDXCJdLFxuICAgICAgICBcInBIXCI6IFsyLjAsIDcuMCwgMTAuMF0sXG4gICAgICAgIFwiYWJzb3JiYW5jZVwiOiBbMC4xOCwgMC43MywgMC40MV0sXG4gICAgfSxcbiAgICAoXCJyZWFkX2V4Y2VsXCIsIFwiZGF0YS9wcm90ZWluX3NhbXBsZXMueGxzeFwiKToge1xuICAgICAgICBcInNhbXBsZVwiOiBbXCJseXNhdGVcIiwgXCJ3YXNoXCIsIFwiZWx1YXRlXCJdLFxuICAgICAgICBcInByb3RlaW4gY29uY2VudHJhdGlvbiAobWcvbUwpXCI6IFs4LjQsIDAuNiwgMy4yXSxcbiAgICAgICAgXCJwdXJpdHkgKCUpXCI6IFs0MiwgMTgsIDkxXSxcbiAgICB9LFxuICAgIChcInJlYWRfY3N2XCIsIFwiZGF0YS9wcm9jZXNzZWQvZmx1b3Jlc2NlbmNlLmNzdlwiKToge1xuICAgICAgICBcIndhdmVsZW5ndGggKG5tKVwiOiBbMzIwLCAzNDAsIDM2MF0sXG4gICAgICAgIFwiZmx1b3Jlc2NlbmNlIChhLnUuKVwiOiBbMTQuMiwgNDguNywgMjIuNV0sXG4gICAgfSxcbiAgICAoXCJyZWFkX2V4Y2VsXCIsIFwiLi4vZGF0YS9lbnp5bWVfYWN0aXZpdHkueGxzeFwiKToge1xuICAgICAgICBcInN1YnN0cmF0ZSAobU0pXCI6IFswLjUsIDEuMCwgMi4wXSxcbiAgICAgICAgXCJyYXRlICjCtW1vbC9taW4pXCI6IFswLjgyLCAxLjMxLCAxLjY4XSxcbiAgICB9LFxufVxuXG5cbmNsYXNzIE1vY2tQYW5kYXM6XG4gICAgXCJcIlwiU21hbGwgc3RhbmQtaW4gZm9yIHRoZSB0d28gcGFuZGFzIHJlYWRlcnMgdXNlZCBpbiB0aGVzZSBleGVyY2lzZXMuXCJcIlwiXG5cbiAgICBkZWYgX19pbml0X18oc2VsZik6XG4gICAgICAgIHNlbGYuYXR0ZW1wdGVkX2NhbGxzID0gW11cblxuICAgIGRlZiBfcmVhZChzZWxmLCByZWFkZXIsIHBhdGgpOlxuICAgICAgICBzZWxmLmF0dGVtcHRlZF9jYWxscy5hcHBlbmQoKHJlYWRlciwgcGF0aCkpXG5cbiAgICAgICAgaWYgbm90IGlzaW5zdGFuY2UocGF0aCwgc3RyKTpcbiAgICAgICAgICAgIHJhaXNlIFR5cGVFcnJvcihcIlRoZSBmaWxlIHBhdGggbXVzdCBiZSB0ZXh0IGluIHF1b3RhdGlvbiBtYXJrcy5cIilcblxuICAgICAgICBrZXkgPSAocmVhZGVyLCBwb3NpeHBhdGgubm9ybXBhdGgocGF0aCkpXG4gICAgICAgIGlmIGtleSBub3QgaW4gTU9DS19EQVRBOlxuICAgICAgICAgICAgcmFpc2UgRmlsZU5vdEZvdW5kRXJyb3IoZlwiTm8gZmlsZSB3YXMgZm91bmQgYXQge3BhdGghcn0uXCIpXG5cbiAgICAgICAgcmV0dXJuIF9wYW5kYXMuRGF0YUZyYW1lKE1PQ0tfREFUQVtrZXldKVxuXG4gICAgZGVmIHJlYWRfY3N2KHNlbGYsIHBhdGgpOlxuICAgICAgICByZXR1cm4gc2VsZi5fcmVhZChcInJlYWRfY3N2XCIsIHBhdGgpXG5cbiAgICBkZWYgcmVhZF9leGNlbChzZWxmLCBwYXRoKTpcbiAgICAgICAgcmV0dXJuIHNlbGYuX3JlYWQoXCJyZWFkX2V4Y2VsXCIsIHBhdGgpXG5cblxucGQgPSBNb2NrUGFuZGFzKCkifQ==
+</script>
+<script type="exercise-setup-file-path-nested-folder-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjpbImZpbGUtcGF0aC1zYW1lLWZvbGRlciIsImZpbGUtcGF0aC1jaGlsZC1mb2xkZXIiLCJmaWxlLXBhdGgtbmVzdGVkLWZvbGRlciIsImZpbGUtcGF0aC1zaWJsaW5nLWZvbGRlciJdLCJzZXR1cCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgcGFuZGFzIGFzIF9wYW5kYXNcbmltcG9ydCBwb3NpeHBhdGhcblxuIyBFeHBlY3RlZCBjYWxscyBhbmQgZmVlZGJhY2sgdXNlZCBieSB0aGUgc2hhcmVkIGNoZWNrZXIuXG5FWFBFQ1RFRF9DQUxMUyA9IHtcbiAgICBcImZpbGUtcGF0aC1zYW1lLWZvbGRlclwiOiAoXCJyZWFkX2NzdlwiLCBcImV4cGVyaW1lbnQuY3N2XCIpLFxuICAgIFwiZmlsZS1wYXRoLWNoaWxkLWZvbGRlclwiOiAoXCJyZWFkX2V4Y2VsXCIsIFwiZGF0YS9wcm90ZWluX3NhbXBsZXMueGxzeFwiKSxcbiAgICBcImZpbGUtcGF0aC1uZXN0ZWQtZm9sZGVyXCI6IChcInJlYWRfY3N2XCIsIFwiZGF0YS9wcm9jZXNzZWQvZmx1b3Jlc2NlbmNlLmNzdlwiKSxcbiAgICBcImZpbGUtcGF0aC1zaWJsaW5nLWZvbGRlclwiOiAoXCJyZWFkX2V4Y2VsXCIsIFwiLi4vZGF0YS9lbnp5bWVfYWN0aXZpdHkueGxzeFwiKSxcbn1cblxuUEFUSF9ISU5UUyA9IHtcbiAgICBcImZpbGUtcGF0aC1zYW1lLWZvbGRlclwiOiBcIlRoZSBmaWxlIGlzIGluIHRoZSBzYW1lIGZvbGRlciBhcyB0aGUgbm90ZWJvb2ssIHNvIG5vIGZvbGRlciBuYW1lIGlzIG5lZWRlZC5cIixcbiAgICBcImZpbGUtcGF0aC1jaGlsZC1mb2xkZXJcIjogXCJTdGFydGluZyBmcm9tIHRoZSBub3RlYm9vaywgZW50ZXIgdGhlIDxjb2RlPmRhdGE8L2NvZGU+IGZvbGRlci5cIixcbiAgICBcImZpbGUtcGF0aC1uZXN0ZWQtZm9sZGVyXCI6IFwiU3RhcnRpbmcgZnJvbSB0aGUgbm90ZWJvb2ssIGVudGVyIDxjb2RlPmRhdGE8L2NvZGU+IGFuZCB0aGVuIDxjb2RlPnByb2Nlc3NlZDwvY29kZT4uXCIsXG4gICAgXCJmaWxlLXBhdGgtc2libGluZy1mb2xkZXJcIjogXCJHbyB1cCBvbmUgZm9sZGVyIHdpdGggPGNvZGU+Li4vPC9jb2RlPiwgdGhlbiBlbnRlciB0aGUgPGNvZGU+ZGF0YTwvY29kZT4gZm9sZGVyLlwiLFxufVxuXG4jIEVhY2ggdmFsaWQgcmVhZGVyL3BhdGggY29tYmluYXRpb24gcmV0dXJucyBhIHNtYWxsIGZpY3Rpb25hbCBkYXRhc2V0LlxuTU9DS19EQVRBID0ge1xuICAgIChcInJlYWRfY3N2XCIsIFwiZXhwZXJpbWVudC5jc3ZcIik6IHtcbiAgICAgICAgXCJzYW1wbGVcIjogW1wiQVwiLCBcIkJcIiwgXCJDXCJdLFxuICAgICAgICBcInBIXCI6IFsyLjAsIDcuMCwgMTAuMF0sXG4gICAgICAgIFwiYWJzb3JiYW5jZVwiOiBbMC4xOCwgMC43MywgMC40MV0sXG4gICAgfSxcbiAgICAoXCJyZWFkX2V4Y2VsXCIsIFwiZGF0YS9wcm90ZWluX3NhbXBsZXMueGxzeFwiKToge1xuICAgICAgICBcInNhbXBsZVwiOiBbXCJseXNhdGVcIiwgXCJ3YXNoXCIsIFwiZWx1YXRlXCJdLFxuICAgICAgICBcInByb3RlaW4gY29uY2VudHJhdGlvbiAobWcvbUwpXCI6IFs4LjQsIDAuNiwgMy4yXSxcbiAgICAgICAgXCJwdXJpdHkgKCUpXCI6IFs0MiwgMTgsIDkxXSxcbiAgICB9LFxuICAgIChcInJlYWRfY3N2XCIsIFwiZGF0YS9wcm9jZXNzZWQvZmx1b3Jlc2NlbmNlLmNzdlwiKToge1xuICAgICAgICBcIndhdmVsZW5ndGggKG5tKVwiOiBbMzIwLCAzNDAsIDM2MF0sXG4gICAgICAgIFwiZmx1b3Jlc2NlbmNlIChhLnUuKVwiOiBbMTQuMiwgNDguNywgMjIuNV0sXG4gICAgfSxcbiAgICAoXCJyZWFkX2V4Y2VsXCIsIFwiLi4vZGF0YS9lbnp5bWVfYWN0aXZpdHkueGxzeFwiKToge1xuICAgICAgICBcInN1YnN0cmF0ZSAobU0pXCI6IFswLjUsIDEuMCwgMi4wXSxcbiAgICAgICAgXCJyYXRlICjCtW1vbC9taW4pXCI6IFswLjgyLCAxLjMxLCAxLjY4XSxcbiAgICB9LFxufVxuXG5cbmNsYXNzIE1vY2tQYW5kYXM6XG4gICAgXCJcIlwiU21hbGwgc3RhbmQtaW4gZm9yIHRoZSB0d28gcGFuZGFzIHJlYWRlcnMgdXNlZCBpbiB0aGVzZSBleGVyY2lzZXMuXCJcIlwiXG5cbiAgICBkZWYgX19pbml0X18oc2VsZik6XG4gICAgICAgIHNlbGYuYXR0ZW1wdGVkX2NhbGxzID0gW11cblxuICAgIGRlZiBfcmVhZChzZWxmLCByZWFkZXIsIHBhdGgpOlxuICAgICAgICBzZWxmLmF0dGVtcHRlZF9jYWxscy5hcHBlbmQoKHJlYWRlciwgcGF0aCkpXG5cbiAgICAgICAgaWYgbm90IGlzaW5zdGFuY2UocGF0aCwgc3RyKTpcbiAgICAgICAgICAgIHJhaXNlIFR5cGVFcnJvcihcIlRoZSBmaWxlIHBhdGggbXVzdCBiZSB0ZXh0IGluIHF1b3RhdGlvbiBtYXJrcy5cIilcblxuICAgICAgICBrZXkgPSAocmVhZGVyLCBwb3NpeHBhdGgubm9ybXBhdGgocGF0aCkpXG4gICAgICAgIGlmIGtleSBub3QgaW4gTU9DS19EQVRBOlxuICAgICAgICAgICAgcmFpc2UgRmlsZU5vdEZvdW5kRXJyb3IoZlwiTm8gZmlsZSB3YXMgZm91bmQgYXQge3BhdGghcn0uXCIpXG5cbiAgICAgICAgcmV0dXJuIF9wYW5kYXMuRGF0YUZyYW1lKE1PQ0tfREFUQVtrZXldKVxuXG4gICAgZGVmIHJlYWRfY3N2KHNlbGYsIHBhdGgpOlxuICAgICAgICByZXR1cm4gc2VsZi5fcmVhZChcInJlYWRfY3N2XCIsIHBhdGgpXG5cbiAgICBkZWYgcmVhZF9leGNlbChzZWxmLCBwYXRoKTpcbiAgICAgICAgcmV0dXJuIHNlbGYuX3JlYWQoXCJyZWFkX2V4Y2VsXCIsIHBhdGgpXG5cblxucGQgPSBNb2NrUGFuZGFzKCkifQ==
+</script>
+<script type="exercise-setup-file-path-sibling-folder-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjpbImZpbGUtcGF0aC1zYW1lLWZvbGRlciIsImZpbGUtcGF0aC1jaGlsZC1mb2xkZXIiLCJmaWxlLXBhdGgtbmVzdGVkLWZvbGRlciIsImZpbGUtcGF0aC1zaWJsaW5nLWZvbGRlciJdLCJzZXR1cCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgcGFuZGFzIGFzIF9wYW5kYXNcbmltcG9ydCBwb3NpeHBhdGhcblxuIyBFeHBlY3RlZCBjYWxscyBhbmQgZmVlZGJhY2sgdXNlZCBieSB0aGUgc2hhcmVkIGNoZWNrZXIuXG5FWFBFQ1RFRF9DQUxMUyA9IHtcbiAgICBcImZpbGUtcGF0aC1zYW1lLWZvbGRlclwiOiAoXCJyZWFkX2NzdlwiLCBcImV4cGVyaW1lbnQuY3N2XCIpLFxuICAgIFwiZmlsZS1wYXRoLWNoaWxkLWZvbGRlclwiOiAoXCJyZWFkX2V4Y2VsXCIsIFwiZGF0YS9wcm90ZWluX3NhbXBsZXMueGxzeFwiKSxcbiAgICBcImZpbGUtcGF0aC1uZXN0ZWQtZm9sZGVyXCI6IChcInJlYWRfY3N2XCIsIFwiZGF0YS9wcm9jZXNzZWQvZmx1b3Jlc2NlbmNlLmNzdlwiKSxcbiAgICBcImZpbGUtcGF0aC1zaWJsaW5nLWZvbGRlclwiOiAoXCJyZWFkX2V4Y2VsXCIsIFwiLi4vZGF0YS9lbnp5bWVfYWN0aXZpdHkueGxzeFwiKSxcbn1cblxuUEFUSF9ISU5UUyA9IHtcbiAgICBcImZpbGUtcGF0aC1zYW1lLWZvbGRlclwiOiBcIlRoZSBmaWxlIGlzIGluIHRoZSBzYW1lIGZvbGRlciBhcyB0aGUgbm90ZWJvb2ssIHNvIG5vIGZvbGRlciBuYW1lIGlzIG5lZWRlZC5cIixcbiAgICBcImZpbGUtcGF0aC1jaGlsZC1mb2xkZXJcIjogXCJTdGFydGluZyBmcm9tIHRoZSBub3RlYm9vaywgZW50ZXIgdGhlIDxjb2RlPmRhdGE8L2NvZGU+IGZvbGRlci5cIixcbiAgICBcImZpbGUtcGF0aC1uZXN0ZWQtZm9sZGVyXCI6IFwiU3RhcnRpbmcgZnJvbSB0aGUgbm90ZWJvb2ssIGVudGVyIDxjb2RlPmRhdGE8L2NvZGU+IGFuZCB0aGVuIDxjb2RlPnByb2Nlc3NlZDwvY29kZT4uXCIsXG4gICAgXCJmaWxlLXBhdGgtc2libGluZy1mb2xkZXJcIjogXCJHbyB1cCBvbmUgZm9sZGVyIHdpdGggPGNvZGU+Li4vPC9jb2RlPiwgdGhlbiBlbnRlciB0aGUgPGNvZGU+ZGF0YTwvY29kZT4gZm9sZGVyLlwiLFxufVxuXG4jIEVhY2ggdmFsaWQgcmVhZGVyL3BhdGggY29tYmluYXRpb24gcmV0dXJucyBhIHNtYWxsIGZpY3Rpb25hbCBkYXRhc2V0LlxuTU9DS19EQVRBID0ge1xuICAgIChcInJlYWRfY3N2XCIsIFwiZXhwZXJpbWVudC5jc3ZcIik6IHtcbiAgICAgICAgXCJzYW1wbGVcIjogW1wiQVwiLCBcIkJcIiwgXCJDXCJdLFxuICAgICAgICBcInBIXCI6IFsyLjAsIDcuMCwgMTAuMF0sXG4gICAgICAgIFwiYWJzb3JiYW5jZVwiOiBbMC4xOCwgMC43MywgMC40MV0sXG4gICAgfSxcbiAgICAoXCJyZWFkX2V4Y2VsXCIsIFwiZGF0YS9wcm90ZWluX3NhbXBsZXMueGxzeFwiKToge1xuICAgICAgICBcInNhbXBsZVwiOiBbXCJseXNhdGVcIiwgXCJ3YXNoXCIsIFwiZWx1YXRlXCJdLFxuICAgICAgICBcInByb3RlaW4gY29uY2VudHJhdGlvbiAobWcvbUwpXCI6IFs4LjQsIDAuNiwgMy4yXSxcbiAgICAgICAgXCJwdXJpdHkgKCUpXCI6IFs0MiwgMTgsIDkxXSxcbiAgICB9LFxuICAgIChcInJlYWRfY3N2XCIsIFwiZGF0YS9wcm9jZXNzZWQvZmx1b3Jlc2NlbmNlLmNzdlwiKToge1xuICAgICAgICBcIndhdmVsZW5ndGggKG5tKVwiOiBbMzIwLCAzNDAsIDM2MF0sXG4gICAgICAgIFwiZmx1b3Jlc2NlbmNlIChhLnUuKVwiOiBbMTQuMiwgNDguNywgMjIuNV0sXG4gICAgfSxcbiAgICAoXCJyZWFkX2V4Y2VsXCIsIFwiLi4vZGF0YS9lbnp5bWVfYWN0aXZpdHkueGxzeFwiKToge1xuICAgICAgICBcInN1YnN0cmF0ZSAobU0pXCI6IFswLjUsIDEuMCwgMi4wXSxcbiAgICAgICAgXCJyYXRlICjCtW1vbC9taW4pXCI6IFswLjgyLCAxLjMxLCAxLjY4XSxcbiAgICB9LFxufVxuXG5cbmNsYXNzIE1vY2tQYW5kYXM6XG4gICAgXCJcIlwiU21hbGwgc3RhbmQtaW4gZm9yIHRoZSB0d28gcGFuZGFzIHJlYWRlcnMgdXNlZCBpbiB0aGVzZSBleGVyY2lzZXMuXCJcIlwiXG5cbiAgICBkZWYgX19pbml0X18oc2VsZik6XG4gICAgICAgIHNlbGYuYXR0ZW1wdGVkX2NhbGxzID0gW11cblxuICAgIGRlZiBfcmVhZChzZWxmLCByZWFkZXIsIHBhdGgpOlxuICAgICAgICBzZWxmLmF0dGVtcHRlZF9jYWxscy5hcHBlbmQoKHJlYWRlciwgcGF0aCkpXG5cbiAgICAgICAgaWYgbm90IGlzaW5zdGFuY2UocGF0aCwgc3RyKTpcbiAgICAgICAgICAgIHJhaXNlIFR5cGVFcnJvcihcIlRoZSBmaWxlIHBhdGggbXVzdCBiZSB0ZXh0IGluIHF1b3RhdGlvbiBtYXJrcy5cIilcblxuICAgICAgICBrZXkgPSAocmVhZGVyLCBwb3NpeHBhdGgubm9ybXBhdGgocGF0aCkpXG4gICAgICAgIGlmIGtleSBub3QgaW4gTU9DS19EQVRBOlxuICAgICAgICAgICAgcmFpc2UgRmlsZU5vdEZvdW5kRXJyb3IoZlwiTm8gZmlsZSB3YXMgZm91bmQgYXQge3BhdGghcn0uXCIpXG5cbiAgICAgICAgcmV0dXJuIF9wYW5kYXMuRGF0YUZyYW1lKE1PQ0tfREFUQVtrZXldKVxuXG4gICAgZGVmIHJlYWRfY3N2KHNlbGYsIHBhdGgpOlxuICAgICAgICByZXR1cm4gc2VsZi5fcmVhZChcInJlYWRfY3N2XCIsIHBhdGgpXG5cbiAgICBkZWYgcmVhZF9leGNlbChzZWxmLCBwYXRoKTpcbiAgICAgICAgcmV0dXJuIHNlbGYuX3JlYWQoXCJyZWFkX2V4Y2VsXCIsIHBhdGgpXG5cblxucGQgPSBNb2NrUGFuZGFzKCkifQ==
+</script>
+<script type="exercise-check-file-path-same-folder-contents">
+eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6WyJmaWxlLXBhdGgtc2FtZS1mb2xkZXIiLCJmaWxlLXBhdGgtY2hpbGQtZm9sZGVyIiwiZmlsZS1wYXRoLW5lc3RlZC1mb2xkZXIiLCJmaWxlLXBhdGgtc2libGluZy1mb2xkZXIiXX0sImNvZGUiOiJpbXBvcnQgcG9zaXhwYXRoXG5cbiMgUXVhcnRvIExpdmUgZXZhbHVhdGVzIHRoZSBtb2RlbCBzb2x1dGlvbiBhZnRlciB0aGUgbGVhcm5lcidzIGNvZGUuIElmIG9ubHlcbiMgdGhhdCBzb2x1dGlvbiBjYWxsIGlzIHJlY29yZGVkLCB0aGUgbGVhcm5lcidzIGNhbGwgbmV2ZXIgcmVhY2hlZCB0aGUgbW9jay5cbmF0dGVtcHRlZF9jYWxscyA9IGVudmlyX3Jlc3VsdFtcInBkXCJdLmF0dGVtcHRlZF9jYWxsc1xuYXR0ZW1wdGVkX3JlYWRlciwgYXR0ZW1wdGVkX3BhdGggPSAoXG4gICAgYXR0ZW1wdGVkX2NhbGxzWzBdIGlmIGxlbihhdHRlbXB0ZWRfY2FsbHMpID4gMSBlbHNlIChOb25lLCBOb25lKVxuKVxuZXhwZWN0ZWRfcmVhZGVyLCBleHBlY3RlZF9wYXRoID0gZW52aXJfcmVzdWx0W1wiRVhQRUNURURfQ0FMTFNcIl1bbGFiZWxdXG5wYXRoX2hpbnQgPSBlbnZpcl9yZXN1bHRbXCJQQVRIX0hJTlRTXCJdW2xhYmVsXVxuZXhwZWN0ZWRfZXh0ZW5zaW9uID0gcG9zaXhwYXRoLnNwbGl0ZXh0KGV4cGVjdGVkX3BhdGgpWzFdXG5cbnJlYWRlcl9tZXNzYWdlID0gKFxuICAgIFwiVXNlIDxjb2RlPnBkLnJlYWRfZXhjZWw8L2NvZGU+IGZvciBhbiA8Y29kZT4ueGxzeDwvY29kZT4gZmlsZS5cIlxuICAgIGlmIGV4cGVjdGVkX3JlYWRlciA9PSBcInJlYWRfZXhjZWxcIlxuICAgIGVsc2UgXCJVc2UgPGNvZGU+cGQucmVhZF9jc3Y8L2NvZGU+IGZvciBhIDxjb2RlPi5jc3Y8L2NvZGU+IGZpbGUuXCJcbilcblxuaWYgYXR0ZW1wdGVkX3BhdGggaXMgTm9uZTpcbiAgICBpZiBleHBlY3RlZF9yZWFkZXIgbm90IGluIHVzZXJfY29kZTpcbiAgICAgICAgZmVlZGJhY2sgPSB7XCJjb3JyZWN0XCI6IEZhbHNlLCBcIm1lc3NhZ2VcIjogcmVhZGVyX21lc3NhZ2V9XG4gICAgZWxzZTpcbiAgICAgICAgZmVlZGJhY2sgPSB7XG4gICAgICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgICAgICBcIm1lc3NhZ2VcIjogXCJXcml0ZSB0aGUgcGF0aCBhcyB0ZXh0IGJ5IHB1dHRpbmcgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBpdCwgZm9yIGV4YW1wbGUgPGNvZGU+XFxcImZpbGVuYW1lLmNzdlxcXCI8L2NvZGU+LlwiLFxuICAgICAgICB9XG5lbGlmIG5vdCBpc2luc3RhbmNlKGF0dGVtcHRlZF9wYXRoLCBzdHIpOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBcIkEgZmlsZSBwYXRoIG11c3QgYmUgdGV4dC4gUHV0IHF1b3RhdGlvbiBtYXJrcyBhcm91bmQgdGhlIGZpbGVuYW1lLlwiLFxuICAgIH1cbmVsaWYgYXR0ZW1wdGVkX3JlYWRlciAhPSBleHBlY3RlZF9yZWFkZXI6XG4gICAgZmVlZGJhY2sgPSB7XCJjb3JyZWN0XCI6IEZhbHNlLCBcIm1lc3NhZ2VcIjogcmVhZGVyX21lc3NhZ2V9XG5lbGlmIFwiXFxcXFwiIGluIGF0dGVtcHRlZF9wYXRoOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBmXCJVc2UgPGNvZGU+LzwvY29kZT4gcmF0aGVyIHRoYW4gPGNvZGU+XFxcXDwvY29kZT4gaW4gcGF0aHMuIHtwYXRoX2hpbnR9XCIsXG4gICAgfVxuZWxpZiBwb3NpeHBhdGguaXNhYnMoYXR0ZW1wdGVkX3BhdGgpOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBcIlVzZSBhIHJlbGF0aXZlIHBhdGggc3RhcnRpbmcgZnJvbSB0aGUgbm90ZWJvb2suIFlvdSBkbyBub3QgbmVlZCB0aGUgY29tcGxldGUgcGF0aCBmcm9tIHRoZSB0b3Agb2YgdGhlIGZpbGUgc3lzdGVtLlwiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLm5vcm1wYXRoKGF0dGVtcHRlZF9wYXRoKSA9PSBleHBlY3RlZF9wYXRoOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogVHJ1ZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiQ29ycmVjdCEgVGhlIHJlYWRlciBhbmQgcGF0aCBtYXRjaCB0aGUgZmlsZSBzaG93biBpbiB0aGUgdHJlZS5cIixcbiAgICAgICAgXCJ0eXBlXCI6IFwic3VjY2Vzc1wiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLmJhc2VuYW1lKHBvc2l4cGF0aC5ub3JtcGF0aChhdHRlbXB0ZWRfcGF0aCkpID09IHBvc2l4cGF0aC5iYXNlbmFtZShleHBlY3RlZF9wYXRoKTpcbiAgICBmZWVkYmFjayA9IHtcImNvcnJlY3RcIjogRmFsc2UsIFwibWVzc2FnZVwiOiBwYXRoX2hpbnR9XG5lbGlmIHBvc2l4cGF0aC5zcGxpdGV4dChhdHRlbXB0ZWRfcGF0aClbMV0ubG93ZXIoKSAhPSBleHBlY3RlZF9leHRlbnNpb246XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IGZcIkNoZWNrIHRoZSBmaWxlIGV4dGVuc2lvbiBpbiB0aGUgdHJlZS4gVGhpcyBmaWxlIGVuZHMgaW4gPGNvZGU+e2V4cGVjdGVkX2V4dGVuc2lvbn08L2NvZGU+LlwiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLmJhc2VuYW1lKGF0dGVtcHRlZF9wYXRoKSAhPSBwb3NpeHBhdGguYmFzZW5hbWUoZXhwZWN0ZWRfcGF0aCk6XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiVGhlIGZpbGVuYW1lIGRvZXMgbm90IG1hdGNoIHRoZSB0cmVlLiBDaGVjayBpdHMgc3BlbGxpbmcgY2FyZWZ1bGx5LlwiLFxuICAgIH1cbmVsc2U6XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiQ29tcGFyZSB5b3VyIHBhdGggd2l0aCB0aGUgZmlsZSB0cmVlIGFuZCByZW1lbWJlciB0aGF0IHBhdGhzIHN0YXJ0IGZyb20gdGhlIG5vdGVib29rJ3MgZm9sZGVyLlwiLFxuICAgIH1cblxuZmVlZGJhY2sifQ==
+</script>
+<script type="exercise-check-file-path-child-folder-contents">
+eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6WyJmaWxlLXBhdGgtc2FtZS1mb2xkZXIiLCJmaWxlLXBhdGgtY2hpbGQtZm9sZGVyIiwiZmlsZS1wYXRoLW5lc3RlZC1mb2xkZXIiLCJmaWxlLXBhdGgtc2libGluZy1mb2xkZXIiXX0sImNvZGUiOiJpbXBvcnQgcG9zaXhwYXRoXG5cbiMgUXVhcnRvIExpdmUgZXZhbHVhdGVzIHRoZSBtb2RlbCBzb2x1dGlvbiBhZnRlciB0aGUgbGVhcm5lcidzIGNvZGUuIElmIG9ubHlcbiMgdGhhdCBzb2x1dGlvbiBjYWxsIGlzIHJlY29yZGVkLCB0aGUgbGVhcm5lcidzIGNhbGwgbmV2ZXIgcmVhY2hlZCB0aGUgbW9jay5cbmF0dGVtcHRlZF9jYWxscyA9IGVudmlyX3Jlc3VsdFtcInBkXCJdLmF0dGVtcHRlZF9jYWxsc1xuYXR0ZW1wdGVkX3JlYWRlciwgYXR0ZW1wdGVkX3BhdGggPSAoXG4gICAgYXR0ZW1wdGVkX2NhbGxzWzBdIGlmIGxlbihhdHRlbXB0ZWRfY2FsbHMpID4gMSBlbHNlIChOb25lLCBOb25lKVxuKVxuZXhwZWN0ZWRfcmVhZGVyLCBleHBlY3RlZF9wYXRoID0gZW52aXJfcmVzdWx0W1wiRVhQRUNURURfQ0FMTFNcIl1bbGFiZWxdXG5wYXRoX2hpbnQgPSBlbnZpcl9yZXN1bHRbXCJQQVRIX0hJTlRTXCJdW2xhYmVsXVxuZXhwZWN0ZWRfZXh0ZW5zaW9uID0gcG9zaXhwYXRoLnNwbGl0ZXh0KGV4cGVjdGVkX3BhdGgpWzFdXG5cbnJlYWRlcl9tZXNzYWdlID0gKFxuICAgIFwiVXNlIDxjb2RlPnBkLnJlYWRfZXhjZWw8L2NvZGU+IGZvciBhbiA8Y29kZT4ueGxzeDwvY29kZT4gZmlsZS5cIlxuICAgIGlmIGV4cGVjdGVkX3JlYWRlciA9PSBcInJlYWRfZXhjZWxcIlxuICAgIGVsc2UgXCJVc2UgPGNvZGU+cGQucmVhZF9jc3Y8L2NvZGU+IGZvciBhIDxjb2RlPi5jc3Y8L2NvZGU+IGZpbGUuXCJcbilcblxuaWYgYXR0ZW1wdGVkX3BhdGggaXMgTm9uZTpcbiAgICBpZiBleHBlY3RlZF9yZWFkZXIgbm90IGluIHVzZXJfY29kZTpcbiAgICAgICAgZmVlZGJhY2sgPSB7XCJjb3JyZWN0XCI6IEZhbHNlLCBcIm1lc3NhZ2VcIjogcmVhZGVyX21lc3NhZ2V9XG4gICAgZWxzZTpcbiAgICAgICAgZmVlZGJhY2sgPSB7XG4gICAgICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgICAgICBcIm1lc3NhZ2VcIjogXCJXcml0ZSB0aGUgcGF0aCBhcyB0ZXh0IGJ5IHB1dHRpbmcgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBpdCwgZm9yIGV4YW1wbGUgPGNvZGU+XFxcImZpbGVuYW1lLmNzdlxcXCI8L2NvZGU+LlwiLFxuICAgICAgICB9XG5lbGlmIG5vdCBpc2luc3RhbmNlKGF0dGVtcHRlZF9wYXRoLCBzdHIpOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBcIkEgZmlsZSBwYXRoIG11c3QgYmUgdGV4dC4gUHV0IHF1b3RhdGlvbiBtYXJrcyBhcm91bmQgdGhlIGZpbGVuYW1lLlwiLFxuICAgIH1cbmVsaWYgYXR0ZW1wdGVkX3JlYWRlciAhPSBleHBlY3RlZF9yZWFkZXI6XG4gICAgZmVlZGJhY2sgPSB7XCJjb3JyZWN0XCI6IEZhbHNlLCBcIm1lc3NhZ2VcIjogcmVhZGVyX21lc3NhZ2V9XG5lbGlmIFwiXFxcXFwiIGluIGF0dGVtcHRlZF9wYXRoOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBmXCJVc2UgPGNvZGU+LzwvY29kZT4gcmF0aGVyIHRoYW4gPGNvZGU+XFxcXDwvY29kZT4gaW4gcGF0aHMuIHtwYXRoX2hpbnR9XCIsXG4gICAgfVxuZWxpZiBwb3NpeHBhdGguaXNhYnMoYXR0ZW1wdGVkX3BhdGgpOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBcIlVzZSBhIHJlbGF0aXZlIHBhdGggc3RhcnRpbmcgZnJvbSB0aGUgbm90ZWJvb2suIFlvdSBkbyBub3QgbmVlZCB0aGUgY29tcGxldGUgcGF0aCBmcm9tIHRoZSB0b3Agb2YgdGhlIGZpbGUgc3lzdGVtLlwiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLm5vcm1wYXRoKGF0dGVtcHRlZF9wYXRoKSA9PSBleHBlY3RlZF9wYXRoOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogVHJ1ZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiQ29ycmVjdCEgVGhlIHJlYWRlciBhbmQgcGF0aCBtYXRjaCB0aGUgZmlsZSBzaG93biBpbiB0aGUgdHJlZS5cIixcbiAgICAgICAgXCJ0eXBlXCI6IFwic3VjY2Vzc1wiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLmJhc2VuYW1lKHBvc2l4cGF0aC5ub3JtcGF0aChhdHRlbXB0ZWRfcGF0aCkpID09IHBvc2l4cGF0aC5iYXNlbmFtZShleHBlY3RlZF9wYXRoKTpcbiAgICBmZWVkYmFjayA9IHtcImNvcnJlY3RcIjogRmFsc2UsIFwibWVzc2FnZVwiOiBwYXRoX2hpbnR9XG5lbGlmIHBvc2l4cGF0aC5zcGxpdGV4dChhdHRlbXB0ZWRfcGF0aClbMV0ubG93ZXIoKSAhPSBleHBlY3RlZF9leHRlbnNpb246XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IGZcIkNoZWNrIHRoZSBmaWxlIGV4dGVuc2lvbiBpbiB0aGUgdHJlZS4gVGhpcyBmaWxlIGVuZHMgaW4gPGNvZGU+e2V4cGVjdGVkX2V4dGVuc2lvbn08L2NvZGU+LlwiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLmJhc2VuYW1lKGF0dGVtcHRlZF9wYXRoKSAhPSBwb3NpeHBhdGguYmFzZW5hbWUoZXhwZWN0ZWRfcGF0aCk6XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiVGhlIGZpbGVuYW1lIGRvZXMgbm90IG1hdGNoIHRoZSB0cmVlLiBDaGVjayBpdHMgc3BlbGxpbmcgY2FyZWZ1bGx5LlwiLFxuICAgIH1cbmVsc2U6XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiQ29tcGFyZSB5b3VyIHBhdGggd2l0aCB0aGUgZmlsZSB0cmVlIGFuZCByZW1lbWJlciB0aGF0IHBhdGhzIHN0YXJ0IGZyb20gdGhlIG5vdGVib29rJ3MgZm9sZGVyLlwiLFxuICAgIH1cblxuZmVlZGJhY2sifQ==
+</script>
+<script type="exercise-check-file-path-nested-folder-contents">
+eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6WyJmaWxlLXBhdGgtc2FtZS1mb2xkZXIiLCJmaWxlLXBhdGgtY2hpbGQtZm9sZGVyIiwiZmlsZS1wYXRoLW5lc3RlZC1mb2xkZXIiLCJmaWxlLXBhdGgtc2libGluZy1mb2xkZXIiXX0sImNvZGUiOiJpbXBvcnQgcG9zaXhwYXRoXG5cbiMgUXVhcnRvIExpdmUgZXZhbHVhdGVzIHRoZSBtb2RlbCBzb2x1dGlvbiBhZnRlciB0aGUgbGVhcm5lcidzIGNvZGUuIElmIG9ubHlcbiMgdGhhdCBzb2x1dGlvbiBjYWxsIGlzIHJlY29yZGVkLCB0aGUgbGVhcm5lcidzIGNhbGwgbmV2ZXIgcmVhY2hlZCB0aGUgbW9jay5cbmF0dGVtcHRlZF9jYWxscyA9IGVudmlyX3Jlc3VsdFtcInBkXCJdLmF0dGVtcHRlZF9jYWxsc1xuYXR0ZW1wdGVkX3JlYWRlciwgYXR0ZW1wdGVkX3BhdGggPSAoXG4gICAgYXR0ZW1wdGVkX2NhbGxzWzBdIGlmIGxlbihhdHRlbXB0ZWRfY2FsbHMpID4gMSBlbHNlIChOb25lLCBOb25lKVxuKVxuZXhwZWN0ZWRfcmVhZGVyLCBleHBlY3RlZF9wYXRoID0gZW52aXJfcmVzdWx0W1wiRVhQRUNURURfQ0FMTFNcIl1bbGFiZWxdXG5wYXRoX2hpbnQgPSBlbnZpcl9yZXN1bHRbXCJQQVRIX0hJTlRTXCJdW2xhYmVsXVxuZXhwZWN0ZWRfZXh0ZW5zaW9uID0gcG9zaXhwYXRoLnNwbGl0ZXh0KGV4cGVjdGVkX3BhdGgpWzFdXG5cbnJlYWRlcl9tZXNzYWdlID0gKFxuICAgIFwiVXNlIDxjb2RlPnBkLnJlYWRfZXhjZWw8L2NvZGU+IGZvciBhbiA8Y29kZT4ueGxzeDwvY29kZT4gZmlsZS5cIlxuICAgIGlmIGV4cGVjdGVkX3JlYWRlciA9PSBcInJlYWRfZXhjZWxcIlxuICAgIGVsc2UgXCJVc2UgPGNvZGU+cGQucmVhZF9jc3Y8L2NvZGU+IGZvciBhIDxjb2RlPi5jc3Y8L2NvZGU+IGZpbGUuXCJcbilcblxuaWYgYXR0ZW1wdGVkX3BhdGggaXMgTm9uZTpcbiAgICBpZiBleHBlY3RlZF9yZWFkZXIgbm90IGluIHVzZXJfY29kZTpcbiAgICAgICAgZmVlZGJhY2sgPSB7XCJjb3JyZWN0XCI6IEZhbHNlLCBcIm1lc3NhZ2VcIjogcmVhZGVyX21lc3NhZ2V9XG4gICAgZWxzZTpcbiAgICAgICAgZmVlZGJhY2sgPSB7XG4gICAgICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgICAgICBcIm1lc3NhZ2VcIjogXCJXcml0ZSB0aGUgcGF0aCBhcyB0ZXh0IGJ5IHB1dHRpbmcgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBpdCwgZm9yIGV4YW1wbGUgPGNvZGU+XFxcImZpbGVuYW1lLmNzdlxcXCI8L2NvZGU+LlwiLFxuICAgICAgICB9XG5lbGlmIG5vdCBpc2luc3RhbmNlKGF0dGVtcHRlZF9wYXRoLCBzdHIpOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBcIkEgZmlsZSBwYXRoIG11c3QgYmUgdGV4dC4gUHV0IHF1b3RhdGlvbiBtYXJrcyBhcm91bmQgdGhlIGZpbGVuYW1lLlwiLFxuICAgIH1cbmVsaWYgYXR0ZW1wdGVkX3JlYWRlciAhPSBleHBlY3RlZF9yZWFkZXI6XG4gICAgZmVlZGJhY2sgPSB7XCJjb3JyZWN0XCI6IEZhbHNlLCBcIm1lc3NhZ2VcIjogcmVhZGVyX21lc3NhZ2V9XG5lbGlmIFwiXFxcXFwiIGluIGF0dGVtcHRlZF9wYXRoOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBmXCJVc2UgPGNvZGU+LzwvY29kZT4gcmF0aGVyIHRoYW4gPGNvZGU+XFxcXDwvY29kZT4gaW4gcGF0aHMuIHtwYXRoX2hpbnR9XCIsXG4gICAgfVxuZWxpZiBwb3NpeHBhdGguaXNhYnMoYXR0ZW1wdGVkX3BhdGgpOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBcIlVzZSBhIHJlbGF0aXZlIHBhdGggc3RhcnRpbmcgZnJvbSB0aGUgbm90ZWJvb2suIFlvdSBkbyBub3QgbmVlZCB0aGUgY29tcGxldGUgcGF0aCBmcm9tIHRoZSB0b3Agb2YgdGhlIGZpbGUgc3lzdGVtLlwiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLm5vcm1wYXRoKGF0dGVtcHRlZF9wYXRoKSA9PSBleHBlY3RlZF9wYXRoOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogVHJ1ZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiQ29ycmVjdCEgVGhlIHJlYWRlciBhbmQgcGF0aCBtYXRjaCB0aGUgZmlsZSBzaG93biBpbiB0aGUgdHJlZS5cIixcbiAgICAgICAgXCJ0eXBlXCI6IFwic3VjY2Vzc1wiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLmJhc2VuYW1lKHBvc2l4cGF0aC5ub3JtcGF0aChhdHRlbXB0ZWRfcGF0aCkpID09IHBvc2l4cGF0aC5iYXNlbmFtZShleHBlY3RlZF9wYXRoKTpcbiAgICBmZWVkYmFjayA9IHtcImNvcnJlY3RcIjogRmFsc2UsIFwibWVzc2FnZVwiOiBwYXRoX2hpbnR9XG5lbGlmIHBvc2l4cGF0aC5zcGxpdGV4dChhdHRlbXB0ZWRfcGF0aClbMV0ubG93ZXIoKSAhPSBleHBlY3RlZF9leHRlbnNpb246XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IGZcIkNoZWNrIHRoZSBmaWxlIGV4dGVuc2lvbiBpbiB0aGUgdHJlZS4gVGhpcyBmaWxlIGVuZHMgaW4gPGNvZGU+e2V4cGVjdGVkX2V4dGVuc2lvbn08L2NvZGU+LlwiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLmJhc2VuYW1lKGF0dGVtcHRlZF9wYXRoKSAhPSBwb3NpeHBhdGguYmFzZW5hbWUoZXhwZWN0ZWRfcGF0aCk6XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiVGhlIGZpbGVuYW1lIGRvZXMgbm90IG1hdGNoIHRoZSB0cmVlLiBDaGVjayBpdHMgc3BlbGxpbmcgY2FyZWZ1bGx5LlwiLFxuICAgIH1cbmVsc2U6XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiQ29tcGFyZSB5b3VyIHBhdGggd2l0aCB0aGUgZmlsZSB0cmVlIGFuZCByZW1lbWJlciB0aGF0IHBhdGhzIHN0YXJ0IGZyb20gdGhlIG5vdGVib29rJ3MgZm9sZGVyLlwiLFxuICAgIH1cblxuZmVlZGJhY2sifQ==
+</script>
+<script type="exercise-check-file-path-sibling-folder-contents">
+eyJhdHRyIjp7ImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6WyJmaWxlLXBhdGgtc2FtZS1mb2xkZXIiLCJmaWxlLXBhdGgtY2hpbGQtZm9sZGVyIiwiZmlsZS1wYXRoLW5lc3RlZC1mb2xkZXIiLCJmaWxlLXBhdGgtc2libGluZy1mb2xkZXIiXX0sImNvZGUiOiJpbXBvcnQgcG9zaXhwYXRoXG5cbiMgUXVhcnRvIExpdmUgZXZhbHVhdGVzIHRoZSBtb2RlbCBzb2x1dGlvbiBhZnRlciB0aGUgbGVhcm5lcidzIGNvZGUuIElmIG9ubHlcbiMgdGhhdCBzb2x1dGlvbiBjYWxsIGlzIHJlY29yZGVkLCB0aGUgbGVhcm5lcidzIGNhbGwgbmV2ZXIgcmVhY2hlZCB0aGUgbW9jay5cbmF0dGVtcHRlZF9jYWxscyA9IGVudmlyX3Jlc3VsdFtcInBkXCJdLmF0dGVtcHRlZF9jYWxsc1xuYXR0ZW1wdGVkX3JlYWRlciwgYXR0ZW1wdGVkX3BhdGggPSAoXG4gICAgYXR0ZW1wdGVkX2NhbGxzWzBdIGlmIGxlbihhdHRlbXB0ZWRfY2FsbHMpID4gMSBlbHNlIChOb25lLCBOb25lKVxuKVxuZXhwZWN0ZWRfcmVhZGVyLCBleHBlY3RlZF9wYXRoID0gZW52aXJfcmVzdWx0W1wiRVhQRUNURURfQ0FMTFNcIl1bbGFiZWxdXG5wYXRoX2hpbnQgPSBlbnZpcl9yZXN1bHRbXCJQQVRIX0hJTlRTXCJdW2xhYmVsXVxuZXhwZWN0ZWRfZXh0ZW5zaW9uID0gcG9zaXhwYXRoLnNwbGl0ZXh0KGV4cGVjdGVkX3BhdGgpWzFdXG5cbnJlYWRlcl9tZXNzYWdlID0gKFxuICAgIFwiVXNlIDxjb2RlPnBkLnJlYWRfZXhjZWw8L2NvZGU+IGZvciBhbiA8Y29kZT4ueGxzeDwvY29kZT4gZmlsZS5cIlxuICAgIGlmIGV4cGVjdGVkX3JlYWRlciA9PSBcInJlYWRfZXhjZWxcIlxuICAgIGVsc2UgXCJVc2UgPGNvZGU+cGQucmVhZF9jc3Y8L2NvZGU+IGZvciBhIDxjb2RlPi5jc3Y8L2NvZGU+IGZpbGUuXCJcbilcblxuaWYgYXR0ZW1wdGVkX3BhdGggaXMgTm9uZTpcbiAgICBpZiBleHBlY3RlZF9yZWFkZXIgbm90IGluIHVzZXJfY29kZTpcbiAgICAgICAgZmVlZGJhY2sgPSB7XCJjb3JyZWN0XCI6IEZhbHNlLCBcIm1lc3NhZ2VcIjogcmVhZGVyX21lc3NhZ2V9XG4gICAgZWxzZTpcbiAgICAgICAgZmVlZGJhY2sgPSB7XG4gICAgICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgICAgICBcIm1lc3NhZ2VcIjogXCJXcml0ZSB0aGUgcGF0aCBhcyB0ZXh0IGJ5IHB1dHRpbmcgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBpdCwgZm9yIGV4YW1wbGUgPGNvZGU+XFxcImZpbGVuYW1lLmNzdlxcXCI8L2NvZGU+LlwiLFxuICAgICAgICB9XG5lbGlmIG5vdCBpc2luc3RhbmNlKGF0dGVtcHRlZF9wYXRoLCBzdHIpOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBcIkEgZmlsZSBwYXRoIG11c3QgYmUgdGV4dC4gUHV0IHF1b3RhdGlvbiBtYXJrcyBhcm91bmQgdGhlIGZpbGVuYW1lLlwiLFxuICAgIH1cbmVsaWYgYXR0ZW1wdGVkX3JlYWRlciAhPSBleHBlY3RlZF9yZWFkZXI6XG4gICAgZmVlZGJhY2sgPSB7XCJjb3JyZWN0XCI6IEZhbHNlLCBcIm1lc3NhZ2VcIjogcmVhZGVyX21lc3NhZ2V9XG5lbGlmIFwiXFxcXFwiIGluIGF0dGVtcHRlZF9wYXRoOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBmXCJVc2UgPGNvZGU+LzwvY29kZT4gcmF0aGVyIHRoYW4gPGNvZGU+XFxcXDwvY29kZT4gaW4gcGF0aHMuIHtwYXRoX2hpbnR9XCIsXG4gICAgfVxuZWxpZiBwb3NpeHBhdGguaXNhYnMoYXR0ZW1wdGVkX3BhdGgpOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogRmFsc2UsXG4gICAgICAgIFwibWVzc2FnZVwiOiBcIlVzZSBhIHJlbGF0aXZlIHBhdGggc3RhcnRpbmcgZnJvbSB0aGUgbm90ZWJvb2suIFlvdSBkbyBub3QgbmVlZCB0aGUgY29tcGxldGUgcGF0aCBmcm9tIHRoZSB0b3Agb2YgdGhlIGZpbGUgc3lzdGVtLlwiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLm5vcm1wYXRoKGF0dGVtcHRlZF9wYXRoKSA9PSBleHBlY3RlZF9wYXRoOlxuICAgIGZlZWRiYWNrID0ge1xuICAgICAgICBcImNvcnJlY3RcIjogVHJ1ZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiQ29ycmVjdCEgVGhlIHJlYWRlciBhbmQgcGF0aCBtYXRjaCB0aGUgZmlsZSBzaG93biBpbiB0aGUgdHJlZS5cIixcbiAgICAgICAgXCJ0eXBlXCI6IFwic3VjY2Vzc1wiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLmJhc2VuYW1lKHBvc2l4cGF0aC5ub3JtcGF0aChhdHRlbXB0ZWRfcGF0aCkpID09IHBvc2l4cGF0aC5iYXNlbmFtZShleHBlY3RlZF9wYXRoKTpcbiAgICBmZWVkYmFjayA9IHtcImNvcnJlY3RcIjogRmFsc2UsIFwibWVzc2FnZVwiOiBwYXRoX2hpbnR9XG5lbGlmIHBvc2l4cGF0aC5zcGxpdGV4dChhdHRlbXB0ZWRfcGF0aClbMV0ubG93ZXIoKSAhPSBleHBlY3RlZF9leHRlbnNpb246XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IGZcIkNoZWNrIHRoZSBmaWxlIGV4dGVuc2lvbiBpbiB0aGUgdHJlZS4gVGhpcyBmaWxlIGVuZHMgaW4gPGNvZGU+e2V4cGVjdGVkX2V4dGVuc2lvbn08L2NvZGU+LlwiLFxuICAgIH1cbmVsaWYgcG9zaXhwYXRoLmJhc2VuYW1lKGF0dGVtcHRlZF9wYXRoKSAhPSBwb3NpeHBhdGguYmFzZW5hbWUoZXhwZWN0ZWRfcGF0aCk6XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiVGhlIGZpbGVuYW1lIGRvZXMgbm90IG1hdGNoIHRoZSB0cmVlLiBDaGVjayBpdHMgc3BlbGxpbmcgY2FyZWZ1bGx5LlwiLFxuICAgIH1cbmVsc2U6XG4gICAgZmVlZGJhY2sgPSB7XG4gICAgICAgIFwiY29ycmVjdFwiOiBGYWxzZSxcbiAgICAgICAgXCJtZXNzYWdlXCI6IFwiQ29tcGFyZSB5b3VyIHBhdGggd2l0aCB0aGUgZmlsZSB0cmVlIGFuZCByZW1lbWJlciB0aGF0IHBhdGhzIHN0YXJ0IGZyb20gdGhlIG5vdGVib29rJ3MgZm9sZGVyLlwiLFxuICAgIH1cblxuZmVlZGJhY2sifQ==
+</script>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 1: Same folder">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 1: Same folder
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>In this example, the data file is in the same folder as the notebook:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fysisk_biokemi</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>├── jupyterlite_intro.ipynb  ← notebook running from here</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>└── experiment.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Complete the code below so that it loads <code>experiment.csv</code>. Replace the blank with the path to the file, including quotation marks.</p>
+<div>
+<div id="pyodide-3" class="exercise-cell">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZmlsZS1wYXRoLXNhbWUtZm9sZGVyIn0sImNvZGUiOiJwZC5yZWFkX2NzdihfX19fX18pIn0=
+</script>
+</div>
+<div class="pyodide-ojs-exercise exercise-solution d-none" data-exercise="file-path-same-folder">
+<code id="interpolate-5" class="solution-code d-none">pd.read_csv("experiment.csv")</code>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="interpolate-6-1"><a href="#interpolate-6-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"experiment.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 2: A file in a subfolder">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 2: A file in a subfolder
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The notebook now has a <code>data</code> folder beside it. The Excel file is inside that folder:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fysisk_biokemi</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>├── data</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>│  └── protein_samples.xlsx</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>└── jupyterlite_intro.ipynb  ← notebook running from here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Complete the path so that the code loads <code>protein_samples.xlsx</code>.</p>
+<div>
+<div id="pyodide-7" class="exercise-cell">
+
+</div>
+<script type="pyodide-7-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZmlsZS1wYXRoLWNoaWxkLWZvbGRlciJ9LCJjb2RlIjoicGQucmVhZF9leGNlbChfX19fX18pIn0=
+</script>
+</div>
+<div class="pyodide-ojs-exercise exercise-solution d-none" data-exercise="file-path-child-folder">
+<code id="interpolate-9" class="solution-code d-none">pd.read_excel("data/protein_samples.xlsx")</code>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="interpolate-10-1"><a href="#interpolate-10-1" aria-hidden="true" tabindex="-1"></a>pd.read_excel(<span class="st">"data/protein_samples.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 3: A file two folders down">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 3: A file two folders down
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The CSV file is inside <code>processed</code>, which is itself inside <code>data</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fysisk_biokemi</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>├── data</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>│  └── processed</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>│     └── fluorescence.csv</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>└── jupyterlite_intro.ipynb  ← notebook running from here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Complete the path so that the code loads <code>fluorescence.csv</code>.</p>
+<div>
+<div id="pyodide-11" class="exercise-cell">
+
+</div>
+<script type="pyodide-11-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZmlsZS1wYXRoLW5lc3RlZC1mb2xkZXIifSwiY29kZSI6InBkLnJlYWRfY3N2KF9fX19fXykifQ==
+</script>
+</div>
+<div class="pyodide-ojs-exercise exercise-solution d-none" data-exercise="file-path-nested-folder">
+<code id="interpolate-13" class="solution-code d-none">pd.read_csv("data/processed/fluorescence.csv")</code>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="interpolate-14-1"><a href="#interpolate-14-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"data/processed/fluorescence.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 4: A file in a sibling folder">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 4: A file in a sibling folder
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The notebook and data file are now in different subfolders of <code>fysisk_biokemi</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fysisk_biokemi</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>├── data</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>│  └── enzyme_activity.xlsx</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>└── notebooks</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>   └── jupyterlite_intro.ipynb  ← notebook running from here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Complete both blanks. Choose the appropriate <code>pandas</code> reader and provide the path to <code>enzyme_activity.xlsx</code>.</p>
+<div>
+<div id="pyodide-15" class="exercise-cell">
+
+</div>
+<script type="pyodide-15-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZmlsZS1wYXRoLXNpYmxpbmctZm9sZGVyIn0sImNvZGUiOiJwZC5fX19fX18oX19fX19fKSJ9
+</script>
+</div>
+<div class="pyodide-ojs-exercise exercise-solution d-none" data-exercise="file-path-sibling-folder">
+<code id="interpolate-17" class="solution-code d-none">pd.read_excel("../data/enzyme_activity.xlsx")</code>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="interpolate-18-1"><a href="#interpolate-18-1" aria-hidden="true" tabindex="-1"></a>pd.read_excel(<span class="st">"../data/enzyme_activity.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-and-tips-for-working-with-notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="summary-and-tips-for-working-with-notebooks">Summary and tips for working with notebooks</h3>
+<ul>
+<li>Start at the top of a notebook and run its cells in order. Later cells may depend on variables or packages created by earlier cells.</li>
+<li>Editing a cell does not run the new code. Run the cell again after making a change.</li>
+<li>If you change an earlier cell, rerun the cells that depend on it. When in doubt, restart the notebook and run all cells from the top.</li>
+<li>Use the stop button if a cell keeps running without finishing.</li>
+<li>When Python reports an error, read the final line of the error message first. It usually gives the most useful description of what went wrong.</li>
+<li>Before loading a data file, check that it is visible in the JupyterLite file browser and that its path matches its location.</li>
+<li>JupyterLite saves work in the browser, but this storage is not a reliable long-term backup. Regularly export your notebook as an <code>.ipynb</code> file and store it on your computer.</li>
+</ul>
 
 
 <!-- -->
 
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImVudiI6eyJQTE9UTFlfUkVOREVSRVIiOiJwbG90bHlfbWltZXR5cGUifSwiaW5kZXhVUkwiOiJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvcHlvZGlkZS92MC4yOC4xL2Z1bGwvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsicHlvZGlkZV9odHRwIiwibWljcm9waXAiLCJpcHl0aG9uIiwicGFuZGFzIl19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTE1IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTUgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE1LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBleGVyY2lzZSBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKFxuICAgIHtcbiAgICAgIGlkOiBcInB5b2RpZGUtMTUtY29udGVudHNcIixcbiAgICAgIGVudmlyOiBgZXhlcmNpc2UtZW52LSR7YmxvY2suYXR0ci5leGVyY2lzZX1gLFxuICAgICAgZXJyb3I6IGZhbHNlLFxuICAgICAgY2FwdGlvbjogJ0V4ZXJjaXNlJyxcbiAgICB9LFxuICAgIGJsb2NrLmF0dHJcbiAgKTtcblxuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbnZpZXdvZiBfcHlvZGlkZV92YWx1ZV8xNSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTUsIHt9KTtcbl9weW9kaWRlX2ZlZWRiYWNrXzE1ID0ge1xuICBjb25zdCB7IFB5b2RpZGVHcmFkZXIgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IGVtcHR5RmVlZGJhY2sgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcblxuICBjb25zdCBncmFkZXIgPSBuZXcgUHlvZGlkZUdyYWRlcihfcHlvZGlkZV92YWx1ZV8xNS5ldmFsdWF0b3IpO1xuICBjb25zdCBmZWVkYmFjayA9IGF3YWl0IGdyYWRlci5ncmFkZUV4ZXJjaXNlKCk7XG4gIGlmICghZmVlZGJhY2spIHJldHVybiBlbXB0eUZlZWRiYWNrO1xuICByZXR1cm4gZmVlZGJhY2s7XG59XG4ifSx7ImNlbGxOYW1lIjoicHlvZGlkZS0xMSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3B5b2RpZGVfZWRpdG9yXzExID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXhlcmNpc2UgY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbihcbiAgICB7XG4gICAgICBpZDogXCJweW9kaWRlLTExLWNvbnRlbnRzXCIsXG4gICAgICBlbnZpcjogYGV4ZXJjaXNlLWVudi0ke2Jsb2NrLmF0dHIuZXhlcmNpc2V9YCxcbiAgICAgIGVycm9yOiBmYWxzZSxcbiAgICAgIGNhcHRpb246ICdFeGVyY2lzZScsXG4gICAgfSxcbiAgICBibG9jay5hdHRyXG4gICk7XG5cbiAgY29uc3QgZWRpdG9yID0gbmV3IFB5b2RpZGVFeGVyY2lzZUVkaXRvcihweW9kaWRlT2pzLnB5b2RpZGVQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG52aWV3b2YgX3B5b2RpZGVfdmFsdWVfMTEgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzExLCB7fSk7XG5fcHlvZGlkZV9mZWVkYmFja18xMSA9IHtcbiAgY29uc3QgeyBQeW9kaWRlR3JhZGVyIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBlbXB0eUZlZWRiYWNrID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XG5cbiAgY29uc3QgZ3JhZGVyID0gbmV3IFB5b2RpZGVHcmFkZXIoX3B5b2RpZGVfdmFsdWVfMTEuZXZhbHVhdG9yKTtcbiAgY29uc3QgZmVlZGJhY2sgPSBhd2FpdCBncmFkZXIuZ3JhZGVFeGVyY2lzZSgpO1xuICBpZiAoIWZlZWRiYWNrKSByZXR1cm4gZW1wdHlGZWVkYmFjaztcbiAgcmV0dXJuIGZlZWRiYWNrO1xufVxuIn0seyJjZWxsTmFtZSI6InB5b2RpZGUtNyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3B5b2RpZGVfZWRpdG9yXzcgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV4ZXJjaXNlIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oXG4gICAge1xuICAgICAgaWQ6IFwicHlvZGlkZS03LWNvbnRlbnRzXCIsXG4gICAgICBlbnZpcjogYGV4ZXJjaXNlLWVudi0ke2Jsb2NrLmF0dHIuZXhlcmNpc2V9YCxcbiAgICAgIGVycm9yOiBmYWxzZSxcbiAgICAgIGNhcHRpb246ICdFeGVyY2lzZScsXG4gICAgfSxcbiAgICBibG9jay5hdHRyXG4gICk7XG5cbiAgY29uc3QgZWRpdG9yID0gbmV3IFB5b2RpZGVFeGVyY2lzZUVkaXRvcihweW9kaWRlT2pzLnB5b2RpZGVQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG52aWV3b2YgX3B5b2RpZGVfdmFsdWVfNyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfNywge30pO1xuX3B5b2RpZGVfZmVlZGJhY2tfNyA9IHtcbiAgY29uc3QgeyBQeW9kaWRlR3JhZGVyIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBlbXB0eUZlZWRiYWNrID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XG5cbiAgY29uc3QgZ3JhZGVyID0gbmV3IFB5b2RpZGVHcmFkZXIoX3B5b2RpZGVfdmFsdWVfNy5ldmFsdWF0b3IpO1xuICBjb25zdCBmZWVkYmFjayA9IGF3YWl0IGdyYWRlci5ncmFkZUV4ZXJjaXNlKCk7XG4gIGlmICghZmVlZGJhY2spIHJldHVybiBlbXB0eUZlZWRiYWNrO1xuICByZXR1cm4gZmVlZGJhY2s7XG59XG4ifSx7ImNlbGxOYW1lIjoicHlvZGlkZS0zIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMyA9IHtcbiAgY29uc3QgeyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInB5b2RpZGUtMy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXhlcmNpc2UgY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbihcbiAgICB7XG4gICAgICBpZDogXCJweW9kaWRlLTMtY29udGVudHNcIixcbiAgICAgIGVudmlyOiBgZXhlcmNpc2UtZW52LSR7YmxvY2suYXR0ci5leGVyY2lzZX1gLFxuICAgICAgZXJyb3I6IGZhbHNlLFxuICAgICAgY2FwdGlvbjogJ0V4ZXJjaXNlJyxcbiAgICB9LFxuICAgIGJsb2NrLmF0dHJcbiAgKTtcblxuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbnZpZXdvZiBfcHlvZGlkZV92YWx1ZV8zID0gcHlvZGlkZU9qcy5wcm9jZXNzKF9weW9kaWRlX2VkaXRvcl8zLCB7fSk7XG5fcHlvZGlkZV9mZWVkYmFja18zID0ge1xuICBjb25zdCB7IFB5b2RpZGVHcmFkZXIgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IGVtcHR5RmVlZGJhY2sgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcblxuICBjb25zdCBncmFkZXIgPSBuZXcgUHlvZGlkZUdyYWRlcihfcHlvZGlkZV92YWx1ZV8zLmV2YWx1YXRvcik7XG4gIGNvbnN0IGZlZWRiYWNrID0gYXdhaXQgZ3JhZGVyLmdyYWRlRXhlcmNpc2UoKTtcbiAgaWYgKCFmZWVkYmFjaykgcmV0dXJuIGVtcHR5RmVlZGJhY2s7XG4gIHJldHVybiBmZWVkYmFjaztcbn1cbiJ9LHsiY2VsbE5hbWUiOiJpbnRlcnBvbGF0ZS01IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICBjb25zdCB7IGludGVycG9sYXRlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBibG9ja19pZCA9IFwiNVwiO1xuICBjb25zdCBsYW5ndWFnZSA9IFwibm9uZVwiO1xuICBjb25zdCBkZWZfbWFwID0ge1xufTtcbiAgY29uc3QgZWxlbSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBpbnRlcnBvbGF0ZS0ke2Jsb2NrX2lkfWApO1xuXG4gIC8vIFN0b3JlIG9yaWdpbmFsIHRlbXBsYXRlZCBIVE1MIGZvciByZWZlcmVuY2UgaW4gZnV0dXJlIHJlYWN0aXZlIHVwZGF0ZXNcbiAgaWYgKCFlbGVtLm9yaWdIVE1MKSBlbGVtLm9yaWdIVE1MID0gZWxlbS5pbm5lckhUTUw7XG5cbiAgLy8gSW50ZXJwb2xhdGUgcmVhY3RpdmUgT0pTIHZhcmlhYmxlcyBpbnRvIGVzdGFibGlzaGVkIEhUTUwgZWxlbWVudFxuICBlbGVtLmlubmVySFRNTCA9IGVsZW0ub3JpZ0hUTUw7XG4gIE9iamVjdC5rZXlzKGRlZl9tYXApLmZvckVhY2goKGRlZikgPT5cbiAgICBpbnRlcnBvbGF0ZShlbGVtLCBcIiR7XCIgKyBkZWYgKyBcIn1cIiwgZGVmX21hcFtkZWZdLCBsYW5ndWFnZSlcbiAgKTtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJpbnRlcnBvbGF0ZS02IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICBjb25zdCB7IGludGVycG9sYXRlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBibG9ja19pZCA9IFwiNlwiO1xuICBjb25zdCBsYW5ndWFnZSA9IFwicHl0aG9uXCI7XG4gIGNvbnN0IGRlZl9tYXAgPSB7XG59O1xuICBjb25zdCBlbGVtID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoYGludGVycG9sYXRlLSR7YmxvY2tfaWR9YCk7XG5cbiAgLy8gU3RvcmUgb3JpZ2luYWwgdGVtcGxhdGVkIEhUTUwgZm9yIHJlZmVyZW5jZSBpbiBmdXR1cmUgcmVhY3RpdmUgdXBkYXRlc1xuICBpZiAoIWVsZW0ub3JpZ0hUTUwpIGVsZW0ub3JpZ0hUTUwgPSBlbGVtLmlubmVySFRNTDtcblxuICAvLyBJbnRlcnBvbGF0ZSByZWFjdGl2ZSBPSlMgdmFyaWFibGVzIGludG8gZXN0YWJsaXNoZWQgSFRNTCBlbGVtZW50XG4gIGVsZW0uaW5uZXJIVE1MID0gZWxlbS5vcmlnSFRNTDtcbiAgT2JqZWN0LmtleXMoZGVmX21hcCkuZm9yRWFjaCgoZGVmKSA9PlxuICAgIGludGVycG9sYXRlKGVsZW0sIFwiJHtcIiArIGRlZiArIFwifVwiLCBkZWZfbWFwW2RlZl0sIGxhbmd1YWdlKVxuICApO1xufVxuIn0seyJjZWxsTmFtZSI6ImludGVycG9sYXRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIGNvbnN0IHsgaW50ZXJwb2xhdGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IGJsb2NrX2lkID0gXCI5XCI7XG4gIGNvbnN0IGxhbmd1YWdlID0gXCJub25lXCI7XG4gIGNvbnN0IGRlZl9tYXAgPSB7XG59O1xuICBjb25zdCBlbGVtID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoYGludGVycG9sYXRlLSR7YmxvY2tfaWR9YCk7XG5cbiAgLy8gU3RvcmUgb3JpZ2luYWwgdGVtcGxhdGVkIEhUTUwgZm9yIHJlZmVyZW5jZSBpbiBmdXR1cmUgcmVhY3RpdmUgdXBkYXRlc1xuICBpZiAoIWVsZW0ub3JpZ0hUTUwpIGVsZW0ub3JpZ0hUTUwgPSBlbGVtLmlubmVySFRNTDtcblxuICAvLyBJbnRlcnBvbGF0ZSByZWFjdGl2ZSBPSlMgdmFyaWFibGVzIGludG8gZXN0YWJsaXNoZWQgSFRNTCBlbGVtZW50XG4gIGVsZW0uaW5uZXJIVE1MID0gZWxlbS5vcmlnSFRNTDtcbiAgT2JqZWN0LmtleXMoZGVmX21hcCkuZm9yRWFjaCgoZGVmKSA9PlxuICAgIGludGVycG9sYXRlKGVsZW0sIFwiJHtcIiArIGRlZiArIFwifVwiLCBkZWZfbWFwW2RlZl0sIGxhbmd1YWdlKVxuICApO1xufVxuIn0seyJjZWxsTmFtZSI6ImludGVycG9sYXRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICBjb25zdCB7IGludGVycG9sYXRlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBibG9ja19pZCA9IFwiMTBcIjtcbiAgY29uc3QgbGFuZ3VhZ2UgPSBcInB5dGhvblwiO1xuICBjb25zdCBkZWZfbWFwID0ge1xufTtcbiAgY29uc3QgZWxlbSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBpbnRlcnBvbGF0ZS0ke2Jsb2NrX2lkfWApO1xuXG4gIC8vIFN0b3JlIG9yaWdpbmFsIHRlbXBsYXRlZCBIVE1MIGZvciByZWZlcmVuY2UgaW4gZnV0dXJlIHJlYWN0aXZlIHVwZGF0ZXNcbiAgaWYgKCFlbGVtLm9yaWdIVE1MKSBlbGVtLm9yaWdIVE1MID0gZWxlbS5pbm5lckhUTUw7XG5cbiAgLy8gSW50ZXJwb2xhdGUgcmVhY3RpdmUgT0pTIHZhcmlhYmxlcyBpbnRvIGVzdGFibGlzaGVkIEhUTUwgZWxlbWVudFxuICBlbGVtLmlubmVySFRNTCA9IGVsZW0ub3JpZ0hUTUw7XG4gIE9iamVjdC5rZXlzKGRlZl9tYXApLmZvckVhY2goKGRlZikgPT5cbiAgICBpbnRlcnBvbGF0ZShlbGVtLCBcIiR7XCIgKyBkZWYgKyBcIn1cIiwgZGVmX21hcFtkZWZdLCBsYW5ndWFnZSlcbiAgKTtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJpbnRlcnBvbGF0ZS0xMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgY29uc3QgeyBpbnRlcnBvbGF0ZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3QgYmxvY2tfaWQgPSBcIjEzXCI7XG4gIGNvbnN0IGxhbmd1YWdlID0gXCJub25lXCI7XG4gIGNvbnN0IGRlZl9tYXAgPSB7XG59O1xuICBjb25zdCBlbGVtID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoYGludGVycG9sYXRlLSR7YmxvY2tfaWR9YCk7XG5cbiAgLy8gU3RvcmUgb3JpZ2luYWwgdGVtcGxhdGVkIEhUTUwgZm9yIHJlZmVyZW5jZSBpbiBmdXR1cmUgcmVhY3RpdmUgdXBkYXRlc1xuICBpZiAoIWVsZW0ub3JpZ0hUTUwpIGVsZW0ub3JpZ0hUTUwgPSBlbGVtLmlubmVySFRNTDtcblxuICAvLyBJbnRlcnBvbGF0ZSByZWFjdGl2ZSBPSlMgdmFyaWFibGVzIGludG8gZXN0YWJsaXNoZWQgSFRNTCBlbGVtZW50XG4gIGVsZW0uaW5uZXJIVE1MID0gZWxlbS5vcmlnSFRNTDtcbiAgT2JqZWN0LmtleXMoZGVmX21hcCkuZm9yRWFjaCgoZGVmKSA9PlxuICAgIGludGVycG9sYXRlKGVsZW0sIFwiJHtcIiArIGRlZiArIFwifVwiLCBkZWZfbWFwW2RlZl0sIGxhbmd1YWdlKVxuICApO1xufVxuIn0seyJjZWxsTmFtZSI6ImludGVycG9sYXRlLTE0IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICBjb25zdCB7IGludGVycG9sYXRlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBibG9ja19pZCA9IFwiMTRcIjtcbiAgY29uc3QgbGFuZ3VhZ2UgPSBcInB5dGhvblwiO1xuICBjb25zdCBkZWZfbWFwID0ge1xufTtcbiAgY29uc3QgZWxlbSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBpbnRlcnBvbGF0ZS0ke2Jsb2NrX2lkfWApO1xuXG4gIC8vIFN0b3JlIG9yaWdpbmFsIHRlbXBsYXRlZCBIVE1MIGZvciByZWZlcmVuY2UgaW4gZnV0dXJlIHJlYWN0aXZlIHVwZGF0ZXNcbiAgaWYgKCFlbGVtLm9yaWdIVE1MKSBlbGVtLm9yaWdIVE1MID0gZWxlbS5pbm5lckhUTUw7XG5cbiAgLy8gSW50ZXJwb2xhdGUgcmVhY3RpdmUgT0pTIHZhcmlhYmxlcyBpbnRvIGVzdGFibGlzaGVkIEhUTUwgZWxlbWVudFxuICBlbGVtLmlubmVySFRNTCA9IGVsZW0ub3JpZ0hUTUw7XG4gIE9iamVjdC5rZXlzKGRlZl9tYXApLmZvckVhY2goKGRlZikgPT5cbiAgICBpbnRlcnBvbGF0ZShlbGVtLCBcIiR7XCIgKyBkZWYgKyBcIn1cIiwgZGVmX21hcFtkZWZdLCBsYW5ndWFnZSlcbiAgKTtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJpbnRlcnBvbGF0ZS0xNyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgY29uc3QgeyBpbnRlcnBvbGF0ZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3QgYmxvY2tfaWQgPSBcIjE3XCI7XG4gIGNvbnN0IGxhbmd1YWdlID0gXCJub25lXCI7XG4gIGNvbnN0IGRlZl9tYXAgPSB7XG59O1xuICBjb25zdCBlbGVtID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoYGludGVycG9sYXRlLSR7YmxvY2tfaWR9YCk7XG5cbiAgLy8gU3RvcmUgb3JpZ2luYWwgdGVtcGxhdGVkIEhUTUwgZm9yIHJlZmVyZW5jZSBpbiBmdXR1cmUgcmVhY3RpdmUgdXBkYXRlc1xuICBpZiAoIWVsZW0ub3JpZ0hUTUwpIGVsZW0ub3JpZ0hUTUwgPSBlbGVtLmlubmVySFRNTDtcblxuICAvLyBJbnRlcnBvbGF0ZSByZWFjdGl2ZSBPSlMgdmFyaWFibGVzIGludG8gZXN0YWJsaXNoZWQgSFRNTCBlbGVtZW50XG4gIGVsZW0uaW5uZXJIVE1MID0gZWxlbS5vcmlnSFRNTDtcbiAgT2JqZWN0LmtleXMoZGVmX21hcCkuZm9yRWFjaCgoZGVmKSA9PlxuICAgIGludGVycG9sYXRlKGVsZW0sIFwiJHtcIiArIGRlZiArIFwifVwiLCBkZWZfbWFwW2RlZl0sIGxhbmd1YWdlKVxuICApO1xufVxuIn0seyJjZWxsTmFtZSI6ImludGVycG9sYXRlLTE4IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICBjb25zdCB7IGludGVycG9sYXRlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBibG9ja19pZCA9IFwiMThcIjtcbiAgY29uc3QgbGFuZ3VhZ2UgPSBcInB5dGhvblwiO1xuICBjb25zdCBkZWZfbWFwID0ge1xufTtcbiAgY29uc3QgZWxlbSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBpbnRlcnBvbGF0ZS0ke2Jsb2NrX2lkfWApO1xuXG4gIC8vIFN0b3JlIG9yaWdpbmFsIHRlbXBsYXRlZCBIVE1MIGZvciByZWZlcmVuY2UgaW4gZnV0dXJlIHJlYWN0aXZlIHVwZGF0ZXNcbiAgaWYgKCFlbGVtLm9yaWdIVE1MKSBlbGVtLm9yaWdIVE1MID0gZWxlbS5pbm5lckhUTUw7XG5cbiAgLy8gSW50ZXJwb2xhdGUgcmVhY3RpdmUgT0pTIHZhcmlhYmxlcyBpbnRvIGVzdGFibGlzaGVkIEhUTUwgZWxlbWVudFxuICBlbGVtLmlubmVySFRNTCA9IGVsZW0ub3JpZ0hUTUw7XG4gIE9iamVjdC5rZXlzKGRlZl9tYXApLmZvckVhY2goKGRlZikgPT5cbiAgICBpbnRlcnBvbGF0ZShlbGVtLCBcIiR7XCIgKyBkZWYgKyBcIn1cIiwgZGVmX21hcFtkZWZdLCBsYW5ndWFnZSlcbiAgKTtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIE1ha2UgYW55IHJldmVhbCBzbGlkZXMgd2l0aCBsaXZlIGNlbGxzIHNjcm9sbGFibGVcbiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcIi5yZXZlYWwgLmV4ZXJjaXNlLWNlbGxcIikuZm9yRWFjaCgoZWwpID0+IHtcbiAgICBlbC5jbG9zZXN0KCdzZWN0aW9uLnNsaWRlJykuY2xhc3NMaXN0LmFkZChcInNjcm9sbGFibGVcIik7XG4gIH0pXG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../lessons";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -944,139 +1227,492 @@ Warning
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Introduction to JupyterLite</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>In this course we will use JupyterLite to work with Python for data analysis. </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>JupyterLite is a browser-based version of Python that allows us to get up and running quickly without having to install anything on our machines. The exercises you've done in the "Introduktion til Livets Molekyler" course use the same technology under the hood, but we will now use a more full-fledged version as we work towards doing more complex tasks with Python.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## JupyterLite Introduction</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>JupyterLite can be accessed at this webpage: <span class="co">[</span><span class="ot">https://au-mbg.github.io/jupyterlite-playground/lab/index.html</span><span class="co">](https://au-mbg.github.io/jupyterlite-playground/lab/index.html)</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>When you first access the page, you should see something like what is shown below.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="al">![The JupyterLite Homepage](figures/jupyterlite/startup_page.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>JupyterLite is a JupyterLab distribution that runs in the browser. This means you can run </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Python programs and notebooks in JupyterLite without having to install anything. </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with notebooks in JupyterLite</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>On the home page of JupyterLite, also called the *launcher*, you can click the button that </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>says <span class="in">`Python (Pyodide)`</span> to create a new notebook. You will then arrive at a page like the one shown below.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="al">![New notebook on JupyterLite](figures/jupyterlite/new_notebook.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>This notebook is a document that can contain both code and text, with the two types separated into different cells. The Python you worked with in IMOL is very similar to one of these code cells. </span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="al">![Notebook with a Markdown cell and a Code cell](figures/jupyterlite/example_cells.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>To see the output produced by code in a notebook, we need to *run* or *execute* its code cells. There are several ways to control cell execution:</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`▶`</span>: Runs the currently selected cell. You can also use the keyboard shortcut {{&lt; kbd mac=Shift-Enter win=Shift-Enter &gt;}}.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`▶▶`</span>: Restarts the notebook and runs all cells from top to bottom.</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`⏹`</span>: Stops execution. This is useful when code keeps running without finishing or when you notice a mistake and do not want to wait for execution to finish.</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`↻`</span>: Restarts the notebook without running the cells again.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`Run`</span>: Opens a menu with additional options for running cells.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="al">![Options for running Code cells](figures/jupyterlite/run_options.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Run cells in order"}</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>When you open an exercise, start at the top of the notebook and run the cells in order. The first setup cell may take a little longer to run because it prepares the course software. If you restart the notebook, run the cells from the top again before continuing your work.</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Opening course notebooks</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>The exercises in this course are provided as notebooks that can be opened</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>directly in JupyterLite. On the course website, open the exercise you want to</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>work on and click <span class="in">`Open in JupyterLite`</span> under **Other Formats**.</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="al">![Options for opening or download course notebooks](figures/jupyterlite/open_course_notebook.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>JupyterLite will open and import a copy of the exercise notebook. If the</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>notebook does not open automatically, locate it in the JupyterLite file browser</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>and double-click it.</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>Alternatively, click <span class="in">`Notebook`</span> to download the notebook to your computer. You can then upload it to JupyterLite as described below.</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Notebooks as files</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>The notebooks we work with in JupyterLite are a type of file, namely an IPython notebook (<span class="in">`.ipynb`</span>). Throughout the course we will work with several notebooks and it is important to </span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>keep track of them. </span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Finding and organizing files on your computer" collapse=true}</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>This course assumes that you know how to create folders, locate downloaded</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>files, move and rename files, and recognize common filename extensions such as</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="in">`.ipynb`</span>, <span class="in">`.csv`</span>, and <span class="in">`.xlsx`</span>.</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>If you are unfamiliar with working with files and folders, consult the relevant</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>guides below.</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### macOS</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Use the Finder on Mac</span><span class="co">](https://support.apple.com/guide/mac-help/use-the-finder-mchlp2605/mac)</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Organize your files in Finder</span><span class="co">](https://support.apple.com/guide/mac-help/organize-your-files-in-the-finder-mchle9f0a1b2/mac)</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Show filename extensions on Mac</span><span class="co">](https://support.apple.com/guide/mac-help/show-or-hide-filename-extensions-mchlp2304/mac)</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="fu">### Windows</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Use File Explorer in Windows</span><span class="co">](https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows)</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Find your files and apps in Windows</span><span class="co">](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/find-your-files-and-apps-in-windows)</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Common filename extensions in Windows</span><span class="co">](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/common-file-name-extensions-in-windows)</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>In particular, we recommend enabling the display of filename extensions. This</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>makes it easier to distinguish notebooks, datasets, spreadsheets, and other</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>types of files.</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>You should therefore create a folder (also called a directory) on your computer in a location that you can find, perhaps in your Documents folder or in a cloud storage folder such as Dropbox, iCloud, or OneDrive. This folder could be called <span class="in">`fysisk_biokemi`</span> or another name that clearly communicates its purpose. </span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>Once you've finished working on a notebook in JupyterLite, you should export a backup to this folder. To download the notebook to your computer, select <span class="in">`File &gt; Save and Export Notebook As &gt; Notebook (ipynb)`</span>, as shown in the screenshot below. </span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="al">![Menu to save a notebook to the local machine](figures/jupyterlite/save_notebook.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>Once you've downloaded the notebook, you should move it to the <span class="in">`fysisk_biokemi`</span> directory on your computer. For example, the folder might look like this:</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="al">![File browser on a Mac (Finder) showing a notebook in an appropriately named directory](figures/jupyterlite/directory.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="fu">### Opening a saved notebook</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>To continue working on a notebook that is stored on your computer, upload the <span class="in">`.ipynb`</span> file to JupyterLite. Click the <span class="in">`⬆`</span> button in the JupyterLite file browser and select the notebook using your computer's file browser. Once the notebook appears in the JupyterLite file browser, double-click it to open it.</span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="al">![Upload a file from your computer to JupyterLite](figures/jupyterlite/upload_data.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Persistent storage in JupyterLite </span></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>As you use JupyterLite, you will notice that it also saves your work. However, this is done in your browser's local storage. You should **NOT** rely on this as a mechanism to store your notebook long term, as it may be reset by, for example, clearing your browser history or cookies. It will also not persist if you use another browser or another machine. </span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data files </span></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>Many of the exercises we will work on in the course are about analyzing data and often this data will come in the form of files, such as <span class="in">`.csv`</span> or <span class="in">`.xlsx`</span>. </span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>You should also store these data files on your machine in the same folder (or a subfolder) as you store the notebooks. The screenshot below illustrates one way of managing this.</span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="al">![File browser on a Mac (Finder) showing `fysisk_biokemi`-folder with a subfolder for data containing several data files.](figures/jupyterlite/data_directory.png)</span>{.lightbox fig-align="center" width="90%"}</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>Reproducing results, including data analysis, is essential in science. It is therefore important to develop good data-management practices that allow you to return to data you have worked with previously.</span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>::: </span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>You will need to upload these files to JupyterLite to work with them. Use the same <span class="in">`⬆`</span> button described above for uploading a saved notebook, then select the data file using your computer's file browser.</span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>JupyterLite has its own file system in your browser. Uploading a file creates a separate copy in this file system; it does not create a live connection to the original file on your computer. If you change the original file, you will need to upload it again for those changes to become available in JupyterLite.</span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>It is generally easiest to keep the notebook and its data files in the same folder in JupyterLite. A file in the same folder as the notebook can be referred to by its filename, for example <span class="in">`experiment.xlsx`</span>. If you organize your data in a subfolder called <span class="in">`data`</span>, the corresponding relative path is <span class="in">`data/experiment.xlsx`</span>.</span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip title="If something goes wrong"}</span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make sure that you have run all earlier cells in the notebook, then try the cell again.</span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If necessary, restart the notebook and run all cells from the top.</span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Check that the required data files are visible in the JupyterLite file browser and that the path in the notebook matches their location.</span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If work stored in the browser is unavailable, upload your latest exported <span class="in">`.ipynb`</span> file.</span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before closing JupyterLite or clearing browser data, export a fresh <span class="in">`.ipynb`</span> backup to your computer.</span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Introduction to JupyterLite</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">  live-html:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 4</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">    number-depth: 2</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="an">pyodide:</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">  packages:</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">    - pandas</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">  resources: []</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>In this course we will use JupyterLite to work with Python for data analysis. </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>JupyterLite is a browser-based version of Python that allows us to get up and running quickly without having to install anything on our machines. The exercises you've done in the "Introduktion til Livets Molekyler" course use the same technology under the hood, but we will now use a more full-fledged version as we work towards doing more complex tasks with Python.</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## JupyterLite Introduction</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>JupyterLite can be accessed at this webpage: <span class="co">[</span><span class="ot">https://au-mbg.github.io/jupyterlite-playground/lab/index.html</span><span class="co">](https://au-mbg.github.io/jupyterlite-playground/lab/index.html)</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>When you first access the page, you should see something like what is shown in @fig-jupyterlite-frontpage</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="al">![The JupyterLite Homepage](figures/jupyterlite/startup_page.png)</span>{.lightbox fig-align="center" width="90%" #fig-jupyterlite-frontpage}</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>JupyterLite is a JupyterLab distribution that runs in the browser. This means you can run </span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>Python programs and notebooks in JupyterLite without having to install anything. </span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with notebooks in JupyterLite</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>On the home page of JupyterLite, also called the *launcher*, you can click the button that </span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>says <span class="in">`Python (Pyodide)`</span> to create a new notebook. You will then arrive at a page like the one shown in @fig-new-notebook.</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="al">![New notebook on JupyterLite](figures/jupyterlite/new_notebook.png)</span>{.lightbox fig-align="center" width="90%" #fig-new-notebook}</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>This notebook is a document that can contain both code and text, with the two types separated into different cells, see @fig-cell-types. The Python you worked with in IMOL is very similar to one of these code cells.</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="al">![Notebook with a Markdown cell and a Code cell](figures/jupyterlite/example_cells.png)</span>{.lightbox fig-align="center" width="90%" #fig-cell-types}</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>To see the output produced by code in a notebook, we need to *run* or *execute* its code cells. There are several ways to control cell execution, see @fig-run-options and the list below:</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`▶`</span>: Runs the currently selected cell. You can also use the keyboard shortcut {{&lt; kbd mac=Shift-Enter win=Shift-Enter &gt;}}.</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`▶▶`</span>: Restarts the notebook and runs all cells from top to bottom.</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`⏹`</span>: Stops execution. This is useful when code keeps running without finishing or when you notice a mistake and do not want to wait for execution to finish.</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`↻`</span>: Restarts the notebook without running the cells again.</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`Run`</span>: Opens a menu with additional options for running cells.</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="al">![Options for running Code cells](figures/jupyterlite/run_options.png)</span>{.lightbox fig-align="center" width="90%" #fig-run-options}</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Run cells in order"}</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>When you open an exercise, start at the top of the notebook and run the cells in order. The first setup cell may take a little longer to run because it prepares the course software. If you restart the notebook, run the cells from the top again before continuing your work.</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Opening course notebooks</span></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>The exercises in this course are provided as notebooks that can be opened</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>directly in JupyterLite. On the course website, open the exercise you want to</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>work on and click <span class="in">`Open in JupyterLite`</span> under **Other Formats**, see @fig-opening-notebook</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="al">![Options for opening or download course notebooks](figures/jupyterlite/open_course_notebook.png)</span>{.lightbox fig-align="center" width="90%" #fig-opening-notebook}</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>JupyterLite will open and import a copy of the exercise notebook. If the</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>notebook does not open automatically, locate it in the JupyterLite file browser</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>and double-click it.</span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>Alternatively, click <span class="in">`Notebook`</span> to download the notebook to your computer. You can then upload it to JupyterLite as described below.</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## Notebooks as files</span></span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>The notebooks we work with in JupyterLite are a type of file, namely an IPython notebook (<span class="in">`.ipynb`</span>). Throughout the course we will work with several notebooks and it is important to </span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>keep track of them. </span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Finding and organizing files on your computer" collapse=true}</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>This course assumes that you know how to create folders, locate downloaded</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>files, move and rename files, and recognize common filename extensions such as</span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="in">`.ipynb`</span>, <span class="in">`.csv`</span>, and <span class="in">`.xlsx`</span>.</span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>If you are unfamiliar with working with files and folders, consult the relevant</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>guides below.</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### macOS</span></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Use the Finder on Mac</span><span class="co">](https://support.apple.com/guide/mac-help/use-the-finder-mchlp2605/mac)</span></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Organize your files in Finder</span><span class="co">](https://support.apple.com/guide/mac-help/organize-your-files-in-the-finder-mchle9f0a1b2/mac)</span></span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Show filename extensions on Mac</span><span class="co">](https://support.apple.com/guide/mac-help/show-or-hide-filename-extensions-mchlp2304/mac)</span></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### Windows</span></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Use File Explorer in Windows</span><span class="co">](https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows)</span></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Find your files and apps in Windows</span><span class="co">](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/find-your-files-and-apps-in-windows)</span></span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Common filename extensions in Windows</span><span class="co">](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/common-file-name-extensions-in-windows)</span></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>In particular, we recommend enabling the display of filename extensions. This</span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>makes it easier to distinguish notebooks, datasets, spreadsheets, and other</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>types of files.</span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>You should therefore create a folder (also called a directory) on your computer in a location that you can find, perhaps in your Documents folder or in a cloud storage folder such as Dropbox, iCloud, or OneDrive. This folder could be called <span class="in">`fysisk_biokemi`</span> or another name that clearly communicates its purpose. </span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>Once you've finished working on a notebook in JupyterLite, you should export a backup to this folder. To download the notebook to your computer, select <span class="in">`File &gt; Save and Export Notebook As &gt; Notebook (ipynb)`</span>, as shown in @fig-save-menu.</span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="al">![Menu to save a notebook to the local machine](figures/jupyterlite/save_notebook.png)</span>{.lightbox fig-align="center" width="90%" #fig-save-menu}</span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>Once you've downloaded the notebook, you should move it to the <span class="in">`fysisk_biokemi`</span> directory on your computer. For example, the folder might look @fig-directory-example.</span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a><span class="al">![File browser on a Mac (Finder) showing a notebook in an appropriately named directory](figures/jupyterlite/directory.png)</span>{.lightbox fig-align="center" width="90%" #fig-directory-example}</span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="fu">### Opening a saved notebook</span></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>To continue working on a notebook that is stored on your computer, upload the <span class="in">`.ipynb`</span> file to JupyterLite. Click the <span class="in">`⬆`</span> button in the JupyterLite file browser and select the notebook using your computer's file browser. Once the notebook appears in the JupyterLite file browser, double-click it to open it. This is shown in @fig-upload.</span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a><span class="al">![Upload a file from your computer to JupyterLite](figures/jupyterlite/upload_data.png)</span>{.lightbox fig-align="center" width="90%" #fig-upload}</span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a><span class="fu">### Persistent storage in JupyterLite </span></span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a>As you use JupyterLite, you will notice that it also saves your work. However, this is done in your browser's local storage. You should **NOT** rely on this as a mechanism to store your notebook long term, as it may be reset by, for example, clearing your browser history or cookies. It will also not persist if you use another browser or another machine. </span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data files </span></span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a>Many of the exercises we will work on in the course are about analyzing data and often this data will come in the form of files, such as <span class="in">`.csv`</span> or <span class="in">`.xlsx`</span>. </span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>You should also store these data files on your machine in the same folder (or a subfolder) as you store the notebooks. The screenshot below illustrates one way of managing this.</span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="al">![File browser on a Mac (Finder) showing `fysisk_biokemi`-folder with a subfolder for data containing several data files.](figures/jupyterlite/data_directory.png)</span>{.lightbox fig-align="center" width="90%" #fig-directory}</span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>Reproducing results, including data analysis, is essential in science. It is therefore important to develop good data-management practices that allow you to return to data you have worked with previously.</span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a>::: </span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>You will need to upload these files to JupyterLite to work with them. Use the same <span class="in">`⬆`</span> button described above for uploading a saved notebook, then select the data file using your computer's file browser.</span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a>JupyterLite has its own file system in your browser. Uploading a file creates a separate copy in this file system; it does not create a live connection to the original file on your computer. If you change the original file, you will need to upload it again for those changes to become available in JupyterLite.</span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>It is generally easiest to keep the notebook and its data files in the same folder in JupyterLite. A file in the same folder as the notebook can be referred to by its filename, for example <span class="in">`experiment.xlsx`</span>. If you organize your data in a subfolder called <span class="in">`data`</span>, the corresponding relative path is <span class="in">`data/experiment.xlsx`</span>.</span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with file paths. {#working-with-file-paths}</span></span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>When you want a program to read file it needs to know where the file is this is called a "file path" (en fil sti in danish). There is no wiggle-room with these file paths, they need to be exactly correct, computers are not smart enough to know that if you asked for <span class="in">`dataa/abc.csv`</span> but only <span class="in">`data/abc.csv`</span> exists you probably meant that.</span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a>The file system on a computer can be represented by a tree-structure, similar to a family tree. For example, the files in @fig-directory can be represented by a tree like so</span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a><span class="in">```default</span></span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="in">fysisk_biokemi</span></span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="in">├── data</span></span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="in">│  ├── averag-prope-amino-acids.xlsx</span></span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a><span class="in">│  ├── trypt-absor-fluor-emission.xlsx</span></span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="in">│  └── trypt-absor-fluor-extinction.xlsx</span></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a><span class="in">└── jupyterlite_intro.ipynb</span></span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a>We see that <span class="in">`fysisk_biokemi`</span> is a directory, that directory contains another directory <span class="in">`data`</span> and a file <span class="in">`jupyterlite_intro.ipynb`</span>, the <span class="in">`data`</span> folder contains three files.</span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>When working in a notebook, we specify paths *relative* to the folder containing the notebook. You can think of the notebook as the program that is reading the file. The examples below show how the path changes when the notebook is placed in different folders.</span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="The notebook is inside the <span class="in">`fysisk_biokemi`</span> folder" collapse="false"}</span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>Consider the same tree with the notebook inside the <span class="in">`fysisk_biokemi`</span> folder:</span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a><span class="in">```default</span></span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a><span class="in">fysisk_biokemi</span></span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a><span class="in">├── data</span></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a><span class="in">│  ├── averag-prope-amino-acids.xlsx</span></span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a><span class="in">│  ├── trypt-absor-fluor-emission.xlsx</span></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a><span class="in">│  └── trypt-absor-fluor-extinction.xlsx</span></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a><span class="in">└── jupyterlite_intro.ipynb  ← notebook running from here</span></span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a>The relative path to one of the data files would then be <span class="in">`data/averag-prope-amino-acids.xlsx`</span>. Starting from the folder containing the notebook, we first enter the <span class="in">`data`</span> folder and then find the file <span class="in">`averag-prope-amino-acids.xlsx`</span>.</span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="The notebook is outside the <span class="in">`fysisk_biokemi`</span> folder" collapse="true"}</span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>If instead the notebook were located outside the <span class="in">`fysisk_biokemi`</span> folder, the tree would look like this:</span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a><span class="in">```default</span></span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a><span class="in">.</span></span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a><span class="in">├── jupyterlite_intro.ipynb  ← notebook running from here</span></span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a><span class="in">└── fysisk_biokemi</span></span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a><span class="in">   └── data</span></span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a><span class="in">      ├── averag-prope-amino-acids.xlsx</span></span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a><span class="in">      ├── trypt-absor-fluor-emission.xlsx</span></span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a><span class="in">      └── trypt-absor-fluor-extinction.xlsx</span></span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a>The relative path to the same data file would then be <span class="in">`fysisk_biokemi/data/averag-prope-amino-acids.xlsx`</span>. Starting from the notebook, we first enter the <span class="in">`fysisk_biokemi`</span> folder, then the <span class="in">`data`</span> folder, and finally find the file.</span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="The notebook is in another folder inside <span class="in">`fysisk_biokemi`</span>" collapse="true"}</span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a>Finally, the notebook could be located in a separate folder inside <span class="in">`fysisk_biokemi`</span>, as illustrated by this tree:</span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a><span class="in">```default</span></span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a><span class="in">fysisk_biokemi</span></span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a><span class="in">├── data</span></span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a><span class="in">│  ├── averag-prope-amino-acids.xlsx</span></span>
+<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a><span class="in">│  ├── trypt-absor-fluor-emission.xlsx</span></span>
+<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a><span class="in">│  └── trypt-absor-fluor-extinction.xlsx</span></span>
+<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a><span class="in">└── program</span></span>
+<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a><span class="in">   └── jupyterlite_intro.ipynb  ← notebook running from here</span></span>
+<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a>In this case, the relative path to the data file is <span class="in">`../data/averag-prope-amino-acids.xlsx`</span>. Here, <span class="in">`../`</span> means “go up one folder.” Starting from the <span class="in">`program`</span> folder, we first go up to <span class="in">`fysisk_biokemi`</span>, then enter the <span class="in">`data`</span> folder and find the file.</span>
+<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a>Throughout the course we will be using the <span class="co">[</span><span class="ot">`pandas`</span><span class="co">](https://pandas.pydata.org/docs/index.html)</span> specifically we will be using the functions</span>
+<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`pd.read_csv`</span>: To read <span class="in">`.csv`</span> files</span>
+<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`pd.read_excel`</span>: To read <span class="in">`.xlsx`</span> files.</span>
+<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a>The syntax for <span class="in">`pd.read_csv`</span> is</span>
+<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'path/to/file.csv'</span>)</span>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a>And equivalent for <span class="in">`pd.read_excel`</span>.</span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a><span class="fu">### Try it yourself</span></span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>The exercises below start with a file in the same folder as the notebook and gradually introduce more complex paths.</span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| setup: true</span></span>
+<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise:</span></span>
+<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - file-path-same-folder</span></span>
+<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - file-path-child-folder</span></span>
+<span id="cb10-230"><a href="#cb10-230" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - file-path-nested-folder</span></span>
+<span id="cb10-231"><a href="#cb10-231" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - file-path-sibling-folder</span></span>
+<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> _pandas</span>
+<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> posixpath</span>
+<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected calls and feedback used by the shared checker.</span></span>
+<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a>EXPECTED_CALLS <span class="op">=</span> {</span>
+<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a>    <span class="st">"file-path-same-folder"</span>: (<span class="st">"read_csv"</span>, <span class="st">"experiment.csv"</span>),</span>
+<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a>    <span class="st">"file-path-child-folder"</span>: (<span class="st">"read_excel"</span>, <span class="st">"data/protein_samples.xlsx"</span>),</span>
+<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a>    <span class="st">"file-path-nested-folder"</span>: (<span class="st">"read_csv"</span>, <span class="st">"data/processed/fluorescence.csv"</span>),</span>
+<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a>    <span class="st">"file-path-sibling-folder"</span>: (<span class="st">"read_excel"</span>, <span class="st">"../data/enzyme_activity.xlsx"</span>),</span>
+<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a>PATH_HINTS <span class="op">=</span> {</span>
+<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a>    <span class="st">"file-path-same-folder"</span>: <span class="st">"The file is in the same folder as the notebook, so no folder name is needed."</span>,</span>
+<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a>    <span class="st">"file-path-child-folder"</span>: <span class="st">"Starting from the notebook, enter the &lt;code&gt;data&lt;/code&gt; folder."</span>,</span>
+<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a>    <span class="st">"file-path-nested-folder"</span>: <span class="st">"Starting from the notebook, enter &lt;code&gt;data&lt;/code&gt; and then &lt;code&gt;processed&lt;/code&gt;."</span>,</span>
+<span id="cb10-247"><a href="#cb10-247" aria-hidden="true" tabindex="-1"></a>    <span class="st">"file-path-sibling-folder"</span>: <span class="st">"Go up one folder with &lt;code&gt;../&lt;/code&gt;, then enter the &lt;code&gt;data&lt;/code&gt; folder."</span>,</span>
+<span id="cb10-248"><a href="#cb10-248" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-249"><a href="#cb10-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-250"><a href="#cb10-250" aria-hidden="true" tabindex="-1"></a><span class="co"># Each valid reader/path combination returns a small fictional dataset.</span></span>
+<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a>MOCK_DATA <span class="op">=</span> {</span>
+<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"read_csv"</span>, <span class="st">"experiment.csv"</span>): {</span>
+<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sample"</span>: [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>],</span>
+<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a>        <span class="st">"pH"</span>: [<span class="fl">2.0</span>, <span class="fl">7.0</span>, <span class="fl">10.0</span>],</span>
+<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a>        <span class="st">"absorbance"</span>: [<span class="fl">0.18</span>, <span class="fl">0.73</span>, <span class="fl">0.41</span>],</span>
+<span id="cb10-256"><a href="#cb10-256" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb10-257"><a href="#cb10-257" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"read_excel"</span>, <span class="st">"data/protein_samples.xlsx"</span>): {</span>
+<span id="cb10-258"><a href="#cb10-258" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sample"</span>: [<span class="st">"lysate"</span>, <span class="st">"wash"</span>, <span class="st">"eluate"</span>],</span>
+<span id="cb10-259"><a href="#cb10-259" aria-hidden="true" tabindex="-1"></a>        <span class="st">"protein concentration (mg/mL)"</span>: [<span class="fl">8.4</span>, <span class="fl">0.6</span>, <span class="fl">3.2</span>],</span>
+<span id="cb10-260"><a href="#cb10-260" aria-hidden="true" tabindex="-1"></a>        <span class="st">"purity (%)"</span>: [<span class="dv">42</span>, <span class="dv">18</span>, <span class="dv">91</span>],</span>
+<span id="cb10-261"><a href="#cb10-261" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb10-262"><a href="#cb10-262" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"read_csv"</span>, <span class="st">"data/processed/fluorescence.csv"</span>): {</span>
+<span id="cb10-263"><a href="#cb10-263" aria-hidden="true" tabindex="-1"></a>        <span class="st">"wavelength (nm)"</span>: [<span class="dv">320</span>, <span class="dv">340</span>, <span class="dv">360</span>],</span>
+<span id="cb10-264"><a href="#cb10-264" aria-hidden="true" tabindex="-1"></a>        <span class="st">"fluorescence (a.u.)"</span>: [<span class="fl">14.2</span>, <span class="fl">48.7</span>, <span class="fl">22.5</span>],</span>
+<span id="cb10-265"><a href="#cb10-265" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb10-266"><a href="#cb10-266" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"read_excel"</span>, <span class="st">"../data/enzyme_activity.xlsx"</span>): {</span>
+<span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a>        <span class="st">"substrate (mM)"</span>: [<span class="fl">0.5</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>],</span>
+<span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a>        <span class="st">"rate (µmol/min)"</span>: [<span class="fl">0.82</span>, <span class="fl">1.31</span>, <span class="fl">1.68</span>],</span>
+<span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MockPandas:</span>
+<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Small stand-in for the two pandas readers used in these exercises."""</span></span>
+<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.attempted_calls <span class="op">=</span> []</span>
+<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _read(<span class="va">self</span>, reader, path):</span>
+<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.attempted_calls.append((reader, path))</span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(path, <span class="bu">str</span>):</span>
+<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"The file path must be text in quotation marks."</span>)</span>
+<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>        key <span class="op">=</span> (reader, posixpath.normpath(path))</span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> key <span class="kw">not</span> <span class="kw">in</span> MOCK_DATA:</span>
+<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">FileNotFoundError</span>(<span class="ss">f"No file was found at </span><span class="sc">{</span>path<span class="sc">!r}</span><span class="ss">."</span>)</span>
+<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _pandas.DataFrame(MOCK_DATA[key])</span>
+<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> read_csv(<span class="va">self</span>, path):</span>
+<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._read(<span class="st">"read_csv"</span>, path)</span>
+<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> read_excel(<span class="va">self</span>, path):</span>
+<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._read(<span class="st">"read_excel"</span>, path)</span>
+<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a>pd <span class="op">=</span> MockPandas()</span>
+<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-303"><a href="#cb10-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-304"><a href="#cb10-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| check: true</span></span>
+<span id="cb10-305"><a href="#cb10-305" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise:</span></span>
+<span id="cb10-306"><a href="#cb10-306" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - file-path-same-folder</span></span>
+<span id="cb10-307"><a href="#cb10-307" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - file-path-child-folder</span></span>
+<span id="cb10-308"><a href="#cb10-308" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - file-path-nested-folder</span></span>
+<span id="cb10-309"><a href="#cb10-309" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - file-path-sibling-folder</span></span>
+<span id="cb10-310"><a href="#cb10-310" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> posixpath</span>
+<span id="cb10-311"><a href="#cb10-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-312"><a href="#cb10-312" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto Live evaluates the model solution after the learner's code. If only</span></span>
+<span id="cb10-313"><a href="#cb10-313" aria-hidden="true" tabindex="-1"></a><span class="co"># that solution call is recorded, the learner's call never reached the mock.</span></span>
+<span id="cb10-314"><a href="#cb10-314" aria-hidden="true" tabindex="-1"></a>attempted_calls <span class="op">=</span> envir_result[<span class="st">"pd"</span>].attempted_calls</span>
+<span id="cb10-315"><a href="#cb10-315" aria-hidden="true" tabindex="-1"></a>attempted_reader, attempted_path <span class="op">=</span> (</span>
+<span id="cb10-316"><a href="#cb10-316" aria-hidden="true" tabindex="-1"></a>    attempted_calls[<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">len</span>(attempted_calls) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> (<span class="va">None</span>, <span class="va">None</span>)</span>
+<span id="cb10-317"><a href="#cb10-317" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-318"><a href="#cb10-318" aria-hidden="true" tabindex="-1"></a>expected_reader, expected_path <span class="op">=</span> envir_result[<span class="st">"EXPECTED_CALLS"</span>][label]</span>
+<span id="cb10-319"><a href="#cb10-319" aria-hidden="true" tabindex="-1"></a>path_hint <span class="op">=</span> envir_result[<span class="st">"PATH_HINTS"</span>][label]</span>
+<span id="cb10-320"><a href="#cb10-320" aria-hidden="true" tabindex="-1"></a>expected_extension <span class="op">=</span> posixpath.splitext(expected_path)[<span class="dv">1</span>]</span>
+<span id="cb10-321"><a href="#cb10-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-322"><a href="#cb10-322" aria-hidden="true" tabindex="-1"></a>reader_message <span class="op">=</span> (</span>
+<span id="cb10-323"><a href="#cb10-323" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Use &lt;code&gt;pd.read_excel&lt;/code&gt; for an &lt;code&gt;.xlsx&lt;/code&gt; file."</span></span>
+<span id="cb10-324"><a href="#cb10-324" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> expected_reader <span class="op">==</span> <span class="st">"read_excel"</span></span>
+<span id="cb10-325"><a href="#cb10-325" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="st">"Use &lt;code&gt;pd.read_csv&lt;/code&gt; for a &lt;code&gt;.csv&lt;/code&gt; file."</span></span>
+<span id="cb10-326"><a href="#cb10-326" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-327"><a href="#cb10-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-328"><a href="#cb10-328" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> attempted_path <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb10-329"><a href="#cb10-329" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> expected_reader <span class="kw">not</span> <span class="kw">in</span> user_code:</span>
+<span id="cb10-330"><a href="#cb10-330" aria-hidden="true" tabindex="-1"></a>        feedback <span class="op">=</span> {<span class="st">"correct"</span>: <span class="va">False</span>, <span class="st">"message"</span>: reader_message}</span>
+<span id="cb10-331"><a href="#cb10-331" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-332"><a href="#cb10-332" aria-hidden="true" tabindex="-1"></a>        feedback <span class="op">=</span> {</span>
+<span id="cb10-333"><a href="#cb10-333" aria-hidden="true" tabindex="-1"></a>            <span class="st">"correct"</span>: <span class="va">False</span>,</span>
+<span id="cb10-334"><a href="#cb10-334" aria-hidden="true" tabindex="-1"></a>            <span class="st">"message"</span>: <span class="st">"Write the path as text by putting quotation marks around it, for example &lt;code&gt;</span><span class="ch">\"</span><span class="st">filename.csv</span><span class="ch">\"</span><span class="st">&lt;/code&gt;."</span>,</span>
+<span id="cb10-335"><a href="#cb10-335" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb10-336"><a href="#cb10-336" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="kw">not</span> <span class="bu">isinstance</span>(attempted_path, <span class="bu">str</span>):</span>
+<span id="cb10-337"><a href="#cb10-337" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {</span>
+<span id="cb10-338"><a href="#cb10-338" aria-hidden="true" tabindex="-1"></a>        <span class="st">"correct"</span>: <span class="va">False</span>,</span>
+<span id="cb10-339"><a href="#cb10-339" aria-hidden="true" tabindex="-1"></a>        <span class="st">"message"</span>: <span class="st">"A file path must be text. Put quotation marks around the filename."</span>,</span>
+<span id="cb10-340"><a href="#cb10-340" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-341"><a href="#cb10-341" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> attempted_reader <span class="op">!=</span> expected_reader:</span>
+<span id="cb10-342"><a href="#cb10-342" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {<span class="st">"correct"</span>: <span class="va">False</span>, <span class="st">"message"</span>: reader_message}</span>
+<span id="cb10-343"><a href="#cb10-343" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="st">"</span><span class="ch">\\</span><span class="st">"</span> <span class="kw">in</span> attempted_path:</span>
+<span id="cb10-344"><a href="#cb10-344" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {</span>
+<span id="cb10-345"><a href="#cb10-345" aria-hidden="true" tabindex="-1"></a>        <span class="st">"correct"</span>: <span class="va">False</span>,</span>
+<span id="cb10-346"><a href="#cb10-346" aria-hidden="true" tabindex="-1"></a>        <span class="st">"message"</span>: <span class="ss">f"Use &lt;code&gt;/&lt;/code&gt; rather than &lt;code&gt;</span><span class="ch">\\</span><span class="ss">&lt;/code&gt; in paths. </span><span class="sc">{</span>path_hint<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb10-347"><a href="#cb10-347" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-348"><a href="#cb10-348" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> posixpath.isabs(attempted_path):</span>
+<span id="cb10-349"><a href="#cb10-349" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {</span>
+<span id="cb10-350"><a href="#cb10-350" aria-hidden="true" tabindex="-1"></a>        <span class="st">"correct"</span>: <span class="va">False</span>,</span>
+<span id="cb10-351"><a href="#cb10-351" aria-hidden="true" tabindex="-1"></a>        <span class="st">"message"</span>: <span class="st">"Use a relative path starting from the notebook. You do not need the complete path from the top of the file system."</span>,</span>
+<span id="cb10-352"><a href="#cb10-352" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-353"><a href="#cb10-353" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> posixpath.normpath(attempted_path) <span class="op">==</span> expected_path:</span>
+<span id="cb10-354"><a href="#cb10-354" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {</span>
+<span id="cb10-355"><a href="#cb10-355" aria-hidden="true" tabindex="-1"></a>        <span class="st">"correct"</span>: <span class="va">True</span>,</span>
+<span id="cb10-356"><a href="#cb10-356" aria-hidden="true" tabindex="-1"></a>        <span class="st">"message"</span>: <span class="st">"Correct! The reader and path match the file shown in the tree."</span>,</span>
+<span id="cb10-357"><a href="#cb10-357" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: <span class="st">"success"</span>,</span>
+<span id="cb10-358"><a href="#cb10-358" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-359"><a href="#cb10-359" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> posixpath.basename(posixpath.normpath(attempted_path)) <span class="op">==</span> posixpath.basename(expected_path):</span>
+<span id="cb10-360"><a href="#cb10-360" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {<span class="st">"correct"</span>: <span class="va">False</span>, <span class="st">"message"</span>: path_hint}</span>
+<span id="cb10-361"><a href="#cb10-361" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> posixpath.splitext(attempted_path)[<span class="dv">1</span>].lower() <span class="op">!=</span> expected_extension:</span>
+<span id="cb10-362"><a href="#cb10-362" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {</span>
+<span id="cb10-363"><a href="#cb10-363" aria-hidden="true" tabindex="-1"></a>        <span class="st">"correct"</span>: <span class="va">False</span>,</span>
+<span id="cb10-364"><a href="#cb10-364" aria-hidden="true" tabindex="-1"></a>        <span class="st">"message"</span>: <span class="ss">f"Check the file extension in the tree. This file ends in &lt;code&gt;</span><span class="sc">{</span>expected_extension<span class="sc">}</span><span class="ss">&lt;/code&gt;."</span>,</span>
+<span id="cb10-365"><a href="#cb10-365" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-366"><a href="#cb10-366" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> posixpath.basename(attempted_path) <span class="op">!=</span> posixpath.basename(expected_path):</span>
+<span id="cb10-367"><a href="#cb10-367" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {</span>
+<span id="cb10-368"><a href="#cb10-368" aria-hidden="true" tabindex="-1"></a>        <span class="st">"correct"</span>: <span class="va">False</span>,</span>
+<span id="cb10-369"><a href="#cb10-369" aria-hidden="true" tabindex="-1"></a>        <span class="st">"message"</span>: <span class="st">"The filename does not match the tree. Check its spelling carefully."</span>,</span>
+<span id="cb10-370"><a href="#cb10-370" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-371"><a href="#cb10-371" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb10-372"><a href="#cb10-372" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> {</span>
+<span id="cb10-373"><a href="#cb10-373" aria-hidden="true" tabindex="-1"></a>        <span class="st">"correct"</span>: <span class="va">False</span>,</span>
+<span id="cb10-374"><a href="#cb10-374" aria-hidden="true" tabindex="-1"></a>        <span class="st">"message"</span>: <span class="st">"Compare your path with the file tree and remember that paths start from the notebook's folder."</span>,</span>
+<span id="cb10-375"><a href="#cb10-375" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-376"><a href="#cb10-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-377"><a href="#cb10-377" aria-hidden="true" tabindex="-1"></a>feedback</span>
+<span id="cb10-378"><a href="#cb10-378" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-379"><a href="#cb10-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-380"><a href="#cb10-380" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Exercise 1: Same folder" collapse="false"}</span>
+<span id="cb10-381"><a href="#cb10-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-382"><a href="#cb10-382" aria-hidden="true" tabindex="-1"></a>In this example, the data file is in the same folder as the notebook:</span>
+<span id="cb10-383"><a href="#cb10-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-384"><a href="#cb10-384" aria-hidden="true" tabindex="-1"></a><span class="in">```default</span></span>
+<span id="cb10-385"><a href="#cb10-385" aria-hidden="true" tabindex="-1"></a><span class="in">fysisk_biokemi</span></span>
+<span id="cb10-386"><a href="#cb10-386" aria-hidden="true" tabindex="-1"></a><span class="in">├── jupyterlite_intro.ipynb  ← notebook running from here</span></span>
+<span id="cb10-387"><a href="#cb10-387" aria-hidden="true" tabindex="-1"></a><span class="in">└── experiment.csv</span></span>
+<span id="cb10-388"><a href="#cb10-388" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-389"><a href="#cb10-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-390"><a href="#cb10-390" aria-hidden="true" tabindex="-1"></a>Complete the code below so that it loads <span class="in">`experiment.csv`</span>. Replace the blank with the path to the file, including quotation marks.</span>
+<span id="cb10-391"><a href="#cb10-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-394"><a href="#cb10-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-395"><a href="#cb10-395" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise: file-path-same-folder</span></span>
+<span id="cb10-396"><a href="#cb10-396" aria-hidden="true" tabindex="-1"></a>pd.read_csv(______)</span>
+<span id="cb10-397"><a href="#cb10-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-398"><a href="#cb10-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-401"><a href="#cb10-401" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-402"><a href="#cb10-402" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise: file-path-same-folder</span></span>
+<span id="cb10-403"><a href="#cb10-403" aria-hidden="true" tabindex="-1"></a><span class="co">#| solution: true</span></span>
+<span id="cb10-404"><a href="#cb10-404" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"experiment.csv"</span>)</span>
+<span id="cb10-405"><a href="#cb10-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-406"><a href="#cb10-406" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-407"><a href="#cb10-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-408"><a href="#cb10-408" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Exercise 2: A file in a subfolder" collapse="true"}</span>
+<span id="cb10-409"><a href="#cb10-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-410"><a href="#cb10-410" aria-hidden="true" tabindex="-1"></a>The notebook now has a <span class="in">`data`</span> folder beside it. The Excel file is inside that folder:</span>
+<span id="cb10-411"><a href="#cb10-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-412"><a href="#cb10-412" aria-hidden="true" tabindex="-1"></a><span class="in">```default</span></span>
+<span id="cb10-413"><a href="#cb10-413" aria-hidden="true" tabindex="-1"></a><span class="in">fysisk_biokemi</span></span>
+<span id="cb10-414"><a href="#cb10-414" aria-hidden="true" tabindex="-1"></a><span class="in">├── data</span></span>
+<span id="cb10-415"><a href="#cb10-415" aria-hidden="true" tabindex="-1"></a><span class="in">│  └── protein_samples.xlsx</span></span>
+<span id="cb10-416"><a href="#cb10-416" aria-hidden="true" tabindex="-1"></a><span class="in">└── jupyterlite_intro.ipynb  ← notebook running from here</span></span>
+<span id="cb10-417"><a href="#cb10-417" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-418"><a href="#cb10-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-419"><a href="#cb10-419" aria-hidden="true" tabindex="-1"></a>Complete the path so that the code loads <span class="in">`protein_samples.xlsx`</span>.</span>
+<span id="cb10-420"><a href="#cb10-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-423"><a href="#cb10-423" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-424"><a href="#cb10-424" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise: file-path-child-folder</span></span>
+<span id="cb10-425"><a href="#cb10-425" aria-hidden="true" tabindex="-1"></a>pd.read_excel(______)</span>
+<span id="cb10-426"><a href="#cb10-426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-427"><a href="#cb10-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-430"><a href="#cb10-430" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-431"><a href="#cb10-431" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise: file-path-child-folder</span></span>
+<span id="cb10-432"><a href="#cb10-432" aria-hidden="true" tabindex="-1"></a><span class="co">#| solution: true</span></span>
+<span id="cb10-433"><a href="#cb10-433" aria-hidden="true" tabindex="-1"></a>pd.read_excel(<span class="st">"data/protein_samples.xlsx"</span>)</span>
+<span id="cb10-434"><a href="#cb10-434" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-435"><a href="#cb10-435" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-436"><a href="#cb10-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-437"><a href="#cb10-437" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Exercise 3: A file two folders down" collapse="true"}</span>
+<span id="cb10-438"><a href="#cb10-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-439"><a href="#cb10-439" aria-hidden="true" tabindex="-1"></a>The CSV file is inside <span class="in">`processed`</span>, which is itself inside <span class="in">`data`</span>:</span>
+<span id="cb10-440"><a href="#cb10-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-441"><a href="#cb10-441" aria-hidden="true" tabindex="-1"></a><span class="in">```default</span></span>
+<span id="cb10-442"><a href="#cb10-442" aria-hidden="true" tabindex="-1"></a><span class="in">fysisk_biokemi</span></span>
+<span id="cb10-443"><a href="#cb10-443" aria-hidden="true" tabindex="-1"></a><span class="in">├── data</span></span>
+<span id="cb10-444"><a href="#cb10-444" aria-hidden="true" tabindex="-1"></a><span class="in">│  └── processed</span></span>
+<span id="cb10-445"><a href="#cb10-445" aria-hidden="true" tabindex="-1"></a><span class="in">│     └── fluorescence.csv</span></span>
+<span id="cb10-446"><a href="#cb10-446" aria-hidden="true" tabindex="-1"></a><span class="in">└── jupyterlite_intro.ipynb  ← notebook running from here</span></span>
+<span id="cb10-447"><a href="#cb10-447" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-448"><a href="#cb10-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-449"><a href="#cb10-449" aria-hidden="true" tabindex="-1"></a>Complete the path so that the code loads <span class="in">`fluorescence.csv`</span>.</span>
+<span id="cb10-450"><a href="#cb10-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-453"><a href="#cb10-453" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-454"><a href="#cb10-454" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise: file-path-nested-folder</span></span>
+<span id="cb10-455"><a href="#cb10-455" aria-hidden="true" tabindex="-1"></a>pd.read_csv(______)</span>
+<span id="cb10-456"><a href="#cb10-456" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-457"><a href="#cb10-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-460"><a href="#cb10-460" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-461"><a href="#cb10-461" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise: file-path-nested-folder</span></span>
+<span id="cb10-462"><a href="#cb10-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| solution: true</span></span>
+<span id="cb10-463"><a href="#cb10-463" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"data/processed/fluorescence.csv"</span>)</span>
+<span id="cb10-464"><a href="#cb10-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-465"><a href="#cb10-465" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-466"><a href="#cb10-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-467"><a href="#cb10-467" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Exercise 4: A file in a sibling folder" collapse="true"}</span>
+<span id="cb10-468"><a href="#cb10-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-469"><a href="#cb10-469" aria-hidden="true" tabindex="-1"></a>The notebook and data file are now in different subfolders of <span class="in">`fysisk_biokemi`</span>:</span>
+<span id="cb10-470"><a href="#cb10-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-471"><a href="#cb10-471" aria-hidden="true" tabindex="-1"></a><span class="in">```default</span></span>
+<span id="cb10-472"><a href="#cb10-472" aria-hidden="true" tabindex="-1"></a><span class="in">fysisk_biokemi</span></span>
+<span id="cb10-473"><a href="#cb10-473" aria-hidden="true" tabindex="-1"></a><span class="in">├── data</span></span>
+<span id="cb10-474"><a href="#cb10-474" aria-hidden="true" tabindex="-1"></a><span class="in">│  └── enzyme_activity.xlsx</span></span>
+<span id="cb10-475"><a href="#cb10-475" aria-hidden="true" tabindex="-1"></a><span class="in">└── notebooks</span></span>
+<span id="cb10-476"><a href="#cb10-476" aria-hidden="true" tabindex="-1"></a><span class="in">   └── jupyterlite_intro.ipynb  ← notebook running from here</span></span>
+<span id="cb10-477"><a href="#cb10-477" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-478"><a href="#cb10-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-479"><a href="#cb10-479" aria-hidden="true" tabindex="-1"></a>Complete both blanks. Choose the appropriate <span class="in">`pandas`</span> reader and provide the path to <span class="in">`enzyme_activity.xlsx`</span>.</span>
+<span id="cb10-480"><a href="#cb10-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-483"><a href="#cb10-483" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-484"><a href="#cb10-484" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise: file-path-sibling-folder</span></span>
+<span id="cb10-485"><a href="#cb10-485" aria-hidden="true" tabindex="-1"></a>pd.______(______)</span>
+<span id="cb10-486"><a href="#cb10-486" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-487"><a href="#cb10-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-490"><a href="#cb10-490" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb10-491"><a href="#cb10-491" aria-hidden="true" tabindex="-1"></a><span class="co">#| exercise: file-path-sibling-folder</span></span>
+<span id="cb10-492"><a href="#cb10-492" aria-hidden="true" tabindex="-1"></a><span class="co">#| solution: true</span></span>
+<span id="cb10-493"><a href="#cb10-493" aria-hidden="true" tabindex="-1"></a>pd.read_excel(<span class="st">"../data/enzyme_activity.xlsx"</span>)</span>
+<span id="cb10-494"><a href="#cb10-494" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-495"><a href="#cb10-495" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-496"><a href="#cb10-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-497"><a href="#cb10-497" aria-hidden="true" tabindex="-1"></a><span class="fu">### Summary and tips for working with notebooks</span></span>
+<span id="cb10-498"><a href="#cb10-498" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-499"><a href="#cb10-499" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Start at the top of a notebook and run its cells in order. Later cells may depend on variables or packages created by earlier cells.</span>
+<span id="cb10-500"><a href="#cb10-500" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Editing a cell does not run the new code. Run the cell again after making a change.</span>
+<span id="cb10-501"><a href="#cb10-501" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If you change an earlier cell, rerun the cells that depend on it. When in doubt, restart the notebook and run all cells from the top.</span>
+<span id="cb10-502"><a href="#cb10-502" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the stop button if a cell keeps running without finishing.</span>
+<span id="cb10-503"><a href="#cb10-503" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When Python reports an error, read the final line of the error message first. It usually gives the most useful description of what went wrong.</span>
+<span id="cb10-504"><a href="#cb10-504" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before loading a data file, check that it is visible in the JupyterLite file browser and that its path matches its location.</span>
+<span id="cb10-505"><a href="#cb10-505" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>JupyterLite saves work in the browser, but this storage is not a reliable long-term backup. Regularly export your notebook as an <span class="in">`.ipynb`</span> file and store it on your computer.</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
