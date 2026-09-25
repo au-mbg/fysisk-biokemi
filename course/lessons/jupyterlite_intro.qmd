@@ -1,5 +1,17 @@
 ---
 title: Introduction to JupyterLite
+format:
+  live-html:
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    number-depth: 2
+    code-tools: true
+    theme: cosmo
+pyodide:
+  packages:
+    - pandas
+  resources: []
 ---
 
 In this course we will use JupyterLite to work with Python for data analysis. 
@@ -10,9 +22,9 @@ JupyterLite is a browser-based version of Python that allows us to get up and ru
 
 JupyterLite can be accessed at this webpage: [https://au-mbg.github.io/jupyterlite-playground/lab/index.html](https://au-mbg.github.io/jupyterlite-playground/lab/index.html)
 
-When you first access the page, you should see something like what is shown below.
+When you first access the page, you should see something like what is shown in @fig-jupyterlite-frontpage
 
-![The JupyterLite Homepage](figures/jupyterlite/startup_page.png){.lightbox fig-align="center" width="90%"}
+![The JupyterLite Homepage](figures/jupyterlite/startup_page.png){.lightbox fig-align="center" width="90%" #fig-jupyterlite-frontpage}
 
 JupyterLite is a JupyterLab distribution that runs in the browser. This means you can run 
 Python programs and notebooks in JupyterLite without having to install anything. 
@@ -20,15 +32,15 @@ Python programs and notebooks in JupyterLite without having to install anything.
 ## Working with notebooks in JupyterLite
 
 On the home page of JupyterLite, also called the *launcher*, you can click the button that 
-says `Python (Pyodide)` to create a new notebook. You will then arrive at a page like the one shown below.
+says `Python (Pyodide)` to create a new notebook. You will then arrive at a page like the one shown in @fig-new-notebook.
 
-![New notebook on JupyterLite](figures/jupyterlite/new_notebook.png){.lightbox fig-align="center" width="90%"}
+![New notebook on JupyterLite](figures/jupyterlite/new_notebook.png){.lightbox fig-align="center" width="90%" #fig-new-notebook}
 
-This notebook is a document that can contain both code and text, with the two types separated into different cells. The Python you worked with in IMOL is very similar to one of these code cells. 
+This notebook is a document that can contain both code and text, with the two types separated into different cells, see @fig-cell-types. The Python you worked with in IMOL is very similar to one of these code cells.
 
-![Notebook with a Markdown cell and a Code cell](figures/jupyterlite/example_cells.png){.lightbox fig-align="center" width="90%"}
+![Notebook with a Markdown cell and a Code cell](figures/jupyterlite/example_cells.png){.lightbox fig-align="center" width="90%" #fig-cell-types}
 
-To see the output produced by code in a notebook, we need to *run* or *execute* its code cells. There are several ways to control cell execution:
+To see the output produced by code in a notebook, we need to *run* or *execute* its code cells. There are several ways to control cell execution, see @fig-run-options and the list below:
 
 - `▶`: Runs the currently selected cell. You can also use the keyboard shortcut {{< kbd mac=Shift-Enter win=Shift-Enter >}}.
 - `▶▶`: Restarts the notebook and runs all cells from top to bottom.
@@ -36,7 +48,7 @@ To see the output produced by code in a notebook, we need to *run* or *execute* 
 - `↻`: Restarts the notebook without running the cells again.
 - `Run`: Opens a menu with additional options for running cells.
 
-![Options for running Code cells](figures/jupyterlite/run_options.png){.lightbox fig-align="center" width="90%"}
+![Options for running Code cells](figures/jupyterlite/run_options.png){.lightbox fig-align="center" width="90%" #fig-run-options}
 
 ::: {.callout-note title="Run cells in order"}
 When you open an exercise, start at the top of the notebook and run the cells in order. The first setup cell may take a little longer to run because it prepares the course software. If you restart the notebook, run the cells from the top again before continuing your work.
@@ -46,9 +58,9 @@ When you open an exercise, start at the top of the notebook and run the cells in
 
 The exercises in this course are provided as notebooks that can be opened
 directly in JupyterLite. On the course website, open the exercise you want to
-work on and click `Open in JupyterLite` under **Other Formats**.
+work on and click `Open in JupyterLite` under **Other Formats**, see @fig-opening-notebook
 
-![Options for opening or download course notebooks](figures/jupyterlite/open_course_notebook.png){.lightbox fig-align="center" width="90%"}
+![Options for opening or download course notebooks](figures/jupyterlite/open_course_notebook.png){.lightbox fig-align="center" width="90%" #fig-opening-notebook}
 
 JupyterLite will open and import a copy of the exercise notebook. If the
 notebook does not open automatically, locate it in the JupyterLite file browser
@@ -88,19 +100,19 @@ types of files.
 
 You should therefore create a folder (also called a directory) on your computer in a location that you can find, perhaps in your Documents folder or in a cloud storage folder such as Dropbox, iCloud, or OneDrive. This folder could be called `fysisk_biokemi` or another name that clearly communicates its purpose. 
 
-Once you've finished working on a notebook in JupyterLite, you should export a backup to this folder. To download the notebook to your computer, select `File > Save and Export Notebook As > Notebook (ipynb)`, as shown in the screenshot below. 
+Once you've finished working on a notebook in JupyterLite, you should export a backup to this folder. To download the notebook to your computer, select `File > Save and Export Notebook As > Notebook (ipynb)`, as shown in @fig-save-menu.
 
-![Menu to save a notebook to the local machine](figures/jupyterlite/save_notebook.png){.lightbox fig-align="center" width="90%"}
+![Menu to save a notebook to the local machine](figures/jupyterlite/save_notebook.png){.lightbox fig-align="center" width="90%" #fig-save-menu}
 
-Once you've downloaded the notebook, you should move it to the `fysisk_biokemi` directory on your computer. For example, the folder might look like this:
+Once you've downloaded the notebook, you should move it to the `fysisk_biokemi` directory on your computer. For example, the folder might look @fig-directory-example.
 
-![File browser on a Mac (Finder) showing a notebook in an appropriately named directory](figures/jupyterlite/directory.png){.lightbox fig-align="center" width="90%"}
+![File browser on a Mac (Finder) showing a notebook in an appropriately named directory](figures/jupyterlite/directory.png){.lightbox fig-align="center" width="90%" #fig-directory-example}
 
 ### Opening a saved notebook
 
-To continue working on a notebook that is stored on your computer, upload the `.ipynb` file to JupyterLite. Click the `⬆` button in the JupyterLite file browser and select the notebook using your computer's file browser. Once the notebook appears in the JupyterLite file browser, double-click it to open it.
+To continue working on a notebook that is stored on your computer, upload the `.ipynb` file to JupyterLite. Click the `⬆` button in the JupyterLite file browser and select the notebook using your computer's file browser. Once the notebook appears in the JupyterLite file browser, double-click it to open it. This is shown in @fig-upload.
 
-![Upload a file from your computer to JupyterLite](figures/jupyterlite/upload_data.png){.lightbox fig-align="center" width="90%"}
+![Upload a file from your computer to JupyterLite](figures/jupyterlite/upload_data.png){.lightbox fig-align="center" width="90%" #fig-upload}
 
 ### Persistent storage in JupyterLite 
 
@@ -112,7 +124,7 @@ Many of the exercises we will work on in the course are about analyzing data and
 
 You should also store these data files on your machine in the same folder (or a subfolder) as you store the notebooks. The screenshot below illustrates one way of managing this.
 
-![File browser on a Mac (Finder) showing `fysisk_biokemi`-folder with a subfolder for data containing several data files.](figures/jupyterlite/data_directory.png){.lightbox fig-align="center" width="90%"}
+![File browser on a Mac (Finder) showing `fysisk_biokemi`-folder with a subfolder for data containing several data files.](figures/jupyterlite/data_directory.png){.lightbox fig-align="center" width="90%" #fig-directory}
 
 ::: {.callout-warning}
 Reproducing results, including data analysis, is essential in science. It is therefore important to develop good data-management practices that allow you to return to data you have worked with previously.
@@ -124,10 +136,350 @@ JupyterLite has its own file system in your browser. Uploading a file creates a 
 
 It is generally easiest to keep the notebook and its data files in the same folder in JupyterLite. A file in the same folder as the notebook can be referred to by its filename, for example `experiment.xlsx`. If you organize your data in a subfolder called `data`, the corresponding relative path is `data/experiment.xlsx`.
 
-::: {.callout-tip title="If something goes wrong"}
-- Make sure that you have run all earlier cells in the notebook, then try the cell again.
-- If necessary, restart the notebook and run all cells from the top.
-- Check that the required data files are visible in the JupyterLite file browser and that the path in the notebook matches their location.
-- If work stored in the browser is unavailable, upload your latest exported `.ipynb` file.
-- Before closing JupyterLite or clearing browser data, export a fresh `.ipynb` backup to your computer.
+## Working with file paths.
+
+When you want a program to read file it needs to know where the file is this is called a "file path" (en fil sti in danish). There is no wiggle-room with these file paths, they need to be exactly correct, computers are not smart enough to know that if you asked for `dataa/abc.csv` but only `data/abc.csv` exists you probably meant that.
+
+The file system on a computer can be represented by a tree-structure, similar to a family tree. For example, the files in @fig-directory can be represented by a tree like so
+
+```default
+fysisk_biokemi
+├── data
+│  ├── averag-prope-amino-acids.xlsx
+│  ├── trypt-absor-fluor-emission.xlsx
+│  └── trypt-absor-fluor-extinction.xlsx
+└── jupyterlite_intro.ipynb
+```
+
+We see that `fysisk_biokemi` is a directory, that directory contains another directory `data` and a file `jupyterlite_intro.ipynb`, the `data` folder contains three files.
+
+When working in a notebook, we specify paths *relative* to the folder containing the notebook. You can think of the notebook as the program that is reading the file. The examples below show how the path changes when the notebook is placed in different folders.
+
+::: {.callout-note title="The notebook is inside the `fysisk_biokemi` folder" collapse="false"}
+Consider the same tree with the notebook inside the `fysisk_biokemi` folder:
+
+```default
+fysisk_biokemi
+├── data
+│  ├── averag-prope-amino-acids.xlsx
+│  ├── trypt-absor-fluor-emission.xlsx
+│  └── trypt-absor-fluor-extinction.xlsx
+└── jupyterlite_intro.ipynb  ← notebook running from here
+```
+
+The relative path to one of the data files would then be `data/averag-prope-amino-acids.xlsx`. Starting from the folder containing the notebook, we first enter the `data` folder and then find the file `averag-prope-amino-acids.xlsx`.
 :::
+
+::: {.callout-note title="The notebook is outside the `fysisk_biokemi` folder" collapse="true"}
+If instead the notebook were located outside the `fysisk_biokemi` folder, the tree would look like this:
+
+```default
+.
+├── jupyterlite_intro.ipynb  ← notebook running from here
+└── fysisk_biokemi
+   └── data
+      ├── averag-prope-amino-acids.xlsx
+      ├── trypt-absor-fluor-emission.xlsx
+      └── trypt-absor-fluor-extinction.xlsx
+```
+
+The relative path to the same data file would then be `fysisk_biokemi/data/averag-prope-amino-acids.xlsx`. Starting from the notebook, we first enter the `fysisk_biokemi` folder, then the `data` folder, and finally find the file.
+:::
+
+::: {.callout-note title="The notebook is in another folder inside `fysisk_biokemi`" collapse="true"}
+Finally, the notebook could be located in a separate folder inside `fysisk_biokemi`, as illustrated by this tree:
+
+```default
+fysisk_biokemi
+├── data
+│  ├── averag-prope-amino-acids.xlsx
+│  ├── trypt-absor-fluor-emission.xlsx
+│  └── trypt-absor-fluor-extinction.xlsx
+└── program
+   └── jupyterlite_intro.ipynb  ← notebook running from here
+```
+
+In this case, the relative path to the data file is `../data/averag-prope-amino-acids.xlsx`. Here, `../` means “go up one folder.” Starting from the `program` folder, we first go up to `fysisk_biokemi`, then enter the `data` folder and find the file.
+:::
+
+Throughout the course we will be using the [`pandas`](https://pandas.pydata.org/docs/index.html) specifically we will be using the functions
+
+- `pd.read_csv`: To read `.csv` files
+- `pd.read_excel`: To read `.xlsx` files.
+
+The syntax for `pd.read_csv` is
+
+```python
+df = pd.read_csv('path/to/file.csv')
+```
+
+And equivalent for `pd.read_excel`.
+
+
+### Try it yourself
+
+The exercises below start with a file in the same folder as the notebook and gradually introduce more complex paths.
+
+```{pyodide}
+#| setup: true
+#| exercise:
+#|   - file-path-same-folder
+#|   - file-path-child-folder
+#|   - file-path-nested-folder
+#|   - file-path-sibling-folder
+import pandas as _pandas
+import posixpath
+
+# Expected calls and feedback used by the shared checker.
+EXPECTED_CALLS = {
+    "file-path-same-folder": ("read_csv", "experiment.csv"),
+    "file-path-child-folder": ("read_excel", "data/protein_samples.xlsx"),
+    "file-path-nested-folder": ("read_csv", "data/processed/fluorescence.csv"),
+    "file-path-sibling-folder": ("read_excel", "../data/enzyme_activity.xlsx"),
+}
+
+PATH_HINTS = {
+    "file-path-same-folder": "The file is in the same folder as the notebook, so no folder name is needed.",
+    "file-path-child-folder": "Starting from the notebook, enter the <code>data</code> folder.",
+    "file-path-nested-folder": "Starting from the notebook, enter <code>data</code> and then <code>processed</code>.",
+    "file-path-sibling-folder": "Go up one folder with <code>../</code>, then enter the <code>data</code> folder.",
+}
+
+# Each valid reader/path combination returns a small fictional dataset.
+MOCK_DATA = {
+    ("read_csv", "experiment.csv"): {
+        "sample": ["A", "B", "C"],
+        "pH": [2.0, 7.0, 10.0],
+        "absorbance": [0.18, 0.73, 0.41],
+    },
+    ("read_excel", "data/protein_samples.xlsx"): {
+        "sample": ["lysate", "wash", "eluate"],
+        "protein concentration (mg/mL)": [8.4, 0.6, 3.2],
+        "purity (%)": [42, 18, 91],
+    },
+    ("read_csv", "data/processed/fluorescence.csv"): {
+        "wavelength (nm)": [320, 340, 360],
+        "fluorescence (a.u.)": [14.2, 48.7, 22.5],
+    },
+    ("read_excel", "../data/enzyme_activity.xlsx"): {
+        "substrate (mM)": [0.5, 1.0, 2.0],
+        "rate (µmol/min)": [0.82, 1.31, 1.68],
+    },
+}
+
+
+class MockPandas:
+    """Small stand-in for the two pandas readers used in these exercises."""
+
+    def __init__(self):
+        self.attempted_calls = []
+
+    def _read(self, reader, path):
+        self.attempted_calls.append((reader, path))
+
+        if not isinstance(path, str):
+            raise TypeError("The file path must be text in quotation marks.")
+
+        key = (reader, posixpath.normpath(path))
+        if key not in MOCK_DATA:
+            raise FileNotFoundError(f"No file was found at {path!r}.")
+
+        return _pandas.DataFrame(MOCK_DATA[key])
+
+    def read_csv(self, path):
+        return self._read("read_csv", path)
+
+    def read_excel(self, path):
+        return self._read("read_excel", path)
+
+
+pd = MockPandas()
+```
+
+```{pyodide}
+#| check: true
+#| exercise:
+#|   - file-path-same-folder
+#|   - file-path-child-folder
+#|   - file-path-nested-folder
+#|   - file-path-sibling-folder
+import posixpath
+
+# Quarto Live evaluates the model solution after the learner's code. If only
+# that solution call is recorded, the learner's call never reached the mock.
+attempted_calls = envir_result["pd"].attempted_calls
+attempted_reader, attempted_path = (
+    attempted_calls[0] if len(attempted_calls) > 1 else (None, None)
+)
+expected_reader, expected_path = envir_result["EXPECTED_CALLS"][label]
+path_hint = envir_result["PATH_HINTS"][label]
+expected_extension = posixpath.splitext(expected_path)[1]
+
+reader_message = (
+    "Use <code>pd.read_excel</code> for an <code>.xlsx</code> file."
+    if expected_reader == "read_excel"
+    else "Use <code>pd.read_csv</code> for a <code>.csv</code> file."
+)
+
+if attempted_path is None:
+    if expected_reader not in user_code:
+        feedback = {"correct": False, "message": reader_message}
+    else:
+        feedback = {
+            "correct": False,
+            "message": "Write the path as text by putting quotation marks around it, for example <code>\"filename.csv\"</code>.",
+        }
+elif not isinstance(attempted_path, str):
+    feedback = {
+        "correct": False,
+        "message": "A file path must be text. Put quotation marks around the filename.",
+    }
+elif attempted_reader != expected_reader:
+    feedback = {"correct": False, "message": reader_message}
+elif "\\" in attempted_path:
+    feedback = {
+        "correct": False,
+        "message": f"Use <code>/</code> rather than <code>\\</code> in paths. {path_hint}",
+    }
+elif posixpath.isabs(attempted_path):
+    feedback = {
+        "correct": False,
+        "message": "Use a relative path starting from the notebook. You do not need the complete path from the top of the file system.",
+    }
+elif posixpath.normpath(attempted_path) == expected_path:
+    feedback = {
+        "correct": True,
+        "message": "Correct! The reader and path match the file shown in the tree.",
+        "type": "success",
+    }
+elif posixpath.basename(posixpath.normpath(attempted_path)) == posixpath.basename(expected_path):
+    feedback = {"correct": False, "message": path_hint}
+elif posixpath.splitext(attempted_path)[1].lower() != expected_extension:
+    feedback = {
+        "correct": False,
+        "message": f"Check the file extension in the tree. This file ends in <code>{expected_extension}</code>.",
+    }
+elif posixpath.basename(attempted_path) != posixpath.basename(expected_path):
+    feedback = {
+        "correct": False,
+        "message": "The filename does not match the tree. Check its spelling carefully.",
+    }
+else:
+    feedback = {
+        "correct": False,
+        "message": "Compare your path with the file tree and remember that paths start from the notebook's folder.",
+    }
+
+feedback
+```
+
+::: {.callout-note title="Exercise 1: Same folder" collapse="false"}
+
+In this example, the data file is in the same folder as the notebook:
+
+```default
+fysisk_biokemi
+├── jupyterlite_intro.ipynb  ← notebook running from here
+└── experiment.csv
+```
+
+Complete the code below so that it loads `experiment.csv`. Replace the blank with the path to the file, including quotation marks.
+
+```{pyodide}
+#| exercise: file-path-same-folder
+pd.read_csv(______)
+```
+
+```{pyodide}
+#| exercise: file-path-same-folder
+#| solution: true
+pd.read_csv("experiment.csv")
+```
+:::
+
+::: {.callout-note title="Exercise 2: A file in a subfolder" collapse="true"}
+
+The notebook now has a `data` folder beside it. The Excel file is inside that folder:
+
+```default
+fysisk_biokemi
+├── data
+│  └── protein_samples.xlsx
+└── jupyterlite_intro.ipynb  ← notebook running from here
+```
+
+Complete the path so that the code loads `protein_samples.xlsx`.
+
+```{pyodide}
+#| exercise: file-path-child-folder
+pd.read_excel(______)
+```
+
+```{pyodide}
+#| exercise: file-path-child-folder
+#| solution: true
+pd.read_excel("data/protein_samples.xlsx")
+```
+:::
+
+::: {.callout-note title="Exercise 3: A file two folders down" collapse="true"}
+
+The CSV file is inside `processed`, which is itself inside `data`:
+
+```default
+fysisk_biokemi
+├── data
+│  └── processed
+│     └── fluorescence.csv
+└── jupyterlite_intro.ipynb  ← notebook running from here
+```
+
+Complete the path so that the code loads `fluorescence.csv`.
+
+```{pyodide}
+#| exercise: file-path-nested-folder
+pd.read_csv(______)
+```
+
+```{pyodide}
+#| exercise: file-path-nested-folder
+#| solution: true
+pd.read_csv("data/processed/fluorescence.csv")
+```
+:::
+
+::: {.callout-note title="Exercise 4: A file in a sibling folder" collapse="true"}
+
+The notebook and data file are now in different subfolders of `fysisk_biokemi`:
+
+```default
+fysisk_biokemi
+├── data
+│  └── enzyme_activity.xlsx
+└── notebooks
+   └── jupyterlite_intro.ipynb  ← notebook running from here
+```
+
+Complete both blanks. Choose the appropriate `pandas` reader and provide the path to `enzyme_activity.xlsx`.
+
+```{pyodide}
+#| exercise: file-path-sibling-folder
+pd.______(______)
+```
+
+```{pyodide}
+#| exercise: file-path-sibling-folder
+#| solution: true
+pd.read_excel("../data/enzyme_activity.xlsx")
+```
+:::
+
+### Summary and tips for working with notebooks
+
+- Start at the top of a notebook and run its cells in order. Later cells may depend on variables or packages created by earlier cells.
+- Editing a cell does not run the new code. Run the cell again after making a change.
+- If you change an earlier cell, rerun the cells that depend on it. When in doubt, restart the notebook and run all cells from the top.
+- Use the stop button if a cell keeps running without finishing.
+- When Python reports an error, read the final line of the error message first. It usually gives the most useful description of what went wrong.
+- Before loading a data file, check that it is visible in the JupyterLite file browser and that its path matches its location.
+- JupyterLite saves work in the browser, but this storage is not a reliable long-term backup. Regularly export your notebook as an `.ipynb` file and store it on your computer.
