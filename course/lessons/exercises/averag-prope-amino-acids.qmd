@@ -98,14 +98,15 @@ sum_of_array = np.sum(array) # Gives 15
 #| exercise: true
 #| eval: false
 average_mw = ...
-unit_average_mw = ...
-print(f"{average_mw = :.3f}", unit_average_mw)
+unit_average_mw = "..."
+print(f"{average_mw = :.3f} {unit_average_mw}")
 ```
 
 ```{python}
 #| solution: true
 average_mw = np.sum(weight_times_freq)
-print(f"{average_mw = :.3f}")
+unit_average_mw = "Da or g/mol"
+print(f"{average_mw = :.3f} {unit_average_mw}")
 ```
 
 ::: {.callout-note}
@@ -124,13 +125,15 @@ What would the molecular weight of a 300-residue protein most likely be, if you 
 #| exercise: true
 #| eval: false
 mw_300 = ...
-print(f"{mw_300 = :.3f}")
+unit_mw_300 = "..."
+print(f"{mw_300 = :.3f} {unit_mw_300}")
 ```
 
 ```{python}
 #| solution: true
 mw_300 = average_mw * 300
-print(f"{mw_300 = :.3f}")
+unit_mw_300 = "g/mol"
+print(f"{mw_300 = :.3f} {unit_mw_300}")
 ```
 
 
@@ -150,18 +153,20 @@ Calculate the average concentration of amino acid residues in a protein mixture 
 #| exercise: true
 #| eval: false
 c_residue_avg = ...
-print(f"{c_residue_avg = :3.3f} M")
+unit_c_residue_avg = "..."
+print(f"{c_residue_avg = :3.3f} {unit_c_residue_avg}")
 ```
 
 ```{python}
 #| solution: true
 c_residue_avg = 1 / average_mw
-print(f"{c_residue_avg = :3.3f} M")
+unit_c_residue_avg = "M"
+print(f"{c_residue_avg = :3.3f} {unit_c_residue_avg}")
 ```
 
 #### (e) Absorbance of an average mixture of residues
 
-Calculate the absorbance from such a mixture under the assumption that only Trp and Tyr contribute.
+Calculate the absorbance from such a mixture under the assumption that only Trp and Tyr contribute, and that the path length is 1 cm.
 
 ```{python}
 #| exercise: true
@@ -171,9 +176,10 @@ f_trp = freq["Tryptophan (Trp/W)"]
 f_tyr = freq["Tyrosine (Tyr/Y)"]
 c_trp = ... # Erstat med din kode.
 c_tyr = ... # Erstat med din kode.
+unit_c_trp_tyr = "..."
 
-print(f"{c_trp = :3.5f}")
-print(f"{c_tyr = :3.5f}")
+print(f"{c_trp = :3.5f} {unit_c_trp_tyr}")
+print(f"{c_tyr = :3.5f} {unit_c_trp_tyr}")
 ```
 
 ```{python}
@@ -184,21 +190,25 @@ f_tyr = freq["Tyrosine (Tyr/Y)"]
 
 c_trp = c_residue_avg * f_trp
 c_tyr = c_residue_avg * f_tyr
-print(f"{c_trp = :3.5f}")
-print(f"{c_tyr = :3.5f}")
+unit_c_trp_tyr = "M"
+
+print(f"{c_trp = :3.5f} {unit_c_trp_tyr}")
+print(f"{c_tyr = :3.5f} {unit_c_trp_tyr}")
 ```
 ```{python}
 #| exercise: true
 #| eval: false
 A280_1mg_pr_ml = ... # Erstat med din kode.
-print(f"{A280_1mg_pr_ml = :3.3f}")
+unit_A280_1mg_pr_ml = "..."
+print(f"{A280_1mg_pr_ml = :3.3f} {unit_A280_1mg_pr_ml}")
 ```
 
 ```{python}
 #| solution: true
-L = 1 # Path length
+L = 1 # Path length 1 cm
 A280_1mg_pr_ml = L * (5500 * c_trp + 1490 * c_tyr)
-print(f"{A280_1mg_pr_ml = :3.3f}")
+unit_A280_1mg_pr_ml = "(no unit)"
+print(f"{A280_1mg_pr_ml = :3.3f} {unit_A280_1mg_pr_ml}")
 ```
 
 In the compendium, we mentioned a “rule of thumb” that 1 mg/mL protein at a path length of 1 cm has an A280 = 1. How well does this compare to your calculated value?
@@ -216,8 +226,9 @@ A = ... # Unitless
 l = ... # cm
 
 # Calculate concentration:
-conc_mg_pr_mL = ...
-print(f"Protein concentration = {conc_mg_pr_mL:.3f} mg/mL")
+mass_conc = ...
+unit_mass_conc = "..."
+print(f"Protein concentration = {mass_conc:.3f} {unit_mass_conc}")
 ```
 
 ```{python}
@@ -228,6 +239,7 @@ A = 0.78 # Unitless
 l = 0.5 # cm
 
 # Calculate concentration:
-conc_mg_pr_mL = A / (A280_1mg_pr_ml * l)
-print(f"Protein concentration = {conc_mg_pr_mL:.3f} mg/mL")
+mass_conc = A / (A280_1mg_pr_ml * l)
+unit_mass_conc = "mg/mL"
+print(f"Protein concentration = {mass_conc:.3f} {unit_mass_conc}")
 ```

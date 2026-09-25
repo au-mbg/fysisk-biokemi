@@ -16,48 +16,6 @@ jupyterlite: true
 
 :::
 
-{{< include exercises/tricky-binding.qmd >}}
-
-:::::: {.cell .markdown}
-
-::::::
-
----
-
-::: {.content-visible when-format="typst"}
-
-{{< pagebreak >}}
-
-:::
-
-{{< include exercises/deter-reacti-orders-v1.qmd >}}
-
-:::::: {.cell .markdown}
-
-::::::
-
----
-
-::: {.content-visible when-format="typst"}
-
-{{< pagebreak >}}
-
-:::
-
-{{< include exercises/analys-rever-reacti.qmd >}}
-
-:::::: {.cell .markdown}
-
-::::::
-
----
-
-::: {.content-visible when-format="typst"}
-
-{{< pagebreak >}}
-
-:::
-
 {{< include exercises/deter-reacti-order-activ-v1.qmd >}}
 
 :::::: {.cell .markdown}
@@ -115,6 +73,34 @@ jupyterlite: true
 :::
 
 {{< include exercises/lab_exercise.qmd >}}
+
+:::::: {.cell .markdown}
+
+::::::
+
+---
+
+::: {.content-visible when-format="typst"}
+
+{{< pagebreak >}}
+
+:::
+
+{{< include exercises/analys-data-set-obeyin.qmd >}}
+
+:::::: {.cell .markdown}
+
+::::::
+
+---
+
+::: {.content-visible when-format="typst"}
+
+{{< pagebreak >}}
+
+:::
+
+{{< include exercises/michaelis-menten.qmd >}}
 
 :::::: {.cell .markdown}
 
