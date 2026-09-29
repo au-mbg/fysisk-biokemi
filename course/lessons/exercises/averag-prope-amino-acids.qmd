@@ -13,11 +13,6 @@ In the accompanying Excel file (`averag-prope-amino-acids.xlsx`), you will find 
 
 Load the `averag-prope-amino-acids.xlsx` dataset
 
-```{python}
-#| eval: true
-from IPython.display import display 
-```
-
 Use the cell below to load and display the dataset.
 
 ::: {.callout-tip title="Need help loading the data?" collapse="true"}
