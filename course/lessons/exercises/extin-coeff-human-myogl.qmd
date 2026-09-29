@@ -70,13 +70,15 @@ eps_cys = 125
 #| exercise: true
 #| eval: false
 epsilon = ... # Erstat ... med din kode.
-print(epsilon)
+unit_epsilon = "..."
+print(f"{epsilon = :.0f} {unit_epsilon}")
 ```
 
 ```{python}
 #| solution: true
 epsilon = eps_trp * N_trp + eps_tyr * N_tyr + eps_cys*N_cys
-print(epsilon)
+unit_epsilon = "\mathrm{M^{−1} cm^{−1}}"
+print(f"{epsilon = :.0f} {unit_epsilon}")
 ```
 What are the units of this value? 
 
@@ -184,8 +186,9 @@ def extinction_coefficient(sequence):
 
     # Calculate 
     epsilon = ...
+    unit_epsilon = "..."
 
-    return epsilon
+    print(f"{epsilon = :.0f} {unit_epsilon}")
 ```
 
 ```{python}
@@ -204,8 +207,8 @@ def extinction_coefficient(sequence):
 
     # Calculate 
     epsilon = eps_trp * N_trp + eps_tyr * N_tyr + eps_cys*N_cys
-
-    return epsilon
+    unit_epsilon = "\mathrm{M^{−1} cm^{−1}}"
+    print(f"{epsilon = :.0f} {unit_epsilon}")
 ```
 
 It's always a good idea to check that functions do what we expect, so we can confirm that 
