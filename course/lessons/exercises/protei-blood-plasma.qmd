@@ -182,14 +182,16 @@ as the `.mean`-method we used above.
 #| eval: false
 std = ...
 unit_std = "..."
-print(f"{std = :.3f} {unit_std}")
+print(std)
+print("unit_std")
 ```
 
 ```{python}
 #| solution: true
 std = df[names].std(axis=0)
 unit_std = "mg/mL"
-print(f"{std = :.3f} {unit_std}")
+print(std)
+print("unit_std")
 ```
 
 #### (f) Analyze the results 
