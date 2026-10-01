@@ -120,8 +120,8 @@ N_cys = sequence.count("C")
 
 # Calculate the extinction coefficient: 
 ext_coeff = N_trp * ext_residue["W"] + N_tyr * ext_residue["Y"] + N_cys * ext_residue["C"]
-
-print(f"{ext_coeff = :3.3f}")
+unit_epsilon = "\mathrm{M^{−1} cm^{−1}}"
+print(f"{ext_coeff = :3.3f}" {unit_epsilon})
 ```
 
 #### (d) Concentration from A280nm 
@@ -133,14 +133,16 @@ What is the molar concentration of solution of mCherry with an A_280nm of 0.45
 #| eval: false
 A280 = ...
 c_mol = ...
-print(c_mol)
+unit_c_mol = "..."
+print(f"{c_mol = :3.3f}" {unit_c_mol})
 ```
 
 ```{python}
 #| solution: true
 A280 = 0.45
 c_mol = A280 / (ext_coeff)
-print(c_mol)
+unit_c_mol = "M"
+print(f"{c_mol = :3.3f}" {unit_c_mol})
 ```
 
 ---
@@ -216,12 +218,14 @@ Estimate the Stokes shift of mCherry from the plot.
 ```{python}
 #| solution: true
 estimated_stokes_shift = 30 # Your estimation
+unit_stokes_shift = "nm"
 ```
 
 ```{python}
 #| exercise: true
 #| eval: false
 estimated_stokes_shift = ... # Your estimation
+unit_stokes_shift = "..."
 ```
 
 The cell below shows how this could calculated using Python 
