@@ -28,7 +28,9 @@ You would like to conduct a protein stability experiment at an absorbance of 0,8
 ```{python}
 #| exercise: true
 #| eval: false
-...
+c_prot = ...
+unit_c_prot = "..."
+print(f"{c_prot = :.0f} {unit_c_prot")
 ```
 
 #### (c) Plot the spectra
@@ -104,11 +106,15 @@ From the plot estimate the Stokes shift
 #| exercise: true
 #| eval: false
 estimated_stokes_shift = ...
+unit_stokes_shift = "..."
+print(f"{estimated_stokes_shift = :.0f} {unit_stokes_shift}")
 ```
 
 ```{python}
 #| solution: true
 estimated_stokes_shift = 30
+unit_stokes_shift = "nm"
+print(f"{estimated_stokes_shift = :.0f} {unit_stokes_shift}")
 ```
 
 Compare your estimated Stokes shift to the output of the cell below that computes 
@@ -147,7 +153,7 @@ print(f"{stokes_shift = :.1f} nm")
 print(f"{estimated_stokes_shift = :.1f} nm")
 ```
 
-#### (e) pH and how it changes pHroperties.
+#### (e) pH and how it changes properties.
 
 Next, you compare the fluorescence emission spectra for your protein at pH 7 and at pH 2. You can find the data in the files `trypt-absor-fluor-ph2.xlsx` and `trypt-absor-fluor-ph7.xlsx` - the cell below also loads these datasets. 
 
@@ -196,7 +202,7 @@ ax.legend()
 plt.show()
 ```
 
-#### (f) for explain.
+#### (f) Explanation.
 
 Explain why the same protein gives such different spectra at pH 2 and pH 7. 
  
