@@ -170,7 +170,26 @@ class ReactionKeqWidget:
             return
 
         # Read CSV
-        content = self.uploader.value[0].content.tobytes()
+        uploaded = self.uploader.value
+
+        if not uploaded:
+            return
+
+        if isinstance(uploaded, dict):
+            # Colab / ipywidgets 7
+            file_info = next(iter(uploaded.values()))
+        else:
+            # JupyterLite / newer ipywidgets
+            file_info = uploaded[0]
+
+        if isinstance(file_info, dict):
+            content = file_info["content"]
+        else:
+            content = file_info.content
+
+        if hasattr(content, "tobytes"):
+            content = content.tobytes()
+            
         try:
             df = pd.read_csv(io.BytesIO(content))
         except Exception as e:
