@@ -134,7 +134,7 @@ What is the molar concentration of solution of mCherry with an A_280nm of 0.45
 A280 = ...
 c_mol = ...
 unit_c_mol = "..."
-print(f"{c_mol = :3.3f}" {unit_c_mol})
+print(f"{c_mol = :3.3f} {unit_c_mol}")
 ```
 
 ```{python}
@@ -142,7 +142,7 @@ print(f"{c_mol = :3.3f}" {unit_c_mol})
 A280 = 0.45
 c_mol = A280 / (ext_coeff)
 unit_c_mol = "M"
-print(f"{c_mol = :3.3f}" {unit_c_mol})
+print(f"{c_mol = :3.3f} {unit_c_mol}")
 ```
 
 ---
