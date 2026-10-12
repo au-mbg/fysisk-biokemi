@@ -121,7 +121,7 @@ N_cys = sequence.count("C")
 # Calculate the extinction coefficient: 
 ext_coeff = N_trp * ext_residue["W"] + N_tyr * ext_residue["Y"] + N_cys * ext_residue["C"]
 unit_epsilon = "\mathrm{M^{−1} cm^{−1}}"
-print(f"{ext_coeff = :3.3f}" {unit_epsilon})
+print(f"{ext_coeff = :3.3f} {unit_epsilon}")
 ```
 
 #### (d) Concentration from A280nm 
