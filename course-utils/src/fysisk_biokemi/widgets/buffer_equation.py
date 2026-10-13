@@ -5,6 +5,7 @@ from dataclasses import dataclass
 import plotly.graph_objects as go
 
 from fysisk_biokemi.widgets.utils import molar_prefix_to_factor, number_to_scientific_latex, StrictFloatText
+from fysisk_biokemi.widgets.utils.colab import enable_custom_widget_colab
 
 
 def calculate_acid_base_concentrations(pH, pKa, total_conc):
@@ -151,53 +152,75 @@ class BufferVisualization:
         widget = widgets.HBox([controls, self.plot_output])
         display(widget)
 
+   
+
+  
     def make_plot(self, ph, acid, base, pka_value) -> FigureAttrs:
-        fig = go.FigureWidget(layout=go.Layout(width=600, height=400))
+        fig = go.FigureWidget(
+            data=[
+                go.Scatter(
+                    x=ph, y=acid, mode="lines",
+                    name="Syre [M]", line=dict(width=4)
+                ),
+                go.Scatter(
+                    x=ph, y=base, mode="lines",
+                    name="Base [M]", line=dict(width=4)
+                ),
+                go.Scatter(
+                    x=[pka_value, pka_value],
+                    y=[0, 1],
+                    yaxis="y",
+                    mode="lines",
+                    name="pKa",
+                    line=dict(color="green", width=2, dash="dash"),
+                ),
+            ],
+            layout=go.Layout(width=600, height=400),
+        )
 
-        acid_trace = go.Scatter(x=ph, y=acid, mode="lines", name="Syre [M]", line=dict(width=4))
-        base_trace = go.Scatter(x=ph, y=base, mode="lines", name="Base [M]", line=dict(width=4))
-
-        fig.add_traces([acid_trace, base_trace])
-
-        # Vertical pKa line as a shape (dragging-safe and efficient)
         fig.update_layout(
             title="Buffer Sammensætning vs pH",
             xaxis_title="pH",
             yaxis_title="Koncentration [M]",
             template="plotly_white",
-            legend=dict(orientation="v", yanchor="bottom", y=0.9, xanchor="right", x=0.95),
+            legend=dict(
+                orientation="v", yanchor="bottom", y=0.9,
+                xanchor="right", x=0.95
+            ),
             margin=dict(l=60, r=20, t=50, b=40),
         )
-        fig.add_vline(x=pka_value, line_dash="dash", line_color="green", annotation_text="pKa", annotation_position="top")
 
         with self.plot_output:
             self.plot_output.clear_output(wait=True)
             display(fig)
 
-        # Store indices for fast updates
-        acid_idx = 0
-        base_idx = 1
-        pka_shape_idx = len(fig.layout.shapes) - 1 if fig.layout.shapes else 0
+        return FigureAttrs(
+            fig=fig,
+            acid_idx=0,
+            base_idx=1,
+            pka_shape_idx=2,
+        )
 
-        return FigureAttrs(fig=fig, acid_idx=acid_idx, base_idx=base_idx, pka_shape_idx=pka_shape_idx)
 
+
+ 
     def update_plot(self, ph, acid, base, pka_value):
         fa = self.plot_attrs
-        # Update data
+
         fa.fig.data[fa.acid_idx].x = ph
         fa.fig.data[fa.acid_idx].y = acid
         fa.fig.data[fa.base_idx].x = ph
         fa.fig.data[fa.base_idx].y = base
 
-        # Update vertical pKa line (shape)
-        shp = fa.fig.layout.shapes[fa.pka_shape_idx]
-        shp.update(x0=pka_value, x1=pka_value)
+        # Update the pKa line, which is now the third trace
+        fa.fig.data[fa.pka_shape_idx].x = [pka_value, pka_value]
 
-        # Optionally tighten y-range around current data
-        # (Plotly autoscale is automatic on first draw; for dynamic:
         y_min = float(np.nanmin([acid.min(), base.min(), 0]))
-        y_max = float(np.nanmax([acid.max(), base.max()])) * 1.05 if np.isfinite([acid.max(), base.max()]).all() else 1
+        y_max = float(np.nanmax([acid.max(), base.max()])) * 1.05
+
+        fa.fig.data[fa.pka_shape_idx].y = [y_min, y_max]
         fa.fig.update_yaxes(range=[y_min, y_max])
+
 
     def _on_change(self, change):
         pka_value = self.pka_input.value
@@ -223,9 +246,11 @@ def buffer_equation():
 
 
 def buffer_visualization(continuous_update: bool = True):
+    enable_custom_widget_colab()
+    
     bv = BufferVisualization(continuous_update=continuous_update)
-    bv._on_change({"type": "change", "name": "value", "new": None})
     bv.display()
+    bv._on_change({"type": "change", "name": "value", "new": None})
 
 if __name__ == "__main__":
     buffer_visualization()
