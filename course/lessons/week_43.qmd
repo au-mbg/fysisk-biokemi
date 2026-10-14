@@ -11,35 +11,41 @@ jupyterlite: true
 import fysisk_biokemi.widgets as fsb_widgets
 ```
 
-## Kommaer, punktumer, commas og dots. 
+## Commas and dots. 
 
-På dansk skriver vi et decimaltal som "3,14", derfor også navnet et kommatal, men på engelsk bruges
-der punktum til at decimal seperator så "3.14". Forskellige programmer udnytter kommaer på forskellige måder, f.eks: 
+In Danish, commas are used as decimal separators, so 3.14 is written as 3,14. In English, dots are used as decimal separators, so the number is written as 3.14.
 
-- I Python bruges komma til at seperare elementer, så `3,14` vil Python forstå som en `tuple` (som er en slags beholder) med to elementer `3` og `14`. 
-- I en `csv`-fil bruges kommaer på en lignende facon til at separere indgange, så i en `csv`-fil med `3,14` på en række vil give to søjler. 
+Commas can also have different meanings in different programs and file formats. For example:
 
-Prøv følgende i celle nednefor
+- **Python**: Commas separate elements. Writing 3,14 in Python creates a tuple (a type of container) with two elements: 3 and 14.
+
+- **CSV files**: In CSV files commas are used to separate values into columns. Therefore, a CSV file containing 3,14 on a single line may be interpreted as two columns: one containing 3 and the other containing 14.
+
+This is important to keep in mind when working with data, as a decimal comma can be mistaken for a separator between values.
+
+Try writing the following in the code cell below:
 
 - `3,14 + 6`
 - `3.14 + 6`
 
 ```{python}
 #| eval: false
-# Prøv beregningerne her!!
+# Try your calculations here!!
 ...
 ```
 
-Vi vil bruge "." (punktum) som decimalseperator fremover.
+What is the output of the codecell (what shows up) when you write '3,14 +6'? When you write '3.14+6'?
+
+We will use "." (a dot) as the decimal separator from now on.
 
 ---
 
-## Koncentrations enheder
+## Concentration units
 
-Widgetten nedenfor kan konvertere mellem enheder med forskellige prefix, som værdien 
-af er givet i tabellen
+The widget below allows you to convert between units with different prefixes. The values of these prefixes are listed in the table below.
+
  
-| Enhed    | Navn    |  Faktor    |
+| Unit    | Name   |  Factor    |
 | -------- | ------- | ---------- |
 | M        |         | 1          | 
 | mM       | Milli   | $10^{-3}$  |
@@ -50,99 +56,103 @@ af er givet i tabellen
 
 : Metric prefixes commonly used for molar concentrations
 
+Try out the widget. How many picomolar is 3.521 M?
+
 ```{python}
 #| eval: false
 fsb_widgets.concentration_unit()
 ```
 
-## Koncentration fra masse og volumen
+## Calculating concentration from mass and volume
+ When preparing experiments, you often need to calculate the concentration of a reagent based on the mass used and the final volume of the solution.
 
-Ofte er det nødvendigt at regne koncentrationen baseret på massen af stoffet og volumen 
-af opløsningen, f.eks. hvis vi forbedrer et eksperiment vil vi tit starte fra den vinkel. 
+To determine the molar concentration, you will have to calculate the following:
 
-For at regne molar koncentrationen skal vi så regne 
 
 $$
 c = \frac{m}{M_W \cdot V} \xrightarrow[]{\text{Enheder}} \frac{\text{g}}{\frac{\text{g}}{\text{mol}} \cdot \text{L}} = \frac{\text{g}\cdot \text{mol}}{\text{g}\cdot L} = \frac{\text{mol}}{\text{L}}
 $$
-Hvor $m$ er massen i **gram**, $M_W$ er molekyle vægten i $\frac{g}{mol}$ og V er volumen i liter
-Her er det vigtigt at konveretere til de rigtige enheder, altså ikke f.eks. at bruge $m$ i at $\text{mg}$.
-Widgtten nedenfor tager en masse, et volumen og en molekylærvægt og konveretere til molar koncentration, 
-du kan vælge hvad enheden af masse og volumen er. 
+$m$ is the mass in **gram**, $M_W$ is the molecular weight in $\frac{g}{mol}$ and V er volume in liter
+It is important to use the correct units, as using inconsistent units can lead to incorrect results.
+
+The widget below calculates the molar concentration using the mass of the reagent, the final volume of the solution, and the molecular weight. You can change the values and units of the mass, volume, and molecular weight to explore how these affect the calculated concentration. The calculation display shows how the result changes when you adjust the inputs.
+
+Try the widget. How does the concentration change, when you change the unit of the mass, volume or molecular weight?
+
 
 ```{python}
 #| eval: false
 fsb_widgets.concentration_mass_volume()
 ```
 
-## Masse fra koncentration og volumen
+## Mass calculated from concentration and volume
+When preparing a solution, you may know the desired molar concentration and the final volume but need to determine how much reagent to weigh out.
 
-Denne widget regne massen der skal til for at lave en opløsning med en given koncentration og volumen.
+The widget below calculates the mass required to prepare a solution with a given concentration and final volume. You can adjust the concentration, volume, and molecular weight to see how each affects the required mass.
 
 ```{python}
 #| eval: false
 fsb_widgets.mass_concentration_volume()
 ```
 
-## Molekylærvægt
-
-Molekylærvægten er en sum af atomarvægte 
+## Molecular weight
+The molecular weight is the sum of the atomic weights of all the atoms in a molecule.
 
 $$
 M_W = \sum_i^Z n_i m_Z
 $$
-Hvor $n_i$ er antaller af atomer af type $i$ og $m_Z$ er vægten pr. mol af det atom. 
-Widgetten nedenfor kan regne molekylærvægten af stoffer med de første 83 elementer fra 
-den periodiske table.
+Here,$n_i$ is the number of atoms of the element $i$ and $m_Z$ is the molar mass of that element. 
+The widget below calculates the molecular weight of compounds made up of elements with atomic numbers 1–83 in the periodic table.
+
+Enter the molecular formula of a compound and use the widget to calculate the molecular weight.
+
 
 ```{python}
 #| eval: false
 fsb_widgets.molecular_weight()
 ```
 
-## Fortynding
+## Dilutions
+When preparing a dilution, you need to know the desired final concentration and volume, as well as how much stock solution and solvent to use.
 
-Denne widget kan regne hvordan en stock opløsning skal fortyndens for at opnå en 
-ønsket koncentration. 
+The widget below calculates how much stock solution and solvent you need to prepare a solution at the desired concentration and final volume.
+
+Try the widget. If you, for example, want 500 mL of a dilution that has a final concentration of 5 µM and your stock solution is 5 M.  How much stock and solvent do you need to add?
 
 ```{python}
 #| eval: false
 fsb_widgets.dilution_helper()
 ```
 
-## Ligevægts reaktions
-
-Denne widget kan regne ligevægtskonstanten af reaktioner, f.eks. 
+## Equilibrium reactions
+The widget below can calculate the equilibrium constant of a reaction, for example:
 
 $$
 aA + bB ... = xX + yY ... 
 $$
-Hvor ligevægtskonstanten er givet ved 
+Where the equilibrium constant is defined by:
 
 $$
 K_{eq} = \frac{[X]^x \times [Y]^y \times ...}{[A]^a \times [B]^b \times ...}
 $$
 
-Her er det igen vigtigt at koncentrationerne er givet i $mol/L$ for at der regnes rigtigt, 
-men heldigvis kan widgetten konvertere dem for dig. 
+In this example, it is (also) important that concentrations are expressed in mol/L to ensure that the equilibrium constant is calculated correctly. Fortunately, the widget can convert the units for you.
 
-For at bruge widgetten skal du skrive en reaktions ligningen på formen
+To use the widget, enter the reaction equation in the following form:
 
 ```
 a A + b B = c C 
 ```
-Hvor der er mellemrum mellem ordren og stoffet, du kan så angive koncentrationen og 
-ligevægtskonstanten bliver regnet. 
+Try out the widget.  If the concentration of A is 5 mM, the concentration of B is 1000 µM and the concentration of C is is 0.2 M, what is the Equility constant?
 
 ```{python}
 #| eval: false
 fsb_widgets.reaction_equation()
 ```
 
-## Reaktions data analyse
+## Reaction data analysis
 
-Denne widget kan læse en `.csv`-fil hvilket er en **c**omma **s**eperated **v**alues, det 
-vil sige at forskellige data er splittet om i kolonner, se f.eks. eksemplet her
+This widget can read a 'CSV'-file( **c**comma **s**seperated **v**calues -file). in a CSV file data are organised into columns, with commas seperating the values. An example of a CSV file is shown below.
 
 ```{csv}
 time (s),A (mM),B (µM),X (nM),Y (µM)
@@ -158,40 +168,39 @@ time (s),A (mM),B (µM),X (nM),Y (µM)
 90,0.83,380.0,420.0,230.0
 100,0.82,370.0,450.0,250.0
 ```
-Her er der 5 søjler, som beskriver 5 forskellige størrelser. 
+In this example, the CSV file contains 5 columns, each representing a different variable.
+ 
+To use the widget, follow these four steps:
+1. Click 'upload CSV' and select your file.
+2. Make sure the reaction equation matches the reaction you want to analyse.
+3. Make sure each component of the reaction equation is assigned to the correct column in your dataset, and ensure that the units are correct.
+4. Click "Beregn og plot" to calculate the equilibrium constant.
 
-At bruge widgten kræver fire trin
-
-- Kilk på "Upload CSV" og vælg en fil. 
-- Sikre at reaktionsligning er den du er interesseret i. 
-- Sikre at hvert led af reaktionsligningen er tilknyttet den rigtige kolonne i datasættet og enheden er korrekt.
-- Klik "Beregn og plot" for at beregne ligevægtskonstanten.
 
 ```{python}
 #| eval: false
 fsb_widgets.reaction_data_analysis()
 ```
 
-## Bufferligningen
+## Buffer equation
 
-Henderson-Hasselbalch ligningen ('bufferligningen') er givet ved 
+The Henderson-Hasselbalch equation ('buffer equation') is defined by
 
 $$
 pH = pK_a + \log_{10}\left( \frac{[\text{base}]}{[\text{acid}]}\right)
 $$
 
-Denne widget beregener forholdet mellem og koncentrationen af syre og base givet $pH$, $pKa$ samt total koncentrationen.
+This widget uses the Henderson–Hasselbalch equation to calculate the ratio of conjugate base to acid, based on the $pH$ and $pKa$ and the total volume.
+
+Try the widget. If the pH increases or decreases how does that affect the ratio of base to acid? If the pka increases/decreases? If the total concentration changes?
 
 ```{python}
 #| eval: false
 fsb_widgets.buffer_equation()
 ```
 
-## Bufferligning visualisering
-
-Denne widget visualisere bufferligningen (Henderson–Hasselbalch). Du kan styre
-$pKa$, total koncentratioenn og området for $pH$. Plottet viser koncentrationen 
-af syre og base som funktionen af pH. 
+## The Henderson-Hasselbalch equation visualisering
+This widget illustrates the The Henderson-Hasselbalch equation (the buffer equation). The plot shows the concentrations of the acid and its conjugate base as a function of pH. Change $pKa$, total concentration and pH to see howthese parameters affect the distribution of the acid and its conjugate base.  
 
 ```{python}
 #| eval: true

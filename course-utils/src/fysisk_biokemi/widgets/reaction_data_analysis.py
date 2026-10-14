@@ -314,7 +314,7 @@ class ReactionKeqWidget:
             fig, ax = plt.subplots(figsize=(6, 4))
             ax.plot(t_s, keq, color="mediumpurple")
             ax.set_xlabel("Tid (s)")
-            ax.set_ylabel(r"$K_{eq}$")
+            ax.set_ylabel(r"Q")
             ax.grid(True, which="both", ls="--", lw=0.5)
             plt.tight_layout()
             plt.show()
@@ -326,7 +326,7 @@ class ReactionKeqWidget:
 
         with self.status_out:
             print(
-                "Færdig: koncentrationer konverteret til M, Keq beregnet og plottet.\n"
+                "Færdig: koncentrationer konverteret til M, Q beregnet og plottet.\n"
                 f"Antal søjler i data: {self._df.shape[1]}"
             )
 
