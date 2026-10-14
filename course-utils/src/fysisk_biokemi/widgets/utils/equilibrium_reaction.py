@@ -119,7 +119,7 @@ class Reaction:
             # Equation string
             numerator = " \\cdot ".join(term_to_latex(t) for t in self.products)
             denominator = " \\cdot ".join(term_to_latex(t) for t in self.reactants)
-            eq = f"K_{{eq}} = \\frac{{{numerator}}}{{{denominator}}}"
+            eq = f"Q = \\frac{{{numerator}}}{{{denominator}}}"
 
             # Equation with concentrations
             if with_values:
