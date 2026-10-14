@@ -305,7 +305,7 @@ class ReactionKeqWidget:
         # LaTeX expression
         with self.latex_out:
             eq = reaction.get_equation_latex()
-            expr = reaction.get_equilibrium_equation(with_values=False)
+            expr = reaction.get_equilibrium_equation(with_values=False, symbol= "Q")
             display(Math(eq))
             display(Math(expr))
 

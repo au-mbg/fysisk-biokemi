@@ -102,7 +102,7 @@ class Reaction:
         products_latex = " + ".join(term_to_latex(t) for t in self.products)
         return f"{reactants_latex} \\rightleftharpoons {products_latex}"
 
-    def get_equilibrium_equation(self, with_values=True):
+    def get_equilibrium_equation(self, with_values=True, symbol='K_{eq}'):
         try:
             numerator = ""
             denominator = ""
@@ -119,7 +119,7 @@ class Reaction:
             # Equation string
             numerator = " \\cdot ".join(term_to_latex(t) for t in self.products)
             denominator = " \\cdot ".join(term_to_latex(t) for t in self.reactants)
-            eq = f"Q = \\frac{{{numerator}}}{{{denominator}}}"
+            eq = f"{symbol} = \\frac{{{numerator}}}{{{denominator}}}"
 
             # Equation with concentrations
             if with_values:
