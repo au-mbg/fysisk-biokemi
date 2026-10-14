@@ -242,110 +242,110 @@
     ]
   },
   {
-    "objectID": "lessons/week_43.html#kommaer-punktumer-commas-og-dots.",
-    "href": "lessons/week_43.html#kommaer-punktumer-commas-og-dots.",
+    "objectID": "lessons/week_43.html#commas-and-dots.",
+    "href": "lessons/week_43.html#commas-and-dots.",
     "title": "Week 43",
-    "section": "1 Kommaer, punktumer, commas og dots.",
-    "text": "1 Kommaer, punktumer, commas og dots.\nPå dansk skriver vi et decimaltal som “3,14”, derfor også navnet et kommatal, men på engelsk bruges der punktum til at decimal seperator så “3.14”. Forskellige programmer udnytter kommaer på forskellige måder, f.eks:\n\nI Python bruges komma til at seperare elementer, så 3,14 vil Python forstå som en tuple (som er en slags beholder) med to elementer 3 og 14.\nI en csv-fil bruges kommaer på en lignende facon til at separere indgange, så i en csv-fil med 3,14 på en række vil give to søjler.\n\nPrøv følgende i celle nednefor\n\n3,14 + 6\n3.14 + 6\n\n\n# Prøv beregningerne her!!\n...\n\nVi vil bruge “.” (punktum) som decimalseperator fremover.",
+    "section": "1 Commas and dots.",
+    "text": "1 Commas and dots.\nIn Danish, commas are used as decimal separators, so 3.14 is written as 3,14. In English, dots are used as decimal separators, so the number is written as 3.14.\nCommas can also have different meanings in different programs and file formats. For example:\n\nPython: Commas separate elements. Writing 3,14 in Python creates a tuple (a type of container) with two elements: 3 and 14.\nCSV files: In CSV files commas are used to separate values into columns. Therefore, a CSV file containing 3,14 on a single line may be interpreted as two columns: one containing 3 and the other containing 14.\n\nThis is important to keep in mind when working with data, as a decimal comma can be mistaken for a separator between values.\nTry writing the following in the code cell below:\n\n3,14 + 6\n3.14 + 6\n\n\n# Try your calculations here!!\n...\n\nWhat is the output of the codecell (what shows up) when you write ‘3,14 +6’? When you write ‘3.14+6’?\nWe will use “.” (a dot) as the decimal separator from now on.",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#koncentrations-enheder",
-    "href": "lessons/week_43.html#koncentrations-enheder",
+    "objectID": "lessons/week_43.html#concentration-units",
+    "href": "lessons/week_43.html#concentration-units",
     "title": "Week 43",
-    "section": "2 Koncentrations enheder",
-    "text": "2 Koncentrations enheder\nWidgetten nedenfor kan konvertere mellem enheder med forskellige prefix, som værdien af er givet i tabellen\n\nMetric prefixes commonly used for molar concentrations\n\n\nEnhed\nNavn\nFaktor\n\n\n\n\nM\n\n1\n\n\nmM\nMilli\n\\(10^{-3}\\)\n\n\nµM\nMicro\n\\(10^{-6}\\)\n\n\nnM\nNano\n\\(10^{-9}\\)\n\n\npM\nPico\n\\(10^{-12}\\)\n\n\nfM\nFemto\n\\(10^{-15}\\)\n\n\n\n\nfsb_widgets.concentration_unit()",
+    "section": "2 Concentration units",
+    "text": "2 Concentration units\nThe widget below allows you to convert between units with different prefixes. The values of these prefixes are listed in the table below.\n\nMetric prefixes commonly used for molar concentrations\n\n\nUnit\nName\nFactor\n\n\n\n\nM\n\n1\n\n\nmM\nMilli\n\\(10^{-3}\\)\n\n\nµM\nMicro\n\\(10^{-6}\\)\n\n\nnM\nNano\n\\(10^{-9}\\)\n\n\npM\nPico\n\\(10^{-12}\\)\n\n\nfM\nFemto\n\\(10^{-15}\\)\n\n\n\nTry out the widget. How many picomolar is 3.521 M?\n\nfsb_widgets.concentration_unit()",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#koncentration-fra-masse-og-volumen",
-    "href": "lessons/week_43.html#koncentration-fra-masse-og-volumen",
+    "objectID": "lessons/week_43.html#calculating-concentration-from-mass-and-volume",
+    "href": "lessons/week_43.html#calculating-concentration-from-mass-and-volume",
     "title": "Week 43",
-    "section": "3 Koncentration fra masse og volumen",
-    "text": "3 Koncentration fra masse og volumen\nOfte er det nødvendigt at regne koncentrationen baseret på massen af stoffet og volumen af opløsningen, f.eks. hvis vi forbedrer et eksperiment vil vi tit starte fra den vinkel.\nFor at regne molar koncentrationen skal vi så regne\n\\[\nc = \\frac{m}{M_W \\cdot V} \\xrightarrow[]{\\text{Enheder}} \\frac{\\text{g}}{\\frac{\\text{g}}{\\text{mol}} \\cdot \\text{L}} = \\frac{\\text{g}\\cdot \\text{mol}}{\\text{g}\\cdot L} = \\frac{\\text{mol}}{\\text{L}}\n\\] Hvor \\(m\\) er massen i gram, \\(M_W\\) er molekyle vægten i \\(\\frac{g}{mol}\\) og V er volumen i liter Her er det vigtigt at konveretere til de rigtige enheder, altså ikke f.eks. at bruge \\(m\\) i at \\(\\text{mg}\\). Widgtten nedenfor tager en masse, et volumen og en molekylærvægt og konveretere til molar koncentration, du kan vælge hvad enheden af masse og volumen er.\n\nfsb_widgets.concentration_mass_volume()",
+    "section": "3 Calculating concentration from mass and volume",
+    "text": "3 Calculating concentration from mass and volume\nWhen preparing experiments, you often need to calculate the concentration of a reagent based on the mass used and the final volume of the solution.\nTo determine the molar concentration, you will have to calculate the following:\n\\[\nc = \\frac{m}{M_W \\cdot V} \\xrightarrow[]{\\text{Enheder}} \\frac{\\text{g}}{\\frac{\\text{g}}{\\text{mol}} \\cdot \\text{L}} = \\frac{\\text{g}\\cdot \\text{mol}}{\\text{g}\\cdot L} = \\frac{\\text{mol}}{\\text{L}}\n\\] \\(m\\) is the mass in gram, \\(M_W\\) is the molecular weight in \\(\\frac{g}{mol}\\) and V er volume in liter It is important to use the correct units, as using inconsistent units can lead to incorrect results.\nThe widget below calculates the molar concentration using the mass of the reagent, the final volume of the solution, and the molecular weight. You can change the values and units of the mass, volume, and molecular weight to explore how these affect the calculated concentration. The calculation display shows how the result changes when you adjust the inputs.\nTry the widget. How does the concentration change, when you change the unit of the mass, volume or molecular weight?\n\nfsb_widgets.concentration_mass_volume()",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#masse-fra-koncentration-og-volumen",
-    "href": "lessons/week_43.html#masse-fra-koncentration-og-volumen",
+    "objectID": "lessons/week_43.html#mass-calculated-from-concentration-and-volume",
+    "href": "lessons/week_43.html#mass-calculated-from-concentration-and-volume",
     "title": "Week 43",
-    "section": "4 Masse fra koncentration og volumen",
-    "text": "4 Masse fra koncentration og volumen\nDenne widget regne massen der skal til for at lave en opløsning med en given koncentration og volumen.\n\nfsb_widgets.mass_concentration_volume()",
+    "section": "4 Mass calculated from concentration and volume",
+    "text": "4 Mass calculated from concentration and volume\nWhen preparing a solution, you may know the desired molar concentration and the final volume but need to determine how much reagent to weigh out.\nThe widget below calculates the mass required to prepare a solution with a given concentration and final volume. You can adjust the concentration, volume, and molecular weight to see how each affects the required mass.\n\nfsb_widgets.mass_concentration_volume()",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#molekylærvægt",
-    "href": "lessons/week_43.html#molekylærvægt",
+    "objectID": "lessons/week_43.html#molecular-weight",
+    "href": "lessons/week_43.html#molecular-weight",
     "title": "Week 43",
-    "section": "5 Molekylærvægt",
-    "text": "5 Molekylærvægt\nMolekylærvægten er en sum af atomarvægte\n\\[\nM_W = \\sum_i^Z n_i m_Z\n\\] Hvor \\(n_i\\) er antaller af atomer af type \\(i\\) og \\(m_Z\\) er vægten pr. mol af det atom. Widgetten nedenfor kan regne molekylærvægten af stoffer med de første 83 elementer fra den periodiske table.\n\nfsb_widgets.molecular_weight()",
+    "section": "5 Molecular weight",
+    "text": "5 Molecular weight\nThe molecular weight is the sum of the atomic weights of all the atoms in a molecule.\n\\[\nM_W = \\sum_i^Z n_i m_Z\n\\] Here,\\(n_i\\) is the number of atoms of the element \\(i\\) and \\(m_Z\\) is the molar mass of that element. The widget below calculates the molecular weight of compounds made up of elements with atomic numbers 1–83 in the periodic table.\nEnter the molecular formula of a compound and use the widget to calculate the molecular weight.\n\nfsb_widgets.molecular_weight()",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#fortynding",
-    "href": "lessons/week_43.html#fortynding",
+    "objectID": "lessons/week_43.html#dilutions",
+    "href": "lessons/week_43.html#dilutions",
     "title": "Week 43",
-    "section": "6 Fortynding",
-    "text": "6 Fortynding\nDenne widget kan regne hvordan en stock opløsning skal fortyndens for at opnå en ønsket koncentration.\n\nfsb_widgets.dilution_helper()",
+    "section": "6 Dilutions",
+    "text": "6 Dilutions\nWhen preparing a dilution, you need to know the desired final concentration and volume, as well as how much stock solution and solvent to use.\nThe widget below calculates how much stock solution and solvent you need to prepare a solution at the desired concentration and final volume.\nTry the widget. If you, for example, want 500 mL of a dilution that has a final concentration of 5 µM and your stock solution is 5 M. How much stock and solvent do you need to add?\n\nfsb_widgets.dilution_helper()",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#ligevægts-reaktions",
-    "href": "lessons/week_43.html#ligevægts-reaktions",
+    "objectID": "lessons/week_43.html#equilibrium-reactions",
+    "href": "lessons/week_43.html#equilibrium-reactions",
     "title": "Week 43",
-    "section": "7 Ligevægts reaktions",
-    "text": "7 Ligevægts reaktions\nDenne widget kan regne ligevægtskonstanten af reaktioner, f.eks.\n\\[\naA + bB ... = xX + yY ...\n\\] Hvor ligevægtskonstanten er givet ved\n\\[\nK_{eq} = \\frac{[X]^x \\times [Y]^y \\times ...}{[A]^a \\times [B]^b \\times ...}\n\\]\nHer er det igen vigtigt at koncentrationerne er givet i \\(mol/L\\) for at der regnes rigtigt, men heldigvis kan widgetten konvertere dem for dig.\nFor at bruge widgetten skal du skrive en reaktions ligningen på formen\na A + b B = c C \nHvor der er mellemrum mellem ordren og stoffet, du kan så angive koncentrationen og ligevægtskonstanten bliver regnet.\n\nfsb_widgets.reaction_equation()",
+    "section": "7 Equilibrium reactions",
+    "text": "7 Equilibrium reactions\nThe widget below can calculate the equilibrium constant of a reaction, for example:\n\\[\naA + bB ... = xX + yY ...\n\\] Where the equilibrium constant is defined by:\n\\[\nK_{eq} = \\frac{[X]^x \\times [Y]^y \\times ...}{[A]^a \\times [B]^b \\times ...}\n\\]\nIn this example, it is (also) important that concentrations are expressed in mol/L to ensure that the equilibrium constant is calculated correctly. Fortunately, the widget can convert the units for you.\nTo use the widget, enter the reaction equation in the following form:\na A + b B = c C \nTry out the widget. If the concentration of A is 5 mM, the concentration of B is 1000 µM and the concentration of C is is 0.2 M, what is the Equility constant?\n\nfsb_widgets.reaction_equation()",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#reaktions-data-analyse",
-    "href": "lessons/week_43.html#reaktions-data-analyse",
+    "objectID": "lessons/week_43.html#reaction-data-analysis",
+    "href": "lessons/week_43.html#reaction-data-analysis",
     "title": "Week 43",
-    "section": "8 Reaktions data analyse",
-    "text": "8 Reaktions data analyse\nDenne widget kan læse en .csv-fil hvilket er en comma seperated values, det vil sige at forskellige data er splittet om i kolonner, se f.eks. eksemplet her\ntime (s),A (mM),B (µM),X (nM),Y (µM)\n0,1.00,500.0,100.0,50.0\n10,0.95,480.0,150.0,70.0\n20,0.92,460.0,200.0,90.0\n30,0.90,445.0,240.0,110.0\n40,0.88,430.0,270.0,130.0\n50,0.87,420.0,300.0,150.0\n60,0.86,410.0,330.0,170.0\n70,0.85,400.0,360.0,190.0\n80,0.84,390.0,390.0,210.0\n90,0.83,380.0,420.0,230.0\n100,0.82,370.0,450.0,250.0\nHer er der 5 søjler, som beskriver 5 forskellige størrelser.\nAt bruge widgten kræver fire trin\n\nKilk på “Upload CSV” og vælg en fil.\nSikre at reaktionsligning er den du er interesseret i.\nSikre at hvert led af reaktionsligningen er tilknyttet den rigtige kolonne i datasættet og enheden er korrekt.\nKlik “Beregn og plot” for at beregne ligevægtskonstanten.\n\n\nfsb_widgets.reaction_data_analysis()",
+    "section": "8 Reaction data analysis",
+    "text": "8 Reaction data analysis\nThis widget can read a ‘CSV’-file( ccomma sseperated vcalues -file). in a CSV file data are organised into columns, with commas seperating the values. An example of a CSV file is shown below.\ntime (s),A (mM),B (µM),X (nM),Y (µM)\n0,1.00,500.0,100.0,50.0\n10,0.95,480.0,150.0,70.0\n20,0.92,460.0,200.0,90.0\n30,0.90,445.0,240.0,110.0\n40,0.88,430.0,270.0,130.0\n50,0.87,420.0,300.0,150.0\n60,0.86,410.0,330.0,170.0\n70,0.85,400.0,360.0,190.0\n80,0.84,390.0,390.0,210.0\n90,0.83,380.0,420.0,230.0\n100,0.82,370.0,450.0,250.0\nIn this example, the CSV file contains 5 columns, each representing a different variable.\nTo use the widget, follow these four steps: 1. Click ‘upload CSV’ and select your file. 2. Make sure the reaction equation matches the reaction you want to analyse. 3. Make sure each component of the reaction equation is assigned to the correct column in your dataset, and ensure that the units are correct. 4. Click “Beregn og plot” to calculate the equilibrium constant.\n\nfsb_widgets.reaction_data_analysis()",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#bufferligningen",
-    "href": "lessons/week_43.html#bufferligningen",
+    "objectID": "lessons/week_43.html#buffer-equation",
+    "href": "lessons/week_43.html#buffer-equation",
     "title": "Week 43",
-    "section": "9 Bufferligningen",
-    "text": "9 Bufferligningen\nHenderson-Hasselbalch ligningen (‘bufferligningen’) er givet ved\n\\[\npH = pK_a + \\log_{10}\\left( \\frac{[\\text{base}]}{[\\text{acid}]}\\right)\n\\]\nDenne widget beregener forholdet mellem og koncentrationen af syre og base givet \\(pH\\), \\(pKa\\) samt total koncentrationen.\n\nfsb_widgets.buffer_equation()",
+    "section": "9 Buffer equation",
+    "text": "9 Buffer equation\nThe Henderson-Hasselbalch equation (‘buffer equation’) is defined by\n\\[\npH = pK_a + \\log_{10}\\left( \\frac{[\\text{base}]}{[\\text{acid}]}\\right)\n\\]\nThis widget uses the Henderson–Hasselbalch equation to calculate the ratio of conjugate base to acid, based on the \\(pH\\) and \\(pKa\\) and the total volume.\nTry the widget. If the pH increases or decreases how does that affect the ratio of base to acid? If the pka increases/decreases? If the total concentration changes?\n\nfsb_widgets.buffer_equation()",
     "crumbs": [
       "Exercises",
       "Week 43"
     ]
   },
   {
-    "objectID": "lessons/week_43.html#bufferligning-visualisering",
-    "href": "lessons/week_43.html#bufferligning-visualisering",
+    "objectID": "lessons/week_43.html#the-henderson-hasselbalch-equation-visualisering",
+    "href": "lessons/week_43.html#the-henderson-hasselbalch-equation-visualisering",
     "title": "Week 43",
-    "section": "10 Bufferligning visualisering",
-    "text": "10 Bufferligning visualisering\nDenne widget visualisere bufferligningen (Henderson–Hasselbalch). Du kan styre \\(pKa\\), total koncentratioenn og området for \\(pH\\). Plottet viser koncentrationen af syre og base som funktionen af pH.\n\nfsb_widgets.buffer_visualization()",
+    "section": "10 The Henderson-Hasselbalch equation visualisering",
+    "text": "10 The Henderson-Hasselbalch equation visualisering\nThis widget illustrates the The Henderson-Hasselbalch equation (the buffer equation). The plot shows the concentrations of the acid and its conjugate base as a function of pH. Change \\(pKa\\), total concentration and pH to see howthese parameters affect the distribution of the acid and its conjugate base.\n\nfsb_widgets.buffer_visualization()",
     "crumbs": [
       "Exercises",
       "Week 43"
