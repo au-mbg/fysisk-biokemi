@@ -11,7 +11,9 @@ jupyterlite: true
 import fysisk_biokemi.widgets as fsb_widgets
 ```
 
-## Sekvens egenskaber
+## Sequence Proporties
+
+Run the codecell below and copy paste in the sequence of your protein. Then use the widget to adjust the pH and see how the charge of your protein changes.
 
 ```{python}
 #| eval: false
@@ -20,6 +22,11 @@ fsb_widgets.sequence_properties()
 
 ## Fasta til `DataFrame`
 
+The widget below accepts "fasta" files as input and you can then use the slider to adjust the pH and see how the charge of your protein changes. 
+
+Fasta-files is a specific type of text file and you will see that most of the time when you download a Protein, RNA or DNA sequence they will be downloaded as fasta files. Each sequence begins with a header line starting with >, which contains an identifier and optionally a description, followed by the sequence itself using the appropriate nucleotide or amino acid symbols. A FASTA file can contain one or multiple sequences, making it useful for sequence analysis, database searches, and comparing biological sequences using bioinformatics tools.
+
+
 ```{python}
 #| eval: false
 from fysisk_biokemi.widgets.sequence_properties import sequence_dataframe
@@ -27,7 +34,7 @@ from fysisk_biokemi.widgets.sequence_properties import sequence_dataframe
 widget = sequence_dataframe()
 ```
 
-`DataFrame`'en ved den valgte pH kan trækkes ud
+You can extract the dataframe with your current pH adjustment by using the widget.get_dataframe() below. 
 
 ```{python}
 #| eval: false

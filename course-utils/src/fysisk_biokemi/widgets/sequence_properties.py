@@ -138,18 +138,70 @@ class FastaToDataFrame:
         input_box = widgets.VBox([self.uploader, self.ph_slider, self.output_area])
         display(input_box)
 
+    
     def _on_upload(self, change):
         from Bio.SeqIO.FastaIO import SimpleFastaParser
 
-        sequences = []
-        raw_content = self.uploader.value[0].content.tobytes()
-        raw_content = io.StringIO(raw_content.decode('utf-8'))
+        uploaded = self.uploader.value
 
-        for _, seq in SimpleFastaParser(raw_content):
-            sequences.append(seq)
+        if not uploaded:
+            return
+
+        # Support older and newer ipywidgets upload formats
+        if isinstance(uploaded, dict):
+            filename, file_info = next(iter(uploaded.items()))
+        else:
+            file_info = uploaded[0]
+
+            if isinstance(file_info, dict):
+                filename = (
+                    file_info.get("name")
+                    or file_info.get("metadata", {}).get("name")
+        )
+            else:
+                filename = file_info.name
+
+                # Check the file extension
+                if not filename.lower().endswith(".fasta"):
+                    with self.output_area:
+                        self.output_area.clear_output()
+                        print(
+                            "Please upload a FASTA file ending in '.fasta'. "
+                            "Your file was not processed."
+                        )
+                    return
+
+        # Extract the file contents
+        if isinstance(file_info, dict):
+            content = file_info["content"]
+        else:
+            content = file_info.content
+
+        if hasattr(content, "tobytes"):
+            content = content.tobytes()
+
+        if not isinstance(content, bytes):
+            content = bytes(content)
+
+        raw_content = io.StringIO(content.decode("utf-8"))
+
+        # Parse the FASTA file
+        sequences = [
+            seq for _, seq in SimpleFastaParser(raw_content)
+        ]
+
+        if not sequences:
+            with self.output_area:
+                self.output_area.clear_output()
+                print(
+                    "No FASTA sequences were found. "
+                    "Please check that your file contains valid FASTA records."
+                )
+            return
 
         self.sequences = sequences
         self._on_change(None)
+
 
     def _on_change(self, change):
         if not hasattr(self, 'sequences'):
