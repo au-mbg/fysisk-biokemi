@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
 from IPython.display import display 
+from pathlib import Path
 pd.set_option('display.max_rows', 6)
 ```
 
@@ -15,6 +16,9 @@ You have carried out a kinetic experiment investigating the turnover of two meta
 #### (a) Load the dataset
 
 Load the dataset `reaction-orders.xlsx` with pandas. Set `data_file_path` to the path of the dataset file.
+```{python}
+print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
+```
 
 ```{python}
 #| exercise: true

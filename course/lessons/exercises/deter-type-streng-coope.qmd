@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from IPython.display import display 
+from pathlib import Path
 from scipy.optimize import curve_fit
 ```
 
@@ -17,6 +18,9 @@ The dataset consists of three independent repititions of the same experiment.
 #### (a) Load the dataset
 
 Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
+```{python}
+print(Path("...").resolve())
+```
 
 ```{python}
 #| exercise: true

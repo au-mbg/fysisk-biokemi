@@ -6,6 +6,7 @@ import pandas as pd
 from IPython.display import display
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+from pathlib import Path
 pd.set_option('display.max_rows', 6)
 ```
 
@@ -14,6 +15,10 @@ The `inter-bindin-data.xlsx` contains a protein binding dataset.
 #### (a) Load the dataset
 
 Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
+
+```{python}
+print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
+```
 
 ```{python}
 #| exercise: true

@@ -7,12 +7,17 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.optimize import curve_fit
 from IPython.display import display 
+from pathlib import Path
 pd.set_option('display.max_rows', 6)
 ```
 
 Here, we will analyse the results from an experiment used to quantify affinity of a protein:lignd interaction. The data in `binding_data_sq.xlsx` is in the form of saturation (theta) as a function of the total ligand concentration L_tot. This is the type of data you typically get from e.g. a fluorescence titration experiment. Each measure-ment has been repeated three times.
 
 Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
+
+```{python}
+print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
+```
 
 ```{python}
 #| exercise: true
@@ -325,7 +330,7 @@ And now make a fit using this expression
 ## Your task: Make a fit using the quadratic binding equation. ##
 fitted_parameters, trash = ...
 
-## Extratcs and prints K_D ##
+## Extracts and prints K_D ##
 K_D_fit_quad = fitted_parameters[0]
 print(K_D_fit_quad)
 ```
