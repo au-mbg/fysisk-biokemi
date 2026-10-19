@@ -31,19 +31,47 @@ class DataUploader:
         self.output = widgets.Output()
 
     def _on_upload_change(self, change):
+    
         self.output.clear_output()
-        for filename, file_info in self.uploader.value.items():
-            content = file_info['content']
+
+        uploaded = self.uploader.value
+
+        if not uploaded:
+            return
+
+        # Support older and newer ipywidgets upload formats
+        if isinstance(uploaded, dict):
+            files = uploaded.items()
+        else:
+            files = (
+                (file_info["name"], file_info)
+                for file_info in uploaded
+            )
+
+        for filename, file_info in files:
+            content = file_info["content"]
+
+            # Convert the content to bytes if needed
+            if hasattr(content, "tobytes"):
+                content = content.tobytes()
+
             with self.output:
                 print(f"Uploaded file: {filename}")
                 print(f"File extension: {Path(filename).suffix}")
-                # Here you can add code to process the file content as needed
-                suffix = Path(filename).suffix
+
+                suffix = Path(filename).suffix.lower()
+
                 if suffix in SUFFIX_TO_FUNC:
                     print("Using function:", SUFFIX_TO_FUNC[suffix].name)
+
                     content = io.BytesIO(content)
                     self.df = SUFFIX_TO_FUNC[suffix].func(content)
+
                     print("DataFrame shape:", self.df.shape)
+                else:
+                    print(f"Unsupported file extension: {suffix}")
+
+
 
     def get_dataframe(self):
         if hasattr(self, 'df'):
