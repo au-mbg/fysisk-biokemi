@@ -24,6 +24,12 @@ The correct pandas function is already provided. You only need to set `data_file
 
 :::
 
+After uploading your file to jupyter, you can find the path to your file by running the code cell below. Remember to put in the name of your own file.
+```{python}
+print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
+```
+
+Insert the path of your file in the codecell below
 ```{python}
 #| exercise: true
 #| eval: false
@@ -58,7 +64,7 @@ ax.plot(x, y) # <3>
 plt.show() # <4>
 ```
 1. This creates a `fig` and an `ax`, the `ax`-object is the box where our plot is created. 
-2. Define the data to put on the x-axis.
+2. Defines the data to put on the x-axis.
 3. Does the actual plotting
 4. Shows the figure
 

@@ -69,16 +69,14 @@ Define a linear function for fitting:
 #| exercise: true
 #| eval: false
 def linear_function(x, a, b):
-    ## Your task: Calculate the linear function ##
-    result = ...
+    result = ...  ## Your task: Write the linear function ##
     return result
 ```
 
 ```{python}
 #| solution: true
 def linear_function(x, a, b):
-    ## Your task: Calculate the linear function ##
-    result = a * x + b
+    result = a * x + b ## Your task: Write the linear function ##
     return result
 ```
 
@@ -119,11 +117,11 @@ the call to `curve_fit`.
 # Initial guess: a=2, b=0
 initial_guess = [2, 0]
 
-## Your task: Perform the fit ##
-## You need give the function three arguments ##
-## The function: linear_function ##
-## The x-data: x_data
-## The y-data: y_data
+## Your task: Perform the fit by filling out the line of code below ##
+## You need give the function three arguments: ##
+## 1. The function: linear_function ##
+## 2. The x-data: x_data
+## 3. The y-data: y_data
 fitted_parameters, trash = curve_fit(..., ..., ..., p0=initial_guess)
 
 ## Extract parameters ## 

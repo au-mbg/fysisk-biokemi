@@ -4,6 +4,7 @@
 #| code-fold: true
 import pandas as pd
 from IPython.display import display
+from pathlib import Path
 ```
 
 The spectra of many fluorescent proteins can be found at the website: [www.fpbase.org](https://www.fpbase.org/). Go to FPbase and search for “mCherry”. 
@@ -96,7 +97,7 @@ Now use the sequence to calculate the extinction coefficient, finish the code be
 #| exercise: true
 #| eval: false
 
-# This is "dictionary" with the extinction coefficients of the relevant 
+# This is a "dictionary" with the extinction coefficients of the relevant 
 # amino acid residues. Dictionaries are indexed with 'keys', so you can retrieve
 # the value for W as: ext_residue["W"].
 ext_residue = {"W": 5500, "Y": 1490, "C": 125}
@@ -108,7 +109,7 @@ ext_residue = {"W": 5500, "Y": 1490, "C": 125}
 ```{python}
 #| solution: true
 
-# This is 'dictionary' with the extinction coefficients of the relevant 
+# This is a 'dictionary' with the extinction coefficients of the relevant 
 # amino acid residues. Dictionaries are indexed with 'keys', so you can retrieve
 # the value for W as: ext_residue["W"].
 ext_residue = {"W": 5500, "Y": 1490, "C": 125}
@@ -165,6 +166,11 @@ Go to [www.fpbase.org](https://www.fpbase.org/) and download the spectrum as des
 above. 
 
 Load the dataset as a `DataFrame` with pandas. Set `data_file_path` to the path of the downloaded dataset file.
+
+After uploading your file to jupyter, you can find the path to your file by running the code cell below. Remember to put in the name of your own file.
+```{python}
+print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
+```
 
 ```{python}
 #| exercise: true

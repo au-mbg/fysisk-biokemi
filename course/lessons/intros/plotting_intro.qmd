@@ -9,20 +9,23 @@ import matplotlib.pyplot as plt
 There are many ways to plot, we will be using the `matplotlib` library - but 
 the concepts are similar across most ways of plotting.
 
+::: {.callout-note}
+A library is a collection of ready-made code that helps you perform tasks in Python, so you don't have to write everything yourself.
+:::
+
 We can make a plot of a straight line between two points $(x_1, y_1)$ and $(x_2, y_2)$ like so; 
 
 ```{python}
 #| fig-align: center
 x = np.array([1, 2]) # This array contains all the x-coordinates
 y = np.array([0, 1]) # And this contains all the y-coordinates.
-fig, ax = plt.subplots(figsize=(6, 4))
+fig, ax = plt.subplots(figsize=(6, 4)) # 6,4 defines the size of the plot
 ax.plot(x, y)
 ```
 
 ::: {.callout-note}
 
-`ax` is a special type (like `int`, `float`, `str`), you can think of it as the box that 
-contains the plot.
+`ax` is a special type (like `int`, `float`, `str`), and is the area where you create your plot. You can think of it as the canvas you draw on.
 
 ::: 
 
@@ -128,7 +131,7 @@ ax.set_ylim([-0.5, 1.5])
 
 #### (c) Plotting a function
 
-Often the data we plot can broadly be thought of as originating from a function, that is we have 
+Often the data we plot can broadly be thought of as originating from a function, such as:
 
 $$
 y = f(x)
@@ -153,7 +156,7 @@ logarithm `np.log`.
 ```{python}
 #| exercise: true
 #| eval: false
-x = np.linspace(0, 5, 50) # Make 50 points uniformly between 0 and 5. 
+x = np.linspace(0, 5, 50) # Makes 50 points uniformly between 0 and 5. 
 y = ... # Your code here.
 
 fig, ax = plt.subplots(figsize=(6, 4))
