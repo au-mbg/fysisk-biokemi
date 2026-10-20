@@ -282,6 +282,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Week 44</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<p class="subtitle lead">v1.0.1</p>
   <div class="quarto-categories">
     <div class="quarto-category">units</div>
     <div class="quarto-category">widgets</div>
@@ -367,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="9d048c90" class="cell" data-execution_count="1">
+<div id="741f4b27" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -377,13 +378,13 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install <span class="op">-</span>q <span class="st">"fysisk_biokemi[pyodide] @ https://au-mbg.github.io/fysisk-biokemi/wheels/fysisk_biokemi-0.2.2-py3-none-any.whl"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="34c9db1b" class="cell" data-execution_count="2">
+<div id="95b71d26" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fysisk_biokemi.widgets <span class="im">as</span> fsb_widgets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="sequence-proporties" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="sequence-proporties"><span class="header-section-number">1</span> Sequence Proporties</h2>
 <p>Run the codecell below and copy paste in the sequence of your protein. Then use the widget to adjust the pH and see how the charge of your protein changes.</p>
-<div id="06707e64" class="cell" data-execution_count="3">
+<div id="4a3685eb" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fsb_widgets.sequence_properties()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -391,20 +392,22 @@ document.addEventListener('DOMContentLoaded', function () {
 <h2 data-number="2" class="anchored" data-anchor-id="fasta-til-dataframe"><span class="header-section-number">2</span> Fasta til <code>DataFrame</code></h2>
 <p>The widget below accepts “fasta” files as input and you can then use the slider to adjust the pH and see how the charge of your protein changes.</p>
 <p>Fasta-files is a specific type of text file and you will see that most of the time when you download a Protein, RNA or DNA sequence they will be downloaded as fasta files. Each sequence begins with a header line starting with &gt;, which contains an identifier and optionally a description, followed by the sequence itself using the appropriate nucleotide or amino acid symbols. A FASTA file can contain one or multiple sequences, making it useful for sequence analysis, database searches, and comparing biological sequences using bioinformatics tools.</p>
-<div id="83375d37" class="cell" data-execution_count="4">
+<p>Upload your fasta file to jupyter and enter the name of the file in the codecell below:</p>
+<div id="fe9e9ca2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.sequence_properties <span class="im">import</span> sequence_dataframe</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe(file_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You can extract the dataframe with your current pH adjustment by using the widget.get_dataframe() below.</p>
-<div id="805fca03" class="cell" data-execution_count="5">
+<div id="fab4f0a3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> widget.get_dataframe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 </section>
 <section id="self-study-calculations-in-python" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="self-study-calculations-in-python"><span class="header-section-number">3</span> Self-study: Calculations in python</h2>
-<div id="e760c57b" class="cell" data-execution_count="6">
+<div id="cd40b628" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -440,7 +443,7 @@ Tip
 </ul>
 </div>
 </div>
-<div id="c1e77ba7" class="cell" data-solution="true" data-execution_count="8">
+<div id="387423bd" class="cell" data-solution="true" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fl">10.5</span> <span class="op">*</span> <span class="dv">4</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">+</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">15</span> <span class="op">+</span> <span class="dv">12</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dv">70</span> <span class="op">-</span> <span class="dv">30</span> <span class="op">+</span> <span class="dv">2</span> </span>
@@ -455,10 +458,10 @@ Tip
 <p>The ability to perform operations on all elements (or data points) is incredibly useful when doing data analysis, for example when converting units. This is enabled my array calculations.</p>
 <p>The cell below defines an array <span class="math inline">\(a\)</span> with all the numbers from 0 to 9.</p>
 <p>For each entry <span class="math inline">\(a_i\)</span> in the array calculate the expression <span class="math inline">\(b_i = a_i / 3 + a_i^2\)</span> and assign that to a new array <span class="math inline">\(b\)</span>. use the fact that you can do elementwise operations with an array - do not calculate it seperately for every element of the array.</p>
-<div id="4199c871" class="cell" data-execution_count="9">
+<div id="cf16aafa" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="fabab111" class="cell" data-solution="true" data-execution_count="11">
+<div id="c37b6254" class="cell" data-solution="true" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a <span class="op">/</span> <span class="dv">3</span> <span class="op">+</span> a<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -494,7 +497,7 @@ b &amp;= a + 9 \\
 c &amp;= \frac{4}{3}a + b - 2
 \end{aligned}
 \]</span></p>
-<div id="620b075c" class="cell" data-solution="true" data-execution_count="13">
+<div id="932854d3" class="cell" data-solution="true" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">3</span>      </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a <span class="op">+</span> <span class="dv">9</span>      </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">4</span><span class="op">/</span><span class="dv">3</span><span class="op">*</span>a <span class="op">+</span> b <span class="op">-</span> <span class="dv">2</span></span>
@@ -516,7 +519,7 @@ c &amp;= \frac{4}{3}a + b - 2
 <li><span class="math inline">\((b - a)(\frac{1}{c} + 1)\)</span></li>
 <li><span class="math inline">\((b - a)(\frac{1}{c+1} + 1)\)</span></li>
 </ul>
-<div id="bbd16399" class="cell" data-solution="true" data-execution_count="15">
+<div id="459fef5a" class="cell" data-solution="true" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> a <span class="op">*</span> (b <span class="op">+</span> c)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>q2 <span class="op">=</span> a <span class="op">*</span> b <span class="op">+</span> c</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> (a <span class="op">+</span> b <span class="op">+</span> c) <span class="op">/</span> (b <span class="op">+</span> c)</span>
@@ -550,12 +553,12 @@ Tip
 f(x) = \frac{Ax + B + C}{A + B}
 \]</span></p>
 <p>Where <span class="math inline">\(A = 10\)</span>, <span class="math inline">\(B=5\)</span>, <span class="math inline">\(C=2.5\)</span></p>
-<div id="39d615bd" class="cell" data-solution="true" data-execution_count="17">
+<div id="defabad4" class="cell" data-solution="true" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fun_function(x):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (<span class="dv">10</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">5</span> <span class="op">+</span> <span class="fl">2.5</span>) <span class="op">/</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now evaluate the function for <span class="math inline">\(x = 62.5\)</span>, <span class="math inline">\(x = 629.25\)</span>, <span class="math inline">\(x=42\)</span> and <span class="math inline">\(x = 2025\)</span></p>
-<div id="4157670b" class="cell" data-solution="true" data-execution_count="19">
+<div id="4927cd66" class="cell" data-solution="true" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fun_output_1 <span class="op">=</span> fun_function(<span class="fl">62.25</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fun_output_2 <span class="op">=</span> fun_function(<span class="fl">629.25</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>fun_output_3 <span class="op">=</span> fun_function(<span class="dv">42</span>)</span>
@@ -595,7 +598,7 @@ Tip
 <section id="a-unit-as-a-string---examples" class="level4">
 <h4 class="anchored" data-anchor-id="a-unit-as-a-string---examples">(a) Unit as a string - examples</h4>
 <p>Length of an ideal H-bond:</p>
-<div id="e132be6a" class="cell" data-execution_count="20">
+<div id="7b9e17fe" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>len_Hbond <span class="op">=</span> <span class="fl">0.28</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>unit_len_Hbond <span class="op">=</span> <span class="st">"nm"</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -605,7 +608,7 @@ Tip
 </div>
 </div>
 <p>Molecular weight of human alcohol dehydrogenase:</p>
-<div id="67e39a53" class="cell" data-execution_count="21">
+<div id="e2efd58d" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>MW_ADH <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>unit_MW_ADH <span class="op">=</span> <span class="st">"kDa"</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -615,7 +618,7 @@ Tip
 </div>
 </div>
 <p>Approximate diameter of human liver cell:</p>
-<div id="405bc1dd" class="cell" data-execution_count="22">
+<div id="2c86afb8" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>diam_hlc <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>unit_diam_hlc <span class="op">=</span> <span class="st">"µm"</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -628,7 +631,7 @@ Tip
 <section id="b-unit-as-a-string---exercises" class="level4">
 <h4 class="anchored" data-anchor-id="b-unit-as-a-string---exercises">(b) Unit as a string - exercises</h4>
 <p>Convert to millimolar: 0.15 M</p>
-<div id="9bec5e11" class="cell" data-execution_count="23">
+<div id="0d37e132" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>conc <span class="op">=</span> ...      <span class="co"># Replace ... with your code</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>unit_conc <span class="op">=</span> <span class="st">"..."</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -638,7 +641,7 @@ Tip
 </div>
 </div>
 <p>Convert to Å: 13.2 nm</p>
-<div id="1fe70cfa" class="cell" data-execution_count="24">
+<div id="608c5533" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> ...      <span class="co"># Replace ... with your code</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>unit_length <span class="op">=</span> <span class="st">"..."</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1109,56 +1112,59 @@ Tip
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Week 44</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> jupyter</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ['units', 'widgets']</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="an">jupyterlite:</span><span class="co"> true</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>{{&lt; include tidbits/_install_import.qmd &gt;}}</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fysisk_biokemi.widgets <span class="im">as</span> fsb_widgets</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sequence Proporties</span></span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>Run the codecell below and copy paste in the sequence of your protein. Then use the widget to adjust the pH and see how the charge of your protein changes.</span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>fsb_widgets.sequence_properties()</span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fasta til `DataFrame`</span></span>
-<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>The widget below accepts "fasta" files as input and you can then use the slider to adjust the pH and see how the charge of your protein changes. </span>
-<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>Fasta-files is a specific type of text file and you will see that most of the time when you download a Protein, RNA or DNA sequence they will be downloaded as fasta files. Each sequence begins with a header line starting with &gt;, which contains an identifier and optionally a description, followed by the sequence itself using the appropriate nucleotide or amino acid symbols. A FASTA file can contain one or multiple sequences, making it useful for sequence analysis, database searches, and comparing biological sequences using bioinformatics tools.</span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> v1.0.1</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> jupyter</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ['units', 'widgets']</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="an">jupyterlite:</span><span class="co"> true</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>{{&lt; include tidbits/_install_import.qmd &gt;}}</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fysisk_biokemi.widgets <span class="im">as</span> fsb_widgets</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sequence Proporties</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>Run the codecell below and copy paste in the sequence of your protein. Then use the widget to adjust the pH and see how the charge of your protein changes.</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>fsb_widgets.sequence_properties()</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fasta til `DataFrame`</span></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>The widget below accepts "fasta" files as input and you can then use the slider to adjust the pH and see how the charge of your protein changes. </span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>Fasta-files is a specific type of text file and you will see that most of the time when you download a Protein, RNA or DNA sequence they will be downloaded as fasta files. Each sequence begins with a header line starting with &gt;, which contains an identifier and optionally a description, followed by the sequence itself using the appropriate nucleotide or amino acid symbols. A FASTA file can contain one or multiple sequences, making it useful for sequence analysis, database searches, and comparing biological sequences using bioinformatics tools.</span>
 <span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.sequence_properties <span class="im">import</span> sequence_dataframe</span>
-<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe()</span>
-<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>You can extract the dataframe with your current pH adjustment by using the widget.get_dataframe() below. </span>
-<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> widget.get_dataframe()</span>
-<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>{{&lt; include intros/calculation_intro.qmd &gt;}}</span>
-<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a>{{&lt; include intros/units_in_python.qmd &gt;}}</span>
-<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-60"><a href="#cb31-60" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>Upload your fasta file to jupyter and enter the name of the file in the codecell below:</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.widgets.sequence_properties <span class="im">import</span> sequence_dataframe</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>widget <span class="op">=</span> sequence_dataframe(file_name)</span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>You can extract the dataframe with your current pH adjustment by using the widget.get_dataframe() below. </span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> widget.get_dataframe()</span>
+<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a>{{&lt; include intros/calculation_intro.qmd &gt;}}</span>
+<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb31-60"><a href="#cb31-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-61"><a href="#cb31-61" aria-hidden="true" tabindex="-1"></a>{{&lt; include intros/units_in_python.qmd &gt;}}</span>
+<span id="cb31-62"><a href="#cb31-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-63"><a href="#cb31-63" aria-hidden="true" tabindex="-1"></a>---</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
