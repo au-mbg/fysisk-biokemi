@@ -160,8 +160,7 @@ Next, you compare the fluorescence emission spectra for your protein at pH 7 and
 ::: {callout-tip}
 
 The datasets are loaded in a different way than you've seen before - as help to you 
-as this exercise deals with multiple datasets. The datasets could also be loaded with the 
-widget you've seen before
+as this exercise deals with multiple datasets. The datasets could also be loaded by the pd.read_excel('data_file_name') function you used ealier.
 
 ::: 
 

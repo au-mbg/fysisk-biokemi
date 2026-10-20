@@ -165,18 +165,13 @@ Screenshot of the download button on fpbase
 Go to [www.fpbase.org](https://www.fpbase.org/) and download the spectrum as described 
 above. 
 
-Load the dataset as a `DataFrame` with pandas. Set `data_file_path` to the path of the downloaded dataset file.
-
-After uploading your file to jupyter, you can find the path to your file by running the code cell below. Remember to put in the name of your own file.
-```{python}
-print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
-```
+Load the dataset as a `DataFrame` with pandas. Set `data_file_name` to the name of the downloaded dataset file.
 
 ```{python}
 #| exercise: true
 #| eval: false
-data_file_path = ... # Write the path to the dataset file
-df = pd.read_csv(data_file_path)
+data_file_name = ... # Write the name of the dataset file
+df = pd.read_csv(data_file_name)
 display(df)
 ```
 

@@ -18,25 +18,20 @@ Use the cell below to load and display the dataset.
 
 ::: {.callout-tip title="Need help loading the data?" collapse="true"}
 
-The correct pandas function is already provided. You only need to set `data_file_path`:
+The correct pandas function is already provided. You only need to set `data_file_name`:
 
 1. Download the file named above from the [Datasets page](../datasets.html).
 2. [Upload the file to JupyterLite](jupyterlite_intro.html#data-files).
-3. Replace `...` with the file's path in quotation marks. See [Working with file paths](jupyterlite_intro.html#working-with-file-paths) for examples.
+3. Replace `...` with the file's name in quotation marks.
 
 :::
 
-After uploading your file to jupyter, you can find the path to your file by running the code cell below. Remember to put in the name of your own file.
-```{python}
-print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
-```
-
-Insert the path of your file in the codecell below
+Insert the name of your file in the code cell below to read it into your notebook 
 ```{python}
 #| exercise: true
 #| eval: false
-data_file_path = ... # Write the path to the dataset file
-df = pd.read_excel(data_file_path)
+data_file_name = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_name)
 display(df)
 ```
 

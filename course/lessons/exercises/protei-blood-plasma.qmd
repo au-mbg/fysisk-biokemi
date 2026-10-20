@@ -21,28 +21,24 @@ A researcher wants to determine the concentration of two proteins in blood plasm
 
 #### (a) Load the dataset
 
-Load the dataset as a dataframe from the file `protei-blood-plasma.xlsx` with pandas. Set `data_file_path` to the path of the dataset file.
+Load the dataset as a dataframe from the file `protei-blood-plasma.xlsx` with pandas. Set `data_file_name` to the path of the dataset file.
 
 ::: {.callout-tip title="Need help loading the data?" collapse="true"}
-
-After uploading your file to jupyter, you can find the path to your file by running the code cell below. Remember to put in the name of your own file.
-```{python}
-print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
-```
 
 The correct pandas function is already provided. You only need to set `data_file_path`:
 
 1. Download the file named above from the [Datasets page](../datasets.html).
 2. [Upload the file to JupyterLite](jupyterlite_intro.html#data-files).
-3. Replace `...` with the file's path in quotation marks. See [Working with file paths](jupyterlite_intro.html#working-with-file-paths) for examples.
+3. Replace `...` with the file's name in quotation marks.
 
 :::
 
+Insert the name of your file in the codecell below to read it into yout notebook
 ```{python}
 #| exercise: true
 #| eval: false
-data_file_path = ... # Write the path to the dataset file
-df = pd.read_excel(data_file_path)
+data_file_name = ... # Write the path to the dataset file
+df = pd.read_excel(data_file_name)
 display(df)
 ```
 

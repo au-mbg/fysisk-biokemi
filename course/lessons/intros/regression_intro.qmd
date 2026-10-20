@@ -208,24 +208,17 @@ ax.set_title('Fit')
 #### (e) Nonlinear fitting: Exponential decay
 
 Many biological processes follow nonlinear relationships. Let's work with exponential decay, which is common in biochemistry (e.g., radioactive decay or unimolecular chemical reactions).
-
-You can load the dataset from the `exp_decay_data.xlsx`-file with the widget below 
-
-```{python}
-#| eval: false
-from fysisk_biokemi.widgets import DataUploader
-from IPython.display import display 
-uploader = DataUploader()
-uploader.display()
-```
-
-Run the next cell **after** uploading the file
+Upload the file `exp_decay_data.xlsx` to jupyter.
+then load the dataset as a `DataFrame` with pandas. Set `data_file_name` to the name of the downloaded dataset file.
 
 ```{python}
+#| exercise: true
 #| eval: false
-df = uploader.get_dataframe()
+data_file_name = ... # Write the name of the dataset file
+df = pd.read_excel(data_file_name)
 display(df)
 ```
+
 
 ```{python}
 #| solution: true
