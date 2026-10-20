@@ -188,7 +188,8 @@ $$
 As always, start by writing the function
 
 ```{python}
-#| solution: true
+#| exercise: true
+#| eval: false
 def linear_function(x, a, b):
     ## Your task: Implement the linear function
     result = ...

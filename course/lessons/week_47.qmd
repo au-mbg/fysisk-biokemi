@@ -1,6 +1,6 @@
 ---
 title: Week 47
-subtitle: v1.0.1
+subtitle: v1.0.2
 engine: jupyter
 categories: ['regression', 'calculation', 'data', 'plotting']
 jupyterlite: true
