@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4a7cb658c1d9cf25cbb76ae52cfc0617.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a5da188fca6e4121430ff7ab497f17be.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -334,7 +334,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Week 47</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
-<p class="subtitle lead">v1.0.1</p>
+<p class="subtitle lead">v1.0.2</p>
   <div class="quarto-categories">
     <div class="quarto-category">regression</div>
     <div class="quarto-category">calculation</div>
@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div id="0594a7f1" class="cell" data-execution_count="1">
+<div id="9c58a6e9" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <hr>
 <section id="determination-of-reaction-order-and-activation-energy" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="determination-of-reaction-order-and-activation-energy"><span class="header-section-number">1</span> Determination of reaction order and activation energy</h2>
-<div id="a86600ca" class="cell" data-execution_count="2">
+<div id="7d585a32" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="a-temperatures" class="level4">
 <h4 class="anchored" data-anchor-id="a-temperatures">(a) Temperatures</h4>
 <p>What are the two temperatures in Kelvin? Set them as varilabes in the cell below.</p>
-<div id="5bedbe3e" class="cell" data-exercise="true" data-execution_count="3">
+<div id="e4872fbf" class="cell" data-exercise="true" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Convert the temperatures to K and assign to the variables:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>T1 <span class="op">=</span> ...</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>T2 <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="b-load-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="b-load-the-dataset">(b) Load the dataset</h4>
 <p>Load the dataset with pandas. Set <code>data_file_path</code> to the path of the dataset file named above.</p>
-<div id="fe2358f5" class="cell" data-exercise="true" data-execution_count="5">
+<div id="a0023e35" class="cell" data-exercise="true" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_file_path <span class="op">=</span> ... <span class="co"># Write the path to the dataset file</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(data_file_path)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="c-si-units" class="level4">
 <h4 class="anchored" data-anchor-id="c-si-units">(c) SI Units</h4>
 <p>Calculate the concentration of A at each timepoint in SI units, by adding new columns to the <code>DataFrame</code>.</p>
-<div id="7ecd16d1" class="cell" data-exercise="true" data-execution_count="7">
+<div id="548fd342" class="cell" data-exercise="true" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known values ##</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>extinction_coeff <span class="op">=</span> ...</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> ...</span>
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="d-plot-the-data" class="level4">
 <h4 class="anchored" data-anchor-id="d-plot-the-data">(d) Plot the data</h4>
 <p>We will be resuing the plot, so we will put the code for it in a function.</p>
-<div id="e3b77bc7" class="cell" data-exercise="true" data-execution_count="9">
+<div id="a2013d7e" class="cell" data-exercise="true" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Task: Plot the two data series in a scatter plot</span></span>
@@ -502,7 +502,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <h4 class="anchored" data-anchor-id="e-fitting-with-rate-equations">(e) Fitting with rate equations</h4>
 <p>Now want to fit the data using integrated rate laws - in order to ultimately determine the reaction orders of the two datasets.</p>
 <p>To do so we need functions for zeroth, first and second order integrated rate laws.</p>
-<div id="f0f15597" class="cell" data-exercise="true" data-execution_count="11">
+<div id="1515a44e" class="cell" data-exercise="true" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> zeroth_order(t, k, A0):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the zeroth order rate equation ##</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'second_order'</span>, second_order(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Should give 0.4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Having defined these functions we can use them for fitting</p>
-<div id="313826ac" class="cell" data-exercise="true" data-execution_count="13">
+<div id="e32b5289" class="cell" data-exercise="true" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Task: Choose one of the rate equations and assign to the variable</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>rate_equation <span class="op">=</span> ... <span class="co"># Choose a fitting model here. </span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -542,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(k_40C, A0_40C)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Having made the fits we plot it together with the two data series.</p>
-<div id="6c482c19" class="cell" data-exercise="true" data-execution_count="15">
+<div id="dcae7543" class="cell" data-exercise="true" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the fits using the chosen rate equation &amp; </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">## the found parameters found during fitting.</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Hint: You should use the 'rate_equation'-function.</span></span>
@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <h4 class="anchored" data-anchor-id="f-determine-reaction-order">(f) Determine reaction order</h4>
 <p>Based on your analysis above or by using the plot the created by the next cell determine the reaction order and the units of the rate constant for each of the two reactions.</p>
 <p>The function makes the same fits that you made, but makes them all at once and plots the results side by side.</p>
-<div id="5d047e7b" class="cell" data-exercise="true" data-execution_count="17">
+<div id="dc502b31" class="cell" data-exercise="true" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.utils.deter_reacti_order_activ <span class="im">import</span> make_plot</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rate_laws <span class="op">=</span> {<span class="dv">0</span>: zeroth_order, <span class="dv">1</span>: first_order, <span class="dv">2</span>: second_order}</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>make_plot(df, rate_laws)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -611,7 +611,7 @@ Caution
 </div>
 </div>
 <p>Perform the calculation in the cell below.</p>
-<div id="de3f2d88" class="cell" data-exercise="true" data-execution_count="20">
+<div id="8f5e3a89" class="cell" data-exercise="true" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>activation_energy <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell markdown">
@@ -636,7 +636,7 @@ Caution
 <section id="a-percentage-unprotonated" class="level4">
 <h4 class="anchored" data-anchor-id="a-percentage-unprotonated">(a) Percentage unprotonated</h4>
 <p>What percentage of Histidine is unprotonated at pH 6.0. What do you notice about the relationship between pH and pKa in this case? (You should not need to do any arithemtic or algebra to answer this exercise.)</p>
-<div id="6d5b70b1" class="cell" data-exercise="true" data-execution_count="23">
+<div id="a4e0c10b" class="cell" data-exercise="true" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: What percentage is unprotonated? </span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>percentage_unprotonated <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -647,7 +647,7 @@ Caution
 <section id="b-concentration" class="level4">
 <h4 class="anchored" data-anchor-id="b-concentration">(b) Concentration</h4>
 <p>Determine <span class="math inline">\([\text{His}]\)</span> at pH 6</p>
-<div id="c7194cd0" class="cell" data-exercise="true" data-execution_count="26">
+<div id="24ae71b2" class="cell" data-exercise="true" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known value and calculate [His]</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>total_conc <span class="op">=</span> ...</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>his_conc <span class="op">=</span> ...</span>
@@ -686,7 +686,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <h4 class="anchored" data-anchor-id="f-si-units">(f) SI Units</h4>
 <p>At pH 6.0 the reaction rate <span class="math inline">\(v = 1 \ \text{mM}\cdot \text{s}^{-1}\)</span>.</p>
 <p>Convert the reaction rate to SI-units given in <span class="math inline">\(\text{M}\cdot \text{s}^{-1}\)</span>.</p>
-<div id="3687779e" class="cell" data-exercise="true" data-execution_count="31">
+<div id="411e008a" class="cell" data-exercise="true" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Calculate v in SI units M / s</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>reaction_rate <span class="op">=</span> ...</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(reaction_rate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -695,7 +695,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <section id="g-calculate-the-rate-constant" class="level4">
 <h4 class="anchored" data-anchor-id="g-calculate-the-rate-constant">(g) Calculate the rate constant</h4>
 <p>Use the concentration of <span class="math inline">\([\text{His}]\)</span> at pH 6 calculated in question (b), the reaction rate from (f) and constant <span class="math inline">\([\text{R}] = 0.2 \ \text{M}\)</span> to calculate the rate constant <span class="math inline">\(k\)</span>.</p>
-<div id="4aafb9b5" class="cell" data-exercise="true" data-execution_count="33">
+<div id="cb4dd93b" class="cell" data-exercise="true" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set known value and calculate k ##</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Hint: You should use the his_conc and reaction_rate variables ##</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>R_conc <span class="op">=</span> ...</span>
@@ -710,7 +710,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 </section>
 <section id="qualitative-description-of-michaelis-menten-kinetics" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="qualitative-description-of-michaelis-menten-kinetics"><span class="header-section-number">3</span> Qualitative description of Michaelis-Menten kinetics</h2>
-<div id="03cdf688" class="cell" data-execution_count="35">
+<div id="26ad2473" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly</span>
@@ -720,7 +720,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>enable_custom_widget_colab()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="862c9f9a" class="cell" data-execution_count="36">
+<div id="7818bc20" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fbw.michaelis_menten_demo()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Use the widget created by the cell above to answer the following the questions.</p>
@@ -758,7 +758,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <section id="f-training-estimation-skills." class="level4">
 <h4 class="anchored" data-anchor-id="f-training-estimation-skills.">(f) Training estimation skills.</h4>
 <p>Train your estimation skills using the widget below.</p>
-<div id="3a6a7880" class="cell" data-execution_count="37">
+<div id="bfe8fc25" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fbw.michealis_menten_guess()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell markdown">
@@ -769,7 +769,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 </section>
 <section id="design-of-an-enzyme-kinetics-experiment" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="design-of-an-enzyme-kinetics-experiment"><span class="header-section-number">4</span> Design of an enzyme kinetics experiment</h2>
-<div id="86518ab0" class="cell" data-execution_count="38">
+<div id="530b5b53" class="cell" data-execution_count="38">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -783,7 +783,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <p>We have finally arrived at the part of the course where we are ready to analyse the data from your lab exercise in the first quarter. First, however we will analyse a similar data set where we are sure about the data quality (😉) to illustrate the process.</p>
 <p>In the Excel document <code>design-enzyme-kineti-exper.xlsx</code> you will find a data set in which an enzyme catalyzed formation of product P, with varying start concentration of substrates, [S], was followed over time. The product absorbs light at a specific wavelength with an extinction coefficient of 0.068 <span class="math inline">\(\mu\text{M}^{-1}\cdot \text{cm}^{-1}\)</span>, and the absorbance was measured in a light path of 1 cm throughout the time course.</p>
 <p>Load the dataset with pandas. Set <code>data_file_path</code> to the path of the dataset file named above.</p>
-<div id="072ec54d" class="cell" data-exercise="true" data-execution_count="39">
+<div id="ef915c83" class="cell" data-exercise="true" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data_file_path <span class="op">=</span> ... <span class="co"># Write the path to the dataset file</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(data_file_path)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -792,7 +792,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <section id="a-connvert-extinction-coefficient-to-si." class="level4">
 <h4 class="anchored" data-anchor-id="a-connvert-extinction-coefficient-to-si.">(a) Connvert extinction coefficient to SI.</h4>
 <p>Convert the extinction coefficient to units given in <span class="math inline">\(\text{M}^{-1}\cdot \text{cm}^{-1}\)</span> and assign it to a variable. Also assign the light path length to a variable.</p>
-<div id="1e87ea9e" class="cell" data-exercise="true" data-execution_count="41">
+<div id="96bc5711" class="cell" data-exercise="true" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known values in SI units.</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>...</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -802,7 +802,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <h4 class="anchored" data-anchor-id="b-calculate-concentrations">(b) Calculate concentrations</h4>
 <p>Using Lambert-Beers law, calculate the concentration of product, <span class="math inline">\([P]\)</span>, in <span class="math inline">\(\text{M}\)</span> for each time series.</p>
 <p>The cell below setups a loop calculate the concentrations for each of these current columns in the dataframe.</p>
-<div id="117a3aae" class="cell" data-exercise="true" data-execution_count="43">
+<div id="d254aceb" class="cell" data-exercise="true" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task calculate the concentration for each 'Abs_SX' column and add it ##</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">## as a new column. </span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'C_S1'</span>] <span class="op">=</span> ...</span>
@@ -816,14 +816,14 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'C_S256'</span>] <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And we can check that the columns we expect have been added to the <code>DataFrame</code>.</p>
-<div id="929ea69e" class="cell" data-exercise="true" data-execution_count="47">
+<div id="2871d47f" class="cell" data-exercise="true" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="c-plot" class="level4">
 <h4 class="anchored" data-anchor-id="c-plot">(c) Plot</h4>
 <p>We focus now on the <code>C_S32</code>-column and plot it versus the time measurements.</p>
-<div id="05f3c146" class="cell" data-exercise="true" data-execution_count="49">
+<div id="c55315b3" class="cell" data-exercise="true" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the C_S32 column </span></span>
@@ -840,14 +840,14 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <p>In the following, we want to just fit the initial part of the curve. We do this by defining a new data array containing only the first values.</p>
 <p>We want to use Python to determine <span class="math inline">\(V_0\)</span> for each concentration of <span class="math inline">\(S\)</span>, in order to create a table of <span class="math inline">\(V_0\)</span> vs <span class="math inline">\([S]\)</span>. To do so we will fit linear functions to the initial parts of the curves, as the slope of these is then <span class="math inline">\(V_0\)</span>.</p>
 <p>Start by defining a linear function;</p>
-<div id="fa2a0b75" class="cell" data-exercise="true" data-execution_count="51">
+<div id="2749dd44" class="cell" data-exercise="true" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_func(x, a, b):</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Finish implementing the linear function</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>As mentioned we want to to get the slope in the initial part of the reaction, where the curves are approximately linear. To do so we need to fit not on all the data-points but only some of them.</p>
 <p>We will first do this for the <code>C_S32</code>-column.</p>
-<div id="b3bb4815" class="cell" data-exercise="true" data-execution_count="53">
+<div id="f9fe6807" class="cell" data-exercise="true" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Determine the x and y data</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x_data_full <span class="op">=</span> df[<span class="st">'time_(s)'</span>]</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>y_data_full <span class="op">=</span> df[<span class="st">'C_S32'</span>]</span>
@@ -862,7 +862,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> fitted_parameters</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The cell below plots your fit alongside the data</p>
-<div id="b301da37" class="cell" data-exercise="true" data-execution_count="55">
+<div id="d3b87fce" class="cell" data-exercise="true" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>t_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">20</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>y_fit <span class="op">=</span> linear_func(t_smooth, a, b)</span>
@@ -876,7 +876,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <section id="e-using-all-the-datasets" class="level4">
 <h4 class="anchored" data-anchor-id="e-using-all-the-datasets">(e) Using all the datasets</h4>
 <p>In the cell below <code>n_points</code> again determines the number of data-points used for the linear fit, and makes the fits and plots for every dataset.</p>
-<div id="749be489" class="cell" data-exercise="true" data-execution_count="57">
+<div id="474fd11c" class="cell" data-exercise="true" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fysisk_biokemi.utils.design_enzyme_kineti_exper <span class="im">import</span> make_fits_and_plots</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Select a number of points to fit with that is appropriate in </span></span>
@@ -903,7 +903,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 </div>
 </div>
 <p>Once you’re satisfied with the fit you can display the collected slopes with the cell below</p>
-<div id="da5d2971" class="cell" data-exercise="true" data-execution_count="59">
+<div id="386e9361" class="cell" data-exercise="true" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>V0_df <span class="op">=</span> pd.DataFrame({<span class="st">'[S]_(M)'</span>: concentrations, <span class="st">'V0_(M/s)'</span>: slopes})</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>display(V0_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -918,14 +918,14 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <section id="g-plotting-again." class="level4">
 <h4 class="anchored" data-anchor-id="g-plotting-again.">(g) Plotting again.</h4>
 <p>Plot <span class="math inline">\(V_0\)</span> against substrate concentration and estimate <span class="math inline">\(k_{cat}\)</span> and <span class="math inline">\(K_M\)</span> visually (remember units)</p>
-<div id="3482e622" class="cell" data-exercise="true" data-execution_count="62">
+<div id="02926c33" class="cell" data-exercise="true" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Plot the V0_(M/s) versus [S_(M)]</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Use the figure to estimate the value of <span class="math inline">\(K_M\)</span> and <span class="math inline">\(V_\text{max}\)</span> and put those in the cell below.</p>
-<div id="5777c630" class="cell" data-exercise="true" data-execution_count="64">
+<div id="ac0b3a1a" class="cell" data-exercise="true" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Put your estimated values here: </span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>K_M_estimate <span class="op">=</span> ...</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>V_max_estimate <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -934,14 +934,14 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <section id="h-fitting-with-michealis-menten" class="level4">
 <h4 class="anchored" data-anchor-id="h-fitting-with-michealis-menten">(h) Fitting with Michealis-Menten</h4>
 <p>Now we can fit with the Michealis-Menten equation, as always in a fitting task we need to implement the model.</p>
-<div id="486eb221" class="cell" data-exercise="true" data-execution_count="66">
+<div id="3d8d26bb" class="cell" data-exercise="true" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> michaelis_menten(S, K_M, V_max):</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the Michaelis-Menten model.</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then use the next two cells to make the fit and plot it.</p>
-<div id="98e38a92" class="cell" data-exercise="true" data-execution_count="68">
+<div id="6b33a11e" class="cell" data-exercise="true" data-execution_count="68">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Uses your estimate as initial guess</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [K_M_estimate, V_max_estimate]</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> curve_fit(michaelis_menten, V0_df[<span class="st">'[S]_(M)'</span>], V0_df[<span class="st">'V0_(M/s)'</span>], initial_guess)</span>
@@ -952,7 +952,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(V_max_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>How do these compare to your estimates of the two parameters?</p>
-<div id="9b9eabcd" class="cell" data-exercise="true" data-execution_count="70">
+<div id="e67005a4" class="cell" data-exercise="true" data-execution_count="70">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Evaluates the fit</span></span>
@@ -975,7 +975,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 </section>
 <section id="lab-exercise-analysis-michaelis-menten" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="lab-exercise-analysis-michaelis-menten"><span class="header-section-number">5</span> Lab Exercise Analysis: Michaelis Menten</h2>
-<div id="0c111cbe" class="cell" data-execution_count="72">
+<div id="20e1f64f" class="cell" data-execution_count="72">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -988,7 +988,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <p>In the “Introduction to the Molecules of Life” course, you performed an experiment where you measured absorption for different substrate concentrations as a function of time. The experiment was done with p-nitrophenylphosphate as the substrate, which turns into p-nitrophenol when the enzyme (alkaline phosphatase) acts on it.</p>
 <p>If you do not have data, or you find that your data set is not of sufficient quality, you can use the following <code>kinetics_data.xlsx</code>.</p>
 <p>Load your dataset with pandas. Set <code>data_file_path</code> to the path of your dataset file.</p>
-<div id="b21e38cf" class="cell" data-exercise="true" data-execution_count="73">
+<div id="a58f0955" class="cell" data-exercise="true" data-execution_count="73">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data_file_path <span class="op">=</span> ... <span class="co"># Write the path to the dataset file</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(data_file_path)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -998,7 +998,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <p>The measured absorbances are unitless, they are the log of the ratio between the incoming light intensity and the transmitted light intensity. We would like to work with concentrations instead, so we need to convert the absorbance to concentration. The conversion is done using Lambert-Beer’s law.</p>
 <p>The extinction coefficient of the product p-nitrophenol is <span class="math inline">\(\varepsilon = 18000 \, \text{M}^{-1} \text{cm}^{-1}\)</span> at <span class="math inline">\(405 \ \text{nm}\)</span> and the path length of the cuvette is <span class="math inline">\(l = 1\, \text{cm}\)</span>. We will construct a new <code>DataFrame</code> with concentrations</p>
 <p>We will start by defining a function <code>lambert_beers</code> to calculate the concentrations</p>
-<div id="204d6053" class="cell" data-exercise="true" data-execution_count="75">
+<div id="87db3132" class="cell" data-exercise="true" data-execution_count="75">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lambert_beers(absorbance):</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Finish the implementation of LBs-law to calculate concentrations.    </span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> ... <span class="co"># Units: cm</span></span>
@@ -1007,7 +1007,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> conc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The next cell makes a new <code>DataFrame</code> by applying the lambert_beers function to every column in the original</p>
-<div id="74694739" class="cell" data-exercise="true" data-execution_count="77">
+<div id="96ad3d97" class="cell" data-exercise="true" data-execution_count="77">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'time'</span>: df[<span class="st">'time'</span>],</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'S_0.8_mM'</span>: lambert_beers(df[<span class="st">'0.8'</span>]),</span>
@@ -1027,7 +1027,7 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <section id="b-plot" class="level4">
 <h4 class="anchored" data-anchor-id="b-plot">(b) Plot</h4>
 <p>Now let’s plot the data. Plot each column separately as a function of time.</p>
-<div id="85cafd8d" class="cell" data-exercise="true" data-execution_count="79">
+<div id="6c0ceb5e" class="cell" data-exercise="true" data-execution_count="79">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your task: Plot concentration vs. time for each column of the dataset, </span></span>
@@ -1046,75 +1046,81 @@ v = - \frac{d[\text{His}]}{dt} = k \cdot [\text{His}] \cdot [\text{R}]
 <p>In order to apply the Michaelis Menten equation we need the slopes of these curves as that is the reaction velocity <span class="math inline">\(V_0\)</span>, luckily we have learned how to make fits! So we make a fit to the linear function to determine the slope <span class="math inline">\(a\)</span> in, <span class="math display">\[
 y(x) = a x + b
 \]</span> As always, start by writing the function</p>
+<div id="9e029354" class="cell" data-exercise="true" data-execution_count="82">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_function(x, a, b):</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the linear function</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>Now we want to find the slope for each column, to help with that we will introduce a function that takes the time column and one of the concentration columns and returns the slope</p>
-<div id="c78d87b8" class="cell" data-exercise="true" data-execution_count="84">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_slope(time_data, abs_data):</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## This selects the times and absorbances that have been measured (not NaN)</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Don't worry about this - this is just to help you with this exercise.</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> np.where(<span class="op">~</span>abs_data.isna())[<span class="dv">0</span>]</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    time_data <span class="op">=</span> time_data[indices]</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    abs_data <span class="op">=</span> abs_data[indices]</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the slope and the intercept using curve_fit and return the slope    </span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    fitted_parameters, trash <span class="op">=</span> ...</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    slope <span class="op">=</span> fitted_parameters[<span class="dv">0</span>]</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> slope</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="eb528c5d" class="cell" data-exercise="true" data-execution_count="84">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_slope(time_data, abs_data):</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## This selects the times and absorbances that have been measured (not NaN)</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Don't worry about this - this is just to help you with this exercise.</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> np.where(<span class="op">~</span>abs_data.isna())[<span class="dv">0</span>]</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    time_data <span class="op">=</span> time_data[indices]</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    abs_data <span class="op">=</span> abs_data[indices]</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the slope and the intercept using curve_fit and return the slope    </span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    fitted_parameters, trash <span class="op">=</span> ...</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    slope <span class="op">=</span> fitted_parameters[<span class="dv">0</span>]</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> slope</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we want to use this for each set of measurements at different substrate concentrations.</p>
-<div id="802de356" class="cell" data-exercise="true" data-execution_count="86">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Find the slopes for every substrate concentration.</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>slope_08 <span class="op">=</span> ...</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>slope_04 <span class="op">=</span> ...</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>slope_02 <span class="op">=</span> ...</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>slope_012 <span class="op">=</span> ...</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>slope_005 <span class="op">=</span> ...</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>slope_002 <span class="op">=</span> ...</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>slope_001 <span class="op">=</span> ...</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>slope_0003 <span class="op">=</span> ...</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co">## This gathers the slopes and makes an array with the substrate concentrations.</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>substrate_concentrations <span class="op">=</span> np.array([<span class="fl">0.8</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.12</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>, <span class="fl">0.01</span>, <span class="fl">0.003</span>]) <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">3</span>) <span class="co"># Converted from mM to M.</span></span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>slopes <span class="op">=</span> np.array([slope_08, slope_04, slope_02, slope_012, slope_005, slope_002, slope_001, slope_0003])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="723f28ea" class="cell" data-exercise="true" data-execution_count="86">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Find the slopes for every substrate concentration.</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>slope_08 <span class="op">=</span> ...</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>slope_04 <span class="op">=</span> ...</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>slope_02 <span class="op">=</span> ...</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>slope_012 <span class="op">=</span> ...</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>slope_005 <span class="op">=</span> ...</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>slope_002 <span class="op">=</span> ...</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>slope_001 <span class="op">=</span> ...</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>slope_0003 <span class="op">=</span> ...</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co">## This gathers the slopes and makes an array with the substrate concentrations.</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>substrate_concentrations <span class="op">=</span> np.array([<span class="fl">0.8</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.12</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>, <span class="fl">0.01</span>, <span class="fl">0.003</span>]) <span class="op">*</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">3</span>) <span class="co"># Converted from mM to M.</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>slopes <span class="op">=</span> np.array([slope_08, slope_04, slope_02, slope_012, slope_005, slope_002, slope_001, slope_0003])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now make a plot of the slopes versus the substrate concentrations using the two arrays <code>substrate_concentrations</code> and <code>slopes</code>.</p>
-<div id="28fe766c" class="cell" data-exercise="true" data-execution_count="88">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots() </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task plot the slopes vs. substrate concentration.</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Sets x and y axis labels. </span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Substrate concentration'</span>)</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Slope'</span>)</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f6d012f5" class="cell" data-exercise="true" data-execution_count="88">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots() </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task plot the slopes vs. substrate concentration.</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Sets x and y axis labels. </span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Substrate concentration'</span>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Slope'</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1ba674ae" class="cell" data-exercise="true" data-execution_count="90">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Estimate K_M and V_max from the plot.</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>K_M_estimate <span class="op">=</span> ...</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>V_max_estimate <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ff257edd" class="cell" data-exercise="true" data-execution_count="90">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Estimate K_M and V_max from the plot.</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>K_M_estimate <span class="op">=</span> ...</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>V_max_estimate <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="d-michaelis-menten" class="level4">
 <h4 class="anchored" data-anchor-id="d-michaelis-menten">(d) Michaelis Menten</h4>
 <p>Now that we have the slopes we can fit to the Michaelis Menten equation, again we need to implement the equation</p>
-<div id="6fd9a8f7" class="cell" data-exercise="true" data-execution_count="92">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> michaelis_menten(S, K_M, V_max):</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the Michaelis-Menten model.</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9140763b" class="cell" data-exercise="true" data-execution_count="92">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> michaelis_menten(S, K_M, V_max):</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the Michaelis-Menten model.</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then fit to the slopes we extracted to the Michealis-Menten equation</p>
-<div id="40189fd7" class="cell" data-exercise="true" data-execution_count="94">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This is your estimates as the initial guess.</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [K_M_estimate, V_max_estimate]</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a fit to the Michaelis-Menten equation &amp; extract K_M and V_max.</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> ...</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>K_M_fit, V_max_fit <span class="op">=</span> ...</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_M_fit)</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(V_max_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="606af416" class="cell" data-exercise="true" data-execution_count="94">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">## This is your estimates as the initial guess.</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [K_M_estimate, V_max_estimate]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make a fit to the Michaelis-Menten equation &amp; extract K_M and V_max.</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> ...</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>K_M_fit, V_max_fit <span class="op">=</span> ...</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_M_fit)</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(V_max_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>What is the physical meaning of <span class="math inline">\(K_M\)</span> and how does it relate to binding affinity?</li>
@@ -1123,33 +1129,33 @@ y(x) = a x + b
 </section>
 <section id="e-plot-with-fit" class="level4">
 <h4 class="anchored" data-anchor-id="e-plot-with-fit">(e) Plot with fit</h4>
-<div id="5ecb70c4" class="cell" data-exercise="true" data-execution_count="96">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>S_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, substrate_concentrations.<span class="bu">max</span>())</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>V0_fit <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7eab7f6a" class="cell" data-exercise="true" data-execution_count="96">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>S_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, substrate_concentrations.<span class="bu">max</span>())</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>V0_fit <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="53ccdad5" class="cell" data-exercise="true" data-execution_count="98">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots() </span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the data and the fit</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co">## These add x and y axis labels.</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Substrate concentration (M)'</span>)</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$V_0$ (M/s)'</span>)</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="598209f7" class="cell" data-exercise="true" data-execution_count="98">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots() </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot the data and the fit</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co">## These add x and y axis labels.</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Substrate concentration (M)'</span>)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$V_0$ (M/s)'</span>)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="f-turnover-number" class="level4">
 <h4 class="anchored" data-anchor-id="f-turnover-number">(f) Turnover number</h4>
 <p>Given that the enzyme concentration was <span class="math inline">\(3.33 \frac{\text{mg}}{\text{L}}\)</span> and the molecular weight of the enzyme (alkaline phosphatase) is 86000 <span class="math inline">\(\frac{\text{g}}{\text{mol}}\)</span>, calculate the turnover number <span class="math inline">\(k_{cat}\)</span>.</p>
 <p>Start by converting the enzyme concentration to molar units and then calculate the turnover number.</p>
-<div id="f70f0135" class="cell" data-exercise="true" data-execution_count="100">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the enzyme concentration and use that and your fit to </span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co">## calculate kcat.</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>enzyme_conc <span class="op">=</span> ... </span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>kcat <span class="op">=</span> ... </span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kcat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ca4bdd76" class="cell" data-exercise="true" data-execution_count="100">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate the enzyme concentration and use that and your fit to </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">## calculate kcat.</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>enzyme_conc <span class="op">=</span> ... </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>kcat <span class="op">=</span> ... </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kcat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>What is the biochemical meaning of this number?</li>
@@ -1162,116 +1168,116 @@ y(x) = a x + b
 </section>
 <section id="analysis-of-a-data-set-obeying-michaelis-menten-kinetics" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="analysis-of-a-data-set-obeying-michaelis-menten-kinetics"><span class="header-section-number">6</span> Analysis of a data set obeying Michaelis-Menten kinetics</h2>
-<div id="e3887b19" class="cell" data-execution_count="102">
+<div id="71babf21" class="cell" data-execution_count="102">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_rows'</span>, <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display </span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_rows'</span>, <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The kinetics for an enzyme were investigated using the absorbance of the product to calculate the initial velocities for a range of different initial concentrations of the substrate. The data given in the dataset <code>analys-data-set-obeyin.xlsx</code> was obtained. Use these data to answer the following questions.</p>
-<div id="a7ade4ef" class="cell" data-exercise="true" data-execution_count="103">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>data_file_path <span class="op">=</span> ... <span class="co"># Write the path to the dataset file</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(data_file_path)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="73f2424d" class="cell" data-exercise="true" data-execution_count="103">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>data_file_path <span class="op">=</span> ... <span class="co"># Write the path to the dataset file</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(data_file_path)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="a-si-units" class="level4">
 <h4 class="anchored" data-anchor-id="a-si-units">(a) SI Units</h4>
 <p>Convert the concentrations of substrate and the velocities to the SI units <span class="math inline">\(\text{M}\)</span> and <span class="math inline">\(\text{M}\cdot\text{s}^{-1}\)</span>, respectively.</p>
-<div id="57172c6c" class="cell" data-exercise="true" data-execution_count="105">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add new columns with both properties in proper SI units. </span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Use the column names: '[S]_(M)' and 'V0_(M/s)'</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="46cd26b6" class="cell" data-exercise="true" data-execution_count="105">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Add new columns with both properties in proper SI units. </span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Use the column names: '[S]_(M)' and 'V0_(M/s)'</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="b-plot-estimate" class="level4">
 <h4 class="anchored" data-anchor-id="b-plot-estimate">(b) Plot &amp; estimate</h4>
 <p>Plot the initial velocities, <span class="math inline">\(V_0\)</span>, as a function of substrate concentrations, <span class="math inline">\([S]\)</span>. Estimate <span class="math inline">\(K_M\)</span> and <span class="math inline">\(V_\mathrm{max}\)</span> from this plot.</p>
-<div id="6b2cede9" class="cell" data-exercise="true" data-execution_count="107">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot '[S]_(M)' vs 'V0_(M/s)'.</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>... <span class="co"># Your code here. </span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Sets x and y-axis labels:</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'[S] (M)'</span>)</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'V0 (M/s)'</span>)</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co">## EXTRA: Sets the y-axis limits.</span></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, df[<span class="st">'V0_(M/s)'</span>].<span class="bu">max</span>()<span class="op">*</span><span class="fl">1.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="49dbcef7" class="cell" data-exercise="true" data-execution_count="107">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Plot '[S]_(M)' vs 'V0_(M/s)'.</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>... <span class="co"># Your code here. </span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Sets x and y-axis labels:</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'[S] (M)'</span>)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'V0 (M/s)'</span>)</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="co">## EXTRA: Sets the y-axis limits.</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, df[<span class="st">'V0_(M/s)'</span>].<span class="bu">max</span>()<span class="op">*</span><span class="fl">1.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Put your estimate of <span class="math inline">\(K_M\)</span> and <span class="math inline">\(V_\text{max}\)</span> in the cell below:</p>
-<div id="19a2de06" class="cell" data-exercise="true" data-execution_count="109">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Task: Put your estimate of the two parameters.</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>Vmax_estimate <span class="op">=</span> ...</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>K_M_estimate <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f99c79f3" class="cell" data-exercise="true" data-execution_count="109">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Task: Put your estimate of the two parameters.</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>Vmax_estimate <span class="op">=</span> ...</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>K_M_estimate <span class="op">=</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="c-fit" class="level4">
 <h4 class="anchored" data-anchor-id="c-fit">(c) Fit</h4>
 <p>Now we want to fit using the Michaelis-Menten equation, as per usual when the task is fitting we have to define the function we are fitting with</p>
-<div id="44655ec7" class="cell" data-exercise="true" data-execution_count="111">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> michaelis_menten(S, K_M, Vmax):</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the Michaelis-Menten equation.</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Be careful with parentheses.</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a2194824" class="cell" data-exercise="true" data-execution_count="111">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> michaelis_menten(S, K_M, Vmax):</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Your task: Implement the Michaelis-Menten equation.</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Be careful with parentheses.</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ...</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And then we can follow our usual procedure to make the fit</p>
-<div id="c5d3a275" class="cell" data-exercise="true" data-execution_count="113">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [K_M_estimate, Vmax_estimate]</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Use curve_fit </span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> ...</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Extracts and prints</span></span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>K_M_fit, Vmax_fit <span class="op">=</span> fitted_parameters</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Vmax_fit)</span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_M_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="eb921690" class="cell" data-exercise="true" data-execution_count="113">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>initial_guess <span class="op">=</span> [K_M_estimate, Vmax_estimate]</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Use curve_fit </span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>fitted_parameters, trash <span class="op">=</span> ...</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Extracts and prints</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>K_M_fit, Vmax_fit <span class="op">=</span> fitted_parameters</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Vmax_fit)</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_M_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>How do these values compare to your estimate?</p>
 </section>
 <section id="d-plot-fit-data" class="level4">
 <h4 class="anchored" data-anchor-id="d-plot-fit-data">(d) Plot fit &amp; data</h4>
 <p>Plot the fit alongside the data.</p>
-<div id="bcc109be" class="cell" data-exercise="true" data-execution_count="115">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Evaluate the fit</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>S_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">0.055</span>)</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>V0_fit <span class="op">=</span> ...</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Creates the figure</span></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make plot of the fit.</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co">## This plot the data and sets the options as before.</span></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">'[S]_(M)'</span>], df[<span class="st">'V0_(M/s)'</span>], <span class="st">'o'</span>)</span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co">## Sets x and y-axis labels:</span></span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'[S] (M)'</span>)</span>
-<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'V0 (M/s)'</span>)</span>
-<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a><span class="co">## EXTRA: Sets the y-axis limits.</span></span>
-<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, df[<span class="st">'V0_(M/s)'</span>].<span class="bu">max</span>()<span class="op">*</span><span class="fl">1.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9b7b292a" class="cell" data-exercise="true" data-execution_count="115">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Evaluate the fit</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>S_smooth <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">0.055</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>V0_fit <span class="op">=</span> ...</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Creates the figure</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Make plot of the fit.</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="co">## This plot the data and sets the options as before.</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">'[S]_(M)'</span>], df[<span class="st">'V0_(M/s)'</span>], <span class="st">'o'</span>)</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="co">## Sets x and y-axis labels:</span></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'[S] (M)'</span>)</span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'V0 (M/s)'</span>)</span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="co">## EXTRA: Sets the y-axis limits.</span></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, df[<span class="st">'V0_(M/s)'</span>].<span class="bu">max</span>()<span class="op">*</span><span class="fl">1.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="e-k_cat" class="level4">
 <h4 class="anchored" data-anchor-id="e-k_cat">(e) <span class="math inline">\(k_{cat}\)</span></h4>
 <p>The enzyme concentration was <span class="math inline">\(100 \ \mathrm{nM}\)</span> use that and your fit to determine <span class="math inline">\(k_{cat}\)</span>.</p>
-<div id="4753993f" class="cell" data-exercise="true" data-execution_count="117">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set the enzyme concentration in proper units.</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>enzyme_concentration <span class="op">=</span> ...</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task calculate kcat</span></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>kcat <span class="op">=</span> ...</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kcat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="45380c90" class="cell" data-exercise="true" data-execution_count="117">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Set the enzyme concentration in proper units.</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>enzyme_concentration <span class="op">=</span> ...</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task calculate kcat</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>kcat <span class="op">=</span> ...</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kcat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell markdown">
 
@@ -1302,9 +1308,9 @@ V_0 = V_{\mathrm{max}} \frac{[S]}{[S] + K_M}
 <li><span class="math inline">\([S] = 10 \cdot K_M\)</span></li>
 <li><span class="math inline">\([S] = 100 \cdot K_M\)</span></li>
 </ul>
-<div id="cdf17b54" class="cell" data-exercise="true" data-execution_count="120">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task calculate the degree of enzyme saturation for the prescribed cases</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="763bb37a" class="cell" data-exercise="true" data-execution_count="120">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task calculate the degree of enzyme saturation for the prescribed cases</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 </section>
@@ -1322,29 +1328,29 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
 </ul>
 <p>Calculate the values of <span class="math inline">\(K_M\)</span> and <span class="math inline">\(K_D\)</span> (The dissociation constant of the enzyme:substrate complex).</p>
 <p>Does <span class="math inline">\(K_M\)</span> approximate the dissociation constant for the <span class="math inline">\(ES\)</span> complex in this case, and how can this be estimated directly from the values of the microscopic rate constants?</p>
-<div id="7da9de53" class="cell" data-exercise="true" data-execution_count="124">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known values</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>... </span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate K_M and K_D</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>K_M <span class="op">=</span> ...</span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>K_D <span class="op">=</span> ...</span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_M)</span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4953676d" class="cell" data-exercise="true" data-execution_count="124">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known values</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>... </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Calculate K_M and K_D</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>K_M <span class="op">=</span> ...</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>K_D <span class="op">=</span> ...</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_M)</span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(K_D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="d-calculate-k_2" class="level4">
 <h4 class="anchored" data-anchor-id="d-calculate-k_2">(d) Calculate <span class="math inline">\(k_2\)</span></h4>
 <p>Assume that a solution of an enzyme at a concentration of <span class="math inline">\(1 \cdot 10^{-7} \ \mathrm{M}\)</span> with a substrate concentration of <span class="math inline">\([S]=100\cdot K_M\)</span> has <span class="math inline">\(V_0=10^{-4} \ \mathrm{M} \cdot \mathrm{s}^{-1}\)</span></p>
 <p>Given this information and with your answers to (b) and (c) in mind, approximate the constant <span class="math inline">\(k_2\)</span>. What is this constant also called?</p>
-<div id="93a4328e" class="cell" data-exercise="true" data-execution_count="127">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known values</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Once you have figured out how to calculate k2, use Python to calculate it.</span></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(k2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1a07a4e5" class="cell" data-exercise="true" data-execution_count="127">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Assign known values</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Your task: Once you have figured out how to calculate k2, use Python to calculate it.</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(k2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="e-lineweaver-burk-plot" class="level4">
@@ -1813,113 +1819,113 @@ K_M = \frac{k_{-1}+ k_2}{k_1}
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Week 47</span></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> v1.0.1</span></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> jupyter</span></span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ['regression', 'calculation', 'data', 'plotting']</span></span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="an">jupyterlite:</span><span class="co"> true</span></span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>{{&lt; include tidbits/_install_import.qmd &gt;}}</span>
-<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
-<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
-<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/deter-reacti-order-activ-v1.qmd &gt;}}</span>
-<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
-<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a>::::::</span>
-<span id="cb61-24"><a href="#cb61-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-25"><a href="#cb61-25" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb61-26"><a href="#cb61-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-27"><a href="#cb61-27" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
-<span id="cb61-28"><a href="#cb61-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-29"><a href="#cb61-29" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
-<span id="cb61-30"><a href="#cb61-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-31"><a href="#cb61-31" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb61-32"><a href="#cb61-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-33"><a href="#cb61-33" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/the-ph-effect-active.qmd &gt;}}</span>
-<span id="cb61-34"><a href="#cb61-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-35"><a href="#cb61-35" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
-<span id="cb61-36"><a href="#cb61-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-37"><a href="#cb61-37" aria-hidden="true" tabindex="-1"></a>::::::</span>
-<span id="cb61-38"><a href="#cb61-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-39"><a href="#cb61-39" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb61-40"><a href="#cb61-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-41"><a href="#cb61-41" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
-<span id="cb61-42"><a href="#cb61-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-43"><a href="#cb61-43" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
-<span id="cb61-44"><a href="#cb61-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-45"><a href="#cb61-45" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb61-46"><a href="#cb61-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-47"><a href="#cb61-47" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/quali-descr-michae-kineti.qmd &gt;}}</span>
-<span id="cb61-48"><a href="#cb61-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-49"><a href="#cb61-49" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
-<span id="cb61-50"><a href="#cb61-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-51"><a href="#cb61-51" aria-hidden="true" tabindex="-1"></a>::::::</span>
-<span id="cb61-52"><a href="#cb61-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-53"><a href="#cb61-53" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb61-54"><a href="#cb61-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-55"><a href="#cb61-55" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
-<span id="cb61-56"><a href="#cb61-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-57"><a href="#cb61-57" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
-<span id="cb61-58"><a href="#cb61-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-59"><a href="#cb61-59" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb61-60"><a href="#cb61-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-61"><a href="#cb61-61" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/design-enzyme-kineti-exper.qmd &gt;}}</span>
-<span id="cb61-62"><a href="#cb61-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-63"><a href="#cb61-63" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
-<span id="cb61-64"><a href="#cb61-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-65"><a href="#cb61-65" aria-hidden="true" tabindex="-1"></a>::::::</span>
-<span id="cb61-66"><a href="#cb61-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-67"><a href="#cb61-67" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb61-68"><a href="#cb61-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-69"><a href="#cb61-69" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
-<span id="cb61-70"><a href="#cb61-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-71"><a href="#cb61-71" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
-<span id="cb61-72"><a href="#cb61-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-73"><a href="#cb61-73" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb61-74"><a href="#cb61-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-75"><a href="#cb61-75" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/lab_exercise.qmd &gt;}}</span>
-<span id="cb61-76"><a href="#cb61-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-77"><a href="#cb61-77" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
-<span id="cb61-78"><a href="#cb61-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-79"><a href="#cb61-79" aria-hidden="true" tabindex="-1"></a>::::::</span>
-<span id="cb61-80"><a href="#cb61-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-81"><a href="#cb61-81" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb61-82"><a href="#cb61-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-83"><a href="#cb61-83" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
-<span id="cb61-84"><a href="#cb61-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-85"><a href="#cb61-85" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
-<span id="cb61-86"><a href="#cb61-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-87"><a href="#cb61-87" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb61-88"><a href="#cb61-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-89"><a href="#cb61-89" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/analys-data-set-obeyin.qmd &gt;}}</span>
-<span id="cb61-90"><a href="#cb61-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-91"><a href="#cb61-91" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
-<span id="cb61-92"><a href="#cb61-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-93"><a href="#cb61-93" aria-hidden="true" tabindex="-1"></a>::::::</span>
-<span id="cb61-94"><a href="#cb61-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-95"><a href="#cb61-95" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb61-96"><a href="#cb61-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-97"><a href="#cb61-97" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
-<span id="cb61-98"><a href="#cb61-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-99"><a href="#cb61-99" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
-<span id="cb61-100"><a href="#cb61-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-101"><a href="#cb61-101" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb61-102"><a href="#cb61-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-103"><a href="#cb61-103" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/michaelis-menten.qmd &gt;}}</span>
-<span id="cb61-104"><a href="#cb61-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-105"><a href="#cb61-105" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
-<span id="cb61-106"><a href="#cb61-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-107"><a href="#cb61-107" aria-hidden="true" tabindex="-1"></a>::::::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Week 47</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> v1.0.2</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> jupyter</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ['regression', 'calculation', 'data', 'plotting']</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="an">jupyterlite:</span><span class="co"> true</span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>{{&lt; include tidbits/_install_import.qmd &gt;}}</span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
+<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb62-18"><a href="#cb62-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-19"><a href="#cb62-19" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/deter-reacti-order-activ-v1.qmd &gt;}}</span>
+<span id="cb62-20"><a href="#cb62-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-21"><a href="#cb62-21" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
+<span id="cb62-22"><a href="#cb62-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-23"><a href="#cb62-23" aria-hidden="true" tabindex="-1"></a>::::::</span>
+<span id="cb62-24"><a href="#cb62-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-25"><a href="#cb62-25" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb62-26"><a href="#cb62-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-27"><a href="#cb62-27" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
+<span id="cb62-28"><a href="#cb62-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-29"><a href="#cb62-29" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb62-30"><a href="#cb62-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-31"><a href="#cb62-31" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb62-32"><a href="#cb62-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-33"><a href="#cb62-33" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/the-ph-effect-active.qmd &gt;}}</span>
+<span id="cb62-34"><a href="#cb62-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-35"><a href="#cb62-35" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
+<span id="cb62-36"><a href="#cb62-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-37"><a href="#cb62-37" aria-hidden="true" tabindex="-1"></a>::::::</span>
+<span id="cb62-38"><a href="#cb62-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-39"><a href="#cb62-39" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb62-40"><a href="#cb62-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-41"><a href="#cb62-41" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
+<span id="cb62-42"><a href="#cb62-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-43"><a href="#cb62-43" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb62-44"><a href="#cb62-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-45"><a href="#cb62-45" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb62-46"><a href="#cb62-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-47"><a href="#cb62-47" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/quali-descr-michae-kineti.qmd &gt;}}</span>
+<span id="cb62-48"><a href="#cb62-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-49"><a href="#cb62-49" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
+<span id="cb62-50"><a href="#cb62-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-51"><a href="#cb62-51" aria-hidden="true" tabindex="-1"></a>::::::</span>
+<span id="cb62-52"><a href="#cb62-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-53"><a href="#cb62-53" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb62-54"><a href="#cb62-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-55"><a href="#cb62-55" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
+<span id="cb62-56"><a href="#cb62-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-57"><a href="#cb62-57" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb62-58"><a href="#cb62-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-59"><a href="#cb62-59" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb62-60"><a href="#cb62-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-61"><a href="#cb62-61" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/design-enzyme-kineti-exper.qmd &gt;}}</span>
+<span id="cb62-62"><a href="#cb62-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-63"><a href="#cb62-63" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
+<span id="cb62-64"><a href="#cb62-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-65"><a href="#cb62-65" aria-hidden="true" tabindex="-1"></a>::::::</span>
+<span id="cb62-66"><a href="#cb62-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-67"><a href="#cb62-67" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb62-68"><a href="#cb62-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-69"><a href="#cb62-69" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
+<span id="cb62-70"><a href="#cb62-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-71"><a href="#cb62-71" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb62-72"><a href="#cb62-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-73"><a href="#cb62-73" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb62-74"><a href="#cb62-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-75"><a href="#cb62-75" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/lab_exercise.qmd &gt;}}</span>
+<span id="cb62-76"><a href="#cb62-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-77"><a href="#cb62-77" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
+<span id="cb62-78"><a href="#cb62-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-79"><a href="#cb62-79" aria-hidden="true" tabindex="-1"></a>::::::</span>
+<span id="cb62-80"><a href="#cb62-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-81"><a href="#cb62-81" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb62-82"><a href="#cb62-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-83"><a href="#cb62-83" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
+<span id="cb62-84"><a href="#cb62-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-85"><a href="#cb62-85" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb62-86"><a href="#cb62-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-87"><a href="#cb62-87" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb62-88"><a href="#cb62-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-89"><a href="#cb62-89" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/analys-data-set-obeyin.qmd &gt;}}</span>
+<span id="cb62-90"><a href="#cb62-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-91"><a href="#cb62-91" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
+<span id="cb62-92"><a href="#cb62-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-93"><a href="#cb62-93" aria-hidden="true" tabindex="-1"></a>::::::</span>
+<span id="cb62-94"><a href="#cb62-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-95"><a href="#cb62-95" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb62-96"><a href="#cb62-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-97"><a href="#cb62-97" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
+<span id="cb62-98"><a href="#cb62-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-99"><a href="#cb62-99" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb62-100"><a href="#cb62-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-101"><a href="#cb62-101" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb62-102"><a href="#cb62-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-103"><a href="#cb62-103" aria-hidden="true" tabindex="-1"></a>{{&lt; include exercises/michaelis-menten.qmd &gt;}}</span>
+<span id="cb62-104"><a href="#cb62-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-105"><a href="#cb62-105" aria-hidden="true" tabindex="-1"></a>:::::: {.cell .markdown}</span>
+<span id="cb62-106"><a href="#cb62-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-107"><a href="#cb62-107" aria-hidden="true" tabindex="-1"></a>::::::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
