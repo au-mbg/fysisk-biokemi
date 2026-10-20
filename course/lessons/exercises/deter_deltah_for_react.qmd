@@ -68,7 +68,7 @@ fig, ax = plt.subplots()
 ## EXTRA: Customization you don't need to edit or understand this
 ## It adds axis labels to the plot you made.
 ax.set_xlabel(r'1/T [K]')
-ax.set_ylabel(r'$\ln(K_{eq})$');
+ax.set_ylabel(r'$\ln(K_{eq})$')
 ```
 
 ```{python}
@@ -82,7 +82,7 @@ ax.plot(df['1/T'], df['ln(Keq)'], 'o')
 ## EXTRA: Customization you don't need to edit or understand this
 ## It adds axis labels to the plot you made.
 ax.set_xlabel(r'1/T [K]')
-ax.set_ylabel(r'$\ln(K_{eq})$');
+ax.set_ylabel(r'$\ln(K_{eq})$')
 ```
 
 #### (b) Fit trendline
