@@ -1,5 +1,6 @@
 ---
 title: Week 44
+subtitle: v1.0.1
 engine: jupyter
 categories: ['units', 'widgets']
 jupyterlite: true
@@ -26,12 +27,14 @@ The widget below accepts "fasta" files as input and you can then use the slider 
 
 Fasta-files is a specific type of text file and you will see that most of the time when you download a Protein, RNA or DNA sequence they will be downloaded as fasta files. Each sequence begins with a header line starting with >, which contains an identifier and optionally a description, followed by the sequence itself using the appropriate nucleotide or amino acid symbols. A FASTA file can contain one or multiple sequences, making it useful for sequence analysis, database searches, and comparing biological sequences using bioinformatics tools.
 
+Upload your fasta file to jupyter and enter the name of the file in the codecell below:
 
 ```{python}
 #| eval: false
 from fysisk_biokemi.widgets.sequence_properties import sequence_dataframe
 
-widget = sequence_dataframe()
+file_name = ""
+widget = sequence_dataframe(file_name)
 ```
 
 You can extract the dataframe with your current pH adjustment by using the widget.get_dataframe() below. 

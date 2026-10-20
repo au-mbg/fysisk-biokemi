@@ -117,90 +117,51 @@ class SequenceProperties:
 
 class FastaToDataFrame:
 
-    def __init__(self):
-        self.uploader = widgets.FileUpload(
-            accept=".fasta")
+    def __init__(self, file_path):
+        self.file_path = file_path
+
+        from Bio.SeqIO.FastaIO import SimpleFastaParser
+
+        with open(self.file_path, "r") as handle:
+            self.sequences = [
+                seq for _, seq in SimpleFastaParser(handle)
+            ]
+
+        if not self.sequences:
+            raise ValueError("No FASTA sequences were found in the file.")
+
         self.ph_slider = widgets.FloatSlider(
             value=7.0,
             min=0.0,
             max=14.0,
             step=0.1,
-            description="pH:", 
+            description="pH:",
             continuous_update=False,
             style={"description_width": "initial"}
         )
+
         self.output_area = widgets.Output()
 
-        self.uploader.observe(self._on_upload, names="value")
         self.ph_slider.observe(self._on_change, names="value")
 
     def display(self):
-        input_box = widgets.VBox([self.uploader, self.ph_slider, self.output_area])
+        input_box = widgets.VBox([
+            self.ph_slider,
+            self.output_area
+        ])
         display(input_box)
-
-    
-    def _on_upload(self, change):
-        from Bio.SeqIO.FastaIO import SimpleFastaParser
-
-        uploaded = self.uploader.value
-
-        if not uploaded:
-            return
-
-        # Support older and newer ipywidgets upload formats
-        if isinstance(uploaded, dict):
-            filename, file_info = next(iter(uploaded.items()))
-        else:
-            file_info = uploaded[0]
-
-            if isinstance(file_info, dict):
-                filename = (
-                    file_info.get("name")
-                    or file_info.get("metadata", {}).get("name")
-        )
-            else:
-                filename = file_info.name
-
-                # Check the file extension
-                if not filename.lower().endswith(".fasta"):
-                    with self.output_area:
-                        self.output_area.clear_output()
-                        print(
-                            "Please upload a FASTA file ending in '.fasta'. "
-                            "Your file was not processed."
-                        )
-                    return
-
-        # Extract the file contents
-        if isinstance(file_info, dict):
-            content = file_info["content"]
-        else:
-            content = file_info.content
-
-        if hasattr(content, "tobytes"):
-            content = content.tobytes()
-
-        if not isinstance(content, bytes):
-            content = bytes(content)
-
-        raw_content = io.StringIO(content.decode("utf-8"))
-
-        # Parse the FASTA file
-        sequences = [
-            seq for _, seq in SimpleFastaParser(raw_content)
-        ]
-
-        if not sequences:
-            with self.output_area:
-                self.output_area.clear_output()
-                print(
-                    "No FASTA sequences were found. "
-                    "Please check that your file contains valid FASTA records."
-                )
-            return
-
-        self.sequences = sequences
         self._on_change(None)
+
+    def _on_change(self, change):
+        df = self.get_dataframe()
+
+        with self.output_area:
+            self.output_area.clear_output()
+            display(df)
+
+    def get_dataframe(self):
+        ph = self.ph_slider.value
+        return sequences_to_df(sequences=self.sequences, ph=ph)
 
 
     def _on_change(self, change):
@@ -223,7 +184,7 @@ def sequence_properties():
     widget = SequenceProperties()
     widget.display()
 
-def sequence_dataframe():
-    widget = FastaToDataFrame()
+def sequence_dataframe(file_path):
+    widget = FastaToDataFrame(file_path)
     widget.display()
     return widget
