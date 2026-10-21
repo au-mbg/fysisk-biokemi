@@ -16,8 +16,8 @@ The data obtained is given in the Excel document `deter_delta_h_data.xlsx`. Load
 ```{python}
 #| exercise: true
 #| eval: false
-data_file_path = ... # Write the path to the dataset file
-df = pd.read_excel(data_file_path)
+data_file_name = ... # Write the  of the uploaded data file
+df = pd.read_excel(data_file_name)
 display(df)
 ```
 

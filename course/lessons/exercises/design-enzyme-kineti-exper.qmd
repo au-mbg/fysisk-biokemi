@@ -18,13 +18,13 @@ catalyzed formation of product P, with varying start concentration of substrates
 with an extinction coefficient of 0.068 $\mu\text{M}^{-1}\cdot \text{cm}^{-1}$, and the absorbance was measured 
 in a light path of 1 cm throughout the time course.
 
-Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
+Upload the datafile and load the dataset with pandas. Set `data_file_name` to the name of your uploaded dataset file.
 
 ```{python}
 #| exercise: true
 #| eval: false
-data_file_path = ... # Write the path to the dataset file
-df = pd.read_excel(data_file_path)
+data_file_name = ... # Write the  of the uploaded data file
+df = pd.read_excel(data_file_name)
 display(df)
 ```
 

@@ -13,20 +13,15 @@ pd.set_option('display.max_rows', 6)
 
 Here, we will analyse the results from an experiment used to quantify affinity of a protein:lignd interaction. The data in `binding_data_sq.xlsx` is in the form of saturation (theta) as a function of the total ligand concentration L_tot. This is the type of data you typically get from e.g. a fluorescence titration experiment. Each measure-ment has been repeated three times.
 
-Load the dataset with pandas. Set `data_file_path` to the path of the dataset file named above.
-
-```{python}
-print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
-```
+Upload the datafile and load the dataset with pandas. Set `data_file_name` to the name of your uploaded dataset file.
 
 ```{python}
 #| exercise: true
 #| eval: false
-data_file_path = ... # Write the path to the dataset file
-df = pd.read_excel(data_file_path)
+data_file_name = ... # Write the  of the uploaded data file
+df = pd.read_excel(data_file_name)
 display(df)
 ```
-
 ```{python}
 #| solution: true
 from fysisk_biokemi.datasets import load_dataset

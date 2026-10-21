@@ -18,11 +18,10 @@ Use these data to answer the following questions.
 ```{python}
 #| exercise: true
 #| eval: false
-data_file_path = ... # Write the path to the dataset file
-df = pd.read_excel(data_file_path)
+data_file_name = ... # Write the  of the uploaded data file
+df = pd.read_excel(data_file_name)
 display(df)
 ```
-
 ```{python}
 #| solution: true
 from fysisk_biokemi.datasets import load_dataset

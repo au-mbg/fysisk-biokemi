@@ -15,19 +15,15 @@ You have carried out a kinetic experiment investigating the turnover of two meta
 
 #### (a) Load the dataset
 
-Load the dataset `reaction-orders.xlsx` with pandas. Set `data_file_path` to the path of the dataset file.
-```{python}
-print(Path("...").resolve()) #Exchange ..., with the name of the file you just uploaded
-```
+Upload the datafile and load the dataset with pandas. Set `data_file_name` to the name of your uploaded dataset file.
 
 ```{python}
 #| exercise: true
 #| eval: false
-data_file_path = ... # Write the path to the dataset file
-df = pd.read_excel(data_file_path)
+data_file_name = ... # Write the  of the uploaded data file
+df = pd.read_excel(data_file_name)
 display(df)
 ```
-
 ```{python}
 #| solution: true
 from fysisk_biokemi.datasets import load_dataset
