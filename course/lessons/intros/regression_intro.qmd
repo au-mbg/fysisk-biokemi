@@ -125,7 +125,7 @@ initial_guess = [2, 0]
 fitted_parameters, trash = curve_fit(..., ..., ..., p0=initial_guess)
 
 ## Extract parameters ## 
-a_fit, b_fit = popt
+a_fit, b_fit = fitted_parameters
 
 print(fitted_parameters)
 print(a_fit)
