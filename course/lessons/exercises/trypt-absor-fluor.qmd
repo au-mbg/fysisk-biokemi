@@ -141,8 +141,14 @@ the stokes shift.
 max_index = np.argmax(df_emission['emission_(AU)'])
 emission_wavelength_max = df_emission['wavelength_(nm)'][max_index]
 
-max_index = np.argmax(df_extinction['molar_extinction_(cm-1/M)'])
-extinction_wavelength_max = df_extinction['wavelength_(nm)'][max_index]
+# Find maximum extinction between 250 and 300 nm
+filtered_extinction = df_extinction[
+    (df_extinction['wavelength_(nm)'] >= 250) &
+    (df_extinction['wavelength_(nm)'] <= 300)
+]
+
+max_index = filtered_extinction['molar_extinction_(cm-1/M)'].idxmax()
+extinction_wavelength_max = df_extinction.loc[max_index, 'wavelength_(nm)']
 
 stokes_shift = emission_wavelength_max - extinction_wavelength_max
 
