@@ -127,7 +127,7 @@ print(f"{estimated_stokes_shift = :.0f} {unit_stokes_shift}")
 
 ```{python}
 #| solution: true
-estimated_stokes_shift = 30
+estimated_stokes_shift = 80
 unit_stokes_shift = "nm"
 print(f"{estimated_stokes_shift = :.0f} {unit_stokes_shift}")
 ```
