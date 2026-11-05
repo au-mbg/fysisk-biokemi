@@ -21,6 +21,14 @@ How many tryptophan residues does the protein contain?
 ...
 ```
 
+```{python}
+#| solution: true
+Abs280 = 0.41
+c_prot = 0.000037
+Ext280= Abs280/c_prot
+N_trp = Ext280/5500
+print(N_trp)
+```
 #### (b) Concentration
 
 You would like to conduct a protein stability experiment at an absorbance of 0,8 (path length 1cm). What concentration should you use?
@@ -30,9 +38,16 @@ You would like to conduct a protein stability experiment at an absorbance of 0,8
 #| eval: false
 c_prot = ...
 unit_c_prot = "..."
-print(f"{c_prot = :.0f} {unit_c_prot")
+print(c_prot, unit_c_prot)
 ```
 
+```{python}
+#| solution: true
+Abs_stab = 0.8
+c_prot = Abs_stab/Ext280 
+unit_c_prot = "M"
+print(c_prot, unit_c_prot)
+```
 #### (c) Plot the spectra
 
 The cell below loads extinction and emission spectra for tryptophan in aqueous buffer. (The data files are 
