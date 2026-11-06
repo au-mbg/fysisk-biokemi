@@ -303,3 +303,9 @@ Illustration of argmax
 Compare to a plot of the visual spectrum. What colors are the light that corresponds to the excitation and emission maxima respectively? 
 
 Why do you think the protein is called *Cherry*?
+
+```{python}
+#| solution: true
+# The excitation maximum corresponds to orange light, whereas the emitted light is bright red - hence the name cherry. Most fluorescent proteins have names that indicated their color either directly or indirectly
+
+```
