@@ -3,6 +3,10 @@
 The protein of human myoglobin is given below
 
 ```{python}
+from IPython.display import display, Math
+```
+
+```{python}
 sequence = """GLSDGEWQLVLNVWGKVEADIPGHGQEVLIRLFKGHPETLEKFDKFKHLKSEDEMKASEDLKKHGA
 TVLTALGGILKKKGHHEAEIKPLAQSHATKHKIPVKYLEFISECIIQVLQSKHPGDFGADAQGAMNKALELFRKDMASNY
 KELGFQG"""
@@ -77,8 +81,10 @@ print(f"{epsilon = :.0f} {unit_epsilon}")
 ```{python}
 #| solution: true
 epsilon = eps_trp * N_trp + eps_tyr * N_tyr + eps_cys*N_cys
-unit_epsilon = "\mathrm{M^{−1} cm^{−1}}"
-print(f"{epsilon = :.0f} {unit_epsilon}")
+unit_epsilon = r"\mathrm{M^{-1}\,cm^{-1}}"
+display(Math(
+    rf"\varepsilon = {epsilon:.0f}\ {unit_epsilon}"
+))
 ```
 What are the units of this value? 
 
@@ -207,8 +213,11 @@ def extinction_coefficient(sequence):
 
     # Calculate 
     epsilon = eps_trp * N_trp + eps_tyr * N_tyr + eps_cys*N_cys
-    unit_epsilon = "\mathrm{M^{−1} cm^{−1}}"
-    print(f"{epsilon = :.0f} {unit_epsilon}")
+    unit_epsilon = r"\mathrm{M^{-1}\,cm^{-1}}"
+    
+    display(Math(
+    rf"\varepsilon = {epsilon:.0f}\ {unit_epsilon}"
+    ))
 ```
 
 It's always a good idea to check that functions do what we expect, so we can confirm that 

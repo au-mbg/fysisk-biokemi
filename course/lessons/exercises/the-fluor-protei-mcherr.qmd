@@ -5,6 +5,7 @@
 import pandas as pd
 from IPython.display import display
 from pathlib import Path
+from IPython.display import display, Math
 ```
 
 The spectra of many fluorescent proteins can be found at the website: [www.fpbase.org](https://www.fpbase.org/). Go to FPbase and search for “mCherry”. 
@@ -121,8 +122,8 @@ N_cys = sequence.count("C")
 
 # Calculate the extinction coefficient: 
 ext_coeff = N_trp * ext_residue["W"] + N_tyr * ext_residue["Y"] + N_cys * ext_residue["C"]
-unit_epsilon = "\mathrm{M^{−1} cm^{−1}}"
-print(f"{ext_coeff = :3.3f} {unit_epsilon}")
+unit_epsilon = r"\mathrm{M^{-1}\,cm^{-1}}"
+display(Math(rf"\varepsilon = {ext_coeff:.3f}\ \mathrm{{M^{{-1}}\,cm^{{-1}}}}"))
 ```
 
 #### (d) Concentration from A280nm 
