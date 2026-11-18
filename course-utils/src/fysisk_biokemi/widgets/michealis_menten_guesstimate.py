@@ -36,7 +36,7 @@ class MichealisMentenGuesstimateWidget:
 
         # Guess Vmax
         self.guess_vmax_input = widgets.FloatText(
-            description="Guess Vmax (M/s):",
+            description="Guess Vmax (nM/s):",
             placeholder="Enter your guess here",
             style={'description_width': 'initial'},
         )
@@ -48,7 +48,7 @@ class MichealisMentenGuesstimateWidget:
 
         ## Guess Km
         self.guess_km_input = widgets.FloatText(
-            description="Guess K_M (M):",
+            description="Guess K_M (nM):",
             placeholder="Enter your guess here",
             style={'description_width': 'initial'},
         )
@@ -99,8 +99,8 @@ class MichealisMentenGuesstimateWidget:
         self.fig.update_layout(
             title="Estimate Michealis-Menten Parameters",
             template="plotly_white",
-            xaxis_title="[S] (M)",
-            yaxis_title=r"V0 (M/s)",
+            xaxis_title="[S] (nM)",
+            yaxis_title=r"V0 (nM/s)",
 
         )
 
