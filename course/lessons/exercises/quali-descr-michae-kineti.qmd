@@ -46,6 +46,11 @@ Now set $[E]_\mathrm{tot} = 0.0005$, and $K_M = 5$. Change $V_\mathrm{max}$ step
 
 After this, repeat the procedure for $[E]_\mathrm{tot}$ increasing it 10-fold.  
 
+```{python}
+#| solution: true
+V_max is the highest achievable reaction rate in the system, and thus the value the curve approaches at very high substrate concentrations. Changing E_tot (and k_cat) has the same effect as changing V_max as Vmax is composed of the two. In practice, K_cat and [E]_tot cannot be disentangled by regression, which is why Vmax is usually used as the fitting parameter and k_cat is later calculated from a known enzyme concentration 
+
+```
 :::::: {.cell .markdown}
 
 ::::::
@@ -54,15 +59,25 @@ After this, repeat the procedure for $[E]_\mathrm{tot}$ increasing it 10-fold.
 
 Next, we will explore the regime where $[S] \ll K_M$. Initially, set $K_M = 10$ and zoom in on the regime from $0$ to $1$ on the X-axis. What does the MM equation look like in this regime? Use the MM equation and a simplifying assumption to show how this occurs. 
 
-Next, increase $K_M$ five-fold and try to change $V_\mathrm{max}$ som the curve appearance is unchanged (beware of the autoscaling Y-axis).
+Next, increase $K_M$ five-fold and try to change $V_\mathrm{max}$ so the curve appearance is unchanged (beware of the autoscaling Y-axis).
 
 Imagine an experiment conducted using only $[S]$ values from this range. How would this affect how well you could determine the MM parameters? 
+
+```{python}
+#| solution: true
+When the substrate concentration is much lower than K_m, the MM equation becomes linear. This happens as the denominator (K_M + [S]) is dominated by the much larger KM value. The curve is thus linear with a slope of Vmax/K_M.
+
+A 5-fold increase in K_M can thus be fully compensated by a five-fold increase in V_max.
+
+When we only have data in this region, we can thus not determine the parameters L_cat and K_M uniquely - only their ratio k_cat/K_M - also known as the specificity constant. 
+
+```
 
 :::::: {.cell .markdown}
 
 ::::::
 
-#### (f) Training estimation skills.
+#### (e) Training estimation skills.
 
 Train your estimation skills using the widget below.
 
