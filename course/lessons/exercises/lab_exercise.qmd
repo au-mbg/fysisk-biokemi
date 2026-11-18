@@ -443,8 +443,8 @@ Start by converting the enzyme concentration to molar units and then calculate t
 ## calculate kcat.
 enzyme_conc = ... 
 kcat = ... 
-
-print(kcat)
+unit_kcat = ""
+print(f"{kcat} {unit_kcat}")
 ```
 
 
@@ -455,7 +455,14 @@ print(kcat)
 ## calculate kcat.
 enzyme_conc = (3.33*10**(-3)) / 86000
 kcat = V_max_fit / enzyme_conc
-print(kcat)
+unit_kcat = "1/s"
+print(f"{kcat} {unit_kcat}")
 ```
 
 - What is the biochemical meaning of this number? 
+```{python}
+#| solution: true
+
+## The turnover number represents that maximal number of substrates an enzyme can process per unit of time
+
+```
