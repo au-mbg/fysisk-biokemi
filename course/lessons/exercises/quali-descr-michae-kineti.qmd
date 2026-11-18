@@ -20,6 +20,10 @@ Use the widget created by the cell above to answer the following the questions.
 
 Setting $V_\mathrm{max} = 400$ and $[E]_\mathrm{tot} = 0.0005$, change $K_M$ from 0.5 to 5 to 10 to 50. Describe the change in curve appearance and explain it using the Michaelis-Menten (MM) equation.
 
+```{python}
+#| solution: true
+When K_M is increased, the curve increases more slowly resulting in a "flatter" curve. K_M is in the denominator in the MM equation, and a larger K_M thus leads to a lower rate when all other parameters is constant.
+```
 :::::: {.cell .markdown}
 
 ::::::
@@ -28,6 +32,10 @@ Setting $V_\mathrm{max} = 400$ and $[E]_\mathrm{tot} = 0.0005$, change $K_M$ fro
 
 What is the biochemical meaning of $K_M$?
 
+```{python}
+#| solution: true
+K_M marks the half saturation point of the enzyme, i.e. the point where the curve reaches 50% of V_max. K_M not always equal to K_D as it represents a steady-state rather than an equilibirum. 
+```
 :::::: {.cell .markdown}
 
 ::::::
