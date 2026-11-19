@@ -22,7 +22,7 @@ Setting $V_\mathrm{max} = 400$ and $[E]_\mathrm{tot} = 0.0005$, change $K_M$ fro
 
 ```{python}
 #| solution: true
-When K_M is increased, the curve increases more slowly resulting in a "flatter" curve. K_M is in the denominator in the MM equation, and a larger K_M thus leads to a lower rate when all other parameters is constant.
+# When K_M is increased, the curve increases more slowly resulting in a "flatter" curve. K_M is in the denominator in the MM equation, and a larger K_M thus leads to a lower rate when all other parameters is constant.
 ```
 :::::: {.cell .markdown}
 
@@ -34,7 +34,7 @@ What is the biochemical meaning of $K_M$?
 
 ```{python}
 #| solution: true
-K_M marks the half saturation point of the enzyme, i.e. the point where the curve reaches 50% of V_max. K_M not always equal to K_D as it represents a steady-state rather than an equilibirum. 
+#  K_M marks the half saturation point of the enzyme, i.e. the point where the curve reaches 50% of V_max. K_M not always equal to K_D as it represents a steady-state rather than an equilibirum. 
 ```
 :::::: {.cell .markdown}
 
@@ -48,7 +48,7 @@ After this, repeat the procedure for $[E]_\mathrm{tot}$ increasing it 10-fold.
 
 ```{python}
 #| solution: true
-V_max is the highest achievable reaction rate in the system, and thus the value the curve approaches at very high substrate concentrations. Changing E_tot (and k_cat) has the same effect as changing V_max as Vmax is composed of the two. In practice, K_cat and [E]_tot cannot be disentangled by regression, which is why Vmax is usually used as the fitting parameter and k_cat is later calculated from a known enzyme concentration 
+#  V_max is the highest achievable reaction rate in the system, and thus the value the curve approaches at very high substrate concentrations. Changing E_tot (and k_cat) has the same effect as changing V_max as Vmax is composed of the two. In practice, K_cat and [E]_tot cannot be disentangled by regression, which is why Vmax is usually used as the fitting parameter and k_cat is later calculated from a known enzyme concentration 
 
 ```
 :::::: {.cell .markdown}
@@ -65,11 +65,11 @@ Imagine an experiment conducted using only $[S]$ values from this range. How wou
 
 ```{python}
 #| solution: true
-When the substrate concentration is much lower than K_m, the MM equation becomes linear. This happens as the denominator (K_M + [S]) is dominated by the much larger KM value. The curve is thus linear with a slope of Vmax/K_M.
-
-A 5-fold increase in K_M can thus be fully compensated by a five-fold increase in V_max.
-
-When we only have data in this region, we can thus not determine the parameters L_cat and K_M uniquely - only their ratio k_cat/K_M - also known as the specificity constant. 
+# When the substrate concentration is much lower than K_m, the MM equation becomes linear. This happens as the denominator (K_M + [S]) is dominated by the much larger KM value. The curve is thus linear with a slope of Vmax/K_M.
+# 
+# A 5-fold increase in K_M can thus be fully compensated by a five-fold increase in V_max.
+# 
+# When we only have data in this region, we can thus not determine the parameters L_cat and K_M uniquely - only their ratio k_cat/K_M - also known as the specificity constant. 
 
 ```
 
