@@ -128,8 +128,8 @@ print(answer)
 As always, we need the function we're fitting with 
 
 ```{python}
-def michaelis_menten(...):
-    return ...
+...
+...
 ```
 
 And then we can make the fit
@@ -140,17 +140,17 @@ And then we can make the fit
 
 ## Your task fit dataset 1: 'enz_(M/s)'
 initial_guess = [..., ...]
-fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['enz_(M/s)'], initial_guess)
+...
 Vmax_enz_fit, K_M_enz_fit = fitted_parameters
 
 ## Your task fit dataset 2: 'inhibitor2_(M/s)'
 initial_guess = [..., ...]
-fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['inhibitor2_(M/s)'], initial_guess)
+...
 Vmax_inhib2_fit, K_M_inhib2_fit = fitted_parameters
 
 ## Your task fit dataset 3: 'inhibitor2_(M/s)'
 initial_guess = [..., ...]
-fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['inhibitor3_(M/s)'], initial_guess)
+...
 Vmax_inhib3_fit, K_M_inhib3_fit = fitted_parameters
 
 print('Dataset 1: enz_(M/s)')
