@@ -129,7 +129,7 @@ As always, we need the function we're fitting with
 
 ```{python}
 def michaelis_menten(S, Vmax, Km):
-    return 
+    return Vmax * S / (S + Km)
 ```
 
 And then we can make the fit
@@ -139,17 +139,18 @@ And then we can make the fit
 #| eval: false
 
 ## Your task fit dataset 1: 'enz_(M/s)'
-initial_guess 
+initial_guess = [..., ...]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['enz_(M/s)'], initial_guess)
 Vmax_enz_fit, K_M_enz_fit = fitted_parameters
 
 ## Your task fit dataset 2: 'inhibitor2_(M/s)'
-initial_guess 
-
+initial_guess = [..., ...]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['inhibitor2_(M/s)'], initial_guess)
 Vmax_inhib2_fit, K_M_inhib2_fit = fitted_parameters
 
 ## Your task fit dataset 3: 'inhibitor2_(M/s)'
-initial_guess
-
+initial_guess = [..., ...]
+fitted_parameters, trash = curve_fit(michaelis_menten, df['[S]_(M)'], df['inhibitor3_(M/s)'], initial_guess)
 Vmax_inhib3_fit, K_M_inhib3_fit = fitted_parameters
 
 print('Dataset 1: enz_(M/s)')
@@ -199,19 +200,19 @@ fig, ax = plt.subplots()
 
 ## Your task: Evaluate the fits
 S_smooth = np.linspace(0, 2.05*10**(-5), 100)
-V0_enz = ...
-V0_inhib2 = ...
-V0_inhib3 = ...
+V0_enz = michaelis_menten(S_smooth, Vmax_enz_fit, K_M_enz_fit)
+V0_inhib2 = michaelis_menten(S_smooth, Vmax_inhib2_fit, K_M_inhib2_fit)
+V0_inhib3 = michaelis_menten(S_smooth, Vmax_inhib3_fit, K_M_inhib3_fit)
 
 ## Plots the fits
-ax.plot(S_smooth, ...)
-ax.plot(S_smooth, ...)
-ax.plot(S_smooth, ...)
+ax.plot(S_smooth, V0_enz)
+ax.plot(S_smooth, V0_inhib2)
+ax.plot(S_smooth, V0_inhib3)
 
 ## Plots the data
-ax.plot(..., 'o', label='enz_(M/s)', color='C0')
-ax.plot(..., 'o', label='inhibitor2_(M/s)', color='C1')
-ax.plot(..., label='inhibitor3_(M/s)', color='C2')
+ax.plot(df['[S]_(M)'], df['enz_(M/s)'], 'o', label='enz_(M/s)', color='C0')
+ax.plot(df['[S]_(M)'], df['inhibitor2_(M/s)'], 'o', label='inhibitor2_(M/s)', color='C1')
+ax.plot(df['[S]_(M)'], df['inhibitor3_(M/s)'], 'o', label='inhibitor3_(M/s)', color='C2')
 
 ## Adds legend and axis labels. 
 ax.legend()
@@ -235,12 +236,12 @@ them by the parameters determined in the absence of an inhibitor.
 #| eval: false
 
 ## Your task: Calculate the ratio nof K_M^app / K_M
-K_M_ratio2 = ...
-K_M_ratio3 = ...
+K_M_ratio2 = K_M_inhib2_fit / K_M_enz_fit
+K_M_ratio3 = K_M_inhib3_fit / K_M_enz_fit
 
 ## Your task: Calculate the ratio nof Vmax^app / Vmax
-Vmax_ratio2 = ...
-Vmax_ratio3 = ...
+Vmax_ratio2 = Vmax_inhib2_fit / Vmax_enz_fit
+Vmax_ratio3 = Vmax_inhib3_fit / Vmax_enz_fit
 
 ## Prints the ratios
 print('Inhibitor 2')
