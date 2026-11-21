@@ -128,8 +128,8 @@ print(answer)
 As always, we need the function we're fitting with 
 
 ```{python}
-def michaelis_menten(S, Vmax, Km):
-    return Vmax * S / (S + Km)
+def michaelis_menten(...):
+    return ...
 ```
 
 And then we can make the fit
